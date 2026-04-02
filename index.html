@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biogradix — Bioactivos de grado farmacéutico</title>
+    <meta name="description" content="Bioactivos y péptidos de grado farmacéutico. Donde la ciencia encuentra su potencial.">
+    <meta property="og:title" content="Biogradix — Bioactivos de grado farmacéutico">
+    <meta property="og:description" content="Donde la ciencia encuentra su potencial">
+    <meta property="og:image" content="https://biogradix.com/og-image.png">
+    <meta property="og:url" content="https://biogradix.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #0B1A2B;
+            --teal: #0F6E56;
+            --mint: #E1F5EE;
+            --cloud: #FAFBFC;
+            --silver: #E8EAED;
+            --deep-teal: #085041;
+            --active-teal: #1D9E75;
+            --gold: #C9A84C;
+            --alert: #D4534E;
+            --text-primary: #0B1A2B;
+            --text-secondary: #6B7B8D;
+            --text-tertiary: #8A9BAD;
+            --bg-primary: #FAFBFC;
+            --bg-secondary: #F0F3F8;
+            --border-tertiary: #E8EAED;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border-tertiary);
+            background: white;
+        }
+
+        .logo {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .logo .b { color: var(--teal); }
+        .logo .g { color: var(--navy); }
+
+        .nav-controls {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .lang-toggle {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            border: none;
+            background: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle.active {
+            color: var(--teal);
+            background: rgba(15, 110, 86, 0.08);
+        }
+
+        .whatsapp-btn {
+            background: var(--teal);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .whatsapp-btn:hover {
+            background: var(--active-teal);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 40px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--navy) 0%, rgba(15, 110, 86, 0.05) 100%);
+        }
+
+        .hero-wordmark {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-wordmark .b { color: var(--teal); }
+        .hero-wordmark .g { color: var(--navy); }
+
+        .hero-tagline {
+            font-family: 'Instrument Serif', serif;
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero-descriptor {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 32px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--teal);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .hero-cta:hover {
+            background: var(--active-teal);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid var(--border-tertiary);
+            text-align: center;
+        }
+
+        .trust-bar-text {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+        }
+
+        .trust-bar-text span {
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: rgba(212, 83, 78, 0.08);
+            border: 1px solid var(--alert);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 40px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .disclaimer-title {
+            font-weight: 600;
+            color: var(--alert);
+            margin-bottom: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .section-subtitle {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-tertiary);
+            margin-bottom: 40px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--border-tertiary);
+            background: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--teal);
+            color: white;
+            border-color: var(--teal);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            border: 1px solid var(--border-tertiary);
+            border-radius: 12px;
+            padding: 24px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--teal);
+            box-shadow: 0 8px 24px rgba(15, 110, 86, 0.1);
+        }
+
+        .product-category {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .product-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .product-specs {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+            padding: 12px;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+        }
+
+        .product-cta {
+            background: var(--teal);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .product-cta:hover {
+            background: var(--active-teal);
+        }
+
+        /* Education Section */
+        .education-section {
+            padding: 60px 40px;
+            background: var(--bg-secondary);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .education-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border-tertiary);
+        }
+
+        .education-card h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .education-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .form-input {
+            padding: 12px 16px;
+            border: 1px solid var(--border-tertiary);
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            color: var(--text-primary);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .form-submit {
+            background: var(--teal);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .form-submit:hover {
+            background: var(--active-teal);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 12px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mint);
+        }
+
+        /* Hidden by language */
+        [data-lang="es"] { display: none; }
+        [data-lang="en"] { display: block; }
+
+        html[lang="es"] [data-lang="es"] { display: block; }
+        html[lang="es"] [data-lang="en"] { display: none; }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 20px; }
+            .hero { padding: 60px 20px; }
+            .hero-wordmark { font-size: 40px; }
+            .hero-tagline { font-size: 18px; }
+            .products-section, .education-section, .contact-section {
+                padding: 40px 20px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-btn { font-size: 11px; padding: 6px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">
+        <span class="b">bio</span><span class="g">gradix</span>
+    </div>
+    <div class="nav-controls">
+        <button class="lang-toggle active" onclick="setLanguage('en')" data-lang="en">EN</button>
+        <button class="lang-toggle" onclick="setLanguage('es')" data-lang="es">ES</button>
+        <a href="https://wa.me/525512345678" target="_blank" class="whatsapp-btn">
+            <span data-lang="en">WhatsApp</span>
+            <span data-lang="es">WhatsApp</span>
+        </a>
+    </div>
+</nav>
+
+<!-- Trust Bar -->
+<div class="trust-bar">
+    <div class="trust-bar-text">
+        <span data-lang="en">U.S. Manufactured</span>
+        <span data-lang="es">Fabricado en EE.UU.</span>
+        &nbsp;·&nbsp;
+        <span data-lang="en">Third-party Tested</span>
+        <span data-lang="es">Probado por terceros</span>
+        &nbsp;·&nbsp;
+        <span data-lang="en">≥99% Purity</span>
+        <span data-lang="es">≥99% Pureza</span>
+    </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-wordmark">
+        <span class="b">bio</span><span class="g">gradix</span>
+    </div>
+    <div class="hero-tagline">
+        <span data-lang="en">Where science meets potential</span>
+        <span data-lang="es">Donde la ciencia encuentra su potencial</span>
+    </div>
+    <div class="hero-descriptor">
+        <span data-lang="en">Pharmaceutical-grade Bioactives</span>
+        <span data-lang="es">Bioactivos de grado farmacéutico</span>
+    </div>
+    <a href="#products" class="hero-cta">
+        <span data-lang="en">Explore Products</span>
+        <span data-lang="es">Explorar Productos</span>
+    </a>
+</section>
+
+<!-- Disclaimer -->
+<div class="disclaimer">
+    <div class="disclaimer-title">
+        <span data-lang="en">Research Use Only</span>
+        <span data-lang="es">Solo para Investigación</span>
+    </div>
+    <p>
+        <span data-lang="en">All products are intended for research and educational purposes only. They are not intended to diagnose, treat, cure, or prevent any disease. Not evaluated by FDA. Not for human consumption. Consult healthcare professionals before use.</span>
+        <span data-lang="es">Todos los productos están destinados únicamente a fines de investigación y educación. No están destinados a diagnosticar, tratar, curar ni prevenir ninguna enfermedad. No evaluado por la FDA. No para consumo humano. Consulte a profesionales de la salud antes de usar.</span>
+    </p>
+</div>
+
+<!-- Products Section -->
+<section class="products-section" id="products">
+    <h2 class="section-title">
+        <span data-lang="en">Our Bioactives</span>
+        <span data-lang="es">Nuestros Bioactivos</span>
+    </h2>
+    <p class="section-subtitle">
+        <span data-lang="en">Peptides & Bioactive Compounds</span>
+        <span data-lang="es">Péptidos & Compuestos Bioactivos</span>
+    </p>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterProducts('all')">
+            <span data-lang="en">All</span>
+            <span data-lang="es">Todos</span>
+        </button>
+        <button class="filter-btn" onclick="filterProducts('peptides')">
+            <span data-lang="en">Peptides</span>
+            <span data-lang="es">Péptidos</span>
+        </button>
+        <button class="filter-btn" onclick="filterProducts('compounds')">
+            <span data-lang="en">Compounds</span>
+            <span data-lang="es">Compuestos</span>
+        </button>
+        <button class="filter-btn" onclick="filterProducts('blends')">
+            <span data-lang="en">Blends</span>
+            <span data-lang="es">Mezclas</span>
+        </button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+        <!-- Products will be inserted here -->
+    </div>
+</section>
+
+<!-- Education Section -->
+<section class="education-section">
+    <h2 class="section-title" style="text-align: center;">
+        <span data-lang="en">Education & Research</span>
+        <span data-lang="es">Educación & Investigación</span>
+    </h2>
+
+    <div class="education-grid" style="margin-top: 40px;">
+        <div class="education-card">
+            <h3>
+                <span data-lang="en">COA Documents</span>
+                <span data-lang="es">Documentos COA</span>
+            </h3>
+            <p>
+                <span data-lang="en">Complete Certificates of Analysis for every product. Third-party tested purity, identity, and safety data.</span>
+                <span data-lang="es">Certificados completos de análisis para cada producto. Datos de pureza, identidad y seguridad probados por terceros.</span>
+            </p>
+        </div>
+        <div class="education-card">
+            <h3>
+                <span data-lang="en">Research Library</span>
+                <span data-lang="es">Biblioteca de Investigación</span>
+            </h3>
+            <p>
+                <span data-lang="en">Peer-reviewed studies, mechanism of action guides, and dosing protocols for researchers and educators.</span>
+                <span data-lang="es">Estudios revisados por pares, guías de mecanismo de acción y protocolos de dosificación para investigadores y educadores.</span>
+            </p>
+        </div>
+        <div class="education-card">
+            <h3>
+                <span data-lang="en">Expert Support</span>
+                <span data-lang="es">Soporte de Expertos</span>
+            </h3>
+            <p>
+                <span data-lang="en">Direct WhatsApp support from our team. Questions about purity, reconstitution, handling, and research protocols.</span>
+                <span data-lang="es">Soporte directo por WhatsApp de nuestro equipo. Preguntas sobre pureza, reconstitución, manipulación y protocolos de investigación.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <h2 class="section-title">
+        <span data-lang="en">Get in Touch</span>
+        <span data-lang="es">Contáctenos</span>
+    </h2>
+    <p style="color: var(--text-secondary); margin-bottom: 24px;">
+        <span data-lang="en">Have questions? Reach out on WhatsApp for instant support.</span>
+        <span data-lang="es">¿Tiene preguntas? Comuníquese por WhatsApp para obtener soporte instantáneo.</span>
+    </p>
+    <a href="https://wa.me/525512345678" target="_blank" class="hero-cta">
+        <span data-lang="en">Chat on WhatsApp</span>
+        <span data-lang="es">Chatear en WhatsApp</span>
+    </a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+        <a href="#" data-lang="en">Terms</a>
+        <a href="#" data-lang="es">Términos</a>
+        <a href="#" data-lang="en">Privacy</a>
+        <a href="#" data-lang="es">Privacidad</a>
+        <a href="#" data-lang="en">Contact</a>
+        <a href="#" data-lang="es">Contacto</a>
+    </div>
+    <p>© 2026 Biogradix. <span data-lang="en">All rights reserved.</span><span data-lang="es">Todos los derechos reservados.</span></p>
+    <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.5)">
+        <span data-lang="en">Biogradix is a research-focused platform for pharmaceutical-grade bioactives. Not for human consumption.</span>
+        <span data-lang="es">Biogradix es una plataforma enfocada en investigación para bioactivos de grado farmacéutico. No para consumo humano.</span>
+    </p>
+</footer>
+
+<script>
+// Product Database
+const products = [
+    {
+        id: 1,
+        category: 'peptides',
+        nameEn: 'BPC-157',
+        nameEs: 'BPC-157',
+        descEn: 'Pentadecapeptide with broad tissue regeneration support.',
+        descEs: 'Pentadecapéptido con amplio soporte para regeneración tisular.',
+        spec: '1mg/vial | 99%+ purity | Lyophilized',
+        cta: 'Learn More'
+    },
+    {
+        id: 2,
+        category: 'peptides',
+        nameEn: 'TB-500',
+        nameEs: 'TB-500',
+        descEn: 'Thymosin Beta-4 derivative for recovery and tissue repair.',
+        descEs: 'Derivado de Timosina Beta-4 para recuperación y reparación tisular.',
+        spec: '2mg/vial | 99%+ purity | Lyophilized',
+        cta: 'Learn More'
+    },
+    {
+        id: 3,
+        category: 'compounds',
+        nameEn: 'GHK-Cu',
+        nameEs: 'GHK-Cu',
+        descEn: 'Copper tripeptide for skin health and collagen synthesis.',
+        descEs: 'Tripéptido de cobre para la salud de la piel y síntesis de colágeno.',
+        spec: '10mg/vial | 99%+ purity | Solution',
+        cta: 'Learn More'
+    },
+    {
+        id: 4,
+        category: 'compounds',
+        nameEn: 'NAD+',
+        nameEs: 'NAD+',
+        descEn: 'Nicotinamide adenine dinucleotide for cellular energy research.',
+        descEs: 'Dinucleótido de adenina nicotinamida para investigación de energía celular.',
+        spec: '500mg/vial | 99%+ purity | Powder',
+        cta: 'Learn More'
+    },
+    {
+        id: 5,
+        category: 'blends',
+        nameEn: 'GLOW Blend',
+        nameEs: 'Mezcla GLOW',
+        descEn: 'Combination: BPC-157 + TB-500 + GHK-Cu. Complete regeneration protocol.',
+        descEs: 'Combinación: BPC-157 + TB-500 + GHK-Cu. Protocolo de regeneración completo.',
+        spec: 'Pre-formulated | 99%+ purity | Ready to reconstitute',
+        cta: 'Learn More'
+    },
+    {
+        id: 6,
+        category: 'peptides',
+        nameEn: 'Selank',
+        nameEs: 'Selank',
+        descEn: 'Heptapeptide for cognitive and emotional balance research.',
+        descEs: 'Heptapéptido para investigación del equilibrio cognitivo y emocional.',
+        spec: '5mg/vial | 99%+ purity | Lyophilized',
+        cta: 'Learn More'
+    }
+];
+
+// Language Toggle
+function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    localStorage.setItem('language', lang);
+}
+
+// Load saved language
+if (localStorage.getItem('language')) {
+    setLanguage(localStorage.getItem('language'));
+}
+
+// Product Filter
+function filterProducts(category) {
+    const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+    renderProducts(filtered);
+
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+}
+
+// Render Products
+function renderProducts(productList) {
+    const grid = document.getElementById('productGrid');
+    const lang = document.documentElement.lang || 'en';
+    
+    grid.innerHTML = productList.map(product => `
+        <div class="product-card">
+            <div class="product-category">${product.category.toUpperCase()}</div>
+            <h3 class="product-name">${lang === 'es' ? product.nameEs : product.nameEn}</h3>
+            <p class="product-description">${lang === 'es' ? product.descEs : product.descEn}</p>
+            <div class="product-specs">${product.spec}</div>
+            <button class="product-cta" onclick="contactOnWhatsApp('${product.nameEn}')">
+                ${lang === 'es' ? 'Solicitar Información' : 'Request Info'}
+            </button>
+        </div>
+    `).join('');
+}
+
+// WhatsApp Integration
+function contactOnWhatsApp(productName) {
+    const lang = document.documentElement.lang || 'en';
+    const message = lang === 'es' 
+        ? `Hola, me interesa ${productName}. Quisiera más información.`
+        : `Hi, I'm interested in ${productName}. Could you provide more information?`;
+    
+    const encodedMsg = encodeURIComponent(message);
+    window.open(`https://wa.me/525512345678?text=${encodedMsg}`, '_blank');
+}
+
+// Initial render
+renderProducts(products);
+
+// Set initial language
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('language') || 'en';
+    document.documentElement.lang = savedLang;
+    document.querySelectorAll('.lang-toggle').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    if (savedLang === 'es') {
+        document.querySelector('[data-lang="es"].lang-toggle').classList.add('active');
+    } else {
+        document.querySelector('[data-lang="en"].lang-toggle').classList.add('active');
+    }
+});
+</script>
+
+</body>
+</html>
