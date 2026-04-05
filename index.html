@@ -9,6 +9,25 @@
 <meta name="author" content="biogradix">
 <meta name="robots" content="index, follow">
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  
+  // Track page views
+  gtag('event', 'page_view', {
+    'page_title': document.title,
+    'page_location': window.location.href
+  });
+</script>
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://biogradix.com/">
@@ -464,6 +483,58 @@ html[lang="en"] [data-lang="en"]{display:block}
   </div>
 </section>
 
+<!-- TESTIMONIALS SECTION -->
+<section class="section" style="background: #f8fafb;">
+  <h2 class="section-title">
+    <span data-lang="es">Lo Que Dicen Nuestros Clientes</span>
+    <span data-lang="en" style="display:none">What Our Clients Say</span>
+  </h2>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; max-width: 1100px; margin-left: auto; margin-right: auto;">
+    <!-- Testimonial 1 -->
+    <div style="background: white; border-radius: 12px; padding: 28px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <div style="display: flex; gap: 2px; margin-bottom: 16px;">
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+      </div>
+      <p style="font-size: 14px; color: #4a5568; line-height: 1.7; margin-bottom: 16px;"><span data-lang="es">"VITACHARGE™ cambió mi vida. Dos semanas en y mi energía se triplicó. Ahora trabajo sin el crash de las 3 PM. No sé cómo vivía sin esto."</span><span data-lang="en" style="display:none">"VITACHARGE™ changed my life. Two weeks in and my energy tripled. Now I work without the 3 PM crash. Don't know how I lived without it."</span></p>
+      <div style="font-weight: 600; color: #0B1A2B; font-size: 14px;"><span data-lang="es">María C. — Ciudad de México</span><span data-lang="en" style="display:none">María C. — Mexico City</span></div>
+      <div style="font-size: 12px; color: #8a9bad; margin-top: 4px;">Profesional | VITACHARGE™</div>
+    </div>
+    
+    <!-- Testimonial 2 -->
+    <div style="background: white; border-radius: 12px; padding: 28px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <div style="display: flex; gap: 2px; margin-bottom: 16px;">
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+      </div>
+      <p style="font-size: 14px; color: #4a5568; line-height: 1.7; margin-bottom: 16px;"><span data-lang="es">"RADIANCEMAX™ es real. Después de 8 semanas mi piel está irreconocible. Mi dermatólogo preguntó qué estaba usando. Finalmente colágeno que funciona."</span><span data-lang="en" style="display:none">"RADIANCEMAX™ is real. After 8 weeks my skin is unrecognizable. My dermatologist asked what I was using. Finally collagen that works."</span></p>
+      <div style="font-weight: 600; color: #0B1A2B; font-size: 14px;"><span data-lang="es">Alejandra G. — Guadalajara</span><span data-lang="en" style="display:none">Alejandra G. — Guadalajara</span></div>
+      <div style="font-size: 12px; color: #8a9bad; margin-top: 4px;">Empresaria | RADIANCEMAX™</div>
+    </div>
+    
+    <!-- Testimonial 3 -->
+    <div style="background: white; border-radius: 12px; padding: 28px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      <div style="display: flex; gap: 2px; margin-bottom: 16px;">
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+        <span style="color: #1D9E75; font-size: 18px;">★</span>
+      </div>
+      <p style="font-size: 14px; color: #4a5568; line-height: 1.7; margin-bottom: 16px;"><span data-lang="es">"RECOVERYPRO™ permitió volver a entrenar serio. La recuperación es notoria - menos dolor, más ganancias. Mejor que cualquier suplemento que he probado."</span><span data-lang="en" style="display:none">"RECOVERYPRO™ let me train seriously again. Recovery is noticeable - less pain, more gains. Better than any supplement I've tried."</span></p>
+      <div style="font-weight: 600; color: #0B1A2B; font-size: 14px;"><span data-lang="es">David R. — Monterrey</span><span data-lang="en" style="display:none">David R. — Monterrey</span></div>
+      <div style="font-size: 12px; color: #8a9bad; margin-top: 4px;">Atleta | RECOVERYPRO™</div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA SECTION -->
 <section class="cta-section">
   <h2 class="cta-headline">
@@ -633,11 +704,14 @@ function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
   localStorage.setItem('bx-lang', lang);
+  trackLanguageToggle(lang);
   
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.remove('active');
   });
-  event.target.classList.add('active');
+  if(event && event.target) {
+    event.target.classList.add('active');
+  }
   
   renderProducts();
 }
@@ -668,7 +742,63 @@ function renderProducts() {
   `).join('');
 }
 
+// ANALYTICS TRACKING FUNCTIONS
+function trackProductView(productName) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'view_product', {
+      'product_name': productName,
+      'page_url': window.location.href,
+      'timestamp': new Date().toISOString()
+    });
+  }
+  console.log(`📊 Product view tracked: ${productName}`);
+}
+
+function trackProductClick(productName) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'product_click', {
+      'product_name': productName,
+      'page_url': window.location.href,
+      'timestamp': new Date().toISOString()
+    });
+  }
+  console.log(`📊 Product click tracked: ${productName}`);
+}
+
+function trackLanguageToggle(language) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'language_toggle', {
+      'language': language,
+      'timestamp': new Date().toISOString()
+    });
+  }
+  console.log(`📊 Language toggled to: ${language}`);
+}
+
+function trackFAQToggle(question) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'faq_click', {
+      'faq_question': question,
+      'page_url': window.location.href,
+      'timestamp': new Date().toISOString()
+    });
+  }
+  console.log(`📊 FAQ toggled: ${question}`);
+}
+
+function trackWhatsAppClick(product, source = 'homepage') {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'whatsapp_click', {
+      'product': product,
+      'source': source,
+      'timestamp': new Date().toISOString()
+    });
+  }
+  console.log(`📊 WhatsApp click tracked: ${product} from ${source}`);
+}
+
 function contactWhatsApp(productName) {
+  trackWhatsAppClick(productName, 'homepage');
   const msg = currentLang === 'es' 
     ? `Hola, me interesa ${productName}. Quisiera más información.`
     : `Hi, I'm interested in ${productName}. Could you provide more info?`;
@@ -678,8 +808,14 @@ function contactWhatsApp(productName) {
 function toggleFaq(element) {
   const answer = element.nextElementSibling;
   const toggle = element.querySelector('.faq-toggle');
+  const question = element.textContent.trim();
+  
   answer.classList.toggle('open');
   toggle.classList.toggle('open');
+  
+  if(answer.classList.contains('open')) {
+    trackFAQToggle(question);
+  }
 }
 
 // Initialize
