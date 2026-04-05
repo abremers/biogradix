@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>biogradix — Bioactivos de grado farmacéutico</title>
+<meta name="description" content="Bioactivos de grado farmacéutico. Péptidos de la más alta calidad producidos en farmacia de formulación magistral certificada en Estados Unidos.">
+<meta name="keywords" content="péptidos, bioactivos, BPC-157, NAD+, GHK-Cu, investigación, biohacking, longevidad">
+<meta name="author" content="biogradix">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Spanish, English">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://biogradix.com/">
+<meta property="og:title" content="biogradix — Donde la ciencia encuentra su potencial">
+<meta property="og:description" content="Bioactivos de grado farmacéutico para el mercado mexicano. Péptidos certificados con análisis de terceros y 99%+ pureza.">
+<meta property="og:image" content="https://biogradix.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="biogradix">
+<meta property="og:locale" content="es_MX">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://biogradix.com/">
+<meta name="twitter:title" content="biogradix — Donde la ciencia encuentra su potencial">
+<meta name="twitter:description" content="Bioactivos de grado farmacéutico para el mercado mexicano. Certificados con análisis de terceros.">
+<meta name="twitter:image" content="https://biogradix.com/og-image.png">
+<meta name="twitter:creator" content="@biogradix">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://biogradix.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   biogradix — Global Styles · Brand Book v1.0
+   ═══════════════════════════════════════════════════════ */
+
+/* ── RESET ──────────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'DM Sans',sans-serif;background:var(--bx-cloud);color:var(--bx-navy);min-height:100vh;overflow-x:hidden;font-size:15px;line-height:1.7}
+::selection{background:rgba(15,110,86,0.15);color:#0B1A2B}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+img{display:block;max-width:100%}
+
+/* ── TOKENS ─────────────────────────────────────────── */
+:root{
+  --bx-navy:#0B1A2B;
+  --bx-teal:#0F6E56;
+  --bx-mint:#E1F5EE;
+  --bx-cloud:#FAFBFC;
+  --bx-silver:#E8EAED;
+  --bx-deep-teal:#085041;
+  --bx-active-teal:#1D9E75;
+  --bx-gold:#C9A84C;
+  --bx-alert:#D4534E;
+  --bx-text-primary:#0B1A2B;
+  --bx-text-secondary:#4A5568;
+  --bx-text-tertiary:#8A9BAD;
+  --bx-font-display:'Instrument Serif',serif;
+  --bx-font-heading:'DM Sans',sans-serif;
+  --bx-font-body:'DM Sans',sans-serif;
+  --bx-font-mono:'DM Mono',monospace;
+  --bx-space-xs:4px;--bx-space-sm:8px;--bx-space-md:12px;--bx-space-base:16px;
+  --bx-space-lg:24px;--bx-space-xl:32px;--bx-space-2xl:48px;--bx-space-3xl:64px;--bx-space-4xl:80px;
+  --bx-radius-sm:4px;--bx-radius-md:8px;--bx-radius-lg:12px;--bx-radius-xl:16px;--bx-radius-pill:999px;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.bx-container{max-width:1200px;margin:0 auto;padding:0 48px}
+.bx-section{padding:var(--bx-space-4xl) 0}
+
+/* ── ANIMATIONS ─────────────────────────────────────── */
+@keyframes bxFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bxFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes bxSlideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bxLineGrow{from{width:0}to{width:48px}}
+.bx-anim-up{animation:bxFadeUp .6s ease both}
+.bx-anim-up-1{animation:bxFadeUp .6s ease .1s both}
+.bx-anim-up-2{animation:bxFadeUp .6s ease .2s both}
+.bx-anim-up-3{animation:bxFadeUp .6s ease .3s both}
+
+/* ── HELIX SVG (inline reusable) ────────────────────── */
+.bx-helix-pattern{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;opacity:.06}
+
+/* ── NAV ────────────────────────────────────────────── */
+.bx-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid var(--bx-silver);height:64px}
+.bx-nav-inner{display:flex;justify-content:space-between;align-items:center;height:64px}
+.bx-logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.bx-logo-helix{flex-shrink:0}
+.bx-logo-text{font-family:var(--bx-font-heading);font-weight:500;font-size:18px;letter-spacing:-.3px}
+.bx-logo-text .b{color:var(--bx-teal)}
+.bx-logo-text .g{color:var(--bx-navy)}
+.bx-nav-links{display:flex;align-items:center;gap:24px}
+.bx-nav-link{font-family:var(--bx-font-body);font-size:13px;color:var(--bx-text-secondary);transition:color .2s}
+.bx-nav-link:hover,.bx-nav-link.active{color:var(--bx-text-primary);font-weight:500}
+.bx-nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--bx-teal);color:#fff;padding:8px 20px;border-radius:var(--bx-radius-md);font-family:var(--bx-font-body);font-size:12px;font-weight:500;transition:background .2s;white-space:nowrap}
+.bx-nav-cta:hover{background:var(--bx-deep-teal)}
+.bx-lang-toggle{display:flex;gap:2px}
+.bx-lang-btn{font-family:var(--bx-font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 10px;border-radius:var(--bx-radius-sm);transition:all .2s}
+.bx-lang-btn.active{background:rgba(11,26,43,0.06);color:var(--bx-navy)}
+.bx-lang-btn:not(.active){color:var(--bx-text-tertiary)}
+
+/* ── TRUST BAR ──────────────────────────────────────── */
+.bx-trust-bar{background:var(--bx-navy);height:32px;display:flex;align-items:center;justify-content:center;margin-top:64px}
+.bx-trust-bar span{font-family:var(--bx-font-mono);font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.5)}
+
+/* ── SECTION HEADERS ────────────────────────────────── */
+.bx-section-label{font-family:var(--bx-font-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--bx-teal);margin-bottom:var(--bx-space-sm)}
+.bx-section-title{font-family:var(--bx-font-display);font-size:clamp(28px,4vw,48px);font-weight:400;color:var(--bx-navy);margin-bottom:var(--bx-space-md);letter-spacing:-.5px}
+.bx-section-desc{font-family:var(--bx-font-body);font-size:15px;color:var(--bx-text-secondary);max-width:560px;line-height:1.7;margin-bottom:var(--bx-space-2xl)}
+
+/* ── BUTTONS ────────────────────────────────────────── */
+.bx-btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--bx-teal);color:#fff;padding:12px 28px;border-radius:var(--bx-radius-md);font-family:var(--bx-font-body);font-size:14px;font-weight:500;transition:all .2s;white-space:nowrap}
+.bx-btn-primary:hover{background:var(--bx-deep-teal);transform:translateY(-1px)}
+.bx-btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--bx-navy);padding:12px 28px;border-radius:var(--bx-radius-md);font-family:var(--bx-font-body);font-size:14px;border:1px solid var(--bx-silver);transition:all .2s;white-space:nowrap}
+.bx-btn-ghost:hover{border-color:var(--bx-teal);color:var(--bx-teal)}
+.bx-btn-wa{display:inline-flex;align-items:center;gap:8px;font-family:var(--bx-font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--bx-teal);padding:14px 36px;border-radius:var(--bx-radius-md);font-weight:500;transition:all .2s}
+.bx-btn-wa:hover{background:var(--bx-deep-teal);transform:translateY(-1px)}
+
+/* ── CARDS ──────────────────────────────────────────── */
+.bx-card{background:#fff;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-lg);transition:box-shadow .25s ease,transform .25s ease}
+.bx-card:hover{box-shadow:0 4px 24px rgba(11,26,43,.08);transform:translateY(-2px)}
+
+/* ── PRODUCT CARD ───────────────────────────────────── */
+.bx-product-card{background:#fff;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-lg);overflow:hidden;transition:box-shadow .25s ease,transform .25s ease;position:relative;display:flex;flex-direction:column}
+.bx-product-card:hover{box-shadow:0 4px 24px rgba(11,26,43,.08);transform:translateY(-2px)}
+.bx-product-card.disabled{opacity:.55}
+.bx-product-img{background:var(--bx-mint);padding:var(--bx-space-xl);display:flex;align-items:center;justify-content:center;min-height:120px;position:relative}
+.bx-product-img .bx-vial-icon{width:36px;height:60px;background:rgba(15,110,86,.1);border-radius:6px;border:1px solid rgba(15,110,86,.15)}
+.bx-product-img .bx-patch-icon{width:48px;height:30px;background:rgba(15,110,86,.1);border-radius:8px;border:1px solid rgba(15,110,86,.15)}
+.bx-product-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.bx-product-cat{font-family:var(--bx-font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--bx-teal)}
+.bx-product-name{font-family:var(--bx-font-heading);font-size:16px;font-weight:500;color:var(--bx-navy);cursor:pointer;transition:color .2s}
+.bx-product-name:hover{color:var(--bx-teal)}
+.bx-product-sub{font-family:var(--bx-font-mono);font-size:10px;color:var(--bx-text-tertiary);letter-spacing:.5px;margin-top:-6px}
+.bx-product-desc{font-family:var(--bx-font-body);font-size:12px;color:var(--bx-text-secondary);line-height:1.6;flex:1}
+.bx-product-specs{font-family:var(--bx-font-mono);font-size:11px;color:rgba(15,110,86,.6);letter-spacing:.3px}
+.bx-product-badge{position:absolute;top:12px;right:12px;font-family:var(--bx-font-mono);font-size:9px;letter-spacing:1px;padding:4px 8px;border-radius:var(--bx-radius-sm);font-weight:500;text-transform:uppercase}
+.bx-product-badge.featured{background:var(--bx-gold);color:#fff}
+.bx-product-badge.available{background:var(--bx-mint);color:var(--bx-deep-teal)}
+
+/* Format toggle */
+.bx-format-section{border-top:1px solid var(--bx-silver);padding:14px 20px;display:flex;flex-direction:column;gap:12px}
+.bx-format-toggle{display:inline-flex;background:var(--bx-cloud);border:1px solid var(--bx-silver);border-radius:6px;overflow:hidden}
+.bx-format-btn{font-family:var(--bx-font-mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;transition:all .2s;display:inline-flex;align-items:center;gap:5px}
+.bx-format-btn.active{background:var(--bx-navy);color:#fff}
+.bx-format-btn:not(.active){color:var(--bx-text-tertiary)}
+.bx-format-btn:not(.active):hover{background:var(--bx-silver)}
+.bx-price-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.bx-price{font-family:var(--bx-font-display);font-size:20px;color:var(--bx-navy)}
+.bx-price .cur{font-family:var(--bx-font-body);font-size:11px;color:var(--bx-text-tertiary)}
+.bx-sub-line{display:flex;align-items:center;gap:6px;margin-top:2px}
+.bx-sub-link{font-family:var(--bx-font-mono);font-size:10px;color:var(--bx-teal);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.bx-sub-save{font-family:var(--bx-font-mono);font-size:9px;background:var(--bx-mint);color:var(--bx-deep-teal);padding:2px 6px;border-radius:2px}
+.bx-patch-note{font-family:var(--bx-font-mono);font-size:9px;color:var(--bx-active-teal);background:rgba(29,158,117,.08);padding:3px 8px;border-radius:3px}
+.bx-order-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--bx-font-body);font-size:11px;font-weight:500;padding:6px 14px;border-radius:6px;background:var(--bx-teal);color:#fff;transition:background .2s;white-space:nowrap}
+.bx-order-btn:hover{background:var(--bx-deep-teal)}
+.bx-order-btn.disabled{background:var(--bx-silver);color:var(--bx-text-tertiary);cursor:not-allowed}
+.bx-purity{font-family:var(--bx-font-mono);font-size:11px;color:var(--bx-text-tertiary)}
+.bx-detail-link{font-family:var(--bx-font-mono);font-size:10px;color:var(--bx-teal);cursor:pointer;text-decoration:underline;text-underline-offset:2px;background:none;border:none;padding:0}
+
+/* Status tags */
+.bx-status{display:inline-flex;align-items:center;gap:6px;font-family:var(--bx-font-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:var(--bx-radius-pill);font-weight:500}
+.bx-status.in-stock{background:var(--bx-mint);color:var(--bx-deep-teal)}
+.bx-status.pre-order{background:#FFF8E1;color:#7B6200}
+.bx-status.pending{background:#FFF8E1;color:#7B6200}
+.bx-status.out-of-stock{background:#FCE4EC;color:#7B1A1A}
+
+/* Category filters */
+.bx-cat-filters{display:flex;gap:4px;flex-wrap:wrap}
+.bx-cat-btn{font-family:var(--bx-font-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-sm);transition:all .2s;color:var(--bx-text-tertiary)}
+.bx-cat-btn:hover{border-color:rgba(15,110,86,.2);color:var(--bx-text-secondary)}
+.bx-cat-btn.active{background:var(--bx-mint);color:var(--bx-deep-teal);border-color:rgba(15,110,86,.2)}
+
+/* Grids */
+.bx-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--bx-space-base)}
+.bx-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--bx-space-base)}
+.bx-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--bx-space-lg)}
+
+/* ── PILLAR CARD ────────────────────────────────────── */
+.bx-pillar{background:#fff;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-lg);padding:var(--bx-space-lg) 20px;transition:all .3s}
+.bx-pillar:hover{border-color:rgba(15,110,86,.2);transform:translateY(-2px);box-shadow:0 4px 24px rgba(11,26,43,.06)}
+.bx-pillar-icon{width:40px;height:40px;border-radius:10px;background:var(--bx-mint);display:flex;align-items:center;justify-content:center;margin-bottom:var(--bx-space-base)}
+.bx-pillar-icon-inner{width:16px;height:16px;border-radius:4px;background:var(--bx-teal)}
+.bx-pillar h3{font-family:var(--bx-font-heading);font-size:14px;font-weight:600;color:var(--bx-navy);margin-bottom:var(--bx-space-sm)}
+.bx-pillar p{font-family:var(--bx-font-body);font-size:12px;color:var(--bx-text-secondary);line-height:1.7}
+
+/* ── MODAL ──────────────────────────────────────────── */
+.bx-modal-overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;animation:bxFadeIn .2s ease}
+.bx-modal-backdrop{position:fixed;inset:0;background:rgba(11,26,43,.6);backdrop-filter:blur(4px)}
+.bx-modal{position:relative;background:#fff;border-radius:var(--bx-radius-xl);max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:36px;box-shadow:0 24px 48px rgba(0,0,0,.15);animation:bxSlideDown .3s ease}
+.bx-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--bx-space-lg)}
+.bx-modal-header h2{font-family:var(--bx-font-display);font-size:22px;color:var(--bx-navy);font-weight:400}
+.bx-modal-close{width:32px;height:32px;border-radius:50%;background:var(--bx-silver);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--bx-navy);transition:background .2s}
+.bx-modal-close:hover{background:#ddd}
+.bx-modal-body{font-family:var(--bx-font-body);font-size:13px;color:var(--bx-text-secondary);line-height:1.8}
+.bx-modal-body strong{color:var(--bx-navy)}
+.bx-modal-body p{margin-bottom:12px}
+.bx-modal-body h3{font-family:var(--bx-font-heading);font-size:15px;font-weight:600;color:var(--bx-navy);margin:20px 0 8px}
+.bx-modal-body ul{margin:0 0 12px 20px}
+.bx-modal-body li{margin-bottom:6px;font-size:13px}
+.bx-modal-section{background:var(--bx-mint);border-radius:var(--bx-radius-lg);padding:16px 20px;margin:12px 0}
+.bx-modal-section p{color:var(--bx-deep-teal);margin-bottom:4px}
+
+/* ── FOOTER ─────────────────────────────────────────── */
+.bx-footer{background:var(--bx-navy);padding:var(--bx-space-2xl) 0 var(--bx-space-lg)}
+.bx-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--bx-space-xl);margin-bottom:40px}
+.bx-footer-col-title{font-family:var(--bx-font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:var(--bx-space-md)}
+.bx-footer-col a,.bx-footer-col span{display:block;font-family:var(--bx-font-body);font-size:13px;color:rgba(255,255,255,.6);line-height:2;transition:color .2s}
+.bx-footer-col a:hover{color:rgba(255,255,255,.9)}
+.bx-footer-tagline{font-family:var(--bx-font-display);font-style:italic;font-size:13px;color:rgba(255,255,255,.3);margin-top:8px}
+.bx-footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.bx-footer-legal{font-family:var(--bx-font-mono);font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.5px}
+.bx-footer-legal a{text-decoration:underline;text-underline-offset:2px}
+.bx-footer-disc{font-family:var(--bx-font-body);font-size:11px;color:rgba(255,255,255,.15);line-height:1.6;max-width:680px;margin-top:var(--bx-space-base)}
+
+/* ── FAQ ACCORDION ──────────────────────────────────── */
+.bx-faq-item{border-bottom:1px solid var(--bx-silver)}
+.bx-faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 0;cursor:pointer;font-family:var(--bx-font-body);font-size:15px;font-weight:500;color:var(--bx-navy);transition:color .2s;width:100%;text-align:left}
+.bx-faq-q:hover{color:var(--bx-teal)}
+.bx-faq-chevron{width:20px;height:20px;color:var(--bx-teal);transition:transform .3s;flex-shrink:0}
+.bx-faq-item.open .bx-faq-chevron{transform:rotate(180deg)}
+.bx-faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-family:var(--bx-font-body);font-size:14px;color:var(--bx-text-secondary);line-height:1.7}
+.bx-faq-item.open .bx-faq-a{max-height:500px}
+.bx-faq-a-inner{padding:0 0 20px}
+
+/* ── STEP CARDS ─────────────────────────────────────── */
+.bx-step-card{background:#fff;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-lg);padding:var(--bx-space-lg)}
+.bx-step-card:hover{box-shadow:0 4px 24px rgba(11,26,43,.06)}
+.bx-step-num{font-family:var(--bx-font-mono);font-size:11px;letter-spacing:2px;color:var(--bx-teal);font-weight:500;margin-bottom:var(--bx-space-base)}
+.bx-step-card h4{font-family:var(--bx-font-heading);font-size:14px;font-weight:600;color:var(--bx-navy);margin-bottom:var(--bx-space-sm)}
+.bx-step-card p{font-family:var(--bx-font-body);font-size:12px;color:var(--bx-text-secondary);line-height:1.7}
+
+/* ── COMPARISON TABLE ───────────────────────────────── */
+.bx-comp-table{width:100%;border-collapse:collapse;font-family:var(--bx-font-body)}
+.bx-comp-table th{padding:12px 16px;font-size:11px;font-weight:400;color:var(--bx-text-tertiary);border-bottom:1px solid var(--bx-silver);letter-spacing:.3px}
+.bx-comp-table th.highlight{font-weight:600;color:var(--bx-teal);background:var(--bx-mint)}
+.bx-comp-table td{padding:13px 16px;font-size:12px;color:var(--bx-text-secondary);border-bottom:1px solid #F0F1F3}
+.bx-comp-table td.highlight{color:var(--bx-teal);font-weight:500;background:rgba(225,245,238,.4)}
+.bx-comp-table td.win{color:var(--bx-teal)}
+.bx-comp-table td:first-child{font-weight:500;color:rgba(11,26,43,.6)}
+.bx-comp-table tr:nth-child(even){background:var(--bx-cloud)}
+
+/* ── PROTOCOL CARDS ─────────────────────────────────── */
+.bx-proto-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:28px;position:relative;overflow:hidden;transition:box-shadow .25s}
+.bx-proto-card:hover{box-shadow:0 8px 32px rgba(11,26,43,.08)}
+.bx-proto-accent{position:absolute;top:0;left:0;right:0;height:2px}
+.bx-proto-card h3{font-family:var(--bx-font-heading);font-weight:600;font-size:15px;color:#fff;margin-bottom:6px}
+.bx-proto-compounds{font-family:var(--bx-font-mono);font-size:11px;letter-spacing:.5px;margin-bottom:12px}
+.bx-proto-goals{font-family:var(--bx-font-body);font-size:12px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:16px}
+.bx-proto-note{background:rgba(255,255,255,.05);border-radius:6px;padding:10px 14px;display:flex;align-items:center;gap:8px}
+.bx-proto-note-dot{width:5px;height:5px;border-radius:50%;background:rgba(201,168,76,.7);flex-shrink:0}
+.bx-proto-note span{font-family:var(--bx-font-mono);font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.5px}
+
+/* ── VIDEO CARD ─────────────────────────────────────── */
+.bx-video-card{background:#fff;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-lg);overflow:hidden;transition:box-shadow .25s,transform .25s}
+.bx-video-card:hover{box-shadow:0 4px 24px rgba(11,26,43,.08);transform:translateY(-2px)}
+.bx-video-thumb{background:var(--bx-mint);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative}
+.bx-play-btn{width:48px;height:48px;border-radius:50%;background:var(--bx-teal);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.bx-video-card:hover .bx-play-btn{transform:scale(1.1)}
+.bx-video-info{padding:16px 20px}
+.bx-video-title{font-family:var(--bx-font-heading);font-size:14px;font-weight:500;color:var(--bx-navy);margin-bottom:4px}
+.bx-video-meta{font-family:var(--bx-font-mono);font-size:10px;color:var(--bx-teal);margin-bottom:6px}
+.bx-video-desc{font-family:var(--bx-font-body);font-size:12px;color:var(--bx-text-secondary);line-height:1.6}
+
+/* ── BLOG CARD ──────────────────────────────────────── */
+.bx-blog-card{background:#fff;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-lg);overflow:hidden;transition:box-shadow .25s,transform .25s}
+.bx-blog-card:hover{box-shadow:0 4px 24px rgba(11,26,43,.08);transform:translateY(-2px)}
+.bx-blog-thumb{background:var(--bx-mint);aspect-ratio:16/9;position:relative}
+.bx-blog-body{padding:20px}
+.bx-blog-cat{font-family:var(--bx-font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--bx-teal);margin-bottom:var(--bx-space-sm)}
+.bx-blog-title{font-family:var(--bx-font-heading);font-size:18px;font-weight:500;color:var(--bx-navy);margin-bottom:var(--bx-space-sm);line-height:1.4}
+.bx-blog-excerpt{font-family:var(--bx-font-body);font-size:14px;color:var(--bx-text-secondary);line-height:1.6;margin-bottom:var(--bx-space-md);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bx-blog-meta{display:flex;gap:16px;font-family:var(--bx-font-mono);font-size:10px;color:var(--bx-text-tertiary)}
+.bx-blog-read{font-family:var(--bx-font-mono);font-size:11px;color:var(--bx-teal);margin-top:var(--bx-space-md);display:inline-block}
+
+/* ── RESOURCE CARD ──────────────────────────────────── */
+.bx-resource-card{background:#fff;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-lg);padding:var(--bx-space-lg);display:flex;gap:16px;align-items:flex-start;transition:box-shadow .25s}
+.bx-resource-card:hover{box-shadow:0 4px 24px rgba(11,26,43,.06)}
+.bx-resource-icon{width:40px;height:40px;border-radius:10px;background:var(--bx-mint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bx-resource-icon svg{width:20px;height:20px;color:var(--bx-teal)}
+.bx-resource-title{font-family:var(--bx-font-heading);font-size:14px;font-weight:500;color:var(--bx-navy);margin-bottom:4px}
+.bx-resource-desc{font-family:var(--bx-font-body);font-size:12px;color:var(--bx-text-secondary);line-height:1.6}
+
+/* ── TAB SYSTEM ─────────────────────────────────────── */
+.bx-tabs{display:flex;gap:4px;margin-bottom:var(--bx-space-xl)}
+.bx-tab{font-family:var(--bx-font-mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border:1px solid var(--bx-silver);border-radius:var(--bx-radius-md);transition:all .2s;color:var(--bx-text-tertiary)}
+.bx-tab.active{background:var(--bx-navy);color:#fff;border-color:var(--bx-navy)}
+.bx-tab:not(.active):hover{border-color:var(--bx-teal);color:var(--bx-teal)}
+.bx-tab-content{display:none}
+.bx-tab-content.active{display:block}
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media(max-width:900px){
+  .bx-grid-2{grid-template-columns:1fr}
+  .bx-grid-3{grid-template-columns:1fr 1fr}
+  .bx-grid-4{grid-template-columns:1fr 1fr}
+  .bx-footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .bx-container{padding:0 20px}
+  .bx-grid-3,.bx-grid-4{grid-template-columns:1fr}
+  .bx-nav-links{display:none}
+  .bx-footer-grid{grid-template-columns:1fr}
+  .bx-price-row{flex-direction:column;align-items:flex-start}
+  .bx-comp-table{font-size:10px}
+  .bx-comp-table th,.bx-comp-table td{padding:8px 10px}
+}
+@media(max-width:480px){
+  .bx-section{padding:var(--bx-space-3xl) 0}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="bx-nav" id="nav">
+  <div class="bx-container bx-nav-inner">
+    <a href="index.html" class="bx-logo">
+      <svg class="bx-logo-helix" width="34" height="16" viewBox="0 0 34 16"><path d="M2 4 Q8 1,14 4 Q20 7,26 4 Q32 1,34 3" fill="none" stroke="#0F6E56" stroke-width="1.3" opacity=".55"/><path d="M2 8 Q8 11,14 8 Q20 5,26 8 Q32 11,34 9" fill="none" stroke="#1D9E75" stroke-width=".8" opacity=".28"/></svg>
+      <span class="bx-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="bx-nav-links">
+        <a href="index.html" class="bx-nav-link active" data-es="Productos" data-en="Products">Productos</a>
+        <a href="tecnologia.html" class="bx-nav-link" data-es="Tecnología" data-en="Technology">Tecnología</a>
+        <a href="educacion.html" class="bx-nav-link" data-es="Educación" data-en="Education">Educación</a>
+        <a href="blog.html" class="bx-nav-link" data-es="Blog" data-en="Blog">Blog</a>
+      </div>
+      <div class="bx-lang-toggle">
+        <button class="bx-lang-btn active" onclick="setLang('es')">ES</button>
+        <button class="bx-lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <a id="nav-wa" href="#" target="_blank" rel="noopener noreferrer" class="bx-nav-cta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-es="Ordenar por WhatsApp" data-en="Order via WhatsApp">Ordenar por WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- TRUST BAR -->
+<div class="bx-trust-bar">
+  <span data-es="Fabricado en USA · Pruebas de terceros · Pureza ≥99%" data-en="U.S. manufactured · Third-party tested · ≥99% purity">Fabricado en USA · Pruebas de terceros · Pureza ≥99%</span>
+</div>
+
+<!-- HERO -->
+<section class="bx-section" style="padding-top:60px;padding-bottom:40px">
+  <div class="bx-container">
+    <div class="bx-section-label bx-anim-up" data-es="Bioactivos de grado farmacéutico" data-en="Pharmaceutical-grade bioactives">Bioactivos de grado farmacéutico</div>
+    <h1 class="bx-section-title bx-anim-up-1" style="max-width:640px" data-es="Donde la ciencia encuentra su potencial" data-en="Where science meets potential">Donde la ciencia encuentra su potencial</h1>
+    <p class="bx-section-desc bx-anim-up-2" data-es="Péptidos y bioactivos con certificado de análisis, fabricados en farmacia de formulación magistral certificada en EE.UU. Disponibles en vial inyectable y parche transdérmico." data-en="Peptides and bioactives with certificate of analysis, manufactured in a certified U.S. compounding pharmacy. Available in injectable vial and transdermal patch.">Péptidos y bioactivos con certificado de análisis, fabricados en farmacia de formulación magistral certificada en EE.UU. Disponibles en vial inyectable y parche transdérmico.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap" class="bx-anim-up-3">
+      <a href="#catalogo" class="bx-btn-primary" data-es="Ver catálogo" data-en="View catalog">Ver catálogo</a>
+      <a href="tecnologia.html" class="bx-btn-ghost" data-es="¿Cómo funciona el parche?" data-en="How does the patch work?">¿Cómo funciona el parche?</a>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="bx-section" style="padding-top:20px">
+  <div class="bx-container">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px">
+      <span class="bx-section-label" style="margin-bottom:0" data-es="¿Por qué biogradix?" data-en="Why biogradix?">¿Por qué biogradix?</span>
+      <div style="flex:1;height:1px;background:var(--bx-silver)"></div>
+    </div>
+    <div class="bx-grid-4">
+      <div class="bx-pillar bx-anim-up">
+        <div class="bx-pillar-icon"><div class="bx-pillar-icon-inner"></div></div>
+        <h3 data-es="Farmacia 503A USA" data-en="U.S. 503A Pharmacy">Farmacia 503A USA</h3>
+        <p data-es="Producido en farmacia de formulación magistral certificada en Estados Unidos bajo estándares cGMP." data-en="Produced in a certified U.S. compounding pharmacy following cGMP standards.">Producido en farmacia de formulación magistral certificada en Estados Unidos bajo estándares cGMP.</p>
+      </div>
+      <div class="bx-pillar bx-anim-up-1">
+        <div class="bx-pillar-icon"><div class="bx-pillar-icon-inner"></div></div>
+        <h3 data-es="COA por lote" data-en="Batch-level COA">COA por lote</h3>
+        <p data-es="Cada lote incluye certificado de análisis con datos HPLC y espectrometría de masas de laboratorio independiente." data-en="Every batch includes a certificate of analysis with HPLC and mass spectrometry data from an independent lab.">Cada lote incluye certificado de análisis con datos HPLC y espectrometría de masas de laboratorio independiente.</p>
+      </div>
+      <div class="bx-pillar bx-anim-up-2">
+        <div class="bx-pillar-icon"><div class="bx-pillar-icon-inner"></div></div>
+        <h3 data-es="Envío con cadena de frío" data-en="Cold-chain shipping">Envío con cadena de frío</h3>
+        <p data-es="Empaque térmico para preservar la integridad del producto durante el envío a toda la República." data-en="Thermal packaging to preserve product integrity during shipping across Mexico.">Empaque térmico para preservar la integridad del producto durante el envío a toda la República.</p>
+      </div>
+      <div class="bx-pillar bx-anim-up-3">
+        <div class="bx-pillar-icon"><div class="bx-pillar-icon-inner"></div></div>
+        <h3 data-es="Asesoría especializada" data-en="Expert support">Asesoría especializada</h3>
+        <p data-es="Soporte técnico por WhatsApp para almacenamiento, aplicación y protocolos de investigación." data-en="Technical WhatsApp support for storage, application, and research protocols.">Soporte técnico por WhatsApp para almacenamiento, aplicación y protocolos de investigación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="bx-section" id="catalogo">
+  <div class="bx-container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:16px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="bx-section-label" style="margin-bottom:0" data-es="Catálogo" data-en="Catalog">Catálogo</span>
+        <div style="width:32px;height:1px;background:var(--bx-silver)"></div>
+        <span id="product-count" style="font-family:var(--bx-font-mono);font-size:10px;color:var(--bx-teal)"></span>
+      </div>
+      <div class="bx-cat-filters" id="cat-filters"></div>
+    </div>
+    <div class="bx-grid-3" id="products-grid"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bx-section" style="background:var(--bx-mint)">
+  <div class="bx-container" style="text-align:center;max-width:520px">
+    <h2 class="bx-section-title" data-es="¿Listo para ordenar?" data-en="Ready to order?">¿Listo para ordenar?</h2>
+    <p style="font-family:var(--bx-font-body);font-size:14px;color:var(--bx-text-secondary);line-height:1.7;margin-bottom:32px" data-es="Contáctanos por WhatsApp para consultar disponibilidad, precios por volumen y opciones de envío." data-en="Contact us via WhatsApp to check availability, volume pricing, and shipping options.">Contáctanos por WhatsApp para consultar disponibilidad, precios por volumen y opciones de envío.</p>
+    <a id="cta-wa" href="#" target="_blank" rel="noopener noreferrer" class="bx-btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span data-es="Contactar por WhatsApp" data-en="Contact via WhatsApp">Contactar por WhatsApp</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bx-footer" id="footer"></footer>
+
+<!-- MODAL ROOT -->
+<div id="modal-root"></div>
+
+<!-- APP JS -->
+<script>
+"use strict";
+
+const WA = "521234567890";
+
+// ═══════════════════════════════════════════════════════
+// PRODUCT DATA — CORRECTED
+// • Removed all "Liofilizado"/"Lyophilized"
+// • Vial mg amounts now match patch mg amounts per v2
+// • All vials are "Listo para inyectar"/"Ready to inject"
+// ═══════════════════════════════════════════════════════
+const PRODUCTS = [
+  {
+    id:1, name:"BPC-157", sub:"Body Protection Compound",
+    cat:"Regeneración", catEn:"Regeneration",
+    desc:"El péptido más estudiado en longevidad. Reparación tisular, cicatrización intestinal y efecto antiinflamatorio sistémico.",
+    descEn:"The most studied longevity peptide. Tissue repair, gut healing, and systemic anti-inflammatory effect.",
+    specsVial:"500 mcg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"500 mcg · ≥99% purity · Ready to inject",
+    specsPatch:"500 mcg / parche", specsPatchEn:"500 mcg / patch",
+    priceVial:2499, pricePatch:2749,
+    status:"in-stock", badge:"Más vendido", badgeEn:"Best seller", color:"#0F6E56",
+    modalEs:{
+      what:"BPC-157 es un pentadecapéptido sintético compuesto por 15 aminoácidos, derivado de una secuencia parcial de la proteína BPC (Body Protection Compound) encontrada en el jugo gástrico humano. Es uno de los péptidos más investigados en regeneración tisular.",
+      mechanism:"Actúa a través de múltiples vías: estimula la formación de vasos sanguíneos (angiogénesis), modula la producción de óxido nítrico, interactúa con el sistema de crecimiento y reparación FAK-paxillin, y promueve la expresión del gen GH receptor.",
+      applications:["Reparación de tendones, ligamentos y tejido conectivo","Cicatrización intestinal y protección de mucosa gástrica","Recuperación post-quirúrgica y de lesiones","Neuroprotección y regeneración del sistema nervioso periférico","Modulación inflamatoria sistémica"],
+      benefits:["Aceleración de la cicatrización de heridas","Reducción de inflamación intestinal","Protección contra úlceras gástricas inducidas por NSAIDs","Mejora de la curación de fracturas óseas","Efectos ansiolíticos y antidepresivos (en modelos animales)"],
+      extra:"Uno de los péptidos con mayor número de publicaciones científicas. Más de 100 estudios publicados desde 1991."
+    },
+    modalEn:{
+      what:"BPC-157 is a synthetic pentadecapeptide composed of 15 amino acids, derived from a partial sequence of the BPC (Body Protection Compound) protein found in human gastric juice. It is one of the most researched peptides in tissue regeneration.",
+      mechanism:"Acts through multiple pathways: stimulates blood vessel formation (angiogenesis), modulates nitric oxide production, interacts with the FAK-paxillin growth and repair system, and promotes GH receptor gene expression.",
+      applications:["Tendon, ligament, and connective tissue repair","Gut healing and gastric mucosa protection","Post-surgical and injury recovery","Neuroprotection and peripheral nervous system regeneration","Systemic inflammatory modulation"],
+      benefits:["Accelerated wound healing","Reduced intestinal inflammation","Protection against NSAID-induced gastric ulcers","Improved bone fracture healing","Anxiolytic and antidepressant effects (in animal models)"],
+      extra:"One of the peptides with the most scientific publications. Over 100 studies published since 1991."
+    }
+  },
+  {
+    id:2, name:"GHK-Cu", sub:"Copper Tripeptide-1",
+    cat:"Anti-Aging", catEn:"Anti-Aging",
+    desc:"Tripéptido de cobre para regeneración cutánea, síntesis de colágeno y elastina, y protección antioxidante.",
+    descEn:"Copper tripeptide for skin regeneration, collagen and elastin synthesis, and antioxidant protection.",
+    specsVial:"3 mg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"3 mg · ≥99% purity · Ready to inject",
+    specsPatch:"3 mg / parche", specsPatchEn:"3 mg / patch",
+    priceVial:2199, pricePatch:2419,
+    status:"in-stock", badge:"Disponible", badgeEn:"Available", color:"#085041",
+    modalEs:{
+      what:"GHK-Cu es un tripéptido de cobre que ocurre naturalmente en el plasma humano, la saliva y la orina. Fue identificado por Loren Pickart en 1973. Su concentración disminuye con la edad, de ~200 ng/mL a los 20 años a ~80 ng/mL a los 60.",
+      mechanism:"Actúa como molécula señalizadora que regula la expresión de más de 4,000 genes. Promueve la síntesis de colágeno tipos I, III y V, estimula la producción de glicosaminoglicanos y proteoglicanos, y tiene potente actividad antioxidante mediante la enzima superóxido dismutasa (SOD).",
+      applications:["Remodelación cutánea y síntesis de colágeno/elastina","Reducción de manchas y líneas finas","Regeneración capilar","Cicatrización de heridas","Actividad antioxidante y antiinflamatoria"],
+      benefits:["Mejora de firmeza y elasticidad de la piel","Reducción de fotodaño","Estimulación de folículos capilares","Remodelación de tejido cicatricial"],
+      extra:"Especialmente investigado en el segmento anti-aging y longevidad. Presente naturalmente en el cuerpo humano."
+    },
+    modalEn:{
+      what:"GHK-Cu is a naturally occurring copper tripeptide found in human plasma, saliva, and urine. Identified by Loren Pickart in 1973. Its concentration decreases with age, from ~200 ng/mL at age 20 to ~80 ng/mL at age 60.",
+      mechanism:"Acts as a signaling molecule that regulates the expression of over 4,000 genes. Promotes synthesis of collagen types I, III, and V, stimulates production of glycosaminoglycans and proteoglycans, and has potent antioxidant activity through superoxide dismutase (SOD) enzyme.",
+      applications:["Skin remodeling and collagen/elastin synthesis","Reduction of spots and fine lines","Hair regeneration","Wound healing","Antioxidant and anti-inflammatory activity"],
+      benefits:["Improved skin firmness and elasticity","Reduced photodamage","Hair follicle stimulation","Scar tissue remodeling"],
+      extra:"Especially researched in the anti-aging and longevity segment. Naturally present in the human body."
+    }
+  },
+  {
+    id:3, name:"NAD+", sub:"Nicotinamide Adenine Dinucleotide",
+    cat:"Energía", catEn:"Energy",
+    desc:"Cofactor mitocondrial esencial. Activación de sirtuinas, claridad cognitiva y energía celular sostenida.",
+    descEn:"Essential mitochondrial cofactor. Sirtuin activation, cognitive clarity, and sustained cellular energy.",
+    specsVial:"150 mg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"150 mg · ≥99% purity · Ready to inject",
+    specsPatch:"150 mg / parche", specsPatchEn:"150 mg / patch",
+    priceVial:2999, pricePatch:3299,
+    status:"in-stock", badge:"Disponible", badgeEn:"Available", color:"#085041",
+    modalEs:{
+      what:"NAD+ es un cofactor esencial presente en todas las células vivas. Participa en más de 500 reacciones enzimáticas y es fundamental para la producción de energía celular, la reparación del ADN y la activación de sirtuinas.",
+      mechanism:"Es sustrato directo de las sirtuinas (SIRT1-7), las PARPs (reparación de ADN) y las CD38/CD157 (señalización inmune). La administración exógena restaura niveles que declinan naturalmente con la edad.",
+      applications:["Activación de sirtuinas y longevidad celular","Producción de energía mitocondrial","Reparación de ADN","Claridad cognitiva y función neuronal","Regulación del ritmo circadiano"],
+      benefits:["Mayor energía sostenida durante el día","Mejora de la función cognitiva","Soporte del metabolismo celular","Potencial anti-envejecimiento celular"],
+      extra:"Los niveles de NAD+ disminuyen aproximadamente 50% entre los 40 y 60 años."
+    },
+    modalEn:{
+      what:"NAD+ is an essential cofactor present in all living cells. It participates in over 500 enzymatic reactions and is fundamental for cellular energy production, DNA repair, and sirtuin activation.",
+      mechanism:"Direct substrate of sirtuins (SIRT1-7), PARPs (DNA repair), and CD38/CD157 (immune signaling). Exogenous administration restores levels that naturally decline with age.",
+      applications:["Sirtuin activation and cellular longevity","Mitochondrial energy production","DNA repair","Cognitive clarity and neuronal function","Circadian rhythm regulation"],
+      benefits:["Greater sustained energy throughout the day","Improved cognitive function","Cellular metabolism support","Cellular anti-aging potential"],
+      extra:"NAD+ levels decline approximately 50% between ages 40 and 60."
+    }
+  },
+  {
+    id:4, name:"CJC-1295", sub:"GHRH Analog",
+    cat:"Hormonal", catEn:"Hormonal",
+    desc:"Análogo de GHRH para optimización del pulso nocturno de hormona de crecimiento, profundidad del sueño y masa muscular.",
+    descEn:"GHRH analog for nighttime growth hormone pulse optimization, sleep depth, and lean mass.",
+    specsVial:"250 mcg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"250 mcg · ≥99% purity · Ready to inject",
+    specsPatch:"250 mcg / parche", specsPatchEn:"250 mcg / patch",
+    priceVial:2799, pricePatch:3079,
+    status:"pre-order", badge:null, badgeEn:null, color:"#0F6E56",
+    modalEs:{
+      what:"CJC-1295 es un análogo sintético de la hormona liberadora de hormona de crecimiento (GHRH) con una vida media extendida. Estimula la secreción pulsátil natural de hormona de crecimiento desde la pituitaria.",
+      mechanism:"Se une al receptor de GHRH en la pituitaria anterior, amplificando los pulsos naturales de GH (especialmente el pulso nocturno). A diferencia de la GH exógena, preserva los mecanismos de retroalimentación fisiológica.",
+      applications:["Optimización del pulso de GH","Mejora de la calidad del sueño profundo","Composición corporal (masa magra vs. grasa)","Recuperación y regeneración tisular"],
+      benefits:["Sueño más profundo y reparador","Mejora en la composición corporal","Recuperación acelerada post-ejercicio"],
+      extra:"Comúnmente investigado en combinación con Ipamorelin para potenciar la liberación de GH."
+    },
+    modalEn:{
+      what:"CJC-1295 is a synthetic analog of growth hormone-releasing hormone (GHRH) with an extended half-life. It stimulates the natural pulsatile secretion of growth hormone from the pituitary.",
+      mechanism:"Binds to the GHRH receptor in the anterior pituitary, amplifying natural GH pulses (especially the nocturnal pulse). Unlike exogenous GH, it preserves physiological feedback mechanisms.",
+      applications:["GH pulse optimization","Deep sleep quality improvement","Body composition (lean mass vs. fat)","Recovery and tissue regeneration"],
+      benefits:["Deeper, more restorative sleep","Improved body composition","Accelerated post-exercise recovery"],
+      extra:"Commonly researched in combination with Ipamorelin to enhance GH release."
+    }
+  },
+  {
+    id:5, name:"TB-500", sub:"Thymosin Beta-4",
+    cat:"Recuperación", catEn:"Recovery",
+    desc:"Péptido de unión a actina para reducción de inflamación, mejora de rango de movimiento y recuperación sistémica acelerada.",
+    descEn:"Actin-binding peptide for inflammation reduction, improved range of motion, and accelerated systemic recovery.",
+    specsVial:"250 mcg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"250 mcg · ≥99% purity · Ready to inject",
+    specsPatch:"250 mcg / parche", specsPatchEn:"250 mcg / patch",
+    priceVial:2299, pricePatch:2529,
+    status:"pre-order", badge:null, badgeEn:null, color:"#1D9E75",
+    modalEs:{
+      what:"TB-500 es un péptido sintético basado en la región activa de Timosina Beta-4, una proteína de 43 aminoácidos involucrada en la regulación de actina y la migración celular. Es uno de los péptidos más abundantes en el cuerpo humano.",
+      mechanism:"Se une a la actina G (monómeros) y promueve la polimerización de actina F (filamentos), facilitando la migración celular necesaria para la reparación tisular. Tiene efectos antiinflamatorios a través de la regulación de NF-kB.",
+      applications:["Reducción de inflamación sistémica","Mejora del rango de movimiento articular","Recuperación de lesiones musculares y tendinosas","Reparación cardiovascular"],
+      benefits:["Recuperación acelerada de lesiones","Reducción de fibrosis","Flexibilidad articular mejorada"],
+      extra:"Frecuentemente investigado en combinación con BPC-157 para maximizar la recuperación."
+    },
+    modalEn:{
+      what:"TB-500 is a synthetic peptide based on the active region of Thymosin Beta-4, a 43-amino acid protein involved in actin regulation and cell migration. It is one of the most abundant peptides in the human body.",
+      mechanism:"Binds to G-actin (monomers) and promotes F-actin (filament) polymerization, facilitating cell migration necessary for tissue repair. Has anti-inflammatory effects through NF-kB regulation.",
+      applications:["Systemic inflammation reduction","Improved joint range of motion","Muscle and tendon injury recovery","Cardiovascular repair"],
+      benefits:["Accelerated injury recovery","Fibrosis reduction","Improved joint flexibility"],
+      extra:"Frequently researched in combination with BPC-157 to maximize recovery."
+    }
+  },
+  {
+    id:6, name:"Thymosin α1", sub:"Thymic Peptide",
+    cat:"Inmunidad", catEn:"Immunity",
+    desc:"Modulación inmunológica y defensa antiviral. Aprobado en más de 30 países para soporte inmune.",
+    descEn:"Immune modulation and antiviral defense. Approved in 30+ countries for immune support.",
+    specsVial:"500 mcg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"500 mcg · ≥99% purity · Ready to inject",
+    specsPatch:"500 mcg / parche", specsPatchEn:"500 mcg / patch",
+    priceVial:2699, pricePatch:2969,
+    status:"pre-order", badge:null, badgeEn:null, color:"#0F6E56",
+    modalEs:{
+      what:"Thymosin Alpha-1 es un péptido de 28 aminoácidos producido naturalmente por el timo. Está aprobado como medicamento en más de 30 países para soporte inmunológico. Es el primer péptido tímico identificado (1977).",
+      mechanism:"Activa células dendríticas, estimula la maduración de linfocitos T, aumenta la actividad de células NK (natural killer), y modula la producción de citoquinas. Actúa como un inmunomodulador, no como un inmunoestimulante indiscriminado.",
+      applications:["Modulación inmunológica","Defensa antiviral","Soporte en inmunodeficiencia","Adyuvante en protocolos oncológicos de investigación"],
+      benefits:["Resiliencia inmune mejorada","Mejor respuesta a vacunas","Reducción de infecciones recurrentes"],
+      extra:"Uno de los péptidos con mayor evidencia clínica publicada a nivel mundial."
+    },
+    modalEn:{
+      what:"Thymosin Alpha-1 is a 28-amino acid peptide naturally produced by the thymus. It is approved as a medication in over 30 countries for immune support. It was the first thymic peptide identified (1977).",
+      mechanism:"Activates dendritic cells, stimulates T-lymphocyte maturation, enhances NK (natural killer) cell activity, and modulates cytokine production. Acts as an immunomodulator, not an indiscriminate immunostimulant.",
+      applications:["Immune modulation","Antiviral defense","Immunodeficiency support","Adjuvant in oncology research protocols"],
+      benefits:["Enhanced immune resilience","Improved vaccine response","Reduced recurrent infections"],
+      extra:"One of the peptides with the most published clinical evidence worldwide."
+    }
+  },
+  {
+    id:7, name:"PT-141", sub:"Bremelanotide",
+    cat:"Vitalidad", catEn:"Vitality",
+    desc:"Agonista de melanocortina para soporte de vitalidad desde mecanismo central. Efectividad independiente de factores vasculares.",
+    descEn:"Melanocortin agonist for vitality support via central mechanism. Effectiveness independent of vascular factors.",
+    specsVial:"2 mg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"2 mg · ≥99% purity · Ready to inject",
+    specsPatch:"2 mg / parche", specsPatchEn:"2 mg / patch",
+    priceVial:1999, pricePatch:2199,
+    status:"pre-order", badge:null, badgeEn:null, color:"#1D9E75",
+    modalEs:{
+      what:"PT-141 (Bremelanotide) es un agonista sintético del receptor de melanocortina MC4R. A diferencia de otros compuestos de vitalidad, actúa a nivel del sistema nervioso central, no a nivel vascular.",
+      mechanism:"Se une al receptor MC4R en el hipotálamo, activando vías neuronales dopaminérgicas y oxitocinérgicas. Su efectividad es independiente de factores vasculares como la presión arterial o la vasodilatación periférica.",
+      applications:["Soporte de vitalidad desde mecanismo central","Investigación en disfunción sexual hipoactiva","Modulación de melanocortinas"],
+      benefits:["Mejora de la respuesta de vitalidad","Efectividad independiente de factores vasculares","Efecto tanto en hombres como en mujeres (en estudios)"],
+      extra:"Uno de los pocos compuestos de vitalidad con mecanismo de acción central."
+    },
+    modalEn:{
+      what:"PT-141 (Bremelanotide) is a synthetic melanocortin receptor MC4R agonist. Unlike other vitality compounds, it acts at the central nervous system level, not at the vascular level.",
+      mechanism:"Binds to the MC4R receptor in the hypothalamus, activating dopaminergic and oxytocinergic neural pathways. Its effectiveness is independent of vascular factors like blood pressure or peripheral vasodilation.",
+      applications:["Vitality support via central mechanism","Hypoactive sexual dysfunction research","Melanocortin modulation"],
+      benefits:["Improved vitality response","Effectiveness independent of vascular factors","Effect in both men and women (in studies)"],
+      extra:"One of the few vitality compounds with a central mechanism of action."
+    }
+  },
+  {
+    id:8, name:"Mots-C", sub:"Mitochondrial-Derived Peptide",
+    cat:"Metabolismo", catEn:"Metabolism",
+    desc:"Péptido derivado de mitocondrias para sensibilidad a la insulina, flexibilidad metabólica y composición corporal.",
+    descEn:"Mitochondria-derived peptide for insulin sensitivity, metabolic flexibility, and body composition.",
+    specsVial:"5 mg · Pureza ≥99% · Listo para inyectar",
+    specsVialEn:"5 mg · ≥99% purity · Ready to inject",
+    specsPatch:"5 mg / parche", specsPatchEn:"5 mg / patch",
+    priceVial:2399, pricePatch:2639,
+    status:"pre-order", badge:null, badgeEn:null, color:"#0F6E56",
+    modalEs:{
+      what:"Mots-C es un péptido de 16 aminoácidos codificado en el ADN mitocondrial (no nuclear). Fue descubierto en 2015 por el equipo de Pinchas Cohen en USC. Es el primer péptido derivado de mitocondrias con efectos metabólicos sistémicos documentados.",
+      mechanism:"Activa la vía AMPK (regulador maestro del metabolismo energético), mejora la captación de glucosa independiente de insulina, y regula la expresión de genes del metabolismo de ácidos grasos.",
+      applications:["Sensibilidad a la insulina","Flexibilidad metabólica","Composición corporal","Investigación en obesidad y diabetes tipo 2"],
+      benefits:["Mejor regulación de glucosa","Optimización del metabolismo de grasas","Mejora de la composición corporal","Potencial anti-envejecimiento metabólico"],
+      extra:"Relativamente nuevo en la investigación (2015), con creciente evidencia preclínica."
+    },
+    modalEn:{
+      what:"Mots-C is a 16-amino acid peptide encoded in mitochondrial DNA (not nuclear). Discovered in 2015 by Pinchas Cohen's team at USC. The first mitochondria-derived peptide with documented systemic metabolic effects.",
+      mechanism:"Activates the AMPK pathway (master regulator of energy metabolism), improves insulin-independent glucose uptake, and regulates fatty acid metabolism gene expression.",
+      applications:["Insulin sensitivity","Metabolic flexibility","Body composition","Obesity and type 2 diabetes research"],
+      benefits:["Improved glucose regulation","Fat metabolism optimization","Improved body composition","Metabolic anti-aging potential"],
+      extra:"Relatively new in research (2015), with growing preclinical evidence."
+    }
+  }
+];
+
+const CATS_ES = ["Todos","Regeneración","Anti-Aging","Energía","Hormonal","Recuperación","Inmunidad","Vitalidad","Metabolismo"];
+const CATS_EN = ["All","Regeneration","Anti-Aging","Energy","Hormonal","Recovery","Immunity","Vitality","Metabolism"];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let lang = localStorage.getItem("bx-lang") || "es";
+let filter = lang === "es" ? "Todos" : "All";
+let formats = {};
+PRODUCTS.forEach(p => formats[p.id] = "vial");
+
+// ═══════════════════════════════════════════════════════
+// TRANSLATIONS
+// ═══════════════════════════════════════════════════════
+const T = {
+  es:{
+    products:"productos",inStock:"En stock",preOrder:"Pre-orden",outOfStock:"Agotado",pending:"Próximamente",
+    delivery1:"Entrega ~1 semana",delivery3:"Entrega ~3 semanas",unavailable:"No disponible",pendingDelivery:"Por confirmar",
+    order:"Ordenar",preOrderBtn:"Pre-ordenar",notify:"Notificar",reserve:"Reservar",
+    vial:"Vial inyectable",patch:"Parche transdérmico",details:"Ver detalles",
+    subscription:"Suscripción",subPrice:"/mes",subSave:"Ahorra 10%",patchNew:"Nuevo formato",
+    ctaMsg:"Hola, me gustaría obtener información sobre los bioactivos disponibles.",
+    modalWhat:"¿Qué es?",modalMechanism:"Mecanismo de acción",modalApps:"Aplicaciones de investigación",
+    modalBenefits:"Beneficios potenciales",modalExtra:"Información adicional",
+    modalDose:"Dosis por formato",modalStorage:"Almacenamiento",modalCoa:"COA disponible bajo solicitud por WhatsApp",
+    modalDisclaimer:"Solo para uso en investigación. No apto para consumo humano.",
+    modalCta:"Consultar disponibilidad",
+    disc:"Todos los productos son exclusivamente para fines de investigación. No están destinados al consumo humano. biogradix no es una farmacia ni un laboratorio de formulación magistral.",
+    terms:"Términos",privacy:"Privacidad",
+  },
+  en:{
+    products:"products",inStock:"In stock",preOrder:"Pre-order",outOfStock:"Out of stock",pending:"Coming soon",
+    delivery1:"Delivery ~1 week",delivery3:"Delivery ~3 weeks",unavailable:"Unavailable",pendingDelivery:"To be confirmed",
+    order:"Order",preOrderBtn:"Pre-order",notify:"Notify me",reserve:"Reserve",
+    vial:"Injectable vial",patch:"Transdermal patch",details:"View details",
+    subscription:"Subscription",subPrice:"/mo",subSave:"Save 10%",patchNew:"New format",
+    ctaMsg:"Hi, I'd like to get information about available bioactives.",
+    modalWhat:"What is it?",modalMechanism:"Mechanism of action",modalApps:"Research applications",
+    modalBenefits:"Potential benefits",modalExtra:"Additional information",
+    modalDose:"Dose per format",modalStorage:"Storage",modalCoa:"COA available upon request via WhatsApp",
+    modalDisclaimer:"For research use only. Not intended for human consumption.",
+    modalCta:"Check availability",
+    disc:"All products are strictly for research purposes only. Not intended for human consumption. biogradix is not a pharmacy or compounding facility.",
+    terms:"Terms",privacy:"Privacy",
+  }
+};
+
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+const waIcon = (s=14) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+
+function fmtPrice(n){ return "$"+n.toLocaleString("es-MX"); }
+
+function getStatusCfg(status){
+  const t=T[lang];
+  return {"in-stock":{label:t.inStock,cls:"in-stock",del:t.delivery1},"pre-order":{label:t.preOrder,cls:"pre-order",del:t.delivery3},"out-of-stock":{label:t.outOfStock,cls:"out-of-stock",del:t.unavailable},"pending":{label:t.pending,cls:"pending",del:t.pendingDelivery}}[status]||{label:status,cls:"pending",del:""};
+}
+
+function getBtnLabel(status){
+  const t=T[lang];
+  if(status==="in-stock")return t.order;if(status==="pre-order")return t.preOrderBtn;if(status==="pending")return t.reserve;return t.notify;
+}
+
+// ═══════════════════════════════════════════════════════
+// RENDER PRODUCT CARD (brand book style)
+// ═══════════════════════════════════════════════════════
+function renderProductCard(p){
+  const t=T[lang], fmt=formats[p.id];
+  const desc=lang==="es"?p.desc:p.descEn;
+  const badge=lang==="es"?p.badge:p.badgeEn;
+  const catLabel=lang==="es"?p.cat:(p.catEn||p.cat);
+  const specs=fmt==="vial"?(lang==="es"?p.specsVial:p.specsVialEn):(lang==="es"?p.specsPatch:p.specsPatchEn);
+  const price=fmt==="vial"?p.priceVial:p.pricePatch;
+  const subP=Math.round(price*0.9);
+  const sc=getStatusCfg(p.status);
+  const btnLabel=getBtnLabel(p.status);
+  const dis=p.status==="out-of-stock";
+  const fmtLabel=fmt==="vial"?t.vial:t.patch;
+  const orderMsg=lang==="es"?`Hola, me interesa ordenar ${p.name} en formato ${fmtLabel} (${fmtPrice(price)} MXN).`:`Hi, I'm interested in ordering ${p.name} in ${fmtLabel} format (${fmtPrice(price)} MXN).`;
+
+  return `<div class="bx-product-card${dis?" disabled":""}">
+    <div class="bx-product-img">
+      ${badge?`<span class="bx-product-badge ${p.status==='in-stock'&&badge?'available':'featured'}">${badge}</span>`:""}
+      <div class="${fmt==="vial"?"bx-vial-icon":"bx-patch-icon"}"></div>
+    </div>
+    <div class="bx-product-body">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="bx-product-cat" style="color:${p.color}">${catLabel}</span>
+        <span class="bx-status ${sc.cls}">${sc.label}</span>
+      </div>
+      <div>
+        <div class="bx-product-name" onclick="openProductModal(${p.id})">${p.name}</div>
+        <div class="bx-product-sub">${p.sub}</div>
+      </div>
+      <p class="bx-product-desc">${desc}</p>
+      <p class="bx-product-specs">${specs}</p>
+      <button class="bx-detail-link" onclick="openProductModal(${p.id})">${t.details}</button>
+    </div>
+    <div class="bx-format-section">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="bx-format-toggle">
+          <button class="bx-format-btn${fmt==="vial"?" active":""}" onclick="setFormat(${p.id},'vial')">${t.vial}</button>
+          <button class="bx-format-btn${fmt==="patch"?" active":""}" onclick="setFormat(${p.id},'patch')">${t.patch}</button>
+        </div>
+        ${fmt==="patch"?`<span class="bx-patch-note">${t.patchNew}</span>`:""}
+      </div>
+      <div class="bx-price-row">
+        <div>
+          <span class="bx-price">${fmtPrice(price)} <span class="cur">MXN</span></span>
+          <div class="bx-sub-line">
+            <span class="bx-sub-link">${t.subscription}: ${fmtPrice(subP)} ${t.subPrice}</span>
+            <span class="bx-sub-save">${t.subSave}</span>
+          </div>
+        </div>
+        <a ${dis?"":"href=\"https://wa.me/"+WA+"?text="+encodeURIComponent(orderMsg)+"\" target=\"_blank\" rel=\"noopener noreferrer\""} class="bx-order-btn${dis?" disabled":""}">
+          ${dis?"":waIcon(13)} ${btnLabel}
+        </a>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// RENDER CATALOG
+// ═══════════════════════════════════════════════════════
+function renderCatalog(){
+  const t=T[lang];
+  const cats=lang==="es"?CATS_ES:CATS_EN;
+  const filterCat=(filter==="Todos"||filter==="All")?null:filter;
+  const filtered=filterCat?PRODUCTS.filter(p=>p.cat===filterCat||p.catEn===filterCat):PRODUCTS;
+
+  const filtersEl=document.getElementById("cat-filters");
+  if(filtersEl){
+    filtersEl.innerHTML=cats.map(c=>{
+      const isActive=(!filterCat&&(c==="Todos"||c==="All"))||c===filter;
+      return `<button class="bx-cat-btn${isActive?" active":""}" onclick="setFilter('${c}')">${c}</button>`;
+    }).join("");
+  }
+
+  const countEl=document.getElementById("product-count");
+  if(countEl) countEl.textContent=`${filtered.length} ${t.products}`;
+
+  const gridEl=document.getElementById("products-grid");
+  if(gridEl) gridEl.innerHTML=filtered.map(renderProductCard).join("");
+}
+
+// ═══════════════════════════════════════════════════════
+// PRODUCT DETAIL MODAL
+// ═══════════════════════════════════════════════════════
+window.openProductModal = function(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  const t=T[lang];
+  const m=lang==="es"?p.modalEs:p.modalEn;
+  const specs=lang==="es"?p.specsVial:p.specsVialEn;
+  const specsPatch=lang==="es"?p.specsPatch:p.specsPatchEn;
+  const waMsg=lang==="es"?`Hola, me interesa ${p.name}. ¿Pueden darme más información?`:`Hi, I'm interested in ${p.name}. Can you provide more info?`;
+
+  const html=`
+    <span class="bx-product-cat" style="color:${p.color}">${lang==="es"?p.cat:p.catEn}</span>
+    <h3 style="font-family:var(--bx-font-display);font-size:28px;color:var(--bx-navy);font-weight:400;margin:8px 0 4px">${p.name}</h3>
+    <p style="font-family:var(--bx-font-mono);font-size:11px;color:var(--bx-text-tertiary);margin-bottom:20px">${p.sub}</p>
+    <div style="display:flex;gap:8px;margin-bottom:20px">
+      <span class="bx-status in-stock" style="font-size:10px">${t.vial}: ${specs}</span>
+      <span class="bx-status pre-order" style="font-size:10px">${t.patch}: ${specsPatch}</span>
+    </div>
+
+    <h3>${t.modalWhat}</h3><p>${m.what}</p>
+    <h3>${t.modalMechanism}</h3><p>${m.mechanism}</p>
+    <h3>${t.modalApps}</h3><ul>${m.applications.map(a=>`<li>${a}</li>`).join("")}</ul>
+    <h3>${t.modalBenefits}</h3><ul>${m.benefits.map(b=>`<li>${b}</li>`).join("")}</ul>
+
+    <div class="bx-modal-section">
+      <p><strong>${t.modalExtra}</strong></p>
+      <p>${m.extra}</p>
+      <p style="margin-top:8px;font-size:11px">${t.modalCoa}</p>
+    </div>
+
+    <p style="font-family:var(--bx-font-mono);font-size:10px;color:var(--bx-text-tertiary);margin:16px 0">${t.modalDisclaimer}</p>
+    <a href="https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener noreferrer" class="bx-btn-wa" style="width:100%;justify-content:center">${waIcon(14)} ${t.modalCta}</a>
+  `;
+  showModal(p.name, html);
+};
+
+// ═══════════════════════════════════════════════════════
+// MODAL SYSTEM
+// ═══════════════════════════════════════════════════════
+function showModal(title, bodyHtml){
+  const root=document.getElementById("modal-root");
+  root.innerHTML=`<div class="bx-modal-overlay" onclick="closeModal()">
+    <div class="bx-modal-backdrop"></div>
+    <div class="bx-modal" onclick="event.stopPropagation()">
+      <div class="bx-modal-header"><h2>${title}</h2><button class="bx-modal-close" onclick="closeModal()">×</button></div>
+      <div class="bx-modal-body">${bodyHtml}</div>
+    </div>
+  </div>`;
+  document.body.style.overflow="hidden";
+}
+
+window.closeModal = function(){
+  document.getElementById("modal-root").innerHTML="";
+  document.body.style.overflow="";
+};
+
+// ═══════════════════════════════════════════════════════
+// FOOTER (shared)
+// ═══════════════════════════════════════════════════════
+function renderFooter(){
+  const t=T[lang];
+  const footerEl=document.getElementById("footer");
+  if(!footerEl)return;
+  footerEl.innerHTML=`<div class="bx-container">
+    <div class="bx-footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <svg width="34" height="16" viewBox="0 0 34 16"><path d="M2 4 Q8 1,14 4 Q20 7,26 4 Q32 1,34 3" fill="none" stroke="#0F6E56" stroke-width="1.3" opacity=".5"/><path d="M2 8 Q8 11,14 8 Q20 5,26 8 Q32 11,34 9" fill="none" stroke="#1D9E75" stroke-width=".8" opacity=".25"/></svg>
+          <span style="font-family:var(--bx-font-heading);font-weight:500;font-size:16px"><span style="color:#0F6E56">bio</span><span style="color:#E8EAED">gradix</span></span>
+        </div>
+        <p class="bx-footer-tagline">${lang==="es"?"Donde la ciencia encuentra su potencial":"Where science meets potential"}</p>
+      </div>
+      <div class="bx-footer-col">
+        <div class="bx-footer-col-title">${lang==="es"?"Productos":"Products"}</div>
+        <a href="index.html#catalogo">${lang==="es"?"Péptidos":"Peptides"}</a>
+        <a href="index.html#catalogo">Anti-Aging</a>
+        <a href="index.html#catalogo">${lang==="es"?"Recuperación":"Recovery"}</a>
+        <a href="index.html#catalogo">${lang==="es"?"Metabolismo":"Metabolism"}</a>
+      </div>
+      <div class="bx-footer-col">
+        <div class="bx-footer-col-title">${lang==="es"?"Recursos":"Resources"}</div>
+        <a href="tecnologia.html">${lang==="es"?"Tecnología":"Technology"}</a>
+        <a href="educacion.html">${lang==="es"?"Educación":"Education"}</a>
+        <a href="blog.html">Blog</a>
+        <a href="educacion.html#faq">FAQ</a>
+      </div>
+      <div class="bx-footer-col">
+        <div class="bx-footer-col-title">${lang==="es"?"Contacto":"Contact"}</div>
+        <a href="https://wa.me/${WA}" target="_blank">WhatsApp</a>
+        <span>Instagram</span>
+        <span>Email</span>
+      </div>
+    </div>
+    <div class="bx-footer-bottom">
+      <span class="bx-footer-legal">© 2026 biogradix · ${lang==="es"?"Solo para uso en investigación":"Research use only"}</span>
+      <span class="bx-footer-legal"><a href="#">${t.terms}</a> · <a href="#">${t.privacy}</a></span>
+    </div>
+    <p class="bx-footer-disc">${t.disc}</p>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+// LANGUAGE SWITCHER (shared)
+// ═══════════════════════════════════════════════════════
+window.setLang = function(newLang){
+  lang = newLang;
+  localStorage.setItem("bx-lang", lang);
+  if(newLang==="es"&&CATS_EN.includes(filter)){
+    const idx=CATS_EN.indexOf(filter); filter=CATS_ES[idx]||"Todos";
+  } else if(newLang==="en"&&CATS_ES.includes(filter)){
+    const idx=CATS_ES.indexOf(filter); filter=CATS_EN[idx]||"All";
+  }
+  document.querySelectorAll(".bx-lang-btn").forEach(btn=>{
+    btn.classList.toggle("active", btn.textContent.trim()===lang.toUpperCase());
+  });
+  document.querySelectorAll("[data-es][data-en]").forEach(el=>{
+    el.textContent=el.dataset[lang];
+  });
+  // Update WhatsApp links
+  const navWa=document.getElementById("nav-wa");
+  if(navWa) navWa.href=`https://wa.me/${WA}?text=${encodeURIComponent(T[lang].ctaMsg)}`;
+  const ctaWa=document.getElementById("cta-wa");
+  if(ctaWa) ctaWa.href=`https://wa.me/${WA}?text=${encodeURIComponent(T[lang].ctaMsg)}`;
+
+  if(typeof renderCatalog==="function"&&document.getElementById("products-grid")) renderCatalog();
+  renderFooter();
+};
+
+window.setFilter = function(cat){ filter=cat; renderCatalog(); };
+window.setFormat = function(id,fmt){ formats[id]=fmt; renderCatalog(); };
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+document.addEventListener("DOMContentLoaded",function(){
+  setLang(lang);
+});
+
+</script>
+</body>
+</html>
