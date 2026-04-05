@@ -130,9 +130,21 @@ html[lang="en"] [data-lang="en"]{display:block}
 
 <nav class="nav">
   <div class="nav-container">
-    <a href="index.html" class="logo"><span class="b">bio</span><span class="g">gradix</span></a>
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+      <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <path d="M2 18 C6 10, 10 2, 14 12 S22 22, 26 14" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
+        <path d="M2 20 C6 12, 10 4, 14 14 S22 24, 26 16" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <line x1="7" y1="13" x2="7" y2="16" stroke="#0F6E56" stroke-width="0.8" opacity="0.25"/>
+        <line x1="11" y1="8" x2="11" y2="11" stroke="#0F6E56" stroke-width="0.8" opacity="0.25"/>
+        <line x1="17" y1="15" x2="17" y2="18" stroke="#0F6E56" stroke-width="0.8" opacity="0.25"/>
+        <line x1="21" y1="17" x2="21" y2="20" stroke="#0F6E56" stroke-width="0.8" opacity="0.25"/>
+      </svg>
+      <span><span class="b">bio</span><span class="g">gradix</span></span>
+    </a>
     <div class="nav-links">
       <a href="index.html#productos" class="nav-link"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
+      <a href="educacion.html" class="nav-link"><span data-lang="es">Capacitación</span><span data-lang="en">Training</span></a>
+      <a href="blog.html" class="nav-link">Blog</a>
       <div style="display:flex;border:1px solid var(--bx-silver);border-radius:4px;overflow:hidden;margin-left:8px"><button onclick="setLang('es')" class="lang-btn" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;background:var(--bx-mint);color:var(--bx-teal)">ES</button><button onclick="setLang('en')" class="lang-btn" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;color:var(--bx-text-secondary)">EN</button></div><a href="https://wa.me/525512345678" target="_blank" class="wa-btn"><span data-lang="es">WhatsApp</span><span data-lang="en">WhatsApp</span></a>
     </div>
   </div>
