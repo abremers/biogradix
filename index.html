@@ -528,7 +528,8 @@ const products = [
     audienceEs: 'Profesionales urbanos, 35+, belleza',
     audienceEn: 'Urban pros, 35+, beauty',
     timelineEs: '4-8 semanas',
-    timelineEn: '4-8 weeks'
+    timelineEn: '4-8 weeks',
+    url: 'producto-celldew.html'
   },
   {
     id: 2,
@@ -543,7 +544,8 @@ const products = [
     audienceEs: 'Fatiga crónica, demanda cognitiva, 35+',
     audienceEn: 'Chronic fatigue, cognitive demand, 35+',
     timelineEs: '3-7 días',
-    timelineEn: '3-7 days'
+    timelineEn: '3-7 days',
+    url: 'producto-vitacharge.html'
   },
   {
     id: 3,
@@ -558,7 +560,8 @@ const products = [
     audienceEs: 'Anti-envejecimiento, piel dañada, cabello',
     audienceEn: 'Anti-aging, damaged skin, hair',
     timelineEs: '4-8 semanas',
-    timelineEn: '4-8 weeks'
+    timelineEn: '4-8 weeks',
+    url: 'producto-radiancemax.html'
   },
   {
     id: 4,
@@ -573,7 +576,8 @@ const products = [
     audienceEs: 'Atletas, lesiones, post-cirugía',
     audienceEn: 'Athletes, injuries, post-surgery',
     timelineEs: '1-2 semanas',
-    timelineEn: '1-2 weeks'
+    timelineEn: '1-2 weeks',
+    url: 'producto-recoverypro.html'
   },
   {
     id: 5,
@@ -588,7 +592,8 @@ const products = [
     audienceEs: 'Demanda inmunológica alta, estrés, 40+',
     audienceEn: 'High immune demand, stress, 40+',
     timelineEs: '1-2 semanas',
-    timelineEn: '1-2 weeks'
+    timelineEn: '1-2 weeks',
+    url: 'producto-immunefort.html'
   },
   {
     id: 6,
@@ -603,7 +608,8 @@ const products = [
     audienceEs: 'Parejas, vitalidad íntima, salud relacional',
     audienceEn: 'Couples, intimate vitality, relationship health',
     timelineEs: '30-90 min',
-    timelineEn: '30-90 min'
+    timelineEn: '30-90 min',
+    url: 'producto-passionboost.html'
   },
   {
     id: 7,
@@ -618,7 +624,8 @@ const products = [
     audienceEs: 'Atletas serios, composición corporal, 40+',
     audienceEn: 'Serious athletes, body composition, 40+',
     timelineEs: '4-6 semanas',
-    timelineEn: '4-6 weeks'
+    timelineEn: '4-6 weeks',
+    url: 'producto-musclemaxx.html'
   }
 ];
 
@@ -638,24 +645,26 @@ function setLang(lang) {
 function renderProducts() {
   const grid = document.getElementById('productsGrid');
   grid.innerHTML = products.map(p => `
-    <div class="product-card">
-      <div class="product-image"></div>
-      <div class="product-body">
-        <div class="product-badge">${currentLang === 'es' ? p.badgeEs : p.badgeEn}</div>
-        <h3 class="product-name">${currentLang === 'es' ? p.nameEs : p.nameEn}</h3>
-        <p class="product-tagline">${currentLang === 'es' ? p.taglineEs : p.taglineEn}</p>
-        <p class="product-benefits">${currentLang === 'es' ? p.benefitsEs : p.benefitsEn}</p>
-        <div class="product-audience">
-          <strong>${currentLang === 'es' ? 'Para:' : 'For:'}</strong> ${currentLang === 'es' ? p.audienceEs : p.audienceEn}
+    <a href="${p.url}" style="text-decoration:none;color:inherit">
+      <div class="product-card">
+        <div class="product-image"></div>
+        <div class="product-body">
+          <div class="product-badge">${currentLang === 'es' ? p.badgeEs : p.badgeEn}</div>
+          <h3 class="product-name">${currentLang === 'es' ? p.nameEs : p.nameEn}</h3>
+          <p class="product-tagline">${currentLang === 'es' ? p.taglineEs : p.taglineEn}</p>
+          <p class="product-benefits">${currentLang === 'es' ? p.benefitsEs : p.benefitsEn}</p>
+          <div class="product-audience">
+            <strong>${currentLang === 'es' ? 'Para:' : 'For:'}</strong> ${currentLang === 'es' ? p.audienceEs : p.audienceEn}
+          </div>
+          <div class="product-timeline">
+            ⏱️ ${currentLang === 'es' ? 'Resultados en:' : 'Results in:'} ${currentLang === 'es' ? p.timelineEs : p.timelineEn}
+          </div>
+          <button class="product-cta" onclick="event.preventDefault(); contactWhatsApp('${currentLang === 'es' ? p.nameEs : p.nameEn}')">
+            ${currentLang === 'es' ? 'Información' : 'Info'}
+          </button>
         </div>
-        <div class="product-timeline">
-          ⏱️ ${currentLang === 'es' ? 'Resultados en:' : 'Results in:'} ${currentLang === 'es' ? p.timelineEs : p.timelineEn}
-        </div>
-        <button class="product-cta" onclick="contactWhatsApp('${currentLang === 'es' ? p.nameEs : p.nameEn}')">
-          ${currentLang === 'es' ? 'Información' : 'Info'}
-        </button>
       </div>
-    </div>
+    </a>
   `).join('');
 }
 
