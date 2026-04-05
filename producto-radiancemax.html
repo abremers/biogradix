@@ -93,7 +93,30 @@ footer{background:var(--bx-navy);color:#fff;padding:40px;text-align:center;font-
 html[lang="en"] [data-lang="es"]{display:none}
 html[lang="en"] [data-lang="en"]{display:block}
 
+
+/* BREADCRUMB */
+.breadcrumb{padding:80px 40px 0;max-width:900px;margin:0 auto}
+.breadcrumb-list{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.5px;color:var(--bx-text-tertiary);flex-wrap:wrap}
+.breadcrumb-list a{color:var(--bx-teal);transition:color 0.2s}
+.breadcrumb-list a:hover{color:var(--bx-deep-teal)}
+.breadcrumb-sep{color:var(--bx-silver)}
+.breadcrumb-current{color:var(--bx-text-secondary)}
+
+/* RELATED PRODUCTS */
+.related-section{padding:60px 40px;max-width:900px;margin:0 auto}
+.related-title{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:500;color:var(--bx-navy);margin-bottom:24px;text-align:center}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.related-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;padding:24px;text-align:center;transition:all 0.3s;display:block}
+.related-card:hover{border-color:var(--bx-teal);box-shadow:0 4px 16px rgba(15,110,86,0.1);transform:translateY(-2px)}
+.related-card-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--bx-teal);margin-bottom:6px}
+.related-card-desc{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--bx-text-secondary);line-height:1.5}
+
 @media(max-width:768px){
+
+.breadcrumb{padding:70px 20px 0}
+.related-grid{grid-template-columns:1fr}
+.related-section{padding:40px 20px}
+
   .nav{padding:0 20px}
   .hero{padding:60px 20px;margin-top:64px}
   .hero-title{font-size:36px}
@@ -315,6 +338,10 @@ function toggleFaq(element) {
   const toggle = element.querySelector('.faq-toggle');
   answer.classList.toggle('open');
   toggle.classList.toggle('open');
+}
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  localStorage.setItem('bx-lang', lang);
 }
 </script>
 

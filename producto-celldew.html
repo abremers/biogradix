@@ -131,7 +131,30 @@ html[lang="en"] [data-lang="es"]{display:none}
 html[lang="en"] [data-lang="en"]{display:block}
 
 /* MOBILE */
+
+/* BREADCRUMB */
+.breadcrumb{padding:80px 40px 0;max-width:900px;margin:0 auto}
+.breadcrumb-list{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.5px;color:var(--bx-text-tertiary);flex-wrap:wrap}
+.breadcrumb-list a{color:var(--bx-teal);transition:color 0.2s}
+.breadcrumb-list a:hover{color:var(--bx-deep-teal)}
+.breadcrumb-sep{color:var(--bx-silver)}
+.breadcrumb-current{color:var(--bx-text-secondary)}
+
+/* RELATED PRODUCTS */
+.related-section{padding:60px 40px;max-width:900px;margin:0 auto}
+.related-title{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:500;color:var(--bx-navy);margin-bottom:24px;text-align:center}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.related-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;padding:24px;text-align:center;transition:all 0.3s;display:block}
+.related-card:hover{border-color:var(--bx-teal);box-shadow:0 4px 16px rgba(15,110,86,0.1);transform:translateY(-2px)}
+.related-card-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--bx-teal);margin-bottom:6px}
+.related-card-desc{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--bx-text-secondary);line-height:1.5}
+
 @media(max-width:768px){
+
+.breadcrumb{padding:70px 20px 0}
+.related-grid{grid-template-columns:1fr}
+.related-section{padding:40px 20px}
+
   .nav{padding:0 20px}
   .hero{padding:60px 20px;margin-top:64px}
   .hero-title{font-size:36px}
@@ -155,6 +178,17 @@ html[lang="en"] [data-lang="en"]{display:block}
     </div>
   </div>
 </nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <nav class="breadcrumb-list">
+    <a href="index.html"><span data-lang="es">Inicio</span><span data-lang="en">Home</span></a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="index.html#productos"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">CELLDEW™</span>
+  </nav>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -351,6 +385,26 @@ html[lang="en"] [data-lang="en"]{display:block}
   </div>
 </section>
 
+
+<!-- RELATED PRODUCTS -->
+<section class="related-section">
+  <h2 class="related-title"><span data-lang="es">También te puede interesar</span><span data-lang="en">You may also like</span></h2>
+  <div class="related-grid">
+    <a href="producto-radiancemax.html" class="related-card">
+      <div class="related-card-name">RADIANCEMAX™</div>
+      <div class="related-card-desc"><span data-lang="es">Piel, cabello y belleza celular</span><span data-lang="en">Skin, hair & cellular beauty</span></div>
+    </a>
+    <a href="producto-vitacharge.html" class="related-card">
+      <div class="related-card-name">VITACHARGE™</div>
+      <div class="related-card-desc"><span data-lang="es">Energía celular y longevidad</span><span data-lang="en">Cellular energy & longevity</span></div>
+    </a>
+    <a href="producto-recoverypro.html" class="related-card">
+      <div class="related-card-name">RECOVERYPRO™</div>
+      <div class="related-card-desc"><span data-lang="es">Recuperación rápida de tejidos</span><span data-lang="en">Fast tissue recovery</span></div>
+    </a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <p><span data-lang="es">© 2026 biogradix. Solo para uso en investigación.</span><span data-lang="en">© 2026 biogradix. Research use only.</span></p>
@@ -368,6 +422,10 @@ function toggleFaq(element) {
   const toggle = element.querySelector('.faq-toggle');
   answer.classList.toggle('open');
   toggle.classList.toggle('open');
+}
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  localStorage.setItem('bx-lang', lang);
 }
 </script>
 
