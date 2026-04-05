@@ -135,7 +135,7 @@ html[lang="en"] [data-lang="en"]{display:block}
     <a href="index.html" class="logo"><span class="b">bio</span><span class="g">gradix</span></a>
     <div class="nav-links">
       <a href="index.html#productos" class="nav-link"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-      <a href="https://wa.me/525512345678" target="_blank" class="wa-btn"><span data-lang="es">WhatsApp</span><span data-lang="en">WhatsApp</span></a>
+      <div style="display:flex;border:1px solid var(--bx-silver);border-radius:4px;overflow:hidden;margin-left:8px"><button onclick="setLang('es')" class="lang-btn" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;background:var(--bx-mint);color:var(--bx-teal)">ES</button><button onclick="setLang('en')" class="lang-btn" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;color:var(--bx-text-secondary)">EN</button></div><a href="https://wa.me/525512345678" target="_blank" class="wa-btn"><span data-lang="es">WhatsApp</span><span data-lang="en">WhatsApp</span></a>
     </div>
   </div>
 </nav>
@@ -326,7 +326,13 @@ html[lang="en"] [data-lang="en"]{display:block}
 </section>
 
 <footer>
-  <p><span data-lang="es">© 2026 biogradix.</span><span data-lang="en">© 2026 biogradix.</span></p>
+  <div style="margin-bottom:12px">
+    <a href="index.html" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Inicio</span><span data-lang="en">Home</span></a>
+    <a href="index.html#productos" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
+    <a href="terms.html" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Términos</span><span data-lang="en">Terms</span></a>
+    <a href="privacy.html" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Privacidad</span><span data-lang="en">Privacy</span></a>
+  </div>
+  <p><span data-lang="es">© 2026 biogradix. Solo para uso en investigación.</span><span data-lang="en">© 2026 biogradix. Research use only.</span></p>
 </footer>
 
 <script>
