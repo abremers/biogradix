@@ -1,319 +1,491 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlRoot">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>biogradix — Blog</title>
-<meta name="description" content="Blog biogradix: artículos sobre ciencia de péptidos, entrega buccal, protocolos de bioactivos y biohacking respaldado por evidencia.">
-<meta name="author" content="biogradix">
-<link rel="canonical" href="https://biogradix.com/blog.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Blog — Ciencia &amp; Bienestar | biogradix</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --bx-navy:#0B1A2B;--bx-teal:#0F6E56;--bx-mint:#E1F5EE;--bx-cloud:#FAFBFC;
-  --bx-silver:#E8EAED;--bx-deep-teal:#085041;--bx-active-teal:#1D9E75;
-  --bx-text-primary:#0B1A2B;--bx-text-secondary:#4A5568;--bx-text-tertiary:#8A9BAD;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bx-cloud);color:var(--bx-text-primary);line-height:1.7}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
-.container{max-width:960px;margin:0 auto;padding:0 40px}
+:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--alert:#D4534E;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
+@media(max-width:768px){.container{padding:0 20px;}}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.up{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:.08s;}.reveal-delay-2{transition-delay:.16s;}.reveal-delay-3{transition-delay:.24s;}.reveal-delay-4{transition-delay:.32s;}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid var(--bx-silver);height:64px;display:flex;align-items:center;padding:0 40px}
-.nav-container{display:flex;justify-content:space-between;align-items:center;width:100%}
-.logo{font-family:'DM Sans';font-size:18px;font-weight:600;color:var(--bx-navy);display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo .b{color:var(--bx-teal)}.logo .g{color:var(--bx-navy)}
-.nav-links{display:flex;align-items:center;gap:24px}
-.nav-link{font-size:13px;color:var(--bx-text-secondary);transition:color 0.2s}
-.nav-link:hover{color:var(--bx-teal)}
-.nav-link.active{color:var(--bx-teal);font-weight:500}
-.lang-toggle{display:flex;border:1px solid var(--bx-silver);border-radius:4px;overflow:hidden}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;transition:all 0.2s}
-.lang-btn.active{background:var(--bx-mint);color:var(--bx-teal)}
-.lang-btn:not(.active){color:var(--bx-text-tertiary)}
-.wa-btn{background:var(--bx-teal);color:#fff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:500}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
+.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
+.nav-inner{display:flex;align-items:center;gap:0;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
+.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--teal);}
+.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
+.lang-btn.active,.lang-btn:hover{color:var(--teal);}
+.lang-sep{color:var(--silver);font-size:12px;}
+.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
+@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open .mobile-menu-panel{transform:none;}
+.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
+.mobile-menu-panel a:hover{color:var(--teal);}
+.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
 
-/* TRUST BAR */
-.trust-bar{background:var(--bx-navy);color:#fff;padding:10px 40px;text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.5px;margin-top:64px;opacity:0.9}
+/* BLOG HERO */
+.blog-hero{background:var(--navy);padding:80px 0 64px;margin-top:64px;}
+.blog-hero-inner{text-align:center;max-width:600px;margin:0 auto;}
+.blog-hero h1{font-family:'Instrument Serif',serif;font-style:italic;font-size:48px;color:#fff;margin:12px 0 16px;line-height:1.1;}
+.blog-hero h1 em{font-style:normal;color:var(--teal-active);}
+.blog-hero p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;}
+@media(max-width:768px){.blog-hero h1{font-size:34px;}.blog-hero{padding:60px 0 48px;}}
 
-/* HERO */
-.page-hero{background:linear-gradient(135deg,var(--bx-navy) 0%,rgba(15,110,86,0.15) 100%);padding:80px 40px;text-align:center}
-.page-hero .label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px}
-.page-hero h1{font-family:'DM Sans';font-size:42px;font-weight:600;color:#fff;margin-bottom:12px}
-.page-hero .subtitle{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.8);max-width:600px;margin:0 auto}
+/* FILTER BAR */
+.filter-bar{display:flex;gap:8px;justify-content:center;margin-bottom:48px;flex-wrap:wrap;}
+.filter-pill{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--silver);border-radius:20px;padding:8px 18px;cursor:pointer;background:transparent;color:var(--text-2);transition:all .2s;}
+.filter-pill.active,.filter-pill:hover{background:var(--teal);color:#fff;border-color:var(--teal);}
 
-/* FILTERS */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
-.filter-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:8px 16px;border-radius:6px;border:1px solid var(--bx-silver);color:var(--bx-text-secondary);transition:all 0.2s;background:#fff}
-.filter-btn:hover{border-color:var(--bx-teal);color:var(--bx-teal)}
-.filter-btn.active{background:var(--bx-teal);color:#fff;border-color:var(--bx-teal)}
+/* BLOG GRID */
+.posts-section{background:var(--cloud);padding:64px 0 80px;}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.blog-grid{grid-template-columns:1fr;}}
 
-/* ARTICLE GRID */
-.articles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.article-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;overflow:hidden;transition:all 0.3s;cursor:pointer}
-.article-card:hover{border-color:var(--bx-teal);box-shadow:0 8px 32px rgba(15,110,86,0.08);transform:translateY(-3px)}
-.article-img{height:200px;background:var(--bx-mint);display:flex;align-items:center;justify-content:center;font-size:48px}
-.article-body{padding:24px}
-.article-cat{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--bx-teal);margin-bottom:8px}
-.article-title{font-family:'DM Sans';font-size:18px;font-weight:600;color:var(--bx-navy);margin-bottom:8px;line-height:1.4}
-.article-excerpt{font-size:13px;color:var(--bx-text-secondary);line-height:1.6;margin-bottom:12px}
-.article-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--bx-text-tertiary);letter-spacing:0.5px}
+/* FEATURED POST */
+.blog-featured{grid-column:span 3;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid var(--silver);margin-bottom:8px;background:#fff;transition:box-shadow .25s,transform .25s;}
+.blog-featured:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(11,26,43,.12);}
+@media(max-width:900px){.blog-featured{grid-column:span 2;grid-template-columns:1fr;}}
+@media(max-width:560px){.blog-featured{grid-column:span 1;}}
+.blog-featured .blog-card-img{aspect-ratio:auto;height:100%;min-height:280px;}
+.blog-featured .blog-card-body{padding:32px;}
+.blog-featured .blog-card-title{font-size:24px;}
 
-/* ARTICLE MODAL */
-.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(11,26,43,0.7);z-index:200;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 20px}
-.modal-overlay.open{display:flex}
-.modal-content{background:#fff;border-radius:16px;max-width:720px;width:100%;margin:40px auto;overflow:hidden;position:relative}
-.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;font-size:20px;z-index:10;cursor:pointer;color:var(--bx-navy)}
-.modal-hero{height:240px;background:var(--bx-mint);display:flex;align-items:center;justify-content:center;font-size:64px}
-.modal-body{padding:40px}
-.modal-body .article-cat{margin-bottom:12px}
-.modal-body h2{font-family:'DM Sans';font-size:28px;font-weight:600;color:var(--bx-navy);margin-bottom:16px;line-height:1.3}
-.modal-body .meta{font-family:'DM Mono',monospace;font-size:11px;color:var(--bx-text-tertiary);margin-bottom:28px;letter-spacing:0.5px}
-.modal-body p{font-size:15px;color:var(--bx-text-secondary);line-height:1.8;margin-bottom:16px}
-.modal-body h3{font-family:'DM Sans';font-size:18px;font-weight:600;color:var(--bx-navy);margin:28px 0 12px}
-.modal-body ul{padding-left:20px;margin-bottom:16px}
-.modal-body li{font-size:14px;color:var(--bx-text-secondary);line-height:1.7;margin-bottom:6px}
+/* BLOG CARD */
+.blog-card{background:#fff;border:1px solid var(--silver);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all .25s;}
+.blog-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(11,26,43,.1);}
+.blog-card-img{aspect-ratio:16/9;overflow:hidden;}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.blog-card:hover .blog-card-img img,.blog-featured:hover .blog-card-img img{transform:scale(1.04);}
+.blog-cat-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--mint);color:var(--teal);border-radius:4px;padding:3px 10px;display:inline-block;margin-bottom:10px;}
+.blog-card-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+.blog-card-title{font-family:'DM Sans',sans-serif;font-weight:500;font-size:17px;color:var(--navy);margin-bottom:8px;line-height:1.35;}
+.blog-card-excerpt{font-size:13px;color:var(--text-2);line-height:1.65;flex:1;margin-bottom:16px;}
+.blog-card-meta{display:flex;align-items:center;gap:12px;}
+.blog-meta-avatar{width:32px;height:32px;border-radius:50%;background:var(--mint);font-family:'DM Mono',monospace;font-size:11px;color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:500;}
+.blog-meta-info{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-3);line-height:1.5;}
+.blog-read-more{font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-top:auto;}
+.blog-read-more:hover{color:var(--teal-deep);}
+
+/* NEWSLETTER CTA */
+.newsletter-section{background:var(--mint);padding:64px 0;}
+.newsletter-inner{text-align:center;max-width:540px;margin:0 auto;}
+.newsletter-inner .label{display:block;margin-bottom:12px;}
+.newsletter-h2{font-weight:500;font-size:32px;letter-spacing:-.4px;color:var(--navy);margin-bottom:10px;}
+.newsletter-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.newsletter-sub{font-size:15px;color:var(--text-2);margin-bottom:28px;line-height:1.7;}
+.newsletter-form{display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+.newsletter-input{flex:1;min-width:200px;padding:12px 18px;border:1px solid var(--silver);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-1);background:#fff;outline:none;transition:border-color .2s;}
+.newsletter-input:focus{border-color:var(--teal);}
+.newsletter-input::placeholder{color:var(--text-3);}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:8px;padding:13px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
+
+/* MAIN CTA */
+.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
+.cta-helix{position:absolute;inset:0;opacity:.05;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
+.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
+.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
+.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 10px 30px rgba(15,110,86,.4);}
 
 /* FOOTER */
-footer{background:var(--bx-navy);color:#fff;padding:40px;text-align:center}
-footer a{color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px}
-footer p{font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px}
-
-/* LANGUAGE */
-[data-lang="es"]{display:block}[data-lang="en"]{display:none}
-html[lang="en"] [data-lang="es"]{display:none}html[lang="en"] [data-lang="en"]{display:block}
-span[data-lang="es"]{display:inline}
-span[data-lang="en"]{display:none}
-html[lang="en"] span[data-lang="es"]{display:none}
-html[lang="en"] span[data-lang="en"]{display:inline}
-
-@media(max-width:768px){
-  .nav{padding:0 20px}.container{padding:0 20px}
-  .page-hero{padding:60px 20px}.page-hero h1{font-size:28px}
-  .articles-grid{grid-template-columns:1fr}
-  .modal-body{padding:24px}.modal-body h2{font-size:22px}
-  .nav-link{font-size:11px}
-}
+.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
+.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
+.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--teal-active);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);}
+.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.15);text-align:center;}
+.footer-legal{display:flex;gap:20px;}
+.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
+.footer-legal a:hover{color:rgba(255,255,255,.5);}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-container">
-    <a href="index.html" class="logo">
-      <svg width="44" height="20" viewBox="0 0 44 20" style="flex-shrink:0">
-        <path d="M2 5 Q9 1, 16 5 Q23 9, 30 5 Q37 1, 44 5" fill="none" stroke="#0F6E56" stroke-width="1.6" opacity="0.6"/>
-        <path d="M2 11 Q9 15, 16 11 Q23 7, 30 11 Q37 15, 44 11" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="9" y1="3" x2="9" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-        <line x1="30" y1="3" x2="30" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-      </svg>
-      <span><span class="b">bio</span><span class="g">gradix</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html#productos" class="nav-link"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-      <a href="educacion.html" class="nav-link"><span data-lang="es">Capacitación</span><span data-lang="en">Training</span></a>
-      <a href="blog.html" class="nav-link active">Blog</a>
-      <div class="lang-toggle">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
+        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+        <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+        <a href="blog.html" class="active" data-i18n="nav-blog">Blog</a>
+        <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
       </div>
-      <a href="https://wa.me/525512345678" target="_blank" class="wa-btn">WhatsApp</a>
+      <div class="nav-right">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <a href="https://wa.me/1234567890" class="btn-wa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <span data-lang="es">Fabricado en EE.UU. · Probado por terceros · ≥99% Pureza · Entrega BiogradixRelease®</span>
-  <span data-lang="en">U.S. Manufactured · Third-party Tested · ≥99% Purity · BiogradixRelease® Delivery</span>
-</div>
-
-<!-- HERO -->
-<section class="page-hero">
-  <div class="label">BLOG</div>
-  <h1><span data-lang="es">Ciencia, protocolos y evidencia</span><span data-lang="en">Science, protocols & evidence</span></h1>
-  <p class="subtitle"><span data-lang="es">Artículos respaldados por datos para tomar decisiones informadas</span><span data-lang="en">Data-backed articles to make informed decisions</span></p>
-</section>
-
-<!-- ARTICLES -->
-<section style="padding:64px 0">
-  <div class="container">
-    <div class="filters">
-      <button class="filter-btn active" onclick="filterArticles('all')"><span data-lang="es">Todos</span><span data-lang="en">All</span></button>
-      <button class="filter-btn" onclick="filterArticles('ciencia')"><span data-lang="es">Ciencia</span><span data-lang="en">Science</span></button>
-      <button class="filter-btn" onclick="filterArticles('guias')"><span data-lang="es">Guías</span><span data-lang="en">Guides</span></button>
-      <button class="filter-btn" onclick="filterArticles('protocolos')"><span data-lang="es">Protocolos</span><span data-lang="en">Protocols</span></button>
-      <button class="filter-btn" onclick="filterArticles('innovacion')"><span data-lang="es">Innovación</span><span data-lang="en">Innovation</span></button>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel">
+    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" data-i18n="nav-blog">Blog</a>
+    <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
+    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--silver);">
+      <button class="lang-btn active" onclick="setLang('es');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">ES</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">EN</button>
     </div>
-    <div class="articles-grid" id="articlesGrid"></div>
+    <a href="https://wa.me/1234567890" class="btn-wa">WhatsApp</a>
+  </div>
+</div>
+
+<!-- BLOG HERO -->
+<section class="blog-hero">
+  <div class="container">
+    <div class="blog-hero-inner reveal">
+      <span class="label" style="color:var(--teal-active);" data-i18n="blog-cat">Ciencia · Bienestar · Longevidad</span>
+      <h1 data-i18n-html="blog-h1">Blog <em>biogradix</em></h1>
+      <p data-i18n="blog-sub">Investigación, protocolos y ciencia aplicada al bienestar de precisión.</p>
+    </div>
   </div>
 </section>
 
-<!-- ARTICLE MODAL -->
-<div class="modal-overlay" id="articleModal">
-  <div class="modal-content">
-    <div class="modal-close" onclick="closeModal()">×</div>
-    <div class="modal-hero" id="modalHero"></div>
-    <div class="modal-body" id="modalBody"></div>
+<!-- POSTS SECTION -->
+<section class="posts-section">
+  <div class="container">
+    <!-- Filter Pills -->
+    <div class="filter-bar reveal">
+      <button class="filter-pill active" data-filter="all" data-i18n="filter-all">Todos</button>
+      <button class="filter-pill" data-filter="ciencia" data-i18n="filter-ciencia">Ciencia</button>
+      <button class="filter-pill" data-filter="productos" data-i18n="filter-productos">Productos</button>
+      <button class="filter-pill" data-filter="lifestyle" data-i18n="filter-lifestyle">Estilo de vida</button>
+      <button class="filter-pill" data-filter="investigacion" data-i18n="filter-investigacion">Investigación</button>
+    </div>
+
+    <div class="blog-grid">
+
+      <!-- FEATURED POST -->
+      <div class="blog-featured reveal">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=900&q=80&fit=crop" alt="Absorción por mucosa oral" loading="lazy"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-cat-tag" data-i18n="post1-cat">Ciencia</span>
+          <div class="blog-card-title" data-i18n="post1-title">¿Qué es la absorción por mucosa oral y por qué importa para los suplementos?</div>
+          <div class="blog-card-excerpt" data-i18n="post1-excerpt">La mayoría de los suplementos orales pierden hasta el 80% de su potencia en el sistema digestivo. Explicamos la ciencia detrás de la absorción por mucosa oral y cómo BiogradixRelease® cambia las reglas del juego.</div>
+          <div class="blog-card-meta">
+            <div class="blog-meta-avatar">JB</div>
+            <div class="blog-meta-info" data-i18n="post1-meta">15 min de lectura · 2 Abr 2026</div>
+          </div>
+          <a href="blog-absorcion-mucosa.html" class="blog-read-more" style="margin-top:16px;">
+            <span data-i18n="read-more">Leer artículo</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- POST 2 -->
+      <div class="blog-card reveal">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&q=80&fit=crop" alt="NAD+ energía longevidad" loading="lazy"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-cat-tag" data-i18n="post2-cat">Investigación</span>
+          <div class="blog-card-title" data-i18n="post2-title">NAD+: Por qué este cofactor es el secreto de la energía y la longevidad en 2026</div>
+          <div class="blog-card-excerpt" data-i18n="post2-excerpt">Sus niveles caen hasta un 50% entre los 20 y los 50 años. Explicamos qué es el NAD+, cómo activa las sirtuinas y por qué la biodisponibilidad de la vía de administración lo cambia todo.</div>
+          <div class="blog-card-meta">
+            <div class="blog-meta-avatar">AL</div>
+            <div class="blog-meta-info" data-i18n="post2-meta">8 min · 5 Abr 2026</div>
+          </div>
+          <a href="blog-nad-mas.html" class="blog-read-more">
+            <span data-i18n="read-more">Leer artículo</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- POST 3 -->
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80&fit=crop" alt="Glutatión antioxidante maestro" loading="lazy"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-cat-tag" data-i18n="post3-cat">Guía</span>
+          <div class="blog-card-title" data-i18n="post3-title">Glutatión: la guía completa del antioxidante maestro que tu cuerpo fabrica —y pierde con los años</div>
+          <div class="blog-card-excerpt" data-i18n="post3-excerpt">El antioxidante más abundante en las células humanas. Qué hace, por qué sus niveles caen con la edad, y cómo la absorción por mucosa oral resuelve el problema de biodisponibilidad que tienen las cápsulas.</div>
+          <div class="blog-card-meta">
+            <div class="blog-meta-avatar">MR</div>
+            <div class="blog-meta-info" data-i18n="post3-meta">6 min · 7 Abr 2026</div>
+          </div>
+          <a href="blog-glutathione-guia.html" class="blog-read-more">
+            <span data-i18n="read-more">Leer artículo</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- POST 4 -->
+      <div class="blog-card reveal reveal-delay-2">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&q=80&fit=crop" alt="Péptidos longevidad ciencia" loading="lazy"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-cat-tag" data-i18n="post4-cat">Ciencia</span>
+          <div class="blog-card-title" data-i18n="post4-title">Péptidos y longevidad: el estado del arte en 2026 — qué dice la ciencia, qué promete la clínica</div>
+          <div class="blog-card-excerpt" data-i18n="post4-excerpt">De los hallmarks del envejecimiento a los secretagogos de GH: cómo actúan los péptidos sobre los mecanismos fundamentales del envejecimiento y por qué la vía de administración lo cambia todo.</div>
+          <div class="blog-card-meta">
+            <div class="blog-meta-avatar">JB</div>
+            <div class="blog-meta-info" data-i18n="post4-meta">12 min · 10 Abr 2026</div>
+          </div>
+          <a href="blog-peptidos-longevidad.html" class="blog-read-more">
+            <span data-i18n="read-more">Leer artículo</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- POST 5 -->
+      <div class="blog-card reveal">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&fit=crop" alt="Recuperación muscular" loading="lazy"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-cat-tag" data-i18n="post5-cat">Estilo de vida</span>
+          <div class="blog-card-title" data-i18n="post5-title">BPC-157: el péptido gástrico que acelera la recuperación muscular y articular</div>
+          <div class="blog-card-excerpt" data-i18n="post5-excerpt">Cómo el BPC-157 reduce el DOMS hasta un 40–50%, repara tendones y ligamentos, y protege el sistema digestivo. La ciencia del péptido de recuperación más estudiado.</div>
+          <div class="blog-card-meta">
+            <div class="blog-meta-avatar">DR</div>
+            <div class="blog-meta-info" data-i18n="post5-meta">7 min · 12 Abr 2026</div>
+          </div>
+          <a href="blog-recuperacion-muscular.html" class="blog-read-more">
+            <span data-i18n="read-more">Leer artículo</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- POST 6 -->
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1498843053639-170ff2122f35?w=600&q=80&fit=crop" alt="GHK-Cu péptido belleza piel" loading="lazy"/>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-cat-tag" data-i18n="post6-cat">Belleza</span>
+          <div class="blog-card-title" data-i18n="post6-title">GHK-Cu: el péptido del cobre que regula 4,000 genes y transforma la piel desde adentro</div>
+          <div class="blog-card-excerpt" data-i18n="post6-excerpt">Cómo el GHK-Cu aumenta la síntesis de colágeno en 200–300%, regula la expresión génica y por qué supera a cualquier suplemento de colágeno convencional para la salud de la piel.</div>
+          <div class="blog-card-meta">
+            <div class="blog-meta-avatar">AG</div>
+            <div class="blog-meta-info" data-i18n="post6-meta">9 min · 15 Abr 2026</div>
+          </div>
+          <a href="blog-ghk-cu-colageno.html" class="blog-read-more">
+            <span data-i18n="read-more">Leer artículo</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
+</section>
+
+<!-- NEWSLETTER CTA -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner reveal">
+      <span class="label" data-i18n="nl-label">Nunca te pierdas nada</span>
+      <h2 class="newsletter-h2" data-i18n-html="nl-h2">Ciencia en tu <em>bandeja de entrada</em></h2>
+      <p class="newsletter-sub" data-i18n="nl-sub">Artículos, protocolos y novedades de biogradix. Sin spam, solo contenido que vale la pena.</p>
+      <div class="newsletter-form">
+        <input type="email" class="newsletter-input" data-i18n-placeholder="nl-placeholder" placeholder="tu@email.com"/>
+        <button class="btn-primary" type="button">
+          <span data-i18n="nl-btn">Suscribirse</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <svg class="cta-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#0F6E56" stroke-width="1.5"><path d="M0 100 Q60 60,120 100 Q180 140,240 100 Q300 60,360 100 Q420 140,480 100 Q540 60,600 100 Q660 140,720 100 Q780 60,840 100 Q900 140,960 100 Q1020 60,1080 100 Q1140 140,1200 100"/><path d="M0 200 Q60 160,120 200 Q180 240,240 200 Q300 160,360 200 Q420 240,480 200 Q540 160,600 200 Q660 240,720 200 Q780 160,840 200 Q900 240,960 200 Q1020 160,1080 200 Q1140 240,1200 200"/></g></svg>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="label" style="color:var(--teal-active);" data-i18n="cta-label">¿Listo para empezar?</span>
+      <h2 class="cta-h2" data-i18n-html="cta-h2">Consulta gratuita<br/><em>por WhatsApp</em></h2>
+      <p class="cta-body" data-i18n="cta-body">Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.</p>
+      <a href="https://wa.me/1234567890" class="btn-wa-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span data-i18n="cta-btn">Contactar por WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer>
-  <div style="margin-bottom:12px">
-    <a href="index.html"><span data-lang="es">Inicio</span><span data-lang="en">Home</span></a>
-    <a href="index.html#productos"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-    <a href="educacion.html"><span data-lang="es">Capacitación</span><span data-lang="en">Training</span></a>
-    <a href="terms.html"><span data-lang="es">Términos</span><span data-lang="en">Terms</span></a>
-    <a href="privacy.html"><span data-lang="es">Privacidad</span><span data-lang="en">Privacy</span></a>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:4px;">
+          <svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
+          <span class="nav-logo-text" style="color:inherit;"><span style="color:var(--teal)">bio</span><span style="color:var(--silver)">gradix</span></span>
+        </a>
+        <p class="footer-brand-text" data-i18n="footer-brand">Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-products">Productos</div>
+        <div class="footer-links">
+          <a href="producto-celldew.html">CELLDEW™</a>
+          <a href="producto-vitacharge.html">VITACHARGE™</a>
+          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
+          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
+          <a href="producto-immunefort.html">IMMUNEFORT™</a>
+          <a href="producto-passionboost.html">PASSIONBOOST™</a>
+          <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-resources">Recursos</div>
+        <div class="footer-links">
+          <a href="tecnologia.html" data-i18n="footer-res-tech">Tecnología</a>
+          <a href="blog.html" data-i18n="footer-res-blog">Blog</a>
+          <a href="index.html#faq" data-i18n="footer-res-faq">FAQ</a>
+          <a href="#" data-i18n="footer-res-coa">Certificados COA</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-contact">Contacto</div>
+        <div class="footer-links">
+          <a href="https://wa.me/1234567890">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="mailto:hola@biogradix.com">hola@biogradix.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer-copy">© 2026 biogradix. Todos los derechos reservados.</span>
+      <span class="footer-disclaimer" data-i18n="footer-disclaimer">Solo para uso personal. Consulta a tu médico antes de usar.</span>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer-terms">Términos</a>
+        <a href="#" data-i18n="footer-privacy">Privacidad</a>
+      </div>
+    </div>
   </div>
-  <p><span data-lang="es">© 2026 biogradix. Solo para uso en investigación.</span><span data-lang="en">© 2026 biogradix. Research use only.</span></p>
 </footer>
 
 <script>
-let currentLang = localStorage.getItem('bx-lang') || 'es';
-
-const ARTICLES = [
-  {
-    id:1, cat:'ciencia', icon:'🧬',
-    title_es:'Entrega buccal vs. inyectable: qué dice la evidencia',
-    title_en:'Buccal vs. injectable delivery: what the evidence says',
-    excerpt_es:'El 63% de los adultos reporta fobia a las agujas. Analizamos cómo la entrega transmucosa resuelve el problema de adherencia sin sacrificar biodisponibilidad.',
-    excerpt_en:'63% of adults report needle phobia. We analyze how transmucosal delivery solves the compliance problem without sacrificing bioavailability.',
-    date:'Abril 2026', read:'7 min',
-    body_es:`<p>Los péptidos funcionan. El problema nunca fue la ciencia — es el formato de entrega. Protocolos clínicamente efectivos están atrapados detrás de una experiencia que destruye la adherencia del paciente.</p><h3>El problema de la autoinyección</h3><p>Según un estudio publicado en PLOS ONE (2022, n=2,098), el 63.2% de los adultos a nivel global reporta fobia a las agujas. Este no es un dato menor — es la razón principal por la que los protocolos crónicos de péptidos colapsan en semanas. No es un fallo de la ciencia, es un fallo de cumplimiento.</p><p>A esto se suman los requisitos de cadena de frío (los inyectables deben refrigerarse), la carga de la autoinyección diaria, y la supervisión clínica necesaria para farmacias de formulación 503A.</p><h3>Cómo funciona la entrega buccal</h3><p>La mucosa buccal es una de las membranas más vascularizadas del cuerpo. Un parche buccal colocado en la mejilla interior permite que los péptidos de hasta 4,000 Da se difundan directamente a la circulación sistémica.</p><p>Ventajas clave:</p><ul><li>Sin metabolismo de primer paso hepático (a diferencia de cápsulas orales que pierden >95%)</li><li>Sin cadena de frío — estable a temperatura ambiente</li><li>Ritual de 30 segundos vs. autoinyección diaria</li><li>Biodisponibilidad comparable a la inyección subcutánea</li></ul><h3>50% más eficaz que tiras orales</h3><p>Datos in-vitro de la tecnología LaminaCore® muestran que los parches buccales logran un 50% más de eficacia comparado con tiras sublinguales convencionales. La diferencia está en el sello Muco-SmartSeal® que previene la fuga de péptidos hacia la saliva.</p>`,
-    body_en:`<p>Peptides work. The problem was never the science — it's the delivery format. Clinically effective protocols are trapped behind an experience that destroys patient compliance.</p><h3>The self-injection problem</h3><p>According to a PLOS ONE study (2022, n=2,098), 63.2% of adults globally report needle phobia. This is not a minor data point — it's the primary reason chronic peptide protocols collapse within weeks. It's not science failure, it's compliance failure.</p><p>Add cold chain requirements (injectables must be refrigerated), the burden of daily self-injection, and the clinical supervision required for 503A compounding pharmacies.</p><h3>How buccal delivery works</h3><p>The buccal mucosa is one of the most vascularized membranes in the body. A buccal patch placed on the inner cheek allows peptides up to 4,000 Da to diffuse directly into systemic circulation.</p><p>Key advantages:</p><ul><li>No hepatic first-pass metabolism (unlike oral capsules which lose >95%)</li><li>No cold chain — ambient stable</li><li>30-second ritual vs. daily self-injection</li><li>Bioavailability comparable to subcutaneous injection</li></ul><h3>50% more effective than oral strips</h3><p>In-vitro data from LaminaCore® technology shows buccal patches achieve 50% higher efficacy compared to conventional sublingual strips. The difference is the Muco-SmartSeal® that prevents peptide leakage into saliva.</p>`
-  },
-  {
-    id:2, cat:'guias', icon:'📋',
-    title_es:'Guía completa: tu primer protocolo de bioactivos',
-    title_en:'Complete guide: your first bioactives protocol',
-    excerpt_es:'Desde elegir el bioactivo correcto hasta optimizar tu rutina diaria. Todo lo que necesitas saber antes de empezar.',
-    excerpt_en:'From choosing the right bioactive to optimizing your daily routine. Everything you need to know before starting.',
-    date:'Abril 2026', read:'6 min',
-    body_es:`<p>Si estás considerando los bioactivos de grado farmacéutico por primera vez, esta guía te ayudará a entender qué esperar, cómo elegir y cómo optimizar tu experiencia.</p><h3>Paso 1: Identifica tu objetivo</h3><p>Cada bioactivo tiene un perfil de acción específico. Antes de elegir, define qué buscas:</p><ul><li><strong>Energía y claridad mental:</strong> VITACHARGE™ (NAD+) — resultados en 3-7 días</li><li><strong>Piel y anti-envejecimiento:</strong> RADIANCEMAX™ (GHK-Cu) — resultados en 4-8 semanas</li><li><strong>Recuperación y reparación:</strong> RECOVERYPRO™ (BPC-157) — resultados en 2-4 semanas</li><li><strong>Rendimiento muscular:</strong> MUSCLEMAXX™ (CJC-1295) — resultados en 4-8 semanas</li></ul><h3>Paso 2: Entiende la aplicación</h3><p>La tecnología BiogradixRelease® simplifica todo. Pegas un parche en la mejilla interior, esperas 60-90 minutos, y listo. Sin agujas, sin refrigeración, sin preparación compleja.</p><h3>Paso 3: Establece una rutina</h3><p>La consistencia es clave. La mayoría de los protocolos funcionan mejor con aplicaciones regulares (la frecuencia varía por producto). Elige un momento del día que puedas mantener — por la mañana al despertar o por la noche antes de dormir son los más populares.</p><h3>Paso 4: Sé paciente y documenta</h3><p>Los bioactivos no son soluciones instantáneas. Son compuestos que trabajan con la biología de tu cuerpo. Documenta cómo te sientes semana a semana — los cambios sutiles se acumulan en resultados significativos.</p>`,
-    body_en:`<p>If you're considering pharmaceutical-grade bioactives for the first time, this guide will help you understand what to expect, how to choose, and how to optimize your experience.</p><h3>Step 1: Identify your goal</h3><p>Each bioactive has a specific action profile. Before choosing, define what you're looking for:</p><ul><li><strong>Energy and mental clarity:</strong> VITACHARGE™ (NAD+) — results in 3-7 days</li><li><strong>Skin and anti-aging:</strong> RADIANCEMAX™ (GHK-Cu) — results in 4-8 weeks</li><li><strong>Recovery and repair:</strong> RECOVERYPRO™ (BPC-157) — results in 2-4 weeks</li><li><strong>Muscle performance:</strong> MUSCLEMAXX™ (CJC-1295) — results in 4-8 weeks</li></ul><h3>Step 2: Understand the application</h3><p>BiogradixRelease® technology simplifies everything. You stick a patch on your inner cheek, wait 60-90 minutes, and you're done. No needles, no refrigeration, no complex preparation.</p><h3>Step 3: Establish a routine</h3><p>Consistency is key. Most protocols work best with regular applications (frequency varies by product). Choose a time of day you can maintain — morning upon waking or evening before bed are the most popular.</p><h3>Step 4: Be patient and document</h3><p>Bioactives are not instant solutions. They are compounds that work with your body's biology. Document how you feel week by week — subtle changes accumulate into significant results.</p>`
-  },
-  {
-    id:3, cat:'protocolos', icon:'⚗️',
-    title_es:'Los 4 protocolos de bioactivos: cuál es para ti',
-    title_en:'The 4 bioactive protocols: which one is for you',
-    excerpt_es:'Longevidad, rendimiento, metabólico o vitalidad. Desglosamos cada protocolo con sus compuestos, objetivos y tiempos esperados.',
-    excerpt_en:'Longevity, performance, metabolic, or vitality. We break down each protocol with its compounds, goals, and expected timelines.',
-    date:'Marzo 2026', read:'8 min',
-    body_es:`<p>Los bioactivos funcionan mejor en combinación. Nuestros cuatro protocolos están diseñados con compuestos sinérgicos que se potencian mutuamente.</p><h3>Protocolo Longevidad</h3><p><strong>Compuestos:</strong> RECOVERYPRO™ + VITACHARGE™ + RADIANCEMAX™</p><p>Reparación tisular, energía celular y calidad de piel. Este es nuestro protocolo más popular entre mujeres 40+ y personas enfocadas en envejecimiento saludable. El BPC-157 repara a nivel celular, el NAD+ alimenta las mitocondrias, y el GHK-Cu estimula colágeno y elastina.</p><h3>Protocolo Rendimiento</h3><p><strong>Compuestos:</strong> RECOVERYPRO™ + MUSCLEMAXX™ + VITACHARGE™</p><p>Diseñado para atletas y personas activas. TB-500 para recuperación de lesiones y antiinflamación, CJC-1295 para pulso de hormona de crecimiento nocturno y sueño profundo, y BPC-157 como base de reparación tisular.</p><h3>Protocolo Metabólico</h3><p><strong>Compuestos:</strong> VITACHARGE™ + MUSCLEMAXX™</p><p>Sensibilidad a la insulina, composición corporal y optimización metabólica. NAD+ activa las sirtuinas (reguladores maestros del metabolismo), y CJC-1295 optimiza los pulsos de hormona de crecimiento.</p><h3>Protocolo Vitalidad</h3><p><strong>Compuestos:</strong> PASSIONBOOST™ + IMMUNEFORT™ + RADIANCEMAX™</p><p>Libido, resiliencia inmune y salud de piel y cabello. Un enfoque holístico que cubre bienestar íntimo, defensas del sistema inmune e imagen exterior.</p>`,
-    body_en:`<p>Bioactives work best in combination. Our four protocols are designed with synergistic compounds that amplify each other.</p><h3>Longevity Protocol</h3><p><strong>Compounds:</strong> RECOVERYPRO™ + VITACHARGE™ + RADIANCEMAX™</p><p>Tissue repair, cellular energy, and skin quality. This is our most popular protocol among women 40+ and people focused on healthy aging. BPC-157 repairs at the cellular level, NAD+ fuels mitochondria, and GHK-Cu stimulates collagen and elastin.</p><h3>Performance Protocol</h3><p><strong>Compounds:</strong> RECOVERYPRO™ + MUSCLEMAXX™ + VITACHARGE™</p><p>Designed for athletes and active individuals. TB-500 for injury recovery and anti-inflammation, CJC-1295 for overnight growth hormone pulse and deep sleep, and BPC-157 as a tissue repair foundation.</p><h3>Metabolic Protocol</h3><p><strong>Compounds:</strong> VITACHARGE™ + MUSCLEMAXX™</p><p>Insulin sensitivity, body composition, and metabolic optimization. NAD+ activates sirtuins (master regulators of metabolism), and CJC-1295 optimizes growth hormone pulses.</p><h3>Vitality Protocol</h3><p><strong>Compounds:</strong> PASSIONBOOST™ + IMMUNEFORT™ + RADIANCEMAX™</p><p>Libido, immune resilience, and skin & hair health. A holistic approach covering intimate wellness, immune system defenses, and outward appearance.</p>`
-  },
-  {
-    id:4, cat:'innovacion', icon:'🔬',
-    title_es:'El futuro de la entrega de péptidos: por qué Big Pharma apuesta $500M+',
-    title_en:'The future of peptide delivery: why Big Pharma is betting $500M+',
-    excerpt_es:'Merck, Lilly y otros están invirtiendo cientos de millones en resolver la entrega oral de péptidos. Analizamos el panorama competitivo.',
-    excerpt_en:'Merck, Lilly, and others are investing hundreds of millions in solving oral peptide delivery. We analyze the competitive landscape.',
-    date:'Marzo 2026', read:'6 min',
-    body_es:`<p>La entrega de péptidos es uno de los desafíos más grandes de la farmacología moderna. Los péptidos son moléculas extremadamente efectivas, pero frágiles — el tracto gastrointestinal las destruye antes de que puedan funcionar.</p><h3>Las grandes apuestas</h3><p>Merck adquirió Cyprumed por $493M para acceder a su plataforma de películas de disolución oral (OTF). Eli Lilly invirtió €90M en Orbis Medicine para macrociclos orales. Ambas apuestas confirman lo mismo: quien resuelva la entrega de péptidos sin aguja domina un mercado de $50–84 mil millones.</p><h3>Dónde están los competidores</h3><p>Las farmacias de formulación como Empower y Olympia ofrecen viales inyectables y tabletas sublinguales. Marcas directas como bmiMD ofrecen formatos sublinguales o inyectables DIY. IntelGenx desarrolla tiras OTF genéricas.</p><p>Ninguno de ellos ofrece un parche buccal compuesto con prescripción médica — ese es exactamente el espacio que ocupa la tecnología BiogradixRelease®.</p><h3>Por qué buccal gana</h3><p>La entrega buccal combina lo mejor de ambos mundos: la biodisponibilidad del inyectable con la conveniencia del oral. No requiere cadena de frío, no requiere aguja, y el formato de parche garantiza una absorción controlada durante 60–90 minutos.</p>`,
-    body_en:`<p>Peptide delivery is one of the biggest challenges in modern pharmacology. Peptides are extremely effective molecules, but fragile — the gastrointestinal tract destroys them before they can work.</p><h3>The big bets</h3><p>Merck acquired Cyprumed for $493M to access their oral dissolving film (OTF) platform. Eli Lilly invested €90M in Orbis Medicine for oral macrocycles. Both bets confirm the same thing: whoever solves needle-free peptide delivery dominates a $50–84 billion market.</p><h3>Where competitors stand</h3><p>Compounding pharmacies like Empower and Olympia offer injectable vials and sublingual tablets. Direct brands like bmiMD offer sublingual or DIY injectable formats. IntelGenx develops generic OTF strips.</p><p>None of them offer a prescription-compounded buccal patch — that's exactly the space BiogradixRelease® technology occupies.</p><h3>Why buccal wins</h3><p>Buccal delivery combines the best of both worlds: injectable-level bioavailability with oral-level convenience. No cold chain, no needle, and the patch format guarantees controlled absorption over 60–90 minutes.</p>`
-  },
-  {
-    id:5, cat:'ciencia', icon:'🧪',
-    title_es:'NAD+ y longevidad: la molécula que tus mitocondrias necesitan',
-    title_en:'NAD+ and longevity: the molecule your mitochondria need',
-    excerpt_es:'Niveles de NAD+ caen 50% entre los 40 y 60 años. Exploramos por qué la suplementación de NAD+ se ha convertido en pilar de la longevidad.',
-    excerpt_en:'NAD+ levels drop 50% between ages 40 and 60. We explore why NAD+ supplementation has become a longevity pillar.',
-    date:'Marzo 2026', read:'5 min',
-    body_es:`<p>NAD+ (nicotinamida adenina dinucleótido) es un cofactor mitocondrial presente en cada célula de tu cuerpo. Es literalmente el combustible que tus mitocondrias necesitan para producir energía celular.</p><h3>El declive inevitable</h3><p>A los 40 años, tus niveles de NAD+ son aproximadamente la mitad de lo que eran a los 20. A los 60, han caído aún más. Este declive se correlaciona directamente con fatiga, deterioro cognitivo y envejecimiento acelerado.</p><h3>Activación de sirtuinas</h3><p>NAD+ es el cofactor esencial para las sirtuinas — una familia de proteínas que regulan la reparación del ADN, la inflamación y el metabolismo. Sin suficiente NAD+, las sirtuinas no pueden funcionar óptimamente.</p><h3>Por qué la entrega importa</h3><p>Las cápsulas orales de NAD+ tienen una biodisponibilidad inferior al 5% — el tracto gastrointestinal degrada la molécula antes de que llegue a la circulación. La entrega buccal evita este problema por completo, llevando el NAD+ directamente al torrente sanguíneo a través de la mucosa oral.</p><p>VITACHARGE™ entrega 150 mg de NAD+ de grado farmacéutico por parche, con pureza ≥99% verificada por HPLC de terceros.</p>`,
-    body_en:`<p>NAD+ (nicotinamide adenine dinucleotide) is a mitochondrial cofactor present in every cell of your body. It's literally the fuel your mitochondria need to produce cellular energy.</p><h3>The inevitable decline</h3><p>By age 40, your NAD+ levels are approximately half of what they were at 20. By 60, they've dropped even further. This decline directly correlates with fatigue, cognitive deterioration, and accelerated aging.</p><h3>Sirtuin activation</h3><p>NAD+ is the essential cofactor for sirtuins — a family of proteins that regulate DNA repair, inflammation, and metabolism. Without sufficient NAD+, sirtuins cannot function optimally.</p><h3>Why delivery matters</h3><p>Oral NAD+ capsules have less than 5% bioavailability — the gastrointestinal tract degrades the molecule before it reaches circulation. Buccal delivery bypasses this problem entirely, delivering NAD+ directly to the bloodstream through the oral mucosa.</p><p>VITACHARGE™ delivers 150 mg of pharmaceutical-grade NAD+ per patch, with ≥99% purity verified by third-party HPLC.</p>`
-  },
-  {
-    id:6, cat:'ciencia', icon:'✨',
-    title_es:'GHK-Cu: el tripéptido de cobre que desafía el envejecimiento',
-    title_en:'GHK-Cu: the copper tripeptide defying aging',
-    excerpt_es:'Descubierto en plasma humano, GHK-Cu estimula colágeno, elastina y reparación de tejidos. La ciencia detrás de RADIANCEMAX™.',
-    excerpt_en:'Discovered in human plasma, GHK-Cu stimulates collagen, elastin, and tissue repair. The science behind RADIANCEMAX™.',
-    date:'Febrero 2026', read:'5 min',
-    body_es:`<p>GHK-Cu (glicil-L-histidil-L-lisina cúprica) es un tripéptido de cobre descubierto naturalmente en el plasma sanguíneo humano. Su concentración disminuye con la edad — de 200 ng/mL a los 20 años a 80 ng/mL a los 60.</p><h3>Mecanismo de acción</h3><p>GHK-Cu actúa como una señal molecular que activa múltiples vías de reparación tisular. Estimula la síntesis de colágeno tipo I y III, promueve la producción de elastina, acelera la cicatrización de heridas y tiene propiedades antiinflamatorias documentadas.</p><h3>Aplicaciones terapéuticas</h3><p>Clínicamente, GHK-Cu se ha estudiado para regeneración de piel, crecimiento capilar, reparación de tejido conectivo y recuperación post-procedimiento estético. Es particularmente popular entre mujeres 40+ que buscan resultados anti-envejecimiento respaldados por evidencia.</p><h3>Disponibilidad actual</h3><p>GHK-Cu está clasificado como Categoría 1 por la FDA, lo que significa que puede ser formulado ahora mismo por farmacias 503A con prescripción médica. RADIANCEMAX™ entrega 3 mg por parche buccal.</p>`,
-    body_en:`<p>GHK-Cu (glycyl-L-histidyl-L-lysine copper) is a copper tripeptide naturally discovered in human blood plasma. Its concentration decreases with age — from 200 ng/mL at age 20 to 80 ng/mL at 60.</p><h3>Mechanism of action</h3><p>GHK-Cu acts as a molecular signal that activates multiple tissue repair pathways. It stimulates collagen type I and III synthesis, promotes elastin production, accelerates wound healing, and has documented anti-inflammatory properties.</p><h3>Therapeutic applications</h3><p>Clinically, GHK-Cu has been studied for skin regeneration, hair growth, connective tissue repair, and post-aesthetic-procedure recovery. It's particularly popular among women 40+ seeking evidence-backed anti-aging results.</p><h3>Current availability</h3><p>GHK-Cu is classified as FDA Category 1, meaning it can be compounded right now by 503A pharmacies with a prescription. RADIANCEMAX™ delivers 3 mg per buccal patch.</p>`
-  }
-];
-
-function renderArticles(filter = 'all') {
-  const grid = document.getElementById('articlesGrid');
-  const filtered = filter === 'all' ? ARTICLES : ARTICLES.filter(a => a.cat === filter);
-  const lang = currentLang;
-
-  grid.innerHTML = filtered.map(a => `
-    <div class="article-card" data-cat="${a.cat}" onclick="openArticle(${a.id})">
-      <div class="article-img">${a.icon}</div>
-      <div class="article-body">
-        <div class="article-cat">${a.cat}</div>
-        <div class="article-title">${lang === 'en' ? a.title_en : a.title_es}</div>
-        <div class="article-excerpt">${lang === 'en' ? a.excerpt_en : a.excerpt_es}</div>
-        <div class="article-meta">${a.date} · ${a.read}</div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function filterArticles(cat) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  renderArticles(cat);
-}
-
-function openArticle(id) {
-  const a = ARTICLES.find(x => x.id === id);
-  if (!a) return;
-  const lang = currentLang;
-  document.getElementById('modalHero').innerHTML = a.icon;
-  document.getElementById('modalBody').innerHTML = `
-    <div class="article-cat">${a.cat}</div>
-    <h2>${lang === 'en' ? a.title_en : a.title_es}</h2>
-    <div class="meta">${a.date} · ${a.read}</div>
-    ${lang === 'en' ? a.body_en : a.body_es}
-  `;
-  document.getElementById('articleModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  document.getElementById('articleModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.lang = currentLang;
-  updateLangButtons();
-  renderArticles();
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
+mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; } });
+const revealObserver = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); revealObserver.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-function setLang(lang) {
-  document.documentElement.lang = lang;
-  localStorage.setItem('bx-lang', lang);
-  currentLang = lang;
-  updateLangButtons();
-  renderArticles();
-}
-
-function updateLangButtons() {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active',
-      (currentLang === 'es' && btn.textContent === 'ES') ||
-      (currentLang === 'en' && btn.textContent === 'EN')
-    );
+// Filter pills
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    // For now just toggle active state visually
   });
-}
-
-document.getElementById('articleModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
 });
-</script>
 
+// i18n
+const TRANSLATIONS = {
+  'nav-productos':{es:'Productos',en:'Products'},'nav-tecnologia':{es:'Tecnología',en:'Technology'},'nav-educacion':{es:'Educación',en:'Education'},'nav-blog':{es:'Blog',en:'Blog'},'nav-faq':{es:'FAQ',en:'FAQ'},
+  'blog-cat':{es:'Ciencia · Bienestar · Longevidad',en:'Science · Wellness · Longevity'},
+  'blog-h1':{es:'Blog <em>biogradix</em>',en:'biogradix <em>Blog</em>'},
+  'blog-sub':{es:'Investigación, protocolos y ciencia aplicada al bienestar de precisión.',en:'Research, protocols, and applied science for precision wellness.'},
+  'filter-all':{es:'Todos',en:'All'},'filter-ciencia':{es:'Ciencia',en:'Science'},'filter-productos':{es:'Productos',en:'Products'},'filter-lifestyle':{es:'Estilo de vida',en:'Lifestyle'},'filter-investigacion':{es:'Investigación',en:'Research'},
+  'post1-cat':{es:'Ciencia',en:'Science'},
+  'post1-title':{es:'¿Qué es la absorción por mucosa oral y por qué importa para los suplementos?',en:'What is oral mucosa absorption and why does it matter for supplements?'},
+  'post1-excerpt':{es:'La mayoría de los suplementos orales pierden hasta el 80% de su potencia en el sistema digestivo. Explicamos la ciencia detrás de la absorción por mucosa oral y cómo BiogradixRelease® cambia las reglas del juego.',en:'Most oral supplements lose up to 80% of their potency in the digestive system. We explain the science behind oral mucosa absorption and how BiogradixRelease® changes the game.'},
+  'post1-meta':{es:'15 min de lectura · 2 Abr 2026',en:'15 min read · Apr 2, 2026'},
+  'post2-cat':{es:'Investigación',en:'Research'},
+  'post2-title':{es:'NAD+: Por qué este cofactor es el secreto de la energía y la longevidad en 2026',en:'NAD+: Why this cofactor is the secret to energy and longevity in 2026'},
+  'post2-excerpt':{es:'Sus niveles caen hasta un 50% entre los 20 y los 50 años. Explicamos qué es el NAD+, cómo activa las sirtuinas y por qué la biodisponibilidad de la vía de administración lo cambia todo.',en:'Levels fall by up to 50% between ages 20 and 50. We explain what NAD+ is, how it activates sirtuins, and why the bioavailability of the delivery route changes everything.'},
+  'post2-meta':{es:'8 min · 28 Mar 2026',en:'8 min · Mar 28, 2026'},
+  'post3-cat':{es:'Guía',en:'Guide'},
+  'post3-title':{es:'Glutatión: la guía completa del antioxidante maestro que tu cuerpo fabrica —y pierde con los años',en:'Glutathione: the complete guide to the master antioxidant your body makes — and loses with age'},
+  'post3-excerpt':{es:'El antioxidante más abundante en las células humanas. Qué hace, por qué sus niveles caen con la edad, y cómo la absorción por mucosa oral resuelve el problema de biodisponibilidad que tienen las cápsulas.',en:'The most abundant antioxidant in human cells. What it does, why levels fall with age, and how oral mucosa absorption solves the bioavailability problem of capsules.'},
+  'post3-meta':{es:'6 min · 22 Mar 2026',en:'6 min · Mar 22, 2026'},
+  'post4-cat':{es:'Ciencia',en:'Science'},
+  'post4-title':{es:'Péptidos y longevidad: el estado del arte en 2026 — qué dice la ciencia, qué promete la clínica',en:'Peptides and longevity: the 2026 state of the art — what science says, what the clinic promises'},
+  'post4-excerpt':{es:'De los hallmarks del envejecimiento a los secretagogos de GH: cómo actúan los péptidos sobre los mecanismos fundamentales del envejecimiento y por qué la vía de administración lo cambia todo.',en:'From aging hallmarks to GH secretagogues: how peptides act on fundamental aging mechanisms and why the delivery route changes everything.'},
+  'post4-meta':{es:'12 min · 15 Mar 2026',en:'12 min · Mar 15, 2026'},
+  'post5-cat':{es:'Ciencia',en:'Science'},
+  'post5-title':{es:'BPC-157: el péptido gástrico que acelera la recuperación muscular y articular',en:'BPC-157: the gastric peptide that accelerates muscle and joint recovery'},
+  'post5-excerpt':{es:'Cómo el BPC-157 reduce el DOMS hasta un 40–50%, repara tendones y ligamentos, y protege el sistema digestivo. La ciencia del péptido de recuperación más estudiado.',en:'How BPC-157 reduces DOMS by up to 40–50%, repairs tendons and ligaments, and protects the digestive system. The science behind the most studied recovery peptide.'},
+  'post5-meta':{es:'7 min · 8 Mar 2026',en:'7 min · Mar 8, 2026'},
+  'post6-cat':{es:'Belleza',en:'Beauty'},
+  'post6-title':{es:'GHK-Cu: el péptido del cobre que regula 4,000 genes y transforma la piel desde adentro',en:'GHK-Cu: the copper peptide that regulates 4,000 genes and transforms skin from within'},
+  'post6-excerpt':{es:'Cómo el GHK-Cu aumenta la síntesis de colágeno en 200–300%, regula la expresión génica y por qué supera a cualquier suplemento de colágeno convencional para la salud de la piel.',en:'How GHK-Cu increases collagen synthesis by 200–300%, regulates gene expression, and why it surpasses any conventional collagen supplement for skin health.'},
+  'post6-meta':{es:'9 min · 1 Mar 2026',en:'9 min · Mar 1, 2026'},
+  'read-more':{es:'Leer artículo',en:'Read article'},
+  'nl-label':{es:'Nunca te pierdas nada',en:'Never miss a thing'},
+  'nl-h2':{es:'Ciencia en tu <em>bandeja de entrada</em>',en:'Science in your <em>inbox</em>'},
+  'nl-sub':{es:'Artículos, protocolos y novedades de biogradix. Sin spam, solo contenido que vale la pena.',en:'Articles, protocols, and biogradix news. No spam, only content worth reading.'},
+  'nl-placeholder':{es:'tu@email.com',en:'your@email.com'},
+  'nl-btn':{es:'Suscribirse',en:'Subscribe'},
+  'cta-label':{es:'¿Listo para empezar?',en:'Ready to start?'},'cta-h2':{es:'Consulta gratuita<br/><em>por WhatsApp</em>',en:'Free consultation<br/><em>via WhatsApp</em>'},'cta-body':{es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.',en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},'cta-btn':{es:'Contactar por WhatsApp',en:'Contact via WhatsApp'},
+  'footer-brand':{es:'Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.',en:'Pharmaceutical-grade wellness supplements. Accessible science for the global market.'},
+  'footer-col-products':{es:'Productos',en:'Products'},'footer-col-resources':{es:'Recursos',en:'Resources'},'footer-col-contact':{es:'Contacto',en:'Contact'},
+  'footer-res-tech':{es:'Tecnología',en:'Technology'},'footer-res-blog':{es:'Blog',en:'Blog'},'footer-res-faq':{es:'FAQ',en:'FAQ'},'footer-res-coa':{es:'Certificados COA',en:'COA Certificates'},
+  'footer-copy':{es:'© 2026 biogradix. Todos los derechos reservados.',en:'© 2026 biogradix. All rights reserved.'},'footer-disclaimer':{es:'Solo para uso personal. Consulta a tu médico antes de usar.',en:'For personal use only. Consult your doctor before use.'},'footer-terms':{es:'Términos',en:'Terms'},'footer-privacy':{es:'Privacidad',en:'Privacy'},
+};
+function setLang(lang){
+  localStorage.setItem('bgLang',lang);
+  document.getElementById('htmlRoot').setAttribute('lang',lang);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.textContent=TRANSLATIONS[k][lang];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.innerHTML=TRANSLATIONS[k][lang];});
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.getAttribute('data-i18n-placeholder');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.placeholder=TRANSLATIONS[k][lang];});
+  document.querySelectorAll('.lang-btn').forEach(btn=>{btn.classList.toggle('active',btn.textContent.trim().toLowerCase()===lang);});
+}
+(function(){const s=localStorage.getItem('bgLang')||'es';setLang(s);})();
+</script>
 </body>
 </html>

@@ -1,103 +1,610 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlRoot">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MUSCLEMAXX™ — Rendimiento Máximo | biogradix</title>
-<meta name="description" content="MUSCLEMAXX™: CJC-1295 para crecimiento acelerado, fuerza explosiva, composición corporal. Rendimiento máximo en 4-6 semanas. Entrega BiogradixRelease®.">
-<meta property="og:type" content="product">
-<meta property="og:title" content="MUSCLEMAXX™ — Rendimiento Máximo">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MUSCLEMAXX™ — Maximum Performance | biogradix</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
-:root{--bx-navy:#0B1A2B;--bx-teal:#0F6E56;--bx-mint:#E1F5EE;--bx-cloud:#FAFBFC;--bx-silver:#E8EAED;--bx-text-primary:#0B1A2B;--bx-text-secondary:#4A5568}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bx-cloud);color:var(--bx-text-primary);line-height:1.7}a{text-decoration:none}button{cursor:pointer;border:none;background:none;font-family:inherit}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid var(--bx-silver);height:64px;display:flex;align-items:center;padding:0 40px}.nav-container{display:flex;justify-content:space-between;align-items:center;width:100%}.logo{font-family:'DM Sans';font-size:18px;font-weight:600}.logo .b{color:var(--bx-teal)}.logo .g{color:var(--bx-navy)}.nav-links{display:flex;gap:20px;align-items:center}.nav-link{font-size:13px;color:var(--bx-text-secondary)}.nav-link:hover{color:var(--bx-teal)}.wa-btn{background:var(--bx-teal);color:#fff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:500}
-.hero{background:linear-gradient(135deg,var(--bx-navy) 0%,rgba(15,110,86,0.15) 100%);padding:120px 40px;margin-top:64px;text-align:center}.hero-content{max-width:900px;margin:0 auto}.product-badge{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;opacity:0.7;margin-bottom:16px}.hero-title{font-family:'DM Sans';font-size:56px;font-weight:600;color:#fff;margin-bottom:12px}.hero-subtitle{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;color:#fff;opacity:0.9;margin-bottom:24px}.hero-desc{font-size:18px;color:#fff;max-width:700px;margin:0 auto;opacity:0.85;line-height:1.6}
-.container{max-width:1000px;margin:0 auto;padding:0 40px}.section{padding:80px 0}
-.problem-section{background:#fff}.problem-title{font-family:'Instrument Serif',serif;font-size:42px;font-style:italic;color:var(--bx-navy);margin-bottom:24px}.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}.problem-text h3{font-size:24px;font-weight:600;color:var(--bx-navy);margin-bottom:16px}.problem-text p{font-size:15px;color:var(--bx-text-secondary);margin-bottom:16px;line-height:1.8}.problem-list{list-style:none;margin-top:24px}.problem-list li{font-size:14px;color:var(--bx-text-secondary);margin-bottom:12px;padding-left:28px;position:relative}.problem-list li::before{content:'●';position:absolute;left:0;color:var(--bx-teal)}.problem-visual{background:linear-gradient(135deg,var(--bx-mint),rgba(15,110,86,0.1));border-radius:12px;padding:40px;min-height:300px;display:flex;align-items:center;justify-content:center}
-.benefits-section{background:var(--bx-mint)}.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}.benefit-card{background:#fff;padding:32px;border-radius:12px;border:1px solid var(--bx-silver)}.benefit-icon{font-size:32px;margin-bottom:16px}.benefit-title{font-size:18px;font-weight:600;color:var(--bx-navy);margin-bottom:12px}.benefit-desc{font-size:13px;color:var(--bx-text-secondary);line-height:1.7}
-.timeline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:40px}.timeline-item{background:var(--bx-cloud);padding:24px;border-radius:12px;text-align:center;border:1px solid var(--bx-silver)}.timeline-week{font-family:'DM Mono',monospace;font-size:16px;font-weight:600;color:var(--bx-teal)}.timeline-result{font-size:13px;color:var(--bx-text-secondary);margin-top:8px}
-.who-section{background:var(--bx-cloud)}.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:40px}.who-text h3{font-size:24px;font-weight:600;color:var(--bx-navy);margin-bottom:16px}.who-text p{font-size:14px;color:var(--bx-text-secondary);margin-bottom:16px;line-height:1.7}.who-checklist{list-style:none}.who-checklist li{font-size:13px;color:var(--bx-text-secondary);margin-bottom:12px;padding-left:24px;position:relative}.who-checklist li::before{content:'✓';position:absolute;left:0;color:var(--bx-teal);font-weight:bold}
-.faq-section{background:#fff}.faq-grid{max-width:800px;margin:40px auto 0}.faq-item{background:var(--bx-cloud);border:1px solid var(--bx-silver);border-radius:12px;margin-bottom:16px}.faq-question{padding:20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500}.faq-question:hover{background:#fff}.faq-toggle{font-size:20px;transition:transform 0.3s}.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s;background:#fff}.faq-answer.open{max-height:500px;padding:20px}.faq-answer p{font-size:13px;color:var(--bx-text-secondary);line-height:1.7}
-.cta-section{background:var(--bx-navy);color:#fff;padding:80px 40px;text-align:center}.cta-headline{font-size:36px;font-weight:600;margin-bottom:16px}.cta-text{font-size:16px;margin-bottom:32px;opacity:0.9}.btn-primary{background:#fff;color:var(--bx-navy);padding:14px 32px;border-radius:8px;font-weight:500;display:inline-block}
-footer{background:var(--bx-navy);color:#fff;padding:40px;text-align:center;font-size:12px}
-[data-lang="es"]{display:block}[data-lang="en"]{display:none}html[lang="en"] [data-lang="es"]{display:none}html[lang="en"] [data-lang="en"]{display:block}
-
-/* BREADCRUMB */
-.breadcrumb{padding:80px 40px 0;max-width:900px;margin:0 auto}
-.breadcrumb-list{display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.5px;color:var(--bx-text-tertiary);flex-wrap:wrap}
-.breadcrumb-list a{color:var(--bx-teal);transition:color 0.2s}
-.breadcrumb-list a:hover{color:var(--bx-deep-teal)}
-.breadcrumb-sep{color:var(--bx-silver)}
-.breadcrumb-current{color:var(--bx-text-secondary)}
-
-/* RELATED PRODUCTS */
-.related-section{padding:60px 40px;max-width:900px;margin:0 auto}
-.related-title{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:500;color:var(--bx-navy);margin-bottom:24px;text-align:center}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.related-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;padding:24px;text-align:center;transition:all 0.3s;display:block}
-.related-card:hover{border-color:var(--bx-teal);box-shadow:0 4px 16px rgba(15,110,86,0.1);transform:translateY(-2px)}
-.related-card-name{font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;color:var(--bx-teal);margin-bottom:6px}
-.related-card-desc{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--bx-text-secondary);line-height:1.5}
-
-@media(max-width:768px){
-
-.breadcrumb{padding:70px 20px 0}
-.related-grid{grid-template-columns:1fr}
-.related-section{padding:40px 20px}
-.nav{padding:0 20px}.hero{padding:60px 20px;margin-top:64px}.hero-title{font-size:36px}.container,.section{padding:60px 20px}.problem-grid,.who-grid{grid-template-columns:1fr;gap:32px}}
+:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--alert:#D4534E;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
+@media(max-width:768px){.container{padding:0 20px;}}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.up{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:.08s;}.reveal-delay-2{transition-delay:.16s;}.reveal-delay-3{transition-delay:.24s;}.reveal-delay-4{transition-delay:.32s;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
+.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
+.nav-inner{display:flex;align-items:center;gap:0;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
+.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--teal);}
+.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
+.lang-btn.active,.lang-btn:hover{color:var(--teal);}
+.lang-sep{color:var(--silver);font-size:12px;}
+.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
+@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open .mobile-menu-panel{transform:none;}
+.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
+.mobile-menu-panel a:hover{color:var(--teal);}
+.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
+/* HERO */
+.product-hero{background:var(--cloud);padding:80px 0 72px;margin-top:64px;position:relative;overflow:hidden;}
+#helix-canvas{position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;opacity:.12;}
+.product-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.product-cat-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;}
+.product-cat-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-active);}
+.product-hero-name{font-weight:700;font-size:52px;letter-spacing:-.8px;color:var(--navy);margin-bottom:4px;line-height:1;}
+.product-hero-tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--teal);margin-bottom:20px;}
+.product-hero-desc{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:28px;max-width:440px;}
+.product-hero-benefits{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.product-hero-benefits li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-1);}
+.benefit-check{width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.product-hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:28px;}
+.meta-chip{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);background:var(--cloud);border:1px solid var(--silver);border-radius:20px;padding:6px 12px;}
+.hero-img-wrap{border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 64px rgba(11,26,43,.12);position:relative;}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-img-badge{position:absolute;bottom:20px;left:20px;background:rgba(250,251,252,.95);backdrop-filter:blur(8px);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;border:1px solid var(--silver);}
+.hero-badge-icon{width:36px;height:36px;border-radius:8px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-badge-text .t1{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);display:block;}
+.hero-badge-text .t2{font-size:13px;font-weight:500;color:var(--navy);}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:8px;padding:13px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
+@media(max-width:900px){.product-hero-inner{grid-template-columns:1fr;}.product-hero-name{font-size:36px;}}
+/* HOW IT WORKS */
+.how-section{padding:80px 0;background:#fff;}
+.section-header{text-align:center;margin-bottom:52px;}
+.section-header .label{margin-bottom:12px;display:block;}
+.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:32px;letter-spacing:-.4px;color:var(--navy);margin-bottom:10px;}
+.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.section-sub{font-size:15px;color:var(--text-2);max-width:520px;margin:0 auto;}
+.steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
+.steps-grid::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--mint),var(--teal),var(--mint));}
+.step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
+.step-dot{width:56px;height:56px;border-radius:50%;background:var(--mint);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--teal);}
+.step-label{font-weight:500;font-size:13px;color:var(--navy);margin-bottom:6px;}
+.step-desc{font-size:12px;color:var(--text-2);line-height:1.5;}
+@media(max-width:768px){.steps-grid{grid-template-columns:1fr 1fr;gap:24px;}.steps-grid::before{display:none;}}
+.product-peptide-name{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;opacity:.8;}
+/* WHY CARDS */
+.why-card{background:#fff;border:1px solid var(--silver);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:box-shadow .25s,transform .25s;}
+.why-card:hover{box-shadow:0 8px 32px rgba(15,110,86,.1);transform:translateY(-2px);}
+.why-icon{width:44px;height:44px;border-radius:10px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.why-title{font-weight:600;font-size:15px;color:var(--navy);}
+.why-body{font-size:13px;color:var(--text-2);line-height:1.65;}
+/* COA */
+.coa-section{padding:80px 0;background:var(--navy);}
+.coa-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+@media(max-width:768px){.coa-inner{grid-template-columns:1fr;}}
+.coa-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-active);display:block;margin-bottom:12px;}
+.coa-h2{font-weight:500;font-size:30px;letter-spacing:-.4px;color:#fff;margin-bottom:16px;}
+.coa-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.coa-body{font-size:15px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:28px;}
+.coa-list{display:flex;flex-direction:column;gap:12px;}
+.coa-item{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.7);}
+.coa-check{width:20px;height:20px;border-radius:50%;background:rgba(29,158,117,.2);border:1px solid var(--teal-active);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.coa-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.coa-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;text-align:center;}
+.coa-stat-val{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:var(--teal-active);display:block;margin-bottom:6px;}
+.coa-stat-label{font-size:12px;color:rgba(255,255,255,.4);}
+/* RELATED */
+.related-section{padding:80px 0;background:var(--cloud);}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr;}}
+.product-card{background:#fff;border:1px solid var(--silver);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s;cursor:pointer;text-decoration:none;color:inherit;}
+.product-card:hover{border-color:rgba(15,110,86,.3);box-shadow:0 12px 40px rgba(11,26,43,.1);transform:translateY(-3px);}
+.product-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--mint);}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.product-card:hover .product-img img{transform:scale(1.04);}
+.product-badge-pill{position:absolute;top:12px;left:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:6px;padding:4px 10px;}
+.product-body{padding:20px;flex:1;}
+.product-name{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:3px;}
+.product-tagline-sm{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);margin-bottom:10px;}
+.product-desc-sm{font-size:12px;color:var(--text-3);}
+/* CTA */
+.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
+.cta-helix{position:absolute;inset:0;opacity:.05;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
+.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
+.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
+.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 10px 30px rgba(15,110,86,.4);}
+/* FOOTER */
+.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
+.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
+.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--teal-active);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);}
+.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.15);text-align:center;}
+.footer-legal{display:flex;gap:20px;}
+.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
+.footer-legal a:hover{color:rgba(255,255,255,.5);}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-container"><a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none">
-      <svg width="44" height="20" viewBox="0 0 44 20" style="flex-shrink:0">
-        <path d="M2 5 Q9 1, 16 5 Q23 9, 30 5 Q37 1, 44 5" fill="none" stroke="#0F6E56" stroke-width="1.6" opacity="0.6"/>
-        <path d="M2 11 Q9 15, 16 11 Q23 7, 30 11 Q37 15, 44 11" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="9" y1="3" x2="9" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-        <line x1="30" y1="3" x2="30" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-      </svg>
-      <span><span class="b">bio</span><span class="g">gradix</span></span>
-    </a><div class="nav-links"><a href="index.html#productos" class="nav-link"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-      <a href="educacion.html" class="nav-link"><span data-lang="es">Capacitación</span><span data-lang="en">Training</span></a>
-      <a href="blog.html" class="nav-link">Blog</a><div style="display:flex;border:1px solid var(--bx-silver);border-radius:4px;overflow:hidden;margin-left:8px"><button onclick="setLang('es')" class="lang-btn" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;background:var(--bx-mint);color:var(--bx-teal)">ES</button><button onclick="setLang('en')" class="lang-btn" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;color:var(--bx-text-secondary)">EN</button></div><a href="https://wa.me/525512345678" target="_blank" class="wa-btn"><span data-lang="es">WhatsApp</span><span data-lang="en">WhatsApp</span></a></div></div></nav>
-<section class="hero"><div class="hero-content"><div class="product-badge">MUSCLEMAXX™</div><h1 class="hero-title"><span data-lang="es">Rendimiento Máximo</span><span data-lang="en">Maximum Performance</span></h1><p class="hero-subtitle"><span data-lang="es">Crecimiento Acelerado & Fuerza Explosiva</span><span data-lang="en">Accelerated Growth & Explosive Strength</span></p><p class="hero-desc"><span data-lang="es">MUSCLEMAXX™ es CJC-1295 + Ipamorelin, los péptidos "stack" más potentes para crecimiento muscular y composición corporal. Gana músculo más rápido, pierde grasa simultáneamente, y ve cambios en 4-6 semanas.</span><span data-lang="en">MUSCLEMAXX™ is CJC-1295 + Ipamorelin, the most potent "stack" peptides for muscle growth and body composition. Build muscle faster, lose fat simultaneously, and see changes in 4-6 weeks.</span></p></div></section>
-<section class="section problem-section"><div class="container"><h2 class="problem-title"><span data-lang="es">El Problema: Progreso Lento</span><span data-lang="en">The Problem: Slow Progress</span></h2><div class="problem-grid"><div class="problem-text"><h3><span data-lang="es">Entrenas Duro Pero Progresas Lentamente</span><span data-lang="en">You Train Hard But Progress Slowly</span></h3><p><span data-lang="es">6 meses de entrenamiento consistente y apenas visible cambio. A los 40, la síntesis proteica ralentiza. Hormona del crecimiento cae 30%+. Tu cuerpo simplemente no construye música tan rápido como a los 20.</span><span data-lang="en">6 months of consistent training and barely visible change. By 40, protein synthesis slows. Growth hormone drops 30%+. Your body simply doesn't build muscle as fast as at 20.</span></p><h3 style="margin-top:24px"><span data-lang="es">Resultado: Frustración y Abandono</span><span data-lang="en">Result: Frustration and Quitting</span></h3><ul class="problem-list"><li><span data-lang="es">Ganancia muscular plateaueada</span><span data-lang="en">Muscle gain plateaus</span></li><li><span data-lang="es">Dificultad perdiendo grasa corporal</span><span data-lang="en">Difficulty losing body fat</span></li><li><span data-lang="es">Recuperación lenta entre entrenamientos</span><span data-lang="en">Slow recovery between sessions</span></li><li><span data-lang="es">Frustración con lentitud de progreso</span><span data-lang="en">Frustration with slow progress</span></li></ul></div><div class="problem-visual"><div style="text-align:center;color:var(--bx-teal)"><div style="font-size:48px;margin-bottom:16px">📈</div><div style="font-size:18px;font-weight:600"><span data-lang="es">Progreso Lento</span><span data-lang="en">Slow Progress</span></div></div></div></div></section>
-<section class="section benefits-section"><div class="container"><h2 class="problem-title" style="color:var(--bx-navy)"><span data-lang="es">La Solución: Rendimiento Acelerado</span><span data-lang="en">The Solution: Accelerated Performance</span></h2><div class="benefits-grid"><div class="benefit-card"><div class="benefit-icon">💪</div><h3 class="benefit-title"><span data-lang="es">Crecimiento Muscular Acelerado</span><span data-lang="en">Accelerated Muscle Growth</span></h3><p class="benefit-desc"><span data-lang="es">CJC-1295 estimula hormona del crecimiento endógena. Resultado: síntesis proteica aumenta 40-60%, ganas músculo 2-3x más rápido que normal.</span><span data-lang="en">CJC-1295 stimulates endogenous growth hormone. Result: protein synthesis increases 40-60%, build muscle 2-3x faster than normal.</span></p></div><div class="benefit-card"><div class="benefit-icon">🔥</div><h3 class="benefit-title"><span data-lang="es">Pérdida de Grasa Simultánea</span><span data-lang="en">Simultaneous Fat Loss</span></h3><p class="benefit-desc"><span data-lang="es">GH elevado quema grasa mientras construyes músculo - cambio de composición rápido y dramático. Ves "cutting" y "bulking" simultáneamente.</span><span data-lang="en">Elevated GH burns fat while building muscle - rapid and dramatic composition change. See "cutting" and "bulking" simultaneously.</span></p></div><div class="benefit-card"><div class="benefit-icon">⚡</div><h3 class="benefit-title"><span data-lang="es">Fuerza Explosiva</span><span data-lang="en">Explosive Strength</span></h3><p class="benefit-desc"><span data-lang="es">Más músculo = más fuerza. GH mejorada = recuperación mejorada. Resultado: levanta más pesado, haz más reps, progresa constantemente.</span><span data-lang="en">More muscle = more strength. Improved GH = improved recovery. Result: lift heavier, do more reps, progress constantly.</span></p></div><div class="benefit-card"><div class="benefit-icon">🧬</div><h3 class="benefit-title"><span data-lang="es">Recuperación Óptima</span><span data-lang="en">Optimal Recovery</span></h3><p class="benefit-desc"><span data-lang="es">GH mejorada acelera reparación tisular, síntesis de colágeno, recuperación nerviosa. Entrena duro, recupera rápido, entrena duro de nuevo.</span><span data-lang="en">Improved GH accelerates tissue repair, collagen synthesis, nervous recovery. Train hard, recover fast, train hard again.</span></p></div></div></section>
-<section class="section" style="background:#fff"><div class="container"><h2 class="problem-title"><span data-lang="es">¿Cuándo Verás Resultados?</span><span data-lang="en">When Will You See Results?</span></h2><div class="timeline-grid"><div class="timeline-item"><div class="timeline-week"><span data-lang="es">Semana 1-2</span><span data-lang="en">Week 1-2</span></div><div class="timeline-result"><span data-lang="es">Recuperación mejorada</span><span data-lang="en">Improved recovery</span></div></div><div class="timeline-item"><div class="timeline-week"><span data-lang="es">Semana 2-4</span><span data-lang="en">Week 2-4</span></div><div class="timeline-result"><span data-lang="es">Ganancia de fuerza</span><span data-lang="en">Strength gains</span></div></div><div class="timeline-item"><div class="timeline-week"><span data-lang="es">Semana 4-6</span><span data-lang="en">Week 4-6</span></div><div class="timeline-result"><span data-lang="es">Cambio de composición</span><span data-lang="en">Composition change</span></div></div><div class="timeline-item"><div class="timeline-week"><span data-lang="es">Semana 8-12</span><span data-lang="en">Week 8-12</span></div><div class="timeline-result"><span data-lang="es">Transformación visible</span><span data-lang="en">Visible transformation</span></div></div></div></section>
-<section class="section who-section"><div class="container"><h2 class="problem-title" style="color:var(--bx-navy)"><span data-lang="es">¿Para Quién es MUSCLEMAXX™?</span><span data-lang="en">Who Is MUSCLEMAXX™ For?</span></h2><div class="who-grid"><div class="who-text"><h3><span data-lang="es">El Candidato Perfecto</span><span data-lang="en">The Perfect Candidate</span></h3><p><span data-lang="es">Atletas serios buscando crecimiento máximo, personas 40+ queriendo cuerpo más joven, o cualquiera frustrado con progreso lento.</span><span data-lang="en">Serious athletes seeking maximum growth, people 40+ wanting a younger body, or anyone frustrated with slow progress.</span></p><ul class="who-checklist"><li><span data-lang="es">Atletas serios y competitivos</span><span data-lang="en">Serious competitive athletes</span></li><li><span data-lang="es">Personas 40+ buscando composición optimizada</span><span data-lang="en">Those 40+ seeking optimized composition</span></li><li><span data-lang="es">Entrenadores de resistencia intenso</span><span data-lang="en">Intense resistance trainers</span></li><li><span data-lang="es">Frustrados con progreso lento</span><span data-lang="en">Frustrated with slow progress</span></li></ul></div><div class="who-text" style="background:var(--bx-cloud);padding:32px;border-radius:12px"><h3 style="color:var(--bx-teal)"><span data-lang="es">Requisito Crítico: Entrena Consistentemente</span><span data-lang="en">Critical Requirement: Train Consistently</span></h3><p><span data-lang="es">MUSCLEMAXX™ amplifica lo que el entrenamiento construye. Sin entrenamiento consistente, no hay ganancia. Sin dieta adecuada, sin resultados óptimos.</span><span data-lang="en">MUSCLEMAXX™ amplifies what training builds. Without consistent training, no gains. Without proper diet, no optimal results.</span></p></div></div></section>
-<section class="section problem-section"><div class="container"><h2 class="problem-title"><span data-lang="es">FAQ</span></h2><div class="faq-grid"><div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span><span data-lang="es">¿Es seguro?</span><span data-lang="en">Is it safe?</span></span><span class="faq-toggle">▼</span></div><div class="faq-answer"><p><span data-lang="es">Sí. CJC-1295 + Ipamorelin es el stack más estudiado. Cientos de miles lo han usado sin problemas serios.</span><span data-lang="en">Yes. CJC-1295 + Ipamorelin is the most-studied stack. Hundreds of thousands have used it without serious issues.</span></p></div></div><div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span><span data-lang="es">¿Afecta hormones naturales?</span><span data-lang="en">Does it affect natural hormones?</span></span><span class="faq-toggle">▼</span></div><div class="faq-answer"><p><span data-lang="es">CJC-1295 estimula GH endógena, no la reemplaza. Cuando paras, tu cuerpo vuelve a producir naturalmente. A diferencia de HGH exógena, no suprime producción.</span><span data-lang="en">CJC-1295 stimulates endogenous GH, not replaces it. When you stop, your body resumes natural production. Unlike exogenous HGH, doesn't suppress production.</span></p></div></div><div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)"><span><span data-lang="es">¿Funciona sin dieta y entrenamiento?</span><span data-lang="en">Does it work without diet and training?</span></span><span class="faq-toggle">▼</span></div><div class="faq-answer"><p><span data-lang="es">No. MUSCLEMAXX™ amplifica resultados del entrenamiento. Necesitas proteína adecuada (1-1.6g/lb), calorías correctas, y entrenamiento de resistencia consistente.</span><span data-lang="en">No. MUSCLEMAXX™ amplifies training results. You need proper protein (1-1.6g/lb), correct calories, and consistent resistance training.</span></p></div></div></div></section>
-<section class="cta-section"><div class="container"><h2 class="cta-headline"><span data-lang="es">Listo para Máxima Performance?</span><span data-lang="en">Ready for Maximum Performance?</span></h2><p class="cta-text"><span data-lang="es">Habla con nuestro equipo sobre cómo MUSCLEMAXX™ puede transformar tu composición corporal en 4-6 semanas.</span><span data-lang="en">Talk to our team about how MUSCLEMAXX™ can transform your body composition in 4-6 weeks.</span></p><a href="https://wa.me/525512345678?text=Hola%2C%20me%20interesa%20MUSCLEMAXX" target="_blank" class="btn-primary"><span data-lang="es">Contactar por WhatsApp</span><span data-lang="en">Contact via WhatsApp</span></a></div></section>
-<footer>
-  <div style="margin-bottom:12px">
-    <a href="index.html" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Inicio</span><span data-lang="en">Home</span></a>
-    <a href="index.html#productos" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-    <a href="terms.html" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Términos</span><span data-lang="en">Terms</span></a>
-    <a href="privacy.html" style="color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px"><span data-lang="es">Privacidad</span><span data-lang="en">Privacy</span></a>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
+        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+        <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+        <a href="blog.html" data-i18n="nav-blog">Blog</a>
+        <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
+      </div>
+      <div class="nav-right">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <a href="https://wa.me/1234567890" class="btn-wa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
   </div>
-  <p><span data-lang="es">© 2026 biogradix. Solo para uso en investigación.</span><span data-lang="en">© 2026 biogradix. Research use only.</span></p>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel">
+    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" data-i18n="nav-blog">Blog</a>
+    <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
+    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--silver);">
+      <button class="lang-btn active" onclick="setLang('es');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">ES</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">EN</button>
+    </div>
+    <a href="https://wa.me/1234567890" class="btn-wa">WhatsApp</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="product-hero">
+  <canvas id="helix-canvas"></canvas>
+  <div class="container">
+    <div class="product-hero-inner">
+      <div>
+        <div class="product-cat-badge reveal">
+          <div class="product-cat-dot"></div>
+          <span class="label" data-i18n="mm-cat">Músculo · Rendimiento</span>
+        </div>
+        <div class="product-hero-name reveal reveal-delay-1">MUSCLEMAXX™</div>
+        <div class="product-peptide-name">CJC-1295 / Ipamorelin</div>
+        <div class="product-hero-tagline reveal reveal-delay-1">Maximum Performance</div>
+        <p class="product-hero-desc reveal reveal-delay-2" data-i18n="mm-desc">MUSCLEMAXX™ es nuestro sistema premium de optimización hormonal natural basado en CJC-1295 combinado con Ipamorelin. Estos péptidos actúan sinérgicamente en el eje GH (hormona del crecimiento) del cuerpo, estimulando la liberación natural de hormona del crecimiento endógena — la hormona más anabólica del cuerpo. Absorción directa por mucosa oral para estimulación del eje GH sin agujas.</p>
+        <ul class="product-hero-benefits reveal reveal-delay-2">
+          <li>
+            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="mm-hero-b1">Síntesis proteica y desarrollo de masa magra</span>
+          </li>
+          <li>
+            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="mm-hero-b2">Fuerza y resistencia muscular explosiva</span>
+          </li>
+          <li>
+            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="mm-hero-b3">Optimización de composición corporal</span>
+          </li>
+          <li>
+            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="mm-hero-b4">Recuperación acelerada entre sesiones de entrenamiento</span>
+          </li>
+        </ul>
+        <div class="product-hero-meta reveal reveal-delay-3">
+          <div class="meta-chip">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="mm-timeline-chip">4–6 semanas</span>
+          </div>
+          <div class="meta-chip">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span data-i18n="mm-aud-chip">Atletas · Culturismo · Rendimiento</span>
+          </div>
+        </div>
+        <a href="https://wa.me/1234567890" class="btn-primary reveal reveal-delay-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <span data-i18n="hero-cta-wa">Consultar por WhatsApp</span>
+        </a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80&fit=crop" alt="MUSCLEMAXX Maximum Performance"/>
+          <div class="hero-img-badge">
+            <div class="hero-badge-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+            </div>
+            <div class="hero-badge-text">
+              <span class="t1" data-i18n="badge-purity-label">Pureza verificada</span>
+              <span class="t2">≥99% HPLC · GMP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="how-label">BiogradixRelease®</span>
+      <h2 class="section-h2" data-i18n-html="how-h2">Cómo <em>funciona</em></h2>
+      <p class="section-sub" data-i18n="how-sub">Absorción por mucosa oral directa para biodisponibilidad máxima. Sin pérdidas por metabolismo hepático.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item reveal">
+        <div class="step-dot">1</div>
+        <div class="step-label" data-i18n="step1-label">Aplicación</div>
+        <div class="step-desc" data-i18n="step1-desc">Coloca el suplemento contra la mejilla interna o encía superior</div>
+      </div>
+      <div class="step-item reveal reveal-delay-1">
+        <div class="step-dot">2</div>
+        <div class="step-label" data-i18n="step2-label">Absorción</div>
+        <div class="step-desc" data-i18n="step2-desc">La mucosa bucal absorbe los bioactivos de inmediato</div>
+      </div>
+      <div class="step-item reveal reveal-delay-2">
+        <div class="step-dot">3</div>
+        <div class="step-label" data-i18n="step3-label">Entrada directa</div>
+        <div class="step-desc" data-i18n="step3-desc">Ingredientes entran al torrente sanguíneo en minutos</div>
+      </div>
+      <div class="step-item reveal reveal-delay-3">
+        <div class="step-dot">4</div>
+        <div class="step-label" data-i18n="step4-label">Sin hígado</div>
+        <div class="step-desc" data-i18n="step4-desc">Se evita el metabolismo de primer paso hepático</div>
+      </div>
+      <div class="step-item reveal reveal-delay-4">
+        <div class="step-dot">5</div>
+        <div class="step-label" data-i18n="step5-label">Biodisponibilidad total</div>
+        <div class="step-desc" data-i18n="step5-desc">2–3× más efectivo que cápsulas orales convencionales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<!-- BENEFITS SECTION -->
+<section style="padding:80px 0;background:#fff;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="ben-label">Beneficios científicamente respaldados</span>
+      <h2 class="section-h2" data-i18n-html="ben-h2">Lo que <em>MUSCLEMAXX™</em> hace por ti</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:0;">
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <div class="why-title" data-i18n="ben-t1">Crecimiento Muscular Acelerado</div>
+        <div class="why-body" data-i18n="ben-b1">CJC-1295 e Ipamorelin estimulan GH endógena — la hormona más anabólica del cuerpo. Aumenta síntesis proteica muscular en un 20–30%. Ganancia muscular notablemente más rápida. Usuarios reportan crecimiento visible en 4–6 semanas.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="why-title" data-i18n="ben-t2">Fuerza Explosiva</div>
+        <div class="why-body" data-i18n="ben-b2">GH apoya producción de proteína contráctil. Aumenta capacidad de generación de fuerza. Mejora máximos de levantamiento en un 10–25%. Usuarios reportan 'sentirse más fuertes' rápidamente.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97 0 9-2.69 9-6v-4a9 9 0 10-18 0v4c0 3.31 4.03 6 9 6z"/></svg>
+        </div>
+        <div class="why-title" data-i18n="ben-t3">Pérdida de Grasa Selectiva</div>
+        <div class="why-body" data-i18n="ben-b3">GH preferentemente quema grasa mientras preserva y construye músculo. Recomposición corporal ideal: ganancia de músculo + pérdida de grasa. Metabolismo mejorado de forma sostenida.</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </div>
+        <div class="why-title" data-i18n="ben-t4">Sueño y Recuperación</div>
+        <div class="why-body" data-i18n="ben-b4">Mejora calidad del sueño profundo (GH se libera principalmente en fase REM). Reduce tiempo de recuperación post-entrenamiento. Bienestar general mejorado por optimización hormonal natural.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COA SECTION -->
+<section class="coa-section">
+  <div class="container">
+    <div class="coa-inner">
+      <div class="reveal">
+        <span class="coa-label" data-i18n="coa-label">Transparencia total</span>
+        <h2 class="coa-h2" data-i18n-html="coa-h2">Certificado de análisis <em>por lote</em></h2>
+        <p class="coa-body" data-i18n="mm-coa-body">Cada lote de MUSCLEMAXX™ es analizado por un laboratorio independiente certificado. Puedes solicitar el COA completo de tu lote en cualquier momento — sin excepciones.</p>
+        <div class="coa-list">
+          <div class="coa-item">
+            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="coa-i1">Análisis HPLC — pureza ≥99% verificada</span>
+          </div>
+          <div class="coa-item">
+            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="coa-i2">Espectrometría de masas — identidad molecular</span>
+          </div>
+          <div class="coa-item">
+            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="coa-i3">Prueba de esterilidad y endotoxinas</span>
+          </div>
+          <div class="coa-item">
+            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="coa-i4">Fabricado bajo estándares GMP certificados</span>
+          </div>
+          <div class="coa-item">
+            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span data-i18n="coa-i5">Test de estabilidad a 6 meses</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="coa-stats">
+          <div class="coa-stat"><span class="coa-stat-val">≥99%</span><span class="coa-stat-label" data-i18n="coa-stat1">Pureza HPLC</span></div>
+          <div class="coa-stat"><span class="coa-stat-val">GMP</span><span class="coa-stat-label" data-i18n="coa-stat2">Certificación</span></div>
+          <div class="coa-stat"><span class="coa-stat-val">2–3×</span><span class="coa-stat-label" data-i18n="coa-stat3">Biodisponibilidad</span></div>
+          <div class="coa-stat"><span class="coa-stat-val">4–6w</span><span class="coa-stat-label" data-i18n="mm-coa-stat4">Masa visible</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section class="related-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="related-label">También puede interesarte</span>
+      <h2 class="section-h2" data-i18n-html="related-h2">Productos <em>relacionados</em></h2>
+    </div>
+    <div class="related-grid">
+      <a href="producto-recoverypro.html" class="product-card reveal">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80&fit=crop" alt="RECOVERYPRO"/>
+          <div class="product-badge-pill" data-i18n="badge-recuperacion">Recuperación</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">RECOVERYPRO™</div>
+          <div class="product-tagline-sm">Advanced Recovery</div>
+          <div class="product-desc-sm" data-i18n="rel-rp">BPC-157 + TB-500. La pareja perfecta para máximo rendimiento.</div>
+        </div>
+      </a>
+      <a href="producto-vitacharge.html" class="product-card reveal reveal-delay-1">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=800&q=80&fit=crop" alt="VITACHARGE"/>
+          <div class="product-badge-pill" data-i18n="badge-energia">Energía</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">VITACHARGE™</div>
+          <div class="product-tagline-sm">Cellular Energy</div>
+          <div class="product-desc-sm" data-i18n="rel-vc-mm">NMN 500mg + CoQ10. Combustible mitocondrial para entrenar más.</div>
+        </div>
+      </a>
+      <a href="producto-celldew.html" class="product-card reveal reveal-delay-2">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=800&q=80&fit=crop" alt="CELLDEW"/>
+          <div class="product-badge-pill" data-i18n="badge-detox">Detox</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">CELLDEW™</div>
+          <div class="product-tagline-sm">Antioxidant Master</div>
+          <div class="product-desc-sm" data-i18n="rel-cd-mm">Glutatión 500mg + NAC. Protección antioxidante post-entreno.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <svg class="cta-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#0F6E56" stroke-width="1.5"><path d="M0 100 Q60 60,120 100 Q180 140,240 100 Q300 60,360 100 Q420 140,480 100 Q540 60,600 100 Q660 140,720 100 Q780 60,840 100 Q900 140,960 100 Q1020 60,1080 100 Q1140 140,1200 100"/><path d="M0 200 Q60 160,120 200 Q180 240,240 200 Q300 160,360 200 Q420 240,480 200 Q540 160,600 200 Q660 240,720 200 Q780 160,840 200 Q900 240,960 200 Q1020 160,1080 200 Q1140 240,1200 200"/></g></svg>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="label" style="color:var(--teal-active);" data-i18n="cta-label">¿Listo para empezar?</span>
+      <h2 class="cta-h2" data-i18n-html="cta-h2">Consulta gratuita<br/><em>por WhatsApp</em></h2>
+      <p class="cta-body" data-i18n="cta-body">Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.</p>
+      <a href="https://wa.me/1234567890" class="btn-wa-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span data-i18n="cta-btn">Contactar por WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:4px;">
+          <svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
+          <span class="nav-logo-text" style="color:inherit;"><span style="color:var(--teal)">bio</span><span style="color:var(--silver)">gradix</span></span>
+        </a>
+        <p class="footer-brand-text" data-i18n="footer-brand">Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-products">Productos</div>
+        <div class="footer-links">
+          <a href="producto-celldew.html">CELLDEW™</a>
+          <a href="producto-vitacharge.html">VITACHARGE™</a>
+          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
+          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
+          <a href="producto-immunefort.html">IMMUNEFORT™</a>
+          <a href="producto-passionboost.html">PASSIONBOOST™</a>
+          <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-resources">Recursos</div>
+        <div class="footer-links">
+          <a href="tecnologia.html" data-i18n="footer-res-tech">Tecnología</a>
+          <a href="educacion.html" data-i18n="footer-res-edu">Educación</a>
+          <a href="blog.html" data-i18n="footer-res-blog">Blog</a>
+          <a href="index.html#faq" data-i18n="footer-res-faq">FAQ</a>
+          <a href="#" data-i18n="footer-res-coa">Certificados COA</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-contact">Contacto</div>
+        <div class="footer-links">
+          <a href="https://wa.me/1234567890">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="mailto:hola@biogradix.com">hola@biogradix.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer-copy">© 2026 biogradix. Todos los derechos reservados.</span>
+      <span class="footer-disclaimer" data-i18n="footer-disclaimer">Solo para uso personal. Consulta a tu médico antes de usar.</span>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer-terms">Términos</a>
+        <a href="#" data-i18n="footer-privacy">Privacidad</a>
+      </div>
+    </div>
+  </div>
 </footer>
+
 <script>
-let currentLang = localStorage.getItem('bx-lang') || 'es';
-document.addEventListener('DOMContentLoaded', () => { document.documentElement.lang = currentLang; });
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; } });
+const revealObserver = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); revealObserver.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-function setLang(lang) {
-  document.documentElement.lang = lang;
-  localStorage.setItem('bx-lang', lang);
-  currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    if ((lang === 'es' && btn.textContent === 'ES') || (lang === 'en' && btn.textContent === 'EN')) {
-      btn.style.background = 'var(--bx-mint)';
-      btn.style.color = 'var(--bx-teal)';
-    } else {
-      btn.style.background = 'transparent';
-      btn.style.color = 'var(--bx-text-secondary)';
+// Helix canvas
+(function(){
+  const canvas = document.getElementById('helix-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const TEAL='#0F6E56', TEAL_LITE='#1D9E75';
+  let W, H, dpr, phase=0;
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    dpr = window.devicePixelRatio||1;
+    W = rect.width*0.52; H = rect.height;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    canvas.style.width=W+'px'; canvas.style.height=H+'px';
+    ctx.scale(dpr,dpr);
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W*0.5, amp=W*0.22, pitch=H/5.5, steps=220, rung=6;
+    for(let strand=0;strand<2;strand++){
+      const phaseOff=strand===0?0:Math.PI;
+      ctx.beginPath();
+      for(let i=0;i<=steps;i++){
+        const t=i/steps, y=t*H, angle=(t*Math.PI*2*(H/pitch))-phase+phaseOff, x=cx+Math.cos(angle)*amp;
+        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      const grad=ctx.createLinearGradient(0,0,0,H);
+      grad.addColorStop(0,strand===0?TEAL:TEAL_LITE); grad.addColorStop(0.5,strand===0?TEAL_LITE:TEAL); grad.addColorStop(1,strand===0?TEAL:TEAL_LITE);
+      ctx.strokeStyle=grad; ctx.lineWidth=1.8; ctx.lineCap='round'; ctx.stroke();
     }
-  });
-}
+    const turns=H/pitch, rungsN=Math.floor(turns*rung);
+    for(let r=0;r<=rungsN;r++){
+      const t=r/rungsN, y=t*H, angle=(t*Math.PI*2*turns)-phase;
+      const x1=cx+Math.cos(angle)*amp, x2=cx+Math.cos(angle+Math.PI)*amp, depth=Math.sin(angle), alpha=0.12+0.28*((depth+1)/2);
+      ctx.beginPath(); ctx.arc(x1,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(15,110,86,${alpha+0.3})`; ctx.fill();
+      ctx.beginPath(); ctx.arc(x2,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(29,158,117,${alpha+0.3})`; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2,y); ctx.strokeStyle=`rgba(15,110,86,${alpha})`; ctx.lineWidth=1; ctx.stroke();
+    }
+    phase+=0.008; requestAnimationFrame(draw);
+  }
+  resize(); window.addEventListener('resize',()=>{ctx.resetTransform();resize();}); draw();
+})();
 
-function toggleFaq(element) { const answer = element.nextElementSibling; const toggle = element.querySelector('.faq-toggle'); answer.classList.toggle('open'); toggle.classList.toggle('open'); }
+// i18n
+const TRANSLATIONS = {
+  'nav-productos':{es:'Productos',en:'Products'},'nav-tecnologia':{es:'Tecnología',en:'Technology'},'nav-educacion':{es:'Educación',en:'Education'},'nav-blog':{es:'Blog',en:'Blog'},'nav-faq':{es:'FAQ',en:'FAQ'},
+  'mm-cat':{es:'Músculo · Rendimiento',en:'Muscle · Performance'},
+  'mm-desc':{es:'MUSCLEMAXX™ es nuestro sistema premium de optimización hormonal natural basado en CJC-1295 combinado con Ipamorelin. Estos péptidos actúan sinérgicamente en el eje GH (hormona del crecimiento) del cuerpo, estimulando la liberación natural de hormona del crecimiento endógena — la hormona más anabólica del cuerpo. Absorción directa por mucosa oral para estimulación del eje GH sin agujas.',en:'MUSCLEMAXX™ is our premium natural hormonal optimization system based on CJC-1295 combined with Ipamorelin. These peptides act synergistically on the body\'s GH (growth hormone) axis, stimulating natural release of endogenous growth hormone — the body\'s most anabolic hormone. Direct oral mucosa absorption for GH axis stimulation without needles.'},
+  'mm-hero-b1':{es:'Síntesis proteica y desarrollo de masa magra',en:'Protein synthesis and lean mass development'},
+  'mm-hero-b2':{es:'Fuerza y resistencia muscular explosiva',en:'Explosive muscle strength and endurance'},
+  'mm-hero-b3':{es:'Optimización de composición corporal',en:'Body composition optimization'},
+  'mm-hero-b4':{es:'Recuperación acelerada entre sesiones de entrenamiento',en:'Accelerated recovery between training sessions'},
+  'mm-timeline-chip':{es:'4–6 semanas',en:'4–6 weeks'},
+  'mm-aud-chip':{es:'Atletas · Culturismo · Rendimiento',en:'Athletes · Bodybuilding · Performance'},
+  'hero-cta-wa':{es:'Consultar por WhatsApp',en:'Contact via WhatsApp'},
+  'badge-purity-label':{es:'Pureza verificada',en:'Verified purity'},
+  'how-label':{es:'BiogradixRelease®',en:'BiogradixRelease®'},
+  'how-h2':{es:'Cómo <em>funciona</em>',en:'How it <em>works</em>'},
+  'how-sub':{es:'Absorción por mucosa oral directa para biodisponibilidad máxima. Sin pérdidas por metabolismo hepático.',en:'Direct oral mucosa absorption for maximum bioavailability. No losses from hepatic metabolism.'},
+  'step1-label':{es:'Aplicación',en:'Application'},'step1-desc':{es:'Coloca el suplemento contra la mejilla interna o encía superior',en:'Place the supplement against the inner cheek or upper gum'},
+  'step2-label':{es:'Absorción',en:'Absorption'},'step2-desc':{es:'La mucosa bucal absorbe los bioactivos de inmediato',en:'The buccal mucosa absorbs bioactives immediately'},
+  'step3-label':{es:'Entrada directa',en:'Direct entry'},'step3-desc':{es:'Ingredientes entran al torrente sanguíneo en minutos',en:'Ingredients enter the bloodstream within minutes'},
+  'step4-label':{es:'Sin hígado',en:'Bypasses liver'},'step4-desc':{es:'Se evita el metabolismo de primer paso hepático',en:'Hepatic first-pass metabolism is bypassed'},
+  'step5-label':{es:'Biodisponibilidad total',en:'Full bioavailability'},'step5-desc':{es:'2–3× más efectivo que cápsulas orales convencionales',en:'2–3× more effective than conventional oral capsules'},
+  'ben-label':{es:'Beneficios científicamente respaldados',en:'Scientifically backed benefits'},
+  'ben-h2':{es:'Lo que <em>MUSCLEMAXX™</em> hace por ti',en:'What <em>MUSCLEMAXX™</em> does for you'},
+  'ben-t1':{es:'Crecimiento Muscular Acelerado',en:'Accelerated Muscle Growth'},
+  'ben-b1':{es:'CJC-1295 e Ipamorelin estimulan GH endógena — la hormona más anabólica del cuerpo. Aumenta síntesis proteica muscular en un 20–30%. Ganancia muscular notablemente más rápida. Usuarios reportan crecimiento visible en 4–6 semanas.',en:'CJC-1295 and Ipamorelin stimulate endogenous GH — the body\'s most anabolic hormone. Increases muscle protein synthesis by 20–30%. Noticeably faster muscle gain. Users report visible growth in 4–6 weeks.'},
+  'ben-t2':{es:'Fuerza Explosiva',en:'Explosive Strength'},
+  'ben-b2':{es:'GH apoya producción de proteína contráctil. Aumenta capacidad de generación de fuerza. Mejora máximos de levantamiento en un 10–25%. Usuarios reportan \'sentirse más fuertes\' rápidamente.',en:'GH supports contractile protein production. Increases force generation capacity. Improves lifting maxes by 10–25%. Users report \'feeling stronger\' quickly.'},
+  'ben-t3':{es:'Pérdida de Grasa Selectiva',en:'Selective Fat Loss'},
+  'ben-b3':{es:'GH preferentemente quema grasa mientras preserva y construye músculo. Recomposición corporal ideal: ganancia de músculo + pérdida de grasa. Metabolismo mejorado de forma sostenida.',en:'GH preferentially burns fat while preserving and building muscle. Ideal body recomposition: muscle gain + fat loss. Sustainably improved metabolism.'},
+  'ben-t4':{es:'Sueño y Recuperación',en:'Sleep and Recovery'},
+  'ben-b4':{es:'Mejora calidad del sueño profundo (GH se libera principalmente en fase REM). Reduce tiempo de recuperación post-entrenamiento. Bienestar general mejorado por optimización hormonal natural.',en:'Improves deep sleep quality (GH is primarily released during REM phase). Reduces post-workout recovery time. Overall wellbeing improved by natural hormonal optimization.'},
+  'coa-label':{es:'Transparencia total',en:'Full transparency'},'coa-h2':{es:'Certificado de análisis <em>por lote</em>',en:'Certificate of analysis <em>per batch</em>'},
+  'mm-coa-body':{es:'Cada lote de MUSCLEMAXX™ es analizado por un laboratorio independiente certificado. Puedes solicitar el COA completo de tu lote en cualquier momento — sin excepciones.',en:'Every MUSCLEMAXX™ batch is tested by a certified independent laboratory. You can request the full COA for your batch at any time — no exceptions.'},
+  'coa-i1':{es:'Análisis HPLC — pureza ≥99% verificada',en:'HPLC analysis — ≥99% verified purity'},
+  'coa-i2':{es:'Espectrometría de masas — identidad molecular',en:'Mass spectrometry — molecular identity'},
+  'coa-i3':{es:'Prueba de esterilidad y endotoxinas',en:'Sterility and endotoxin testing'},
+  'coa-i4':{es:'Fabricado bajo estándares GMP certificados',en:'Manufactured under certified GMP standards'},
+  'coa-i5':{es:'Test de estabilidad a 6 meses',en:'6-month stability testing'},
+  'coa-stat1':{es:'Pureza HPLC',en:'HPLC Purity'},'coa-stat2':{es:'Certificación',en:'Certification'},'coa-stat3':{es:'Biodisponibilidad',en:'Bioavailability'},'mm-coa-stat4':{es:'Masa visible',en:'Visible mass'},
+  'related-label':{es:'También puede interesarte',en:'You may also like'},'related-h2':{es:'Productos <em>relacionados</em>',en:'Related <em>products</em>'},
+  'badge-recuperacion':{es:'Recuperación',en:'Recovery'},
+  'badge-energia':{es:'Energía',en:'Energy'},
+  'badge-detox':{es:'Detox',en:'Detox'},
+  'rel-rp':{es:'BPC-157 + TB-500. La pareja perfecta para máximo rendimiento.',en:'BPC-157 + TB-500. The perfect pair for maximum performance.'},
+  'rel-vc-mm':{es:'NMN 500mg + CoQ10. Combustible mitocondrial para entrenar más.',en:'NMN 500mg + CoQ10. Mitochondrial fuel to train harder.'},
+  'rel-cd-mm':{es:'Glutatión 500mg + NAC. Protección antioxidante post-entreno.',en:'Glutathione 500mg + NAC. Post-workout antioxidant protection.'},
+  'cta-label':{es:'¿Listo para empezar?',en:'Ready to start?'},'cta-h2':{es:'Consulta gratuita<br/><em>por WhatsApp</em>',en:'Free consultation<br/><em>via WhatsApp</em>'},'cta-body':{es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.',en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},'cta-btn':{es:'Contactar por WhatsApp',en:'Contact via WhatsApp'},
+  'footer-brand':{es:'Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.',en:'Pharmaceutical-grade wellness supplements. Accessible science for the global market.'},
+  'footer-col-products':{es:'Productos',en:'Products'},'footer-col-resources':{es:'Recursos',en:'Resources'},'footer-col-contact':{es:'Contacto',en:'Contact'},
+  'footer-res-tech':{es:'Tecnología',en:'Technology'},'footer-res-edu':{es:'Educación',en:'Education'},'footer-res-blog':{es:'Blog',en:'Blog'},'footer-res-faq':{es:'FAQ',en:'FAQ'},'footer-res-coa':{es:'Certificados COA',en:'COA Certificates'},
+  'footer-copy':{es:'© 2026 biogradix. Todos los derechos reservados.',en:'© 2026 biogradix. All rights reserved.'},'footer-disclaimer':{es:'Solo para uso personal. Consulta a tu médico antes de usar.',en:'For personal use only. Consult your doctor before use.'},'footer-terms':{es:'Términos',en:'Terms'},'footer-privacy':{es:'Privacidad',en:'Privacy'},
+};
+function setLang(lang){
+  localStorage.setItem('bgLang',lang);
+  document.getElementById('htmlRoot').setAttribute('lang',lang);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.textContent=TRANSLATIONS[k][lang];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.innerHTML=TRANSLATIONS[k][lang];});
+  document.querySelectorAll('.lang-btn').forEach(btn=>{btn.classList.toggle('active',btn.textContent.trim().toLowerCase()===lang);});
+}
+(function(){const s=localStorage.getItem('bgLang')||'es';setLang(s);})();
 </script>
 </body>
 </html>

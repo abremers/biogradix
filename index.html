@@ -1,1033 +1,1400 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlRoot">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>biogradix — Suplementos Wellness Premium Sin Inyecciones</title>
-<meta name="description" content="Suplementos wellness premium con entrega buccal. Energía en 3-7 días, belleza en 4-8 semanas. Tecnología BiogradixRelease® para máxima absorción.">
-<meta name="keywords" content="suplementos wellness, peptidos, energia, belleza, recuperacion, longevidad, biogradix">
-<meta name="author" content="biogradix">
-<meta name="robots" content="index, follow">
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX', {
-    'anonymize_ip': true,
-    'allow_google_signals': false,
-    'allow_ad_personalization_signals': false
-  });
-  
-  // Track page views
-  gtag('event', 'page_view', {
-    'page_title': document.title,
-    'page_location': window.location.href
-  });
-</script>
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://biogradix.com/">
-<meta property="og:title" content="biogradix — Suplementos Wellness Premium">
-<meta property="og:description" content="Suplementos wellness con entrega buccal. Resultados rápidos, sin inyecciones, calidad farmacéutica.">
-<meta property="og:image" content="https://biogradix.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:site_name" content="biogradix">
-<meta property="og:locale" content="es_MX">
-<meta property="og:locale:alternate" content="en_US">
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://biogradix.com/">
-<meta name="twitter:title" content="biogradix — Suplementos Wellness Premium">
-<meta name="twitter:description" content="Suplementos wellness con entrega buccal. Calidad farmacéutica, resultados rápidos.">
-<meta name="twitter:image" content="https://biogradix.com/og-image.png">
-<meta name="twitter:creator" content="@biogradix">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://biogradix.com/">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>biogradix — Suplementos Wellness Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --bx-navy:#0B1A2B;
-  --bx-teal:#0F6E56;
-  --bx-mint:#E1F5EE;
-  --bx-cloud:#FAFBFC;
-  --bx-silver:#E8EAED;
-  --bx-deep-teal:#085041;
-  --bx-active-teal:#1D9E75;
-  --bx-gold:#C9A84C;
-  --bx-alert:#D4534E;
-  --bx-text-primary:#0B1A2B;
-  --bx-text-secondary:#4A5568;
-  --bx-text-tertiary:#8A9BAD;
+:root {
+  --navy:       #0B1A2B;
+  --teal:       #0F6E56;
+  --teal-deep:  #085041;
+  --teal-active:#1D9E75;
+  --mint:       #E1F5EE;
+  --cloud:      #FAFBFC;
+  --silver:     #E8EAED;
+  --gold:       #C9A84C;
+  --alert:      #D4534E;
+  --text-1:     #0B1A2B;
+  --text-2:     #4A5568;
+  --text-3:     #8A9BAD;
 }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
 
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body{font-family:'DM Sans',sans-serif;background:var(--bx-cloud);color:var(--bx-navy);min-height:100vh;overflow-x:hidden;font-size:15px;line-height:1.7}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
-img{display:block;max-width:100%}
+/* ── UTILS ── */
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
+@media(max-width:768px){.container{padding:0 20px;}}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;}
 
-/* HERO SECTION */
-.hero{background:linear-gradient(135deg,var(--bx-navy) 0%, rgba(15,110,86,0.15) 100%);padding:120px 40px;text-align:center;margin-top:64px}
-.hero-content{max-width:800px;margin:0 auto}
-.hero-tagline{font-family:'Instrument Serif',serif;font-size:18px;font-style:italic;color:#fff;margin-bottom:16px;letter-spacing:0.5px;opacity:0.85}
-.hero-headline{font-family:'DM Sans',sans-serif;font-size:56px;font-weight:600;color:#fff;line-height:1.2;margin-bottom:16px}
-.hero-subheading{font-size:18px;color:#fff;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;opacity:0.9}
-.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:var(--bx-teal);color:#fff;padding:14px 32px;border-radius:8px;font-weight:500;transition:background 0.2s;display:inline-block;-webkit-tap-highlight-color:transparent}
-.btn-primary:hover{background:var(--bx-active-teal)}
-.btn-primary:active{background:var(--bx-deep-teal);transform:scale(0.98)}
-.btn-secondary{border:2px solid var(--bx-teal);color:var(--bx-teal);padding:12px 30px;border-radius:8px;font-weight:500;transition:all 0.2s;-webkit-tap-highlight-color:transparent}
-.btn-secondary:hover{background:rgba(15,110,86,0.05)}
-.btn-secondary:active{background:rgba(15,110,86,0.12);transform:scale(0.98)}
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.up{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:.08s;}
+.reveal-delay-2{transition-delay:.16s;}
+.reveal-delay-3{transition-delay:.24s;}
+.reveal-delay-4{transition-delay:.32s;}
+.reveal-delay-5{transition-delay:.40s;}
+.reveal-delay-6{transition-delay:.48s;}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid var(--bx-silver);height:64px;display:flex;align-items:center;padding:0 40px}
-.nav-container{display:flex;justify-content:space-between;align-items:center;width:100%}
-.logo{font-family:'DM Sans';font-size:18px;font-weight:600;color:var(--bx-navy);text-decoration:none}
-.logo .b{color:var(--bx-teal)}
-.logo .g{color:var(--bx-navy)}
-.nav-links{display:flex;align-items:center;gap:24px}
-.nav-link{font-size:13px;color:var(--bx-text-secondary);transition:color 0.2s}
-.nav-link:hover{color:var(--bx-teal);font-weight:500}
-.lang-toggle{display:flex;gap:8px}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;border-radius:4px;transition:all 0.2s;color:var(--bx-text-tertiary);cursor:pointer}
-.lang-btn.active{background:rgba(15,110,86,0.1);color:var(--bx-teal);font-weight:500}
-.wa-btn{background:var(--bx-teal);color:#fff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:500}
-.wa-btn:hover{background:var(--bx-active-teal)}
-
-/* TRUST BAR */
-.trust-bar{background:var(--bx-navy);color:#fff;padding:12px 40px;text-align:center;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.5px;opacity:0.9}
-
-/* WHY BIOGRADIX SECTION */
-.section{padding:80px 40px;max-width:1200px;margin:0 auto}
-.section-title{font-family:'Instrument Serif',serif;font-size:42px;font-style:italic;color:var(--bx-navy);margin-bottom:48px;text-align:center}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-top:40px}
-.why-card{background:#fff;padding:32px;border-radius:12px;border:1px solid var(--bx-silver);transition:all 0.3s}
-.why-card:hover{border-color:var(--bx-teal);box-shadow:0 8px 32px rgba(15,110,86,0.1);transform:translateY(-2px)}
-.why-icon{width:48px;height:48px;background:rgba(15,110,86,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
-.why-title{font-size:16px;font-weight:600;color:var(--bx-navy);margin-bottom:12px}
-.why-desc{font-size:13px;color:var(--bx-text-secondary);line-height:1.6}
-
-/* PRODUCTS SECTION */
-.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
-.product-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column}
-.product-card:hover{border-color:var(--bx-teal);box-shadow:0 8px 32px rgba(15,110,86,0.1);transform:translateY(-4px)}
-.product-image{background:linear-gradient(135deg,var(--bx-mint),rgba(15,110,86,0.05));height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.product-image::before{content:'';position:absolute;width:80%;height:80%;background:rgba(15,110,86,0.1);border-radius:16px}
-.product-body{padding:24px;flex:1;display:flex;flex-direction:column}
-.product-badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--bx-teal);margin-bottom:12px;font-weight:500}
-.product-name{font-size:18px;font-weight:600;color:var(--bx-navy);margin-bottom:6px}
-.product-tagline{font-family:'Instrument Serif',serif;font-size:13px;font-style:italic;color:var(--bx-text-secondary);margin-bottom:12px}
-.product-benefits{font-size:12px;color:var(--bx-text-secondary);line-height:1.6;margin-bottom:12px;flex:1}
-.product-audience{font-family:'DM Mono',monospace;font-size:10px;color:var(--bx-text-tertiary);background:var(--bx-cloud);padding:8px 12px;border-radius:6px;margin-bottom:12px}
-.product-timeline{font-family:'DM Mono',monospace;font-size:10px;color:var(--bx-teal);margin-bottom:16px}
-.product-cta{background:var(--bx-teal);color:#fff;padding:10px 16px;border-radius:6px;font-weight:500;font-size:12px;text-align:center;transition:background 0.2s;cursor:pointer}
-.product-cta:hover{background:var(--bx-active-teal)}
-
-/* TECHNOLOGY SECTION */
-.tech-section{background:var(--bx-mint);padding:80px 40px}
-.tech-container{max-width:1000px;margin:0 auto}
-.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}
-.tech-text h3{font-size:24px;font-weight:600;color:var(--bx-navy);margin-bottom:16px}
-.tech-text p{font-size:14px;color:var(--bx-text-secondary);margin-bottom:16px;line-height:1.8}
-.tech-list{list-style:none;margin-top:24px}
-.tech-list li{font-size:13px;color:var(--bx-text-secondary);margin-bottom:12px;padding-left:28px;position:relative}
-.tech-list li::before{content:'✓';position:absolute;left:0;color:var(--bx-teal);font-weight:bold}
-.tech-visual{background:#fff;padding:32px;border-radius:12px;display:flex;align-items:center;justify-content:center;min-height:300px;position:relative}
-.tech-visual::after{content:'BiogradixRelease®';position:absolute;font-family:'DM Mono',monospace;font-size:12px;color:var(--bx-teal);bottom:16px;right:16px;font-weight:600}
-
-/* TIMELINE SECTION */
-.timeline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:40px}
-.timeline-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;padding:24px;text-align:center}
-.timeline-days{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--bx-teal);margin-bottom:8px}
-.timeline-label{font-size:12px;color:var(--bx-text-secondary)}
-
-/* FAQ SECTION */
-.faq-section{max-width:800px;margin:0 auto;padding:80px 40px}
-.faq-item{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;margin-bottom:16px;overflow:hidden}
-.faq-question{padding:20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500;color:var(--bx-navy);transition:background 0.2s}
-.faq-question:hover{background:var(--bx-cloud)}
-.faq-toggle{font-size:20px;transition:transform 0.3s}
-.faq-toggle.open{transform:rotate(180deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s;background:var(--bx-cloud)}
-.faq-answer.open{max-height:500px;padding:20px}
-.faq-answer p{font-size:13px;color:var(--bx-text-secondary);line-height:1.7}
-
-/* VALUES SECTION */
-.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px;margin-top:40px}
-.value-card{background:#fff;padding:32px;border-radius:12px;border:1px solid var(--bx-silver);text-align:center}
-.value-title{font-size:18px;font-weight:600;color:var(--bx-navy);margin-bottom:12px}
-.value-desc{font-size:13px;color:var(--bx-text-secondary);line-height:1.6}
-
-/* CTA SECTION */
-.cta-section{background:var(--bx-navy);color:#fff;padding:80px 40px;text-align:center}
-.cta-headline{font-size:36px;font-weight:600;margin-bottom:16px}
-.cta-text{font-size:16px;margin-bottom:32px;opacity:0.9}
-.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn-white{background:#fff;color:var(--bx-navy);padding:14px 32px;border-radius:8px;font-weight:500;transition:all 0.2s}
-.btn-white:hover{background:var(--bx-mint);transform:translateY(-2px)}
-
-/* FOOTER */
-footer{background:var(--bx-navy);color:#fff;padding:60px 40px 20px;font-size:12px}
-.footer-container{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;margin-bottom:40px}
-.footer-col h4{margin-bottom:16px;font-size:13px;font-weight:600}
-.footer-col a,.footer-col p{display:block;color:rgba(255,255,255,0.7);margin-bottom:8px;transition:color 0.2s}
-.footer-col a:hover{color:#fff}
-.footer-legal{color:rgba(255,255,255,0.5);text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1)}
-
-/* LANGUAGE TOGGLE */
-[data-lang="es"]{display:block}
-[data-lang="en"]{display:none}
-html[lang="en"] [data-lang="es"]{display:none}
-html[lang="en"] [data-lang="en"]{display:block}
-span[data-lang="es"]{display:inline}
-span[data-lang="en"]{display:none}
-html[lang="en"] span[data-lang="es"]{display:none}
-html[lang="en"] span[data-lang="en"]{display:inline}
-
-/* HAMBURGER BUTTON */
-.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;cursor:pointer;border-radius:8px;transition:background 0.2s;gap:5px;background:none;border:none;padding:0;flex-shrink:0}
-.hamburger:hover{background:var(--bx-mint)}
-.hamburger-line{display:block;width:22px;height:2px;background:var(--bx-navy);border-radius:2px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
-.hamburger.open .hamburger-line:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open .hamburger-line:nth-child(2){opacity:0;transform:scaleX(0)}
-.hamburger.open .hamburger-line:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* MOBILE DRAWER */
-.mobile-menu{position:fixed;top:64px;left:0;right:0;bottom:0;background:#fff;z-index:99;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;display:flex;flex-direction:column;padding:0}
-.mobile-menu.open{transform:translateX(0)}
-.mobile-menu-inner{padding:8px 0 48px;flex:1}
-.mobile-nav-section{padding:8px 24px 4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--bx-text-tertiary);margin-top:16px}
-.mobile-nav-link{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;font-size:16px;font-weight:500;color:var(--bx-navy);text-decoration:none;border-bottom:1px solid rgba(232,234,237,0.6);transition:background 0.15s}
-.mobile-nav-link:hover,.mobile-nav-link:active{background:var(--bx-mint);color:var(--bx-teal)}
-.mobile-nav-link svg{opacity:0.3}
-.mobile-lang-row{display:flex;gap:8px;padding:20px 24px;border-bottom:1px solid rgba(232,234,237,0.6)}
-.mobile-lang-btn{flex:1;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:12px;border-radius:8px;border:1.5px solid var(--bx-silver);background:none;color:var(--bx-text-tertiary);cursor:pointer;transition:all 0.2s;text-align:center}
-.mobile-lang-btn.active{background:var(--bx-mint);color:var(--bx-teal);border-color:rgba(15,110,86,0.25);font-weight:600}
-.mobile-wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;margin:20px 24px 8px;background:var(--bx-teal);color:#fff;padding:16px;border-radius:12px;font-size:15px;font-weight:500;text-decoration:none;transition:background 0.2s}
-.mobile-wa-btn:hover{background:var(--bx-deep-teal)}
-.mobile-menu-overlay{position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(11,26,43,0.4);z-index:98;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(2px)}
-.mobile-menu-overlay.open{opacity:1;pointer-events:all}
-
-/* MOBILE RESPONSIVE */
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
+.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
+.nav-inner{display:flex;align-items:center;gap:0;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
+.nav-logo-text .b{color:var(--teal);}
+.nav-logo-text .g{color:var(--navy);}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--teal);}
+.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
+.lang-btn.active,.lang-btn:hover{color:var(--teal);}
+.lang-sep{color:var(--silver);font-size:12px;}
+.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
+.btn-wa:active{transform:translateY(0);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
 @media(max-width:768px){
-  .nav{padding:0 16px}
-  .hamburger{display:flex}
-  .nav-links{display:none}
-  .hero{padding:80px 20px;margin-top:64px}
-  .hero-headline{font-size:36px}
-  .hero-subheading{font-size:16px}
-  .section,.faq-section{padding:60px 20px}
-  .section-title{font-size:32px}
-  .tech-grid{grid-template-columns:1fr;gap:32px}
-  .hero-ctas{flex-direction:column;align-items:stretch}
-  .btn-primary,.btn-secondary{width:100%;text-align:center;box-sizing:border-box}
-  .trust-bar{padding:10px 16px;font-size:10px}
+  .nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}
+  .hamburger{display:flex;}
+  .nav-right{gap:8px;}
 }
 
-@media(max-width:480px){
-  .hero-headline{font-size:28px}
-  .products-grid{grid-template-columns:1fr}
-  .why-grid{grid-template-columns:1fr}
-  .timeline-grid{grid-template-columns:repeat(2,1fr)}
-  .values-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
+/* ── MOBILE MENU ── */
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open .mobile-menu-panel{transform:none;}
+.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
+.mobile-menu-panel a:hover{color:var(--teal);}
+.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--navy);padding:10px 0;margin-top:64px;}
+.trust-bar-inner{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.trust-item svg{opacity:.7;flex-shrink:0;}
+.trust-sep{width:1px;height:14px;background:rgba(255,255,255,.12);}
+@media(max-width:600px){.trust-sep{display:none;}.trust-bar-inner{gap:12px;}}
+
+/* ── HERO ── */
+.hero{background:var(--cloud);padding:72px 0 80px;position:relative;overflow:hidden;}
+.hero-bg-helix{display:none;}
+#helix-canvas{position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;opacity:.13;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-active);}
+.hero-tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--text-2);margin-bottom:16px;line-height:1.4;}
+.hero-h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:48px;line-height:1.1;letter-spacing:-.8px;color:var(--navy);margin-bottom:10px;}
+.hero-h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal);}
+.hero-sub{font-size:20px;font-weight:500;color:var(--teal);margin-bottom:20px;letter-spacing:-.2px;}
+.hero-body{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:32px;max-width:440px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:8px;padding:13px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);border:1px solid var(--teal);border-radius:8px;padding:12px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-outline:hover{background:var(--mint);transform:translateY(-1px);}
+.hero-image-wrap{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 64px rgba(11,26,43,.12);}
+.hero-image-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-image-badge{position:absolute;bottom:20px;left:20px;background:rgba(250,251,252,.95);backdrop-filter:blur(8px);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;border:1px solid var(--silver);}
+.hero-badge-icon{width:36px;height:36px;border-radius:8px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-badge-text .t1{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);display:block;}
+.hero-badge-text .t2{font-size:13px;font-weight:500;color:var(--navy);}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .hero-h1{font-size:36px;}
+  .hero-image-wrap{aspect-ratio:16/9;}
 }
 
-/* Prevent body scroll when menu open */
-body.menu-open{overflow:hidden}
+/* ── WHY SECTION ── */
+.why{padding:80px 0;background:#fff;}
+.section-header{text-align:center;margin-bottom:52px;}
+.section-header .label{margin-bottom:12px;display:block;}
+.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:32px;letter-spacing:-.4px;color:var(--navy);margin-bottom:10px;}
+.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.section-sub{font-size:15px;color:var(--text-2);max-width:520px;margin:0 auto;}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.why-card{background:var(--cloud);border:1px solid var(--silver);border-radius:16px;padding:28px 24px;transition:border-color .25s,box-shadow .25s,transform .25s;}
+.why-card:hover{border-color:rgba(15,110,86,.3);box-shadow:0 8px 32px rgba(15,110,86,.08);transform:translateY(-2px);}
+.why-icon{width:44px;height:44px;background:var(--mint);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:background .25s;}
+.why-card:hover .why-icon{background:rgba(15,110,86,.15);}
+.why-title{font-weight:600;font-size:15px;color:var(--navy);margin-bottom:6px;}
+.why-body{font-size:13px;color:var(--text-2);line-height:1.65;}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.why-grid{grid-template-columns:1fr;}}
+
+/* ── TECH SECTION ── */
+.tech{padding:80px 0;background:var(--mint);}
+.tech-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.tech-label{margin-bottom:12px;display:block;}
+.tech-h2{font-weight:500;font-size:32px;letter-spacing:-.4px;color:var(--navy);margin-bottom:16px;}
+.tech-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.tech-body{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:28px;}
+.tech-list{display:flex;flex-direction:column;gap:12px;}
+.tech-item{display:flex;align-items:flex-start;gap:12px;}
+.tech-check{width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.tech-item-text{font-size:14px;color:var(--text-1);line-height:1.55;}
+.tech-visual{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(11,26,43,.14);position:relative;}
+.tech-visual img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
+.tech-badge{position:absolute;top:20px;left:20px;background:var(--navy);color:#fff;border-radius:10px;padding:10px 14px;}
+.tech-badge .tb1{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:2px;}
+.tech-badge .tb2{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--teal-active);}
+@media(max-width:900px){.tech-inner{grid-template-columns:1fr;gap:40px;}}
+
+/* ── PRODUCTS ── */
+.products{padding:80px 0;background:var(--cloud);}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.product-grid{grid-template-columns:1fr;}}
+.product-card{background:#fff;border:1px solid var(--silver);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s;cursor:pointer;}
+.product-card:hover{border-color:rgba(15,110,86,.3);box-shadow:0 12px 40px rgba(11,26,43,.1);transform:translateY(-3px);}
+.product-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--mint);}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.product-card:hover .product-img img{transform:scale(1.04);}
+.product-badge{position:absolute;top:12px;left:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:6px;padding:4px 10px;}
+.product-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+.product-name{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:3px;letter-spacing:-.2px;}
+.product-peptide{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:3px;}
+.product-tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);margin-bottom:12px;}
+.product-benefits{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:16px;flex:1;}
+.product-benefits li{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text-2);line-height:1.5;}
+.product-benefits li svg{flex-shrink:0;margin-top:2px;}
+.product-audience{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);background:var(--cloud);border-radius:6px;padding:6px 10px;margin-bottom:14px;}
+.product-footer{display:flex;align-items:center;gap:8px;}
+.product-timeline{display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.5px;color:var(--text-3);flex:1;}
+.product-cta{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;background:var(--mint);color:var(--teal);border:none;border-radius:7px;padding:8px 14px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s;white-space:nowrap;}
+.product-cta:hover{background:var(--teal);color:#fff;}
+
+/* ── TIMELINE ── */
+.timeline{padding:72px 0;background:#fff;}
+.timeline-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:48px;}
+.timeline-grid::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--mint),var(--teal),var(--mint));}
+.timeline-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
+.timeline-dot{width:56px;height:56px;border-radius:50%;background:var(--mint);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;transition:background .25s,transform .25s;}
+.timeline-item:hover .timeline-dot{background:var(--teal);transform:scale(1.08);}
+.timeline-item:hover .timeline-dot svg{stroke:#fff;}
+.timeline-time{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
+.timeline-label{font-weight:500;font-size:14px;color:var(--navy);}
+@media(max-width:768px){
+  .timeline-grid{grid-template-columns:1fr 1fr;gap:24px;}
+  .timeline-grid::before{display:none;}
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:80px 0;background:var(--cloud);}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:768px){.test-grid{grid-template-columns:1fr;}}
+.test-card{background:#fff;border:1px solid var(--silver);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;transition:box-shadow .25s;}
+.test-card:hover{box-shadow:0 8px 32px rgba(11,26,43,.08);}
+.test-stars{display:flex;gap:3px;}
+.test-star{width:14px;height:14px;color:var(--gold);}
+.test-body{font-size:14px;color:var(--text-2);line-height:1.7;font-style:italic;font-family:'Instrument Serif',serif;flex:1;}
+.test-author{display:flex;align-items:center;gap:12px;}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:var(--mint);border:2px solid var(--silver);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--teal);flex-shrink:0;}
+.test-name{font-weight:500;font-size:14px;color:var(--navy);}
+.test-meta{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);}
+.test-product{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;background:var(--mint);color:var(--teal);border-radius:4px;padding:2px 8px;margin-top:2px;}
+
+/* ── VALUES ── */
+.values{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
+.values-helix{position:absolute;inset:0;opacity:.06;pointer-events:none;}
+.values-inner{position:relative;z-index:1;}
+.values .section-header .label{color:var(--teal-active);}
+.values .section-h2{color:#fff;}
+.values .section-sub{color:rgba(255,255,255,.5);}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+@media(max-width:768px){.values-grid{grid-template-columns:1fr;}}
+.value-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 24px;transition:border-color .25s,background .25s;}
+.value-card:hover{border-color:rgba(15,110,86,.4);background:rgba(15,110,86,.06);}
+.value-icon{width:44px;height:44px;border-radius:10px;background:rgba(15,110,86,.15);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.value-title{font-weight:500;font-size:16px;color:#fff;margin-bottom:8px;}
+.value-body{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65;}
+
+/* ── FAQ ── */
+.faq{padding:80px 0;background:#fff;}
+.faq-list{display:flex;flex-direction:column;gap:8px;max-width:720px;margin:48px auto 0;}
+.faq-item{border:1px solid var(--silver);border-radius:12px;overflow:hidden;transition:border-color .25s;}
+.faq-item.open{border-color:rgba(15,110,86,.3);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;cursor:pointer;background:#fff;transition:background .2s;}
+.faq-q:hover{background:var(--cloud);}
+.faq-q-text{font-weight:500;font-size:15px;color:var(--navy);}
+.faq-chevron{width:20px;height:20px;flex-shrink:0;transition:transform .3s;}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);}
+.faq-a-inner{padding:0 20px 18px;font-size:14px;color:var(--text-2);line-height:1.75;border-top:1px solid var(--silver);}
+.faq-a-inner{padding-top:16px;}
+.faq-item.open .faq-a{max-height:300px;}
+
+/* ── CTA SECTION ── */
+.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
+.cta-helix{position:absolute;inset:0;opacity:.05;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
+.cta-inner .label{color:var(--teal-active);}
+.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
+.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
+.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 10px 30px rgba(15,110,86,.4);}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
+.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
+.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--teal-active);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);}
+.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.15);text-align:center;}
+.footer-legal{display:flex;gap:20px;}
+.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
+.footer-legal a:hover{color:rgba(255,255,255,.5);}
 </style>
 </head>
-
 <body>
 
-<!-- NAVIGATION -->
-<nav class="nav">
-  <div class="nav-container">
-    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none">
-      <svg width="44" height="20" viewBox="0 0 44 20" style="flex-shrink:0">
-        <path d="M2 5 Q9 1, 16 5 Q23 9, 30 5 Q37 1, 44 5" fill="none" stroke="#0F6E56" stroke-width="1.6" opacity="0.6"/>
-        <path d="M2 11 Q9 15, 16 11 Q23 7, 30 11 Q37 15, 44 11" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="9" y1="3" x2="9" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-        <line x1="30" y1="3" x2="30" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-      </svg>
-      <span><span class="b">bio</span><span class="g">gradix</span></span>
-    </a>
-    <!-- Desktop nav links -->
-    <div class="nav-links">
-      <a href="#productos" class="nav-link"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-      <a href="educacion.html" class="nav-link"><span data-lang="es">Capacitación</span><span data-lang="en">Training</span></a>
-      <a href="blog.html" class="nav-link">Blog</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-      <div class="lang-toggle">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <!-- Helix SVG -->
+        <svg width="32" height="18" viewBox="0 0 64 36" fill="none">
+          <path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
+          <path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/>
+          <line x1="13" y1="7" x2="13" y2="21" stroke="#0F6E56" stroke-width=".8" opacity=".2"/>
+          <line x1="31" y1="13" x2="31" y2="13" stroke="#0F6E56" stroke-width=".8" opacity=".2"/>
+          <line x1="49" y1="7" x2="49" y2="21" stroke="#0F6E56" stroke-width=".8" opacity=".2"/>
+        </svg>
+        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#productos" data-i18n="nav-productos">Productos</a>
+        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+        <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+        <a href="blog.html" data-i18n="nav-blog">Blog</a>
+        <a href="#faq" data-i18n="nav-faq">FAQ</a>
       </div>
-      <a href="https://wa.me/525512345678" target="_blank" class="wa-btn"><span data-lang="es">WhatsApp</span><span data-lang="en">WhatsApp</span></a>
+      <div class="nav-right">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <a href="https://wa.me/1234567890" class="btn-wa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-    <!-- Hamburger button (mobile only) -->
-    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" onclick="toggleMobileMenu()">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
   </div>
 </nav>
 
-<!-- Mobile overlay -->
-<div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-
-<!-- Mobile drawer -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-  <div class="mobile-menu-inner">
-    <!-- Language selector -->
-    <div class="mobile-lang-row">
-      <button class="mobile-lang-btn active" id="mobileLangEs" onclick="setLang('es');updateMobileLangBtns('es')">🇲🇽 Español</button>
-      <button class="mobile-lang-btn" id="mobileLangEn" onclick="setLang('en');updateMobileLangBtns('en')">🇺🇸 English</button>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel">
+    <a href="#productos" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" data-i18n="nav-blog">Blog</a>
+    <a href="#faq" data-i18n="nav-faq">FAQ</a>
+    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--silver);">
+      <button class="lang-btn active" onclick="setLang('es');mobileMenu.classList.remove('open');document.body.style.overflow=''">ES</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" onclick="setLang('en');mobileMenu.classList.remove('open');document.body.style.overflow=''">EN</button>
     </div>
-
-    <!-- Main pages -->
-    <div class="mobile-nav-section"><span data-lang="es">Navegación</span><span data-lang="en">Navigation</span></div>
-    <a href="index.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">🏠 Inicio</span><span data-lang="en">🏠 Home</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="#productos" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">🧬 Productos</span><span data-lang="en">🧬 Products</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="#tecnologia" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">⚡ Tecnología</span><span data-lang="en">⚡ Technology</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="educacion.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">📚 Capacitación</span><span data-lang="en">📚 Training</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span>📝 Blog</span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="#faq" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span>❓ FAQ</span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-
-    <!-- Legal -->
-    <div class="mobile-nav-section"><span data-lang="es">Legal</span><span data-lang="en">Legal</span></div>
-    <a href="terms.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">📄 Términos y Condiciones</span><span data-lang="en">📄 Terms & Conditions</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="privacy.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">🔒 Privacidad</span><span data-lang="en">🔒 Privacy Policy</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-
-    <!-- WhatsApp CTA -->
-    <a href="https://wa.me/525512345678" target="_blank" class="mobile-wa-btn" onclick="closeMobileMenu()">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#fff" opacity="0.2"/><path d="M15.5 13.5c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1-.4-2.1-1.2-2.9-2.2-.6-.7-1.1-1.6-1.2-2-.1-.3 0-.5.1-.7.1-.1.3-.3.4-.5.1-.2.1-.3.2-.6 0-.2 0-.5-.1-.7-.1-.2-.7-1.6-1-2.2-.2-.6-.5-.5-.7-.5H5.9c-.2 0-.5.1-.8.4C4.8 7.2 4 8.3 4 9.9c0 1.6 1.2 3.2 1.4 3.4.2.2 2.3 3.5 5.6 4.8.8.3 1.4.5 1.9.6.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.1-1.5.2-.7.2-1.4.1-1.5-.1-.1-.3-.2-.6-.3z" fill="#fff"/></svg>
-      <span data-lang="es">Contactar por WhatsApp</span>
-      <span data-lang="en">Contact via WhatsApp</span>
-    </a>
+    <a href="https://wa.me/1234567890" class="btn-wa">WhatsApp</a>
   </div>
 </div>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <span data-lang="es">Fabricado en EE.UU. · Probado por terceros · ≥99% Pureza · Entrega BiogradixRelease®</span>
-  <span data-lang="en">U.S. Manufactured · Third-party Tested · ≥99% Purity · BiogradixRelease® Delivery</span>
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+        <span data-i18n="trust-tested">Probado por terceros</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><path d="M18 9a3 3 0 100-6 3 3 0 000 6z"/><path d="M6 21a3 3 0 100-6 3 3 0 000 6z"/><path d="M15 6H9a6 6 0 000 12h3"/></svg>
+        ≥99% Pureza HPLC
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Entrega BiogradixRelease®
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <p class="hero-tagline" data-lang="es">Suplementos Wellness Premium</p>
-    <p class="hero-tagline" data-lang="en">Premium Wellness Supplements</p>
-    
-    <h1 class="hero-headline">
-      <span data-lang="es">Sin Inyecciones, Con Resultados</span>
-      <span data-lang="en">No Needles, Real Results</span>
-    </h1>
-    
-    <p class="hero-subheading">
-      <span data-lang="es">Suplementos wellness con entrega buccal rápida. Energía en 3-7 días. Belleza en 4-8 semanas. Tecnología BiogradixRelease® para máxima absorción sin invasión.</span>
-      <span data-lang="en">Wellness supplements with fast buccal delivery. Energy in 3-7 days. Beauty in 4-8 weeks. BiogradixRelease® technology for maximum absorption without invasion.</span>
-    </p>
-    
-    <div class="hero-ctas">
-      <a href="#productos" class="btn-primary">
-        <span data-lang="es">Explorar Colección</span>
-        <span data-lang="en">Explore Collection</span>
-      </a>
-      <a href="#tecnologia" class="btn-secondary">
-        <span data-lang="es">Cómo Funciona</span>
-        <span data-lang="en">How It Works</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- WHY BIOGRADIX SECTION -->
-<section class="section">
-  <h2 class="section-title">
-    <span data-lang="es">¿Por Qué Elegir Biogradix?</span>
-    <span data-lang="en">Why Choose Biogradix?</span>
-  </h2>
-  
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-icon">💊</div>
-      <h3 class="why-title"><span data-lang="es">Sin Inyecciones</span><span data-lang="en">No Needles</span></h3>
-      <p class="why-desc"><span data-lang="es">Disfruta de suplementos avanzados sin agujas, dolor ni procedimientos invasivos. Cómodo y seguro.</span><span data-lang="en">Enjoy advanced supplements without needles, pain, or invasive procedures. Comfortable and safe.</span></p>
-    </div>
-    
-    <div class="why-card">
-      <div class="why-icon">⚡</div>
-      <h3 class="why-title"><span data-lang="es">Resultados Rápidos</span><span data-lang="en">Fast Results</span></h3>
-      <p class="why-desc"><span data-lang="es">BiogradixRelease® entrega ingredientes directamente al torrente sanguíneo. Resultados en días, no semanas.</span><span data-lang="en">BiogradixRelease® delivers ingredients directly to bloodstream. Results in days, not weeks.</span></p>
-    </div>
-    
-    <div class="why-card">
-      <div class="why-icon">⚗️</div>
-      <h3 class="why-title"><span data-lang="es">Pureza Farmacéutica</span><span data-lang="en">Pharmaceutical Quality</span></h3>
-      <p class="why-desc"><span data-lang="es">Cada lote formulado con estándares farmacéuticos GMP. Máxima potencia, seguridad y consistencia.</span><span data-lang="en">Each batch formulated to GMP pharmaceutical standards. Maximum potency, safety, and consistency.</span></p>
-    </div>
-    
-    <div class="why-card">
-      <div class="why-icon">🔬</div>
-      <h3 class="why-title"><span data-lang="es">Transparencia Total</span><span data-lang="en">Total Transparency</span></h3>
-      <p class="why-desc"><span data-lang="es">Sabemos exactamente qué estás tomando. Ingredientes claros, beneficios reales, timelines honestos.</span><span data-lang="en">We're clear about what you're taking. Clear ingredients, real benefits, honest timelines.</span></p>
-    </div>
-    
-    <div class="why-card">
-      <div class="why-icon">📦</div>
-      <h3 class="why-title"><span data-lang="es">Presentación Individual</span><span data-lang="en">Individual Doses</span></h3>
-      <p class="why-desc"><span data-lang="es">Cada dosis sellada individualmente. Control perfecto de dosificación, frescura y facilidad de transporte.</span><span data-lang="en">Each dose individually sealed. Perfect dosing control, freshness, and easy portability.</span></p>
-    </div>
-    
-    <div class="why-card">
-      <div class="why-icon">🚀</div>
-      <h3 class="why-title"><span data-lang="es">Entrega Rápida</span><span data-lang="en">Fast Shipping</span></h3>
-      <p class="why-desc"><span data-lang="es">Pedidos antes del mediodía se envían el mismo día. Recibe tus suplementos en la comodidad de tu hogar.</span><span data-lang="en">Orders before noon ship the same day. Get your supplements delivered to your home.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS SECTION -->
-<section class="section" id="productos">
-  <h2 class="section-title">
-    <span data-lang="es">Nuestra Colección Wellness</span>
-    <span data-lang="en">Our Wellness Collection</span>
-  </h2>
-  
-  <div class="products-grid" id="productsGrid"></div>
-</section>
-
-<!-- BIOGRADIXRELEASE TECHNOLOGY SECTION -->
-<section class="tech-section" id="tecnologia">
-  <h2 class="section-title" style="text-align:center;color:var(--bx-navy)">
-    <span data-lang="es">Tecnología BiogradixRelease®</span>
-    <span data-lang="en">BiogradixRelease® Technology</span>
-  </h2>
-  
-  <div class="tech-container">
-    <div class="tech-grid">
-      <div class="tech-text">
-        <h3><span data-lang="es">¿Por Qué la Entrega Importa?</span><span data-lang="en">Why Delivery Matters</span></h3>
-        <p data-lang="es">El ingrediente perfecto es inútil si no llega al torrente sanguíneo. Los suplementos orales convencionales son destruidos en el sistema digestivo (metabolismo de primer paso), perdiendo 70-80% de su potencia.</p>
-        <p data-lang="en">The perfect ingredient is useless if it doesn't reach your bloodstream. Conventional oral supplements are destroyed in digestion (first-pass metabolism), losing 70-80% of their potency.</p>
-        
-        <h3 style="margin-top:24px"><span data-lang="es">BiogradixRelease® Evita Este Problema</span><span data-lang="en">BiogradixRelease® Solves This</span></h3>
-        <ul class="tech-list">
-          <li><span data-lang="es">Absorción directa a través de membranas bucales</span><span data-lang="en">Direct absorption through buccal membranes</span></li>
-          <li><span data-lang="es">Ingredientes activos en el torrente sanguíneo en minutos</span><span data-lang="en">Active ingredients in bloodstream in minutes</span></li>
-          <li><span data-lang="es">Evita metabolismo de primer paso</span><span data-lang="en">Bypasses first-pass metabolism</span></li>
-          <li><span data-lang="es">Biodisponibilidad 2-3x mayor que oral</span><span data-lang="en">2-3x higher bioavailability than oral</span></li>
-          <li><span data-lang="es">No invasivo como inyecciones</span><span data-lang="en">Non-invasive like injections</span></li>
-        </ul>
+  <!-- Animated helix canvas -->
+  <canvas id="helix-canvas"></canvas>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag reveal">
+          <div class="hero-tag-dot"></div>
+          <span class="label" data-i18n="hero-tag">Suplementos Wellness Premium</span>
+        </div>
+        <p class="hero-tagline reveal reveal-delay-1" data-i18n="hero-tagline">Donde la ciencia encuentra su potencial</p>
+        <h1 class="hero-h1 reveal reveal-delay-2" data-i18n-html="hero-h1">Sin Inyecciones,<br/><em>Con Resultados</em></h1>
+        <p class="hero-sub reveal reveal-delay-3" data-i18n="hero-sub">No Invasivo. Biodisponibilidad superior.</p>
+        <p class="hero-body reveal reveal-delay-4" data-i18n="hero-body">Absorción directa por mucosa oral vía BiogradixRelease®. Energía en 3–7 días, resultados visibles en 4–8 semanas. Sin agujas, sin complicaciones.</p>
+        <div class="hero-ctas reveal reveal-delay-5">
+          <a href="#productos" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            <span data-i18n="hero-btn1">Explorar Colección</span>
+          </a>
+          <a href="tecnologia.html" class="btn-outline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span data-i18n="hero-btn2">Cómo Funciona</span>
+          </a>
+        </div>
       </div>
-      
-      <div class="tech-visual">
-        <div style="text-align:center">
-          <svg width="200" height="200" viewBox="0 0 200 200" style="opacity:0.8">
-            <circle cx="100" cy="50" r="30" fill="rgba(15,110,86,0.2)"/>
-            <text x="100" y="55" text-anchor="middle" font-size="14" fill="#0F6E56" font-weight="bold">BiogradixRelease®</text>
-            <line x1="100" y1="80" x2="100" y2="120" stroke="#0F6E56" stroke-width="2"/>
-            <circle cx="100" cy="140" r="35" fill="rgba(15,110,86,0.15)"/>
-            <text x="100" y="145" text-anchor="middle" font-size="12" fill="#0F6E56">Torrente Sanguíneo</text>
-          </svg>
+      <div class="reveal reveal-delay-3">
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80&fit=crop" alt="Laboratorio farmacéutico de alta precisión" loading="lazy"/>
+          <div class="hero-image-badge">
+            <div class="hero-badge-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+            </div>
+            <div class="hero-badge-text">
+              <span class="t1">Pureza verificada</span>
+              <span class="t2">≥99% HPLC · Lote certificado</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TIMELINE SECTION -->
-<section class="section">
-  <h2 class="section-title">
-    <span data-lang="es">¿Cuándo Verás Resultados?</span>
-    <span data-lang="en">When Will You See Results?</span>
-  </h2>
-  
-  <div class="timeline-grid">
-    <div class="timeline-card">
-      <div class="timeline-days"><span data-lang="es">3-7 días</span><span data-lang="en">3-7 days</span></div>
-      <div class="timeline-label"><span data-lang="es">Energía</span><span data-lang="en">Energy</span></div>
+<!-- WHY SECTION -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="why-label">¿Por qué biogradix?</span>
+      <h2 class="section-h2" data-i18n-html="why-h2">Ciencia que <em>se siente</em></h2>
+      <p class="section-sub" data-i18n="why-sub">Cada decisión de formulación tiene un propósito. Sin rellenos, sin compromisos.</p>
     </div>
-    <div class="timeline-card">
-      <div class="timeline-days"><span data-lang="es">1-2 semanas</span><span data-lang="en">1-2 weeks</span></div>
-      <div class="timeline-label"><span data-lang="es">Rendimiento</span><span data-lang="en">Performance</span></div>
-    </div>
-    <div class="timeline-card">
-      <div class="timeline-days"><span data-lang="es">4-6 semanas</span><span data-lang="en">4-6 weeks</span></div>
-      <div class="timeline-label"><span data-lang="es">Composición</span><span data-lang="en">Body Composition</span></div>
-    </div>
-    <div class="timeline-card">
-      <div class="timeline-days"><span data-lang="es">4-8 semanas</span><span data-lang="en">4-8 weeks</span></div>
-      <div class="timeline-label"><span data-lang="es">Belleza</span><span data-lang="en">Beauty</span></div>
-    </div>
-    <div class="timeline-card">
-      <div class="timeline-days"><span data-lang="es">8-12 semanas</span><span data-lang="en">8-12 weeks</span></div>
-      <div class="timeline-label"><span data-lang="es">Profundo</span><span data-lang="en">Deep Changes</span></div>
+    <div class="why-grid">
+
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="why-title" data-i18n="why-t1">Sin Inyecciones</div>
+        <div class="why-body" data-i18n="why-b1">Absorción bucal directa. Sin agujas, sin procedimientos invasivos, sin visitas médicas obligatorias.</div>
+      </div>
+
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="why-title" data-i18n="why-t2">Resultados Rápidos</div>
+        <div class="why-body" data-i18n="why-b2">Vía BiogradixRelease®, los ingredientes alcanzan el torrente sanguíneo en minutos. Energía perceptible en 3–7 días.</div>
+      </div>
+
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><path d="M18 9a3 3 0 100-6 3 3 0 000 6z"/><path d="M6 21a3 3 0 100-6 3 3 0 000 6z"/><path d="M15 6H9a6 6 0 000 12h3"/></svg>
+        </div>
+        <div class="why-title" data-i18n="why-t3">Pureza Farmacéutica</div>
+        <div class="why-body" data-i18n="why-b3">Fabricados bajo estándares GMP. Cada lote analizado por HPLC con pureza verificada ≥99% por laboratorio independiente.</div>
+      </div>
+
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><line x1="10" y1="9" x2="14" y2="9"/><line x1="10" y1="13" x2="14" y2="13"/><line x1="10" y1="17" x2="12" y2="17"/></svg>
+        </div>
+        <div class="why-title" data-i18n="why-t4">Transparencia Total</div>
+        <div class="why-body" data-i18n="why-b4">COA disponible por lote. Ingredientes claros, dosis exactas, sin ingredientes ocultos ni propietarios.</div>
+      </div>
+
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="why-title" data-i18n="why-t5">Dosis Individual</div>
+        <div class="why-body" data-i18n="why-b5">Presentación sellada por dosis. Sin contacto con el aire, sin degradación, sin desperdicio. Precisión clínica en cada toma.</div>
+      </div>
+
+      <div class="why-card reveal reveal-delay-5">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="why-title" data-i18n="why-t6">Entrega Express</div>
+        <div class="why-body" data-i18n="why-b6">Pedidos antes de mediodía salen el mismo día. Cadena de frío garantizada para máxima estabilidad del producto.</div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- FAQ SECTION -->
-<section class="section" id="faq">
-  <h2 class="section-title">
-    <span data-lang="es">Preguntas Frecuentes</span>
-    <span data-lang="en">Frequently Asked Questions</span>
-  </h2>
-  
-  <div style="margin-top:40px">
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <span data-lang="es">¿Son seguros los péptidos?</span>
-        <span data-lang="en">Are peptides safe?</span>
-        <span class="faq-toggle">▼</span>
+<!-- TECHNOLOGY SECTION -->
+<section class="tech" id="tecnologia">
+  <div class="container">
+    <div class="tech-inner">
+      <div class="reveal">
+        <span class="label tech-label" data-i18n="tech-label">BiogradixRelease®</span>
+        <h2 class="tech-h2" data-i18n-html="tech-h2">Biodisponibilidad <em>2–3× superior</em></h2>
+        <p class="tech-body" data-i18n="tech-body">El metabolismo de primer paso destruye hasta el 80% de la potencia de los suplementos orales convencionales. BiogradixRelease® resuelve esto con absorción por mucosa oral directa — los ingredientes pasan directamente al torrente sanguíneo, sin pasar por el hígado primero.</p>
+        <div class="tech-list">
+          <div class="tech-item">
+            <div class="tech-check">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="tech-item-text" data-i18n="tech-item1">Absorción directa a través de la membrana mucosa bucal</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-check">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="tech-item-text" data-i18n="tech-item2">Ingredientes en sangre en minutos, no en horas</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-check">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="tech-item-text" data-i18n="tech-item3">Elude el metabolismo de primer paso hepático</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-check">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="tech-item-text" data-i18n="tech-item4">2–3× mayor biodisponibilidad vs. cápsulas orales</span>
+          </div>
+          <div class="tech-item">
+            <div class="tech-check">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="tech-item-text" data-i18n="tech-item5">Alternativa no invasiva a las formulaciones inyectables</span>
+          </div>
+        </div>
       </div>
-      <div class="faq-answer">
-        <p><span data-lang="es">Sí. Los péptidos que usamos ocurren naturalmente en el cuerpo o son análogos estrechamente relacionados. Tu cuerpo reconoce estas moléculas. Décadas de investigación médica respaldan la seguridad.</span><span data-lang="en">Yes. The peptides we use occur naturally in the body or are closely related analogs. Your body recognizes these molecules. Decades of medical research support safety.</span></p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <span data-lang="es">¿Hay efectos secundarios?</span>
-        <span data-lang="en">Are there side effects?</span>
-        <span class="faq-toggle">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p><span data-lang="es">Generalmente no. Los péptidos de biogradix son bien tolerados. Raramente (<1%): sensibilidad leve en boca o respuesta alérgica individual.</span><span data-lang="en">Generally not. Biogradix peptides are well tolerated. Rarely (<1%): mild mouth sensitivity or individual allergic response.</span></p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <span data-lang="es">¿Puedo usar múltiples productos juntos?</span>
-        <span data-lang="en">Can I use multiple products together?</span>
-        <span class="faq-toggle">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p><span data-lang="es">Sí. De hecho, muchos usuarios ven beneficios sinérgicos. No hay interacciones negativas conocidas entre productos biogradix.</span><span data-lang="en">Yes. In fact, many users see synergistic benefits. There are no known negative interactions between biogradix products.</span></p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <span data-lang="es">¿Cómo es esto legal si son como inyecciones?</span>
-        <span data-lang="en">How is this legal if it's like injections?</span>
-        <span class="faq-toggle">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p><span data-lang="es">Biogradix se vende como suplemento dietético, no como medicamento. Los suplementos tienen regulaciones diferentes. Nuestro formato (buccal, no inyectable) sigue regulaciones de suplementos.</span><span data-lang="en">Biogradix is sold as a dietary supplement, not medicine. Supplements have different regulations. Our format (buccal, not injectable) follows supplement regulations.</span></p>
-      </div>
-    </div>
-    
-    <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">
-        <span data-lang="es">¿Cuál es la diferencia con versiones inyectables?</span>
-        <span data-lang="en">How is this different from injectable versions?</span>
-        <span class="faq-toggle">▼</span>
-      </div>
-      <div class="faq-answer">
-        <p><span data-lang="es">BiogradixRelease® es no-invasivo, sin dolor, sin procedimiento médico requerido. Resultados similares con comodidad total.</span><span data-lang="en">BiogradixRelease® is non-invasive, painless, no medical procedure required. Similar results with total comfort.</span></p>
+      <div class="reveal reveal-delay-2">
+        <div class="tech-visual">
+          <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80&fit=crop" alt="Tecnología de absorción por mucosa oral BiogradixRelease" loading="lazy"/>
+          <div class="tech-badge">
+            <span class="tb1">Biodisponibilidad</span>
+            <span class="tb2">2–3× Superior</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VALUES SECTION -->
-<section class="section">
-  <h2 class="section-title">
-    <span data-lang="es">Nuestros Valores</span>
-    <span data-lang="en">Our Values</span>
-  </h2>
-  
-  <div class="values-grid">
-    <div class="value-card">
-      <h3 class="value-title"><span data-lang="es">Misión</span><span data-lang="en">Mission</span></h3>
-      <p class="value-desc"><span data-lang="es">Democratizar el acceso a suplementos de optimización de alto rendimiento.</span><span data-lang="en">Democratize access to high-performance optimization supplements.</span></p>
+<!-- PRODUCTS -->
+<section class="products" id="productos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="products-label">Colección</span>
+      <h2 class="section-h2" data-i18n-html="products-h2">Formulaciones <em>de precisión</em></h2>
+      <p class="section-sub" data-i18n="products-sub">Siete productos. Una promesa: eficacia verificable, ingredientes transparentes, resultados reales.</p>
     </div>
-    <div class="value-card">
-      <h3 class="value-title"><span data-lang="es">Visión</span><span data-lang="en">Vision</span></h3>
-      <p class="value-desc"><span data-lang="es">Salud y longevidad sin barreras para el mercado hispanohablante.</span><span data-lang="en">Health and longevity without barriers for Spanish-speaking markets.</span></p>
-    </div>
-    <div class="value-card">
-      <h3 class="value-title"><span data-lang="es">Valores</span><span data-lang="en">Values</span></h3>
-      <p class="value-desc"><span data-lang="es">Ciencia respaldada, Pureza garantizada, Innovación, Transparencia, Resultados.</span><span data-lang="en">Science-backed, Guaranteed purity, Innovation, Transparency, Results.</span></p>
+    <div class="product-grid">
+
+      <!-- CELLDEW -->
+      <div class="product-card reveal" onclick="location.href='producto-celldew.html'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=600&q=75&fit=crop" alt="CELLDEW antioxidante" loading="lazy"/>
+          <div class="product-badge" data-i18n="badge-detox">Detox</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">CELLDEW™</div>
+          <div class="product-peptide">Glutatión</div>
+          <div class="product-tagline">Antioxidant Master</div>
+          <ul class="product-benefits">
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="cd-b1">Neutralización de radicales libres</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="cd-b2">Soporte hepático y desintoxicación celular</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="cd-b3">Piel luminosa y protección sistémica</span>
+            </li>
+          </ul>
+          <div class="product-audience" data-i18n="cd-aud">Para: biohackers · longevidad · 35+</div>
+          <div class="product-footer">
+            <div class="product-timeline">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="cd-time">4–8 semanas</span>
+            </div>
+            <a href="producto-celldew.html" class="product-cta" data-i18n="product-cta">Información</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- VITACHARGE -->
+      <div class="product-card reveal reveal-delay-1" onclick="location.href='producto-vitacharge.html'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=600&q=75&fit=crop" alt="VITACHARGE energía celular" loading="lazy"/>
+          <div class="product-badge" data-i18n="badge-energia">Energía</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">VITACHARGE™</div>
+          <div class="product-peptide">NAD+</div>
+          <div class="product-tagline">Cellular Energy</div>
+          <ul class="product-benefits">
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="vc-b1">Energía sostenida sin picos ni caídas</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="vc-b2">Soporte mitocondrial y cognitivo</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="vc-b3">Claridad mental y foco prolongado</span>
+            </li>
+          </ul>
+          <div class="product-audience" data-i18n="vc-aud">Para: ejecutivos · atletas · productividad</div>
+          <div class="product-footer">
+            <div class="product-timeline">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="vc-time">3–7 días</span>
+            </div>
+            <a href="producto-vitacharge.html" class="product-cta" data-i18n="product-cta">Información</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RADIANCEMAX -->
+      <div class="product-card reveal reveal-delay-2" onclick="location.href='producto-radiancemax.html'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=75&fit=crop" alt="RADIANCEMAX belleza regenerativa" loading="lazy"/>
+          <div class="product-badge" data-i18n="badge-belleza">Belleza</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">RADIANCEMAX™</div>
+          <div class="product-peptide">GHK-Cu</div>
+          <div class="product-tagline">Regenerative Beauty</div>
+          <ul class="product-benefits">
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="rm-b1">Estimulación de colágeno y elastina</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="rm-b2">Reducción visible de líneas y manchas</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="rm-b3">Hidratación profunda y luminosidad</span>
+            </li>
+          </ul>
+          <div class="product-audience" data-i18n="rm-aud">Para: mujeres 35+ · anti-edad · skincare</div>
+          <div class="product-footer">
+            <div class="product-timeline">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="rm-time">4–8 semanas</span>
+            </div>
+            <a href="producto-radiancemax.html" class="product-cta" data-i18n="product-cta">Información</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECOVERYPRO -->
+      <div class="product-card reveal reveal-delay-3" onclick="location.href='producto-recoverypro.html'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=75&fit=crop" alt="RECOVERYPRO recuperación total" loading="lazy"/>
+          <div class="product-badge" data-i18n="badge-recuperacion">Recuperación</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">RECOVERYPRO™</div>
+          <div class="product-peptide">BPC-157</div>
+          <div class="product-tagline">Total Recovery</div>
+          <ul class="product-benefits">
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="rp-b1">Reducción de inflamación post-esfuerzo</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="rp-b2">Reparación muscular y articular</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="rp-b3">Recuperación nocturna profunda</span>
+            </li>
+          </ul>
+          <div class="product-audience" data-i18n="rp-aud">Para: atletas · lesiones · alto rendimiento</div>
+          <div class="product-footer">
+            <div class="product-timeline">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="rp-time">1–2 semanas</span>
+            </div>
+            <a href="producto-recoverypro.html" class="product-cta" data-i18n="product-cta">Información</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMMUNEFORT -->
+      <div class="product-card reveal" onclick="location.href='producto-immunefort.html'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=600&q=75&fit=crop" alt="IMMUNEFORT protección inmune" loading="lazy"/>
+          <div class="product-badge" data-i18n="badge-inmunidad">Inmunidad</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">IMMUNEFORT™</div>
+          <div class="product-peptide">Thymosin Alpha-1</div>
+          <div class="product-tagline">Total Protection</div>
+          <ul class="product-benefits">
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="if-b1">Modulación y fortalecimiento inmune</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="if-b2">Adaptógenos para el estrés crónico</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="if-b3">Defensa contra infecciones estacionales</span>
+            </li>
+          </ul>
+          <div class="product-audience" data-i18n="if-aud">Para: viajeros frecuentes · inmuno-compromiso</div>
+          <div class="product-footer">
+            <div class="product-timeline">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="if-time">1–2 semanas</span>
+            </div>
+            <a href="producto-immunefort.html" class="product-cta" data-i18n="product-cta">Información</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSIONBOOST -->
+      <div class="product-card reveal reveal-delay-1" onclick="location.href='producto-passionboost.html'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=600&q=75&fit=crop" alt="PASSIONBOOST vitalidad íntima" loading="lazy"/>
+          <div class="product-badge" data-i18n="badge-intimidad">Intimidad</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">PASSIONBOOST™</div>
+          <div class="product-peptide">PT-141 + Oxitocina</div>
+          <div class="product-tagline">Intimate Vitality</div>
+          <ul class="product-benefits">
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="pb-b1">Respuesta de vitalidad en 30–90 min</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="pb-b2">Mecanismo de acción central</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="pb-b3">Para hombres y mujeres</span>
+            </li>
+          </ul>
+          <div class="product-audience" data-i18n="pb-aud">Para: adultos activos · bienestar íntimo</div>
+          <div class="product-footer">
+            <div class="product-timeline">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="pb-time">30–90 min</span>
+            </div>
+            <a href="producto-passionboost.html" class="product-cta" data-i18n="product-cta">Información</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MUSCLEMAXX -->
+      <div class="product-card reveal reveal-delay-2" onclick="location.href='producto-musclemaxx.html'" style="cursor:pointer;">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=75&fit=crop" alt="MUSCLEMAXX rendimiento muscular" loading="lazy"/>
+          <div class="product-badge" data-i18n="badge-musculo">Músculo</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">MUSCLEMAXX™</div>
+          <div class="product-peptide">CJC-1295 / Ipamorelin</div>
+          <div class="product-tagline">Maximum Performance</div>
+          <ul class="product-benefits">
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="mm-b1">Síntesis proteica y masa magra</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="mm-b2">Fuerza y resistencia muscular</span>
+            </li>
+            <li>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-i18n="mm-b3">Optimización de composición corporal</span>
+            </li>
+          </ul>
+          <div class="product-audience" data-i18n="mm-aud">Para: atletas · culturismo · rendimiento</div>
+          <div class="product-footer">
+            <div class="product-timeline">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="mm-time">4–6 semanas</span>
+            </div>
+            <a href="producto-musclemaxx.html" class="product-cta" data-i18n="product-cta">Información</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS SECTION -->
-<section class="section" style="background: #f8fafb;">
-  <h2 class="section-title">
-    <span data-lang="es">Lo Que Dicen Nuestros Clientes</span>
-    <span data-lang="en">What Our Clients Say</span>
-  </h2>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; max-width: 1100px; margin-left: auto; margin-right: auto;">
-    <!-- Testimonial 1 -->
-    <div style="background: white; border-radius: 12px; padding: 28px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <div style="display: flex; gap: 2px; margin-bottom: 16px;">
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-      </div>
-      <p style="font-size: 14px; color: #4a5568; line-height: 1.7; margin-bottom: 16px;"><span data-lang="es">"VITACHARGE™ cambió mi vida. Dos semanas en y mi energía se triplicó. Ahora trabajo sin el crash de las 3 PM. No sé cómo vivía sin esto."</span><span data-lang="en">"VITACHARGE™ changed my life. Two weeks in and my energy tripled. Now I work without the 3 PM crash. Don't know how I lived without it."</span></p>
-      <div style="font-weight: 600; color: #0B1A2B; font-size: 14px;"><span data-lang="es">María C. — Ciudad de México</span><span data-lang="en">María C. — Mexico City</span></div>
-      <div style="font-size: 12px; color: #8a9bad; margin-top: 4px;">Profesional | VITACHARGE™</div>
+<!-- TIMELINE -->
+<section class="timeline">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="timeline-label">Resultados</span>
+      <h2 class="section-h2" data-i18n-html="timeline-h2">Tu progreso en el <em>tiempo</em></h2>
+      <p class="section-sub" data-i18n="timeline-sub">Cada fase de resultados, verificada y predecible.</p>
     </div>
-    
-    <!-- Testimonial 2 -->
-    <div style="background: white; border-radius: 12px; padding: 28px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <div style="display: flex; gap: 2px; margin-bottom: 16px;">
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
+    <div class="timeline-grid">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="timeline-time">3–7 días</div>
+        <div class="timeline-label" data-i18n="tl-energy">Energía</div>
       </div>
-      <p style="font-size: 14px; color: #4a5568; line-height: 1.7; margin-bottom: 16px;"><span data-lang="es">"RADIANCEMAX™ es real. Después de 8 semanas mi piel está irreconocible. Mi dermatólogo preguntó qué estaba usando. Finalmente colágeno que funciona."</span><span data-lang="en">"RADIANCEMAX™ is real. After 8 weeks my skin is unrecognizable. My dermatologist asked what I was using. Finally collagen that works."</span></p>
-      <div style="font-weight: 600; color: #0B1A2B; font-size: 14px;"><span data-lang="es">Alejandra G. — Guadalajara</span><span data-lang="en">Alejandra G. — Guadalajara</span></div>
-      <div style="font-size: 12px; color: #8a9bad; margin-top: 4px;">Empresaria | RADIANCEMAX™</div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="timeline-time">1–2 semanas</div>
+        <div class="timeline-label" data-i18n="tl-perf">Rendimiento</div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="timeline-time">4–6 semanas</div>
+        <div class="timeline-label" data-i18n="tl-body">Composición</div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-3">
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <div class="timeline-time">4–8 semanas</div>
+        <div class="timeline-label" data-i18n="tl-beauty">Belleza</div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-4">
+        <div class="timeline-dot">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="timeline-time">8–12 semanas</div>
+        <div class="timeline-label" data-i18n="tl-deep">Cambios Profundos</div>
+      </div>
     </div>
-    
-    <!-- Testimonial 3 -->
-    <div style="background: white; border-radius: 12px; padding: 28px; border: 1px solid #e8eaed; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-      <div style="display: flex; gap: 2px; margin-bottom: 16px;">
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
-        <span style="color: #1D9E75; font-size: 18px;">★</span>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="test-label">Testimonios</span>
+      <h2 class="section-h2" data-i18n-html="test-h2">Lo que dicen <em>nuestros clientes</em></h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="test-body" data-i18n="test-q1">"Llevaba meses con fatiga crónica. En la primera semana con VITACHARGE™ noté una diferencia real — no el típico boost de cafeína, sino energía limpia y sostenida. Ahora no concibo mi rutina sin él."</p>
+        <div class="test-author">
+          <div class="test-avatar">MC</div>
+          <div>
+            <div class="test-name">María C.</div>
+            <div class="test-meta">CDMX · Ejecutiva</div>
+            <span class="test-product">VITACHARGE™</span>
+          </div>
+        </div>
       </div>
-      <p style="font-size: 14px; color: #4a5568; line-height: 1.7; margin-bottom: 16px;"><span data-lang="es">"RECOVERYPRO™ permitió volver a entrenar serio. La recuperación es notoria - menos dolor, más ganancias. Mejor que cualquier suplemento que he probado."</span><span data-lang="en">"RECOVERYPRO™ let me train seriously again. Recovery is noticeable - less pain, more gains. Better than any supplement I've tried."</span></p>
-      <div style="font-weight: 600; color: #0B1A2B; font-size: 14px;"><span data-lang="es">David R. — Monterrey</span><span data-lang="en">David R. — Monterrey</span></div>
-      <div style="font-size: 12px; color: #8a9bad; margin-top: 4px;">Atleta | RECOVERYPRO™</div>
+      <div class="test-card reveal reveal-delay-1">
+        <div class="test-stars">
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="test-body" data-i18n="test-q2">"A mis 43 años no esperaba resultados tan visibles. A las 6 semanas con RADIANCEMAX™ mi piel luce más firme y luminosa. Me lo preguntan constantemente. La calidad del producto es exactamente lo que prometen."</p>
+        <div class="test-author">
+          <div class="test-avatar">AG</div>
+          <div>
+            <div class="test-name">Alejandra G.</div>
+            <div class="test-meta">Guadalajara · Emprendedora</div>
+            <span class="test-product">RADIANCEMAX™</span>
+          </div>
+        </div>
+      </div>
+      <div class="test-card reveal reveal-delay-2">
+        <div class="test-stars">
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="test-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="test-body" data-i18n="test-q3">"Entreno 6 días a la semana. RECOVERYPRO™ redujo mi tiempo de recuperación a la mitad. Sin el dolor muscular que solía tener al día siguiente. Y el COA del lote me dio toda la confianza que necesitaba."</p>
+        <div class="test-author">
+          <div class="test-avatar">DR</div>
+          <div>
+            <div class="test-name">David R.</div>
+            <div class="test-meta">Monterrey · Atleta</div>
+            <span class="test-product">RECOVERYPRO™</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <!-- Helix pattern background -->
+  <svg class="values-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#0F6E56" stroke-width="1.5">
+      <path d="M0 80 Q60 40,120 80 Q180 120,240 80 Q300 40,360 80 Q420 120,480 80 Q540 40,600 80 Q660 120,720 80 Q780 40,840 80 Q900 120,960 80 Q1020 40,1080 80 Q1140 120,1200 80"/>
+      <path d="M0 120 Q60 160,120 120 Q180 80,240 120 Q300 160,360 120 Q420 80,480 120 Q540 160,600 120 Q660 80,720 120 Q780 160,840 120 Q900 80,960 120 Q1020 160,1080 120 Q1140 80,1200 120"/>
+      <path d="M0 200 Q60 160,120 200 Q180 240,240 200 Q300 160,360 200 Q420 240,480 200 Q540 160,600 200 Q660 240,720 200 Q780 160,840 200 Q900 240,960 200 Q1020 160,1080 200 Q1140 240,1200 200"/>
+      <path d="M0 240 Q60 280,120 240 Q180 200,240 240 Q300 280,360 240 Q420 200,480 240 Q540 280,600 240 Q660 200,720 240 Q780 280,840 240 Q900 200,960 240 Q1020 280,1080 240 Q1140 200,1200 240"/>
+      <path d="M0 320 Q60 280,120 320 Q180 360,240 320 Q300 280,360 320 Q420 360,480 320 Q540 280,600 320 Q660 360,720 320 Q780 280,840 320 Q900 360,960 320 Q1020 280,1080 320 Q1140 360,1200 320"/>
+    </g>
+  </svg>
+  <div class="container values-inner">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="values-label">Nuestra esencia</span>
+      <h2 class="section-h2" data-i18n-html="values-h2">Lo que nos <em>define</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.45)" data-i18n="values-sub">Más que una marca. Un compromiso con la ciencia accesible y la salud sin barreras.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="value-title" data-i18n="val-t1">Misión</div>
+        <div class="value-body" data-i18n="val-b1">Democratizar el acceso a suplementos de optimización de alta calidad para el mercado hispanohablante, sin intermediarios ni costos inflados.</div>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <div class="value-title" data-i18n="val-t2">Visión</div>
+        <div class="value-body" data-i18n="val-b2">Ser la plataforma líder de salud y longevidad en Latinoamérica — donde la ciencia de vanguardia llega sin barreras a quien la necesita.</div>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="value-title" data-i18n="val-t3">Valores</div>
+        <div class="value-body" data-i18n="val-b3">Ciencia respaldada. Pureza garantizada. Innovación constante. Transparencia radical. Resultados verificables — siempre.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="faq-label">Preguntas frecuentes</span>
+      <h2 class="section-h2" data-i18n-html="faq-h2">Respuestas <em>directas</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q1">¿Son seguros los péptidos y bioactivos de biogradix?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a1">Nuestros productos se fabrican bajo estándares GMP bajo estándares GMP certificados. Cada lote es analizado por un laboratorio independiente para verificar pureza ≥99%, identidad molecular y ausencia de contaminantes. Menos del 1% de usuarios reporta efectos secundarios menores.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q2">¿Cuáles son los efectos secundarios posibles?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a2">Menos del 1% reporta efectos leves como sensibilidad en el punto de aplicación o ligero malestar gastrointestinal las primeras horas. Todos los productos incluyen ficha de seguridad completa. Consulta con tu médico si tienes condiciones de salud preexistentes.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q3">¿Puedo combinar varios productos de la colección?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a3">Sí. Nuestras formulaciones están diseñadas para ser compatibles entre sí. Combinaciones frecuentes incluyen VITACHARGE™ + CELLDEW™ para energía y desintoxicación, o RECOVERYPRO™ + MUSCLEMAXX™ para rendimiento deportivo. Contáctanos por WhatsApp para una recomendación personalizada.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q4">¿Son legales en México y Latinoamérica?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a4">Nuestros productos están formulados como suplementos de uso personal y no requieren prescripción médica. A diferencia de las versiones inyectables, la presentación por mucosa oral está sujeta a regulaciones menos restrictivas. Recomendamos verificar la normativa vigente en tu país antes de importar.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q5">¿Qué diferencia hay con los péptidos inyectables?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a5">Los inyectables requieren reconstitución, refrigeración estricta, agujas y técnica aséptica. BiogradixRelease® entrega los mismos bioactivos vía absorción por mucosa oral, con biodisponibilidad 2–3× superior a cápsulas orales, sin ninguna de esas complejidades. Más conveniente, igual de efectivo para la mayoría de aplicaciones.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q6">¿Cómo verifico la autenticidad y pureza de mi lote?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a6">Cada pedido incluye el número de lote. Puedes solicitar el COA (Certificado de Análisis) completo por WhatsApp o email. El documento incluye resultados HPLC, espectrometría de masas, pruebas de esterilidad y endotoxinas. Transparencia total, sin excepciones.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA SECTION -->
 <section class="cta-section">
-  <h2 class="cta-headline">
-    <span data-lang="es">¿Listo para Empezar?</span>
-    <span data-lang="en">Ready to Get Started?</span>
-  </h2>
-  <p class="cta-text">
-    <span data-lang="es">Consulta con nuestro equipo sobre cuál producto es perfecto para ti.</span>
-    <span data-lang="en">Talk to our team about which product is perfect for you.</span>
-  </p>
-  <div class="cta-buttons">
-    <a href="https://wa.me/525512345678" target="_blank" class="btn-white">
-      <span data-lang="es">Contactar por WhatsApp</span>
-      <span data-lang="en">Contact via WhatsApp</span>
-    </a>
+  <svg class="cta-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="#0F6E56" stroke-width="1.5">
+      <path d="M0 100 Q60 60,120 100 Q180 140,240 100 Q300 60,360 100 Q420 140,480 100 Q540 60,600 100 Q660 140,720 100 Q780 60,840 100 Q900 140,960 100 Q1020 60,1080 100 Q1140 140,1200 100"/>
+      <path d="M0 150 Q60 190,120 150 Q180 110,240 150 Q300 190,360 150 Q420 110,480 150 Q540 190,600 150 Q660 110,720 150 Q780 190,840 150 Q900 110,960 150 Q1020 190,1080 150 Q1140 110,1200 150"/>
+      <path d="M0 250 Q60 210,120 250 Q180 290,240 250 Q300 210,360 250 Q420 290,480 250 Q540 210,600 250 Q660 290,720 250 Q780 210,840 250 Q900 290,960 250 Q1020 210,1080 250 Q1140 290,1200 250"/>
+      <path d="M0 300 Q60 340,120 300 Q180 260,240 300 Q300 340,360 300 Q420 260,480 300 Q540 340,600 300 Q660 260,720 300 Q780 340,840 300 Q900 260,960 300 Q1020 340,1080 300 Q1140 260,1200 300"/>
+    </g>
+  </svg>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="label" style="color:var(--teal-active);" data-i18n="cta-label">¿Listo para empezar?</span>
+      <h2 class="cta-h2" data-i18n-html="cta-h2">Consulta gratuita<br/><em>por WhatsApp</em></h2>
+      <p class="cta-body" data-i18n="cta-body">Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.</p>
+      <a href="https://wa.me/1234567890" class="btn-wa-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span data-i18n="cta-btn">Contactar por WhatsApp</span>
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-container">
+<footer class="footer">
+  <div class="container">
     <div class="footer-grid">
-      <div class="footer-col">
-        <h4><span data-lang="es">Biogradix</span></h4>
-        <p><span data-lang="es">Suplementos wellness premium para el mercado mexicano.</span><span data-lang="en">Premium wellness supplements for the Mexican market.</span></p>
+      <div>
+        <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:4px;">
+          <svg width="28" height="16" viewBox="0 0 64 36" fill="none">
+            <path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
+            <path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/>
+          </svg>
+          <span class="nav-logo-text" style="color:inherit;"><span style="color:var(--teal)">bio</span><span style="color:var(--silver)">gradix</span></span>
+        </a>
+        <p class="footer-brand-text" data-i18n="footer-brand">Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.</p>
+        <div style="display:flex;gap:12px;">
+          <a href="https://wa.me/1234567890" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);transition:background .2s;text-decoration:none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.45)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          </a>
+          <a href="#" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);transition:background .2s;text-decoration:none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4><span data-lang="es">Productos</span><span data-lang="en">Products</span></h4>
-        <a href="#productos"><span data-lang="es">Ver Colección</span><span data-lang="en">View Collection</span></a>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-products">Productos</div>
+        <div class="footer-links">
+          <a href="producto-celldew.html">CELLDEW™</a>
+          <a href="producto-vitacharge.html">VITACHARGE™</a>
+          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
+          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
+          <a href="producto-immunefort.html">IMMUNEFORT™</a>
+          <a href="producto-passionboost.html">PASSIONBOOST™</a>
+          <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4><span data-lang="es">Contacto</span><span data-lang="en">Contact</span></h4>
-        <a href="https://wa.me/525512345678" target="_blank">WhatsApp</a>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-resources">Recursos</div>
+        <div class="footer-links">
+          <a href="tecnologia.html" data-i18n="footer-res-tech">Tecnología</a>
+          <a href="educacion.html" data-i18n="footer-res-edu">Educación</a>
+          <a href="blog.html" data-i18n="footer-res-blog">Blog</a>
+          <a href="#faq" data-i18n="footer-res-faq">FAQ</a>
+          <a href="#" data-i18n="footer-res-coa">Certificados COA</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4><span data-lang="es">Legal</span></h4>
-        <a href="terms.html"><span data-lang="es">Términos</span><span data-lang="en">Terms</span></a>
-        <a href="privacy.html"><span data-lang="es">Privacidad</span><span data-lang="en">Privacy</span></a>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-contact">Contacto</div>
+        <div class="footer-links">
+          <a href="https://wa.me/1234567890">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="mailto:hola@biogradix.com">hola@biogradix.com</a>
+        </div>
       </div>
     </div>
-    <div class="footer-legal">
-      <p><span data-lang="es">© 2026 Biogradix. Todos los derechos reservados.</span><span data-lang="en">© 2026 Biogradix. All rights reserved.</span></p>
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer-copy">© 2026 biogradix. Todos los derechos reservados.</span>
+      <span class="footer-disclaimer" data-i18n="footer-disclaimer">Solo para uso personal. Consulta a tu médico antes de usar.</span>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer-terms">Términos</a>
+        <a href="#" data-i18n="footer-privacy">Privacidad</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <script>
-let currentLang = localStorage.getItem('bx-lang') || 'es';
+// ── Navbar scroll ──────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
 
-// PRODUCTS DATA
-const products = [
-  {
-    id: 1,
-    nameEs: 'CELLDEW™',
-    nameEn: 'CELLDEW™',
-    taglineEs: 'Regenerador Antioxidante',
-    taglineEn: 'Antioxidant Master',
-    badgeEs: 'Desintoxicación',
-    badgeEn: 'Detox',
-    benefitsEs: 'Desintoxicación profunda, defensa antioxidante, belleza desde adentro',
-    benefitsEn: 'Deep detox, antioxidant defense, inner beauty',
-    audienceEs: 'Profesionales urbanos, 35+, belleza',
-    audienceEn: 'Urban pros, 35+, beauty',
-    timelineEs: '4-8 semanas',
-    timelineEn: '4-8 weeks',
-    url: 'producto-celldew.html'
-  },
-  {
-    id: 2,
-    nameEs: 'VITACHARGE™',
-    nameEn: 'VITACHARGE™',
-    taglineEs: 'Energía Celular',
-    taglineEn: 'Cellular Energy',
-    badgeEs: 'Energía',
-    badgeEn: 'Energy',
-    benefitsEs: 'Energía explosiva, metabolismo acelerado, claridad mental',
-    benefitsEn: 'Explosive energy, boosted metabolism, mental clarity',
-    audienceEs: 'Fatiga crónica, demanda cognitiva, 35+',
-    audienceEn: 'Chronic fatigue, cognitive demand, 35+',
-    timelineEs: '3-7 días',
-    timelineEn: '3-7 days',
-    url: 'producto-vitacharge.html'
-  },
-  {
-    id: 3,
-    nameEs: 'RADIANCEMAX™',
-    nameEn: 'RADIANCEMAX™',
-    taglineEs: 'Belleza Regenerativa',
-    taglineEn: 'Regenerative Beauty',
-    badgeEs: 'Belleza',
-    badgeEn: 'Beauty',
-    benefitsEs: 'Colágeno explosivo, elastina, hidratación dérmica',
-    benefitsEn: 'Collagen boost, elastin, skin hydration',
-    audienceEs: 'Anti-envejecimiento, piel dañada, cabello',
-    audienceEn: 'Anti-aging, damaged skin, hair',
-    timelineEs: '4-8 semanas',
-    timelineEn: '4-8 weeks',
-    url: 'producto-radiancemax.html'
-  },
-  {
-    id: 4,
-    nameEs: 'RECOVERYPRO™',
-    nameEn: 'RECOVERYPRO™',
-    taglineEs: 'Reparación Total',
-    taglineEn: 'Total Recovery',
-    badgeEs: 'Recuperación',
-    badgeEn: 'Recovery',
-    benefitsEs: 'Recuperación post-entreno, reparación articular, resiliencia',
-    benefitsEn: 'Post-workout recovery, joint repair, resilience',
-    audienceEs: 'Atletas, lesiones, post-cirugía',
-    audienceEn: 'Athletes, injuries, post-surgery',
-    timelineEs: '1-2 semanas',
-    timelineEn: '1-2 weeks',
-    url: 'producto-recoverypro.html'
-  },
-  {
-    id: 5,
-    nameEs: 'IMMUNEFORT™',
-    nameEn: 'IMMUNEFORT™',
-    taglineEs: 'Protección Total',
-    taglineEn: 'Total Protection',
-    badgeEs: 'Inmunidad',
-    badgeEn: 'Immunity',
-    benefitsEs: 'Defensa celular, inmunidad balanceada, resiliencia',
-    benefitsEn: 'Cellular defense, balanced immunity, resilience',
-    audienceEs: 'Demanda inmunológica alta, estrés, 40+',
-    audienceEn: 'High immune demand, stress, 40+',
-    timelineEs: '1-2 semanas',
-    timelineEn: '1-2 weeks',
-    url: 'producto-immunefort.html'
-  },
-  {
-    id: 6,
-    nameEs: 'PASSIONBOOST™',
-    nameEn: 'PASSIONBOOST™',
-    taglineEs: 'Vitalidad Íntima',
-    taglineEn: 'Intimate Vitality',
-    badgeEs: 'Intimidad',
-    badgeEn: 'Intimacy',
-    benefitsEs: 'Deseo potenciado, conexión emocional, satisfacción',
-    benefitsEn: 'Enhanced desire, emotional connection, satisfaction',
-    audienceEs: 'Parejas, vitalidad íntima, salud relacional',
-    audienceEn: 'Couples, intimate vitality, relationship health',
-    timelineEs: '30-90 min',
-    timelineEn: '30-90 min',
-    url: 'producto-passionboost.html'
-  },
-  {
-    id: 7,
-    nameEs: 'MUSCLEMAXX™',
-    nameEn: 'MUSCLEMAXX™',
-    taglineEs: 'Rendimiento Máximo',
-    taglineEn: 'Maximum Performance',
-    badgeEs: 'Músculo',
-    badgeEn: 'Muscle',
-    benefitsEs: 'Crecimiento acelerado, fuerza explosiva, composición',
-    benefitsEn: 'Accelerated growth, explosive strength, composition',
-    audienceEs: 'Atletas serios, composición corporal, 40+',
-    audienceEn: 'Serious athletes, body composition, 40+',
-    timelineEs: '4-6 semanas',
-    timelineEn: '4-6 weeks',
-    url: 'producto-musclemaxx.html'
+// ── Mobile menu ────────────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
   }
-];
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ── Scroll reveal ──────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('up');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── FAQ accordion ──────────────────────────────────────────
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── Animated DNA helix canvas ─────────────────────────────
+(function () {
+  const canvas = document.getElementById('helix-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const TEAL      = '#0F6E56';
+  const TEAL_LITE = '#1D9E75';
+  const NAVY      = '#0B1A2B';
+
+  let W, H, dpr, phase = 0;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    dpr = window.devicePixelRatio || 1;
+    W = rect.width * 0.52;
+    H = rect.height;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    const cx    = W * 0.5;          // horizontal centre of helix
+    const amp   = W * 0.22;         // wave amplitude
+    const pitch = H / 5.5;          // vertical distance per full turn
+    const steps = 220;
+    const rung  = 6;                 // number of cross-rungs per turn
+
+    // Draw the two backbone strands
+    for (let strand = 0; strand < 2; strand++) {
+      const phaseOff = strand === 0 ? 0 : Math.PI;
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const t  = i / steps;
+        const y  = t * H;
+        const angle = (t * Math.PI * 2 * (H / pitch)) - phase + phaseOff;
+        const x  = cx + Math.cos(angle) * amp;
+        const depth = Math.sin(angle); // -1 (back) … +1 (front)
+        const alpha = 0.35 + 0.65 * ((depth + 1) / 2);
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      // Gradient stroke along the strand length
+      const grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0,   strand === 0 ? TEAL      : TEAL_LITE);
+      grad.addColorStop(0.5, strand === 0 ? TEAL_LITE : TEAL);
+      grad.addColorStop(1,   strand === 0 ? TEAL      : TEAL_LITE);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth   = 1.8;
+      ctx.lineCap     = 'round';
+      ctx.stroke();
+    }
+
+    // Draw cross-rungs (base pairs)
+    const turns   = H / pitch;
+    const rungsN  = Math.floor(turns * rung);
+    for (let r = 0; r <= rungsN; r++) {
+      const t     = r / rungsN;
+      const y     = t * H;
+      const angle = (t * Math.PI * 2 * turns) - phase;
+      const x1    = cx + Math.cos(angle)        * amp;
+      const x2    = cx + Math.cos(angle + Math.PI) * amp;
+      const depth = Math.sin(angle);
+      const alpha = 0.12 + 0.28 * ((depth + 1) / 2);
+
+      // Small endpoint dots
+      const dotR = 2.2;
+      ctx.beginPath();
+      ctx.arc(x1, y, dotR, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(15,110,86,${alpha + 0.3})`;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(x2, y, dotR, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(29,158,117,${alpha + 0.3})`;
+      ctx.fill();
+
+      // Connecting rung line
+      ctx.beginPath();
+      ctx.moveTo(x1, y);
+      ctx.lineTo(x2, y);
+      ctx.strokeStyle = `rgba(15,110,86,${alpha})`;
+      ctx.lineWidth   = 1;
+      ctx.stroke();
+    }
+
+    phase += 0.008;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', () => { ctx.resetTransform(); resize(); });
+  draw();
+})();
+
+// ── i18n ──────────────────────────────────────────────────
+const TRANSLATIONS = {
+  'nav-productos':    {es:'Productos',   en:'Products'},
+  'nav-tecnologia':   {es:'Tecnología',  en:'Technology'},
+  'nav-educacion':    {es:'Educación',   en:'Education'},
+  'nav-blog':         {es:'Blog',        en:'Blog'},
+  'nav-faq':          {es:'FAQ',         en:'FAQ'},
+  'trust-tested':     {es:'Probado por terceros', en:'Third-party tested'},
+  'hero-tag':         {es:'Suplementos Wellness Premium', en:'Premium Wellness Supplements'},
+  'hero-tagline':     {es:'Donde la ciencia encuentra su potencial', en:'Where science meets your potential'},
+  'hero-h1':          {es:'Sin Inyecciones,<br/><em>Con Resultados</em>', en:'No Injections,<br/><em>Real Results</em>'},
+  'hero-sub':         {es:'No Invasivo. Biodisponibilidad superior.', en:'Non-Invasive. Superior Bioavailability.'},
+  'hero-body':        {es:'Absorción directa por mucosa oral vía BiogradixRelease®. Energía en 3–7 días, resultados visibles en 4–8 semanas. Sin agujas, sin complicaciones.', en:'Direct oral mucosa absorption via BiogradixRelease®. Energy in 3–7 days, visible results in 4–8 weeks. No needles, no complications.'},
+  'hero-btn1':        {es:'Explorar Colección', en:'Explore Collection'},
+  'hero-btn2':        {es:'Cómo Funciona',      en:'How It Works'},
+  'why-label':        {es:'¿Por qué biogradix?', en:'Why biogradix?'},
+  'why-h2':           {es:'Ciencia que <em>se siente</em>', en:'Science you <em>can feel</em>'},
+  'why-sub':          {es:'Cada decisión de formulación tiene un propósito. Sin rellenos, sin compromisos.', en:'Every formulation decision has a purpose. No fillers, no compromises.'},
+  'why-t1':           {es:'Sin Inyecciones',       en:'No Injections'},
+  'why-b1':           {es:'Absorción bucal directa. Sin agujas, sin procedimientos invasivos, sin visitas médicas obligatorias.', en:'Direct buccal absorption. No needles, no invasive procedures, no mandatory medical visits.'},
+  'why-t2':           {es:'Resultados Rápidos',    en:'Fast Results'},
+  'why-b2':           {es:'Vía BiogradixRelease®, los ingredientes alcanzan el torrente sanguíneo en minutos. Energía perceptible en 3–7 días.', en:'Via BiogradixRelease®, ingredients reach the bloodstream in minutes. Noticeable energy in 3–7 days.'},
+  'why-t3':           {es:'Pureza Farmacéutica',   en:'Pharmaceutical Purity'},
+  'why-b3':           {es:'Fabricados bajo estándares GMP. Cada lote analizado por HPLC con pureza verificada ≥99% por laboratorio independiente.', en:'Manufactured under GMP standards. Each batch HPLC-tested with ≥99% verified purity by independent laboratory.'},
+  'why-t4':           {es:'Transparencia Total',   en:'Full Transparency'},
+  'why-b4':           {es:'COA disponible por lote. Ingredientes claros, dosis exactas, sin ingredientes ocultos ni propietarios.', en:'COA available per batch. Clear ingredients, exact doses, no hidden or proprietary ingredients.'},
+  'why-t5':           {es:'Dosis Individual',      en:'Individual Dosing'},
+  'why-b5':           {es:'Presentación sellada por dosis. Sin contacto con el aire, sin degradación, sin desperdicio. Precisión clínica en cada toma.', en:'Sealed single-dose format. No air contact, no degradation, no waste. Clinical precision with every dose.'},
+  'why-t6':           {es:'Entrega Express',       en:'Express Delivery'},
+  'why-b6':           {es:'Pedidos antes de mediodía salen el mismo día. Cadena de frío garantizada para máxima estabilidad del producto.', en:'Orders placed before noon ship same day. Cold chain guaranteed for maximum product stability.'},
+  'tech-label':       {es:'BiogradixRelease®',     en:'BiogradixRelease®'},
+  'tech-h2':          {es:'Biodisponibilidad <em>2–3× superior</em>', en:'<em>2–3× superior</em> bioavailability'},
+  'tech-body':        {es:'El metabolismo de primer paso destruye hasta el 80% de la potencia de los suplementos orales convencionales. BiogradixRelease® resuelve esto con absorción por mucosa oral directa — los ingredientes pasan directamente al torrente sanguíneo, sin pasar por el hígado primero.', en:'Conventional oral supplements lose up to 80% of their potency through first-pass metabolism. BiogradixRelease® solves this with direct oral mucosa absorption — ingredients reach the bloodstream directly, bypassing the liver.'},
+  'tech-item1':       {es:'Absorción directa a través de la membrana mucosa bucal', en:'Direct absorption through the buccal mucosa membrane'},
+  'tech-item2':       {es:'Ingredientes en sangre en minutos, no en horas', en:'Ingredients in blood within minutes, not hours'},
+  'tech-item3':       {es:'Elude el metabolismo de primer paso hepático', en:'Bypasses hepatic first-pass metabolism'},
+  'tech-item4':       {es:'2–3× mayor biodisponibilidad vs. cápsulas orales', en:'2–3× greater bioavailability vs. oral capsules'},
+  'tech-item5':       {es:'Alternativa no invasiva a las formulaciones inyectables', en:'Non-invasive alternative to injectable formulations'},
+  'products-label':   {es:'Colección',             en:'Collection'},
+  'products-h2':      {es:'Formulaciones <em>de precisión</em>', en:'Precision <em>formulations</em>'},
+  'products-sub':     {es:'Siete productos. Una promesa: eficacia verificable, ingredientes transparentes, resultados reales.', en:'Seven products. One promise: verifiable efficacy, transparent ingredients, real results.'},
+  'badge-detox':      {es:'Detox',        en:'Detox'},
+  'badge-energia':    {es:'Energía',      en:'Energy'},
+  'badge-belleza':    {es:'Belleza',      en:'Beauty'},
+  'badge-recuperacion':{es:'Recuperación', en:'Recovery'},
+  'badge-inmunidad':  {es:'Inmunidad',    en:'Immunity'},
+  'badge-intimidad':  {es:'Intimidad',    en:'Intimacy'},
+  'badge-musculo':    {es:'Músculo',      en:'Muscle'},
+  'product-cta':      {es:'Información', en:'Information'},
+  'cd-b1':            {es:'Neutralización de radicales libres', en:'Free radical neutralization'},
+  'cd-b2':            {es:'Soporte hepático y desintoxicación celular', en:'Liver support and cellular detox'},
+  'cd-b3':            {es:'Piel luminosa y protección sistémica', en:'Luminous skin and systemic protection'},
+  'cd-aud':           {es:'Para: biohackers · longevidad · 35+', en:'For: biohackers · longevity · 35+'},
+  'cd-time':          {es:'4–8 semanas',  en:'4–8 weeks'},
+  'vc-b1':            {es:'Energía sostenida sin picos ni caídas', en:'Sustained energy without peaks or crashes'},
+  'vc-b2':            {es:'Soporte mitocondrial y cognitivo', en:'Mitochondrial and cognitive support'},
+  'vc-b3':            {es:'Claridad mental y foco prolongado', en:'Mental clarity and prolonged focus'},
+  'vc-aud':           {es:'Para: ejecutivos · atletas · productividad', en:'For: executives · athletes · productivity'},
+  'vc-time':          {es:'3–7 días',     en:'3–7 days'},
+  'rm-b1':            {es:'Estimulación de colágeno y elastina', en:'Collagen and elastin stimulation'},
+  'rm-b2':            {es:'Reducción visible de líneas y manchas', en:'Visible reduction of lines and spots'},
+  'rm-b3':            {es:'Hidratación profunda y luminosidad', en:'Deep hydration and luminosity'},
+  'rm-aud':           {es:'Para: mujeres 35+ · anti-edad · skincare', en:'For: women 35+ · anti-aging · skincare'},
+  'rm-time':          {es:'4–8 semanas',  en:'4–8 weeks'},
+  'rp-b1':            {es:'Reducción de inflamación post-esfuerzo', en:'Post-exertion inflammation reduction'},
+  'rp-b2':            {es:'Reparación muscular y articular', en:'Muscle and joint repair'},
+  'rp-b3':            {es:'Recuperación nocturna profunda', en:'Deep overnight recovery'},
+  'rp-aud':           {es:'Para: atletas · lesiones · alto rendimiento', en:'For: athletes · injuries · high performance'},
+  'rp-time':          {es:'1–2 semanas',  en:'1–2 weeks'},
+  'if-b1':            {es:'Modulación y fortalecimiento inmune', en:'Immune modulation and strengthening'},
+  'if-b2':            {es:'Adaptógenos para el estrés crónico', en:'Adaptogens for chronic stress'},
+  'if-b3':            {es:'Defensa contra infecciones estacionales', en:'Defense against seasonal infections'},
+  'if-aud':           {es:'Para: viajeros frecuentes · inmuno-compromiso', en:'For: frequent travelers · immune support'},
+  'if-time':          {es:'1–2 semanas',  en:'1–2 weeks'},
+  'pb-b1':            {es:'Respuesta de vitalidad en 30–90 min', en:'Vitality response in 30–90 min'},
+  'pb-b2':            {es:'Mecanismo de acción central', en:'Central mechanism of action'},
+  'pb-b3':            {es:'Para hombres y mujeres', en:'For men and women'},
+  'pb-aud':           {es:'Para: adultos activos · bienestar íntimo', en:'For: active adults · intimate wellness'},
+  'pb-time':          {es:'30–90 min',    en:'30–90 min'},
+  'mm-b1':            {es:'Síntesis proteica y masa magra', en:'Protein synthesis and lean mass'},
+  'mm-b2':            {es:'Fuerza y resistencia muscular', en:'Strength and muscular endurance'},
+  'mm-b3':            {es:'Optimización de composición corporal', en:'Body composition optimization'},
+  'mm-aud':           {es:'Para: atletas · culturismo · rendimiento', en:'For: athletes · bodybuilding · performance'},
+  'mm-time':          {es:'4–6 semanas',  en:'4–6 weeks'},
+  'timeline-label':   {es:'Resultados',   en:'Results'},
+  'timeline-h2':      {es:'Tu progreso en el <em>tiempo</em>', en:'Your progress <em>over time</em>'},
+  'timeline-sub':     {es:'Cada fase de resultados, verificada y predecible.', en:'Each results phase, verified and predictable.'},
+  'tl-energy':        {es:'Energía',      en:'Energy'},
+  'tl-perf':          {es:'Rendimiento',  en:'Performance'},
+  'tl-body':          {es:'Composición',  en:'Body Composition'},
+  'tl-beauty':        {es:'Belleza',      en:'Beauty'},
+  'tl-deep':          {es:'Cambios Profundos', en:'Deep Changes'},
+  'test-label':       {es:'Testimonios',  en:'Testimonials'},
+  'test-h2':          {es:'Lo que dicen <em>nuestros clientes</em>', en:'What our <em>clients say</em>'},
+  'test-q1':          {es:'"Llevaba meses con fatiga crónica. En la primera semana con VITACHARGE™ noté una diferencia real — no el típico boost de cafeína, sino energía limpia y sostenida. Ahora no concibo mi rutina sin él."', en:'"I had been dealing with chronic fatigue for months. In the first week with VITACHARGE™ I noticed a real difference — not the typical caffeine boost, but clean, sustained energy. I can\'t imagine my routine without it now."'},
+  'test-q2':          {es:'"A mis 43 años no esperaba resultados tan visibles. A las 6 semanas con RADIANCEMAX™ mi piel luce más firme y luminosa. Me lo preguntan constantemente. La calidad del producto es exactamente lo que prometen."', en:'"At 43 I didn\'t expect such visible results. After 6 weeks with RADIANCEMAX™ my skin looks firmer and more radiant. People ask me about it constantly. The product quality is exactly what they promise."'},
+  'test-q3':          {es:'"Entreno 6 días a la semana. RECOVERYPRO™ redujo mi tiempo de recuperación a la mitad. Sin el dolor muscular que solía tener al día siguiente. Y el COA del lote me dio toda la confianza que necesitaba."', en:'"I train 6 days a week. RECOVERYPRO™ cut my recovery time in half. No more next-day muscle soreness like before. And the batch COA gave me all the confidence I needed."'},
+  'values-label':     {es:'Nuestra esencia', en:'Our essence'},
+  'values-h2':        {es:'Lo que nos <em>define</em>', en:'What <em>defines us</em>'},
+  'values-sub':       {es:'Más que una marca. Un compromiso con la ciencia accesible y la salud sin barreras.', en:'More than a brand. A commitment to accessible science and health without barriers.'},
+  'val-t1':           {es:'Misión',       en:'Mission'},
+  'val-b1':           {es:'Democratizar el acceso a suplementos de optimización de alta calidad para el mercado hispanohablante, sin intermediarios ni costos inflados.', en:'To democratize access to high-quality optimization supplements for the global market, without middlemen or inflated costs.'},
+  'val-t2':           {es:'Visión',       en:'Vision'},
+  'val-b2':           {es:'Ser la plataforma líder de salud y longevidad en Latinoamérica — donde la ciencia de vanguardia llega sin barreras a quien la necesita.', en:'To be the leading health and longevity platform — where cutting-edge science reaches those who need it, without barriers.'},
+  'val-t3':           {es:'Valores',      en:'Values'},
+  'val-b3':           {es:'Ciencia respaldada. Pureza garantizada. Innovación constante. Transparencia radical. Resultados verificables — siempre.', en:'Evidence-based science. Guaranteed purity. Constant innovation. Radical transparency. Verifiable results — always.'},
+  'faq-label':        {es:'Preguntas frecuentes', en:'Frequently asked questions'},
+  'faq-h2':           {es:'Respuestas <em>directas</em>', en:'Straight <em>answers</em>'},
+  'faq-q1':           {es:'¿Son seguros los péptidos y bioactivos de biogradix?', en:'Are biogradix peptides and bioactives safe?'},
+  'faq-a1':           {es:'Nuestros productos se fabrican bajo estándares GMP bajo estándares GMP certificados. Cada lote es analizado por un laboratorio independiente para verificar pureza ≥99%, identidad molecular y ausencia de contaminantes. Menos del 1% de usuarios reporta efectos secundarios menores.', en:'Our products are manufactured under certified GMP standards. Each batch is tested by an independent laboratory to verify ≥99% purity, molecular identity, and absence of contaminants. Less than 1% of users report minor side effects.'},
+  'faq-q2':           {es:'¿Cuáles son los efectos secundarios posibles?', en:'What are the possible side effects?'},
+  'faq-a2':           {es:'Menos del 1% reporta efectos leves como sensibilidad en el punto de aplicación o ligero malestar gastrointestinal las primeras horas. Todos los productos incluyen ficha de seguridad completa. Consulta con tu médico si tienes condiciones de salud preexistentes.', en:'Less than 1% report mild effects such as sensitivity at the application site or slight gastrointestinal discomfort in the first hours. All products include a complete safety data sheet. Consult your doctor if you have pre-existing health conditions.'},
+  'faq-q3':           {es:'¿Puedo combinar varios productos de la colección?', en:'Can I combine several products from the collection?'},
+  'faq-a3':           {es:'Sí. Nuestras formulaciones están diseñadas para ser compatibles entre sí. Combinaciones frecuentes incluyen VITACHARGE™ + CELLDEW™ para energía y desintoxicación, o RECOVERYPRO™ + MUSCLEMAXX™ para rendimiento deportivo. Contáctanos por WhatsApp para una recomendación personalizada.', en:'Yes. Our formulations are designed to be compatible with each other. Common combinations include VITACHARGE™ + CELLDEW™ for energy and detox, or RECOVERYPRO™ + MUSCLEMAXX™ for athletic performance. Contact us via WhatsApp for a personalized recommendation.'},
+  'faq-q4':           {es:'¿Son legales en México y Latinoamérica?', en:'Are they legal in Mexico and Latin America?'},
+  'faq-a4':           {es:'Nuestros productos están formulados como suplementos de uso personal y no requieren prescripción médica. A diferencia de las versiones inyectables, la presentación por mucosa oral está sujeta a regulaciones menos restrictivas. Recomendamos verificar la normativa vigente en tu país antes de importar.', en:'Our products are formulated as personal-use supplements and do not require a prescription. Unlike injectable versions, the oral mucosa format is subject to less restrictive regulations. We recommend verifying current regulations in your country before importing.'},
+  'faq-q5':           {es:'¿Qué diferencia hay con los péptidos inyectables?', en:'What is the difference from injectable peptides?'},
+  'faq-a5':           {es:'Los inyectables requieren reconstitución, refrigeración estricta, agujas y técnica aséptica. BiogradixRelease® entrega los mismos bioactivos vía absorción por mucosa oral, con biodisponibilidad 2–3× superior a cápsulas orales, sin ninguna de esas complejidades. Más conveniente, igual de efectivo para la mayoría de aplicaciones.', en:'Injectables require reconstitution, strict refrigeration, needles, and aseptic technique. BiogradixRelease® delivers the same bioactives via oral mucosa absorption, with 2–3× greater bioavailability than oral capsules, without any of that complexity. More convenient, equally effective for most applications.'},
+  'faq-q6':           {es:'¿Cómo verifico la autenticidad y pureza de mi lote?', en:'How do I verify the authenticity and purity of my batch?'},
+  'faq-a6':           {es:'Cada pedido incluye el número de lote. Puedes solicitar el COA (Certificado de Análisis) completo por WhatsApp o email. El documento incluye resultados HPLC, espectrometría de masas, pruebas de esterilidad y endotoxinas. Transparencia total, sin excepciones.', en:'Every order includes the batch number. You can request the complete COA (Certificate of Analysis) via WhatsApp or email. The document includes HPLC results, mass spectrometry, sterility and endotoxin tests. Full transparency, no exceptions.'},
+  'cta-label':        {es:'¿Listo para empezar?', en:'Ready to start?'},
+  'cta-h2':           {es:'Consulta gratuita<br/><em>por WhatsApp</em>', en:'Free consultation<br/><em>via WhatsApp</em>'},
+  'cta-body':         {es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.', en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},
+  'cta-btn':          {es:'Contactar por WhatsApp', en:'Contact via WhatsApp'},
+  'footer-brand':     {es:'Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.', en:'Pharmaceutical-grade wellness supplements. Accessible science for the global market.'},
+  'footer-col-products':{es:'Productos',   en:'Products'},
+  'footer-col-resources':{es:'Recursos',   en:'Resources'},
+  'footer-col-contact':{es:'Contacto',     en:'Contact'},
+  'footer-res-tech':  {es:'Tecnología',    en:'Technology'},
+  'footer-res-edu':   {es:'Educación',     en:'Education'},
+  'footer-res-blog':  {es:'Blog',          en:'Blog'},
+  'footer-res-faq':   {es:'FAQ',           en:'FAQ'},
+  'footer-res-coa':   {es:'Certificados COA', en:'COA Certificates'},
+  'footer-copy':      {es:'© 2026 biogradix. Todos los derechos reservados.', en:'© 2026 biogradix. All rights reserved.'},
+  'footer-disclaimer':{es:'Solo para uso personal. Consulta a tu médico antes de usar.', en:'For personal use only. Consult your doctor before use.'},
+  'footer-terms':     {es:'Términos',      en:'Terms'},
+  'footer-privacy':   {es:'Privacidad',    en:'Privacy'},
+};
 
 function setLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-  localStorage.setItem('bx-lang', lang);
-  trackLanguageToggle(lang);
-  
-  // Sync desktop lang buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.remove('active');
-  });
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    if ((lang === 'es' && btn.textContent.trim() === 'ES') || 
-        (lang === 'en' && btn.textContent.trim() === 'EN')) {
-      btn.classList.add('active');
+  localStorage.setItem('bgLang', lang);
+  document.getElementById('htmlRoot').setAttribute('lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (TRANSLATIONS[key] && TRANSLATIONS[key][lang]) {
+      el.textContent = TRANSLATIONS[key][lang];
     }
   });
-
-  // Sync mobile lang buttons
-  updateMobileLangBtns(lang);
-  
-  renderProducts();
-}
-
-function updateMobileLangBtns(lang) {
-  const esBtn = document.getElementById('mobileLangEs');
-  const enBtn = document.getElementById('mobileLangEn');
-  if (!esBtn || !enBtn) return;
-  if (lang === 'es') {
-    esBtn.classList.add('active');
-    enBtn.classList.remove('active');
-  } else {
-    enBtn.classList.add('active');
-    esBtn.classList.remove('active');
-  }
-}
-
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('mobileOverlay');
-  const btn = document.getElementById('hamburgerBtn');
-  const isOpen = menu.classList.contains('open');
-  if (isOpen) {
-    closeMobileMenu();
-  } else {
-    menu.classList.add('open');
-    overlay.classList.add('open');
-    btn.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('menu-open');
-  }
-}
-
-function closeMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('mobileOverlay');
-  const btn = document.getElementById('hamburgerBtn');
-  menu.classList.remove('open');
-  overlay.classList.remove('open');
-  btn.classList.remove('open');
-  btn.setAttribute('aria-expanded', 'false');
-  document.body.classList.remove('menu-open');
-}
-
-// Close menu on Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeMobileMenu();
-});
-
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = products.map(p => `
-    <a href="${p.url}" style="text-decoration:none;color:inherit">
-      <div class="product-card">
-        <div class="product-image"></div>
-        <div class="product-body">
-          <div class="product-badge">${currentLang === 'es' ? p.badgeEs : p.badgeEn}</div>
-          <h3 class="product-name">${currentLang === 'es' ? p.nameEs : p.nameEn}</h3>
-          <p class="product-tagline">${currentLang === 'es' ? p.taglineEs : p.taglineEn}</p>
-          <p class="product-benefits">${currentLang === 'es' ? p.benefitsEs : p.benefitsEn}</p>
-          <div class="product-audience">
-            <strong>${currentLang === 'es' ? 'Para:' : 'For:'}</strong> ${currentLang === 'es' ? p.audienceEs : p.audienceEn}
-          </div>
-          <div class="product-timeline">
-            ⏱️ ${currentLang === 'es' ? 'Resultados en:' : 'Results in:'} ${currentLang === 'es' ? p.timelineEs : p.timelineEn}
-          </div>
-          <button class="product-cta" onclick="event.preventDefault(); contactWhatsApp('${currentLang === 'es' ? p.nameEs : p.nameEn}')">
-            ${currentLang === 'es' ? 'Información' : 'Info'}
-          </button>
-        </div>
-      </div>
-    </a>
-  `).join('');
-}
-
-// ANALYTICS TRACKING FUNCTIONS
-function trackProductView(productName) {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'view_product', {
-      'product_name': productName,
-      'page_url': window.location.href,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 Product view tracked: ${productName}`);
-}
-
-function trackProductClick(productName) {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'product_click', {
-      'product_name': productName,
-      'page_url': window.location.href,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 Product click tracked: ${productName}`);
-}
-
-function trackLanguageToggle(language) {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'language_toggle', {
-      'language': language,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 Language toggled to: ${language}`);
-}
-
-function trackFAQToggle(question) {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'faq_click', {
-      'faq_question': question,
-      'page_url': window.location.href,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 FAQ toggled: ${question}`);
-}
-
-function trackWhatsAppClick(product, source = 'homepage') {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'whatsapp_click', {
-      'product': product,
-      'source': source,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 WhatsApp click tracked: ${product} from ${source}`);
-}
-
-function contactWhatsApp(productName) {
-  trackWhatsAppClick(productName, 'homepage');
-  const msg = currentLang === 'es' 
-    ? `Hola, me interesa ${productName}. Quisiera más información.`
-    : `Hi, I'm interested in ${productName}. Could you provide more info?`;
-  window.open(`https://wa.me/525512345678?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function toggleFaq(element) {
-  const answer = element.nextElementSibling;
-  const toggle = element.querySelector('.faq-toggle');
-  const question = element.textContent.trim();
-  
-  answer.classList.toggle('open');
-  toggle.classList.toggle('open');
-  
-  if(answer.classList.contains('open')) {
-    trackFAQToggle(question);
-  }
-}
-
-// Enhanced conversion funnel tracking
-function trackBreadcrumbClick(destination) {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'breadcrumb_click', {
-      'destination': destination,
-      'page': window.location.pathname,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 Breadcrumb click: ${destination}`);
-}
-
-function trackRelatedProductClick(productName, fromPage) {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'related_product_click', {
-      'product': productName,
-      'from_page': fromPage,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 Related product click: ${productName} from ${fromPage}`);
-}
-
-function trackConversionStep(step, details) {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'conversion_step', {
-      'step': step,
-      'details': details,
-      'page': window.location.pathname,
-      'timestamp': new Date().toISOString()
-    });
-  }
-  console.log(`📊 Conversion step: ${step} — ${details}`);
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.lang = currentLang;
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    if ((currentLang === 'es' && btn.textContent === 'ES') || (currentLang === 'en' && btn.textContent === 'EN')) {
-      btn.classList.add('active');
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (TRANSLATIONS[key] && TRANSLATIONS[key][lang]) {
+      el.innerHTML = TRANSLATIONS[key][lang];
     }
   });
-  renderProducts();
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
+  });
+}
+(function() {
+  const saved = localStorage.getItem('bgLang') || 'es';
+  setLang(saved);
+})();
+
+// ── Smooth anchor links ────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 });
 </script>
-
 </body>
 </html>

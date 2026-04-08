@@ -1,0 +1,39 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/tecnologia", "destination": "/tecnologia.html" },
+    { "source": "/educacion", "destination": "/educacion.html" },
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/producto/celldew", "destination": "/producto-celldew.html" },
+    { "source": "/producto/vitacharge", "destination": "/producto-vitacharge.html" },
+    { "source": "/producto/radiancemax", "destination": "/producto-radiancemax.html" },
+    { "source": "/producto/recoverypro", "destination": "/producto-recoverypro.html" },
+    { "source": "/producto/immunefort", "destination": "/producto-immunefort.html" },
+    { "source": "/producto/passionboost", "destination": "/producto-passionboost.html" },
+    { "source": "/producto/musclemaxx", "destination": "/producto-musclemaxx.html" },
+    { "source": "/blog/absorcion-mucosa", "destination": "/blog-absorcion-mucosa.html" },
+    { "source": "/blog/nad-mas", "destination": "/blog-nad-mas.html" },
+    { "source": "/blog/glutathione-guia", "destination": "/blog-glutathione-guia.html" },
+    { "source": "/blog/peptidos-longevidad", "destination": "/blog-peptidos-longevidad.html" },
+    { "source": "/blog/recuperacion-muscular", "destination": "/blog-recuperacion-muscular.html" },
+    { "source": "/blog/ghk-cu-colageno", "destination": "/blog-ghk-cu-colageno.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    },
+    {
+      "source": "/(.*.html)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+      ]
+    }
+  ]
+}

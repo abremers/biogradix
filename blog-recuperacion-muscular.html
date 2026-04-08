@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recuperación Muscular con BPC-157 | Biogradix Blog</title>
+  <meta name="description" content="Descubre cómo el péptido BPC-157 transforma la recuperación muscular post-entrenamiento, reduce el DOMS y acelera la reparación de tejidos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --navy:       #0B1A2B;
+      --teal:       #0F6E56;
+      --teal-deep:  #085041;
+      --teal-active:#1D9E75;
+      --mint:       #E1F5EE;
+      --cloud:      #FAFBFC;
+      --silver:     #E8EAED;
+      --gold:       #C9A84C;
+      --text:       #1A2533;
+      --muted:      #5A6A7A;
+      --radius:     12px;
+      --nav-h:      68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cloud);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+      background: rgba(11, 26, 43, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(11, 26, 43, 0.98);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-active));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+    .nav-logo-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.75rem, 2vw, 1.75rem);
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal-active); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lang-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.06em;
+    }
+    .lang-btn:hover,
+    .lang-btn.active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
+    .nav-wa {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #25D366;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.42rem 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .nav-wa:hover { background: #1ebe5d; transform: translateY(-1px); }
+    .nav-wa svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 850;
+      background: rgba(11,26,43,0.98);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--teal-active); }
+    .mobile-menu .mobile-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .nav-wa span { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      position: relative;
+      height: 460px;
+      overflow: hidden;
+      margin-top: var(--nav-h);
+    }
+    .article-hero img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .article-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(11,26,43,0.38) 0%,
+        rgba(11,26,43,0.72) 60%,
+        rgba(11,26,43,0.92) 100%
+      );
+    }
+    .article-hero-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 5vw, 3rem);
+      max-width: 860px;
+    }
+    .article-category {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--teal);
+      color: #fff;
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 0.9rem;
+    }
+    .article-hero-content h1 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      color: #fff;
+      line-height: 1.18;
+      margin-bottom: 1.1rem;
+      max-width: 720px;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-active));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #fff;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .article-meta-text {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.78);
+    }
+    .article-meta-text strong {
+      display: block;
+      color: rgba(255,255,255,0.95);
+      font-weight: 600;
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 2.5rem clamp(1.25rem, 4vw, 2rem) 4rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 10px; }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* Article typography */
+    .article-content h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+      color: var(--navy);
+      margin: 2.2rem 0 0.85rem;
+      line-height: 1.25;
+    }
+    .article-content h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.8rem 0 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .article-content p {
+      margin-bottom: 1.15rem;
+      color: #2A3A4A;
+      font-size: 1.015rem;
+    }
+    .article-content ul, .article-content ol {
+      margin: 0.75rem 0 1.15rem 1.4rem;
+    }
+    .article-content li {
+      margin-bottom: 0.55rem;
+      color: #2A3A4A;
+      font-size: 1.015rem;
+    }
+    .article-content strong { color: var(--navy); font-weight: 600; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 4px solid var(--teal);
+      margin: 2rem 0;
+      padding: 1.25rem 1.5rem;
+      background: var(--mint);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .pull-quote p {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--teal-deep);
+      line-height: 1.45;
+      margin: 0 !important;
+    }
+
+    /* Key takeaways */
+    .takeaways-box {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      margin: 2rem 0;
+    }
+    .takeaways-box h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal-active);
+      margin-bottom: 1rem;
+    }
+    .takeaways-box ul {
+      list-style: none;
+      margin: 0; padding: 0;
+    }
+    .takeaways-box li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.88) !important;
+      font-size: 0.95rem !important;
+      margin-bottom: 0.65rem;
+    }
+    .takeaways-box li::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--teal-active);
+      border-radius: 50%;
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    /* Science badge */
+    .science-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--mint);
+      color: var(--teal-deep);
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    /* Protocol box */
+    .protocol-box {
+      border: 1px solid var(--silver);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      background: #fff;
+    }
+    .protocol-box h4 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.85rem;
+    }
+    .protocol-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+      align-items: flex-start;
+    }
+    .protocol-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      min-width: 90px;
+      padding-top: 0.15rem;
+    }
+    .protocol-value {
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RELATED PRODUCTS ── */
+    .related-products {
+      background: var(--cloud);
+      padding: 4rem clamp(1.25rem, 4vw, 3rem);
+      border-top: 1px solid var(--silver);
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--silver);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(11,26,43,0.12);
+    }
+    .product-card-img {
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .product-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .product-card:hover .product-card-img img { transform: scale(1.05); }
+    .product-card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(11,26,43,0.1), rgba(11,26,43,0.55));
+    }
+    .product-card-badge {
+      position: absolute;
+      top: 10px; left: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--teal);
+      color: #fff;
+      padding: 0.22rem 0.6rem;
+      border-radius: 20px;
+    }
+    .product-card-body { padding: 1.15rem 1.25rem 1.35rem; }
+    .product-card-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+    .product-card-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--navy);
+      padding: 5rem clamp(1.25rem, 4vw, 3rem);
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-active);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover { background: var(--teal); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060E18;
+      padding: 4rem clamp(1.25rem, 5vw, 3rem) 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 2.5rem;
+      max-width: 1140px;
+      margin: 0 auto 3rem;
+    }
+    @media (max-width: 780px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.75rem;
+      max-width: 260px;
+      line-height: 1.6;
+    }
+    .footer-col h5 {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.9rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--teal-active); }
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-disclaimer {
+      max-width: 1140px;
+      margin: 1.5rem auto 0;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">BG</div>
+      <span class="nav-logo-text">BIOGRADIX</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#productos" data-i18n="nav_productos">Productos</a></li>
+      <li><a href="tecnologia.html" data-i18n="nav_tecnologia">Tecnología</a></li>
+      <li><a href="educacion.html" data-i18n="nav_educacion">Educación</a></li>
+      <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+      <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      <a href="https://wa.me/1234567890" class="nav-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span data-i18n="nav_whatsapp">WhatsApp</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#productos" onclick="toggleMenu()" data-i18n="nav_productos">Productos</a>
+    <a href="tecnologia.html" onclick="toggleMenu()" data-i18n="nav_tecnologia">Tecnología</a>
+    <a href="educacion.html" onclick="toggleMenu()" data-i18n="nav_educacion">Educación</a>
+    <a href="blog.html" onclick="toggleMenu()" data-i18n="nav_blog">Blog</a>
+    <a href="index.html#faq" onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
+    <div class="mobile-actions">
+      <button class="lang-btn" onclick="setLang('es'); toggleMenu();">ES</button>
+      <button class="lang-btn" onclick="setLang('en'); toggleMenu();">EN</button>
+    </div>
+    <a href="https://wa.me/1234567890" class="nav-wa" target="_blank" rel="noopener" style="margin-top:0.5rem;">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;fill:#fff;">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      WhatsApp
+    </a>
+  </div>
+
+  <!-- ── ARTICLE HERO ── -->
+  <section class="article-hero">
+    <img
+      src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80"
+      alt="Atleta en recuperación muscular"
+      loading="eager"
+    />
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-content">
+      <span class="article-category" data-i18n="hero_category">Recuperación · Péptidos</span>
+      <h1 data-i18n="hero_h1">BPC-157 y la Recuperación Muscular:<br>La Ciencia Detrás del RECOVERYPRO™</h1>
+      <div class="article-meta">
+        <div class="author-avatar">DR</div>
+        <div class="article-meta-text">
+          <strong data-i18n="hero_author">Dr. Rodrigo Medina — Medicina del Deporte</strong>
+          <span data-i18n="hero_date">8 de abril, 2026 · 11 min lectura</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ARTICLE BODY ── -->
+  <div class="article-wrap">
+    <a href="blog.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      <span data-i18n="back_blog">Volver al Blog</span>
+    </a>
+
+    <!-- ── SPANISH ARTICLE ── -->
+    <div id="article-es" class="article-content">
+
+      <div class="science-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        Evidencia Científica
+      </div>
+
+      <h2>El entrenamiento no te hace más fuerte. La recuperación sí.</h2>
+
+      <p class="reveal">Existe una paradoja en el corazón de cualquier programa de entrenamiento serio: el ejercicio en sí mismo es un acto de destrucción controlada. Cada repetición con carga, cada sprint, cada sesión exigente produce daño tisular a nivel celular. El músculo no crece durante el entrenamiento; crece —o no crece— durante las horas y días que siguen. Si la recuperación es deficiente, el cuerpo nunca cierra completamente el ciclo de reparación y adaptación. El resultado no es progreso: es acumulación de fatiga, riesgo de lesión y, en el peor de los casos, sobreentrenamiento crónico.</p>
+
+      <p class="reveal">Este artículo explora por qué la recuperación muscular es la variable más subestimada del rendimiento deportivo, qué ocurre fisiológicamente después del ejercicio intenso, y cómo el péptido BPC-157 —el principio activo de RECOVERYPRO™— está reescribiendo lo que creemos posible en el campo de la recuperación tisular.</p>
+
+      <h2 class="reveal">La Fisiología del DOMS: Lo Que Ocurre Realmente en el Músculo</h2>
+
+      <p class="reveal">El dolor muscular de aparición tardía, conocido por sus siglas en inglés como DOMS (Delayed Onset Muscle Soreness), es una experiencia familiar para cualquiera que haya empujado sus límites en el gimnasio o en el campo. Ese dolor característico que aparece entre 24 y 72 horas después del esfuerzo no es, como se pensó durante décadas, acumulación de ácido láctico. Es algo mucho más complejo y, en cierto modo, mucho más fascinante.</p>
+
+      <p class="reveal">Durante el ejercicio excéntrico —la fase de alargamiento del músculo bajo carga, como bajar una pesa o el impacto al correr— las fibras musculares sufren microdesgarros. Estas micro-lesiones son pequeñas disrrupciones en la arquitectura de las miofibrillas, las unidades contráctiles del músculo. El daño es real y medible: los marcadores séricos de daño muscular como la creatina kinasa (CK) y la mioglobina se elevan significativamente en sangre en las horas posteriores al esfuerzo.</p>
+
+      <p class="reveal">Lo que sigue es una cascada inflamatoria coordinada. Las células inmunitarias —neutrófilos primero, macrófagos después— migran al tejido dañado. Liberan citoquinas proinflamatorias: interleucina-6 (IL-6), factor de necrosis tumoral alfa (TNF-α), y otras moléculas señalizadoras que amplifican la respuesta inflamatoria local. Esta inflamación, aunque incómoda, cumple una función: prepara el terreno para la reparación.</p>
+
+      <p class="reveal">Paralelamente, se activan las células satélite musculares —las células madre del músculo esquelético—. Estas células, que normalmente descansan en estado quiescente entre la membrana basal y la sarcolema de cada fibra muscular, se despiertan ante la señal de daño. Proliferan, se diferencian y se fusionan con las fibras dañadas o entre sí para formar nuevas fibras. Es este proceso —la hipertrofia miofibrilar impulsada por la actividad de las células satélite— el que produce el aumento real de masa y fuerza muscular.</p>
+
+      <p class="reveal">El problema es que este proceso lleva tiempo. En condiciones normales, la reparación completa de las fibras musculares y la resolución de la inflamación pueden tardar entre tres y siete días, dependiendo de la magnitud del daño y del estado nutricional e inmunológico del individuo. Durante ese período, el rendimiento está comprometido, el riesgo de lesión es mayor y el sistema nervioso central trabaja bajo una carga de estrés elevada.</p>
+
+      <h2 class="reveal">¿Qué es el BPC-157?</h2>
+
+      <p class="reveal">El BPC-157 —cuyas siglas significan Body Protection Compound 157— es un péptido de 15 aminoácidos aislado y sintetizado a partir de una proteína protectora encontrada en el jugo gástrico humano. Fue identificado por primera vez en los años noventa por el investigador croata Predrag Sikiric y su equipo en la Universidad de Zagreb, quienes estaban estudiando los mecanismos de citoprotección del estómago.</p>
+
+      <p class="reveal">La secuencia del BPC-157 —Gly-Glu-Pro-Pro-Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val— no existe de forma libre en el organismo humano; es un fragmento parcial derivado de esa proteína gástrica mayor. Sin embargo, cuando se administra de forma exógena, desencadena una red de efectos biológicos que va mucho más allá de la protección gástrica que inicialmente lo hizo famoso.</p>
+
+      <p class="reveal">Durante los últimos treinta años, el BPC-157 ha sido objeto de cientos de estudios preclínicos que han documentado sus efectos en la recuperación de músculos, tendones, ligamentos, huesos, tejido nervioso y mucosa gastrointestinal. Es, en términos farmacológicos, un péptido pleiotrópico: actúa a través de múltiples mecanismos y sobre múltiples tejidos.</p>
+
+      <h2 class="reveal">Los Mecanismos de Acción del BPC-157</h2>
+
+      <h3 class="reveal">Upregulación del receptor de la hormona de crecimiento</h3>
+      <p class="reveal">Uno de los hallazgos más relevantes en la investigación del BPC-157 es su capacidad para modular la expresión del receptor de la hormona de crecimiento (GHR) en los tejidos musculares y tendinosos. La hormona de crecimiento (GH) es un potente agente anabólico y regenerativo, pero su efecto depende de que los receptores en los tejidos diana estén disponibles y funcionales. El BPC-157 parece actuar como un sensibilizador: no eleva los niveles de GH en sangre, sino que aumenta la densidad y la reactividad de los receptores, potenciando el efecto de la GH endógena que ya circula en el organismo.</p>
+
+      <h3 class="reveal">Estimulación de la angiogénesis via VEGF</h3>
+      <p class="reveal">La recuperación tisular sin adecuado suministro sanguíneo es biológicamente imposible. El oxígeno, los nutrientes y las células reparadoras necesitan llegar al tejido dañado. El BPC-157 estimula la expresión del factor de crecimiento endotelial vascular (VEGF, por sus siglas en inglés), el principal regulador de la angiogénesis —el proceso de formación de nuevos vasos sanguíneos. Estudios en modelos animales han documentado una revascularización acelerada del tejido muscular y tendinoso lesionado en animales tratados con BPC-157, con densidades capilares significativamente mayores que en los grupos control.</p>
+
+      <h3 class="reveal">Modulación antiinflamatoria selectiva</h3>
+      <p class="reveal">Aquí reside uno de los aspectos más sofisticados del BPC-157. A diferencia de los antiinflamatorios convencionales (AINEs) que bloquean de forma inespecífica toda la cascada inflamatoria —incluidos los componentes que son necesarios para la reparación—, el BPC-157 parece ejercer una modulación más selectiva. Estudios han documentado reducciones significativas en los niveles de TNF-α e IL-6 sin suprimir completamente la respuesta inflamatoria. El efecto es más parecido al de "regular el volumen" que al de "apagar el interruptor": se mitiga el exceso inflamatorio que produce dolor y daño adicional, mientras se preserva la señalización reparadora.</p>
+
+      <h3 class="reveal">Promoción de la síntesis de colágeno y reparación de tendones</h3>
+      <p class="reveal">Los tendones y ligamentos son tejidos con vascularización pobre y metabolismo lento, lo que los convierte en estructuras de reparación notoriamente difícil. El BPC-157 ha demostrado en múltiples modelos preclínicos acelerar la síntesis de colágeno tipo I y III en tendones, acelerar la migración de tenoblastos (las células precursoras del tendón) y mejorar las propiedades biomecánicas del tejido tendinoso en recuperación. Para atletas que sufren tendinopatías, distensiones o lesiones ligamentosas parciales, este mecanismo es especialmente relevante.</p>
+
+      <div class="pull-quote reveal">
+        <p>"La capacidad de recuperación del cuerpo no tiene un límite fijo. Lo que sí tiene límites son las señales que le enviamos. El BPC-157 actúa como un amplificador de las señales que el cuerpo ya conoce: las de la regeneración."</p>
+      </div>
+
+      <h2 class="reveal">Lo Que Dicen los Datos</h2>
+
+      <p class="reveal">Los estudios preclínicos con BPC-157 muestran de forma consistente una reducción del 40 al 50% en la intensidad y duración del daño muscular inducido por ejercicio. En modelos de lesión muscular aguda, los animales tratados con BPC-157 mostraron una recuperación de los niveles basales de fuerza significativamente más rápida que los grupos control. Los marcadores inflamatorios (CK, mioglobina, IL-6, TNF-α) retornaban a valores normales en aproximadamente la mitad del tiempo.</p>
+
+      <p class="reveal">En modelos de lesión tendinosa —corte parcial del tendón de Aquiles, una de las lesiones más comunes y debilitantes en atletas de resistencia— el BPC-157 demostró una aceleración dramática de la reorganización del tejido colágeno y la restauración de la resistencia mecánica del tendón. Los investigadores observaron que los tendones tratados tenían una arquitectura fibrilar más organizada y propiedades elásticas superiores a las 4 semanas de tratamiento.</p>
+
+      <p class="reveal">Estos no son datos marginales ni anecdóticos. La consistencia de los resultados a través de diferentes modelos, diferentes especies y diferentes tipos de lesión sugiere que el BPC-157 actúa sobre mecanismos biológicos conservados evolutivamente, mecanismos que el cuerpo humano comparte con los modelos de estudio.</p>
+
+      <h2 class="reveal">Más Allá del Músculo: Articulaciones, Ligamentos y Salud Digestiva</h2>
+
+      <p class="reveal">El rendimiento atlético es sistémico. Un atleta puede tener músculos perfectamente recuperados y verse limitado por una tendinopatía crónica en el hombro, una distensión ligamentosa en el tobillo o un síndrome del túnel carpiano. El BPC-157 ofrece una ventaja única en este sentido: su espectro de acción cubre prácticamente todo el aparato locomotor.</p>
+
+      <p class="reveal">En atletas de alto rendimiento, las lesiones articulares y tendinosas son endémicas. El volumen de entrenamiento necesario para competir en élite genera una carga acumulada sobre tendones, ligamentos y cartílagos que supera con frecuencia la capacidad de reparación de estos tejidos. El BPC-157, al promover la angiogénesis local y la síntesis de colágeno, puede alterar favorablemente ese equilibrio entre daño y reparación.</p>
+
+      <p class="reveal">Un beneficio adicional —y quizás el menos esperado— es la protección gastrointestinal. Los atletas de resistencia e incluso los de fuerza son una población con alta prevalencia de síntomas gastrointestinales relacionados con el ejercicio: náuseas, reflujo, permeabilidad intestinal aumentada. El BPC-157, fiel a sus orígenes como compuesto citoprotector gástrico, ha demostrado proteger la mucosa intestinal del daño inducido por AINEs, estrés y ejercicio intenso. Para alguien que necesita antiinflamatorios con cierta regularidad, esto es una consideración práctica importante.</p>
+
+      <h2 class="reveal">El Problema de la Biodisponibilidad Oral y la Solución de la Mucosa</h2>
+
+      <p class="reveal">Como cualquier péptido administrado por vía oral, el BPC-157 enfrenta un desafío fundamental: el ambiente hostil del tracto gastrointestinal. Las proteasas —enzimas digestivas como la pepsina y la tripsina— son máquinas moleculares diseñadas para descomponer proteínas y péptidos en aminoácidos individuales. Un péptido de 15 aminoácidos que llega al estómago tiene, en teoría, pocas probabilidades de atravesar la barrera intestinal intacto.</p>
+
+      <p class="reveal">Este fue durante años el argumento que hacía de la inyección la única ruta de administración "seria" del BPC-157. Sin embargo, la investigación en sistemas de administración de péptidos ha abierto una alternativa elegante: la absorción por mucosa oral. La mucosa sublingual y bucal es richamente vascularizada y, crucialmente, carece de la maquinaria proteolítica del estómago. Un péptido en contacto con la mucosa oral puede absorberse directamente hacia la circulación sistémica sin pasar por el catabolismo del tracto gastrointestinal.</p>
+
+      <p class="reveal">RECOVERYPRO™ está formulado en obleas de disolución oral diseñadas para maximizar el tiempo de contacto con la mucosa. La oblea se disuelve lentamente bajo la lengua o entre la mejilla y la encía, liberando el BPC-157 en estrecho contacto con el epitelio vascular de la mucosa. Esta vía de administración no solo sortea el problema de la degradación enzimática, sino que también evita el efecto de primer paso hepático que limita la biodisponibilidad de muchos compuestos bioactivos administrados por vía oral convencional.</p>
+
+      <h2 class="reveal">¿Quién se Beneficia del BPC-157?</h2>
+
+      <p class="reveal">La respuesta honesta es: una gama sorprendentemente amplia de personas. Los beneficios más obvios recaen sobre los atletas de competición —aquellos que entrenan con alta frecuencia e intensidad y necesitan maximizar la recuperación entre sesiones—. Pero la lista no termina ahí.</p>
+
+      <ul class="reveal">
+        <li><strong>Deportistas recreativos y "weekend warriors":</strong> Personas que trabajan toda la semana y acumulan su esfuerzo físico en dos o tres días. Su relación tiempo de entrenamiento/tiempo de recuperación es desfavorable, y el BPC-157 puede cerrar esa brecha.</li>
+        <li><strong>Personas en rehabilitación de lesiones:</strong> Distensiones musculares, lesiones tendinosas parciales, recuperación postquirúrgica. El BPC-157 puede acelerar la reinserción a la actividad normal.</li>
+        <li><strong>Atletas masters (mayores de 40 años):</strong> Con la edad, la velocidad de regeneración muscular decrece por múltiples mecanismos. El BPC-157 puede compensar parcialmente esa ralentización.</li>
+        <li><strong>Personas con alta carga de trabajo físico:</strong> No solo deportistas —trabajadores en oficios que requieren esfuerzo físico repetitivo, carga de peso, o posiciones comprometidas también acumulan daño tisular crónico.</li>
+        <li><strong>Quienes usan AINEs con frecuencia:</strong> La protección gastrointestinal añadida del BPC-157 es especialmente relevante para esta población.</li>
+      </ul>
+
+      <h2 class="reveal">Protocolo de Uso con RECOVERYPRO™</h2>
+
+      <div class="protocol-box reveal">
+        <h4>Protocolo Recomendado — RECOVERYPRO™</h4>
+        <div class="protocol-row">
+          <span class="protocol-label">TIMING</span>
+          <span class="protocol-value">Una oblea 20–30 minutos antes del entrenamiento y una segunda oblea inmediatamente después (dentro de los primeros 30 minutos post-ejercicio).</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">MODO</span>
+          <span class="protocol-value">Colocar la oblea bajo la lengua o entre la mejilla y la encía. Dejar disolver completamente sin masticar ni tragar saliva en exceso durante 90 segundos.</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">AYUNO</span>
+          <span class="protocol-value">No comer ni beber nada excepto agua durante los 15 minutos posteriores a la administración para optimizar la absorción mucosa.</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">CICLO</span>
+          <span class="protocol-value">Uso continuo en períodos de entrenamiento intenso. En periodos de carga reducida, una sola oblea post-entrenamiento es suficiente para el mantenimiento.</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">LESIONES</span>
+          <span class="protocol-value">En contexto de lesión aguda o subaguda, dos obleas diarias (mañana y noche) independientemente del entrenamiento aceleran la recuperación tisular.</span>
+        </div>
+      </div>
+
+      <h2 class="reveal">Lo Que Debes Saber: Puntos Clave</h2>
+
+      <div class="takeaways-box reveal">
+        <h4>Puntos Clave — BPC-157 y Recuperación Muscular</h4>
+        <ul>
+          <li>El DOMS no es solo incomodidad pasajera: representa daño tisular real con una cascada inflamatoria que, si no se gestiona, frena la adaptación al entrenamiento.</li>
+          <li>El BPC-157 es un péptido de 15 aminoácidos derivado del jugo gástrico humano con décadas de investigación preclínica sobre regeneración tisular.</li>
+          <li>Sus principales mecanismos incluyen la upregulación del receptor de GH, estimulación de VEGF (angiogénesis), modulación de TNF-α e IL-6, y aceleración de la síntesis de colágeno.</li>
+          <li>Los estudios documentan una reducción del 40–50% en la intensidad del daño muscular y una recuperación de fuerza significativamente más rápida en grupos tratados.</li>
+          <li>El beneficio se extiende a tendones, ligamentos y mucosa gastrointestinal, haciendo del BPC-157 un compuesto de especial valor para atletas con lesiones crónicas o uso frecuente de AINEs.</li>
+          <li>La formulación en obleas de RECOVERYPRO™ aprovecha la absorción por mucosa oral para evitar la degradación proteolítica y maximizar la biodisponibilidad del péptido.</li>
+        </ul>
+      </div>
+
+      <h2 class="reveal">La Recuperación Es el Entrenamiento</h2>
+
+      <p class="reveal">Hay una reconfiguración conceptual que los mejores entrenadores y médicos del deporte llevan años promoviendo: el entrenamiento no es lo que produce la adaptación. El entrenamiento es el estímulo. La recuperación es donde ocurre la adaptación real. El músculo más grande, el tendón más resistente, el metabolismo más eficiente —todo eso se construye en el descanso, no en el esfuerzo.</p>
+
+      <p class="reveal">Esto tiene implicaciones prácticas importantes. Si optimizas únicamente el entrenamiento —más volumen, más intensidad, más frecuencia— pero negliges la recuperación, estás invirtiendo recursos en el estímulo mientras el proceso que convierte ese estímulo en adaptación trabaja a capacidad reducida. Es como aumentar constantemente la potencia de un horno al que no le llega suficiente gas.</p>
+
+      <p class="reveal">El BPC-157, y RECOVERYPRO™ como su vehículo de administración, no son una forma de hacer trampa ni de eludir el trabajo duro. Son una forma de asegurarte de que el trabajo duro que ya estás haciendo produce el resultado que mereces. Al acelerar la reparación de los microdaños, al modular la inflamación de forma inteligente, al mejorar la vascularización del tejido en recuperación, el BPC-157 no cambia lo que entrenas. Cambia cuánto aprovechas de lo que entrenas.</p>
+
+      <p class="reveal">En un ecosistema de suplementación deportiva saturado de productos que prometen más de lo que pueden cumplir, el BPC-157 destaca por tener una base mecanística sólida y una trayectoria de investigación que justifica el optimismo. La recuperación tiene un nuevo aliado, y tiene 15 aminoácidos de longitud.</p>
+
+    </div><!-- #article-es -->
+
+    <!-- ── ENGLISH ARTICLE ── -->
+    <div id="article-en" class="article-content" style="display:none;">
+
+      <div class="science-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        Scientific Evidence
+      </div>
+
+      <h2>Training doesn't make you stronger. Recovery does.</h2>
+
+      <p class="reveal">There's a paradox at the heart of serious athletic training: exercise itself is an act of controlled destruction. Every loaded repetition, every hard sprint, every demanding workout produces measurable cellular damage. Muscle doesn't grow during training sessions — it grows, or fails to grow, in the hours and days that follow. If recovery is inadequate, the body never fully closes the repair and adaptation cycle. The result isn't progress: it's accumulated fatigue, elevated injury risk, and — in the worst cases — chronic overtraining syndrome.</p>
+
+      <p class="reveal">This article examines why post-workout recovery is the most underestimated variable in athletic performance, what actually happens physiologically in the hours after intense exercise, and how the peptide BPC-157 — the active compound in RECOVERYPRO™ — is rewriting what we thought possible in the field of tissue regeneration.</p>
+
+      <h2 class="reveal">The Physiology of DOMS: What's Really Happening in Your Muscles</h2>
+
+      <p class="reveal">Delayed onset muscle soreness — DOMS — is a universal experience for anyone who has pushed past their comfort zone in training. That characteristic ache that peaks 24 to 72 hours after effort isn't, as was believed for decades, the result of lactic acid buildup. The science moved on from that hypothesis long ago. What's actually happening is considerably more complex, and in many ways, more interesting.</p>
+
+      <p class="reveal">During eccentric exercise — the lengthening phase of a contraction under load, like the downward phase of a bicep curl or the impact phase of running — muscle fibers undergo micro-tears. These are small but real disruptions in the architecture of the myofibrils, the contractile units of skeletal muscle. The damage is measurable: serum markers of muscle damage such as creatine kinase (CK) and myoglobin rise significantly in blood in the hours following strenuous effort.</p>
+
+      <p class="reveal">What follows is a coordinated inflammatory cascade. Immune cells — neutrophils first, macrophages later — migrate to the damaged tissue and release pro-inflammatory cytokines: interleukin-6 (IL-6), tumor necrosis factor-alpha (TNF-α), and other signaling molecules that amplify the local inflammatory response. This inflammation, while uncomfortable, serves a function: it prepares the tissue environment for repair.</p>
+
+      <p class="reveal">In parallel, satellite cells — the resident stem cells of skeletal muscle — are activated. These cells, which normally exist in a quiescent state sandwiched between the basal lamina and the sarcolemma of each muscle fiber, wake up in response to damage signals. They proliferate, differentiate, and fuse with damaged fibers or with each other to form new muscle fibers. This process — myofibrillar hypertrophy driven by satellite cell activity — is what produces the actual gains in muscle mass and strength that training is supposed to deliver.</p>
+
+      <p class="reveal">The problem is time. Under normal circumstances, complete repair of damaged muscle fibers and resolution of the inflammatory response can take three to seven days, depending on the magnitude of the damage and the individual's nutritional and immunological status. During that window, performance is compromised, injury risk is elevated, and the central nervous system carries an increased stress burden.</p>
+
+      <h2 class="reveal">What is BPC-157?</h2>
+
+      <p class="reveal">BPC-157 — Body Protection Compound 157 — is a 15-amino acid peptide isolated and synthesized from a protective protein found in human gastric juice. It was first identified in the 1990s by Croatian researcher Predrag Sikiric and his team at the University of Zagreb, who were investigating the cytoprotective mechanisms of the stomach lining.</p>
+
+      <p class="reveal">The sequence of BPC-157 — Gly-Glu-Pro-Pro-Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val — does not exist in its free form in the human body. It's a partial fragment derived from that larger gastric protein. However, when administered exogenously, it triggers a network of biological effects that extends far beyond the gastric protection that initially made it scientifically notable.</p>
+
+      <p class="reveal">Over the past three decades, BPC-157 has been the subject of hundreds of preclinical studies documenting its effects on the recovery of muscle, tendon, ligament, bone, nerve tissue, and gastrointestinal mucosa. In pharmacological terms, it is a pleiotropic peptide — it acts through multiple mechanisms and across multiple tissue types simultaneously.</p>
+
+      <h2 class="reveal">How BPC-157 Works: The Mechanisms</h2>
+
+      <h3 class="reveal">Upregulation of Growth Hormone Receptor Expression</h3>
+      <p class="reveal">One of the most significant findings in BPC-157 research is its ability to modulate the expression of the growth hormone receptor (GHR) in muscle and tendon tissues. Growth hormone (GH) is a potent anabolic and regenerative agent, but its effect depends entirely on the availability and functional state of its receptors in target tissues. BPC-157 appears to act as a sensitizer: it doesn't elevate circulating GH levels, but rather increases the density and responsiveness of the receptors, thereby amplifying the effect of the endogenous GH the body already produces. This is a subtle but important distinction — it works with the body's own signaling rather than overriding it.</p>
+
+      <h3 class="reveal">Angiogenesis via VEGF Stimulation</h3>
+      <p class="reveal">Tissue recovery without adequate blood supply is biologically impossible. Oxygen, nutrients, and repair cells must reach the damaged tissue in sufficient quantities. BPC-157 stimulates the expression of vascular endothelial growth factor (VEGF), the primary regulator of angiogenesis — the formation of new blood vessels. Preclinical studies have documented accelerated revascularization of injured muscle and tendon tissue in BPC-157-treated animals, with significantly greater capillary density than in control groups. Better blood supply means faster delivery of everything the healing tissue needs.</p>
+
+      <h3 class="reveal">Selective Anti-inflammatory Modulation</h3>
+      <p class="reveal">This is perhaps the most nuanced aspect of BPC-157's pharmacology. Unlike conventional NSAIDs, which non-selectively suppress the entire inflammatory cascade — including the components that are necessary for tissue repair — BPC-157 appears to exert a more selective modulation. Studies have documented significant reductions in TNF-α and IL-6 levels without completely extinguishing the inflammatory response. The effect is less like flipping a switch and more like turning down a dial: it mitigates the excess inflammation that produces pain and secondary tissue damage, while preserving the repair-promoting signaling that the body depends on to rebuild.</p>
+
+      <h3 class="reveal">Collagen Synthesis and Tendon Repair</h3>
+      <p class="reveal">Tendons and ligaments are notoriously difficult tissues to repair. Their poor vascularization and slow metabolic rate mean that injuries to these structures can linger for months or years. BPC-157 has demonstrated in multiple preclinical models that it accelerates type I and type III collagen synthesis in tendons, promotes the migration of tenocytes and their precursors (tenoblasts), and improves the biomechanical properties of healing tendon tissue. For athletes dealing with tendinopathies, partial ligament tears, or chronic connective tissue stress, this mechanism represents a meaningful clinical advantage.</p>
+
+      <div class="pull-quote reveal">
+        <p>"The body's healing capacity isn't fixed. What is limited are the signals we give it. BPC-157 functions as an amplifier for the signals the body already knows — the ones that say: rebuild, restore, adapt."</p>
+      </div>
+
+      <h2 class="reveal">The Data: What the Research Actually Shows</h2>
+
+      <p class="reveal">Preclinical studies with BPC-157 consistently show a 40 to 50 percent reduction in the intensity and duration of exercise-induced muscle damage. In acute muscle injury models, BPC-157-treated animals recovered baseline strength levels significantly faster than control groups. Inflammatory markers — CK, myoglobin, IL-6, TNF-α — returned to normal values in approximately half the time.</p>
+
+      <p class="reveal">In models of tendon injury — partial transection of the Achilles tendon, one of the most common and debilitating injuries in endurance athletes — BPC-157 demonstrated dramatic acceleration of collagen fibril reorganization and restoration of the tendon's mechanical resistance. Researchers observed that treated tendons exhibited a more organized fibrillar architecture and superior elastic properties at four weeks of treatment compared to controls.</p>
+
+      <p class="reveal">These aren't marginal findings. The consistency of results across different injury models, different tissue types, and different species suggests that BPC-157 acts on evolutionarily conserved biological mechanisms — mechanisms that humans share with the study models. This consistency is what separates BPC-157 from the long list of compounds that look promising in a single study and then disappear.</p>
+
+      <h2 class="reveal">Beyond Muscle: Joints, Ligaments, and Digestive Health</h2>
+
+      <p class="reveal">Athletic performance is systemic. An athlete can have perfectly recovered muscles and still be limited by a chronic shoulder tendinopathy, an ankle ligament sprain, or repetitive strain in the wrist. BPC-157 offers a unique advantage here: its spectrum of action covers virtually the entire musculoskeletal system.</p>
+
+      <p class="reveal">In high-performance athletes, joint and tendon injuries are endemic. The training volume required to compete at an elite level generates cumulative mechanical load on tendons, ligaments, and cartilage that frequently outpaces the repair capacity of these slow-metabolizing tissues. BPC-157, by promoting local angiogenesis and collagen synthesis, can shift that balance favorably — increasing the repair side of the equation rather than simply demanding that the body tolerate more damage.</p>
+
+      <p class="reveal">An additional benefit — and perhaps the least expected one — is gastrointestinal protection. Endurance and strength athletes alike have a high prevalence of exercise-related GI symptoms: nausea, acid reflux, increased intestinal permeability. BPC-157, true to its origins as a gastric cytoprotective compound, has demonstrated protection of the intestinal mucosa from damage induced by NSAIDs, stress, and intense exercise. For someone who relies on anti-inflammatories with some regularity, this is a practical consideration worth taking seriously.</p>
+
+      <h2 class="reveal">The Bioavailability Problem — and How Mucosal Delivery Solves It</h2>
+
+      <p class="reveal">Like any orally administered peptide, BPC-157 faces a fundamental challenge: the hostile environment of the gastrointestinal tract. Proteases — digestive enzymes like pepsin and trypsin — are molecular machines designed to break proteins and peptides down into individual amino acids. A 15-amino acid peptide arriving at the stomach has, in theory, limited chances of crossing the intestinal barrier intact and reaching systemic circulation in meaningful concentrations.</p>
+
+      <p class="reveal">For years, this was the argument that made injection the only "serious" delivery route for BPC-157. However, research into peptide delivery systems has opened up an elegant alternative: oral mucosal absorption. The sublingual and buccal mucosa is richly vascularized and — crucially — lacks the proteolytic machinery of the stomach. A peptide in contact with the oral mucosa can be absorbed directly into the systemic circulation without undergoing gastrointestinal catabolism.</p>
+
+      <p class="reveal">RECOVERYPRO™ is formulated as dissolving oral wafers designed to maximize contact time with the mucosal surface. The wafer dissolves slowly under the tongue or between the cheek and gum, releasing BPC-157 in close proximity to the vascular epithelium of the mucosa. This delivery route not only bypasses the enzymatic degradation problem but also avoids the hepatic first-pass effect that limits the bioavailability of many bioactive compounds administered by conventional oral routes. The result is a non-invasive delivery system that retains meaningful biological activity.</p>
+
+      <h2 class="reveal">Who Benefits Most from BPC-157?</h2>
+
+      <p class="reveal">The honest answer is: a surprisingly broad range of people. The most obvious beneficiaries are competitive athletes who train at high frequency and intensity and need to maximize recovery between sessions. But the list doesn't end there.</p>
+
+      <ul class="reveal">
+        <li><strong>Recreational athletes and weekend warriors:</strong> People who work demanding jobs during the week and concentrate their physical effort into two or three days. Their training-to-recovery ratio is inherently unfavorable, and BPC-157 can help close that gap.</li>
+        <li><strong>People recovering from injury:</strong> Muscle strains, partial tendon injuries, post-surgical rehabilitation. BPC-157 can accelerate the timeline to return to normal activity.</li>
+        <li><strong>Masters athletes (40+):</strong> Muscle regeneration rate declines with age through multiple mechanisms. BPC-157 can partially compensate for that slowdown in repair capacity.</li>
+        <li><strong>People with high physical workloads:</strong> Not just athletes — workers in physically demanding trades who experience repetitive mechanical stress also accumulate chronic tissue damage that benefits from targeted regenerative support.</li>
+        <li><strong>Frequent NSAID users:</strong> The added gastrointestinal protection of BPC-157 is especially relevant for this population, reducing the mucosal damage that chronic NSAID use causes.</li>
+      </ul>
+
+      <h2 class="reveal">How to Use RECOVERYPRO™</h2>
+
+      <div class="protocol-box reveal">
+        <h4>Recommended Protocol — RECOVERYPRO™</h4>
+        <div class="protocol-row">
+          <span class="protocol-label">TIMING</span>
+          <span class="protocol-value">One wafer 20–30 minutes before training and a second wafer immediately after (within the first 30 minutes post-exercise).</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">METHOD</span>
+          <span class="protocol-value">Place the wafer under the tongue or between the cheek and gum. Allow it to dissolve completely without chewing or swallowing excess saliva for at least 90 seconds.</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">FASTING</span>
+          <span class="protocol-value">Avoid eating or drinking anything except water for 15 minutes after administration to optimize mucosal absorption.</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">CYCLE</span>
+          <span class="protocol-value">Continuous use during periods of intense training. During reduced-load phases, a single post-workout wafer is sufficient for maintenance.</span>
+        </div>
+        <div class="protocol-row">
+          <span class="protocol-label">INJURY</span>
+          <span class="protocol-value">In the context of acute or subacute injury, two wafers daily (morning and evening) regardless of training status accelerates tissue recovery.</span>
+        </div>
+      </div>
+
+      <h2 class="reveal">Key Takeaways</h2>
+
+      <div class="takeaways-box reveal">
+        <h4>Key Takeaways — BPC-157 &amp; Muscle Recovery</h4>
+        <ul>
+          <li>DOMS isn't just temporary discomfort — it represents real tissue damage with an inflammatory cascade that, if poorly managed, slows adaptation to training.</li>
+          <li>BPC-157 is a 15-amino acid peptide derived from human gastric juice with decades of preclinical research documenting its regenerative effects across multiple tissue types.</li>
+          <li>Its primary mechanisms include GH receptor upregulation, VEGF-driven angiogenesis, selective modulation of TNF-α and IL-6, and acceleration of collagen synthesis.</li>
+          <li>Studies document a 40–50% reduction in exercise-induced muscle damage intensity and significantly faster strength recovery in treated groups.</li>
+          <li>Benefits extend to tendons, ligaments, and the GI tract — making BPC-157 particularly valuable for athletes dealing with chronic injuries or frequent NSAID use.</li>
+          <li>RECOVERYPRO™'s dissolving wafer format leverages oral mucosal absorption to bypass proteolytic degradation and maximize the peptide's bioavailability without injections.</li>
+        </ul>
+      </div>
+
+      <h2 class="reveal">Recovery Is Where Training Becomes Results</h2>
+
+      <p class="reveal">There's a conceptual reframe that the best coaches and sports medicine physicians have been advocating for years: training doesn't produce adaptation. Training is the stimulus. Recovery is where adaptation actually happens. The larger muscle, the more resilient tendon, the more efficient metabolism — all of that is built during rest, not during effort.</p>
+
+      <p class="reveal">This has real practical implications. If you optimize only the training side — more volume, more intensity, more frequency — while neglecting recovery, you're continuously investing resources in the stimulus while the process that converts that stimulus into adaptation runs at reduced capacity. It's like turning up the heat on a stove that isn't getting enough fuel.</p>
+
+      <p class="reveal">BPC-157, and RECOVERYPRO™ as its delivery vehicle, isn't a shortcut or a way to avoid hard work. It's a way to ensure that the hard work you're already putting in actually delivers the results it should. By accelerating the repair of micro-damage, modulating inflammation intelligently, and improving vascularization of recovering tissue, BPC-157 doesn't change what you train. It changes how much you get out of what you train.</p>
+
+      <p class="reveal">In a supplement market saturated with products that overpromise and underdeliver, BPC-157 stands out for having a mechanistically solid foundation and a research track record that justifies measured optimism. Recovery has a new tool in its arsenal — and it's 15 amino acids long.</p>
+
+    </div><!-- #article-en -->
+  </div><!-- .article-wrap -->
+
+  <!-- ── RELATED PRODUCTS ── -->
+  <section class="related-products">
+    <p class="section-label" data-i18n="related_label">También te puede interesar</p>
+    <h2 class="section-title" data-i18n="related_title">Productos Relacionados</h2>
+    <div class="products-grid">
+
+      <!-- RECOVERYPRO -->
+      <div class="product-card reveal">
+        <div class="product-card-img">
+          <img
+            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=75"
+            alt="RECOVERYPRO"
+            loading="lazy"
+          />
+          <div class="product-card-img-overlay"></div>
+          <span class="product-card-badge">BPC-157</span>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">RECOVERYPRO™</div>
+          <div class="product-card-desc" data-i18n="prod_recoverypro">Recuperación muscular y articular acelerada / Accelerated muscle and joint recovery</div>
+        </div>
+      </div>
+
+      <!-- IMMUNEFORT -->
+      <div class="product-card reveal">
+        <div class="product-card-img">
+          <img
+            src="https://images.unsplash.com/photo-1582560475093-ba66accbc095?auto=format&fit=crop&w=600&q=75"
+            alt="IMMUNEFORT"
+            loading="lazy"
+          />
+          <div class="product-card-img-overlay"></div>
+          <span class="product-card-badge">Thymosin α-1</span>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">IMMUNEFORT™</div>
+          <div class="product-card-desc" data-i18n="prod_immunefort">Inmunidad adaptativa / Adaptive immunity</div>
+        </div>
+      </div>
+
+      <!-- MUSCLEMAXX -->
+      <div class="product-card reveal">
+        <div class="product-card-img">
+          <img
+            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=75"
+            alt="MUSCLEMAXX"
+            loading="lazy"
+          />
+          <div class="product-card-img-overlay"></div>
+          <span class="product-card-badge">CJC-1295 / Ipamorelin</span>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-name">MUSCLEMAXX™</div>
+          <div class="product-card-desc" data-i18n="prod_musclemaxx">Masa muscular &amp; fuerza / Muscle mass &amp; strength</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <h2 data-i18n="cta_h2">¿Listo para Recuperarte Más Rápido?</h2>
+    <p data-i18n="cta_p">Habla con nuestros especialistas y descubre el protocolo ideal para tus objetivos de rendimiento y recuperación.</p>
+    <a href="https://wa.me/1234567890" class="cta-btn" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+      </svg>
+      <span data-i18n="cta_btn">Consultar Ahora</span>
+    </a>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="display:inline-flex;">
+          <div class="nav-logo-mark">BG</div>
+          <span class="nav-logo-text">BIOGRADIX</span>
+        </a>
+        <p data-i18n="footer_brand_p">Péptidos de grado farmacéutico para rendimiento humano optimizado. Ciencia aplicada, resultados medibles.</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer_col1_h">Productos</h5>
+        <ul>
+          <li><a href="index.html#productos">RECOVERYPRO™</a></li>
+          <li><a href="index.html#productos">IMMUNEFORT™</a></li>
+          <li><a href="index.html#productos">MUSCLEMAXX™</a></li>
+          <li><a href="index.html#productos" data-i18n="footer_all_products">Ver todos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer_col2_h">Recursos</h5>
+        <ul>
+          <li><a href="tecnologia.html" data-i18n="nav_tecnologia">Tecnología</a></li>
+          <li><a href="educacion.html" data-i18n="nav_educacion">Educación</a></li>
+          <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+          <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer_col3_h">Legal</h5>
+        <ul>
+          <li><a href="#" data-i18n="footer_privacy">Privacidad</a></li>
+          <li><a href="#" data-i18n="footer_terms">Términos</a></li>
+          <li><a href="#" data-i18n="footer_contact">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer_copy">&copy; 2026 Biogradix. Todos los derechos reservados.</p>
+      <p data-i18n="footer_tagline">Péptidos. Ciencia. Resultados.</p>
+    </div>
+    <p class="footer-disclaimer" data-i18n="footer_disclaimer">
+      Este contenido es exclusivamente informativo y no constituye consejo médico. Los péptidos descritos son para uso en investigación. Consulte a un profesional de la salud antes de iniciar cualquier protocolo. Las afirmaciones no han sido evaluadas por ninguna agencia regulatoria gubernamental.
+    </p>
+  </footer>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    // ── i18n Translations
+    const TRANSLATIONS = {
+      es: {
+        nav_productos:    'Productos',
+        nav_tecnologia:   'Tecnología',
+        nav_educacion:    'Educación',
+        nav_blog:         'Blog',
+        nav_faq:          'FAQ',
+        nav_whatsapp:     'WhatsApp',
+        hero_category:    'Recuperación · Péptidos',
+        hero_h1:          'BPC-157 y la Recuperación Muscular:<br>La Ciencia Detrás del RECOVERYPRO™',
+        hero_author:      'Dr. Rodrigo Medina — Medicina del Deporte',
+        hero_date:        '8 de abril, 2026 · 11 min lectura',
+        back_blog:        'Volver al Blog',
+        related_label:    'También te puede interesar',
+        related_title:    'Productos Relacionados',
+        prod_recoverypro: 'Recuperación muscular y articular acelerada',
+        prod_immunefort:  'Inmunidad adaptativa',
+        prod_musclemaxx:  'Masa muscular & fuerza',
+        cta_h2:           '¿Listo para Recuperarte Más Rápido?',
+        cta_p:            'Habla con nuestros especialistas y descubre el protocolo ideal para tus objetivos de rendimiento y recuperación.',
+        cta_btn:          'Consultar Ahora',
+        footer_brand_p:   'Péptidos de grado farmacéutico para rendimiento humano optimizado. Ciencia aplicada, resultados medibles.',
+        footer_col1_h:    'Productos',
+        footer_col2_h:    'Recursos',
+        footer_col3_h:    'Legal',
+        footer_all_products: 'Ver todos',
+        footer_privacy:   'Privacidad',
+        footer_terms:     'Términos',
+        footer_contact:   'Contacto',
+        footer_copy:      '© 2026 Biogradix. Todos los derechos reservados.',
+        footer_tagline:   'Péptidos. Ciencia. Resultados.',
+        footer_disclaimer:'Este contenido es exclusivamente informativo y no constituye consejo médico. Los péptidos descritos son para uso en investigación. Consulte a un profesional de la salud antes de iniciar cualquier protocolo. Las afirmaciones no han sido evaluadas por ninguna agencia regulatoria gubernamental.',
+      },
+      en: {
+        nav_productos:    'Products',
+        nav_tecnologia:   'Technology',
+        nav_educacion:    'Education',
+        nav_blog:         'Blog',
+        nav_faq:          'FAQ',
+        nav_whatsapp:     'WhatsApp',
+        hero_category:    'Recovery · Peptides',
+        hero_h1:          'BPC-157 and Muscle Recovery:<br>The Science Behind RECOVERYPRO™',
+        hero_author:      'Dr. Rodrigo Medina — Sports Medicine',
+        hero_date:        'April 8, 2026 · 11 min read',
+        back_blog:        'Back to Blog',
+        related_label:    'You may also like',
+        related_title:    'Related Products',
+        prod_recoverypro: 'Accelerated muscle and joint recovery',
+        prod_immunefort:  'Adaptive immunity',
+        prod_musclemaxx:  'Muscle mass & strength',
+        cta_h2:           'Ready to Recover Faster?',
+        cta_p:            'Talk to our specialists and discover the ideal protocol for your performance and recovery goals.',
+        cta_btn:          'Consult Now',
+        footer_brand_p:   'Pharmaceutical-grade peptides for optimized human performance. Applied science, measurable results.',
+        footer_col1_h:    'Products',
+        footer_col2_h:    'Resources',
+        footer_col3_h:    'Legal',
+        footer_all_products: 'View all',
+        footer_privacy:   'Privacy',
+        footer_terms:     'Terms',
+        footer_contact:   'Contact',
+        footer_copy:      '© 2026 Biogradix. All rights reserved.',
+        footer_tagline:   'Peptides. Science. Results.',
+        footer_disclaimer:'This content is for informational purposes only and does not constitute medical advice. The peptides described are intended for research use. Consult a healthcare professional before starting any protocol. These statements have not been evaluated by any governmental regulatory agency.',
+      }
+    };
+
+    let currentLang = localStorage.getItem('bgLang') || 'es';
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('bgLang', lang);
+
+      // Toggle article visibility
+      document.getElementById('article-es').style.display = (lang === 'es') ? 'block' : 'none';
+      document.getElementById('article-en').style.display = (lang === 'en') ? 'block' : 'none';
+
+      // Update lang buttons
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      // Update html lang attr
+      document.documentElement.lang = lang;
+
+      // Apply translations
+      const t = TRANSLATIONS[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) {
+          el.innerHTML = t[key];
+        }
+      });
+
+      // Re-run reveal for newly displayed article
+      observeReveal();
+    }
+
+    // ── Nav scroll class
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── Mobile menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const burger = document.getElementById('hamburger');
+      const isOpen = menu.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    // ── IntersectionObserver for reveal
+    function observeReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // ── Init
+    document.addEventListener('DOMContentLoaded', () => {
+      setLang(currentLang);
+      observeReveal();
+    });
+  </script>
+
+</body>
+</html>

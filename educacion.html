@@ -1,514 +1,754 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlRoot">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>biogradix — Capacitación y Recursos</title>
-<meta name="description" content="Capacitación completa biogradix: guía de aplicación del parche buccal BiogradixRelease®, ciencia de la entrega transmucosa, protocolos de dosificación y preguntas frecuentes.">
-<meta name="author" content="biogradix">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://biogradix.com/educacion.html">
-<meta property="og:title" content="biogradix — Capacitación y Recursos">
-<meta property="og:description" content="Guía completa de aplicación del parche buccal, ciencia de la entrega transmucosa, protocolos y FAQ.">
-<meta property="og:site_name" content="biogradix">
-<meta property="og:locale" content="es_MX">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="biogradix — Capacitación y Recursos">
-
-<link rel="canonical" href="https://biogradix.com/educacion.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Centro de Educación — biogradix</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --bx-navy:#0B1A2B;--bx-teal:#0F6E56;--bx-mint:#E1F5EE;--bx-cloud:#FAFBFC;
-  --bx-silver:#E8EAED;--bx-deep-teal:#085041;--bx-active-teal:#1D9E75;
-  --bx-text-primary:#0B1A2B;--bx-text-secondary:#4A5568;--bx-text-tertiary:#8A9BAD;
-  --bx-gold:#C9A84C;--bx-alert:#D4534E;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bx-cloud);color:var(--bx-text-primary);line-height:1.7}
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;border:none;background:none;font-family:inherit}
-.container{max-width:960px;margin:0 auto;padding:0 40px}
-
+:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--alert:#D4534E;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
+@media(max-width:768px){.container{padding:0 20px;}}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.up{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:.08s;}.reveal-delay-2{transition-delay:.16s;}.reveal-delay-3{transition-delay:.24s;}.reveal-delay-4{transition-delay:.32s;}
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid var(--bx-silver);height:64px;display:flex;align-items:center;padding:0 40px}
-.nav-container{display:flex;justify-content:space-between;align-items:center;width:100%}
-.logo{font-family:'DM Sans';font-size:18px;font-weight:600;color:var(--bx-navy);display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo .b{color:var(--bx-teal)}
-.logo .g{color:var(--bx-navy)}
-.nav-links{display:flex;align-items:center;gap:24px}
-.nav-link{font-size:13px;color:var(--bx-text-secondary);transition:color 0.2s}
-.nav-link:hover{color:var(--bx-teal)}
-.nav-link.active{color:var(--bx-teal);font-weight:500}
-.lang-toggle{display:flex;border:1px solid var(--bx-silver);border-radius:4px;overflow:hidden}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 10px;transition:all 0.2s}
-.lang-btn.active{background:var(--bx-mint);color:var(--bx-teal)}
-.lang-btn:not(.active){color:var(--bx-text-tertiary)}
-.wa-btn{background:var(--bx-teal);color:#fff;padding:8px 16px;border-radius:6px;font-size:12px;font-weight:500}
-.wa-btn:hover{background:var(--bx-active-teal)}
-
-/* TRUST BAR */
-.trust-bar{background:var(--bx-navy);color:#fff;padding:10px 40px;text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.5px;margin-top:64px;opacity:0.9}
-
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
+.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
+.nav-inner{display:flex;align-items:center;gap:0;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
+.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--teal);}
+.nav-links a.active{color:var(--teal);}
+.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
+.lang-btn.active,.lang-btn:hover{color:var(--teal);}
+.lang-sep{color:var(--silver);font-size:12px;}
+.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
+@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open .mobile-menu-panel{transform:none;}
+.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
+.mobile-menu-panel a:hover{color:var(--teal);}
+.mobile-menu-panel a.active{color:var(--teal);}
+.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
 /* HERO */
-.page-hero{background:linear-gradient(135deg,var(--bx-navy) 0%,rgba(15,110,86,0.15) 100%);padding:80px 40px;text-align:center}
-.page-hero .label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:16px}
-.page-hero h1{font-family:'DM Sans';font-size:42px;font-weight:600;color:#fff;margin-bottom:12px}
-.page-hero .subtitle{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.8);max-width:600px;margin:0 auto}
-
-/* SECTIONS */
-.section{padding:64px 0}
-.section-alt{background:#fff;border-top:1px solid var(--bx-silver);border-bottom:1px solid var(--bx-silver)}
-.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--bx-teal);margin-bottom:12px}
-.section-title{font-family:'Instrument Serif',serif;font-size:36px;color:var(--bx-navy);margin-bottom:8px;letter-spacing:-0.5px}
-.section-desc{font-size:15px;color:var(--bx-text-secondary);max-width:560px;margin-bottom:40px;line-height:1.7}
-
-/* STEP CARDS */
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
-.step-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;padding:28px 24px;position:relative;transition:border-color 0.3s}
-.step-card:hover{border-color:var(--bx-teal)}
-.step-num{font-family:'DM Mono',monospace;font-size:32px;font-weight:500;color:var(--bx-teal);opacity:0.3;margin-bottom:8px}
-.step-title{font-family:'DM Sans';font-size:16px;font-weight:600;color:var(--bx-navy);margin-bottom:8px}
-.step-text{font-size:13px;color:var(--bx-text-secondary);line-height:1.6}
-
-/* COMPARISON TABLE */
-.comp-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
-.comp-table thead{background:var(--bx-navy);color:#fff}
-.comp-table th{padding:14px 16px;text-align:left;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:500}
-.comp-table td{padding:12px 16px;border-bottom:1px solid var(--bx-silver);color:var(--bx-text-secondary)}
-.comp-table tr:hover{background:rgba(15,110,86,0.03)}
-.comp-table .highlight{background:var(--bx-mint);color:var(--bx-deep-teal);font-weight:500}
-.comp-table .yes{color:var(--bx-teal);font-weight:600}
-.comp-table .no{color:var(--bx-alert);font-weight:500}
-
-/* INFO CARDS */
-.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px}
-.info-card{background:#fff;border:1px solid var(--bx-silver);border-radius:12px;padding:28px;transition:border-color 0.3s}
-.info-card:hover{border-color:var(--bx-teal)}
-.info-card .icon{font-size:28px;margin-bottom:12px}
-.info-card h3{font-family:'DM Sans';font-size:16px;font-weight:600;color:var(--bx-navy);margin-bottom:8px}
-.info-card p{font-size:13px;color:var(--bx-text-secondary);line-height:1.6}
-
-/* PROTOCOL CARDS */
-.protocol-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px}
-.protocol-card{background:var(--bx-mint);border-radius:12px;padding:28px;border:1px solid rgba(15,110,86,0.15)}
-.protocol-name{font-family:'DM Sans';font-size:18px;font-weight:600;color:var(--bx-navy);margin-bottom:4px}
-.protocol-compounds{font-family:'DM Mono',monospace;font-size:12px;color:var(--bx-teal);letter-spacing:0.5px;margin-bottom:12px}
-.protocol-desc{font-size:13px;color:var(--bx-text-secondary);line-height:1.6}
-.protocol-status{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.5px;margin-top:12px;padding:6px 12px;border-radius:6px;display:inline-block}
-.status-available{background:rgba(15,110,86,0.12);color:var(--bx-teal)}
-.status-pending{background:rgba(201,168,76,0.12);color:#8B7530}
-
-/* FAQ */
-.faq-item{border-bottom:1px solid var(--bx-silver);padding:20px 0}
-.faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px}
-.faq-q h3{font-family:'DM Sans';font-size:15px;font-weight:500;color:var(--bx-navy)}
-.faq-toggle{font-size:20px;color:var(--bx-teal);transition:transform 0.3s;flex-shrink:0}
-.faq-toggle.open{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
-.faq-a.open{max-height:500px;padding-top:12px}
-.faq-a p{font-size:14px;color:var(--bx-text-secondary);line-height:1.7}
-
+.edu-hero{background:var(--navy);padding:80px 0 72px;margin-top:64px;position:relative;overflow:hidden;}
+#helix-canvas{position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;opacity:.15;}
+.edu-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.hero-cat-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;}
+.hero-cat-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-active);}
+.edu-hero-h1{font-weight:500;font-size:48px;letter-spacing:-.8px;color:#fff;margin-bottom:20px;line-height:1.1;}
+.edu-hero-h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.edu-hero-sub{font-size:16px;color:rgba(255,255,255,.6);line-height:1.75;max-width:440px;}
+.hero-dna-card{background:rgba(255,255,255,.04);border:1px solid rgba(29,158,117,.35);border-radius:20px;padding:48px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;gap:20px;}
+.hero-dna-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-active);}
+@media(max-width:900px){.edu-hero-inner{grid-template-columns:1fr;}.edu-hero-h1{font-size:34px;}}
+/* SECTION GENERAL */
+.section-header{text-align:center;margin-bottom:52px;}
+.section-header .label{margin-bottom:12px;display:block;}
+.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:32px;letter-spacing:-.4px;color:var(--navy);margin-bottom:10px;}
+.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.section-sub{font-size:15px;color:var(--text-2);max-width:520px;margin:0 auto;}
+/* SECTION 1 — PEPTIDES */
+.peptides-section{padding:80px 0;background:#fff;}
+.peptides-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+@media(max-width:900px){.peptides-grid{grid-template-columns:1fr;}}
+.peptides-text p{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:18px;}
+.peptides-text p:last-child{margin-bottom:0;}
+.comparison-card{background:var(--navy);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px;}
+.compare-row{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;}
+.compare-icon{width:40px;height:40px;border-radius:10px;background:rgba(29,158,117,.15);border:1px solid rgba(29,158,117,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.compare-info{flex:1;}
+.compare-name{font-weight:600;font-size:14px;color:#fff;margin-bottom:2px;}
+.compare-desc{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.45);}
+/* SECTION 2 — ABSORPTION */
+.absorption-section{padding:80px 0;background:var(--mint);}
+.steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
+.steps-grid::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--mint),var(--teal),var(--mint));}
+.step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
+.step-dot{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--teal);}
+.step-label{font-weight:500;font-size:13px;color:var(--navy);margin-bottom:6px;}
+.step-desc{font-size:12px;color:var(--text-2);line-height:1.5;}
+@media(max-width:768px){.steps-grid{grid-template-columns:1fr 1fr;gap:24px;}.steps-grid::before{display:none;}}
+.absorption-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+@media(max-width:768px){.absorption-compare{grid-template-columns:1fr;}}
+.abs-card{background:#fff;border:1px solid var(--silver);border-radius:16px;padding:28px;position:relative;}
+.abs-card.recommended{border-color:var(--teal);box-shadow:0 8px 32px rgba(15,110,86,.15);}
+.abs-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;border-radius:20px;padding:4px 14px;white-space:nowrap;}
+.abs-icon{width:44px;height:44px;border-radius:10px;background:var(--mint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.abs-title{font-weight:600;font-size:15px;color:var(--navy);margin-bottom:8px;}
+.abs-body{font-size:13px;color:var(--text-2);line-height:1.65;}
+/* SECTION 3 — FAQ */
+.faq-section{padding:80px 0;background:#fff;}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+.faq-item{border-bottom:1px solid var(--silver);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;cursor:pointer;user-select:none;}
+.faq-q-text{font-weight:500;font-size:15px;color:var(--navy);}
+.faq-arrow{width:28px;height:28px;border-radius:50%;background:var(--cloud);border:1px solid var(--silver);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .2s;}
+.faq-item.open .faq-arrow{transform:rotate(180deg);background:var(--mint);border-color:var(--teal);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);}
+.faq-a-inner{font-size:14px;color:var(--text-2);line-height:1.75;padding-bottom:20px;}
+/* SECTION 4 — PRODUCTS */
+.products-section{padding:80px 0;background:var(--cloud);}
+.products-mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media(max-width:900px){.products-mini-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.products-mini-grid{grid-template-columns:1fr;}}
+.mini-card{background:#fff;border:1px solid var(--silver);border-radius:12px;padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:box-shadow .25s,transform .25s,border-color .25s;}
+.mini-card:hover{box-shadow:0 8px 32px rgba(11,26,43,.1);transform:translateY(-2px);border-color:rgba(15,110,86,.3);}
+.mini-card-name{font-weight:700;font-size:15px;color:var(--navy);}
+.mini-card-peptide{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);}
+.mini-card-badge{display:inline-block;background:var(--navy);color:#fff;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;border-radius:20px;padding:3px 10px;}
+.mini-card-tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);}
 /* CTA */
-.cta-section{background:var(--bx-navy);color:#fff;padding:64px 40px;text-align:center}
-.cta-section h2{font-size:32px;font-weight:600;margin-bottom:12px}
-.cta-section p{font-size:16px;opacity:0.85;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
-.btn-white{background:#fff;color:var(--bx-navy);padding:14px 32px;border-radius:8px;font-weight:500;display:inline-block;transition:transform 0.2s}
-.btn-white:hover{transform:translateY(-2px)}
-
+.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
+.cta-helix{position:absolute;inset:0;opacity:.05;pointer-events:none;}
+.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
+.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
+.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
+.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 10px 30px rgba(15,110,86,.4);}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:8px;padding:13px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
 /* FOOTER */
-footer{background:var(--bx-navy);color:#fff;padding:40px;text-align:center}
-footer a{color:rgba(255,255,255,0.7);margin:0 12px;font-size:12px}
-footer p{font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px}
-
-/* LANGUAGE */
-[data-lang="es"]{display:block}
-[data-lang="en"]{display:none}
-html[lang="en"] [data-lang="es"]{display:none}
-html[lang="en"] [data-lang="en"]{display:block}
-span[data-lang="es"]{display:inline}
-span[data-lang="en"]{display:none}
-html[lang="en"] span[data-lang="es"]{display:none}
-html[lang="en"] span[data-lang="en"]{display:inline}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .nav{padding:0 20px}
-  .nav-links{gap:12px}
-  .nav-link{font-size:11px}
-  .container{padding:0 20px}
-  .page-hero{padding:60px 20px}
-  .page-hero h1{font-size:28px}
-  .section{padding:48px 0}
-  .steps-grid{grid-template-columns:1fr 1fr;gap:16px}
-  .info-grid{grid-template-columns:1fr}
-  .protocol-grid{grid-template-columns:1fr}
-  .comp-table{font-size:11px}
-  .comp-table th,.comp-table td{padding:8px 10px}
-  .section-title{font-size:28px}
-}
-@media(max-width:480px){
-  .steps-grid{grid-template-columns:1fr}
-  .nav-link{display:none}
-  .nav-link:nth-child(1),.nav-link:nth-child(3){display:block}
-}
+.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
+.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
+.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--teal-active);}
+.footer-links a.active{color:var(--teal-active);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);}
+.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.15);text-align:center;}
+.footer-legal{display:flex;gap:20px;}
+.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
+.footer-legal a:hover{color:rgba(255,255,255,.5);}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-container">
-    <a href="index.html" class="logo">
-      <svg width="44" height="20" viewBox="0 0 44 20" style="flex-shrink:0">
-        <path d="M2 5 Q9 1, 16 5 Q23 9, 30 5 Q37 1, 44 5" fill="none" stroke="#0F6E56" stroke-width="1.6" opacity="0.6"/>
-        <path d="M2 11 Q9 15, 16 11 Q23 7, 30 11 Q37 15, 44 11" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="9" y1="3" x2="9" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-        <line x1="30" y1="3" x2="30" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-      </svg>
-      <span><span class="b">bio</span><span class="g">gradix</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html#productos" class="nav-link"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-      <a href="educacion.html" class="nav-link active"><span data-lang="es">Capacitación</span><span data-lang="en">Training</span></a>
-      <a href="blog.html" class="nav-link">Blog</a>
-      <div class="lang-toggle">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
+        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+        <a href="educacion.html" class="active" data-i18n="nav-educacion">Educación</a>
+        <a href="blog.html" data-i18n="nav-blog">Blog</a>
+        <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
       </div>
-      <a href="https://wa.me/525512345678" target="_blank" class="wa-btn">WhatsApp</a>
+      <div class="nav-right">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <a href="https://wa.me/1234567890" class="btn-wa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <span data-lang="es">Fabricado en EE.UU. · Probado por terceros · ≥99% Pureza · Entrega BiogradixRelease®</span>
-  <span data-lang="en">U.S. Manufactured · Third-party Tested · ≥99% Purity · BiogradixRelease® Delivery</span>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-panel">
+    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" class="active" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" data-i18n="nav-blog">Blog</a>
+    <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
+    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--silver);">
+      <button class="lang-btn active" onclick="setLang('es');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">ES</button>
+      <span class="lang-sep">/</span>
+      <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">EN</button>
+    </div>
+    <a href="https://wa.me/1234567890" class="btn-wa">WhatsApp</a>
+  </div>
 </div>
 
 <!-- HERO -->
-<section class="page-hero">
-  <div class="label"><span data-lang="es">CENTRO DE CAPACITACIÓN</span><span data-lang="en">TRAINING CENTER</span></div>
-  <h1><span data-lang="es">Todo lo que necesitas saber</span><span data-lang="en">Everything you need to know</span></h1>
-  <p class="subtitle"><span data-lang="es">Guías de aplicación, ciencia de la entrega buccal y protocolos de dosificación</span><span data-lang="en">Application guides, buccal delivery science, and dosing protocols</span></p>
+<section class="edu-hero">
+  <canvas id="helix-canvas"></canvas>
+  <div class="container">
+    <div class="edu-hero-inner">
+      <div>
+        <div class="hero-cat-badge reveal">
+          <div class="hero-cat-dot"></div>
+          <span class="label" style="color:var(--teal-active);" data-i18n="edu-hero-label">Centro de Educación</span>
+        </div>
+        <h1 class="edu-hero-h1 reveal reveal-delay-1" data-i18n-html="edu-hero-h1">Entiende la Ciencia<br/>que te <em>Transforma</em></h1>
+        <p class="edu-hero-sub reveal reveal-delay-2" data-i18n="edu-hero-sub">Todo lo que necesitas saber sobre péptidos, absorción por mucosa oral y suplementos de nueva generación.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="hero-dna-card">
+          <!-- DNA Helix SVG icon -->
+          <svg width="72" height="96" viewBox="0 0 72 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8 Q36 20, 60 8" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 24 Q36 12, 60 24" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 40 Q36 52, 60 40" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 56 Q36 44, 60 56" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 72 Q36 84, 60 72" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 88 Q36 76, 60 88" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="8" x2="12" y2="88" stroke="rgba(29,158,117,0.3)" stroke-width="1.2"/>
+            <line x1="60" y1="8" x2="60" y2="88" stroke="rgba(15,110,86,0.3)" stroke-width="1.2"/>
+            <circle cx="12" cy="8" r="3" fill="#1D9E75"/>
+            <circle cx="60" cy="8" r="3" fill="#0F6E56"/>
+            <circle cx="12" cy="24" r="3" fill="#0F6E56"/>
+            <circle cx="60" cy="24" r="3" fill="#1D9E75"/>
+            <circle cx="12" cy="40" r="3" fill="#1D9E75"/>
+            <circle cx="60" cy="40" r="3" fill="#0F6E56"/>
+            <circle cx="12" cy="56" r="3" fill="#0F6E56"/>
+            <circle cx="60" cy="56" r="3" fill="#1D9E75"/>
+            <circle cx="12" cy="72" r="3" fill="#1D9E75"/>
+            <circle cx="60" cy="72" r="3" fill="#0F6E56"/>
+            <circle cx="12" cy="88" r="3" fill="#0F6E56"/>
+            <circle cx="60" cy="88" r="3" fill="#1D9E75"/>
+          </svg>
+          <span class="hero-dna-label">Péptidos / Peptides</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- SECTION 1: HOW TO APPLY -->
-<section class="section" id="aplicacion">
+<!-- SECTION 1: ¿Qué son los Péptidos? -->
+<section class="peptides-section">
   <div class="container">
-    <div class="section-label"><span data-lang="es">GUÍA DE APLICACIÓN</span><span data-lang="en">APPLICATION GUIDE</span></div>
-    <div class="section-title"><span data-lang="es">Cómo usar tu parche buccal</span><span data-lang="en">How to use your buccal patch</span></div>
-    <div class="section-desc"><span data-lang="es">La tecnología BiogradixRelease® utiliza un parche buccal que se disuelve en la mucosa oral. Cada aplicación toma menos de 30 segundos. Sin inyecciones, sin refrigeración, sin preparación.</span><span data-lang="en">BiogradixRelease® technology uses a buccal dissolving patch applied to the oral mucosa. Each application takes less than 30 seconds. No injections, no refrigeration, no preparation.</span></div>
+    <div class="section-header reveal">
+      <span class="label" data-i18n="pep-label">Fundamentos</span>
+      <h2 class="section-h2" data-i18n-html="pep-h2">¿Qué son <em>exactamente</em> los péptidos?</h2>
+      <p class="section-sub" data-i18n="pep-sub">La ciencia detrás de los mensajeros moleculares más importantes del cuerpo.</p>
+    </div>
+    <div class="peptides-grid">
+      <div class="peptides-text reveal">
+        <p data-i18n="pep-p1">Los péptidos son moléculas formadas por cadenas cortas de aminoácidos — los bloques fundamentales de la vida. La diferencia entre péptidos y proteínas es principalmente el tamaño: los péptidos son cadenas más cortas (2–50 aminoácidos), mientras que las proteínas son cadenas más largas (50+ aminoácidos).</p>
+        <p data-i18n="pep-p2">Piensa en los aminoácidos como letras del alfabeto. Las proteínas son palabras largas; los péptidos son sílabas o palabras cortas. A veces, palabras más cortas comunican mensajes más específicos y poderosos.</p>
+        <p data-i18n="pep-p3">Tu cuerpo es fundamentalmente un sistema de comunicación. Diferentes células, órganos y sistemas necesitan 'hablar' entre sí constantemente para coordinarse. Los péptidos son los mensajeros específicos de este sistema. Cada péptido tiene un trabajo específico porque encaja en receptores específicos en células específicas — como una llave en una cerradura. Solo la llave correcta abre la cerradura correcta.</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="comparison-card">
+          <!-- Row 1: Amino acids -->
+          <div class="compare-row">
+            <div class="compare-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><line x1="14.12" y1="10.12" x2="17.17" y2="6.83"/><line x1="9.88" y1="10.12" x2="6.83" y2="6.83"/><line x1="14.12" y1="13.88" x2="17.17" y2="17.17"/><line x1="9.88" y1="13.88" x2="6.83" y2="17.17"/></svg>
+            </div>
+            <div class="compare-info">
+              <div class="compare-name" data-i18n="cmp-aa-name">Aminoácidos</div>
+              <div class="compare-desc" data-i18n="cmp-aa-desc">Los bloques · The building blocks</div>
+            </div>
+          </div>
+          <!-- Row 2: Peptides -->
+          <div class="compare-row" style="border-color:rgba(29,158,117,.4);background:rgba(29,158,117,.08);">
+            <div class="compare-icon" style="background:rgba(29,158,117,.25);border-color:rgba(29,158,117,.5);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+            </div>
+            <div class="compare-info">
+              <div class="compare-name" data-i18n="cmp-pep-name">Péptidos</div>
+              <div class="compare-desc" data-i18n="cmp-pep-desc">2–50 aminoácidos · 2–50 amino acids</div>
+            </div>
+          </div>
+          <!-- Row 3: Proteins -->
+          <div class="compare-row">
+            <div class="compare-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 Q8 4,12 8 Q16 12,20 8"/><path d="M4 12 Q8 16,12 12 Q16 8,20 12"/><path d="M4 16 Q8 12,12 16 Q16 20,20 16"/></svg>
+            </div>
+            <div class="compare-info">
+              <div class="compare-name" data-i18n="cmp-pro-name">Proteínas</div>
+              <div class="compare-desc" data-i18n="cmp-pro-desc">50+ aminoácidos · 50+ amino acids</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- SECTION 2: Absorción por Mucosa Oral -->
+<section class="absorption-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="abs-label">BiogradixRelease®</span>
+      <h2 class="section-h2" data-i18n-html="abs-h2">Absorción por <em>Mucosa Oral</em></h2>
+      <p class="section-sub" data-i18n="abs-sub">Por qué aplicar contra la mejilla interna o encía superior cambia todo.</p>
+    </div>
     <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <div class="step-title"><span data-lang="es">Despegar el respaldo</span><span data-lang="en">Peel backing</span></div>
-        <div class="step-text"><span data-lang="es">Retira el respaldo protector. El lado del gel es la cara activa que contiene los bioactivos. Maneja el parche con las manos limpias y secas.</span><span data-lang="en">Remove the protective backing. The gel side is the active face containing the bioactives. Handle the patch with clean, dry hands.</span></div>
+      <div class="step-item reveal">
+        <div class="step-dot">1</div>
+        <div class="step-label" data-i18n="abs-step1-label">Aplicación</div>
+        <div class="step-desc" data-i18n="abs-step1-desc">Coloca el suplemento contra la mejilla interna o encía superior según indicación</div>
       </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <div class="step-title"><span data-lang="es">Colocar en la mucosa</span><span data-lang="en">Place on mucosa</span></div>
-        <div class="step-text"><span data-lang="es">Coloca el lado del gel contra la mejilla interior o la encía superior. Presiona suavemente durante 30 segundos para que se adhiera. No necesitas agua.</span><span data-lang="en">Place the gel side against the inner cheek or upper gum. Press gently for 30 seconds to adhere. No water needed.</span></div>
+      <div class="step-item reveal reveal-delay-1">
+        <div class="step-dot">2</div>
+        <div class="step-label" data-i18n="abs-step2-label">Contacto con Mucosa</div>
+        <div class="step-desc" data-i18n="abs-step2-desc">La mucosa oral absorbe los bioactivos directamente</div>
       </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <div class="step-title"><span data-lang="es">Esperar 60–90 min</span><span data-lang="en">Wait 60–90 min</span></div>
-        <div class="step-text"><span data-lang="es">El parche se disuelve completamente durante este período. Los bioactivos atraviesan la mucosa buccal directamente a la circulación sistémica. Evita comer o beber.</span><span data-lang="en">The patch dissolves fully during this period. Bioactives cross the buccal mucosa directly into systemic circulation. Avoid eating or drinking.</span></div>
+      <div class="step-item reveal reveal-delay-2">
+        <div class="step-dot">3</div>
+        <div class="step-label" data-i18n="abs-step3-label">Entrada Directa</div>
+        <div class="step-desc" data-i18n="abs-step3-desc">Los ingredientes entran al torrente sanguíneo en minutos</div>
       </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <div class="step-title"><span data-lang="es">Retirar el liner</span><span data-lang="en">Remove liner</span></div>
-        <div class="step-text"><span data-lang="es">El respaldo no absorbible se retira y se desecha después de la aplicación. Si queda gel residual, se absorbe en minutos. Listo — sin agujas, sin frío.</span><span data-lang="en">The non-absorbable backing is removed and discarded after application. Any residual gel absorbs within minutes. Done — no needles, no cold chain.</span></div>
+      <div class="step-item reveal reveal-delay-3">
+        <div class="step-dot">4</div>
+        <div class="step-label" data-i18n="abs-step4-label">Sin Primer Paso</div>
+        <div class="step-desc" data-i18n="abs-step4-desc">Se evita el metabolismo hepático de primer paso completamente</div>
+      </div>
+      <div class="step-item reveal reveal-delay-4">
+        <div class="step-dot">5</div>
+        <div class="step-label" data-i18n="abs-step5-label">Biodisponibilidad Total</div>
+        <div class="step-desc" data-i18n="abs-step5-desc">2–3× más efectivo que cápsulas orales convencionales</div>
+      </div>
+    </div>
+
+    <div class="absorption-compare">
+      <!-- Card 1: Pills -->
+      <div class="abs-card reveal">
+        <div class="abs-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20H4a2 2 0 01-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 011.66.9l.82 1.2a2 2 0 001.66.9H20a2 2 0 012 2v3"/><circle cx="18" cy="18" r="4"/><path d="M15.3 15.3l5.4 5.4"/></svg>
+        </div>
+        <div class="abs-title" data-i18n="abs-c1-title">Pastillas Orales</div>
+        <div class="abs-body" data-i18n="abs-c1-body">Biodisponibilidad: 20–40%. El hígado degrada 60–80% del principio activo antes de que llegue al torrente sanguíneo.</div>
+      </div>
+      <!-- Card 2: BiogradixRelease® (recommended) -->
+      <div class="abs-card recommended reveal reveal-delay-1">
+        <div class="abs-badge" data-i18n="abs-recommended-badge">RECOMENDADO</div>
+        <div class="abs-icon" style="background:var(--mint);border:1px solid var(--teal);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="abs-title" style="color:var(--teal);">BiogradixRelease®</div>
+        <div class="abs-body" data-i18n="abs-c2-body">Biodisponibilidad: 70–90%. Absorción directa por mucosa — sin pérdidas digestivas, sin metabolismo hepático.</div>
+      </div>
+      <!-- Card 3: Injectable -->
+      <div class="abs-card reveal reveal-delay-2">
+        <div class="abs-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l4 4-9.5 9.5-5-1.5L18 2z"/><path d="M13.5 6.5l4 4"/><path d="M2 22l5.5-5.5"/></svg>
+        </div>
+        <div class="abs-title" data-i18n="abs-c3-title">Inyectable</div>
+        <div class="abs-body" data-i18n="abs-c3-body">Biodisponibilidad: 90–95%. Requiere agujas, reconstitución, técnica aséptica y refrigeración estricta.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 2: HOW IT WORKS (SCIENCE) -->
-<section class="section section-alt" id="ciencia">
+<!-- SECTION 3: FAQ -->
+<section class="faq-section">
   <div class="container">
-    <div class="section-label"><span data-lang="es">LA CIENCIA</span><span data-lang="en">THE SCIENCE</span></div>
-    <div class="section-title"><span data-lang="es">Por qué la entrega buccal supera a la inyectable</span><span data-lang="en">Why buccal delivery outperforms injectable</span></div>
-    <div class="section-desc"><span data-lang="es">La mucosa buccal es una de las membranas más vascularizadas del cuerpo. Los bioactivos se absorben directamente a la circulación, evitando el tracto gastrointestinal y el metabolismo de primer paso hepático — los dos principales obstáculos de la entrega oral.</span><span data-lang="en">The buccal mucosa is one of the most vascularized membranes in the body. Bioactives absorb directly into circulation, bypassing the GI tract and hepatic first-pass metabolism — the two main barriers to oral delivery.</span></div>
+    <div class="section-header reveal">
+      <span class="label" data-i18n="faq-label">Dudas Comunes</span>
+      <h2 class="section-h2" data-i18n-html="faq-h2">Respuestas <em>directas</em></h2>
+    </div>
+    <div class="faq-list reveal">
 
-    <div class="info-grid">
-      <div class="info-card">
-        <div class="icon">🧬</div>
-        <h3><span data-lang="es">Sello Muco-SmartSeal®</span><span data-lang="en">Muco-SmartSeal® Edge Seal</span></h3>
-        <p><span data-lang="es">Sella los bordes del parche para prevenir la fuga de péptidos hacia la saliva. Los compuestos activos permanecen bioactivos y no son degradados por enzimas salivales.</span><span data-lang="en">Seals the patch edges to prevent peptide leakage into saliva. Active compounds remain bioactive and are not degraded by salivary enzymes.</span></p>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q1">¿Son seguros los péptidos de Biogradix?</span>
+          <div class="faq-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a1">Sí. Los péptidos que utilizamos ocurren naturalmente en el cuerpo humano o son análogos naturales estrechamente relacionados. El cuerpo reconoce estas moléculas. Décadas de investigación médica respaldan su seguridad. Todos nuestros productos son fabricados bajo estándares GMP con pureza ≥99% verificada por HPLC en laboratorio independiente. Menos del 1% de usuarios reporta efectos secundarios, generalmente leves y transitorios.</div>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="icon">🔬</div>
-        <h3><span data-lang="es">Trans-difusión TD-IntelGel®</span><span data-lang="en">TD-IntelGel® Trans-diffusion</span></h3>
-        <p><span data-lang="es">La elongación del tejido aumenta el área de superficie. Los péptidos de hasta 4,000 Da se difunden directamente a la circulación sistémica sin necesidad de aguja.</span><span data-lang="en">Tissue elongation increases surface area. Peptides up to 4,000 Da diffuse directly into systemic circulation without a needle.</span></p>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q2">¿Cuánto tiempo hasta ver resultados?</span>
+          <div class="faq-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a2">Depende del péptido y el objetivo: Energía (VITACHARGE™/NAD+): 3–7 días. Rendimiento físico (RECOVERYPRO™/BPC-157, MUSCLEMAXX™): 1–2 semanas. Composición corporal (MUSCLEMAXX™): 4–6 semanas. Cambios cosméticos (RADIANCEMAX™/GHK-Cu, CELLDEW™/Glutatión): 4–8 semanas. Cambios estructurales profundos (articulaciones): 8–12 semanas. La constancia es clave — los mejores resultados se obtienen con uso continuo.</div>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="icon">🛡️</div>
-        <h3><span data-lang="es">Sin metabolismo de primer paso</span><span data-lang="en">No first-pass metabolism</span></h3>
-        <p><span data-lang="es">A diferencia de las cápsulas orales (que pierden más del 95% del péptido en el tracto GI), la entrega buccal evita completamente el hígado. Perfil de biodisponibilidad comparable a la inyección subcutánea.</span><span data-lang="en">Unlike oral capsules (which lose 95%+ of the peptide in the GI tract), buccal delivery completely bypasses the liver. Bioavailability profile comparable to subcutaneous injection.</span></p>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q3">¿Puedo usar múltiples productos juntos?</span>
+          <div class="faq-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a3">Sí. De hecho, muchos usuarios ven beneficios sinérgicos. Combinaciones frecuentes: VITACHARGE™ + CELLDEW™ (energía + desintoxicación), RECOVERYPRO™ + MUSCLEMAXX™ (rendimiento deportivo completo), RADIANCEMAX™ + CELLDEW™ (belleza desde adentro completa). No hay interacciones negativas conocidas entre los productos Biogradix. Contáctanos por WhatsApp para una recomendación personalizada.</div>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="icon">📦</div>
-        <h3><span data-lang="es">Sin cadena de frío</span><span data-lang="en">No cold chain</span></h3>
-        <p><span data-lang="es">Los parches buccales son estables a temperatura ambiente. A diferencia de los inyectables, no requieren refrigeración — ideal para viajes, climas cálidos o uso cotidiano sin complicaciones logísticas.</span><span data-lang="en">Buccal patches are ambient-stable. Unlike injectables, no refrigeration required — ideal for travel, warm climates, or everyday use without logistics complications.</span></p>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q4">¿Hay efectos secundarios?</span>
+          <div class="faq-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a4">Generalmente no. Los péptidos de Biogradix son bien tolerados. En menos del 1% de usuarios se reporta: sensibilidad leve en la boca en el punto de aplicación (transitoria), o respuesta alérgica individual (como con cualquier suplemento). Todos los productos incluyen ficha de seguridad completa. Consulta con tu médico si tienes condiciones de salud preexistentes.</div>
+        </div>
       </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q5">¿Cómo se aplica correctamente el suplemento?</span>
+          <div class="faq-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a5">El suplemento se coloca contra la mejilla interna o la encía superior — no bajo la lengua. Este contacto directo con la mucosa oral permite la absorción óptima. Mantén el suplemento en contacto con la mucosa durante el tiempo indicado en las instrucciones de cada producto. Evita comer, beber o enjuagarte la boca durante 15 minutos después de la aplicación para maximizar la absorción.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text" data-i18n="faq-q6">¿Son legales en México y Latinoamérica?</span>
+          <div class="faq-arrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner" data-i18n="faq-a6">Nuestros productos están formulados como suplementos dietéticos de uso personal y no requieren prescripción médica. A diferencia de las versiones inyectables, la presentación en parche/mucosa oral está sujeta a regulaciones menos restrictivas. Recomendamos verificar la normativa vigente en tu país antes de importar. Todos nuestros productos cuentan con documentación COA disponible.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- SECTION 3: COMPARISON TABLE -->
-<section class="section" id="comparativa">
+<!-- SECTION 4: Product Collection -->
+<section class="products-section">
   <div class="container">
-    <div class="section-label"><span data-lang="es">COMPARATIVA DE ENTREGA</span><span data-lang="en">DELIVERY COMPARISON</span></div>
-    <div class="section-title"><span data-lang="es">BiogradixRelease® vs. otros formatos</span><span data-lang="en">BiogradixRelease® vs. other formats</span></div>
-
-    <div style="overflow-x:auto">
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th><span data-lang="es">Criterio</span><span data-lang="en">Criterion</span></th>
-            <th class="highlight" style="background:var(--bx-teal)">BiogradixRelease®</th>
-            <th><span data-lang="es">Inyectable SC/IM</span><span data-lang="en">SC/IM Injectable</span></th>
-            <th>Sublingual</th>
-            <th><span data-lang="es">Cápsula oral</span><span data-lang="en">Oral capsule</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span data-lang="es">Biodisponibilidad</span><span data-lang="en">Bioavailability</span></td>
-            <td class="highlight"><span data-lang="es">Alta — transmucosa, evita GI e hígado</span><span data-lang="en">High — transmucosal, bypasses GI & liver</span></td>
-            <td><span data-lang="es">Referencia (100%)</span><span data-lang="en">Reference standard (100%)</span></td>
-            <td><span data-lang="es">75–90% pérdida enzimática</span><span data-lang="en">75–90% enzyme loss</span></td>
-            <td><span data-lang="es">&lt;5% — degradación GI</span><span data-lang="en">&lt;5% — GI degradation</span></td>
-          </tr>
-          <tr>
-            <td><span data-lang="es">Aguja requerida</span><span data-lang="en">Needle required</span></td>
-            <td class="highlight yes"><span data-lang="es">No</span><span data-lang="en">No</span></td>
-            <td class="no"><span data-lang="es">Sí, autoinyección diaria</span><span data-lang="en">Yes, daily self-injection</span></td>
-            <td class="yes">No</td>
-            <td class="yes">No</td>
-          </tr>
-          <tr>
-            <td><span data-lang="es">Primer paso hepático</span><span data-lang="en">First-pass metabolism</span></td>
-            <td class="highlight"><span data-lang="es">Evitado</span><span data-lang="en">Bypassed</span></td>
-            <td><span data-lang="es">Evitado</span><span data-lang="en">Bypassed</span></td>
-            <td><span data-lang="es">Bypass parcial</span><span data-lang="en">Partial bypass</span></td>
-            <td><span data-lang="es">Alto — pérdida significativa</span><span data-lang="en">High — significant loss</span></td>
-          </tr>
-          <tr>
-            <td><span data-lang="es">Cadena de frío</span><span data-lang="en">Cold chain</span></td>
-            <td class="highlight yes"><span data-lang="es">No — estable a temperatura ambiente</span><span data-lang="en">No — ambient stable</span></td>
-            <td class="no"><span data-lang="es">Sí — refrigerado</span><span data-lang="en">Yes — refrigerated</span></td>
-            <td class="yes">No</td>
-            <td class="yes">No</td>
-          </tr>
-          <tr>
-            <td><span data-lang="es">Adherencia del paciente</span><span data-lang="en">Patient compliance</span></td>
-            <td class="highlight"><span data-lang="es">Alta — ritual de 30 seg</span><span data-lang="en">High — 30-sec ritual</span></td>
-            <td class="no"><span data-lang="es">Baja — fobia + carga diaria</span><span data-lang="en">Low — phobia + daily burden</span></td>
-            <td><span data-lang="es">Moderada</span><span data-lang="en">Moderate</span></td>
-            <td><span data-lang="es">Moderada</span><span data-lang="en">Moderate</span></td>
-          </tr>
-          <tr>
-            <td><span data-lang="es">Dato clave</span><span data-lang="en">Key data point</span></td>
-            <td class="highlight"><span data-lang="es">50% más eficaz vs tiras orales (in-vitro)</span><span data-lang="en">50% higher efficacy vs oral strips (in-vitro)</span></td>
-            <td><span data-lang="es">63% fobia a agujas en adultos</span><span data-lang="en">63% needle phobia in adults</span></td>
-            <td>—</td>
-            <td>—</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="section-header reveal">
+      <span class="label" data-i18n="col-label">La Colección</span>
+      <h2 class="section-h2" data-i18n-html="col-h2">Siete péptidos, <em>una misión</em></h2>
+      <p class="section-sub" data-i18n="col-sub">Cada producto formulado para un objetivo específico, todos con absorción por mucosa oral.</p>
     </div>
-  </div>
-</section>
-
-<!-- SECTION 4: STACKING PROTOCOLS -->
-<section class="section section-alt" id="protocolos">
-  <div class="container">
-    <div class="section-label"><span data-lang="es">PROTOCOLOS DE USO</span><span data-lang="en">STACKING PROTOCOLS</span></div>
-    <div class="section-title"><span data-lang="es">Protocolos recomendados</span><span data-lang="en">Recommended protocols</span></div>
-    <div class="section-desc"><span data-lang="es">Combinaciones de bioactivos diseñadas para objetivos específicos. Cada protocolo combina compuestos sinérgicos para resultados acumulativos.</span><span data-lang="en">Bioactive combinations designed for specific goals. Each protocol stacks synergistic compounds for cumulative results.</span></div>
-
-    <div class="protocol-grid">
-      <div class="protocol-card">
-        <div class="protocol-name"><span data-lang="es">Protocolo Longevidad</span><span data-lang="en">Longevity Protocol</span></div>
-        <div class="protocol-compounds">RECOVERYPRO™ + VITACHARGE™ + RADIANCEMAX™</div>
-        <div class="protocol-desc"><span data-lang="es">Reparación tisular, energía celular y calidad de piel. Ideal para quienes buscan envejecimiento saludable con un enfoque integral desde el interior.</span><span data-lang="en">Tissue repair, cellular energy, and skin quality. Ideal for those seeking healthy aging with a comprehensive inside-out approach.</span></div>
-        <div class="protocol-status status-available"><span data-lang="es">Disponible ahora</span><span data-lang="en">Available now</span></div>
-      </div>
-      <div class="protocol-card">
-        <div class="protocol-name"><span data-lang="es">Protocolo Rendimiento</span><span data-lang="en">Performance Protocol</span></div>
-        <div class="protocol-compounds">RECOVERYPRO™ + MUSCLEMAXX™ + VITACHARGE™</div>
-        <div class="protocol-desc"><span data-lang="es">Recuperación atlética, sueño profundo y prevención de lesiones. Para deportistas y personas activas que buscan optimizar su rendimiento físico.</span><span data-lang="en">Athletic recovery, deep sleep, and injury prevention. For athletes and active individuals looking to optimize physical performance.</span></div>
-        <div class="protocol-status status-available"><span data-lang="es">Disponible ahora</span><span data-lang="en">Available now</span></div>
-      </div>
-      <div class="protocol-card">
-        <div class="protocol-name"><span data-lang="es">Protocolo Metabólico</span><span data-lang="en">Metabolic Protocol</span></div>
-        <div class="protocol-compounds">VITACHARGE™ + MUSCLEMAXX™</div>
-        <div class="protocol-desc"><span data-lang="es">Sensibilidad a la insulina, composición corporal y pulso de hormona de crecimiento. Diseñado para optimización metabólica sostenida.</span><span data-lang="en">Insulin sensitivity, body composition, and GH pulse. Designed for sustained metabolic optimization.</span></div>
-        <div class="protocol-status status-available"><span data-lang="es">Disponible ahora</span><span data-lang="en">Available now</span></div>
-      </div>
-      <div class="protocol-card">
-        <div class="protocol-name"><span data-lang="es">Protocolo Vitalidad</span><span data-lang="en">Vitality Protocol</span></div>
-        <div class="protocol-compounds">PASSIONBOOST™ + IMMUNEFORT™ + RADIANCEMAX™</div>
-        <div class="protocol-desc"><span data-lang="es">Libido, resiliencia inmune y salud de piel y cabello. Un enfoque holístico a la vitalidad que abarca bienestar íntimo, defensas e imagen.</span><span data-lang="en">Libido, immune resilience, and skin & hair health. A holistic approach to vitality covering intimate wellness, defenses, and appearance.</span></div>
-        <div class="protocol-status status-available"><span data-lang="es">Disponible ahora</span><span data-lang="en">Available now</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 5: FAQ -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="section-label">FAQ</div>
-    <div class="section-title"><span data-lang="es">Preguntas frecuentes</span><span data-lang="en">Frequently asked questions</span></div>
-
-    <div style="margin-top:32px">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿Es seguro el parche buccal?</span><span data-lang="en">Is the buccal patch safe?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">Sí. Los péptidos que utilizamos ocurren naturalmente en el cuerpo o son análogos estrechamente relacionados. La entrega buccal es un método establecido utilizado en medicina durante décadas (desde nitroglicerina sublingual hasta formulaciones de buprenorfina). Nuestros bioactivos provienen de una farmacia de formulación 503A en EE.UU. con certificados de análisis por lote.</span><span data-lang="en">Yes. The peptides we use occur naturally in the body or are closely related analogs. Buccal delivery is an established medical method used for decades (from sublingual nitroglycerin to buprenorphine formulations). Our bioactives come from a US 503A compounding pharmacy with per-batch certificates of analysis.</span></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿Cuánto tiempo tarda en hacer efecto?</span><span data-lang="en">How long until I see results?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">Depende del bioactivo. Para energía celular (VITACHARGE™), muchos usuarios reportan mejoras en 3–7 días. Para beneficios de piel y colágeno (RADIANCEMAX™), espera 4–8 semanas de uso consistente. La recuperación tisular (RECOVERYPRO™) generalmente se nota en 2–4 semanas.</span><span data-lang="en">It depends on the bioactive. For cellular energy (VITACHARGE™), many users report improvements in 3–7 days. For skin and collagen benefits (RADIANCEMAX™), expect 4–8 weeks of consistent use. Tissue recovery (RECOVERYPRO™) is typically noticed within 2–4 weeks.</span></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿Puedo combinar varios parches?</span><span data-lang="en">Can I combine multiple patches?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">Sí, nuestros protocolos están diseñados específicamente para combinar bioactivos sinérgicos. Sin embargo, recomendamos aplicar un parche a la vez (no simultáneamente) para una absorción óptima. Espacia las aplicaciones al menos 2 horas. Consulta nuestros protocolos recomendados arriba.</span><span data-lang="en">Yes, our protocols are specifically designed to combine synergistic bioactives. However, we recommend applying one patch at a time (not simultaneously) for optimal absorption. Space applications at least 2 hours apart. See our recommended protocols above.</span></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿Por qué buccal y no inyectable?</span><span data-lang="en">Why buccal instead of injectable?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">Tres razones: (1) El 63% de los adultos tiene fobia a las agujas, lo que lleva al abandono del protocolo. (2) Los inyectables requieren cadena de frío — refrigeración constante que complica viajes y almacenamiento. (3) La adherencia a largo plazo es dramáticamente mayor con un ritual de 30 segundos vs. autoinyección diaria. La biodisponibilidad buccal es comparable a la subcutánea.</span><span data-lang="en">Three reasons: (1) 63% of adults have needle phobia, leading to protocol abandonment. (2) Injectables require cold chain — constant refrigeration complicating travel and storage. (3) Long-term adherence is dramatically higher with a 30-second ritual vs. daily self-injection. Buccal bioavailability is comparable to subcutaneous.</span></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿De dónde provienen los bioactivos?</span><span data-lang="en">Where do the bioactives come from?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">Todos nuestros bioactivos son formulados en una farmacia de formulación 503A con licencia en Estados Unidos. Utilizamos exclusivamente APIs (ingredientes farmacéuticos activos) registrados ante la FDA, con pureza ≥99% verificada por pruebas HPLC de terceros. Cada lote incluye un Certificado de Análisis (COA) disponible bajo solicitud.</span><span data-lang="en">All our bioactives are compounded at a licensed US 503A compounding pharmacy. We exclusively use FDA-registered APIs (active pharmaceutical ingredients), with ≥99% purity verified by third-party HPLC testing. Each batch includes a Certificate of Analysis (COA) available upon request.</span></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿Necesito receta médica?</span><span data-lang="en">Do I need a prescription?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">En Estados Unidos, los bioactivos formulados en farmacias 503A requieren prescripción médica. En México y Latinoamérica, la regulación varía por país. Biogradix ofrece acompañamiento vía WhatsApp para guiarte en el proceso y conectarte con profesionales de salud cuando sea necesario.</span><span data-lang="en">In the US, bioactives compounded at 503A pharmacies require a prescription. In Mexico and Latin America, regulations vary by country. Biogradix offers WhatsApp-based guidance to walk you through the process and connect you with healthcare professionals when needed.</span></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿Cómo se almacenan los parches?</span><span data-lang="en">How are the patches stored?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">Los parches buccales BiogradixRelease® son estables a temperatura ambiente. Almacénalos en un lugar fresco y seco, lejos de la luz directa del sol. No requieren refrigeración, lo que los hace ideales para viajes y uso cotidiano sin complicaciones logísticas.</span><span data-lang="en">BiogradixRelease® buccal patches are ambient-stable. Store them in a cool, dry place away from direct sunlight. No refrigeration required, making them ideal for travel and everyday use without logistics complications.</span></p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          <h3><span data-lang="es">¿Qué pasa si el parche se cae?</span><span data-lang="en">What if the patch falls off?</span></h3>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <p><span data-lang="es">Si se cae antes de los primeros 15 minutos, puedes volver a colocarlo presionando 30 segundos. Si ya han pasado 30+ minutos, la mayor parte del bioactivo ya ha sido absorbida — simplemente desecha el parche. Asegúrate de que la zona esté seca antes de la aplicación para mejor adherencia.</span><span data-lang="en">If it falls off within the first 15 minutes, you can reapply by pressing for 30 seconds. If 30+ minutes have passed, most of the bioactive has already been absorbed — simply discard the patch. Make sure the area is dry before application for better adherence.</span></p>
-        </div>
-      </div>
+    <div class="products-mini-grid">
+      <a href="producto-celldew.html" class="mini-card reveal">
+        <div class="mini-card-name">CELLDEW™</div>
+        <div class="mini-card-peptide">Glutatión</div>
+        <div><span class="mini-card-badge" data-i18n="badge-detox">Detox</span></div>
+        <div class="mini-card-tagline" data-i18n="mc-celldew-tagline">Antioxidante Maestro</div>
+      </a>
+      <a href="producto-vitacharge.html" class="mini-card reveal reveal-delay-1">
+        <div class="mini-card-name">VITACHARGE™</div>
+        <div class="mini-card-peptide">NAD+</div>
+        <div><span class="mini-card-badge" data-i18n="badge-energia">Energía</span></div>
+        <div class="mini-card-tagline" data-i18n="mc-vitacharge-tagline">Energía Celular</div>
+      </a>
+      <a href="producto-radiancemax.html" class="mini-card reveal reveal-delay-2">
+        <div class="mini-card-name">RADIANCEMAX™</div>
+        <div class="mini-card-peptide">GHK-Cu</div>
+        <div><span class="mini-card-badge" data-i18n="badge-belleza">Belleza</span></div>
+        <div class="mini-card-tagline" data-i18n="mc-radiancemax-tagline">Belleza Regenerativa</div>
+      </a>
+      <a href="producto-recoverypro.html" class="mini-card reveal reveal-delay-3">
+        <div class="mini-card-name">RECOVERYPRO™</div>
+        <div class="mini-card-peptide">BPC-157</div>
+        <div><span class="mini-card-badge" data-i18n="badge-recuperacion">Recuperación</span></div>
+        <div class="mini-card-tagline" data-i18n="mc-recoverypro-tagline">Reparación Total</div>
+      </a>
+      <a href="producto-immunefort.html" class="mini-card reveal">
+        <div class="mini-card-name">IMMUNEFORT™</div>
+        <div class="mini-card-peptide">Thymosin Alpha-1</div>
+        <div><span class="mini-card-badge" data-i18n="badge-inmunidad">Inmunidad</span></div>
+        <div class="mini-card-tagline" data-i18n="mc-immunefort-tagline">Protección Total</div>
+      </a>
+      <a href="producto-passionboost.html" class="mini-card reveal reveal-delay-1">
+        <div class="mini-card-name">PASSIONBOOST™</div>
+        <div class="mini-card-peptide" data-i18n="mc-passionboost-peptide">PT-141 + Oxitocina</div>
+        <div><span class="mini-card-badge" data-i18n="badge-intimidad">Intimidad</span></div>
+        <div class="mini-card-tagline" data-i18n="mc-passionboost-tagline">Vitalidad Íntima</div>
+      </a>
+      <a href="producto-musclemaxx.html" class="mini-card reveal reveal-delay-2">
+        <div class="mini-card-name">MUSCLEMAXX™</div>
+        <div class="mini-card-peptide">CJC-1295 / Ipamorelin</div>
+        <div><span class="mini-card-badge" data-i18n="badge-musculo">Músculo</span></div>
+        <div class="mini-card-tagline" data-i18n="mc-musclemaxx-tagline">Rendimiento Máximo</div>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2><span data-lang="es">¿Preguntas sobre tu protocolo?</span><span data-lang="en">Questions about your protocol?</span></h2>
-  <p><span data-lang="es">Nuestro equipo te acompaña en cada paso. Habla con nosotros por WhatsApp.</span><span data-lang="en">Our team guides you at every step. Talk to us on WhatsApp.</span></p>
-  <a href="https://wa.me/525512345678?text=Hola%2C%20tengo%20preguntas%20sobre%20los%20protocolos" target="_blank" class="btn-white"><span data-lang="es">Hablar con un asesor</span><span data-lang="en">Talk to an advisor</span></a>
+  <svg class="cta-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#0F6E56" stroke-width="1.5"><path d="M0 100 Q60 60,120 100 Q180 140,240 100 Q300 60,360 100 Q420 140,480 100 Q540 60,600 100 Q660 140,720 100 Q780 60,840 100 Q900 140,960 100 Q1020 60,1080 100 Q1140 140,1200 100"/><path d="M0 200 Q60 160,120 200 Q180 240,240 200 Q300 160,360 200 Q420 240,480 200 Q540 160,600 200 Q660 240,720 200 Q780 160,840 200 Q900 240,960 200 Q1020 160,1080 200 Q1140 240,1200 200"/></g></svg>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="label" style="color:var(--teal-active);" data-i18n="cta-label">¿Listo para empezar?</span>
+      <h2 class="cta-h2" data-i18n-html="cta-h2">Consulta gratuita<br/><em>por WhatsApp</em></h2>
+      <p class="cta-body" data-i18n="cta-body">Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.</p>
+      <a href="https://wa.me/1234567890" class="btn-wa-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span data-i18n="cta-btn">Contactar por WhatsApp</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div style="margin-bottom:12px">
-    <a href="index.html"><span data-lang="es">Inicio</span><span data-lang="en">Home</span></a>
-    <a href="index.html#productos"><span data-lang="es">Productos</span><span data-lang="en">Products</span></a>
-    <a href="blog.html">Blog</a>
-    <a href="terms.html"><span data-lang="es">Términos</span><span data-lang="en">Terms</span></a>
-    <a href="privacy.html"><span data-lang="es">Privacidad</span><span data-lang="en">Privacy</span></a>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:4px;">
+          <svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
+          <span class="nav-logo-text" style="color:inherit;"><span style="color:var(--teal)">bio</span><span style="color:var(--silver)">gradix</span></span>
+        </a>
+        <p class="footer-brand-text" data-i18n="footer-brand">Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-products">Productos</div>
+        <div class="footer-links">
+          <a href="producto-celldew.html">CELLDEW™</a>
+          <a href="producto-vitacharge.html">VITACHARGE™</a>
+          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
+          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
+          <a href="producto-immunefort.html">IMMUNEFORT™</a>
+          <a href="producto-passionboost.html">PASSIONBOOST™</a>
+          <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-resources">Recursos</div>
+        <div class="footer-links">
+          <a href="tecnologia.html" data-i18n="footer-res-tech">Tecnología</a>
+          <a href="educacion.html" class="active" data-i18n="footer-res-edu">Educación</a>
+          <a href="blog.html" data-i18n="footer-res-blog">Blog</a>
+          <a href="index.html#faq" data-i18n="footer-res-faq">FAQ</a>
+          <a href="#" data-i18n="footer-res-coa">Certificados COA</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title" data-i18n="footer-col-contact">Contacto</div>
+        <div class="footer-links">
+          <a href="https://wa.me/1234567890">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="mailto:hola@biogradix.com">hola@biogradix.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy" data-i18n="footer-copy">© 2026 biogradix. Todos los derechos reservados.</span>
+      <span class="footer-disclaimer" data-i18n="footer-disclaimer">Solo para uso personal. Consulta a tu médico antes de usar.</span>
+      <div class="footer-legal">
+        <a href="#" data-i18n="footer-terms">Términos</a>
+        <a href="#" data-i18n="footer-privacy">Privacidad</a>
+      </div>
+    </div>
   </div>
-  <p><span data-lang="es">© 2026 biogradix. Solo para uso en investigación.</span><span data-lang="en">© 2026 biogradix. Research use only.</span></p>
 </footer>
 
 <script>
-let currentLang = localStorage.getItem('bx-lang') || 'es';
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.lang = currentLang;
-  updateLangButtons();
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; } });
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-a').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
 });
 
-function setLang(lang) {
-  document.documentElement.lang = lang;
-  localStorage.setItem('bx-lang', lang);
-  currentLang = lang;
-  updateLangButtons();
-}
+// Helix canvas
+(function(){
+  const canvas = document.getElementById('helix-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const TEAL='#0F6E56', TEAL_LITE='#1D9E75';
+  let W, H, dpr, phase=0;
+  function resize(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    dpr = window.devicePixelRatio||1;
+    W = rect.width*0.52; H = rect.height;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    canvas.style.width=W+'px'; canvas.style.height=H+'px';
+    ctx.scale(dpr,dpr);
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const cx=W*0.5, amp=W*0.22, pitch=H/5.5, steps=220, rung=6;
+    for(let strand=0;strand<2;strand++){
+      const phaseOff=strand===0?0:Math.PI;
+      ctx.beginPath();
+      for(let i=0;i<=steps;i++){
+        const t=i/steps, y=t*H, angle=(t*Math.PI*2*(H/pitch))-phase+phaseOff, x=cx+Math.cos(angle)*amp;
+        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      const grad=ctx.createLinearGradient(0,0,0,H);
+      grad.addColorStop(0,strand===0?TEAL:TEAL_LITE); grad.addColorStop(0.5,strand===0?TEAL_LITE:TEAL); grad.addColorStop(1,strand===0?TEAL:TEAL_LITE);
+      ctx.strokeStyle=grad; ctx.lineWidth=1.8; ctx.lineCap='round'; ctx.stroke();
+    }
+    const turns=H/pitch, rungsN=Math.floor(turns*rung);
+    for(let r=0;r<=rungsN;r++){
+      const t=r/rungsN, y=t*H, angle=(t*Math.PI*2*turns)-phase;
+      const x1=cx+Math.cos(angle)*amp, x2=cx+Math.cos(angle+Math.PI)*amp, depth=Math.sin(angle), alpha=0.12+0.28*((depth+1)/2);
+      ctx.beginPath(); ctx.arc(x1,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(15,110,86,${alpha+0.3})`; ctx.fill();
+      ctx.beginPath(); ctx.arc(x2,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(29,158,117,${alpha+0.3})`; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2,y); ctx.strokeStyle=`rgba(15,110,86,${alpha})`; ctx.lineWidth=1; ctx.stroke();
+    }
+    phase+=0.008; requestAnimationFrame(draw);
+  }
+  resize(); window.addEventListener('resize',()=>{ctx.resetTransform();resize();}); draw();
+})();
 
-function updateLangButtons() {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', 
-      (currentLang === 'es' && btn.textContent === 'ES') || 
-      (currentLang === 'en' && btn.textContent === 'EN')
-    );
-  });
-}
+// i18n
+const TRANSLATIONS = {
+  'nav-productos':{es:'Productos',en:'Products'},
+  'nav-tecnologia':{es:'Tecnología',en:'Technology'},
+  'nav-educacion':{es:'Educación',en:'Education'},
+  'nav-blog':{es:'Blog',en:'Blog'},
+  'nav-faq':{es:'FAQ',en:'FAQ'},
+  // Hero
+  'edu-hero-label':{es:'Centro de Educación',en:'Education Center'},
+  'edu-hero-h1':{es:'Entiende la Ciencia<br/>que te <em>Transforma</em>',en:'Understand the Science<br/>that <em>Transforms</em> You'},
+  'edu-hero-sub':{es:'Todo lo que necesitas saber sobre péptidos, absorción por mucosa oral y suplementos de nueva generación.',en:'Everything you need to know about peptides, oral mucosa absorption, and next-generation supplements.'},
+  // Section 1: Peptides
+  'pep-label':{es:'Fundamentos',en:'Fundamentals'},
+  'pep-h2':{es:'¿Qué son <em>exactamente</em> los péptidos?',en:'What <em>exactly</em> are peptides?'},
+  'pep-sub':{es:'La ciencia detrás de los mensajeros moleculares más importantes del cuerpo.',en:"The science behind the body's most important molecular messengers."},
+  'pep-p1':{es:'Los péptidos son moléculas formadas por cadenas cortas de aminoácidos — los bloques fundamentales de la vida. La diferencia entre péptidos y proteínas es principalmente el tamaño: los péptidos son cadenas más cortas (2–50 aminoácidos), mientras que las proteínas son cadenas más largas (50+ aminoácidos).',en:'Peptides are molecules made up of short chains of amino acids — the fundamental building blocks of life. The difference between peptides and proteins is mainly size: peptides are shorter chains (2–50 amino acids), while proteins are longer chains (50+ amino acids).'},
+  'pep-p2':{es:"Piensa en los aminoácidos como letras del alfabeto. Las proteínas son palabras largas; los péptidos son sílabas o palabras cortas. A veces, palabras más cortas comunican mensajes más específicos y poderosos.",en:"Think of amino acids as letters of the alphabet. Proteins are long words; peptides are syllables or short words. Sometimes shorter words communicate more specific and powerful messages."},
+  'pep-p3':{es:"Tu cuerpo es fundamentalmente un sistema de comunicación. Diferentes células, órganos y sistemas necesitan 'hablar' entre sí constantemente para coordinarse. Los péptidos son los mensajeros específicos de este sistema. Cada péptido tiene un trabajo específico porque encaja en receptores específicos en células específicas — como una llave en una cerradura. Solo la llave correcta abre la cerradura correcta.",en:"Your body is fundamentally a communication system. Different cells, organs, and systems need to 'talk' to each other constantly to coordinate. Peptides are the specific messengers of this system. Each peptide has a specific job because it fits into specific receptors on specific cells — like a key in a lock. Only the right key opens the right lock."},
+  'cmp-aa-name':{es:'Aminoácidos',en:'Amino Acids'},
+  'cmp-aa-desc':{es:'Los bloques · The building blocks',en:'The building blocks · Los bloques'},
+  'cmp-pep-name':{es:'Péptidos',en:'Peptides'},
+  'cmp-pep-desc':{es:'2–50 aminoácidos · 2–50 amino acids',en:'2–50 amino acids · 2–50 aminoácidos'},
+  'cmp-pro-name':{es:'Proteínas',en:'Proteins'},
+  'cmp-pro-desc':{es:'50+ aminoácidos · 50+ amino acids',en:'50+ amino acids · 50+ aminoácidos'},
+  // Section 2: Absorption
+  'abs-label':{es:'BiogradixRelease®',en:'BiogradixRelease®'},
+  'abs-h2':{es:'Absorción por <em>Mucosa Oral</em>',en:'Oral <em>Mucosa</em> Absorption'},
+  'abs-sub':{es:'Por qué aplicar contra la mejilla interna o encía superior cambia todo.',en:'Why applying against the inner cheek or upper gum changes everything.'},
+  'abs-step1-label':{es:'Aplicación',en:'Application'},
+  'abs-step1-desc':{es:'Coloca el suplemento contra la mejilla interna o encía superior según indicación',en:'Place the supplement against the inner cheek or upper gum as directed'},
+  'abs-step2-label':{es:'Contacto con Mucosa',en:'Mucosal Contact'},
+  'abs-step2-desc':{es:'La mucosa oral absorbe los bioactivos directamente',en:'The oral mucosa absorbs bioactives directly'},
+  'abs-step3-label':{es:'Entrada Directa',en:'Direct Entry'},
+  'abs-step3-desc':{es:'Los ingredientes entran al torrente sanguíneo en minutos',en:'Ingredients enter the bloodstream within minutes'},
+  'abs-step4-label':{es:'Sin Primer Paso',en:'No First Pass'},
+  'abs-step4-desc':{es:'Se evita el metabolismo hepático de primer paso completamente',en:'Hepatic first-pass metabolism is completely bypassed'},
+  'abs-step5-label':{es:'Biodisponibilidad Total',en:'Full Bioavailability'},
+  'abs-step5-desc':{es:'2–3× más efectivo que cápsulas orales convencionales',en:'2–3× more effective than conventional oral capsules'},
+  'abs-c1-title':{es:'Pastillas Orales',en:'Oral Pills'},
+  'abs-c1-body':{es:'Biodisponibilidad: 20–40%. El hígado degrada 60–80% del principio activo antes de que llegue al torrente sanguíneo.',en:'Bioavailability: 20–40%. The liver degrades 60–80% of the active ingredient before it reaches the bloodstream.'},
+  'abs-c2-body':{es:'Biodisponibilidad: 70–90%. Absorción directa por mucosa — sin pérdidas digestivas, sin metabolismo hepático.',en:'Bioavailability: 70–90%. Direct mucosal absorption — no digestive losses, no hepatic metabolism.'},
+  'abs-c3-title':{es:'Inyectable',en:'Injectable'},
+  'abs-c3-body':{es:'Biodisponibilidad: 90–95%. Requiere agujas, reconstitución, técnica aséptica y refrigeración estricta.',en:'Bioavailability: 90–95%. Requires needles, reconstitution, aseptic technique, and strict refrigeration.'},
+  'abs-recommended-badge':{es:'RECOMENDADO',en:'RECOMMENDED'},
+  // Section 3: FAQ
+  'faq-label':{es:'Dudas Comunes',en:'Common Questions'},
+  'faq-h2':{es:'Respuestas <em>directas</em>',en:'Straight <em>answers</em>'},
+  'faq-q1':{es:'¿Son seguros los péptidos de Biogradix?',en:'Are Biogradix peptides safe?'},
+  'faq-a1':{es:'Sí. Los péptidos que utilizamos ocurren naturalmente en el cuerpo humano o son análogos naturales estrechamente relacionados. El cuerpo reconoce estas moléculas. Décadas de investigación médica respaldan su seguridad. Todos nuestros productos son fabricados bajo estándares GMP con pureza ≥99% verificada por HPLC en laboratorio independiente. Menos del 1% de usuarios reporta efectos secundarios, generalmente leves y transitorios.',en:'Yes. The peptides we use naturally occur in the human body or are closely related natural analogs. The body recognizes these molecules. Decades of medical research support their safety. All our products are manufactured under GMP standards with ≥99% purity verified by HPLC in an independent laboratory. Less than 1% of users report side effects, generally mild and transient.'},
+  'faq-q2':{es:'¿Cuánto tiempo hasta ver resultados?',en:'How long until I see results?'},
+  'faq-a2':{es:'Depende del péptido y el objetivo: Energía (VITACHARGE™/NAD+): 3–7 días. Rendimiento físico (RECOVERYPRO™/BPC-157, MUSCLEMAXX™): 1–2 semanas. Composición corporal (MUSCLEMAXX™): 4–6 semanas. Cambios cosméticos (RADIANCEMAX™/GHK-Cu, CELLDEW™/Glutatión): 4–8 semanas. Cambios estructurales profundos (articulaciones): 8–12 semanas. La constancia es clave — los mejores resultados se obtienen con uso continuo.',en:'It depends on the peptide and goal: Energy (VITACHARGE™/NAD+): 3–7 days. Physical performance (RECOVERYPRO™/BPC-157, MUSCLEMAXX™): 1–2 weeks. Body composition (MUSCLEMAXX™): 4–6 weeks. Cosmetic changes (RADIANCEMAX™/GHK-Cu, CELLDEW™/Glutathione): 4–8 weeks. Deep structural changes (joints): 8–12 weeks. Consistency is key — best results come with continuous use.'},
+  'faq-q3':{es:'¿Puedo usar múltiples productos juntos?',en:'Can I use multiple products together?'},
+  'faq-a3':{es:'Sí. De hecho, muchos usuarios ven beneficios sinérgicos. Combinaciones frecuentes: VITACHARGE™ + CELLDEW™ (energía + desintoxicación), RECOVERYPRO™ + MUSCLEMAXX™ (rendimiento deportivo completo), RADIANCEMAX™ + CELLDEW™ (belleza desde adentro completa). No hay interacciones negativas conocidas entre los productos Biogradix. Contáctanos por WhatsApp para una recomendación personalizada.',en:'Yes. In fact, many users see synergistic benefits. Common combinations: VITACHARGE™ + CELLDEW™ (energy + detox), RECOVERYPRO™ + MUSCLEMAXX™ (complete athletic performance), RADIANCEMAX™ + CELLDEW™ (complete inner beauty). No known negative interactions between Biogradix products. Contact us via WhatsApp for a personalized recommendation.'},
+  'faq-q4':{es:'¿Hay efectos secundarios?',en:'Are there side effects?'},
+  'faq-a4':{es:'Generalmente no. Los péptidos de Biogradix son bien tolerados. En menos del 1% de usuarios se reporta: sensibilidad leve en la boca en el punto de aplicación (transitoria), o respuesta alérgica individual (como con cualquier suplemento). Todos los productos incluyen ficha de seguridad completa. Consulta con tu médico si tienes condiciones de salud preexistentes.',en:'Generally no. Biogradix peptides are well tolerated. Less than 1% of users report: mild mouth sensitivity at the application point (transient), or individual allergic response (as with any supplement). All products include complete safety data sheets. Consult your doctor if you have pre-existing health conditions.'},
+  'faq-q5':{es:'¿Cómo se aplica correctamente el suplemento?',en:'How is the supplement correctly applied?'},
+  'faq-a5':{es:'El suplemento se coloca contra la mejilla interna o la encía superior — no bajo la lengua. Este contacto directo con la mucosa oral permite la absorción óptima. Mantén el suplemento en contacto con la mucosa durante el tiempo indicado en las instrucciones de cada producto. Evita comer, beber o enjuagarte la boca durante 15 minutos después de la aplicación para maximizar la absorción.',en:'The supplement is placed against the inner cheek or upper gum — not under the tongue. This direct contact with the oral mucosa allows for optimal absorption. Keep the supplement in contact with the mucosa for the time indicated in each product\'s instructions. Avoid eating, drinking or rinsing your mouth for 15 minutes after application to maximize absorption.'},
+  'faq-q6':{es:'¿Son legales en México y Latinoamérica?',en:'Are they legal in Mexico and Latin America?'},
+  'faq-a6':{es:'Nuestros productos están formulados como suplementos dietéticos de uso personal y no requieren prescripción médica. A diferencia de las versiones inyectables, la presentación en parche/mucosa oral está sujeta a regulaciones menos restrictivas. Recomendamos verificar la normativa vigente en tu país antes de importar. Todos nuestros productos cuentan con documentación COA disponible.',en:'Our products are formulated as dietary supplements for personal use and do not require a medical prescription. Unlike injectable versions, the patch/oral mucosa presentation is subject to less restrictive regulations. We recommend verifying current regulations in your country before importing. All our products have COA documentation available.'},
+  // Section 4: Products
+  'col-label':{es:'La Colección',en:'The Collection'},
+  'col-h2':{es:'Siete péptidos, <em>una misión</em>',en:'Seven peptides, <em>one mission</em>'},
+  'col-sub':{es:'Cada producto formulado para un objetivo específico, todos con absorción por mucosa oral.',en:'Each product formulated for a specific goal, all with oral mucosa absorption.'},
+  'badge-detox':{es:'Detox',en:'Detox'},
+  'badge-energia':{es:'Energía',en:'Energy'},
+  'badge-belleza':{es:'Belleza',en:'Beauty'},
+  'badge-recuperacion':{es:'Recuperación',en:'Recovery'},
+  'badge-inmunidad':{es:'Inmunidad',en:'Immunity'},
+  'badge-intimidad':{es:'Intimidad',en:'Intimacy'},
+  'badge-musculo':{es:'Músculo',en:'Muscle'},
+  'mc-celldew-tagline':{es:'Antioxidante Maestro',en:'Master Antioxidant'},
+  'mc-vitacharge-tagline':{es:'Energía Celular',en:'Cellular Energy'},
+  'mc-radiancemax-tagline':{es:'Belleza Regenerativa',en:'Regenerative Beauty'},
+  'mc-recoverypro-tagline':{es:'Reparación Total',en:'Total Repair'},
+  'mc-immunefort-tagline':{es:'Protección Total',en:'Total Protection'},
+  'mc-passionboost-peptide':{es:'PT-141 + Oxitocina',en:'PT-141 + Oxytocin'},
+  'mc-passionboost-tagline':{es:'Vitalidad Íntima',en:'Intimate Vitality'},
+  'mc-musclemaxx-tagline':{es:'Rendimiento Máximo',en:'Maximum Performance'},
+  // CTA
+  'cta-label':{es:'¿Listo para empezar?',en:'Ready to start?'},
+  'cta-h2':{es:'Consulta gratuita<br/><em>por WhatsApp</em>',en:'Free consultation<br/><em>via WhatsApp</em>'},
+  'cta-body':{es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.',en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},
+  'cta-btn':{es:'Contactar por WhatsApp',en:'Contact via WhatsApp'},
+  // Footer
+  'footer-brand':{es:'Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.',en:'Pharmaceutical-grade wellness supplements. Accessible science for the global market.'},
+  'footer-col-products':{es:'Productos',en:'Products'},
+  'footer-col-resources':{es:'Recursos',en:'Resources'},
+  'footer-col-contact':{es:'Contacto',en:'Contact'},
+  'footer-res-tech':{es:'Tecnología',en:'Technology'},
+  'footer-res-edu':{es:'Educación',en:'Education'},
+  'footer-res-blog':{es:'Blog',en:'Blog'},
+  'footer-res-faq':{es:'FAQ',en:'FAQ'},
+  'footer-res-coa':{es:'Certificados COA',en:'COA Certificates'},
+  'footer-copy':{es:'© 2026 biogradix. Todos los derechos reservados.',en:'© 2026 biogradix. All rights reserved.'},
+  'footer-disclaimer':{es:'Solo para uso personal. Consulta a tu médico antes de usar.',en:'For personal use only. Consult your doctor before use.'},
+  'footer-terms':{es:'Términos',en:'Terms'},
+  'footer-privacy':{es:'Privacidad',en:'Privacy'},
+};
 
-function toggleFaq(element) {
-  const answer = element.nextElementSibling;
-  const toggle = element.querySelector('.faq-toggle');
-  answer.classList.toggle('open');
-  toggle.classList.toggle('open');
+function setLang(lang){
+  localStorage.setItem('bgLang',lang);
+  document.getElementById('htmlRoot').setAttribute('lang',lang);
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.textContent=TRANSLATIONS[k][lang];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.innerHTML=TRANSLATIONS[k][lang];});
+  document.querySelectorAll('.lang-btn').forEach(btn=>{btn.classList.toggle('active',btn.textContent.trim().toLowerCase()===lang);});
 }
+(function(){const s=localStorage.getItem('bgLang')||'es';setLang(s);})();
 </script>
-
 </body>
 </html>
