@@ -141,10 +141,21 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .tech-check{width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
 .tech-item-text{font-size:14px;color:var(--text-1);line-height:1.55;}
 .tech-visual{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(11,26,43,.14);position:relative;}
-.tech-visual img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
-.tech-badge{position:absolute;top:20px;left:20px;background:var(--navy);color:#fff;border-radius:10px;padding:10px 14px;}
-.tech-badge .tb1{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);display:block;margin-bottom:2px;}
-.tech-badge .tb2{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--teal-active);}
+/* comparison card (shared from tecnologia) */
+.hero-comparison-card{background:var(--navy);border-radius:20px;padding:36px 32px;box-shadow:0 24px 64px rgba(11,26,43,.18);}
+.comparison-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:24px;text-align:center;}
+.comparison-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:flex-end;}
+.comparison-col{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.comparison-bar-wrap{width:100%;display:flex;align-items:flex-end;justify-content:center;}
+.comparison-bar{width:72px;border-radius:8px 8px 0 0;}
+.bar-oral{height:80px;background:linear-gradient(180deg,rgba(138,155,173,.5),rgba(138,155,173,.2));}
+.bar-bio{height:200px;background:linear-gradient(180deg,var(--teal-active),var(--teal));}
+.comparison-pct{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;}
+.pct-oral{color:rgba(255,255,255,.35);}
+.pct-bio{color:var(--teal-active);}
+.comparison-name{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-align:center;color:rgba(255,255,255,.4);line-height:1.4;}
+.comparison-name-bio{color:rgba(255,255,255,.7);}
+.comparison-badge{margin-top:20px;text-align:center;background:rgba(29,158,117,.15);border:1px solid rgba(29,158,117,.3);border-radius:8px;padding:10px 16px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal-active);}
 @media(max-width:900px){.tech-inner{grid-template-columns:1fr;gap:40px;}}
 
 /* ── PRODUCTS ── */
@@ -492,12 +503,25 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="tech-visual">
-          <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80&fit=crop" alt="Tecnología de absorción por mucosa oral BiogradixRelease" loading="lazy"/>
-          <div class="tech-badge">
-            <span class="tb1">Biodisponibilidad</span>
-            <span class="tb2">2–3× Superior</span>
+        <div class="hero-comparison-card">
+          <div class="comparison-title" data-i18n="tech-cmp-title">Comparativa de biodisponibilidad</div>
+          <div class="comparison-cols">
+            <div class="comparison-col">
+              <div class="comparison-bar-wrap">
+                <div class="comparison-bar bar-oral"></div>
+              </div>
+              <div class="comparison-pct pct-oral">20–40%</div>
+              <div class="comparison-name" data-i18n="tech-cmp-oral">Oral<br/>(Convencional)</div>
+            </div>
+            <div class="comparison-col">
+              <div class="comparison-bar-wrap">
+                <div class="comparison-bar bar-bio"></div>
+              </div>
+              <div class="comparison-pct pct-bio">70–90%</div>
+              <div class="comparison-name comparison-name-bio">BiogradixRelease®<br/><span data-i18n="tech-cmp-sublingual">Oral Mucosa</span></div>
+            </div>
           </div>
+          <div class="comparison-badge" data-i18n="tech-cmp-badge">BiogradixRelease® — hasta 3× más biodisponible</div>
         </div>
       </div>
     </div>
