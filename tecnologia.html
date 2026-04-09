@@ -92,17 +92,32 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .problem-card-desc{font-size:13px;color:var(--text-2);line-height:1.6;}
 .vs-divider{text-align:center;margin:16px 0 32px;}
 .vs-pill{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:20px;padding:8px 24px;}
-.solution-path{background:var(--mint);border:1px solid rgba(15,110,86,.15);border-radius:16px;padding:32px;}
-.solution-path-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:20px;text-align:center;}
-.solution-steps{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;}
-.sol-step{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0 16px;}
-.sol-step-label{font-weight:500;font-size:13px;color:var(--navy);text-align:center;}
-.sol-step-sub{font-size:11px;color:var(--text-2);text-align:center;}
-.sol-arrow{color:var(--teal);font-size:18px;padding:0 4px;}
-.sol-final{background:var(--teal);border-radius:12px;padding:16px 24px;text-align:center;margin-top:20px;}
-.sol-final-pct{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:#fff;display:block;}
-.sol-final-label{font-size:12px;color:rgba(255,255,255,.7);}
-@media(max-width:600px){.solution-steps{flex-direction:column;}.sol-arrow{transform:rotate(90deg);}}
+.solution-path{background:var(--mint);border:1px solid rgba(15,110,86,.15);border-radius:20px;padding:40px;}
+.solution-path-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:32px;text-align:center;}
+/* two-column layout */
+.solution-body{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+/* diagram side */
+.sol-diagram{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.sol-diagram img{width:100%;max-width:360px;height:auto;display:block;border-radius:14px;box-shadow:0 8px 32px rgba(11,26,43,.12);border:1px solid rgba(15,110,86,.12);}
+.sol-diagram-caption{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);opacity:.7;text-align:center;}
+/* step timeline side */
+.solution-steps{display:flex;flex-direction:column;gap:0;position:relative;}
+.solution-steps::before{content:'';position:absolute;left:19px;top:20px;bottom:20px;width:1px;background:linear-gradient(180deg,var(--teal),rgba(15,110,86,.15));}
+.sol-step{display:flex;align-items:flex-start;gap:16px;padding:0 0 24px 0;position:relative;}
+.sol-step:last-child{padding-bottom:0;}
+.step-dot{width:40px;height:40px;border-radius:50%;background:var(--mint);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;}
+.sol-step-content{padding-top:8px;}
+.sol-step-label{font-weight:600;font-size:14px;color:var(--navy);margin-bottom:3px;}
+.sol-step-sub{font-size:12px;color:var(--text-2);line-height:1.5;}
+.sol-final{background:var(--teal);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:16px;margin-left:56px;}
+.sol-final-pct{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:#fff;line-height:1;}
+.sol-final-label{font-size:12px;color:rgba(255,255,255,.75);line-height:1.4;}
+.sol-arrow{display:none;}
+@media(max-width:780px){
+  .solution-body{grid-template-columns:1fr;}
+  .solution-path{padding:28px 20px;}
+  .sol-diagram img{max-width:100%;}
+}
 
 /* HOW IT WORKS */
 .how-section{padding:80px 0;background:var(--mint);}
@@ -297,46 +312,58 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
     </div>
     <div class="solution-path reveal">
       <div class="solution-path-title" data-i18n="sol-path-title">La ruta por mucosa oral de BiogradixRelease®</div>
-      <div style="border-radius:16px;overflow:hidden;margin-bottom:28px;box-shadow:0 8px 32px rgba(11,26,43,.1);">
-        <img src="Patch layer diagram.png" alt="Biogradix patch layer diagram" style="width:100%;display:block;object-fit:contain;" loading="lazy"/>
-      </div>
-      <div class="solution-steps">
-        <div class="sol-step">
-          <div class="step-dot" style="background:var(--mint);border-color:var(--teal);width:48px;height:48px;font-size:13px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><path d="M12 2C6 2 2 7 2 12s4 10 10 10 10-4.477 10-10S18 2 12 2z"/><path d="M12 8v4l3 3"/></svg>
-          </div>
-          <div class="sol-step-label" data-i18n="sol-s1">Mucosa Oral</div>
-          <div class="sol-step-sub" data-i18n="sol-s1-sub">Contra la mejilla interna o encía superior</div>
+      <div class="solution-body">
+        <!-- Diagram -->
+        <div class="sol-diagram">
+          <img src="Patch layer diagram.png" alt="Biogradix patch layer diagram" loading="lazy"/>
+          <div class="sol-diagram-caption" data-i18n="sol-diagram-caption">Estructura de capas del parche BiogradixRelease®</div>
         </div>
-        <div class="sol-arrow">→</div>
-        <div class="sol-step">
-          <div class="step-dot" style="background:var(--mint);border-color:var(--teal);width:48px;height:48px;font-size:13px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        <!-- Step timeline -->
+        <div class="solution-steps">
+          <div class="sol-step">
+            <div class="step-dot">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"><path d="M12 2C6 2 2 7 2 12s4 10 10 10 10-4.477 10-10S18 2 12 2z"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div class="sol-step-content">
+              <div class="sol-step-label" data-i18n="sol-s1">Aplicación</div>
+              <div class="sol-step-sub" data-i18n="sol-s1-sub">Contra la mejilla interna o encía superior</div>
+            </div>
           </div>
-          <div class="sol-step-label" data-i18n="sol-s2">Mucosa</div>
-          <div class="sol-step-sub" data-i18n="sol-s2-sub">Absorción directa</div>
-        </div>
-        <div class="sol-arrow">→</div>
-        <div class="sol-step">
-          <div class="step-dot" style="background:var(--mint);border-color:var(--teal);width:48px;height:48px;font-size:13px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          <div class="sol-step">
+            <div class="step-dot">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+            </div>
+            <div class="sol-step-content">
+              <div class="sol-step-label" data-i18n="sol-s2">Absorción mucosa</div>
+              <div class="sol-step-sub" data-i18n="sol-s2-sub">Los bioactivos penetran directamente la mucosa oral</div>
+            </div>
           </div>
-          <div class="sol-step-label" data-i18n="sol-s3">Bloodstream</div>
-          <div class="sol-step-sub" data-i18n="sol-s3-sub">Circulación directa</div>
-        </div>
-        <div class="sol-arrow">→</div>
-        <div class="sol-step">
-          <div class="step-dot" style="background:rgba(212,83,78,.08);border-color:rgba(212,83,78,.3);width:48px;height:48px;font-size:13px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4534E" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <div class="sol-step">
+            <div class="step-dot">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <div class="sol-step-content">
+              <div class="sol-step-label" data-i18n="sol-s3">Torrente sanguíneo</div>
+              <div class="sol-step-sub" data-i18n="sol-s3-sub">Entrada directa a circulación sistémica en minutos</div>
+            </div>
           </div>
-          <div class="sol-step-label" data-i18n="sol-s4">Sin hígado</div>
-          <div class="sol-step-sub" data-i18n="sol-s4-sub">Primer paso evitado</div>
-        </div>
-        <div class="sol-arrow">→</div>
-        <div class="sol-step">
+          <div class="sol-step">
+            <div class="step-dot" style="background:rgba(212,83,78,.08);border-color:rgba(212,83,78,.3);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4534E" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div class="sol-step-content">
+              <div class="sol-step-label" data-i18n="sol-s4">Sin metabolismo hepático</div>
+              <div class="sol-step-sub" data-i18n="sol-s4-sub">El primer paso hepático queda completamente evitado</div>
+            </div>
+          </div>
           <div class="sol-final">
-            <span class="sol-final-pct">70–90%</span>
-            <span class="sol-final-label" data-i18n="sol-final-label">Biodisponibilidad</span>
+            <div>
+              <span class="sol-final-pct">70–90%</span>
+            </div>
+            <div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:2px;" data-i18n="sol-final-label">Biodisponibilidad</div>
+              <div style="font-size:12px;color:rgba(255,255,255,.75);" data-i18n="sol-final-sub">vs 20–40% oral convencional</div>
+            </div>
           </div>
         </div>
       </div>
@@ -647,11 +674,13 @@ const TRANSLATIONS = {
   'prob-c3-title':{es:'Lo que llega',en:'What reaches target'},'prob-c3-desc':{es:'Después de ambas etapas de degradación, solo una fracción mínima de la dosis original llega realmente a los tejidos y células donde se necesita el efecto.',en:'After both degradation stages, only a minimal fraction of the original dose actually reaches the tissues and cells where the effect is needed.'},
   'vs-text':{es:'vs BiogradixRelease®',en:'vs BiogradixRelease®'},
   'sol-path-title':{es:'La ruta por mucosa oral de BiogradixRelease®',en:'The BiogradixRelease® oral mucosa route'},
-  'sol-s1':{es:'Mucosa Oral',en:'Oral Mucosa'},'sol-s1-sub':{es:'Contra la mejilla interna o encía superior',en:'Against the inner cheek or upper gum'},
-  'sol-s2':{es:'Mucosa',en:'Mucosa'},'sol-s2-sub':{es:'Absorción directa',en:'Direct absorption'},
-  'sol-s3':{es:'Bloodstream',en:'Bloodstream'},'sol-s3-sub':{es:'Circulación directa',en:'Direct circulation'},
-  'sol-s4':{es:'Sin hígado',en:'Bypasses liver'},'sol-s4-sub':{es:'Primer paso evitado',en:'First pass avoided'},
+  'sol-diagram-caption':{es:'Estructura de capas del parche BiogradixRelease®',en:'BiogradixRelease® patch layer structure'},
+  'sol-s1':{es:'Aplicación',en:'Application'},'sol-s1-sub':{es:'Contra la mejilla interna o encía superior',en:'Against the inner cheek or upper gum'},
+  'sol-s2':{es:'Absorción mucosa',en:'Mucosal absorption'},'sol-s2-sub':{es:'Los bioactivos penetran directamente la mucosa oral',en:'Bioactives directly penetrate the oral mucosa'},
+  'sol-s3':{es:'Torrente sanguíneo',en:'Bloodstream'},'sol-s3-sub':{es:'Entrada directa a circulación sistémica en minutos',en:'Direct entry into systemic circulation within minutes'},
+  'sol-s4':{es:'Sin metabolismo hepático',en:'No hepatic metabolism'},'sol-s4-sub':{es:'El primer paso hepático queda completamente evitado',en:'Hepatic first-pass effect is completely bypassed'},
   'sol-final-label':{es:'Biodisponibilidad',en:'Bioavailability'},
+  'sol-final-sub':{es:'vs 20–40% oral convencional',en:'vs 20–40% conventional oral'},
   'how-label':{es:'BiogradixRelease®',en:'BiogradixRelease®'},
   'how-h2':{es:'Cómo <em>funciona</em>',en:'How it <em>works</em>'},
   'how-sub':{es:'Absorción por mucosa oral directa para biodisponibilidad máxima. Sin pérdidas por metabolismo hepático.',en:'Direct oral mucosa absorption for maximum bioavailability. No losses from hepatic metabolism.'},
