@@ -4,21 +4,22 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Contacto — biogradix</title>
-<meta name="description" content="Habla con nuestros especialistas en bienestar de precisión. Diseñamos protocolos personalizados basados en tu perfil y objetivos."/>
+<meta name="description" content="Compra directamente o únete como profesional de salud. Diseñamos protocolos personalizados para individuos y programas de distribución para profesionales."/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
 <style>
-:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;--error:#D4534E;}
+:root{
+  --navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;
+  --mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;
+  --text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;--error:#D4534E;
+}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
 .container{max-width:1200px;margin:0 auto;padding:0 48px;}
 @media(max-width:768px){.container{padding:0 20px;}}
-.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.up{opacity:1;transform:none;}
 
-/* NAV */
+/* ── NAV ─────────────────────────────────────────── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
 .nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
 .nav-inner{display:flex;align-items:center;height:64px;}
@@ -32,101 +33,171 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
 .lang-btn.active,.lang-btn:hover{color:var(--teal);}
 .lang-sep{color:var(--silver);font-size:12px;}
-.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s;}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s;}
 .btn-wa:hover{background:var(--teal-deep);}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);}
 @media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
 .mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
 .mobile-menu.open{opacity:1;pointer-events:all;}
 .mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
 .mobile-menu.open .mobile-menu-panel{transform:none;}
-.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
-.mobile-menu-panel a:hover{color:var(--teal);}
+.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);}
 
-/* HERO */
-.contact-hero{background:var(--navy);padding:96px 0 80px;margin-top:64px;position:relative;overflow:hidden;}
-.contact-hero-canvas{position:absolute;inset:0;opacity:.08;pointer-events:none;}
-.contact-hero-inner{position:relative;z-index:1;max-width:640px;}
-.contact-hero h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:48px;color:#fff;line-height:1.1;letter-spacing:-.5px;margin:12px 0 20px;}
+/* ── HERO ─────────────────────────────────────────── */
+.contact-hero{background:var(--navy);padding:88px 0 72px;margin-top:64px;position:relative;overflow:hidden;}
+.hero-canvas{position:absolute;inset:0;opacity:.07;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:640px;}
+.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
+.contact-hero h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:46px;color:#fff;line-height:1.1;letter-spacing:-.5px;margin:12px 0 18px;}
 .contact-hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.contact-hero-sub{font-size:16px;color:rgba(255,255,255,.5);line-height:1.7;max-width:480px;}
-@media(max-width:768px){.contact-hero h1{font-size:32px;}.contact-hero{padding:72px 0 60px;}}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.5);line-height:1.7;max-width:500px;}
+@media(max-width:768px){.contact-hero h1{font-size:30px;}.contact-hero{padding:72px 0 56px;}}
 
-/* TRUST STRIP */
-.trust-strip{background:var(--mint);border-bottom:1px solid rgba(15,110,86,.12);padding:16px 0;}
-.trust-items{display:flex;align-items:center;gap:40px;flex-wrap:wrap;}
-@media(max-width:600px){.trust-items{gap:20px;}}
-.trust-item{display:flex;align-items:center;gap:8px;}
-.trust-item svg{flex-shrink:0;}
-.trust-item span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);}
+/* ── PATH SELECTOR (Step 0) ─────────────────────── */
+.path-section{padding:72px 0 40px;}
+.path-intro{text-align:center;max-width:560px;margin:0 auto 48px;}
+.path-intro h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:30px;color:var(--navy);letter-spacing:-.3px;margin-bottom:10px;}
+.path-intro h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.path-intro p{font-size:15px;color:var(--text-2);}
+.path-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:840px;margin:0 auto;}
+@media(max-width:640px){.path-cards{grid-template-columns:1fr;}}
+.path-card{background:#fff;border:2px solid var(--silver);border-radius:20px;padding:36px 32px;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;position:relative;overflow:hidden;text-align:left;}
+.path-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .25s;}
+.path-card:hover{border-color:rgba(15,110,86,.35);box-shadow:0 12px 40px rgba(11,26,43,.09);transform:translateY(-3px);}
+.path-card:hover::before{transform:scaleX(1);}
+.path-card.selected{border-color:var(--teal);box-shadow:0 0 0 4px rgba(15,110,86,.1);}
+.path-card.selected::before{transform:scaleX(1);}
+.path-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.path-icon.individual{background:var(--mint);}
+.path-icon.pro{background:rgba(11,26,43,.06);}
+.path-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;padding:3px 10px;margin-bottom:14px;}
+.path-badge.individual{background:var(--mint);color:var(--teal);}
+.path-badge.pro{background:rgba(201,168,76,.12);color:var(--gold);}
+.path-title{font-weight:600;font-size:20px;color:var(--navy);margin-bottom:8px;line-height:1.25;}
+.path-desc{font-size:14px;color:var(--text-2);line-height:1.65;margin-bottom:20px;}
+.path-perks{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.path-perks li{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-2);}
+.path-perks li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:7px;}
+.path-cta{display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);font-weight:500;}
 
-/* MAIN LAYOUT */
-.contact-section{padding:80px 0 100px;}
-.contact-grid{display:grid;grid-template-columns:1fr 480px;gap:64px;align-items:start;}
-@media(max-width:1024px){.contact-grid{grid-template-columns:1fr;gap:48px;}}
+/* ── FORM AREA ────────────────────────────────────── */
+.form-section{padding:0 0 100px;display:none;}
+.form-section.active{display:block;}
+.form-layout{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start;max-width:980px;margin:0 auto;}
+@media(max-width:900px){.form-layout{grid-template-columns:1fr;}}
 
-/* SIDEBAR INFO */
-.contact-info{}
-.info-heading{font-family:'DM Sans',sans-serif;font-weight:500;font-size:26px;color:var(--navy);line-height:1.3;letter-spacing:-.3px;margin-bottom:16px;}
-.info-heading em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.info-body{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:40px;}
-.contact-methods{display:flex;flex-direction:column;gap:16px;margin-bottom:48px;}
-.contact-method{display:flex;align-items:flex-start;gap:16px;background:#fff;border:1px solid var(--silver);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;}
-.contact-method:hover{border-color:rgba(15,110,86,.3);box-shadow:0 8px 24px rgba(11,26,43,.08);transform:translateY(-2px);}
-.method-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.method-icon.green{background:var(--mint);}
-.method-icon.navy{background:rgba(11,26,43,.06);}
-.method-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin-bottom:4px;}
-.method-value{font-weight:500;font-size:15px;color:var(--navy);}
-.method-sub{font-size:12px;color:var(--text-3);margin-top:2px;}
-.social-row{display:flex;gap:10px;}
-.social-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--silver);border-radius:10px;padding:10px 16px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2);text-decoration:none;transition:border-color .2s,color .2s;}
-.social-btn:hover{border-color:var(--teal);color:var(--teal);}
-.testimonial-card{background:var(--navy);border-radius:16px;padding:28px;margin-top:40px;}
-.testimonial-text{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:20px;}
-.testimonial-author{display:flex;align-items:center;gap:12px;}
-.testimonial-avatar{width:38px;height:38px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--teal);flex-shrink:0;}
-.testimonial-name{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);}
+/* ── STEP SIDEBAR ─────────────────────────────────── */
+.step-sidebar{position:sticky;top:88px;}
+.step-back{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);background:none;border:none;cursor:pointer;margin-bottom:28px;transition:color .2s;padding:0;}
+.step-back:hover{color:var(--teal);}
+.sidebar-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;padding:4px 12px;margin-bottom:16px;}
+.sidebar-badge.individual{background:var(--mint);color:var(--teal);}
+.sidebar-badge.pro{background:rgba(201,168,76,.12);color:var(--gold);}
+.sidebar-title{font-weight:500;font-size:20px;color:var(--navy);margin-bottom:6px;line-height:1.3;}
+.sidebar-sub{font-size:13px;color:var(--text-3);line-height:1.6;margin-bottom:28px;}
+.step-list{display:flex;flex-direction:column;gap:0;}
+.step-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;position:relative;}
+.step-item:not(:last-child)::after{content:'';position:absolute;left:15px;top:40px;bottom:-2px;width:1.5px;background:var(--silver);}
+.step-item.done .step-item::after{background:var(--teal);}
+.step-dot{width:30px;height:30px;border-radius:50%;border:2px solid var(--silver);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3);transition:all .3s;background:#fff;position:relative;z-index:1;}
+.step-item.active .step-dot{border-color:var(--teal);color:var(--teal);background:var(--mint);}
+.step-item.done .step-dot{border-color:var(--teal);background:var(--teal);color:#fff;}
+.step-name{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);margin-top:6px;transition:color .3s;}
+.step-item.active .step-name{color:var(--navy);}
+.step-item.done .step-name{color:var(--teal);}
+@media(max-width:900px){.step-sidebar{position:static;}.step-list{flex-direction:row;gap:0;overflow-x:auto;}.step-item{flex-direction:column;align-items:center;text-align:center;min-width:80px;}.step-item:not(:last-child)::after{top:15px;left:40px;bottom:auto;width:calc(100% - 16px);height:1.5px;}}
 
-/* FORM */
-.contact-form-card{background:#fff;border:1px solid var(--silver);border-radius:20px;padding:40px;box-shadow:0 4px 24px rgba(11,26,43,.06);}
-@media(max-width:600px){.contact-form-card{padding:24px;}}
-.form-heading{font-weight:500;font-size:22px;color:var(--navy);letter-spacing:-.3px;margin-bottom:6px;}
-.form-sub{font-size:14px;color:var(--text-3);margin-bottom:32px;}
+/* ── FORM CARD ────────────────────────────────────── */
+.form-card{background:#fff;border:1px solid var(--silver);border-radius:20px;padding:40px;box-shadow:0 4px 24px rgba(11,26,43,.05);}
+@media(max-width:600px){.form-card{padding:24px 20px;}}
+.step-panel{display:none;}
+.step-panel.active{display:block;animation:stepIn .35s cubic-bezier(.16,1,.3,1);}
+@keyframes stepIn{from{opacity:0;transform:translateX(16px);}to{opacity:1;transform:none;}}
+.panel-heading{font-weight:500;font-size:22px;color:var(--navy);letter-spacing:-.3px;margin-bottom:4px;}
+.panel-sub{font-size:14px;color:var(--text-3);margin-bottom:28px;line-height:1.6;}
+.form-divider{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin:24px 0 16px;display:flex;align-items:center;gap:12px;}
+.form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:var(--silver);}
+
+/* ── FIELDS ───────────────────────────────────────── */
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-@media(max-width:500px){.form-row{grid-template-columns:1fr;}}
+@media(max-width:540px){.form-row{grid-template-columns:1fr;}}
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
 .field label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-2);}
+.field label .req{color:var(--teal);}
 .field input,.field select,.field textarea{width:100%;padding:12px 16px;border:1.5px solid var(--silver);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-1);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,110,86,.08);}
 .field input.error,.field select.error,.field textarea.error{border-color:var(--error);}
 .field input::placeholder,.field textarea::placeholder{color:var(--text-3);}
 .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9BAD' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;cursor:pointer;}
-.field textarea{resize:vertical;min-height:100px;line-height:1.6;}
-.field-error{font-size:11px;color:var(--error);margin-top:2px;display:none;}
+.field textarea{resize:vertical;min-height:96px;line-height:1.65;}
+.field-error{font-size:11px;color:var(--error);display:none;margin-top:2px;}
 .field-error.show{display:block;}
-.consent-row{display:flex;align-items:flex-start;gap:12px;margin:20px 0 28px;}
-.consent-checkbox{width:18px;height:18px;border:1.5px solid var(--silver);border-radius:4px;cursor:pointer;flex-shrink:0;margin-top:2px;-webkit-appearance:none;appearance:none;transition:background .15s,border-color .15s;}
-.consent-checkbox:checked{background:var(--teal);border-color:var(--teal);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='9' viewBox='0 0 11 9'%3E%3Cpath d='M1 4l3.5 3.5L10 1' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
-.consent-text{font-size:12px;color:var(--text-3);line-height:1.6;}
-.consent-text a{color:var(--teal);text-decoration:none;}
-.btn-submit{width:100%;padding:16px;background:var(--teal);color:#fff;border:none;border-radius:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:10px;}
-.btn-submit:hover:not(:disabled){background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,110,86,.3);}
-.btn-submit:disabled{opacity:.6;cursor:not-allowed;}
-.btn-submit .spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none;}
-.btn-submit.loading .spinner{display:block;}
-.btn-submit.loading .btn-text{display:none;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.form-success{display:none;text-align:center;padding:48px 24px;}
-.form-success.show{display:block;}
-.success-icon{width:64px;height:64px;background:var(--mint);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
-.success-title{font-weight:600;font-size:22px;color:var(--navy);margin-bottom:10px;}
-.success-body{font-size:15px;color:var(--text-2);line-height:1.7;}
-.progress-bar{height:3px;background:var(--silver);border-radius:2px;margin-bottom:32px;overflow:hidden;}
-.progress-fill{height:100%;background:var(--teal);border-radius:2px;transition:width .3s;}
+.field-hint{font-size:11px;color:var(--text-3);margin-top:2px;line-height:1.5;}
 
-/* FOOTER */
+/* ── CHECKBOX GRID (products) ─────────────────────── */
+.checkbox-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:480px){.checkbox-grid{grid-template-columns:1fr;}}
+.check-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--silver);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;user-select:none;}
+.check-item:hover{border-color:rgba(15,110,86,.3);background:var(--mint);}
+.check-item input[type=checkbox]{width:16px;height:16px;border:1.5px solid var(--silver);border-radius:4px;cursor:pointer;-webkit-appearance:none;appearance:none;flex-shrink:0;transition:background .15s,border-color .15s;background:#fff;}
+.check-item input[type=checkbox]:checked{background:var(--teal);border-color:var(--teal);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3L9 1' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
+.check-item input[type=checkbox]:checked ~ .check-label{color:var(--teal);}
+.check-item:has(input:checked){border-color:var(--teal);background:var(--mint);}
+.check-label{font-size:13px;color:var(--text-1);font-weight:500;line-height:1.2;}
+.check-sub{font-size:11px;color:var(--text-3);}
+
+/* ── RADIO CARDS (pro type) ───────────────────────── */
+.radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:480px){.radio-grid{grid-template-columns:1fr;}}
+.radio-card{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1.5px solid var(--silver);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;user-select:none;}
+.radio-card:hover{border-color:rgba(15,110,86,.3);}
+.radio-card input[type=radio]{width:16px;height:16px;margin-top:2px;accent-color:var(--teal);flex-shrink:0;cursor:pointer;}
+.radio-card:has(input:checked){border-color:var(--teal);background:var(--mint);}
+.radio-label{font-size:13px;font-weight:500;color:var(--text-1);line-height:1.2;margin-bottom:2px;}
+.radio-sub{font-size:11px;color:var(--text-3);}
+
+/* ── RANGE SLIDER ─────────────────────────────────── */
+.volume-options{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
+@media(max-width:480px){.volume-options{grid-template-columns:repeat(2,1fr);}}
+.vol-btn{padding:10px;border:1.5px solid var(--silver);border-radius:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;text-align:center;cursor:pointer;transition:all .2s;color:var(--text-2);background:#fff;}
+.vol-btn:hover{border-color:rgba(15,110,86,.3);}
+.vol-btn.selected{border-color:var(--teal);background:var(--mint);color:var(--teal);}
+
+/* ── CONSENT ──────────────────────────────────────── */
+.consent-row{display:flex;align-items:flex-start;gap:12px;margin:20px 0 28px;}
+.consent-checkbox{width:18px;height:18px;border:1.5px solid var(--silver);border-radius:4px;cursor:pointer;flex-shrink:0;margin-top:3px;-webkit-appearance:none;appearance:none;transition:background .15s,border-color .15s;}
+.consent-checkbox:checked{background:var(--teal);border-color:var(--teal);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='9' viewBox='0 0 11 9'%3E%3Cpath d='M1 4l3.5 3.5L10 1' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
+.consent-text{font-size:12px;color:var(--text-3);line-height:1.65;}
+.consent-text a{color:var(--teal);text-decoration:none;}
+
+/* ── BUTTONS ──────────────────────────────────────── */
+.btn-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;}
+.btn-next{flex:1;padding:15px;background:var(--teal);color:#fff;border:none;border-radius:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-next:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,110,86,.3);}
+.btn-next:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.btn-prev-step{padding:15px 20px;background:none;border:1.5px solid var(--silver);border-radius:12px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--text-2);transition:border-color .2s,color .2s;}
+.btn-prev-step:hover{border-color:var(--navy);color:var(--navy);}
+.spinner{width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none;}
+.btn-next.loading .spinner{display:block;}
+.btn-next.loading .btn-label{display:none;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── SUCCESS ──────────────────────────────────────── */
+.form-success{display:none;text-align:center;padding:48px 20px;}
+.form-success.show{display:block;animation:stepIn .4s cubic-bezier(.16,1,.3,1);}
+.success-icon{width:72px;height:72px;background:var(--mint);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+.success-title{font-weight:600;font-size:24px;color:var(--navy);margin-bottom:12px;}
+.success-body{font-size:15px;color:var(--text-2);line-height:1.75;max-width:440px;margin:0 auto 28px;}
+.success-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* ── TRUST STRIP ──────────────────────────────────── */
+.trust-strip{background:var(--mint);border-bottom:1px solid rgba(15,110,86,.12);padding:14px 0;}
+.trust-items{display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:8px;}
+.trust-item span{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);}
+
+/* ── FOOTER ───────────────────────────────────────── */
 .footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
@@ -141,10 +212,13 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.15);}
 .footer-legal{display:flex;gap:20px;}
 .footer-legal a{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);text-decoration:none;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.up{opacity:1;transform:none;}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav" id="nav">
   <div class="container">
     <div class="nav-inner">
@@ -163,16 +237,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <button class="lang-btn active" onclick="setLang('es')">ES</button>
         <span class="lang-sep">/</span>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <a href="https://wa.me/13467189350" class="btn-wa" target="_blank" rel="noopener">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          WhatsApp
-        </a>
+        <a href="https://wa.me/13467189350" class="btn-wa" target="_blank" rel="noopener">WhatsApp</a>
         <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
 </nav>
-
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-panel">
     <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
@@ -186,12 +256,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 
 <!-- HERO -->
 <section class="contact-hero">
-  <canvas class="contact-hero-canvas" id="heroCanvas"></canvas>
+  <canvas class="hero-canvas" id="heroCanvas"></canvas>
   <div class="container">
-    <div class="contact-hero-inner">
-      <p class="label" data-i18n="hero-label">Consulta personalizada</p>
-      <h1 data-i18n-html="hero-h1">Diseñamos tu protocolo <em>contigo</em></h1>
-      <p class="contact-hero-sub" data-i18n="hero-sub">Cada persona tiene un perfil único. Nuestros especialistas analizan tus objetivos y crean un protocolo de bienestar basado en tu biología, estilo de vida y metas.</p>
+    <div class="hero-inner">
+      <p class="label" data-i18n="hero-label">Estamos aquí para ti</p>
+      <h1 data-i18n-html="hero-h1">Cuéntanos<br/>quién eres <em>tú</em></h1>
+      <p class="hero-sub" data-i18n="hero-sub">Tenemos dos caminos: compra directa para personas que quieren optimizar su bienestar, y un programa profesional para especialistas de salud que quieren llevar biogradix a sus pacientes y clientes.</p>
     </div>
   </div>
 </section>
@@ -201,166 +271,71 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
   <div class="container">
     <div class="trust-items">
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <span data-i18n="trust-1">Respuesta en menos de 24h</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="trust-1">Respuesta en 24h</span>
       </div>
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <span data-i18n="trust-2">Privacidad garantizada</span>
       </div>
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span data-i18n="trust-3">Sin compromiso</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span data-i18n="trust-3">Equipo especializado</span>
       </div>
       <div class="trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span data-i18n="trust-4">Especialistas certificados</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span data-i18n="trust-4">Sin compromiso</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
-<section class="contact-section">
+<!-- ═══ PATH SELECTOR ═══ -->
+<section class="path-section" id="pathSection">
   <div class="container">
-    <div class="contact-grid">
+    <div class="path-intro reveal">
+      <p class="label" style="display:block;text-align:center;margin-bottom:10px;" data-i18n="path-label">Elige tu camino</p>
+      <h2 data-i18n-html="path-h2">¿Cómo podemos <em>ayudarte</em>?</h2>
+      <p data-i18n="path-sub">Selecciona la opción que mejor describe tu situación para mostrarte el formulario correcto.</p>
+    </div>
+    <div class="path-cards reveal">
 
-      <!-- LEFT: INFO -->
-      <div class="contact-info reveal">
-        <p class="label" data-i18n="info-label">Cómo trabajamos</p>
-        <h2 class="info-heading" data-i18n-html="info-h2">No vendemos suplementos.<br/>Construimos <em>protocolos</em>.</h2>
-        <p class="info-body" data-i18n="info-body">Antes de recomendarte cualquier producto, queremos entender quién eres: tus objetivos, tu estilo de vida, tus niveles de energía, tu historial. Esa información nos permite diseñar algo que realmente funcione para ti — no un paquete genérico.</p>
-
-        <div class="contact-methods">
-          <a href="https://wa.me/13467189350" class="contact-method" target="_blank" rel="noopener">
-            <div class="method-icon green">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#0F6E56"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            </div>
-            <div>
-              <div class="method-label" data-i18n="method-wa-label">Respuesta rápida</div>
-              <div class="method-value">WhatsApp</div>
-              <div class="method-sub">+1 (346) 718-9350</div>
-            </div>
-          </a>
-          <a href="mailto:hola@biogradix.com" class="contact-method">
-            <div class="method-icon navy">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div>
-              <div class="method-label" data-i18n="method-email-label">Email</div>
-              <div class="method-value">hola@biogradix.com</div>
-              <div class="method-sub" data-i18n="method-email-sub">Respondemos en 24h</div>
-            </div>
-          </a>
+      <!-- INDIVIDUAL -->
+      <div class="path-card" id="pathIndividual" onclick="choosePath('individual')">
+        <div class="path-icon individual">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-
-        <div class="social-row">
-          <a href="https://instagram.com/biogradix" class="social-btn" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            Instagram
-          </a>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="testimonial-text" data-i18n="testimonial-text">"Llevaba años buscando algo que realmente funcionara. En la primera consulta entendieron exactamente lo que necesitaba. Cuatro semanas después, la diferencia en energía y recuperación es real."</div>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">CM</div>
-            <div>
-              <div class="testimonial-name" data-i18n="testimonial-name">C. Martínez — Protocolo VITACHARGE™ + RECOVERYPRO™</div>
-            </div>
-          </div>
+        <span class="path-badge individual" data-i18n="badge-individual">Compra directa</span>
+        <div class="path-title" data-i18n="path-ind-title">Soy una persona que quiere mejorar mi bienestar</div>
+        <p class="path-desc" data-i18n="path-ind-desc">Quiero un protocolo personalizado, tengo preguntas sobre los productos, o quiero hacer un pedido directo.</p>
+        <ul class="path-perks">
+          <li data-i18n="ind-perk-1">Protocolo diseñado para tus objetivos</li>
+          <li data-i18n="ind-perk-2">Asesoría 1 a 1 con nuestros especialistas</li>
+          <li data-i18n="ind-perk-3">Entrega directa a domicilio</li>
+        </ul>
+        <div class="path-cta">
+          <span data-i18n="path-cta">Comenzar consulta</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
 
-      <!-- RIGHT: FORM -->
-      <div class="contact-form-card reveal">
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-
-        <!-- Form view -->
-        <div id="formView">
-          <div class="form-heading" data-i18n="form-heading">Cuéntanos sobre ti</div>
-          <div class="form-sub" data-i18n="form-sub">Toda la información es confidencial y nos ayuda a preparar la consulta más útil para ti.</div>
-
-          <form id="contactForm" novalidate>
-            <div class="form-row">
-              <div class="field">
-                <label for="firstName" data-i18n="label-name">Nombre</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Ana" autocomplete="given-name" required/>
-                <span class="field-error" id="err-firstName" data-i18n="err-required">Campo requerido</span>
-              </div>
-              <div class="field">
-                <label for="lastName" data-i18n="label-lastname">Apellido</label>
-                <input type="text" id="lastName" name="lastName" placeholder="García" autocomplete="family-name"/>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="email" data-i18n="label-email">Correo electrónico</label>
-              <input type="email" id="email" name="email" placeholder="ana@ejemplo.com" autocomplete="email" required/>
-              <span class="field-error" id="err-email" data-i18n="err-email">Ingresa un correo válido</span>
-            </div>
-
-            <div class="field">
-              <label for="phone" data-i18n="label-phone">WhatsApp / Teléfono</label>
-              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/>
-            </div>
-
-            <div class="field">
-              <label for="goal" data-i18n="label-goal">¿Cuál es tu objetivo principal?</label>
-              <select id="goal" name="goal" required>
-                <option value="" disabled selected data-i18n="goal-placeholder">Selecciona una opción</option>
-                <option value="energia" data-i18n="goal-1">Más energía y vitalidad</option>
-                <option value="recuperacion" data-i18n="goal-2">Recuperación muscular / deportiva</option>
-                <option value="longevidad" data-i18n="goal-3">Longevidad y anti-envejecimiento</option>
-                <option value="piel" data-i18n="goal-4">Salud de la piel y estética</option>
-                <option value="inmunidad" data-i18n="goal-5">Sistema inmune</option>
-                <option value="libido" data-i18n="goal-6">Bienestar sexual</option>
-                <option value="composicion" data-i18n="goal-7">Composición corporal / masa muscular</option>
-                <option value="otro" data-i18n="goal-8">Otro / varios objetivos</option>
-              </select>
-              <span class="field-error" id="err-goal" data-i18n="err-required">Campo requerido</span>
-            </div>
-
-            <div class="field">
-              <label for="heard" data-i18n="label-heard">¿Cómo nos encontraste?</label>
-              <select id="heard" name="heard">
-                <option value="" disabled selected data-i18n="heard-placeholder">Selecciona una opción</option>
-                <option value="instagram" data-i18n="heard-1">Instagram</option>
-                <option value="referido" data-i18n="heard-2">Me lo recomendaron</option>
-                <option value="google" data-i18n="heard-3">Búsqueda en Google</option>
-                <option value="whatsapp" data-i18n="heard-4">WhatsApp / mensaje directo</option>
-                <option value="otro" data-i18n="heard-5">Otro</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="message" data-i18n="label-message">Cuéntanos más (opcional)</label>
-              <textarea id="message" name="message" placeholder="Tu situación actual, preguntas específicas, historial relevante..." rows="4"></textarea>
-            </div>
-
-            <div class="consent-row">
-              <input type="checkbox" class="consent-checkbox" id="consent" name="consent" required/>
-              <label for="consent" class="consent-text" data-i18n-html="label-consent">Acepto que biogradix guarde mi información para contactarme. Puedo solicitar su eliminación en cualquier momento. Ver <a href="privacy.html">Política de Privacidad</a>.</label>
-            </div>
-
-            <button type="submit" class="btn-submit" id="submitBtn">
-              <div class="spinner"></div>
-              <span class="btn-text" data-i18n="btn-submit">Enviar consulta →</span>
-            </button>
-          </form>
+      <!-- PROFESSIONAL -->
+      <div class="path-card" id="pathPro" onclick="choosePath('pro')">
+        <div class="path-icon pro">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0B1A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
         </div>
-
-        <!-- Success view -->
-        <div class="form-success" id="successView">
-          <div class="success-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div class="success-title" data-i18n="success-title">¡Consulta recibida!</div>
-          <p class="success-body" data-i18n="success-body">Nuestro equipo revisará tu perfil y se pondrá en contacto contigo en menos de 24 horas. También puedes escribirnos por WhatsApp si prefieres una respuesta más rápida.</p>
-          <a href="https://wa.me/13467189350" class="btn-wa" style="margin:24px auto 0;display:inline-flex;" target="_blank" rel="noopener">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            <span data-i18n="success-wa">Escribir por WhatsApp</span>
-          </a>
+        <span class="path-badge pro" data-i18n="badge-pro">Programa profesional</span>
+        <div class="path-title" data-i18n="path-pro-title">Soy profesional de salud o quiero distribuir</div>
+        <p class="path-desc" data-i18n="path-pro-desc">Soy médico, nutricionista, entrenador, clínica o retailer y quiero incorporar biogradix a mi práctica o negocio.</p>
+        <ul class="path-perks">
+          <li data-i18n="pro-perk-1">Precios y condiciones para profesionales</li>
+          <li data-i18n="pro-perk-2">Material clínico y de ventas</li>
+          <li data-i18n="pro-perk-3">Soporte técnico y científico continuo</li>
+          <li data-i18n="pro-perk-4">Programa de co-branding disponible</li>
+        </ul>
+        <div class="path-cta">
+          <span data-i18n="path-cta">Comenzar solicitud</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
 
@@ -368,26 +343,477 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
   </div>
 </section>
 
+<!-- ═══ INDIVIDUAL FORM ═══ -->
+<section class="form-section" id="formIndividual">
+  <div class="container">
+    <div class="form-layout">
+
+      <!-- Sidebar -->
+      <div class="step-sidebar">
+        <button class="step-back" onclick="resetPath()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-i18n="btn-back">Cambiar opción</span>
+        </button>
+        <span class="sidebar-badge individual" data-i18n="badge-individual">Compra directa</span>
+        <div class="sidebar-title" data-i18n="ind-sidebar-title">Tu consulta personal</div>
+        <div class="sidebar-sub" data-i18n="ind-sidebar-sub">Responderemos en menos de 24h con recomendaciones específicas para ti.</div>
+        <div class="step-list" id="indStepList">
+          <div class="step-item active" data-step="0">
+            <div class="step-dot">1</div>
+            <div class="step-name" data-i18n="ind-step-1">Tu perfil</div>
+          </div>
+          <div class="step-item" data-step="1">
+            <div class="step-dot">2</div>
+            <div class="step-name" data-i18n="ind-step-2">Tus objetivos</div>
+          </div>
+          <div class="step-item" data-step="2">
+            <div class="step-dot">3</div>
+            <div class="step-name" data-i18n="ind-step-3">Confirmación</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <div id="indSuccess" class="form-success">
+          <div class="success-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="success-title" data-i18n="success-title">¡Consulta recibida!</div>
+          <p class="success-body" data-i18n="ind-success-body">Nuestro equipo revisará tu perfil y te contactará en menos de 24 horas con recomendaciones personalizadas. También puedes escribirnos directamente por WhatsApp.</p>
+          <div class="success-actions">
+            <a href="https://wa.me/13467189350" class="btn-wa" target="_blank" rel="noopener" data-i18n="success-wa">Escribir por WhatsApp</a>
+            <a href="index.html" class="btn-prev-step" data-i18n="success-home">Ver productos</a>
+          </div>
+        </div>
+
+        <!-- Step I-1: Profile -->
+        <div class="step-panel active" id="ind-panel-0">
+          <div class="panel-heading" data-i18n="ind-p1-heading">Cuéntanos sobre ti</div>
+          <div class="panel-sub" data-i18n="ind-p1-sub">Información básica para personalizar tu protocolo.</div>
+          <div class="form-row">
+            <div class="field">
+              <label for="i-firstName">Nombre <span class="req">*</span></label>
+              <input type="text" id="i-firstName" placeholder="Ana" autocomplete="given-name"/>
+              <span class="field-error" id="err-i-firstName" data-i18n="err-required">Campo requerido</span>
+            </div>
+            <div class="field">
+              <label for="i-lastName" data-i18n="label-lastname">Apellido</label>
+              <input type="text" id="i-lastName" placeholder="García" autocomplete="family-name"/>
+            </div>
+          </div>
+          <div class="field">
+            <label for="i-email">Email <span class="req">*</span></label>
+            <input type="email" id="i-email" placeholder="ana@ejemplo.com" autocomplete="email"/>
+            <span class="field-error" id="err-i-email" data-i18n="err-email">Ingresa un correo válido</span>
+          </div>
+          <div class="field">
+            <label for="i-phone" data-i18n="label-phone">WhatsApp / Teléfono</label>
+            <input type="tel" id="i-phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/>
+            <span class="field-hint" data-i18n="hint-phone">Opcional, para una respuesta más rápida</span>
+          </div>
+          <div class="field">
+            <label for="i-age" data-i18n="label-age">Rango de edad</label>
+            <select id="i-age">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="18-25">18 – 25</option>
+              <option value="26-35">26 – 35</option>
+              <option value="36-45">36 – 45</option>
+              <option value="46-55">46 – 55</option>
+              <option value="56+">56+</option>
+            </select>
+          </div>
+          <div class="btn-row">
+            <button class="btn-next" onclick="indNext(0)">
+              <div class="spinner"></div>
+              <span class="btn-label" data-i18n="btn-next">Siguiente →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step I-2: Goals -->
+        <div class="step-panel" id="ind-panel-1">
+          <div class="panel-heading" data-i18n="ind-p2-heading">Tus objetivos y contexto</div>
+          <div class="panel-sub" data-i18n="ind-p2-sub">Esta información nos permite recomendarte exactamente lo que necesitas.</div>
+
+          <div class="field">
+            <label data-i18n="label-goal">Objetivo principal <span class="req">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card"><input type="radio" name="i-goal" value="energia"/><div><div class="radio-label" data-i18n="goal-1">Energía y vitalidad</div><div class="radio-sub" data-i18n="goal-1-sub">Fatiga, rendimiento diario</div></div></label>
+              <label class="radio-card"><input type="radio" name="i-goal" value="recuperacion"/><div><div class="radio-label" data-i18n="goal-2">Recuperación deportiva</div><div class="radio-sub" data-i18n="goal-2-sub">Músculos, articulaciones</div></div></label>
+              <label class="radio-card"><input type="radio" name="i-goal" value="longevidad"/><div><div class="radio-label" data-i18n="goal-3">Longevidad y anti-aging</div><div class="radio-sub" data-i18n="goal-3-sub">Salud a largo plazo</div></div></label>
+              <label class="radio-card"><input type="radio" name="i-goal" value="piel"/><div><div class="radio-label" data-i18n="goal-4">Salud de la piel</div><div class="radio-sub" data-i18n="goal-4-sub">Colágeno, firmeza, brillo</div></div></label>
+              <label class="radio-card"><input type="radio" name="i-goal" value="inmunidad"/><div><div class="radio-label" data-i18n="goal-5">Sistema inmune</div><div class="radio-sub" data-i18n="goal-5-sub">Defensas, resiliencia</div></div></label>
+              <label class="radio-card"><input type="radio" name="i-goal" value="libido"/><div><div class="radio-label" data-i18n="goal-6">Bienestar sexual</div><div class="radio-sub" data-i18n="goal-6-sub">Libido, vínculo, vitalidad</div></div></label>
+              <label class="radio-card"><input type="radio" name="i-goal" value="composicion"/><div><div class="radio-label" data-i18n="goal-7">Composición corporal</div><div class="radio-sub" data-i18n="goal-7-sub">Músculo, fuerza, grasa</div></div></label>
+              <label class="radio-card"><input type="radio" name="i-goal" value="multiple"/><div><div class="radio-label" data-i18n="goal-8">Varios objetivos</div><div class="radio-sub" data-i18n="goal-8-sub">Protocolo combinado</div></div></label>
+            </div>
+            <span class="field-error" id="err-i-goal" data-i18n="err-select">Selecciona una opción</span>
+          </div>
+
+          <div class="field">
+            <label for="i-current" data-i18n="label-current">¿Tomas suplementos actualmente?</label>
+            <select id="i-current">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="no" data-i18n="current-1">No, es mi primera vez</option>
+              <option value="basicos" data-i18n="current-2">Sí, vitaminas básicas</option>
+              <option value="avanzados" data-i18n="current-3">Sí, suplementos avanzados</option>
+              <option value="peptidos" data-i18n="current-4">Sí, incluyendo péptidos</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="i-heard" data-i18n="label-heard">¿Cómo nos encontraste?</label>
+            <select id="i-heard">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="instagram" data-i18n="heard-1">Instagram</option>
+              <option value="referido" data-i18n="heard-2">Me lo recomendaron</option>
+              <option value="google" data-i18n="heard-3">Búsqueda en Google</option>
+              <option value="profesional" data-i18n="heard-4">Mi médico / nutricionista</option>
+              <option value="whatsapp" data-i18n="heard-5">WhatsApp / mensaje directo</option>
+              <option value="otro" data-i18n="heard-6">Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="i-message" data-i18n="label-message">Cuéntanos más (opcional)</label>
+            <textarea id="i-message" rows="3" data-i18n-placeholder="placeholder-message" placeholder="Tu situación actual, condiciones de salud relevantes, preguntas específicas..."></textarea>
+          </div>
+
+          <div class="consent-row">
+            <input type="checkbox" class="consent-checkbox" id="i-consent"/>
+            <label for="i-consent" class="consent-text" data-i18n-html="label-consent">Acepto que biogradix guarde mi información para contactarme. Ver <a href="privacy.html">Política de Privacidad</a>.</label>
+          </div>
+          <span class="field-error" id="err-i-consent" data-i18n="err-consent">Debes aceptar para continuar</span>
+
+          <div class="btn-row">
+            <button class="btn-prev-step" onclick="indPrev(1)" data-i18n="btn-prev">← Anterior</button>
+            <button class="btn-next" id="indSubmitBtn" onclick="submitIndividual()">
+              <div class="spinner"></div>
+              <span class="btn-label" data-i18n="btn-send">Enviar consulta →</span>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /form-card -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PROFESSIONAL FORM ═══ -->
+<section class="form-section" id="formPro">
+  <div class="container">
+    <div class="form-layout">
+
+      <!-- Sidebar -->
+      <div class="step-sidebar">
+        <button class="step-back" onclick="resetPath()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span data-i18n="btn-back">Cambiar opción</span>
+        </button>
+        <span class="sidebar-badge pro" data-i18n="badge-pro">Programa profesional</span>
+        <div class="sidebar-title" data-i18n="pro-sidebar-title">Solicitud de distribuidor</div>
+        <div class="sidebar-sub" data-i18n="pro-sidebar-sub">Cuatro pasos para entender tu operación y diseñar el programa ideal.</div>
+        <div class="step-list" id="proStepList">
+          <div class="step-item active" data-step="0">
+            <div class="step-dot">1</div>
+            <div class="step-name" data-i18n="pro-step-1">Información personal</div>
+          </div>
+          <div class="step-item" data-step="1">
+            <div class="step-dot">2</div>
+            <div class="step-name" data-i18n="pro-step-2">Perfil profesional</div>
+          </div>
+          <div class="step-item" data-step="2">
+            <div class="step-dot">3</div>
+            <div class="step-name" data-i18n="pro-step-3">Tu operación</div>
+          </div>
+          <div class="step-item" data-step="3">
+            <div class="step-dot">4</div>
+            <div class="step-name" data-i18n="pro-step-4">Interés en biogradix</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <div id="proSuccess" class="form-success">
+          <div class="success-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="success-title" data-i18n="pro-success-title">¡Solicitud recibida!</div>
+          <p class="success-body" data-i18n="pro-success-body">Nuestro equipo de partnerships revisará tu perfil y te contactará en menos de 48 horas con una propuesta de colaboración personalizada. También puedes escribirnos directamente.</p>
+          <div class="success-actions">
+            <a href="https://wa.me/13467189350" class="btn-wa" target="_blank" rel="noopener" data-i18n="success-wa">Escribir por WhatsApp</a>
+            <a href="index.html" class="btn-prev-step" data-i18n="success-products">Ver productos</a>
+          </div>
+        </div>
+
+        <!-- Step P-1: Personal info -->
+        <div class="step-panel active" id="pro-panel-0">
+          <div class="panel-heading" data-i18n="pro-p1-heading">Tu información de contacto</div>
+          <div class="panel-sub" data-i18n="pro-p1-sub">Datos básicos para identificarte y comunicarnos contigo.</div>
+          <div class="form-row">
+            <div class="field">
+              <label for="p-firstName">Nombre <span class="req">*</span></label>
+              <input type="text" id="p-firstName" placeholder="Dr. Carlos" autocomplete="given-name"/>
+              <span class="field-error" id="err-p-firstName" data-i18n="err-required">Campo requerido</span>
+            </div>
+            <div class="field">
+              <label for="p-lastName">Apellido <span class="req">*</span></label>
+              <input type="text" id="p-lastName" placeholder="Rodríguez" autocomplete="family-name"/>
+              <span class="field-error" id="err-p-lastName" data-i18n="err-required">Campo requerido</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-email">Email profesional <span class="req">*</span></label>
+            <input type="email" id="p-email" placeholder="dr.rodriguez@clinica.com" autocomplete="email"/>
+            <span class="field-error" id="err-p-email" data-i18n="err-email">Ingresa un correo válido</span>
+          </div>
+          <div class="field">
+            <label for="p-whatsapp">WhatsApp profesional <span class="req">*</span></label>
+            <input type="tel" id="p-whatsapp" placeholder="+1 (555) 000-0000" autocomplete="tel"/>
+            <span class="field-error" id="err-p-whatsapp" data-i18n="err-required">Campo requerido</span>
+            <span class="field-hint" data-i18n="hint-wa-pro">Usaremos este número para coordinación directa</span>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="p-country" data-i18n="label-country">País <span class="req">*</span></label>
+              <select id="p-country">
+                <option value="" disabled selected>—</option>
+                <option value="mx">México</option>
+                <option value="us">Estados Unidos</option>
+                <option value="co">Colombia</option>
+                <option value="ar">Argentina</option>
+                <option value="cl">Chile</option>
+                <option value="pe">Perú</option>
+                <option value="es">España</option>
+                <option value="br">Brasil</option>
+                <option value="otro">Otro</option>
+              </select>
+              <span class="field-error" id="err-p-country" data-i18n="err-select">Selecciona un país</span>
+            </div>
+            <div class="field">
+              <label for="p-city" data-i18n="label-city">Ciudad / Estado</label>
+              <input type="text" id="p-city" placeholder="Ciudad de México"/>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-next" onclick="proNext(0)">
+              <div class="spinner"></div>
+              <span class="btn-label" data-i18n="btn-next">Siguiente →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step P-2: Professional profile -->
+        <div class="step-panel" id="pro-panel-1">
+          <div class="panel-heading" data-i18n="pro-p2-heading">Tu perfil profesional</div>
+          <div class="panel-sub" data-i18n="pro-p2-sub">Cuéntanos sobre tu formación y área de especialización.</div>
+
+          <div class="field">
+            <label data-i18n="label-pro-type">Tipo de profesional <span class="req">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-card"><input type="radio" name="p-type" value="medico"/><div><div class="radio-label" data-i18n="pro-type-1">Médico / Physician</div><div class="radio-sub" data-i18n="pro-type-1s">GP, especialista, internista</div></div></label>
+              <label class="radio-card"><input type="radio" name="p-type" value="nutricionista"/><div><div class="radio-label" data-i18n="pro-type-2">Nutricionista / Dietista</div><div class="radio-sub" data-i18n="pro-type-2s">Nutrición clínica, deportiva</div></div></label>
+              <label class="radio-card"><input type="radio" name="p-type" value="entrenador"/><div><div class="radio-label" data-i18n="pro-type-3">Entrenador personal</div><div class="radio-sub" data-i18n="pro-type-3s">PT, coach deportivo</div></div></label>
+              <label class="radio-card"><input type="radio" name="p-type" value="wellness"/><div><div class="radio-label" data-i18n="pro-type-4">Coach de bienestar</div><div class="radio-sub" data-i18n="pro-type-4s">Funcional, integrativo</div></div></label>
+              <label class="radio-card"><input type="radio" name="p-type" value="farmacia"/><div><div class="radio-label" data-i18n="pro-type-5">Farmacéutico</div><div class="radio-sub" data-i18n="pro-type-5s">Farmacia, compounding</div></div></label>
+              <label class="radio-card"><input type="radio" name="p-type" value="clinica"/><div><div class="radio-label" data-i18n="pro-type-6">Clínica / Centro médico</div><div class="radio-sub" data-i18n="pro-type-6s">Anti-aging, estética, salud</div></div></label>
+              <label class="radio-card"><input type="radio" name="p-type" value="estetica"/><div><div class="radio-label" data-i18n="pro-type-7">Spa / Estética</div><div class="radio-sub" data-i18n="pro-type-7s">Tratamientos corporales y faciales</div></div></label>
+              <label class="radio-card"><input type="radio" name="p-type" value="retail"/><div><div class="radio-label" data-i18n="pro-type-8">Retailer / Tienda</div><div class="radio-sub" data-i18n="pro-type-8s">Tienda física u online de salud</div></div></label>
+            </div>
+            <span class="field-error" id="err-p-type" data-i18n="err-select">Selecciona una opción</span>
+          </div>
+
+          <div class="field">
+            <label for="p-specialty" data-i18n="label-specialty">Especialidad o área de enfoque</label>
+            <input type="text" id="p-specialty" placeholder="Ej: Medicina anti-envejecimiento, nutrición deportiva..."/>
+          </div>
+          <div class="field">
+            <label for="p-credentials" data-i18n="label-credentials">Credenciales / Cédula profesional</label>
+            <input type="text" id="p-credentials" placeholder="Número de licencia, cédula o certificación"/>
+            <span class="field-hint" data-i18n="hint-credentials">Opcional, nos ayuda a validar tu perfil más rápido</span>
+          </div>
+          <div class="field">
+            <label for="p-years" data-i18n="label-years">Años de experiencia <span class="req">*</span></label>
+            <select id="p-years">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="<2" data-i18n="years-1">Menos de 2 años</option>
+              <option value="2-5" data-i18n="years-2">2 – 5 años</option>
+              <option value="5-10" data-i18n="years-3">5 – 10 años</option>
+              <option value="10+" data-i18n="years-4">Más de 10 años</option>
+            </select>
+            <span class="field-error" id="err-p-years" data-i18n="err-select">Selecciona una opción</span>
+          </div>
+          <div class="btn-row">
+            <button class="btn-prev-step" onclick="proPrev(1)" data-i18n="btn-prev">← Anterior</button>
+            <button class="btn-next" onclick="proNext(1)">
+              <div class="spinner"></div>
+              <span class="btn-label" data-i18n="btn-next">Siguiente →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step P-3: Operation -->
+        <div class="step-panel" id="pro-panel-2">
+          <div class="panel-heading" data-i18n="pro-p3-heading">Tu práctica y mercado</div>
+          <div class="panel-sub" data-i18n="pro-p3-sub">Queremos entender tu operación para diseñar una propuesta adecuada.</div>
+
+          <div class="field">
+            <label for="p-bizname" data-i18n="label-bizname">Nombre de tu clínica / negocio</label>
+            <input type="text" id="p-bizname" placeholder="Clínica Bienestar Integral S.A."/>
+          </div>
+          <div class="field">
+            <label for="p-bizweb" data-i18n="label-bizweb">Sitio web o perfil de Instagram</label>
+            <input type="text" id="p-bizweb" placeholder="www.miclinica.com o @miclinica"/>
+          </div>
+
+          <div class="form-divider" data-i18n="divider-clients">Tu mercado y clientes</div>
+
+          <div class="field">
+            <label for="p-clients" data-i18n="label-clients">Pacientes / clientes activos por mes <span class="req">*</span></label>
+            <select id="p-clients">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="<20" data-i18n="clients-1">Menos de 20</option>
+              <option value="20-50" data-i18n="clients-2">20 – 50</option>
+              <option value="50-150" data-i18n="clients-3">50 – 150</option>
+              <option value="150-500" data-i18n="clients-4">150 – 500</option>
+              <option value="500+" data-i18n="clients-5">Más de 500</option>
+            </select>
+            <span class="field-error" id="err-p-clients" data-i18n="err-select">Selecciona una opción</span>
+          </div>
+
+          <div class="field">
+            <label for="p-clientprofile" data-i18n="label-clientprofile">Describe el perfil de tus clientes / pacientes <span class="req">*</span></label>
+            <textarea id="p-clientprofile" rows="3" placeholder="Edad promedio, objetivos más comunes, condiciones que tratas, poder adquisitivo, etc."></textarea>
+            <span class="field-error" id="err-p-clientprofile" data-i18n="err-required">Campo requerido</span>
+          </div>
+
+          <div class="field">
+            <label for="p-market" data-i18n="label-market">¿En qué mercado / canal operas?</label>
+            <select id="p-market">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="consultorio" data-i18n="market-1">Consultorio privado</option>
+              <option value="clinica" data-i18n="market-2">Clínica o centro médico</option>
+              <option value="gimnasio" data-i18n="market-3">Gimnasio / estudio fitness</option>
+              <option value="spa" data-i18n="market-4">Spa / centro de bienestar</option>
+              <option value="farmacia" data-i18n="market-5">Farmacia o parafarmacia</option>
+              <option value="ecommerce" data-i18n="market-6">E-commerce / tienda online</option>
+              <option value="tienda" data-i18n="market-7">Tienda física de salud / nutrición</option>
+              <option value="mixto" data-i18n="market-8">Mixto (varios canales)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="p-current-products" data-i18n="label-current-products">¿Qué productos o marcas recomiendas o vendes actualmente?</label>
+            <textarea id="p-current-products" rows="2" placeholder="Marcas, categorías, suplementos que ya incluyes en tu práctica..."></textarea>
+            <span class="field-hint" data-i18n="hint-current-products">Esto nos ayuda a evaluar si biogradix es complementario o sustituto</span>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-prev-step" onclick="proPrev(2)" data-i18n="btn-prev">← Anterior</button>
+            <button class="btn-next" onclick="proNext(2)">
+              <div class="spinner"></div>
+              <span class="btn-label" data-i18n="btn-next">Siguiente →</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step P-4: Interest in biogradix -->
+        <div class="step-panel" id="pro-panel-3">
+          <div class="panel-heading" data-i18n="pro-p4-heading">Tu interés en biogradix</div>
+          <div class="panel-sub" data-i18n="pro-p4-sub">Último paso. Cuéntanos qué necesitas de nosotros para diseñar la propuesta correcta.</div>
+
+          <div class="field">
+            <label data-i18n="label-products-interest">Productos de interés <span class="req">*</span></label>
+            <div class="checkbox-grid">
+              <label class="check-item"><input type="checkbox" name="p-products" value="celldew"/><div><div class="check-label">CELLDEW™</div><div class="check-sub">Glutatión</div></div></label>
+              <label class="check-item"><input type="checkbox" name="p-products" value="vitacharge"/><div><div class="check-label">VITACHARGE™</div><div class="check-sub">NAD+</div></div></label>
+              <label class="check-item"><input type="checkbox" name="p-products" value="radiancemax"/><div><div class="check-label">RADIANCEMAX™</div><div class="check-sub">GHK-Cu</div></div></label>
+              <label class="check-item"><input type="checkbox" name="p-products" value="recoverypro"/><div><div class="check-label">RECOVERYPRO™</div><div class="check-sub">BPC-157</div></div></label>
+              <label class="check-item"><input type="checkbox" name="p-products" value="immunefort"/><div><div class="check-label">IMMUNEFORT™</div><div class="check-sub">Thymosin Alpha-1</div></div></label>
+              <label class="check-item"><input type="checkbox" name="p-products" value="passionboost"/><div><div class="check-label">PASSIONBOOST™</div><div class="check-sub">PT-141 + Oxitocina</div></div></label>
+              <label class="check-item"><input type="checkbox" name="p-products" value="musclemaxx"/><div><div class="check-label">MUSCLEMAXX™</div><div class="check-sub">CJC-1295 / Ipamorelin</div></div></label>
+              <label class="check-item"><input type="checkbox" name="p-products" value="linea-completa"/><div><div class="check-label" data-i18n="prod-all">Línea completa</div><div class="check-sub" data-i18n="prod-all-sub">Todo el portafolio</div></div></label>
+            </div>
+            <span class="field-error" id="err-p-products" data-i18n="err-check">Selecciona al menos un producto</span>
+          </div>
+
+          <div class="field">
+            <label data-i18n="label-volume">Volumen mensual estimado <span class="req">*</span></label>
+            <div class="volume-options">
+              <div class="vol-btn" onclick="selectVolume(this,'1-10')">1 – 10 <br/><span style="font-size:9px;opacity:.6" data-i18n="vol-units">unidades</span></div>
+              <div class="vol-btn" onclick="selectVolume(this,'11-50')">11 – 50 <br/><span style="font-size:9px;opacity:.6" data-i18n="vol-units">unidades</span></div>
+              <div class="vol-btn" onclick="selectVolume(this,'51-200')">51 – 200 <br/><span style="font-size:9px;opacity:.6" data-i18n="vol-units">unidades</span></div>
+              <div class="vol-btn" onclick="selectVolume(this,'200+')">200+ <br/><span style="font-size:9px;opacity:.6" data-i18n="vol-units">unidades</span></div>
+            </div>
+            <input type="hidden" id="p-volume"/>
+            <span class="field-error" id="err-p-volume" data-i18n="err-select">Selecciona un rango</span>
+          </div>
+
+          <div class="field">
+            <label for="p-collaboration" data-i18n="label-collab">¿Qué tipo de colaboración buscas?</label>
+            <select id="p-collaboration">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="reventa" data-i18n="collab-1">Reventa directa a clientes/pacientes</option>
+              <option value="formulario" data-i18n="collab-2">Incluir en protocolos / recetas</option>
+              <option value="distribucion" data-i18n="collab-3">Distribución regional o nacional</option>
+              <option value="cobranding" data-i18n="collab-4">Co-branding / marca propia</option>
+              <option value="afiliado" data-i18n="collab-5">Programa de afiliados / comisión</option>
+              <option value="evaluar" data-i18n="collab-6">Todavía estoy evaluando opciones</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="p-heard" data-i18n="label-heard">¿Cómo conociste biogradix?</label>
+            <select id="p-heard">
+              <option value="" disabled selected data-i18n="sel-placeholder">Selecciona</option>
+              <option value="colega" data-i18n="p-heard-1">Un colega me lo recomendó</option>
+              <option value="congreso" data-i18n="p-heard-2">Congreso / evento médico</option>
+              <option value="instagram" data-i18n="p-heard-3">Instagram / redes sociales</option>
+              <option value="google" data-i18n="p-heard-4">Búsqueda en Google</option>
+              <option value="paciente" data-i18n="p-heard-5">Un paciente / cliente me habló</option>
+              <option value="otro" data-i18n="heard-6">Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="p-notes" data-i18n="label-notes">Preguntas, comentarios o contexto adicional</label>
+            <textarea id="p-notes" rows="3" placeholder="Condiciones especiales, mercados específicos, preguntas sobre la tecnología, plazos, etc."></textarea>
+          </div>
+
+          <div class="consent-row">
+            <input type="checkbox" class="consent-checkbox" id="p-consent"/>
+            <label for="p-consent" class="consent-text" data-i18n-html="label-consent">Acepto que biogradix guarde mi información para contactarme. Ver <a href="privacy.html">Política de Privacidad</a>.</label>
+          </div>
+          <span class="field-error" id="err-p-consent" data-i18n="err-consent">Debes aceptar para continuar</span>
+
+          <div class="btn-row">
+            <button class="btn-prev-step" onclick="proPrev(3)" data-i18n="btn-prev">← Anterior</button>
+            <button class="btn-next" id="proSubmitBtn" onclick="submitPro()">
+              <div class="spinner"></div>
+              <span class="btn-label" data-i18n="btn-send-pro">Enviar solicitud →</span>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /form-card -->
+    </div>
+  </div>
+</section>
+
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
-          <svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/></svg>
-          <span class="nav-logo-text" style="color:#fff;"><span class="b">bio</span>gradix</span>
-        </a>
+        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;"><svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/></svg><span class="nav-logo-text" style="color:#fff;"><span class="b">bio</span>gradix</span></a>
         <p class="footer-brand-text" data-i18n="footer-tagline">Suplementación inteligente a través de mucosa oral.</p>
       </div>
       <div>
-        <div class="footer-col-title" data-i18n="footer-productos">Productos</div>
+        <div class="footer-col-title">Productos</div>
         <div class="footer-links">
-          <a href="producto-celldew.html">CELLDEW™</a>
-          <a href="producto-vitacharge.html">VITACHARGE™</a>
-          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
-          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
-          <a href="producto-immunefort.html">IMMUNEFORT™</a>
-          <a href="producto-passionboost.html">PASSIONBOOST™</a>
+          <a href="producto-celldew.html">CELLDEW™</a><a href="producto-vitacharge.html">VITACHARGE™</a>
+          <a href="producto-radiancemax.html">RADIANCEMAX™</a><a href="producto-recoverypro.html">RECOVERYPRO™</a>
+          <a href="producto-immunefort.html">IMMUNEFORT™</a><a href="producto-passionboost.html">PASSIONBOOST™</a>
           <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
         </div>
       </div>
@@ -411,238 +837,360 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2026 biogradix</span>
-      <span class="footer-disclaimer" data-i18n="footer-disc">Estos productos no han sido evaluados por la FDA. No destinados a diagnosticar, tratar, curar o prevenir enfermedades.</span>
-      <div class="footer-legal">
-        <a href="privacy.html" data-i18n="footer-privacy">Privacidad</a>
-        <a href="terms.html" data-i18n="footer-terms">Términos</a>
-      </div>
+      <span class="footer-disclaimer" data-i18n="footer-disc">Estos productos no han sido evaluados por la FDA.</span>
+      <div class="footer-legal"><a href="privacy.html" data-i18n="footer-privacy">Privacidad</a><a href="terms.html" data-i18n="footer-terms">Términos</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-// === i18n ===
-const T = {
-  'nav-productos':{es:'Productos',en:'Products'},
-  'nav-tecnologia':{es:'Tecnología',en:'Technology'},
-  'nav-educacion':{es:'Educación',en:'Education'},
-  'nav-blog':{es:'Blog',en:'Blog'},
+// ── i18n ──────────────────────────────────────────────────────
+const T={
+  'nav-productos':{es:'Productos',en:'Products'},'nav-tecnologia':{es:'Tecnología',en:'Technology'},
+  'nav-educacion':{es:'Educación',en:'Education'},'nav-blog':{es:'Blog',en:'Blog'},
   'nav-contacto':{es:'Contacto',en:'Contact'},
-  'hero-label':{es:'Consulta personalizada',en:'Personalized consultation'},
-  'hero-h1':{es:'Diseñamos tu protocolo <em>contigo</em>',en:'We design your protocol <em>with you</em>'},
-  'hero-sub':{es:'Cada persona tiene un perfil único. Nuestros especialistas analizan tus objetivos y crean un protocolo de bienestar basado en tu biología, estilo de vida y metas.',en:'Every person has a unique profile. Our specialists analyze your goals and create a wellness protocol based on your biology, lifestyle, and objectives.'},
-  'trust-1':{es:'Respuesta en menos de 24h',en:'Response within 24h'},
+  'hero-label':{es:'Estamos aquí para ti',en:'We are here for you'},
+  'hero-h1':{es:'Cuéntanos<br/>quién eres <em>tú</em>',en:'Tell us<br/>who <em>you are</em>'},
+  'hero-sub':{es:'Tenemos dos caminos: compra directa para personas que quieren optimizar su bienestar, y un programa profesional para especialistas de salud que quieren llevar biogradix a sus pacientes y clientes.',en:'We have two paths: direct purchase for individuals who want to optimize their wellness, and a professional program for health specialists who want to bring biogradix to their patients and clients.'},
+  'trust-1':{es:'Respuesta en 24h',en:'Response within 24h'},
   'trust-2':{es:'Privacidad garantizada',en:'Privacy guaranteed'},
-  'trust-3':{es:'Sin compromiso',en:'No commitment'},
-  'trust-4':{es:'Especialistas certificados',en:'Certified specialists'},
-  'info-label':{es:'Cómo trabajamos',en:'How we work'},
-  'info-h2':{es:'No vendemos suplementos.<br/>Construimos <em>protocolos</em>.',en:'We don\'t just sell supplements.<br/>We build <em>protocols</em>.'},
-  'info-body':{es:'Antes de recomendarte cualquier producto, queremos entender quién eres: tus objetivos, tu estilo de vida, tus niveles de energía, tu historial. Esa información nos permite diseñar algo que realmente funcione para ti — no un paquete genérico.',en:'Before recommending any product, we want to understand who you are: your goals, your lifestyle, your energy levels, your history. That information lets us design something that actually works for you — not a generic package.'},
-  'method-wa-label':{es:'Respuesta rápida',en:'Quick response'},
-  'method-email-label':{es:'Email',en:'Email'},
-  'method-email-sub':{es:'Respondemos en 24h',en:'We respond within 24h'},
-  'testimonial-text':{es:'"Llevaba años buscando algo que realmente funcionara. En la primera consulta entendieron exactamente lo que necesitaba. Cuatro semanas después, la diferencia en energía y recuperación es real."',en:'"I had been searching for years for something that actually worked. In the first consultation they understood exactly what I needed. Four weeks later, the difference in energy and recovery is real."'},
-  'testimonial-name':{es:'C. Martínez — Protocolo VITACHARGE™ + RECOVERYPRO™',en:'C. Martinez — VITACHARGE™ + RECOVERYPRO™ Protocol'},
-  'form-heading':{es:'Cuéntanos sobre ti',en:'Tell us about yourself'},
-  'form-sub':{es:'Toda la información es confidencial y nos ayuda a preparar la consulta más útil para ti.',en:'All information is confidential and helps us prepare the most useful consultation for you.'},
-  'label-name':{es:'Nombre',en:'First name'},
+  'trust-3':{es:'Equipo especializado',en:'Specialized team'},
+  'trust-4':{es:'Sin compromiso',en:'No commitment'},
+  'path-label':{es:'Elige tu camino',en:'Choose your path'},
+  'path-h2':{es:'¿Cómo podemos <em>ayudarte</em>?',en:'How can we <em>help you</em>?'},
+  'path-sub':{es:'Selecciona la opción que mejor describe tu situación para mostrarte el formulario correcto.',en:'Select the option that best describes your situation so we can show you the right form.'},
+  'badge-individual':{es:'Compra directa',en:'Direct purchase'},
+  'badge-pro':{es:'Programa profesional',en:'Professional program'},
+  'path-ind-title':{es:'Soy una persona que quiere mejorar mi bienestar',en:'I am an individual looking to improve my wellness'},
+  'path-ind-desc':{es:'Quiero un protocolo personalizado, tengo preguntas sobre los productos, o quiero hacer un pedido directo.',en:'I want a personalized protocol, have questions about the products, or want to place a direct order.'},
+  'ind-perk-1':{es:'Protocolo diseñado para tus objetivos',en:'Protocol designed for your goals'},
+  'ind-perk-2':{es:'Asesoría 1 a 1 con nuestros especialistas',en:'1-on-1 advice with our specialists'},
+  'ind-perk-3':{es:'Entrega directa a domicilio',en:'Direct home delivery'},
+  'path-pro-title':{es:'Soy profesional de salud o quiero distribuir',en:'I am a health professional or want to distribute'},
+  'path-pro-desc':{es:'Soy médico, nutricionista, entrenador, clínica o retailer y quiero incorporar biogradix a mi práctica o negocio.',en:'I am a doctor, nutritionist, trainer, clinic or retailer and want to incorporate biogradix into my practice or business.'},
+  'pro-perk-1':{es:'Precios y condiciones para profesionales',en:'Professional pricing and terms'},
+  'pro-perk-2':{es:'Material clínico y de ventas',en:'Clinical and sales materials'},
+  'pro-perk-3':{es:'Soporte técnico y científico continuo',en:'Ongoing technical and scientific support'},
+  'pro-perk-4':{es:'Programa de co-branding disponible',en:'Co-branding program available'},
+  'path-cta':{es:'Comenzar',en:'Get started'},
+  'btn-back':{es:'Cambiar opción',en:'Change option'},
+  'btn-next':{es:'Siguiente →',en:'Next →'},
+  'btn-prev':{es:'← Anterior',en:'← Back'},
+  'btn-send':{es:'Enviar consulta →',en:'Send inquiry →'},
+  'btn-send-pro':{es:'Enviar solicitud →',en:'Send application →'},
+  'ind-sidebar-title':{es:'Tu consulta personal',en:'Your personal inquiry'},
+  'ind-sidebar-sub':{es:'Responderemos en menos de 24h con recomendaciones específicas para ti.',en:'We will respond within 24h with recommendations specific to you.'},
+  'ind-step-1':{es:'Tu perfil',en:'Your profile'},
+  'ind-step-2':{es:'Tus objetivos',en:'Your goals'},
+  'ind-step-3':{es:'Confirmación',en:'Confirmation'},
+  'pro-sidebar-title':{es:'Solicitud de distribuidor',en:'Distributor application'},
+  'pro-sidebar-sub':{es:'Cuatro pasos para entender tu operación y diseñar el programa ideal.',en:'Four steps to understand your operation and design the ideal program.'},
+  'pro-step-1':{es:'Información personal',en:'Personal info'},
+  'pro-step-2':{es:'Perfil profesional',en:'Professional profile'},
+  'pro-step-3':{es:'Tu operación',en:'Your operation'},
+  'pro-step-4':{es:'Interés en biogradix',en:'Interest in biogradix'},
+  'ind-p1-heading':{es:'Cuéntanos sobre ti',en:'Tell us about yourself'},
+  'ind-p1-sub':{es:'Información básica para personalizar tu protocolo.',en:'Basic information to personalize your protocol.'},
+  'ind-p2-heading':{es:'Tus objetivos y contexto',en:'Your goals and context'},
+  'ind-p2-sub':{es:'Esta información nos permite recomendarte exactamente lo que necesitas.',en:'This information lets us recommend exactly what you need.'},
+  'pro-p1-heading':{es:'Tu información de contacto',en:'Your contact information'},
+  'pro-p1-sub':{es:'Datos básicos para identificarte y comunicarnos contigo.',en:'Basic details to identify you and get in touch.'},
+  'pro-p2-heading':{es:'Tu perfil profesional',en:'Your professional profile'},
+  'pro-p2-sub':{es:'Cuéntanos sobre tu formación y área de especialización.',en:'Tell us about your training and area of specialization.'},
+  'pro-p3-heading':{es:'Tu práctica y mercado',en:'Your practice and market'},
+  'pro-p3-sub':{es:'Queremos entender tu operación para diseñar una propuesta adecuada.',en:'We want to understand your operation to design the right proposal.'},
+  'pro-p4-heading':{es:'Tu interés en biogradix',en:'Your interest in biogradix'},
+  'pro-p4-sub':{es:'Último paso. Cuéntanos qué necesitas de nosotros para diseñar la propuesta correcta.',en:'Last step. Tell us what you need from us to design the right proposal.'},
   'label-lastname':{es:'Apellido',en:'Last name'},
-  'label-email':{es:'Correo electrónico',en:'Email address'},
   'label-phone':{es:'WhatsApp / Teléfono',en:'WhatsApp / Phone'},
-  'label-goal':{es:'¿Cuál es tu objetivo principal?',en:'What is your main goal?'},
-  'goal-placeholder':{es:'Selecciona una opción',en:'Select an option'},
-  'goal-1':{es:'Más energía y vitalidad',en:'More energy and vitality'},
-  'goal-2':{es:'Recuperación muscular / deportiva',en:'Muscle / athletic recovery'},
-  'goal-3':{es:'Longevidad y anti-envejecimiento',en:'Longevity and anti-aging'},
-  'goal-4':{es:'Salud de la piel y estética',en:'Skin health and aesthetics'},
-  'goal-5':{es:'Sistema inmune',en:'Immune system'},
-  'goal-6':{es:'Bienestar sexual',en:'Sexual wellness'},
-  'goal-7':{es:'Composición corporal / masa muscular',en:'Body composition / muscle mass'},
-  'goal-8':{es:'Otro / varios objetivos',en:'Other / multiple goals'},
+  'hint-phone':{es:'Opcional, para una respuesta más rápida',en:'Optional, for a faster response'},
+  'label-age':{es:'Rango de edad',en:'Age range'},
+  'label-goal':{es:'Objetivo principal',en:'Main goal'},
+  'goal-1':{es:'Energía y vitalidad',en:'Energy and vitality'},'goal-1-sub':{es:'Fatiga, rendimiento diario',en:'Fatigue, daily performance'},
+  'goal-2':{es:'Recuperación deportiva',en:'Athletic recovery'},'goal-2-sub':{es:'Músculos, articulaciones',en:'Muscles, joints'},
+  'goal-3':{es:'Longevidad y anti-aging',en:'Longevity and anti-aging'},'goal-3-sub':{es:'Salud a largo plazo',en:'Long-term health'},
+  'goal-4':{es:'Salud de la piel',en:'Skin health'},'goal-4-sub':{es:'Colágeno, firmeza, brillo',en:'Collagen, firmness, glow'},
+  'goal-5':{es:'Sistema inmune',en:'Immune system'},'goal-5-sub':{es:'Defensas, resiliencia',en:'Defenses, resilience'},
+  'goal-6':{es:'Bienestar sexual',en:'Sexual wellness'},'goal-6-sub':{es:'Libido, vínculo, vitalidad',en:'Libido, bonding, vitality'},
+  'goal-7':{es:'Composición corporal',en:'Body composition'},'goal-7-sub':{es:'Músculo, fuerza, grasa',en:'Muscle, strength, fat'},
+  'goal-8':{es:'Varios objetivos',en:'Multiple goals'},'goal-8-sub':{es:'Protocolo combinado',en:'Combined protocol'},
+  'label-current':{es:'¿Tomas suplementos actualmente?',en:'Do you currently take supplements?'},
+  'current-1':{es:'No, es mi primera vez',en:'No, first time'},'current-2':{es:'Sí, vitaminas básicas',en:'Yes, basic vitamins'},
+  'current-3':{es:'Sí, suplementos avanzados',en:'Yes, advanced supplements'},'current-4':{es:'Sí, incluyendo péptidos',en:'Yes, including peptides'},
   'label-heard':{es:'¿Cómo nos encontraste?',en:'How did you find us?'},
-  'heard-placeholder':{es:'Selecciona una opción',en:'Select an option'},
-  'heard-1':{es:'Instagram',en:'Instagram'},
-  'heard-2':{es:'Me lo recomendaron',en:'Referral / recommendation'},
-  'heard-3':{es:'Búsqueda en Google',en:'Google search'},
-  'heard-4':{es:'WhatsApp / mensaje directo',en:'WhatsApp / direct message'},
-  'heard-5':{es:'Otro',en:'Other'},
+  'heard-1':{es:'Instagram',en:'Instagram'},'heard-2':{es:'Me lo recomendaron',en:'Referral'},
+  'heard-3':{es:'Búsqueda en Google',en:'Google search'},'heard-4':{es:'Mi médico / nutricionista',en:'My doctor / nutritionist'},
+  'heard-5':{es:'WhatsApp / mensaje directo',en:'WhatsApp / DM'},'heard-6':{es:'Otro',en:'Other'},
   'label-message':{es:'Cuéntanos más (opcional)',en:'Tell us more (optional)'},
-  'label-consent':{es:'Acepto que biogradix guarde mi información para contactarme. Puedo solicitar su eliminación en cualquier momento. Ver <a href="privacy.html">Política de Privacidad</a>.',en:'I agree that biogradix may store my information to contact me. I can request its deletion at any time. See <a href="privacy.html">Privacy Policy</a>.'},
-  'btn-submit':{es:'Enviar consulta →',en:'Send inquiry →'},
+  'label-consent':{es:'Acepto que biogradix guarde mi información para contactarme. Ver <a href="privacy.html">Política de Privacidad</a>.',en:'I agree that biogradix may store my information to contact me. See <a href="privacy.html">Privacy Policy</a>.'},
+  'label-country':{es:'País',en:'Country'},'label-city':{es:'Ciudad / Estado',en:'City / State'},
+  'hint-wa-pro':{es:'Usaremos este número para coordinación directa',en:'We will use this number for direct coordination'},
+  'label-pro-type':{es:'Tipo de profesional',en:'Professional type'},
+  'pro-type-1':{es:'Médico / Physician',en:'Doctor / Physician'},'pro-type-1s':{es:'GP, especialista, internista',en:'GP, specialist, internist'},
+  'pro-type-2':{es:'Nutricionista / Dietista',en:'Nutritionist / Dietitian'},'pro-type-2s':{es:'Nutrición clínica, deportiva',en:'Clinical, sports nutrition'},
+  'pro-type-3':{es:'Entrenador personal',en:'Personal trainer'},'pro-type-3s':{es:'PT, coach deportivo',en:'PT, sports coach'},
+  'pro-type-4':{es:'Coach de bienestar',en:'Wellness coach'},'pro-type-4s':{es:'Funcional, integrativo',en:'Functional, integrative'},
+  'pro-type-5':{es:'Farmacéutico',en:'Pharmacist'},'pro-type-5s':{es:'Farmacia, compounding',en:'Pharmacy, compounding'},
+  'pro-type-6':{es:'Clínica / Centro médico',en:'Clinic / Medical center'},'pro-type-6s':{es:'Anti-aging, estética, salud',en:'Anti-aging, aesthetics, health'},
+  'pro-type-7':{es:'Spa / Estética',en:'Spa / Aesthetic center'},'pro-type-7s':{es:'Tratamientos corporales y faciales',en:'Body and facial treatments'},
+  'pro-type-8':{es:'Retailer / Tienda',en:'Retailer / Store'},'pro-type-8s':{es:'Tienda física u online de salud',en:'Physical or online health store'},
+  'label-specialty':{es:'Especialidad o área de enfoque',en:'Specialty or area of focus'},
+  'label-credentials':{es:'Credenciales / Cédula profesional',en:'Credentials / License number'},
+  'hint-credentials':{es:'Opcional, nos ayuda a validar tu perfil más rápido',en:'Optional, helps us validate your profile faster'},
+  'label-years':{es:'Años de experiencia',en:'Years of experience'},
+  'years-1':{es:'Menos de 2 años',en:'Less than 2 years'},'years-2':{es:'2 – 5 años',en:'2 – 5 years'},
+  'years-3':{es:'5 – 10 años',en:'5 – 10 years'},'years-4':{es:'Más de 10 años',en:'More than 10 years'},
+  'label-bizname':{es:'Nombre de tu clínica / negocio',en:'Clinic / business name'},
+  'label-bizweb':{es:'Sitio web o perfil de Instagram',en:'Website or Instagram profile'},
+  'divider-clients':{es:'Tu mercado y clientes',en:'Your market and clients'},
+  'label-clients':{es:'Pacientes / clientes activos por mes',en:'Active patients / clients per month'},
+  'clients-1':{es:'Menos de 20',en:'Less than 20'},'clients-2':{es:'20 – 50',en:'20 – 50'},
+  'clients-3':{es:'50 – 150',en:'50 – 150'},'clients-4':{es:'150 – 500',en:'150 – 500'},'clients-5':{es:'Más de 500',en:'More than 500'},
+  'label-clientprofile':{es:'Describe el perfil de tus clientes / pacientes',en:'Describe your client / patient profile'},
+  'label-market':{es:'¿En qué mercado / canal operas?',en:'What market / channel do you operate in?'},
+  'market-1':{es:'Consultorio privado',en:'Private practice'},'market-2':{es:'Clínica o centro médico',en:'Clinic or medical center'},
+  'market-3':{es:'Gimnasio / estudio fitness',en:'Gym / fitness studio'},'market-4':{es:'Spa / centro de bienestar',en:'Spa / wellness center'},
+  'market-5':{es:'Farmacia o parafarmacia',en:'Pharmacy or parapharmacy'},'market-6':{es:'E-commerce / tienda online',en:'E-commerce / online store'},
+  'market-7':{es:'Tienda física de salud / nutrición',en:'Physical health / nutrition store'},'market-8':{es:'Mixto (varios canales)',en:'Mixed (multiple channels)'},
+  'label-current-products':{es:'¿Qué productos o marcas recomiendas o vendes actualmente?',en:'What products or brands do you currently recommend or sell?'},
+  'hint-current-products':{es:'Esto nos ayuda a evaluar si biogradix es complementario o sustituto',en:'This helps us assess whether biogradix is complementary or a substitute'},
+  'label-products-interest':{es:'Productos de interés',en:'Products of interest'},
+  'prod-all':{es:'Línea completa',en:'Full line'},'prod-all-sub':{es:'Todo el portafolio',en:'Entire portfolio'},
+  'label-volume':{es:'Volumen mensual estimado',en:'Estimated monthly volume'},
+  'vol-units':{es:'unidades',en:'units'},
+  'label-collab':{es:'¿Qué tipo de colaboración buscas?',en:'What type of collaboration are you looking for?'},
+  'collab-1':{es:'Reventa directa a clientes/pacientes',en:'Direct resale to clients/patients'},
+  'collab-2':{es:'Incluir en protocolos / recetas',en:'Include in protocols / prescriptions'},
+  'collab-3':{es:'Distribución regional o nacional',en:'Regional or national distribution'},
+  'collab-4':{es:'Co-branding / marca propia',en:'Co-branding / private label'},
+  'collab-5':{es:'Programa de afiliados / comisión',en:'Affiliate / commission program'},
+  'collab-6':{es:'Todavía estoy evaluando opciones',en:'Still evaluating options'},
+  'p-heard-1':{es:'Un colega me lo recomendó',en:'A colleague recommended it'},
+  'p-heard-2':{es:'Congreso / evento médico',en:'Conference / medical event'},
+  'p-heard-3':{es:'Instagram / redes sociales',en:'Instagram / social media'},
+  'p-heard-4':{es:'Búsqueda en Google',en:'Google search'},
+  'p-heard-5':{es:'Un paciente / cliente me habló',en:'A patient / client mentioned it'},
+  'label-notes':{es:'Preguntas, comentarios o contexto adicional',en:'Questions, comments or additional context'},
+  'sel-placeholder':{es:'Selecciona',en:'Select'},
   'err-required':{es:'Campo requerido',en:'Required field'},
   'err-email':{es:'Ingresa un correo válido',en:'Enter a valid email'},
+  'err-select':{es:'Selecciona una opción',en:'Please select an option'},
+  'err-check':{es:'Selecciona al menos un producto',en:'Select at least one product'},
+  'err-consent':{es:'Debes aceptar para continuar',en:'You must accept to continue'},
   'success-title':{es:'¡Consulta recibida!',en:'Inquiry received!'},
-  'success-body':{es:'Nuestro equipo revisará tu perfil y se pondrá en contacto contigo en menos de 24 horas. También puedes escribirnos por WhatsApp si prefieres una respuesta más rápida.',en:'Our team will review your profile and get in touch within 24 hours. You can also reach us on WhatsApp if you prefer a faster response.'},
+  'ind-success-body':{es:'Nuestro equipo revisará tu perfil y te contactará en menos de 24 horas con recomendaciones personalizadas.',en:'Our team will review your profile and contact you within 24 hours with personalized recommendations.'},
+  'pro-success-title':{es:'¡Solicitud recibida!',en:'Application received!'},
+  'pro-success-body':{es:'Nuestro equipo de partnerships revisará tu perfil y te contactará en menos de 48 horas con una propuesta de colaboración personalizada.',en:'Our partnerships team will review your profile and contact you within 48 hours with a personalized collaboration proposal.'},
   'success-wa':{es:'Escribir por WhatsApp',en:'Message via WhatsApp'},
+  'success-home':{es:'Ver productos',en:'View products'},
+  'success-products':{es:'Ver productos',en:'View products'},
   'footer-tagline':{es:'Suplementación inteligente a través de mucosa oral.',en:'Intelligent supplementation via oral mucosa.'},
-  'footer-productos':{es:'Productos',en:'Products'},
-  'footer-empresa':{es:'Empresa',en:'Company'},
-  'footer-contacto':{es:'Contacto',en:'Contact'},
-  'footer-disc':{es:'Estos productos no han sido evaluados por la FDA. No destinados a diagnosticar, tratar, curar o prevenir enfermedades.',en:'These products have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.'},
-  'footer-privacy':{es:'Privacidad',en:'Privacy'},
-  'footer-terms':{es:'Términos',en:'Terms'},
+  'footer-empresa':{es:'Empresa',en:'Company'},'footer-contacto':{es:'Contacto',en:'Contact'},
+  'footer-disc':{es:'Estos productos no han sido evaluados por la FDA.',en:'These products have not been evaluated by the FDA.'},
+  'footer-privacy':{es:'Privacidad',en:'Privacy'},'footer-terms':{es:'Términos',en:'Terms'},
 };
 
-function setLang(lang) {
-  localStorage.setItem('lang', lang);
-  document.getElementById('htmlRoot').lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.getAttribute('data-i18n');
-    if (T[k] && T[k][lang]) el.textContent = T[k][lang];
-  });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const k = el.getAttribute('data-i18n-html');
-    if (T[k] && T[k][lang]) el.innerHTML = T[k][lang];
-  });
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(b => { if (b.textContent.toLowerCase() === lang) b.classList.add('active'); });
-  // Update select placeholders
-  document.querySelectorAll('select option[disabled]').forEach(opt => {
-    const k = opt.getAttribute('data-i18n');
-    if (k && T[k] && T[k][lang]) opt.textContent = T[k][lang];
-  });
+function setLang(lang){
+  localStorage.setItem('lang',lang);
+  document.getElementById('htmlRoot').lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[k]&&T[k][lang])el.textContent=T[k][lang];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(T[k]&&T[k][lang])el.innerHTML=T[k][lang];});
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b=>{if(b.textContent.toLowerCase()===lang)b.classList.add('active');});
 }
-setLang(localStorage.getItem('lang') || 'es');
+setLang(localStorage.getItem('lang')||'es');
 
-// === NAV SCROLL ===
-window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30));
-
-// === REVEAL ===
-const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up'); }), { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// === HAMBURGER ===
-document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
-document.getElementById('mobileMenu').addEventListener('click', e => { if (e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
-
-// === PROGRESS BAR ===
-const fields = ['firstName','email','goal'];
-function updateProgress() {
-  let filled = 0;
-  if (document.getElementById('firstName').value.trim()) filled++;
-  if (document.getElementById('email').value.trim()) filled++;
-  if (document.getElementById('goal').value) filled++;
-  const consent = document.getElementById('consent').checked;
-  if (consent) filled++;
-  document.getElementById('progressFill').style.width = (filled / 4 * 100) + '%';
+// ── PATH SELECTION ─────────────────────────────────────────────
+function choosePath(type){
+  document.getElementById('pathSection').style.display='none';
+  document.getElementById('formIndividual').style.display = type==='individual'?'block':'none';
+  document.getElementById('formPro').style.display = type==='pro'?'block':'none';
+  window.scrollTo({top: document.getElementById(type==='individual'?'formIndividual':'formPro').offsetTop - 80, behavior:'smooth'});
+  if(typeof gtag!=='undefined') gtag('event','path_selected',{event_category:'contact',event_label:type});
 }
-document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea').forEach(el => {
-  el.addEventListener('input', updateProgress);
-  el.addEventListener('change', updateProgress);
-});
+function resetPath(){
+  document.getElementById('pathSection').style.display='block';
+  document.getElementById('formIndividual').style.display='none';
+  document.getElementById('formPro').style.display='none';
+  window.scrollTo({top:document.getElementById('pathSection').offsetTop-80,behavior:'smooth'});
+}
 
-// === FORM VALIDATION & SUBMIT ===
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const lang = localStorage.getItem('lang') || 'es';
-  let valid = true;
+// ── STEP HELPERS ───────────────────────────────────────────────
+function setStep(prefix, from, to, listId){
+  document.getElementById(prefix+'-panel-'+from).classList.remove('active');
+  document.getElementById(prefix+'-panel-'+to).classList.add('active');
+  document.querySelectorAll('#'+listId+' .step-item').forEach((el,i)=>{
+    el.classList.remove('active','done');
+    if(i<to) el.classList.add('done');
+    if(i===to) el.classList.add('active');
+  });
+  const card = document.getElementById(prefix+'-panel-'+to).closest('.form-card');
+  if(card) card.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
 
-  // Validate firstName
-  const fn = document.getElementById('firstName');
-  const fnErr = document.getElementById('err-firstName');
-  if (!fn.value.trim()) {
-    fn.classList.add('error'); fnErr.classList.add('show'); valid = false;
-  } else { fn.classList.remove('error'); fnErr.classList.remove('show'); }
+function showErr(id, show){ document.getElementById(id).classList.toggle('show', show); }
+function clearErr(id){ document.getElementById(id).classList.remove('show'); }
+function markErr(el){ el.classList.add('error'); }
+function clearFld(el){ el.classList.remove('error'); }
 
-  // Validate email
-  const em = document.getElementById('email');
-  const emErr = document.getElementById('err-email');
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim());
-  if (!em.value.trim() || !emailOk) {
-    em.classList.add('error'); emErr.classList.add('show'); valid = false;
-  } else { em.classList.remove('error'); emErr.classList.remove('show'); }
+// ── INDIVIDUAL FLOW ────────────────────────────────────────────
+let indStep = 0;
+function indNext(from){
+  if(from===0){
+    const fn = document.getElementById('i-firstName');
+    const em = document.getElementById('i-email');
+    let ok = true;
+    if(!fn.value.trim()){markErr(fn);showErr('err-i-firstName',true);ok=false;}else{clearFld(fn);clearErr('err-i-firstName');}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){markErr(em);showErr('err-i-email',true);ok=false;}else{clearFld(em);clearErr('err-i-email');}
+    if(!ok)return;
+    setStep('ind',0,1,'indStepList'); indStep=1;
+  }
+}
+function indPrev(from){ setStep('ind',from,from-1,'indStepList'); indStep=from-1; }
 
-  // Validate goal
-  const gl = document.getElementById('goal');
-  const glErr = document.getElementById('err-goal');
-  if (!gl.value) {
-    gl.classList.add('error'); glErr.classList.add('show'); valid = false;
-  } else { gl.classList.remove('error'); glErr.classList.remove('show'); }
-
-  // Validate consent
-  if (!document.getElementById('consent').checked) { valid = false; }
-
-  if (!valid) return;
-
-  // Submit
-  const btn = document.getElementById('submitBtn');
-  btn.classList.add('loading'); btn.disabled = true;
-
-  // Build payload
+async function submitIndividual(){
+  const goal = document.querySelector('input[name="i-goal"]:checked');
+  const consent = document.getElementById('i-consent');
+  let ok = true;
+  if(!goal){showErr('err-i-goal',true);ok=false;}else{clearErr('err-i-goal');}
+  if(!consent.checked){showErr('err-i-consent',true);ok=false;}else{clearErr('err-i-consent');}
+  if(!ok)return;
+  const btn = document.getElementById('indSubmitBtn');
+  btn.classList.add('loading'); btn.disabled=true;
   const payload = {
-    firstName: document.getElementById('firstName').value.trim(),
-    lastName: document.getElementById('lastName').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    phone: document.getElementById('phone').value.trim(),
-    goal: gl.value,
-    heard: document.getElementById('heard').value,
-    message: document.getElementById('message').value.trim(),
-    lang,
-    source: 'biogradix.com/contacto',
-    timestamp: new Date().toISOString(),
+    _subject:`Nueva consulta individual biogradix — ${goal.value} — ${document.getElementById('i-firstName').value}`,
+    _template:'table', _captcha:'false',
+    tipo:'individual',
+    nombre:`${document.getElementById('i-firstName').value} ${document.getElementById('i-lastName').value}`,
+    email:document.getElementById('i-email').value,
+    telefono:document.getElementById('i-phone').value||'—',
+    edad:document.getElementById('i-age').value||'—',
+    objetivo:goal.value,
+    suplementos_actuales:document.getElementById('i-current').value||'—',
+    como_nos_encontro:document.getElementById('i-heard').value||'—',
+    mensaje:document.getElementById('i-message').value||'—',
+    timestamp:new Date().toISOString(),
   };
+  if(typeof gtag!=='undefined') gtag('event','generate_lead',{event_category:'contact_form',event_label:'individual_'+goal.value,value:1});
+  try{ await fetch('https://formsubmit.co/ajax/hola@biogradix.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
+  btn.classList.remove('loading'); btn.disabled=false;
+  document.getElementById('ind-panel-1').style.display='none';
+  document.getElementById('indSuccess').classList.add('show');
+  document.querySelectorAll('#indStepList .step-item').forEach(el=>el.classList.add('done'));
+}
 
-  // GA event
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'generate_lead', { event_category: 'contact_form', event_label: payload.goal, value: 1 });
+// ── PROFESSIONAL FLOW ──────────────────────────────────────────
+let proStep = 0;
+function proNext(from){
+  if(from===0){
+    const fn=document.getElementById('p-firstName'),ln=document.getElementById('p-lastName');
+    const em=document.getElementById('p-email'),wa=document.getElementById('p-whatsapp');
+    const ct=document.getElementById('p-country');
+    let ok=true;
+    if(!fn.value.trim()){markErr(fn);showErr('err-p-firstName',true);ok=false;}else{clearFld(fn);clearErr('err-p-firstName');}
+    if(!ln.value.trim()){markErr(ln);showErr('err-p-lastName',true);ok=false;}else{clearFld(ln);clearErr('err-p-lastName');}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){markErr(em);showErr('err-p-email',true);ok=false;}else{clearFld(em);clearErr('err-p-email');}
+    if(!wa.value.trim()){markErr(wa);showErr('err-p-whatsapp',true);ok=false;}else{clearFld(wa);clearErr('err-p-whatsapp');}
+    if(!ct.value){markErr(ct);showErr('err-p-country',true);ok=false;}else{clearFld(ct);clearErr('err-p-country');}
+    if(!ok)return;
+    setStep('pro',0,1,'proStepList'); proStep=1;
+  } else if(from===1){
+    const type=document.querySelector('input[name="p-type"]:checked');
+    const yrs=document.getElementById('p-years');
+    let ok=true;
+    if(!type){showErr('err-p-type',true);ok=false;}else{clearErr('err-p-type');}
+    if(!yrs.value){markErr(yrs);showErr('err-p-years',true);ok=false;}else{clearFld(yrs);clearErr('err-p-years');}
+    if(!ok)return;
+    setStep('pro',1,2,'proStepList'); proStep=2;
+  } else if(from===2){
+    const clients=document.getElementById('p-clients');
+    const cp=document.getElementById('p-clientprofile');
+    let ok=true;
+    if(!clients.value){markErr(clients);showErr('err-p-clients',true);ok=false;}else{clearFld(clients);clearErr('err-p-clients');}
+    if(!cp.value.trim()){markErr(cp);showErr('err-p-clientprofile',true);ok=false;}else{clearFld(cp);clearErr('err-p-clientprofile');}
+    if(!ok)return;
+    setStep('pro',2,3,'proStepList'); proStep=3;
   }
+}
+function proPrev(from){ setStep('pro',from,from-1,'proStepList'); proStep=from-1; }
 
-  // Try FormSubmit (no backend needed) — replace with your own endpoint if desired
-  try {
-    const res = await fetch('https://formsubmit.co/ajax/hola@biogradix.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        _subject: `Nueva consulta biogradix — ${payload.goal} (${payload.firstName} ${payload.lastName})`,
-        _template: 'table',
-        _captcha: 'false',
-        nombre: `${payload.firstName} ${payload.lastName}`,
-        email: payload.email,
-        telefono: payload.phone || '—',
-        objetivo: payload.goal,
-        como_nos_encontro: payload.heard || '—',
-        mensaje: payload.message || '—',
-        idioma: lang,
-        timestamp: payload.timestamp,
-      })
-    });
-    // Show success regardless of response (avoids CORS issues on first submission)
-  } catch(err) {
-    // Still show success — FormSubmit may work even with fetch errors on first use
-    console.warn('Form submit note:', err);
-  }
+function selectVolume(el, val){
+  document.querySelectorAll('.vol-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('p-volume').value=val;
+}
 
-  btn.classList.remove('loading'); btn.disabled = false;
-  document.getElementById('formView').style.display = 'none';
-  document.getElementById('successView').classList.add('show');
-  document.getElementById('progressFill').style.width = '100%';
-});
+async function submitPro(){
+  const products=[...document.querySelectorAll('input[name="p-products"]:checked')].map(c=>c.value);
+  const vol=document.getElementById('p-volume').value;
+  const consent=document.getElementById('p-consent');
+  let ok=true;
+  if(products.length===0){showErr('err-p-products',true);ok=false;}else{clearErr('err-p-products');}
+  if(!vol){showErr('err-p-volume',true);ok=false;}else{clearErr('err-p-volume');}
+  if(!consent.checked){showErr('err-p-consent',true);ok=false;}else{clearErr('err-p-consent');}
+  if(!ok)return;
+  const btn=document.getElementById('proSubmitBtn');
+  btn.classList.add('loading'); btn.disabled=true;
+  const proType=document.querySelector('input[name="p-type"]:checked')?.value||'—';
+  const payload={
+    _subject:`Nueva solicitud PROFESIONAL biogradix — ${proType} — ${document.getElementById('p-firstName').value} ${document.getElementById('p-lastName').value}`,
+    _template:'table', _captcha:'false',
+    tipo:'profesional',
+    nombre:`${document.getElementById('p-firstName').value} ${document.getElementById('p-lastName').value}`,
+    email:document.getElementById('p-email').value,
+    whatsapp:document.getElementById('p-whatsapp').value,
+    pais:document.getElementById('p-country').value,
+    ciudad:document.getElementById('p-city').value||'—',
+    tipo_profesional:proType,
+    especialidad:document.getElementById('p-specialty').value||'—',
+    credenciales:document.getElementById('p-credentials').value||'—',
+    anos_experiencia:document.getElementById('p-years').value||'—',
+    nombre_negocio:document.getElementById('p-bizname').value||'—',
+    sitio_web:document.getElementById('p-bizweb').value||'—',
+    clientes_por_mes:document.getElementById('p-clients').value||'—',
+    perfil_clientes:document.getElementById('p-clientprofile').value||'—',
+    canal_mercado:document.getElementById('p-market').value||'—',
+    productos_actuales:document.getElementById('p-current-products').value||'—',
+    productos_interes:products.join(', '),
+    volumen_mensual_estimado:vol,
+    tipo_colaboracion:document.getElementById('p-collaboration').value||'—',
+    como_conocio:document.getElementById('p-heard').value||'—',
+    notas:document.getElementById('p-notes').value||'—',
+    timestamp:new Date().toISOString(),
+  };
+  if(typeof gtag!=='undefined') gtag('event','generate_lead',{event_category:'contact_form',event_label:'professional_'+proType,value:10});
+  try{ await fetch('https://formsubmit.co/ajax/hola@biogradix.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
+  btn.classList.remove('loading'); btn.disabled=false;
+  document.getElementById('pro-panel-3').style.display='none';
+  document.getElementById('proSuccess').classList.add('show');
+  document.querySelectorAll('#proStepList .step-item').forEach(el=>el.classList.add('done'));
+}
 
-// === HELIX CANVAS (hero bg) ===
-(function() {
-  const canvas = document.getElementById('heroCanvas');
-  const ctx = canvas.getContext('2d');
-  let phase = 0, raf;
-  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const cx = canvas.width / 2, h = canvas.height, amp = 60, freq = 0.018;
-    for (let y = 0; y < h; y += 2) {
-      const x1 = cx + amp * Math.sin(freq * y + phase);
-      const x2 = cx - amp * Math.sin(freq * y + phase);
-      const depth = (Math.sin(freq * y + phase) + 1) / 2;
-      ctx.beginPath(); ctx.arc(x1, y, 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(29,158,117,${0.3 + depth * 0.5})`; ctx.fill();
-      ctx.beginPath(); ctx.arc(x2, y, 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(29,158,117,${0.3 + (1-depth) * 0.5})`; ctx.fill();
-      if (y % 18 < 2) {
-        ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y);
-        ctx.strokeStyle = `rgba(29,158,117,${0.15 + depth * 0.25})`; ctx.lineWidth = 1; ctx.stroke();
-      }
+// ── NAV / SCROLL / REVEAL ──────────────────────────────────────
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('up');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('mobileMenu').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open');});
+
+// ── HELIX CANVAS ───────────────────────────────────────────────
+(function(){
+  const c=document.getElementById('heroCanvas'),ctx=c.getContext('2d');
+  let phase=0;
+  function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    const cx=c.width/2,h=c.height,amp=55,freq=0.018;
+    for(let y=0;y<h;y+=2){
+      const x1=cx+amp*Math.sin(freq*y+phase),x2=cx-amp*Math.sin(freq*y+phase);
+      const d=(Math.sin(freq*y+phase)+1)/2;
+      ctx.beginPath();ctx.arc(x1,y,2.2,0,Math.PI*2);ctx.fillStyle=`rgba(29,158,117,${.3+d*.5})`;ctx.fill();
+      ctx.beginPath();ctx.arc(x2,y,2.2,0,Math.PI*2);ctx.fillStyle=`rgba(29,158,117,${.3+(1-d)*.5})`;ctx.fill();
+      if(y%18<2){ctx.beginPath();ctx.moveTo(x1,y);ctx.lineTo(x2,y);ctx.strokeStyle=`rgba(29,158,117,${.12+d*.2})`;ctx.lineWidth=1;ctx.stroke();}
     }
-    phase += 0.008; raf = requestAnimationFrame(draw);
+    phase+=0.008;requestAnimationFrame(draw);
   }
-  resize(); window.addEventListener('resize', resize); draw();
+  resize();window.addEventListener('resize',resize);draw();
 })();
 </script>
 </body>
