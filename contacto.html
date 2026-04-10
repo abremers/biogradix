@@ -1076,7 +1076,7 @@ async function submitIndividual(){
     timestamp:new Date().toISOString(),
   };
   if(typeof gtag!=='undefined') gtag('event','generate_lead',{event_category:'contact_form',event_label:'individual_'+goal.value,value:1});
-  try{ await fetch('https://formsubmit.co/ajax/hola@biogradix.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
+  try{ await fetch('https://formsubmit.co/ajax/62b0be7c064e4174cdce809200a27c5c',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
   btn.classList.remove('loading'); btn.disabled=false;
   document.getElementById('ind-panel-1').style.display='none';
   document.getElementById('indSuccess').classList.add('show');
@@ -1163,7 +1163,7 @@ async function submitPro(){
     timestamp:new Date().toISOString(),
   };
   if(typeof gtag!=='undefined') gtag('event','generate_lead',{event_category:'contact_form',event_label:'professional_'+proType,value:10});
-  try{ await fetch('https://formsubmit.co/ajax/hola@biogradix.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
+  try{ await fetch('https://formsubmit.co/ajax/62b0be7c064e4174cdce809200a27c5c',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}); }catch(e){}
   btn.classList.remove('loading'); btn.disabled=false;
   document.getElementById('pro-panel-3').style.display='none';
   document.getElementById('proSuccess').classList.add('show');
