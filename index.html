@@ -242,16 +242,49 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .faq-a-inner{padding-top:16px;}
 .faq-item.open .faq-a{max-height:300px;}
 
+/* ── PROFESSIONAL BANNER ── */
+.pro-banner{padding:64px 0;background:var(--navy);position:relative;overflow:hidden;}
+.pro-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 90% 50%,rgba(15,110,86,.18),transparent);}
+.pro-banner-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
+.pro-banner-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(29,158,117,.15);border:1px solid rgba(29,158,117,.3);border-radius:20px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-active);margin-bottom:14px;}
+.pro-banner-pill svg{flex-shrink:0;}
+.pro-banner-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:28px;letter-spacing:-.4px;color:#fff;margin-bottom:10px;line-height:1.15;}
+.pro-banner-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.pro-banner-sub{font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;max-width:460px;}
+.pro-banner-perks{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+.pro-perk{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.pro-perk svg{flex-shrink:0;color:var(--teal-active);}
+.pro-banner-cta{display:flex;flex-direction:column;align-items:center;gap:12px;flex-shrink:0;}
+.btn-pro{display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;border-radius:10px;padding:15px 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-pro:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,110,86,.35);}
+.pro-banner-note{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,.3);text-align:center;}
+@media(max-width:768px){.pro-banner-inner{grid-template-columns:1fr;}.pro-banner-cta{align-items:flex-start;}}
+
 /* ── CTA SECTION ── */
-.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
-.cta-helix{position:absolute;inset:0;opacity:.05;pointer-events:none;}
-.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
-.cta-inner .label{color:var(--teal-active);}
-.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
-.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
-.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
+.cta-section{padding:80px 0;background:var(--cloud);position:relative;overflow:hidden;}
+.cta-helix{position:absolute;inset:0;opacity:.04;pointer-events:none;}
+.cta-split{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.cta-card{border-radius:20px;padding:40px 36px;}
+.cta-card-individual{background:var(--navy);}
+.cta-card-pro{background:var(--teal);position:relative;overflow:hidden;}
+.cta-card-pro::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.06);}
+.cta-card .label{display:block;margin-bottom:14px;}
+.cta-card-individual .label{color:var(--teal-active);}
+.cta-card-pro .label{color:rgba(255,255,255,.6);}
+.cta-h2{font-weight:500;font-size:26px;letter-spacing:-.4px;line-height:1.2;margin-bottom:12px;}
+.cta-card-individual .cta-h2{color:#fff;}
+.cta-card-pro .cta-h2{color:#fff;}
+.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.cta-card-individual .cta-h2 em{color:var(--teal-active);}
+.cta-card-pro .cta-h2 em{color:rgba(255,255,255,.75);}
+.cta-body{font-size:14px;line-height:1.7;margin-bottom:28px;}
+.cta-card-individual .cta-body{color:rgba(255,255,255,.5);}
+.cta-card-pro .cta-body{color:rgba(255,255,255,.75);}
+.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:14px 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
 .btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 10px 30px rgba(15,110,86,.4);}
+.btn-cta-outline{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:10px;padding:14px 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;backdrop-filter:blur(4px);transition:background .2s,transform .15s;}
+.btn-cta-outline:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);}
+@media(max-width:700px){.cta-split{grid-template-columns:1fr;}.cta-card{padding:32px 24px;}}
 
 /* ── FOOTER ── */
 .footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
@@ -378,6 +411,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
           <a href="tecnologia.html" class="btn-outline">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <span data-i18n="hero-btn2">Cómo Funciona</span>
+          </a>
+        </div>
+        <div class="reveal reveal-delay-5" style="margin-top:16px;">
+          <a href="contacto.html#pro" style="display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(15,110,86,.25);padding-bottom:2px;transition:border-color .2s;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span data-i18n="hero-pro-link">¿Eres profesional de salud o distribuidor?</span>
           </a>
         </div>
       </div>
@@ -835,6 +874,47 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
   </div>
 </section>
 
+<!-- PROFESSIONAL DISTRIBUTION BANNER -->
+<section class="pro-banner reveal">
+  <div class="container">
+    <div class="pro-banner-inner">
+      <div>
+        <div class="pro-banner-pill">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <span data-i18n="pro-pill">Para Profesionales</span>
+        </div>
+        <h2 class="pro-banner-h2" data-i18n-html="pro-banner-h2">¿Quieres distribuir<br/><em>Biogradix en tu práctica?</em></h2>
+        <p class="pro-banner-sub" data-i18n="pro-banner-sub">Únete a nuestra red de profesionales de salud — médicos, nutricionistas, entrenadores y clínicas — que ofrecen Biogradix a sus pacientes y clientes con márgenes preferenciales y soporte científico completo.</p>
+        <div class="pro-banner-perks">
+          <div class="pro-perk">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="pro-perk1">Precios mayoristas</span>
+          </div>
+          <div class="pro-perk">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="pro-perk2">Material educativo</span>
+          </div>
+          <div class="pro-perk">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="pro-perk3">Soporte científico</span>
+          </div>
+          <div class="pro-perk">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-i18n="pro-perk4">Envío directo a tus clientes</span>
+          </div>
+        </div>
+      </div>
+      <div class="pro-banner-cta">
+        <a href="contacto.html#pro" class="btn-pro">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <span data-i18n="pro-cta-btn">Aplicar como distribuidor</span>
+        </a>
+        <div class="pro-banner-note" data-i18n="pro-banner-note">Respuesta en 24–48 h · Sin compromiso</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials">
   <div class="container">
@@ -1013,23 +1093,28 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 
 <!-- CTA SECTION -->
 <section class="cta-section">
-  <svg class="cta-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
-    <g fill="none" stroke="#0F6E56" stroke-width="1.5">
-      <path d="M0 100 Q60 60,120 100 Q180 140,240 100 Q300 60,360 100 Q420 140,480 100 Q540 60,600 100 Q660 140,720 100 Q780 60,840 100 Q900 140,960 100 Q1020 60,1080 100 Q1140 140,1200 100"/>
-      <path d="M0 150 Q60 190,120 150 Q180 110,240 150 Q300 190,360 150 Q420 110,480 150 Q540 190,600 150 Q660 110,720 150 Q780 190,840 150 Q900 110,960 150 Q1020 190,1080 150 Q1140 110,1200 150"/>
-      <path d="M0 250 Q60 210,120 250 Q180 290,240 250 Q300 210,360 250 Q420 290,480 250 Q540 210,600 250 Q660 290,720 250 Q780 210,840 250 Q900 290,960 250 Q1020 210,1080 250 Q1140 290,1200 250"/>
-      <path d="M0 300 Q60 340,120 300 Q180 260,240 300 Q300 340,360 300 Q420 260,480 300 Q540 340,600 300 Q660 260,720 300 Q780 340,840 300 Q900 260,960 300 Q1020 340,1080 300 Q1140 260,1200 300"/>
-    </g>
-  </svg>
   <div class="container">
-    <div class="cta-inner reveal">
-      <span class="label" style="color:var(--teal-active);" data-i18n="cta-label">¿Listo para empezar?</span>
-      <h2 class="cta-h2" data-i18n-html="cta-h2">Consulta gratuita<br/><em>por WhatsApp</em></h2>
-      <p class="cta-body" data-i18n="cta-body">Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.</p>
-      <a href="https://wa.me/13467189350" class="btn-wa-lg">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        <span data-i18n="cta-btn">Contactar por WhatsApp</span>
-      </a>
+    <div class="cta-split reveal">
+      <!-- Individual card -->
+      <div class="cta-card cta-card-individual">
+        <span class="label" data-i18n="cta-ind-label">Para personas</span>
+        <h2 class="cta-h2" data-i18n-html="cta-ind-h2">Consulta gratis<br/><em>por WhatsApp</em></h2>
+        <p class="cta-body" data-i18n="cta-ind-body">Te ayudamos a elegir el producto correcto para tus objetivos. Respuesta en menos de 2 horas, sin presión.</p>
+        <a href="https://wa.me/13467189350" class="btn-wa-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          <span data-i18n="cta-ind-btn">Hablar por WhatsApp</span>
+        </a>
+      </div>
+      <!-- Professional card -->
+      <div class="cta-card cta-card-pro">
+        <span class="label" data-i18n="cta-pro-label">Para profesionales</span>
+        <h2 class="cta-h2" data-i18n-html="cta-pro-h2">Distribuye Biogradix<br/><em>en tu práctica</em></h2>
+        <p class="cta-body" data-i18n="cta-pro-body">Médicos, nutricionistas, entrenadores y clínicas con acceso a precios mayoristas, soporte clínico y envío directo a tus clientes.</p>
+        <a href="contacto.html#pro" class="btn-cta-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <span data-i18n="cta-pro-btn">Solicitar programa profesional</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1371,6 +1456,24 @@ const TRANSLATIONS = {
   'faq-a5':           {es:'Los inyectables requieren reconstitución, refrigeración estricta, agujas y técnica aséptica. BiogradixRelease® entrega los mismos bioactivos vía absorción por mucosa oral, con biodisponibilidad 2–3× superior a cápsulas orales, sin ninguna de esas complejidades. Más conveniente, igual de efectivo para la mayoría de aplicaciones.', en:'Injectables require reconstitution, strict refrigeration, needles, and aseptic technique. BiogradixRelease® delivers the same bioactives via oral mucosa absorption, with 2–3× greater bioavailability than oral capsules, without any of that complexity. More convenient, equally effective for most applications.'},
   'faq-q6':           {es:'¿Cómo verifico la autenticidad y pureza de mi lote?', en:'How do I verify the authenticity and purity of my batch?'},
   'faq-a6':           {es:'Cada pedido incluye el número de lote. Puedes solicitar el COA (Certificado de Análisis) completo por WhatsApp o email. El documento incluye resultados HPLC, espectrometría de masas, pruebas de esterilidad y endotoxinas. Transparencia total, sin excepciones.', en:'Every order includes the batch number. You can request the complete COA (Certificate of Analysis) via WhatsApp or email. The document includes HPLC results, mass spectrometry, sterility and endotoxin tests. Full transparency, no exceptions.'},
+  'hero-pro-link':    {es:'¿Eres profesional de salud o distribuidor?', en:'Are you a health professional or distributor?'},
+  'pro-pill':         {es:'Para Profesionales', en:'For Professionals'},
+  'pro-banner-h2':    {es:'¿Quieres distribuir<br/><em>Biogradix en tu práctica?</em>', en:'Want to distribute<br/><em>Biogradix in your practice?</em>'},
+  'pro-banner-sub':   {es:'Únete a nuestra red de profesionales de salud — médicos, nutricionistas, entrenadores y clínicas — que ofrecen Biogradix a sus pacientes y clientes con márgenes preferenciales y soporte científico completo.', en:'Join our network of health professionals — doctors, nutritionists, trainers and clinics — offering Biogradix to their patients and clients with preferential margins and full scientific support.'},
+  'pro-perk1':        {es:'Precios mayoristas', en:'Wholesale pricing'},
+  'pro-perk2':        {es:'Material educativo', en:'Educational materials'},
+  'pro-perk3':        {es:'Soporte científico', en:'Scientific support'},
+  'pro-perk4':        {es:'Envío directo a tus clientes', en:'Direct shipping to your clients'},
+  'pro-cta-btn':      {es:'Aplicar como distribuidor', en:'Apply as distributor'},
+  'pro-banner-note':  {es:'Respuesta en 24–48 h · Sin compromiso', en:'Response in 24–48 h · No commitment'},
+  'cta-ind-label':    {es:'Para personas', en:'For individuals'},
+  'cta-ind-h2':       {es:'Consulta gratis<br/><em>por WhatsApp</em>', en:'Free consultation<br/><em>via WhatsApp</em>'},
+  'cta-ind-body':     {es:'Te ayudamos a elegir el producto correcto para tus objetivos. Respuesta en menos de 2 horas, sin presión.', en:'We help you find the right product for your goals. Response in under 2 hours, no pressure.'},
+  'cta-ind-btn':      {es:'Hablar por WhatsApp', en:'Chat on WhatsApp'},
+  'cta-pro-label':    {es:'Para profesionales', en:'For professionals'},
+  'cta-pro-h2':       {es:'Distribuye Biogradix<br/><em>en tu práctica</em>', en:'Distribute Biogradix<br/><em>in your practice</em>'},
+  'cta-pro-body':     {es:'Médicos, nutricionistas, entrenadores y clínicas con acceso a precios mayoristas, soporte clínico y envío directo a tus clientes.', en:'Doctors, nutritionists, trainers and clinics with access to wholesale pricing, clinical support and direct shipping to your clients.'},
+  'cta-pro-btn':      {es:'Solicitar programa profesional', en:'Request professional program'},
   'cta-label':        {es:'¿Listo para empezar?', en:'Ready to start?'},
   'cta-h2':           {es:'Consulta gratuita<br/><em>por WhatsApp</em>', en:'Free consultation<br/><em>via WhatsApp</em>'},
   'cta-body':         {es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.', en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},

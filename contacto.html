@@ -999,6 +999,10 @@ function setLang(lang){
   document.querySelectorAll('.lang-btn').forEach(b=>{if(b.textContent.toLowerCase()===lang)b.classList.add('active');});
 }
 setLang(localStorage.getItem('lang')||'es');
+// Auto-select pro path if #pro hash is present
+if(window.location.hash==='#pro'){
+  setTimeout(()=>choosePath('pro'),200);
+}
 
 // ── PATH SELECTION ─────────────────────────────────────────────
 function choosePath(type){
