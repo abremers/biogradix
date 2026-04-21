@@ -141,6 +141,11 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .cmp-table tbody tr.cmp-highlight td{color:#fff;}
 .cmp-badge{display:inline-block;background:var(--teal-active);color:#fff;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;font-weight:600;}
 @media(max-width:768px){.cmp-table{font-size:12px;}.cmp-table th,.cmp-table td{padding:10px 8px;}}
+.cmp-table tbody tr.cmp-warn{background:rgba(220,60,40,.06);}
+.cmp-table tbody tr.cmp-warn td{color:rgba(255,255,255,.5);}
+.cmp-warn-badge{display:inline-block;background:rgba(220,60,40,.75);color:#fff;font-family:'DM Mono',monospace;font-size:7px;letter-spacing:1px;text-transform:uppercase;padding:3px 6px;border-radius:3px;font-weight:600;vertical-align:middle;margin-left:4px;}
+.cmp-footnote{margin-top:20px;font-size:11.5px;color:rgba(255,255,255,.4);line-height:1.65;padding:0 4px;}
+.cmp-footnote strong{color:rgba(255,210,90,.75);}
 
 /* BIOAVAILABILITY CHART */
 .bio-section{padding:80px 0;background:#fff;}
@@ -475,15 +480,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
             <td>★★★☆☆</td>
           </tr>
           <tr>
-            <td data-i18n="cmp-r2-method">Gotas Sublinguales</td>
-            <td>40–60%</td>
-            <td>15–30 min</td>
-            <td data-i18n="cmp-r2-pain">Ninguno</td>
-            <td data-i18n="cmp-col-no">No</td>
-            <td data-i18n="cmp-col-no">No</td>
-            <td>★★★★☆</td>
-          </tr>
-          <tr>
             <td data-i18n="cmp-r3-method">Parche Transdérmico</td>
             <td>30–50%</td>
             <td>2–4 h</td>
@@ -493,17 +489,26 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
             <td>★★★☆☆</td>
           </tr>
           <tr>
-            <td data-i18n="cmp-r4-method">Inyectable</td>
-            <td>90–95%</td>
+            <td data-i18n="cmp-r4a-method">Inyectable 503A (Farmacia)</td>
+            <td>95–100%</td>
             <td>5–15 min</td>
             <td data-i18n="cmp-r4-pain">Alto</td>
-            <td data-i18n="cmp-col-yes">Sí (algunos)</td>
-            <td data-i18n="cmp-col-yes">Sí (algunos)</td>
+            <td data-i18n="cmp-col-yes">Sí (requerida)</td>
+            <td data-i18n="cmp-col-yes">Sí (requerida)</td>
+            <td>★★☆☆☆</td>
+          </tr>
+          <tr class="cmp-warn">
+            <td><span data-i18n="cmp-r4b-method">Inyectable chino / liofilizado</span> <span class="cmp-warn-badge" data-i18n="cmp-r4b-badge">Riesgo</span></td>
+            <td data-i18n="cmp-r4b-bioav">~0–30% efectivo †</td>
+            <td>5–15 min</td>
+            <td data-i18n="cmp-r4-pain">Alto</td>
+            <td data-i18n="cmp-r4b-cool">Variable / Sin control</td>
+            <td data-i18n="cmp-col-no">No</td>
             <td>★☆☆☆☆</td>
           </tr>
           <tr class="cmp-highlight">
             <td><strong data-i18n="cmp-r5-method">BiogradixRelease®</strong></td>
-            <td><strong>70–90%</strong></td>
+            <td><strong>80–93%</strong></td>
             <td><strong>15–20 min</strong></td>
             <td><strong data-i18n="cmp-r5-pain">Ninguno</strong></td>
             <td><strong data-i18n="cmp-col-no">No</strong></td>
@@ -512,6 +517,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
           </tr>
         </tbody>
       </table>
+      <p class="cmp-footnote reveal" data-i18n-html="cmp-footnote">† <strong>Inyectables chinos / liofilizados sin regulación:</strong> No se fabrican bajo estándares farmacéuticos certificados (USP, NOM). Sin cadena de frío verificada, el glutatión oxidado pierde toda actividad antes de llegar al paciente. La FDA ha documentado casos de síndrome inflamatorio sistémico y endotoxemia asociados a estos productos. Venta sin prescripción médica y sin control de pureza. La biodisponibilidad activa real puede ser cercana a cero.</p>
     </div>
   </div>
 </section>
@@ -893,13 +899,18 @@ const TRANSLATIONS = {
   'use-step3-title':{es:'Déjalo actuar',en:'Let it work'},'use-step3-desc':{es:'Retira cualquier película restante. Los bioactivos ya han sido absorbidos directamente en el torrente sanguíneo.',en:'Remove any remaining film. Bioactives have already been absorbed directly into bloodstream.'},
   'cmp-label':{es:'Comparativa de métodos',en:'Delivery methods'},'cmp-h2':{es:'BiogradixRelease® vs <em>otras vías</em>',en:'BiogradixRelease® vs <em>other routes</em>'},'cmp-sub':{es:'Por qué la absorción por mucosa oral es superior para biodisponibilidad y comodidad.',en:'Why oral mucosa absorption is superior for bioavailability and convenience.'},
   'cmp-col-method':{es:'Método de entrega',en:'Delivery method'},'cmp-col-bioav':{es:'Biodisponibilidad',en:'Bioavailability'},'cmp-col-onset':{es:'Inicio de acción',en:'Onset of action'},'cmp-col-pain':{es:'Dolor/Invasividad',en:'Pain/Invasiveness'},'cmp-col-cool':{es:'Refrigeración',en:'Refrigeration'},'cmp-col-rx':{es:'Prescripción',en:'Prescription'},'cmp-col-conv':{es:'Conveniencia',en:'Convenience'},
-  'cmp-col-no':{es:'No',en:'No'},'cmp-col-yes':{es:'Sí (algunos)',en:'Yes (some)'},
+  'cmp-col-no':{es:'No',en:'No'},'cmp-col-yes':{es:'Sí (requerida)',en:'Yes (required)'},
   'cmp-r1-method':{es:'Pastillas / Cápsulas',en:'Pills / Capsules'},'cmp-r1-pain':{es:'Ninguno',en:'None'},
-  'cmp-r2-method':{es:'Gotas Sublinguales',en:'Sublingual Drops'},'cmp-r2-pain':{es:'Ninguno',en:'None'},
   'cmp-r3-method':{es:'Parche Transdérmico',en:'Transdermal Patch'},'cmp-r3-pain':{es:'Ninguno',en:'None'},
-  'cmp-r4-method':{es:'Inyectable',en:'Injectable'},'cmp-r4-pain':{es:'Alto',en:'High'},
+  'cmp-r4-pain':{es:'Alto',en:'High'},
+  'cmp-r4a-method':{es:'Inyectable 503A (Farmacia)',en:'503A Injectable (Pharmacy)'},
+  'cmp-r4b-method':{es:'Inyectable chino / liofilizado',en:'Chinese lyophilized injectable'},
+  'cmp-r4b-badge':{es:'Riesgo',en:'Risk'},
+  'cmp-r4b-bioav':{es:'~0–30% efectivo †',en:'~0–30% effective †'},
+  'cmp-r4b-cool':{es:'Variable / Sin control',en:'Variable / Uncontrolled'},
   'cmp-r5-method':{es:'BiogradixRelease®',en:'BiogradixRelease®'},'cmp-r5-pain':{es:'Ninguno',en:'None'},
   'cmp-badge-rec':{es:'Recomendado',en:'Recommended'},
+  'cmp-footnote':{es:'† <strong>Inyectables chinos / liofilizados sin regulación:</strong> No se fabrican bajo estándares farmacéuticos certificados (USP, NOM). Sin cadena de frío verificada, el glutatión oxidado pierde toda actividad antes de llegar al paciente. La FDA ha documentado casos de síndrome inflamatorio sistémico y endotoxemia asociados a estos productos. Venta sin prescripción médica y sin control de pureza. La biodisponibilidad activa real puede ser cercana a cero.',en:'† <strong>Chinese / unregulated lyophilized injectables:</strong> Not manufactured under certified pharmaceutical standards (USP, NOM). Without a verified cold chain, oxidized glutathione loses all activity before reaching the patient. The FDA has documented cases of systemic inflammatory response syndrome and endotoxemia linked to these products. Sold without a medical prescription and without purity controls. Real active bioavailability can approach zero.'},
   'bio-label':{es:'Comparativa',en:'Comparison'},
   'bio-h2':{es:'Biodisponibilidad <em>comparada</em>',en:'Compared <em>bioavailability</em>'},
   'bio-r1-name':{es:'Pastillas / Cápsulas Orales',en:'Pills / Oral Capsules'},
