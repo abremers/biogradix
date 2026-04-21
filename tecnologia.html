@@ -119,15 +119,28 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
   .sol-diagram img{max-width:100%;}
 }
 
-/* HOW IT WORKS */
-.how-section{padding:80px 0;background:var(--mint);}
-.steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
-.steps-grid::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--mint),var(--teal),var(--mint));}
-.step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
-.step-dot{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--teal);}
-.step-label{font-weight:500;font-size:13px;color:var(--navy);margin-bottom:6px;}
-.step-desc{font-size:12px;color:var(--text-2);line-height:1.5;}
-@media(max-width:768px){.steps-grid{grid-template-columns:1fr 1fr;gap:24px;}.steps-grid::before{display:none;}}
+/* HOW TO USE SECTION */
+.use-section{padding:80px 0;background:#fff;}
+.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+@media(max-width:900px){.use-grid{grid-template-columns:1fr;}}
+.use-card{background:var(--cloud);border:1px solid var(--silver);border-radius:16px;padding:36px 28px;text-align:center;}
+.use-card-icon{width:64px;height:64px;border-radius:50%;background:rgba(15,110,86,.08);border:1px solid rgba(15,110,86,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+.use-card-number{font-family:'DM Mono',monospace;font-size:32px;font-weight:500;color:var(--teal);margin-bottom:12px;}
+.use-card-title{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:8px;}
+.use-card-desc{font-size:13px;color:var(--text-2);line-height:1.6;}
+
+/* DELIVERY COMPARISON TABLE */
+.cmp-section{padding:80px 0;background:var(--navy);overflow-x:auto;}
+.cmp-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.cmp-table{width:100%;border-collapse:collapse;min-width:900px;}
+.cmp-table thead{background:var(--navy);border-bottom:2px solid var(--teal);}
+.cmp-table th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-active);padding:16px 12px;text-align:left;font-weight:600;}
+.cmp-table td{padding:14px 12px;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-size:13px;}
+.cmp-table tbody tr:hover{background:rgba(15,110,86,.05);}
+.cmp-table tbody tr.cmp-highlight{background:rgba(15,110,86,.12);border:1px solid var(--teal-active);}
+.cmp-table tbody tr.cmp-highlight td{color:#fff;}
+.cmp-badge{display:inline-block;background:var(--teal-active);color:#fff;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 8px;border-radius:4px;font-weight:600;}
+@media(max-width:768px){.cmp-table{font-size:12px;}.cmp-table th,.cmp-table td{padding:10px 8px;}}
 
 /* BIOAVAILABILITY CHART */
 .bio-section{padding:80px 0;background:#fff;}
@@ -136,14 +149,34 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .bar-name{font-size:13px;color:var(--text-1);font-weight:500;width:220px;flex-shrink:0;line-height:1.3;}
 .bar-track{flex:1;height:56px;background:var(--cloud);border-radius:8px;overflow:hidden;position:relative;}
 .bar-fill{height:100%;border-radius:8px;display:flex;align-items:center;padding-right:12px;justify-content:flex-end;position:relative;transition:width 1s ease;}
-.bar-fill-oral{background:var(--silver);width:30%;}
-.bar-fill-bio{background:linear-gradient(90deg,var(--teal),var(--teal-active));width:80%;}
-.bar-fill-inject{background:var(--navy);width:90%;}
+.bar-fill-oral{background:var(--silver);width:0%;}
+.bar-fill-bio{background:linear-gradient(90deg,var(--teal),var(--teal-active));width:0%;}
+.bar-fill-inject{background:var(--navy);width:0%;}
 .bar-pct{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:#fff;}
 .bar-pct-oral{color:var(--text-2);}
 .bar-badge{position:absolute;right:-1px;top:50%;transform:translateY(-50%);background:var(--gold);color:#fff;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:0 8px 8px 0;}
 .bio-note{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);line-height:1.6;letter-spacing:.5px;}
 @media(max-width:600px){.bar-name{width:120px;font-size:11px;}.bar-row{gap:10px;}}
+
+/* ONSET TIMELINE */
+.timeline-section{padding:80px 0;background:var(--mint);}
+.timeline-container{position:relative;display:flex;justify-content:space-between;gap:24px;align-items:flex-start;}
+.timeline-container::before{content:'';position:absolute;top:36px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),rgba(15,110,86,.3));z-index:0;}
+.timeline-item{flex:1;position:relative;z-index:1;text-align:center;}
+.timeline-dot{width:72px;height:72px;border-radius:50%;background:#fff;border:3px solid var(--teal);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;z-index:2;}
+.timeline-dot-num{font-family:'DM Mono',monospace;font-size:14px;font-weight:600;color:var(--teal);}
+.timeline-title{font-weight:600;font-size:15px;color:var(--navy);margin-bottom:8px;}
+.timeline-desc{font-size:13px;color:var(--text-2);line-height:1.5;}
+@media(max-width:900px){.timeline-container{flex-direction:column;}.timeline-container::before{display:none;}. timeline-item{text-align:left;padding-left:100px;}.timeline-dot{position:absolute;left:0;top:0;}}
+
+/* INGREDIENT BENEFITS */
+.ingr-section{padding:80px 0;background:#fff;}
+.ingr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
+@media(max-width:900px){.ingr-grid{grid-template-columns:1fr;}}
+.ingr-card{background:var(--cloud);border:1px solid var(--silver);border-radius:16px;padding:36px 28px;}
+.ingr-card-icon{width:56px;height:56px;border-radius:50%;background:rgba(15,110,86,.12);border:1px solid rgba(15,110,86,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.ingr-card-title{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:12px;}
+.ingr-card-desc{font-size:13px;color:var(--text-2);line-height:1.6;text-align:left;}
 
 /* QUALITY STANDARDS */
 .quality-section{padding:80px 0;background:var(--navy);}
@@ -165,6 +198,8 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .ref-card:hover{box-shadow:0 8px 32px rgba(11,26,43,.08);transform:translateY(-2px);}
 .ref-journal-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--mint);color:var(--teal);border-radius:4px;padding:3px 10px;display:inline-block;margin-bottom:12px;}
 .ref-title{font-weight:500;font-size:14px;color:var(--navy);line-height:1.4;margin-bottom:8px;}
+.ref-title a{color:var(--teal);text-decoration:none;transition:color .2s;}
+.ref-title a:hover{color:var(--teal-deep);}
 .ref-authors{font-size:12px;color:var(--text-2);font-style:italic;margin-bottom:4px;}
 .ref-journal{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);}
 
@@ -371,40 +406,112 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how-section">
+<!-- HOW TO USE -->
+<section class="use-section">
   <div class="container">
     <div class="section-header reveal">
-      <span class="label" data-i18n="how-label">BiogradixRelease®</span>
-      <h2 class="section-h2" data-i18n-html="how-h2">Cómo <em>funciona</em></h2>
-      <p class="section-sub" data-i18n="how-sub">Absorción por mucosa oral directa para biodisponibilidad máxima. Sin pérdidas por metabolismo hepático.</p>
+      <span class="label" data-i18n="use-label">Uso simple</span>
+      <h2 class="section-h2" data-i18n-html="use-h2">Cómo <em>usarlo</em></h2>
+      <p class="section-sub" data-i18n="use-sub">Tres pasos simples para máxima absorción. Ninguna técnica especial requerida.</p>
     </div>
-    <div class="steps-grid">
-      <div class="step-item reveal">
-        <div class="step-dot">1</div>
-        <div class="step-label" data-i18n="step1-label">Aplicación</div>
-        <div class="step-desc" data-i18n="step1-desc">Coloca el suplemento contra la mejilla interna o encía superior</div>
+    <div class="use-grid">
+      <div class="use-card reveal">
+        <div class="use-card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 00-2 2v12a2 2 0 002 2h4M15 3h4a2 2 0 012 2v12a2 2 0 01-2 2h-4"/><path d="M12 8v.01M12 16v.01"/></svg>
+        </div>
+        <div class="use-card-number">1</div>
+        <div class="use-card-title" data-i18n="use-step1-title">Abre y retira</div>
+        <div class="use-card-desc" data-i18n="use-step1-desc">Retira el parche de su bolsa individual. No toques el lado adhesivo.</div>
       </div>
-      <div class="step-item reveal reveal-delay-1">
-        <div class="step-dot">2</div>
-        <div class="step-label" data-i18n="step2-label">Absorción</div>
-        <div class="step-desc" data-i18n="step2-desc">La mucosa bucal absorbe los bioactivos de inmediato</div>
+      <div class="use-card reveal reveal-delay-1">
+        <div class="use-card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5M5 9c0-1.66 1.34-3 3-3s3 1.34 3 3H5z"/><path d="M12 2a10 10 0 110 20 10 10 0 010-20z"/></svg>
+        </div>
+        <div class="use-card-number">2</div>
+        <div class="use-card-title" data-i18n="use-step2-title">Coloca el parche</div>
+        <div class="use-card-desc" data-i18n="use-step2-desc">Presiona suavemente contra la mejilla interna o encía superior durante 15-20 minutos mientras se disuelve.</div>
       </div>
-      <div class="step-item reveal reveal-delay-2">
-        <div class="step-dot">3</div>
-        <div class="step-label" data-i18n="step3-label">Entrada directa</div>
-        <div class="step-desc" data-i18n="step3-desc">Ingredientes entran al torrente sanguíneo en minutos</div>
+      <div class="use-card reveal reveal-delay-2">
+        <div class="use-card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m-9 6a9 9 0 1118 0 9 9 0 01-18 0z"/></svg>
+        </div>
+        <div class="use-card-number">3</div>
+        <div class="use-card-title" data-i18n="use-step3-title">Déjalo actuar</div>
+        <div class="use-card-desc" data-i18n="use-step3-desc">Retira cualquier película restante. Los bioactivos ya han sido absorbidos directamente en el torrente sanguíneo.</div>
       </div>
-      <div class="step-item reveal reveal-delay-3">
-        <div class="step-dot">4</div>
-        <div class="step-label" data-i18n="step4-label">Sin hígado</div>
-        <div class="step-desc" data-i18n="step4-desc">Se evita el metabolismo de primer paso hepático</div>
-      </div>
-      <div class="step-item reveal reveal-delay-4">
-        <div class="step-dot">5</div>
-        <div class="step-label" data-i18n="step5-label">Biodisponibilidad total</div>
-        <div class="step-desc" data-i18n="step5-desc">2–3× más efectivo que cápsulas orales convencionales</div>
-      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY COMPARISON TABLE -->
+<section class="cmp-section">
+  <div class="container">
+    <div class="section-header reveal" style="margin-bottom:48px;">
+      <span class="label" style="color:var(--teal-active);" data-i18n="cmp-label">Comparativa de métodos</span>
+      <h2 class="section-h2" style="color:#fff;" data-i18n-html="cmp-h2">BiogradixRelease® vs <em>otras vías</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.5);" data-i18n="cmp-sub">Por qué la absorción por mucosa oral es superior para biodisponibilidad y comodidad.</p>
+    </div>
+    <div class="cmp-table-wrap reveal">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th data-i18n="cmp-col-method">Método de entrega</th>
+            <th data-i18n="cmp-col-bioav">Biodisponibilidad</th>
+            <th data-i18n="cmp-col-onset">Inicio de acción</th>
+            <th data-i18n="cmp-col-pain">Dolor/Invasividad</th>
+            <th data-i18n="cmp-col-cool">Refrigeración</th>
+            <th data-i18n="cmp-col-rx">Prescripción</th>
+            <th data-i18n="cmp-col-conv">Conveniencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-i18n="cmp-r1-method">Pastillas / Cápsulas</td>
+            <td>20–40%</td>
+            <td>45–90 min</td>
+            <td data-i18n="cmp-r1-pain">Ninguno</td>
+            <td data-i18n="cmp-col-no">No</td>
+            <td data-i18n="cmp-col-no">No</td>
+            <td>★★★☆☆</td>
+          </tr>
+          <tr>
+            <td data-i18n="cmp-r2-method">Gotas Sublinguales</td>
+            <td>40–60%</td>
+            <td>15–30 min</td>
+            <td data-i18n="cmp-r2-pain">Ninguno</td>
+            <td data-i18n="cmp-col-no">No</td>
+            <td data-i18n="cmp-col-no">No</td>
+            <td>★★★★☆</td>
+          </tr>
+          <tr>
+            <td data-i18n="cmp-r3-method">Parche Transdérmico</td>
+            <td>30–50%</td>
+            <td>2–4 h</td>
+            <td data-i18n="cmp-r3-pain">Ninguno</td>
+            <td data-i18n="cmp-col-no">No</td>
+            <td data-i18n="cmp-col-no">No</td>
+            <td>★★★☆☆</td>
+          </tr>
+          <tr>
+            <td data-i18n="cmp-r4-method">Inyectable</td>
+            <td>90–95%</td>
+            <td>5–15 min</td>
+            <td data-i18n="cmp-r4-pain">Alto</td>
+            <td data-i18n="cmp-col-yes">Sí (algunos)</td>
+            <td data-i18n="cmp-col-yes">Sí (algunos)</td>
+            <td>★☆☆☆☆</td>
+          </tr>
+          <tr class="cmp-highlight">
+            <td><strong data-i18n="cmp-r5-method">BiogradixRelease®</strong></td>
+            <td><strong>70–90%</strong></td>
+            <td><strong>15–20 min</strong></td>
+            <td><strong data-i18n="cmp-r5-pain">Ninguno</strong></td>
+            <td><strong data-i18n="cmp-col-no">No</strong></td>
+            <td><strong data-i18n="cmp-col-no">No</strong></td>
+            <td><strong>★★★★★</strong> <span class="cmp-badge" data-i18n="cmp-badge-rec">Recomendado</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -444,6 +551,88 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
       </div>
     </div>
     <p class="bio-note reveal" data-i18n="bio-note">* Los valores representan rangos de biodisponibilidad promedio basados en literatura científica publicada. Los resultados individuales pueden variar. BiogradixRelease® combina la comodidad de la administración oral con una biodisponibilidad próxima a la administración inyectable.</p>
+  </div>
+</section>
+
+<!-- ONSET TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="timeline-label">Evolución temporal</span>
+      <h2 class="section-h2" data-i18n-html="timeline-h2">Línea de tiempo de <em>resultados</em></h2>
+      <p class="section-sub" data-i18n="timeline-sub">Qué esperar: desde los primeros minutos hasta la optimización completa.</p>
+    </div>
+    <div class="timeline-container reveal">
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <div class="timeline-dot-num">0–20m</div>
+        </div>
+        <div class="timeline-title" data-i18n="timeline-t1-title">Minutos 15–20</div>
+        <div class="timeline-desc" data-i18n="timeline-t1-desc">El parche se disuelve. Los bioactivos ya están en el torrente sanguíneo.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <div class="timeline-dot-num">1–3d</div>
+        </div>
+        <div class="timeline-title" data-i18n="timeline-t2-title">Días 1–3</div>
+        <div class="timeline-desc" data-i18n="timeline-t2-desc">Fase de adaptación. Tus células comienzan a saturarse con los compuestos activos.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <div class="timeline-dot-num">1–2w</div>
+        </div>
+        <div class="timeline-title" data-i18n="timeline-t3-title">Semanas 1–2</div>
+        <div class="timeline-desc" data-i18n="timeline-t3-desc">Primeros efectos notables: más energía, mejor recuperación, mayor claridad mental.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">
+          <div class="timeline-dot-num">4–8w</div>
+        </div>
+        <div class="timeline-title" data-i18n="timeline-t4-title">Semanas 4–8</div>
+        <div class="timeline-desc" data-i18n="timeline-t4-desc">Resultados plenos y sostenidos. Optimización celular completa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENT BENEFITS -->
+<section class="ingr-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label" data-i18n="ingr-label">Cómo actúan los ingredientes</span>
+      <h2 class="section-h2" data-i18n-html="ingr-h2">Beneficios por <em>ingrediente</em></h2>
+      <p class="section-sub" data-i18n="ingr-sub">La absorción por mucosa oral preserva la potencia de cada bioactivo de una manera que los métodos orales convencionales no pueden lograr.</p>
+    </div>
+    <div class="ingr-grid">
+      <div class="ingr-card reveal">
+        <div class="ingr-card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 10l2 2 4-4"/></svg>
+        </div>
+        <div class="ingr-card-title" data-i18n="ingr-c1-title">Glutatión</div>
+        <div class="ingr-card-desc" data-i18n="ingr-c1-desc">El ácido gástrico destruye hasta el 70% del glutatión libre antes de ser absorbido. La vía bucal preserva la integridad molecular completa, entregando concentraciones terapéuticamente activas al torrente sanguíneo.</div>
+      </div>
+      <div class="ingr-card reveal reveal-delay-1">
+        <div class="ingr-card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="ingr-card-title" data-i18n="ingr-c2-title">NMN / NAD⁺</div>
+        <div class="ingr-card-desc" data-i18n="ingr-c2-desc">Los precursores de NAD⁺ sufren una pérdida del 40–60% en el primer paso hepático. La absorción por mucosa oral maximiza la biodisponibilidad y la velocidad de conversión intracelular.</div>
+      </div>
+      <div class="ingr-card reveal reveal-delay-2">
+        <div class="ingr-card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6m6-6v6m0 0H3v12a2 2 0 002 2h14a2 2 0 002-2V9h-12z"/></svg>
+        </div>
+        <div class="ingr-card-title" data-i18n="ingr-c3-title">Péptidos Bioactivos</div>
+        <div class="ingr-card-desc" data-i18n="ingr-c3-desc">Los péptidos son fragmentados por enzimas pancreáticas e intestinales cuando se administran oralmente. La mucosa bucal los absorbe intactos, preservando su actividad biológica completa.</div>
+      </div>
+      <div class="ingr-card reveal reveal-delay-3">
+        <div class="ingr-card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0110 10v5.5c0 .83-.67 1.5-1.5 1.5S19 18.33 19 17.5V12a7 7 0 10-14 0v5.5c0 .83-.67 1.5-1.5 1.5S2 18.33 2 17.5V12a10 10 0 0110-10z"/></svg>
+        </div>
+        <div class="ingr-card-title" data-i18n="ingr-c4-title">Antioxidantes & Vitaminas</div>
+        <div class="ingr-card-desc" data-i18n="ingr-c4-desc">Compuestos liposolubles como la CoQ10 requieren emulsificación. La absorción bucal directa evita la variabilidad de la absorción intestinal dependiente de grasas.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -502,28 +691,28 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
     </div>
     <div class="refs-grid">
       <div class="ref-card reveal">
-        <span class="ref-journal-tag">J. Pharm. Sci.</span>
-        <div class="ref-title" data-i18n="ref1-title">Sublingual drug delivery: a review of pharmacokinetic and bioavailability studies.</div>
-        <div class="ref-authors" data-i18n="ref1-auth">Johnson, A.K. et al.</div>
-        <div class="ref-journal">J. Pharm. Sci. 2023; 112(4):1847–1862.</div>
+        <span class="ref-journal-tag">Adv. Drug Deliv. Rev.</span>
+        <div class="ref-title"><a href="https://doi.org/10.1016/j.addr.2011.02.007" target="_blank" rel="noopener" data-i18n="ref1-title">New developments and opportunities in oral mucosal drug delivery for local and systemic disease.</a></div>
+        <div class="ref-authors" data-i18n="ref1-auth">Hearnden V, et al.</div>
+        <div class="ref-journal">Adv Drug Deliv Rev. 2012;64(1):16–28. doi:10.1016/j.addr.2011.02.007</div>
       </div>
       <div class="ref-card reveal reveal-delay-1">
-        <span class="ref-journal-tag">Cell Metab.</span>
-        <div class="ref-title" data-i18n="ref2-title">Nicotinamide mononucleotide administration and NAD+ bioavailability: a randomized crossover trial.</div>
-        <div class="ref-authors" data-i18n="ref2-auth">Chen, L. et al.</div>
-        <div class="ref-journal">Cell Metab. 2024; 35(2):312–328.</div>
+        <span class="ref-journal-tag">Science</span>
+        <div class="ref-title"><a href="https://doi.org/10.1126/science.abe9985" target="_blank" rel="noopener" data-i18n="ref2-title">Nicotinamide mononucleotide increases muscle insulin sensitivity in prediabetic women.</a></div>
+        <div class="ref-authors" data-i18n="ref2-auth">Yoshino M, et al.</div>
+        <div class="ref-journal">Science. 2021;372(6547):1224–1229. doi:10.1126/science.abe9985</div>
       </div>
       <div class="ref-card reveal reveal-delay-2">
-        <span class="ref-journal-tag">Eur. J. Pharm.</span>
-        <div class="ref-title" data-i18n="ref3-title">Enhanced peptide bioavailability via buccal mucosa absorption compared to oral administration.</div>
-        <div class="ref-authors" data-i18n="ref3-auth">Rodriguez, M. et al.</div>
-        <div class="ref-journal">Eur. J. Pharm. 2023; 41(8):2103–2119.</div>
+        <span class="ref-journal-tag">Eur. J. Nutr.</span>
+        <div class="ref-title"><a href="https://doi.org/10.1007/s00394-014-0706-z" target="_blank" rel="noopener" data-i18n="ref3-title">Randomized controlled trial of oral glutathione supplementation on body stores of glutathione.</a></div>
+        <div class="ref-authors" data-i18n="ref3-auth">Richie JP Jr, et al.</div>
+        <div class="ref-journal">Eur J Nutr. 2015;54(2):251–263. doi:10.1007/s00394-014-0706-z</div>
       </div>
       <div class="ref-card reveal reveal-delay-3">
-        <span class="ref-journal-tag">Antioxidants</span>
-        <div class="ref-title" data-i18n="ref4-title">Glutathione sublingual versus oral supplementation: comparative pharmacokinetics.</div>
-        <div class="ref-authors" data-i18n="ref4-auth">Patel, S. et al.</div>
-        <div class="ref-journal">Antioxidants. 2024; 13(1):45.</div>
+        <span class="ref-journal-tag">J. Control. Release</span>
+        <div class="ref-title"><a href="https://doi.org/10.1016/j.jconrel.2006.04.012" target="_blank" rel="noopener" data-i18n="ref4-title">Buccal bioadhesive drug delivery — a promising option for orally less efficient drugs.</a></div>
+        <div class="ref-authors" data-i18n="ref4-auth">Sudhakar Y, Kuotsu K, Bandyopadhyay AK.</div>
+        <div class="ref-journal">J Control Release. 2006;114(1):15–40. doi:10.1016/j.jconrel.2006.04.012</div>
       </div>
     </div>
   </div>
@@ -654,6 +843,23 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   resize(); window.addEventListener('resize',()=>{ctx.resetTransform();resize();}); draw();
 })();
 
+// Animate bioavailability bars on scroll
+(function(){
+  const barChart = document.querySelector('.bar-chart');
+  if(!barChart) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        document.querySelectorAll('.bar-fill-oral').forEach(bar => bar.style.width = '30%');
+        document.querySelectorAll('.bar-fill-bio').forEach(bar => bar.style.width = '80%');
+        document.querySelectorAll('.bar-fill-inject').forEach(bar => bar.style.width = '90%');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  observer.observe(barChart);
+})();
+
 // i18n
 const TRANSLATIONS = {
   'nav-productos':{es:'Productos',en:'Products'},'nav-tecnologia':{es:'Tecnología',en:'Technology'},'nav-educacion':{es:'Educación',en:'Education'},'nav-blog':{es:'Blog',en:'Blog'},'nav-faq':{es:'FAQ',en:'FAQ'},'nav-contacto':{es:'Contacto',en:'Contact'},
@@ -681,14 +887,19 @@ const TRANSLATIONS = {
   'sol-s4':{es:'Sin metabolismo hepático',en:'No hepatic metabolism'},'sol-s4-sub':{es:'El primer paso hepático queda completamente evitado',en:'Hepatic first-pass effect is completely bypassed'},
   'sol-final-label':{es:'Biodisponibilidad',en:'Bioavailability'},
   'sol-final-sub':{es:'vs 20–40% oral convencional',en:'vs 20–40% conventional oral'},
-  'how-label':{es:'BiogradixRelease®',en:'BiogradixRelease®'},
-  'how-h2':{es:'Cómo <em>funciona</em>',en:'How it <em>works</em>'},
-  'how-sub':{es:'Absorción por mucosa oral directa para biodisponibilidad máxima. Sin pérdidas por metabolismo hepático.',en:'Direct oral mucosa absorption for maximum bioavailability. No losses from hepatic metabolism.'},
-  'step1-label':{es:'Aplicación',en:'Application'},'step1-desc':{es:'Coloca el suplemento contra la mejilla interna o encía superior',en:'Place the supplement against the inner cheek or upper gum'},
-  'step2-label':{es:'Absorción',en:'Absorption'},'step2-desc':{es:'La mucosa bucal absorbe los bioactivos de inmediato',en:'The buccal mucosa absorbs bioactives immediately'},
-  'step3-label':{es:'Entrada directa',en:'Direct entry'},'step3-desc':{es:'Ingredientes entran al torrente sanguíneo en minutos',en:'Ingredients enter the bloodstream within minutes'},
-  'step4-label':{es:'Sin hígado',en:'Bypasses liver'},'step4-desc':{es:'Se evita el metabolismo de primer paso hepático',en:'Hepatic first-pass metabolism is bypassed'},
-  'step5-label':{es:'Biodisponibilidad total',en:'Full bioavailability'},'step5-desc':{es:'2–3× más efectivo que cápsulas orales convencionales',en:'2–3× more effective than conventional oral capsules'},
+  'use-label':{es:'Uso simple',en:'Simple use'},'use-h2':{es:'Cómo <em>usarlo</em>',en:'How to <em>use it</em>'},'use-sub':{es:'Tres pasos simples para máxima absorción. Ninguna técnica especial requerida.',en:'Three simple steps for maximum absorption. No special technique required.'},
+  'use-step1-title':{es:'Abre y retira',en:'Open and remove'},'use-step1-desc':{es:'Retira el parche de su bolsa individual. No toques el lado adhesivo.',en:'Remove the patch from its individual pouch. Do not touch the adhesive side.'},
+  'use-step2-title':{es:'Coloca el parche',en:'Apply the patch'},'use-step2-desc':{es:'Presiona suavemente contra la mejilla interna o encía superior durante 15-20 minutos mientras se disuelve.',en:'Press gently against inner cheek or upper gum for 15–20 minutes while it dissolves.'},
+  'use-step3-title':{es:'Déjalo actuar',en:'Let it work'},'use-step3-desc':{es:'Retira cualquier película restante. Los bioactivos ya han sido absorbidos directamente en el torrente sanguíneo.',en:'Remove any remaining film. Bioactives have already been absorbed directly into bloodstream.'},
+  'cmp-label':{es:'Comparativa de métodos',en:'Delivery methods'},'cmp-h2':{es:'BiogradixRelease® vs <em>otras vías</em>',en:'BiogradixRelease® vs <em>other routes</em>'},'cmp-sub':{es:'Por qué la absorción por mucosa oral es superior para biodisponibilidad y comodidad.',en:'Why oral mucosa absorption is superior for bioavailability and convenience.'},
+  'cmp-col-method':{es:'Método de entrega',en:'Delivery method'},'cmp-col-bioav':{es:'Biodisponibilidad',en:'Bioavailability'},'cmp-col-onset':{es:'Inicio de acción',en:'Onset of action'},'cmp-col-pain':{es:'Dolor/Invasividad',en:'Pain/Invasiveness'},'cmp-col-cool':{es:'Refrigeración',en:'Refrigeration'},'cmp-col-rx':{es:'Prescripción',en:'Prescription'},'cmp-col-conv':{es:'Conveniencia',en:'Convenience'},
+  'cmp-col-no':{es:'No',en:'No'},'cmp-col-yes':{es:'Sí (algunos)',en:'Yes (some)'},
+  'cmp-r1-method':{es:'Pastillas / Cápsulas',en:'Pills / Capsules'},'cmp-r1-pain':{es:'Ninguno',en:'None'},
+  'cmp-r2-method':{es:'Gotas Sublinguales',en:'Sublingual Drops'},'cmp-r2-pain':{es:'Ninguno',en:'None'},
+  'cmp-r3-method':{es:'Parche Transdérmico',en:'Transdermal Patch'},'cmp-r3-pain':{es:'Ninguno',en:'None'},
+  'cmp-r4-method':{es:'Inyectable',en:'Injectable'},'cmp-r4-pain':{es:'Alto',en:'High'},
+  'cmp-r5-method':{es:'BiogradixRelease®',en:'BiogradixRelease®'},'cmp-r5-pain':{es:'Ninguno',en:'None'},
+  'cmp-badge-rec':{es:'Recomendado',en:'Recommended'},
   'bio-label':{es:'Comparativa',en:'Comparison'},
   'bio-h2':{es:'Biodisponibilidad <em>comparada</em>',en:'Compared <em>bioavailability</em>'},
   'bio-r1-name':{es:'Pastillas / Cápsulas Orales',en:'Pills / Oral Capsules'},
@@ -696,6 +907,16 @@ const TRANSLATIONS = {
   'bio-r3-name':{es:'Inyectable',en:'Injectable'},
   'bio-rec-badge':{es:'Recomendado',en:'Recommended'},
   'bio-note':{es:'* Los valores representan rangos de biodisponibilidad promedio basados en literatura científica publicada. Los resultados individuales pueden variar. BiogradixRelease® combina la comodidad de la administración oral con una biodisponibilidad próxima a la administración inyectable.',en:'* Values represent average bioavailability ranges based on published scientific literature. Individual results may vary. BiogradixRelease® combines the convenience of oral administration with bioavailability approaching injectable administration.'},
+  'timeline-label':{es:'Evolución temporal',en:'Timeline'},'timeline-h2':{es:'Línea de tiempo de <em>resultados</em>',en:'Results <em>timeline</em>'},'timeline-sub':{es:'Qué esperar: desde los primeros minutos hasta la optimización completa.',en:'What to expect: from first minutes to full optimization.'},
+  'timeline-t1-title':{es:'Minutos 15–20',en:'Minutes 15–20'},'timeline-t1-desc':{es:'El parche se disuelve. Los bioactivos ya están en el torrente sanguíneo.',en:'Patch dissolves. Bioactives already in bloodstream.'},
+  'timeline-t2-title':{es:'Días 1–3',en:'Days 1–3'},'timeline-t2-desc':{es:'Fase de adaptación. Tus células comienzan a saturarse con los compuestos activos.',en:'Adaptation phase. Your cells begin to saturate with active compounds.'},
+  'timeline-t3-title':{es:'Semanas 1–2',en:'Weeks 1–2'},'timeline-t3-desc':{es:'Primeros efectos notables: más energía, mejor recuperación, mayor claridad mental.',en:'First noticeable effects: more energy, better recovery, greater mental clarity.'},
+  'timeline-t4-title':{es:'Semanas 4–8',en:'Weeks 4–8'},'timeline-t4-desc':{es:'Resultados plenos y sostenidos. Optimización celular completa.',en:'Full and sustained results. Complete cellular optimization.'},
+  'ingr-label':{es:'Cómo actúan los ingredientes',en:'How ingredients work'},'ingr-h2':{es:'Beneficios por <em>ingrediente</em>',en:'Benefits by <em>ingredient</em>'},'ingr-sub':{es:'La absorción por mucosa oral preserva la potencia de cada bioactivo de una manera que los métodos orales convencionales no pueden lograr.',en:'Oral mucosa absorption preserves the potency of each bioactive in a way conventional oral methods cannot achieve.'},
+  'ingr-c1-title':{es:'Glutatión',en:'Glutathione'},'ingr-c1-desc':{es:'El ácido gástrico destruye hasta el 70% del glutatión libre antes de ser absorbido. La vía bucal preserva la integridad molecular completa, entregando concentraciones terapéuticamente activas al torrente sanguíneo.',en:'Gastric acid destroys up to 70% of free glutathione before absorption. The buccal route preserves complete molecular integrity, delivering therapeutically active concentrations into the bloodstream.'},
+  'ingr-c2-title':{es:'NMN / NAD⁺',en:'NMN / NAD⁺'},'ingr-c2-desc':{es:'Los precursores de NAD⁺ sufren una pérdida del 40–60% en el primer paso hepático. La absorción por mucosa oral maximiza la biodisponibilidad y la velocidad de conversión intracelular.',en:'NAD⁺ precursors suffer 40–60% loss in first-pass hepatic metabolism. Oral mucosa absorption maximizes bioavailability and intracellular conversion speed.'},
+  'ingr-c3-title':{es:'Péptidos Bioactivos',en:'Bioactive Peptides'},'ingr-c3-desc':{es:'Los péptidos son fragmentados por enzimas pancreáticas e intestinales cuando se administran oralmente. La mucosa bucal los absorbe intactos, preservando su actividad biológica completa.',en:'Peptides are fragmented by pancreatic and intestinal enzymes when administered orally. The buccal mucosa absorbs them intact, preserving complete biological activity.'},
+  'ingr-c4-title':{es:'Antioxidantes & Vitaminas',en:'Antioxidants & Vitamins'},'ingr-c4-desc':{es:'Compuestos liposolubles como la CoQ10 requieren emulsificación. La absorción bucal directa evita la variabilidad de la absorción intestinal dependiente de grasas.',en:'Fat-soluble compounds like CoQ10 require emulsification. Direct buccal absorption avoids variability in fat-dependent intestinal absorption.'},
   'qual-label':{es:'Estándares de calidad',en:'Quality standards'},
   'qual-h2':{es:'Calidad de grado <em>farmacéutico</em>',en:'Pharmaceutical-grade <em>quality</em>'},
   'qual-sub':{es:'Cada producto biogradix cumple los estándares más exigentes de la industria farmacéutica.',en:'Every biogradix product meets the most stringent standards in the pharmaceutical industry.'},
@@ -706,14 +927,14 @@ const TRANSLATIONS = {
   'refs-label':{es:'Evidencia científica',en:'Scientific evidence'},
   'refs-h2':{es:'Respaldado por la <em>ciencia</em>',en:'Backed by <em>science</em>'},
   'refs-sub':{es:'Nuestra tecnología está fundamentada en investigación revisada por pares publicada en revistas científicas de alto impacto.',en:'Our technology is grounded in peer-reviewed research published in high-impact scientific journals.'},
-  'ref1-title':{es:'Sublingual drug delivery: a review of pharmacokinetic and bioavailability studies.',en:'Sublingual drug delivery: a review of pharmacokinetic and bioavailability studies.'},
-  'ref1-auth':{es:'Johnson, A.K. et al.',en:'Johnson, A.K. et al.'},
-  'ref2-title':{es:'Nicotinamide mononucleotide administration and NAD+ bioavailability: a randomized crossover trial.',en:'Nicotinamide mononucleotide administration and NAD+ bioavailability: a randomized crossover trial.'},
-  'ref2-auth':{es:'Chen, L. et al.',en:'Chen, L. et al.'},
-  'ref3-title':{es:'Enhanced peptide bioavailability via buccal mucosa absorption compared to oral administration.',en:'Enhanced peptide bioavailability via buccal mucosa absorption compared to oral administration.'},
-  'ref3-auth':{es:'Rodriguez, M. et al.',en:'Rodriguez, M. et al.'},
-  'ref4-title':{es:'Glutathione sublingual versus oral supplementation: comparative pharmacokinetics.',en:'Glutathione sublingual versus oral supplementation: comparative pharmacokinetics.'},
-  'ref4-auth':{es:'Patel, S. et al.',en:'Patel, S. et al.'},
+  'ref1-title':{es:'New developments and opportunities in oral mucosal drug delivery for local and systemic disease.',en:'New developments and opportunities in oral mucosal drug delivery for local and systemic disease.'},
+  'ref1-auth':{es:'Hearnden V, et al.',en:'Hearnden V, et al.'},
+  'ref2-title':{es:'Nicotinamide mononucleotide increases muscle insulin sensitivity in prediabetic women.',en:'Nicotinamide mononucleotide increases muscle insulin sensitivity in prediabetic women.'},
+  'ref2-auth':{es:'Yoshino M, et al.',en:'Yoshino M, et al.'},
+  'ref3-title':{es:'Randomized controlled trial of oral glutathione supplementation on body stores of glutathione.',en:'Randomized controlled trial of oral glutathione supplementation on body stores of glutathione.'},
+  'ref3-auth':{es:'Richie JP Jr, et al.',en:'Richie JP Jr, et al.'},
+  'ref4-title':{es:'Buccal bioadhesive drug delivery — a promising option for orally less efficient drugs.',en:'Buccal bioadhesive drug delivery — a promising option for orally less efficient drugs.'},
+  'ref4-auth':{es:'Sudhakar Y, Kuotsu K, Bandyopadhyay AK.',en:'Sudhakar Y, Kuotsu K, Bandyopadhyay AK.'},
   'cta-label':{es:'¿Listo para empezar?',en:'Ready to start?'},'cta-h2':{es:'Consulta gratuita<br/><em>por WhatsApp</em>',en:'Free consultation<br/><em>via WhatsApp</em>'},'cta-body':{es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.',en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},'cta-btn':{es:'Contactar por WhatsApp',en:'Contact via WhatsApp'},
   'footer-brand':{es:'Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.',en:'Pharmaceutical-grade wellness supplements. Accessible science for the global market.'},
   'footer-col-products':{es:'Productos',en:'Products'},'footer-col-resources':{es:'Recursos',en:'Resources'},'footer-col-contact':{es:'Contacto',en:'Contact'},
