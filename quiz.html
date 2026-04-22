@@ -365,7 +365,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
           </label>
           <label class="check-item" id="noneItem">
             <input type="checkbox" value="none" id="condNone" onchange="handleNoneCondition(this)"/>
-            <div><div class="check-item-label" data-i18n="cond-none"><strong>Ninguna de las anteriores</strong></div></div>
+            <div><div class="check-item-label" data-i18n-html="cond-none"><strong>Ninguna de las anteriores</strong></div></div>
           </label>
         </div>
 
@@ -1076,6 +1076,7 @@ function updateContactNext() {
 // ─── SUBMISSION ───────────────────────────────────────────────────────────────
 async function submitQuiz() {
   const rec = computeRecommendation();
+  S.rec = rec;
   const prod = PRODUCTS[rec.primary];
 
   goTo('loading');
@@ -1224,6 +1225,8 @@ function setLang(lang) {
   // disclaimer paragraphs
   ['p1','p2','p3','p4'].forEach(k => { const el = document.getElementById('disc-'+k); if(el) el.textContent = T[lang]['disc-'+k] || ''; });
   document.title = T[lang]['page-title'] || document.title;
+  // Re-render results in the new language if results are currently shown
+  if (S.rec && S.step === 'result') renderResults(S.rec);
 }
 
 // ─── NAV SCROLL ───────────────────────────────────────────────────────────────
