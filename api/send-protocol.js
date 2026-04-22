@@ -6,7 +6,7 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, lang, productName, peptide, productUrl, matchPct, why, dose, timing, duration, tips, cautions, secondaryName } = req.body || {};
+  const { name, email, lang, productName, peptide, productUrl, matchPct, why, dose, timing, duration, tips, cautions, secondaryName, secondaryUrl } = req.body || {};
 
   if (!name || !email || !productName) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -87,10 +87,10 @@ module.exports = async function handler(req, res) {
   ${secondaryName ? `
   <!-- SECONDARY -->
   <tr><td style="padding:24px 40px 0;">
-    <div style="background:#f8fafb;border-radius:10px;padding:16px 20px;">
+    <a href="https://biogradix.com${secondaryUrl}" style="display:block;background:#f8fafb;border-radius:10px;padding:16px 20px;text-decoration:none;">
       <p style="font-family:monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#8A9BAD;margin:0 0 4px;">${isEs ? 'Complemento recomendado' : 'Recommended complement'}</p>
-      <p style="font-size:14px;color:#0B1A2B;font-weight:600;margin:0;">${secondaryName}</p>
-    </div>
+      <p style="font-size:14px;color:#0B1A2B;font-weight:600;margin:0;">${secondaryName} <span style="color:#0F6E56;">→</span></p>
+    </a>
   </td></tr>` : ''}
 
   <!-- CTA -->
@@ -100,7 +100,7 @@ module.exports = async function handler(req, res) {
         <a href="https://biogradix.com${productUrl}" style="display:inline-block;background:#0F6E56;color:#ffffff;text-decoration:none;padding:13px 24px;border-radius:10px;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">${isEs ? 'Ver producto →' : 'View product →'}</a>
       </td>
       <td>
-        <a href="https://wa.me/message/biogradix" style="display:inline-block;background:transparent;color:#0F6E56;text-decoration:none;padding:12px 24px;border-radius:10px;border:1.5px solid #0F6E56;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">${isEs ? 'Consulta gratis por WhatsApp' : 'Free WhatsApp consultation'}</a>
+        <a href="https://wa.me/13467189350" style="display:inline-block;background:transparent;color:#0F6E56;text-decoration:none;padding:12px 24px;border-radius:10px;border:1.5px solid #0F6E56;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">${isEs ? 'Consulta gratis por WhatsApp' : 'Free WhatsApp consultation'}</a>
       </td>
     </tr></table>
   </td></tr>
