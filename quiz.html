@@ -231,9 +231,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <div class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></div>
       </a>
       <div class="nav-links">
+        <a href="/#productos" data-i18n="nav-productos">Productos</a>
         <a href="/tecnologia" data-i18n="nav-tech">Tecnología</a>
         <a href="/educacion" data-i18n="nav-edu">Educación</a>
         <a href="/blog">Blog</a>
+        <a href="/#faq" data-i18n="nav-faq">FAQ</a>
+        <a href="/contacto" data-i18n="nav-contacto">Contacto</a>
         <a href="/quiz" class="active" data-i18n="nav-quiz">Quiz</a>
       </div>
       <div class="nav-right">
@@ -254,9 +257,12 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 
 <div class="mobile-menu" id="mobileMenu" onclick="if(event.target===this){this.classList.remove('open');document.body.style.overflow='';}">
   <div class="mobile-menu-panel">
+    <a href="/#productos" data-i18n="nav-productos">Productos</a>
     <a href="/tecnologia" data-i18n="nav-tech">Tecnología</a>
     <a href="/educacion" data-i18n="nav-edu">Educación</a>
     <a href="/blog">Blog</a>
+    <a href="/#faq" data-i18n="nav-faq">FAQ</a>
+    <a href="/contacto" data-i18n="nav-contacto">Contacto</a>
     <a href="/quiz" data-i18n="nav-quiz">Quiz</a>
     <a href="https://wa.me/13467189350" target="_blank">WhatsApp</a>
     <div class="mob-lang">
@@ -753,7 +759,7 @@ function t(k){ return T[S.lang][k] || k; }
 const PRODUCTS = {
   musclemaxx: {
     name: 'MUSCLEMAXX™', peptide: 'CJC-1295 / Ipamorelin',
-    img: 'img-musclemaxx-display.png', url: '/producto/musclemaxx',
+    img: 'img-musclemaxx-display.png', url: '/producto-musclemaxx',
     tagline: { es: 'Optimización Hormonal & Rendimiento', en: 'Hormonal Optimization & Performance' },
     why: {
       es: 'Tu perfil de actividad física y objetivos de rendimiento hacen de MUSCLEMAXX™ la elección ideal. CJC-1295 e Ipamorelin actúan sinérgicamente en el eje de la hormona del crecimiento, maximizando la síntesis proteica y la recuperación muscular de forma natural.',
@@ -775,7 +781,7 @@ const PRODUCTS = {
   },
   recoverypro: {
     name: 'RECOVERYPRO™', peptide: 'BPC-157',
-    img: 'img-recoverypro-display.png', url: '/producto/recoverypro',
+    img: 'img-recoverypro-display.png', url: '/producto-recoverypro',
     tagline: { es: 'Recuperación Total del Cuerpo', en: 'Total Body Recovery' },
     why: {
       es: 'Tu perfil indica necesidad de reparación y recuperación. BPC-157 es conocido como el "péptido de la recuperación" por su capacidad única de estimular la reparación de tejido muscular, ligamentos, articulaciones y mucosa digestiva de forma sistémica.',
@@ -797,7 +803,7 @@ const PRODUCTS = {
   },
   radiancemax: {
     name: 'RADIANCEMAX™', peptide: 'GHK-Cu',
-    img: 'img-radiancemax-display.png', url: '/producto/radiancemax',
+    img: 'img-radiancemax-display.png', url: '/producto-radiancemax',
     tagline: { es: 'Belleza Regenerativa desde Adentro', en: 'Regenerative Beauty from Within' },
     why: {
       es: 'Tu perfil de objetivos y síntomas apunta claramente a RADIANCEMAX™. GHK-Cu (péptido de cobre) estimula directamente los fibroblastos para producir colágeno tipo I, II y III, elastina y ácido hialurónico — los tres pilares de una piel joven y radiante.',
@@ -819,7 +825,7 @@ const PRODUCTS = {
   },
   vitacharge: {
     name: 'VITACHARGE™', peptide: 'NAD+',
-    img: 'img-vitacharge-display.png', url: '/producto/vitacharge',
+    img: 'img-vitacharge-display.png', url: '/producto-vitacharge',
     tagline: { es: 'Energía Celular & Longevidad', en: 'Cellular Energy & Longevity' },
     why: {
       es: 'Tu perfil indica una necesidad de optimización celular profunda. NAD+ es la coenzima más crítica del metabolismo energético — presente en cada mitocondria. Con la edad sus niveles caen hasta un 50%, generando fatiga, niebla mental y envejecimiento acelerado.',
@@ -841,7 +847,7 @@ const PRODUCTS = {
   },
   passionboost: {
     name: 'PASSIONBOOST™', peptide: 'PT-141 + Oxitocina',
-    img: 'img-passionboost-display.png', url: '/producto/passionboost',
+    img: 'img-passionboost-display.png', url: '/producto-passionboost',
     tagline: { es: 'Vitalidad Íntima & Conexión', en: 'Intimate Vitality & Connection' },
     why: {
       es: 'Tu perfil apunta claramente a PASSIONBOOST™. PT-141 actúa directamente en receptores de melanocortina del sistema nervioso central — estimulando el deseo de forma genuina sin mecanismos vasculares. La Oxitocina profundiza la conexión emocional y la satisfacción.',
@@ -863,7 +869,7 @@ const PRODUCTS = {
   },
   immunefort: {
     name: 'IMMUNEFORT™', peptide: 'Thymosin Alpha-1',
-    img: 'img-immunefort-display.png', url: '/producto/immunefort',
+    img: 'img-immunefort-display.png', url: '/producto-immunefort',
     tagline: { es: 'Protección Inmune Total', en: 'Total Immune Protection' },
     why: {
       es: 'Tu perfil indica que el sistema inmune necesita apoyo. Thymosin Alpha-1 es el péptido inmunológico más potente del cuerpo — regula tanto la inmunidad innata como la adaptativa, optimizando la maduración de células T y la comunicación entre células inmunológicas.',
@@ -885,7 +891,7 @@ const PRODUCTS = {
   },
   celldew: {
     name: 'CELLDEW™', peptide: 'Glutatión',
-    img: 'img-celledew-display.png', url: '/producto/celldew',
+    img: 'img-celledew-display.png', url: '/producto-celldew',
     tagline: { es: 'Soporte Antioxidante Maestro', en: 'Master Antioxidant Support' },
     why: {
       es: 'Tu perfil apunta a CELLDEW™. El glutatión es el antioxidante maestro del cuerpo — presente en cada célula donde neutraliza radicales libres, desintoxica el hígado y regula el sistema inmune. Sus niveles caen con el estrés, el alcohol y el envejecimiento.',
