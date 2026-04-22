@@ -3,6 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
+    { "source": "/quiz", "destination": "/quiz.html" },
     { "source": "/tecnologia", "destination": "/tecnologia.html" },
     { "source": "/educacion", "destination": "/educacion.html" },
     { "source": "/blog", "destination": "/blog.html" },

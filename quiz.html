@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es" id="htmlRoot">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Quiz de Péptidos — biogradix</title>
+<meta name="description" content="Descubre qué péptido Biogradix es ideal para ti. Guía personalizada basada en tu perfil de salud."/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
+<style>
+:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--alert:#D4534E;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
+@media(max-width:768px){.container{padding:0 20px;}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
+.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
+.nav-inner{display:flex;align-items:center;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
+.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
+.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--teal);}
+.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
+.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
+.lang-btn.active,.lang-btn:hover{color:var(--teal);}
+.lang-sep{color:var(--silver);font-size:12px;}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
+.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);}
+@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.mobile-menu.open .mobile-menu-panel{transform:none;}
+.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);}
+.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
+.mob-lang{display:flex;gap:12px;padding:12px 0;}
+
+/* HERO */
+.quiz-hero{background:var(--navy);padding:88px 0 72px;margin-top:64px;position:relative;overflow:hidden;}
+.quiz-hero::after{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:rgba(15,110,86,.08);pointer-events:none;}
+.quiz-hero-inner{position:relative;z-index:1;max-width:680px;}
+.quiz-hero .label{color:var(--teal-active);margin-bottom:12px;display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;}
+.quiz-hero h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:44px;color:#fff;line-height:1.1;letter-spacing:-.5px;margin-bottom:16px;}
+.quiz-hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
+.quiz-hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.75;max-width:480px;}
+@media(max-width:768px){.quiz-hero h1{font-size:28px;}.quiz-hero{padding:72px 0 52px;}}
+
+/* QUIZ MAIN */
+.quiz-main{padding:56px 0 100px;}
+.quiz-wrap{max-width:700px;margin:0 auto;}
+
+/* PROGRESS */
+.progress-wrap{display:flex;align-items:center;gap:16px;margin-bottom:36px;}
+.progress-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);white-space:nowrap;}
+.progress-bar{flex:1;height:3px;background:var(--silver);border-radius:2px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-active));border-radius:2px;transition:width .5s cubic-bezier(.16,1,.3,1);}
+
+/* STEPS */
+.quiz-step{display:none;}
+.quiz-step.active{display:block;animation:fadeUp .4s cubic-bezier(.16,1,.3,1);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.step-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.step-title{font-family:'DM Sans',sans-serif;font-weight:500;font-size:26px;letter-spacing:-.4px;color:var(--navy);margin-bottom:8px;line-height:1.25;}
+.step-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.step-desc{font-size:14px;color:var(--text-2);margin-bottom:28px;line-height:1.65;}
+
+/* DISCLAIMER */
+.disclaimer-box{background:#fff;border:1px solid var(--silver);border-radius:14px;padding:24px;max-height:260px;overflow-y:auto;margin-bottom:20px;font-size:13px;color:var(--text-2);line-height:1.75;}
+.disclaimer-box p{margin-bottom:10px;}.disclaimer-box p:last-child{margin-bottom:0;}
+.disclaimer-box strong{color:var(--text-1);}
+.check-accept{display:flex;align-items:flex-start;gap:12px;margin-bottom:24px;cursor:pointer;}
+.check-accept input{width:17px;height:17px;min-width:17px;margin-top:3px;accent-color:var(--teal);cursor:pointer;}
+.check-accept-label{font-size:14px;color:var(--text-1);line-height:1.5;}
+
+/* SELECTION CARDS */
+.card-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+@media(max-width:480px){.card-grid-2{grid-template-columns:1fr;}}
+.sel-card{border:1.5px solid var(--silver);border-radius:12px;padding:16px 18px;cursor:pointer;background:#fff;display:flex;align-items:center;gap:14px;transition:border-color .2s,background .2s,transform .15s;user-select:none;}
+.sel-card:hover{border-color:rgba(15,110,86,.4);background:var(--mint);}
+.sel-card.selected{border-color:var(--teal);background:var(--mint);box-shadow:0 0 0 3px rgba(15,110,86,.1);}
+.sel-card-icon{font-size:26px;line-height:1;flex-shrink:0;}
+.sel-card-title{font-weight:600;font-size:14px;color:var(--navy);margin-bottom:2px;}
+.sel-card-sub{font-size:12px;color:var(--text-2);}
+
+/* GOAL CARDS */
+.goal-hint{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;}
+.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
+@media(max-width:480px){.goal-grid{grid-template-columns:1fr;}}
+.goal-card{border:1.5px solid var(--silver);border-radius:12px;padding:16px 14px;cursor:pointer;background:#fff;text-align:center;transition:border-color .2s,background .2s,transform .15s;user-select:none;position:relative;}
+.goal-card:hover{border-color:rgba(15,110,86,.4);background:var(--mint);transform:translateY(-2px);}
+.goal-card.selected{border-color:var(--teal);background:var(--mint);box-shadow:0 0 0 3px rgba(15,110,86,.1);}
+.goal-card-check{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--silver);display:flex;align-items:center;justify-content:center;transition:all .2s;background:#fff;}
+.goal-card.selected .goal-card-check{background:var(--teal);border-color:var(--teal);}
+.goal-card.selected .goal-card-check::after{content:'';display:block;width:5px;height:8px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg) translate(-1px,-1px);}
+.goal-card-icon{font-size:26px;margin-bottom:8px;}
+.goal-card-title{font-weight:600;font-size:13px;color:var(--navy);line-height:1.3;}
+.goal-card-sub{font-size:11px;color:var(--text-3);margin-top:2px;}
+
+/* CHECKLIST */
+.checklist{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+.check-item{display:flex;align-items:flex-start;gap:12px;border:1.5px solid var(--silver);border-radius:10px;padding:13px 15px;cursor:pointer;background:#fff;transition:border-color .2s,background .2s;user-select:none;}
+.check-item:hover{border-color:rgba(15,110,86,.35);background:var(--mint);}
+.check-item.checked{border-color:var(--teal);background:var(--mint);}
+.check-item.danger:hover,.check-item.danger.checked{border-color:rgba(212,83,78,.4);background:rgba(212,83,78,.04);}
+.check-item input{width:16px;height:16px;min-width:16px;margin-top:2px;accent-color:var(--teal);cursor:pointer;}
+.check-item.danger input{accent-color:var(--alert);}
+.check-item-label{font-size:14px;color:var(--text-1);line-height:1.4;}
+.check-item-sub{font-size:11px;color:var(--text-2);margin-top:1px;}
+
+/* RADIO LIST */
+.radio-list{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;}
+.radio-item{display:flex;align-items:center;gap:12px;border:1.5px solid var(--silver);border-radius:10px;padding:12px 15px;cursor:pointer;background:#fff;transition:border-color .2s,background .2s;user-select:none;}
+.radio-item:hover{border-color:rgba(15,110,86,.35);background:var(--mint);}
+.radio-item.selected{border-color:var(--teal);background:var(--mint);}
+.radio-item input{accent-color:var(--teal);}
+.radio-item-label{font-weight:500;font-size:14px;color:var(--navy);}
+.radio-item-sub{font-size:11px;color:var(--text-2);margin-left:auto;}
+
+/* FORM */
+.form-group{margin-bottom:18px;}
+.form-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);margin-bottom:8px;display:block;}
+.form-input{width:100%;padding:13px 15px;border:1.5px solid var(--silver);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text-1);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;}
+.form-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,110,86,.1);}
+.form-note{font-size:12px;color:var(--text-3);margin-top:6px;}
+
+/* NAV BUTTONS */
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:32px;padding-top:24px;border-top:1px solid var(--silver);}
+.btn-back{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--text-3);border:none;padding:10px 0;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:color .2s;}
+.btn-back:hover{color:var(--teal);}
+.btn-next{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:10px;padding:14px 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
+.btn-next:hover:not(:disabled){background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
+.btn-next:disabled{background:var(--silver);color:var(--text-3);cursor:not-allowed;}
+
+/* RED FLAG */
+.redflag-card{background:#fff;border:1.5px solid rgba(212,83,78,.25);border-radius:16px;padding:40px 32px;text-align:center;}
+.redflag-icon{font-size:52px;margin-bottom:20px;}
+.redflag-title{font-weight:600;font-size:22px;color:var(--navy);margin-bottom:12px;}
+.redflag-body{font-size:15px;color:var(--text-2);line-height:1.7;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;}
+
+/* LOADING */
+.loading-screen{text-align:center;padding:64px 20px;}
+.loading-spinner{width:44px;height:44px;border:3px solid var(--silver);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-size:15px;color:var(--text-2);}
+
+/* RESULTS */
+.result-banner{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-active) 100%);border-radius:16px;padding:28px 28px;color:#fff;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.result-greeting{font-size:20px;font-weight:500;line-height:1.3;}
+.result-greeting em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
+.result-greeting-sub{font-size:13px;opacity:.7;margin-top:4px;}
+.match-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:10px 16px;text-align:center;flex-shrink:0;}
+.match-pill-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:.7;display:block;}
+.match-pill-value{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;display:block;}
+
+.result-product-card{background:#fff;border:1.5px solid var(--silver);border-radius:16px;overflow:hidden;margin-bottom:16px;}
+.result-product-header{display:flex;align-items:flex-start;gap:18px;padding:22px 22px 18px;}
+.result-product-img{width:84px;height:84px;object-fit:cover;border-radius:10px;background:var(--mint);flex-shrink:0;}
+.result-product-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
+.result-product-name{font-weight:600;font-size:22px;color:var(--navy);letter-spacing:-.3px;margin-bottom:3px;}
+.result-product-peptide{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;}
+.result-product-why{font-size:13px;color:var(--text-2);line-height:1.65;}
+
+.protocol-section{padding:0 22px 22px;}
+.protocol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+@media(max-width:480px){.protocol-grid{grid-template-columns:1fr 1fr;}}
+.protocol-cell{background:var(--cloud);border-radius:10px;padding:12px 14px;}
+.protocol-cell-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:3px;}
+.protocol-cell-value{font-size:13px;color:var(--navy);font-weight:500;line-height:1.35;}
+
+.protocol-block{margin-bottom:16px;}
+.protocol-block-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;}
+.protocol-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.protocol-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-2);line-height:1.5;}
+.protocol-list li .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-active);flex-shrink:0;margin-top:6px;}
+.protocol-list.warn li .dot{background:var(--gold);}
+
+.result-ctas{display:flex;gap:10px;flex-wrap:wrap;padding:0 22px 22px;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:10px;padding:13px 22px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);border:1.5px solid var(--teal);border-radius:10px;padding:12px 22px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,transform .15s;}
+.btn-outline:hover{background:var(--mint);transform:translateY(-1px);}
+
+.email-confirm{background:var(--mint);border:1px solid rgba(15,110,86,.2);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.email-confirm-icon{width:34px;height:34px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.email-confirm-title{font-weight:600;font-size:13px;color:var(--teal-deep);margin-bottom:2px;}
+.email-confirm-sub{font-size:12px;color:var(--teal-deep);opacity:.75;}
+
+.secondary-card{background:#fff;border:1px solid var(--silver);border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;margin-bottom:14px;text-decoration:none;transition:border-color .2s,transform .15s;}
+.secondary-card:hover{border-color:rgba(15,110,86,.3);transform:translateY(-1px);}
+.secondary-card-img{width:52px;height:52px;border-radius:8px;object-fit:cover;background:var(--mint);flex-shrink:0;}
+.secondary-card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin-bottom:2px;}
+.secondary-card-name{font-weight:600;font-size:15px;color:var(--navy);}
+.secondary-card-desc{font-size:12px;color:var(--text-2);}
+.secondary-card-arrow{margin-left:auto;color:var(--text-3);}
+
+.non-catalog-card{background:var(--navy);border-radius:12px;padding:20px 22px;margin-bottom:14px;}
+.non-catalog-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-active);margin-bottom:5px;}
+.non-catalog-title{font-weight:500;font-size:16px;color:#fff;margin-bottom:5px;}
+.non-catalog-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:14px;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.18);}
+
+.result-disclaimer{background:var(--cloud);border:1px solid var(--silver);border-radius:12px;padding:18px 20px;margin-bottom:20px;}
+.result-disclaimer p{font-size:11px;color:var(--text-3);line-height:1.7;}
+.result-disclaimer strong{color:var(--text-2);}
+
+/* FOOTER */
+.footer{background:var(--navy);padding:40px 0;margin-top:60px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.footer-logo{font-family:'DM Sans',sans-serif;font-weight:500;font-size:17px;color:#fff;text-decoration:none;}
+.footer-logo .b{color:var(--teal-active);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:rgba(255,255,255,.7);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="/tecnologia" data-i18n="nav-tech">Tecnología</a>
+        <a href="/educacion" data-i18n="nav-edu">Educación</a>
+        <a href="/blog">Blog</a>
+        <a href="/quiz" class="active" data-i18n="nav-quiz">Quiz</a>
+      </div>
+      <div class="nav-right">
+        <button class="lang-btn active" onclick="setLang('es')">ES</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <a href="https://wa.me/message/biogradix" class="btn-wa" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.082a.75.75 0 00.921.921l5.27-1.484A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.947 0-3.775-.5-5.37-1.376l-.385-.215-3.985 1.121 1.1-3.893-.228-.38A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp
+        </a>
+        <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('open')?'hidden':''">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" onclick="if(event.target===this){this.classList.remove('open');document.body.style.overflow='';}">
+  <div class="mobile-menu-panel">
+    <a href="/tecnologia" data-i18n="nav-tech">Tecnología</a>
+    <a href="/educacion" data-i18n="nav-edu">Educación</a>
+    <a href="/blog">Blog</a>
+    <a href="/quiz" data-i18n="nav-quiz">Quiz</a>
+    <a href="https://wa.me/message/biogradix" target="_blank">WhatsApp</a>
+    <div class="mob-lang">
+      <button class="lang-btn active" onclick="setLang('es');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">ES</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="quiz-hero">
+  <div class="container">
+    <div class="quiz-hero-inner">
+      <span class="label" data-i18n="hero-label">Guía Personalizada</span>
+      <h1 data-i18n-html="hero-h1">Encuentra tu <em>péptido ideal</em></h1>
+      <p class="quiz-hero-sub" data-i18n="hero-sub">Responde algunas preguntas sobre tu perfil de salud y objetivos. Te recomendaremos el protocolo más adecuado para ti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="quiz-main">
+  <div class="container">
+    <div class="quiz-wrap">
+
+      <!-- PROGRESS -->
+      <div class="progress-wrap" id="progressWrap">
+        <span class="progress-label" id="progressLabel">Paso 1 de 5</span>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      </div>
+
+      <!-- STEP 0: DISCLAIMER -->
+      <div class="quiz-step active" id="step-0">
+        <div class="step-eyebrow" data-i18n="s0-eyebrow">Antes de comenzar</div>
+        <h2 class="step-title" data-i18n-html="s0-title">Aviso <em>importante</em></h2>
+        <div class="disclaimer-box">
+          <p id="disc-p1"></p>
+          <p id="disc-p2"></p>
+          <p id="disc-p3"></p>
+          <p id="disc-p4"></p>
+        </div>
+        <label class="check-accept">
+          <input type="checkbox" id="disclaimerCheck" onchange="updateNextBtn(0)"/>
+          <span class="check-accept-label" data-i18n="s0-accept">Entiendo que esta guía es únicamente informativa, no constituye consejo médico y me comprometo a consultar con un profesional de salud antes de iniciar cualquier protocolo.</span>
+        </label>
+        <div class="quiz-nav">
+          <span></span>
+          <button class="btn-next" id="next-0" disabled onclick="goTo(1)" data-i18n="btn-next">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 1: PROFILE -->
+      <div class="quiz-step" id="step-1">
+        <div class="step-eyebrow" data-i18n="s1-eyebrow">Tu perfil</div>
+        <h2 class="step-title" data-i18n-html="s1-title">Cuéntanos sobre <em>ti</em></h2>
+        <p class="step-desc" data-i18n="s1-desc">Esta información nos ayuda a calibrar las recomendaciones de dosis y protocolo.</p>
+
+        <p class="step-eyebrow" style="margin-bottom:10px" data-i18n="s1-age-label">Rango de edad</p>
+        <div class="card-grid-2" id="ageGrid">
+          <div class="sel-card" data-val="18-25" onclick="selectCard('age',this)"><span class="sel-card-icon">🌱</span><div><div class="sel-card-title">18–25</div><div class="sel-card-sub" data-i18n="age-18">Adulto joven</div></div></div>
+          <div class="sel-card" data-val="26-35" onclick="selectCard('age',this)"><span class="sel-card-icon">⚡</span><div><div class="sel-card-title">26–35</div><div class="sel-card-sub" data-i18n="age-26">Peak de rendimiento</div></div></div>
+          <div class="sel-card" data-val="36-45" onclick="selectCard('age',this)"><span class="sel-card-icon">🎯</span><div><div class="sel-card-title">36–45</div><div class="sel-card-sub" data-i18n="age-36">Madurez activa</div></div></div>
+          <div class="sel-card" data-val="46-55" onclick="selectCard('age',this)"><span class="sel-card-icon">🌿</span><div><div class="sel-card-title">46–55</div><div class="sel-card-sub" data-i18n="age-46">Transición hormonal</div></div></div>
+          <div class="sel-card" data-val="56+" onclick="selectCard('age',this)"><span class="sel-card-icon">✨</span><div><div class="sel-card-title">56+</div><div class="sel-card-sub" data-i18n="age-56">Longevidad activa</div></div></div>
+        </div>
+
+        <p class="step-eyebrow" style="margin-bottom:10px;margin-top:4px" data-i18n="s1-sex-label">Sexo biológico</p>
+        <div class="card-grid-2" id="sexGrid">
+          <div class="sel-card" data-val="male" onclick="selectCard('sex',this)"><span class="sel-card-icon">♂️</span><div><div class="sel-card-title" data-i18n="sex-male">Masculino</div></div></div>
+          <div class="sel-card" data-val="female" onclick="selectCard('sex',this)"><span class="sel-card-icon">♀️</span><div><div class="sel-card-title" data-i18n="sex-female">Femenino</div></div></div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(0)">← <span data-i18n="btn-back">Atrás</span></button>
+          <button class="btn-next" id="next-1" disabled onclick="goTo(2)" data-i18n="btn-next">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: HEALTH SCREEN -->
+      <div class="quiz-step" id="step-2">
+        <div class="step-eyebrow" data-i18n="s2-eyebrow">Salud actual</div>
+        <h2 class="step-title" data-i18n-html="s2-title">¿Tienes alguna de estas <em>condiciones?</em></h2>
+        <p class="step-desc" data-i18n="s2-desc">Esta información es confidencial y solo se usa para tu seguridad. Selecciona todas las que apliquen.</p>
+
+        <div class="checklist" id="conditionList">
+          <label class="check-item danger">
+            <input type="checkbox" value="cancer" onchange="handleCondition(this)"/>
+            <div><div class="check-item-label" data-i18n="cond-cancer">Cáncer activo o en tratamiento oncológico</div></div>
+          </label>
+          <label class="check-item danger">
+            <input type="checkbox" value="pregnancy" onchange="handleCondition(this)"/>
+            <div><div class="check-item-label" data-i18n="cond-preg">Embarazo o lactancia</div></div>
+          </label>
+          <label class="check-item danger">
+            <input type="checkbox" value="immunosuppressants" onchange="handleCondition(this)"/>
+            <div><div class="check-item-label" data-i18n="cond-immuno">Medicamentos inmunosupresores (biológicos, corticoides sistémicos)</div><div class="check-item-sub" data-i18n="cond-immuno-sub">Ej: Prednisona, Metotrexato, Biologics</div></div>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" value="cardiovascular" onchange="handleCondition(this)"/>
+            <div><div class="check-item-label" data-i18n="cond-cardio">Enfermedad cardiovascular severa o hipertensión no controlada</div></div>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" value="diabetes" onchange="handleCondition(this)"/>
+            <div><div class="check-item-label" data-i18n="cond-diabetes">Diabetes tipo 1 o 2 con insulina</div></div>
+          </label>
+          <label class="check-item" id="noneItem">
+            <input type="checkbox" value="none" id="condNone" onchange="handleNoneCondition(this)"/>
+            <div><div class="check-item-label" data-i18n="cond-none"><strong>Ninguna de las anteriores</strong></div></div>
+          </label>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(1)">← <span data-i18n="btn-back">Atrás</span></button>
+          <button class="btn-next" id="next-2" disabled onclick="proceedFromHealth()" data-i18n="btn-next">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: GOALS -->
+      <div class="quiz-step" id="step-3">
+        <div class="step-eyebrow" data-i18n="s3-eyebrow">Tus objetivos</div>
+        <h2 class="step-title" data-i18n-html="s3-title">¿Qué quieres <em>lograr?</em></h2>
+        <p class="step-desc" data-i18n="s3-desc">Selecciona hasta 2 objetivos principales. Esto determinará tu recomendación primaria.</p>
+        <div class="goal-hint" data-i18n="s3-hint">Selecciona 1 o 2 opciones</div>
+
+        <div class="goal-grid" id="goalGrid">
+          <div class="goal-card" data-val="muscle" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">💪</div>
+            <div class="goal-card-title" data-i18n="goal-muscle">Músculo & Rendimiento</div>
+            <div class="goal-card-sub" data-i18n="goal-muscle-sub">Masa, fuerza, hormona del crecimiento</div>
+          </div>
+          <div class="goal-card" data-val="energy" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">⚡</div>
+            <div class="goal-card-title" data-i18n="goal-energy">Energía & Vitalidad</div>
+            <div class="goal-card-sub" data-i18n="goal-energy-sub">Fatiga crónica, claridad mental, metabolismo</div>
+          </div>
+          <div class="goal-card" data-val="recovery" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">🔄</div>
+            <div class="goal-card-title" data-i18n="goal-recovery">Recuperación & Curación</div>
+            <div class="goal-card-sub" data-i18n="goal-recovery-sub">Lesiones, articulaciones, tejido muscular</div>
+          </div>
+          <div class="goal-card" data-val="skin" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">✨</div>
+            <div class="goal-card-title" data-i18n="goal-skin">Piel & Belleza</div>
+            <div class="goal-card-sub" data-i18n="goal-skin-sub">Colágeno, elasticidad, anti-envejecimiento</div>
+          </div>
+          <div class="goal-card" data-val="immune" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">🛡️</div>
+            <div class="goal-card-title" data-i18n="goal-immune">Sistema Inmune</div>
+            <div class="goal-card-sub" data-i18n="goal-immune-sub">Defensas, inflamación crónica, resiliencia</div>
+          </div>
+          <div class="goal-card" data-val="libido" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">💑</div>
+            <div class="goal-card-title" data-i18n="goal-libido">Libido & Bienestar Íntimo</div>
+            <div class="goal-card-sub" data-i18n="goal-libido-sub">Deseo sexual, conexión, vitalidad íntima</div>
+          </div>
+          <div class="goal-card" data-val="antioxidant" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">🌿</div>
+            <div class="goal-card-title" data-i18n="goal-antioxidant">Detox & Antioxidante</div>
+            <div class="goal-card-sub" data-i18n="goal-antioxidant-sub">Glutatión, estrés oxidativo, hígado</div>
+          </div>
+          <div class="goal-card" data-val="weight" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">📉</div>
+            <div class="goal-card-title" data-i18n="goal-weight">Composición Corporal</div>
+            <div class="goal-card-sub" data-i18n="goal-weight-sub">Pérdida de grasa, metabolismo, forma física</div>
+          </div>
+          <div class="goal-card" data-val="cognitive" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">🧠</div>
+            <div class="goal-card-title" data-i18n="goal-cognitive">Enfoque Mental</div>
+            <div class="goal-card-sub" data-i18n="goal-cognitive-sub">Concentración, memoria, neuroprotección</div>
+          </div>
+          <div class="goal-card" data-val="longevity" onclick="toggleGoal(this)">
+            <div class="goal-card-check"></div>
+            <div class="goal-card-icon">⏳</div>
+            <div class="goal-card-title" data-i18n="goal-longevity">Longevidad & Anti-Aging</div>
+            <div class="goal-card-sub" data-i18n="goal-longevity-sub">NAD+, sirtuínas, envejecimiento celular</div>
+          </div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(2)">← <span data-i18n="btn-back">Atrás</span></button>
+          <button class="btn-next" id="next-3" disabled onclick="goTo(4)" data-i18n="btn-next">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: SYMPTOMS & ACTIVITY -->
+      <div class="quiz-step" id="step-4">
+        <div class="step-eyebrow" data-i18n="s4-eyebrow">Perfil físico</div>
+        <h2 class="step-title" data-i18n-html="s4-title">Nivel de actividad y <em>síntomas</em></h2>
+        <p class="step-desc" data-i18n="s4-desc">Esto nos permite afinar el protocolo con mayor precisión.</p>
+
+        <p class="step-eyebrow" style="margin-bottom:10px" data-i18n="s4-activity-label">Nivel de actividad física</p>
+        <div class="radio-list" id="activityList">
+          <label class="radio-item" onclick="selectActivity(this,'sedentary')">
+            <input type="radio" name="activity" value="sedentary"/>
+            <span class="radio-item-label" data-i18n="act-sed">Sedentario / Poco activo</span>
+            <span class="radio-item-sub" data-i18n="act-sed-sub">Trabajo de escritorio, sin ejercicio regular</span>
+          </label>
+          <label class="radio-item" onclick="selectActivity(this,'light')">
+            <input type="radio" name="activity" value="light"/>
+            <span class="radio-item-label" data-i18n="act-light">Levemente activo</span>
+            <span class="radio-item-sub" data-i18n="act-light-sub">Caminatas, yoga, 1–2x por semana</span>
+          </label>
+          <label class="radio-item" onclick="selectActivity(this,'moderate')">
+            <input type="radio" name="activity" value="moderate"/>
+            <span class="radio-item-label" data-i18n="act-mod">Moderadamente activo</span>
+            <span class="radio-item-sub" data-i18n="act-mod-sub">Ejercicio regular 3–4x por semana</span>
+          </label>
+          <label class="radio-item" onclick="selectActivity(this,'very_active')">
+            <input type="radio" name="activity" value="very_active"/>
+            <span class="radio-item-label" data-i18n="act-very">Muy activo</span>
+            <span class="radio-item-sub" data-i18n="act-very-sub">Entrenamiento intenso 5–6x por semana</span>
+          </label>
+          <label class="radio-item" onclick="selectActivity(this,'athlete')">
+            <input type="radio" name="activity" value="athlete"/>
+            <span class="radio-item-label" data-i18n="act-ath">Atleta / Competitivo</span>
+            <span class="radio-item-sub" data-i18n="act-ath-sub">Entrenamiento diario de alto rendimiento</span>
+          </label>
+        </div>
+
+        <p class="step-eyebrow" style="margin-bottom:10px;margin-top:4px" data-i18n="s4-sym-label">Síntomas actuales (selecciona todos los que apliquen)</p>
+        <div class="checklist" id="symptomList">
+          <label class="check-item"><input type="checkbox" value="fatigue" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-fatigue">Fatiga crónica o falta de energía persistente</div></div></label>
+          <label class="check-item"><input type="checkbox" value="joint_pain" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-joint">Dolor articular o muscular crónico</div></div></label>
+          <label class="check-item"><input type="checkbox" value="gut_issues" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-gut">Problemas digestivos o intestinales</div></div></label>
+          <label class="check-item"><input type="checkbox" value="frequent_illness" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-ill">Me enfermo frecuentemente / recuperación lenta</div></div></label>
+          <label class="check-item"><input type="checkbox" value="skin_aging" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-skin">Signos de envejecimiento en piel, pérdida de firmeza</div></div></label>
+          <label class="check-item"><input type="checkbox" value="brain_fog" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-fog">Niebla mental, dificultad de concentración</div></div></label>
+          <label class="check-item"><input type="checkbox" value="low_libido" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-libido">Bajo deseo sexual o disfunción íntima</div></div></label>
+          <label class="check-item"><input type="checkbox" value="muscle_soreness" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-soreness">Recuperación muscular lenta post-entrenamiento</div></div></label>
+          <label class="check-item"><input type="checkbox" value="stress" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-stress">Estrés elevado o ansiedad crónica</div></div></label>
+          <label class="check-item"><input type="checkbox" value="hair_thinning" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-hair">Pérdida o adelgazamiento de cabello</div></div></label>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(3)">← <span data-i18n="btn-back">Atrás</span></button>
+          <button class="btn-next" id="next-4" disabled onclick="goTo(5)" data-i18n="btn-next">Continuar →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: CONTACT -->
+      <div class="quiz-step" id="step-5">
+        <div class="step-eyebrow" data-i18n="s5-eyebrow">Último paso</div>
+        <h2 class="step-title" data-i18n-html="s5-title">Recibe tu protocolo <em>por email</em></h2>
+        <p class="step-desc" data-i18n="s5-desc">Te enviaremos tu recomendación personalizada y protocolo de uso detallado. Sin spam, sin compromisos.</p>
+
+        <div class="form-group">
+          <label class="form-label" data-i18n="form-name">Nombre</label>
+          <input type="text" class="form-input" id="inputName" placeholder="Tu nombre" data-i18n-ph="ph-name" oninput="updateContactNext()"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form-email">Correo electrónico</label>
+          <input type="email" class="form-input" id="inputEmail" placeholder="tu@email.com" oninput="updateContactNext()"/>
+          <div class="form-note" data-i18n="form-note">Tu protocolo llegará a este correo en los próximos minutos.</div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn-back" onclick="goTo(4)">← <span data-i18n="btn-back">Atrás</span></button>
+          <button class="btn-next" id="next-5" disabled onclick="submitQuiz()" data-i18n="btn-submit">Ver mi protocolo →</button>
+        </div>
+      </div>
+
+      <!-- LOADING -->
+      <div class="quiz-step" id="step-loading">
+        <div class="loading-screen">
+          <div class="loading-spinner"></div>
+          <p class="loading-text" data-i18n="loading-text">Analizando tu perfil y generando tu protocolo...</p>
+        </div>
+      </div>
+
+      <!-- RED FLAG -->
+      <div class="quiz-step" id="step-redflag">
+        <div class="redflag-card">
+          <div class="redflag-icon">🩺</div>
+          <div class="redflag-title" data-i18n="rf-title">Consulta médica recomendada</div>
+          <p class="redflag-body" data-i18n="rf-body">Basado en las condiciones de salud que indicaste, te recomendamos consultar con un médico especialista antes de iniciar cualquier protocolo de péptidos. Tu seguridad es nuestra prioridad.</p>
+          <a href="https://wa.me/message/biogradix" class="btn-primary" target="_blank" data-i18n="rf-cta">Habla con nuestro equipo →</a>
+          <p style="margin-top:16px;font-size:12px;color:var(--text-3)" data-i18n="rf-sub">Nuestro equipo puede orientarte y coordinar con profesionales de salud.</p>
+        </div>
+        <div class="quiz-nav" style="border-top:none;margin-top:20px;">
+          <button class="btn-back" onclick="goTo(2)">← <span data-i18n="btn-back">Atrás</span></button>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="quiz-step" id="step-result">
+        <div id="resultContent"></div>
+      </div>
+
+    </div><!-- /quiz-wrap -->
+  </div><!-- /container -->
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="/" class="footer-logo"><span class="b">bio</span>gradix</a>
+      <div class="footer-links">
+        <a href="/privacy" data-i18n="footer-privacy">Privacidad</a>
+        <a href="/terms" data-i18n="footer-terms">Términos</a>
+        <a href="/contacto" data-i18n="footer-contact">Contacto</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────────────────────────
+const S = {
+  lang: 'es',
+  step: 0,
+  data: { age: null, sex: null, conditions: [], goals: [], activity: null, symptoms: [], name: '', email: '' }
+};
+
+// ─── I18N ─────────────────────────────────────────────────────────────────────
+const T = {
+  es: {
+    'page-title': 'Quiz de Péptidos — biogradix',
+    'nav-tech': 'Tecnología', 'nav-edu': 'Educación', 'nav-quiz': 'Quiz',
+    'hero-label': 'Guía Personalizada',
+    'hero-h1': 'Encuentra tu <em>péptido ideal</em>',
+    'hero-sub': 'Responde algunas preguntas sobre tu perfil de salud y objetivos. Te recomendaremos el protocolo más adecuado para ti.',
+    's0-eyebrow': 'Antes de comenzar', 's0-title': 'Aviso <em>importante</em>',
+    's0-accept': 'Entiendo que esta guía es únicamente informativa, no constituye consejo médico y me comprometo a consultar con un profesional de salud antes de iniciar cualquier protocolo.',
+    's1-eyebrow': 'Tu perfil', 's1-title': 'Cuéntanos sobre <em>ti</em>',
+    's1-desc': 'Esta información nos ayuda a calibrar las recomendaciones de dosis y protocolo.',
+    's1-age-label': 'Rango de edad', 's1-sex-label': 'Sexo biológico',
+    'age-18': 'Adulto joven', 'age-26': 'Peak de rendimiento', 'age-36': 'Madurez activa', 'age-46': 'Transición hormonal', 'age-56': 'Longevidad activa',
+    'sex-male': 'Masculino', 'sex-female': 'Femenino',
+    's2-eyebrow': 'Salud actual', 's2-title': '¿Tienes alguna de estas <em>condiciones?</em>',
+    's2-desc': 'Esta información es confidencial y solo se usa para tu seguridad. Selecciona todas las que apliquen.',
+    'cond-cancer': 'Cáncer activo o en tratamiento oncológico',
+    'cond-preg': 'Embarazo o lactancia',
+    'cond-immuno': 'Medicamentos inmunosupresores (biológicos, corticoides sistémicos)',
+    'cond-immuno-sub': 'Ej: Prednisona, Metotrexato, Biologics',
+    'cond-cardio': 'Enfermedad cardiovascular severa o hipertensión no controlada',
+    'cond-diabetes': 'Diabetes tipo 1 o 2 con insulina',
+    'cond-none': '<strong>Ninguna de las anteriores</strong>',
+    's3-eyebrow': 'Tus objetivos', 's3-title': '¿Qué quieres <em>lograr?</em>',
+    's3-desc': 'Selecciona hasta 2 objetivos principales. Esto determinará tu recomendación primaria.',
+    's3-hint': 'Selecciona 1 o 2 opciones',
+    'goal-muscle': 'Músculo & Rendimiento', 'goal-muscle-sub': 'Masa, fuerza, hormona del crecimiento',
+    'goal-energy': 'Energía & Vitalidad', 'goal-energy-sub': 'Fatiga crónica, claridad mental, metabolismo',
+    'goal-recovery': 'Recuperación & Curación', 'goal-recovery-sub': 'Lesiones, articulaciones, tejido muscular',
+    'goal-skin': 'Piel & Belleza', 'goal-skin-sub': 'Colágeno, elasticidad, anti-envejecimiento',
+    'goal-immune': 'Sistema Inmune', 'goal-immune-sub': 'Defensas, inflamación crónica, resiliencia',
+    'goal-libido': 'Libido & Bienestar Íntimo', 'goal-libido-sub': 'Deseo sexual, conexión, vitalidad íntima',
+    'goal-antioxidant': 'Detox & Antioxidante', 'goal-antioxidant-sub': 'Glutatión, estrés oxidativo, hígado',
+    'goal-weight': 'Composición Corporal', 'goal-weight-sub': 'Pérdida de grasa, metabolismo, forma física',
+    'goal-cognitive': 'Enfoque Mental', 'goal-cognitive-sub': 'Concentración, memoria, neuroprotección',
+    'goal-longevity': 'Longevidad & Anti-Aging', 'goal-longevity-sub': 'NAD+, sirtuínas, envejecimiento celular',
+    's4-eyebrow': 'Perfil físico', 's4-title': 'Nivel de actividad y <em>síntomas</em>',
+    's4-desc': 'Esto nos permite afinar el protocolo con mayor precisión.',
+    's4-activity-label': 'Nivel de actividad física', 's4-sym-label': 'Síntomas actuales (selecciona todos los que apliquen)',
+    'act-sed': 'Sedentario / Poco activo', 'act-sed-sub': 'Trabajo de escritorio, sin ejercicio regular',
+    'act-light': 'Levemente activo', 'act-light-sub': 'Caminatas, yoga, 1–2x por semana',
+    'act-mod': 'Moderadamente activo', 'act-mod-sub': 'Ejercicio regular 3–4x por semana',
+    'act-very': 'Muy activo', 'act-very-sub': 'Entrenamiento intenso 5–6x por semana',
+    'act-ath': 'Atleta / Competitivo', 'act-ath-sub': 'Entrenamiento diario de alto rendimiento',
+    'sym-fatigue': 'Fatiga crónica o falta de energía persistente',
+    'sym-joint': 'Dolor articular o muscular crónico',
+    'sym-gut': 'Problemas digestivos o intestinales',
+    'sym-ill': 'Me enfermo frecuentemente / recuperación lenta',
+    'sym-skin': 'Signos de envejecimiento en piel, pérdida de firmeza',
+    'sym-fog': 'Niebla mental, dificultad de concentración',
+    'sym-libido': 'Bajo deseo sexual o disfunción íntima',
+    'sym-soreness': 'Recuperación muscular lenta post-entrenamiento',
+    'sym-stress': 'Estrés elevado o ansiedad crónica',
+    'sym-hair': 'Pérdida o adelgazamiento de cabello',
+    's5-eyebrow': 'Último paso', 's5-title': 'Recibe tu protocolo <em>por email</em>',
+    's5-desc': 'Te enviaremos tu recomendación personalizada y protocolo de uso detallado. Sin spam, sin compromisos.',
+    'form-name': 'Nombre', 'form-email': 'Correo electrónico',
+    'ph-name': 'Tu nombre', 'form-note': 'Tu protocolo llegará a este correo en los próximos minutos.',
+    'btn-next': 'Continuar →', 'btn-back': 'Atrás', 'btn-submit': 'Ver mi protocolo →',
+    'loading-text': 'Analizando tu perfil y generando tu protocolo...',
+    'rf-title': 'Consulta médica recomendada',
+    'rf-body': 'Basado en las condiciones de salud que indicaste, te recomendamos consultar con un médico especialista antes de iniciar cualquier protocolo de péptidos. Tu seguridad es nuestra prioridad.',
+    'rf-cta': 'Habla con nuestro equipo →', 'rf-sub': 'Nuestro equipo puede orientarte y coordinar con profesionales de salud.',
+    'footer-privacy': 'Privacidad', 'footer-terms': 'Términos', 'footer-contact': 'Contacto',
+    'disc-p1': 'Esta guía interactiva es un recurso informativo y educativo. No constituye diagnóstico médico, consejo terapéutico ni prescripción de ningún tipo.',
+    'disc-p2': 'Los péptidos mencionados en esta guía son compuestos investigados con fines de bienestar. Biogradix no afirma que ningún producto cure, trate o prevenga ninguna enfermedad.',
+    'disc-p3': 'Los resultados pueden variar según la biología individual, estilo de vida y otros factores. Siempre consulta con un médico o profesional de salud calificado antes de iniciar cualquier suplementación.',
+    'disc-p4': 'Al continuar, confirmas que tienes 18 años o más y que utilizas esta información bajo tu propia responsabilidad.',
+    'step-label': 'Paso',
+    'step-of': 'de',
+    'match-label': 'Compatibilidad',
+    'primary-eyebrow': 'Tu recomendación principal',
+    'why-label': '¿Por qué este péptido para ti?',
+    'protocol-dose': 'Dosis', 'protocol-timing': 'Aplicación', 'protocol-duration': 'Duración',
+    'tips-label': 'Para mejores resultados', 'cautions-label': 'Precauciones',
+    'secondary-label': 'Complemento recomendado',
+    'email-sent-title': 'Protocolo enviado a tu email',
+    'email-sent-sub': 'Revisa tu bandeja de entrada (y spam por las dudas).',
+    'see-product': 'Ver producto →', 'whatsapp-cta': 'Consulta gratis por WhatsApp',
+    'non-catalog-label': 'También podría interesarte',
+    'disclaimer-result-text': 'AVISO LEGAL: Esta recomendación es orientativa y no reemplaza la consulta médica profesional. Los péptidos mencionados son compuestos de bienestar, no medicamentos aprobados por organismos regulatorios para los usos indicados. Consulta siempre con un médico antes de iniciar cualquier protocolo. Biogradix no se responsabiliza por el uso inadecuado de esta información.',
+  },
+  en: {
+    'page-title': 'Peptide Quiz — biogradix',
+    'nav-tech': 'Technology', 'nav-edu': 'Education', 'nav-quiz': 'Quiz',
+    'hero-label': 'Personalized Guide',
+    'hero-h1': 'Find your <em>ideal peptide</em>',
+    'hero-sub': 'Answer a few questions about your health profile and goals. We\'ll recommend the most suitable protocol for you.',
+    's0-eyebrow': 'Before we begin', 's0-title': '<em>Important</em> disclaimer',
+    's0-accept': 'I understand this guide is for informational purposes only, does not constitute medical advice, and I agree to consult a healthcare professional before starting any protocol.',
+    's1-eyebrow': 'Your profile', 's1-title': 'Tell us about <em>yourself</em>',
+    's1-desc': 'This information helps us calibrate dosage and protocol recommendations.',
+    's1-age-label': 'Age range', 's1-sex-label': 'Biological sex',
+    'age-18': 'Young adult', 'age-26': 'Peak performance', 'age-36': 'Active maturity', 'age-46': 'Hormonal transition', 'age-56': 'Active longevity',
+    'sex-male': 'Male', 'sex-female': 'Female',
+    's2-eyebrow': 'Current health', 's2-title': 'Do you have any of these <em>conditions?</em>',
+    's2-desc': 'This information is confidential and only used for your safety. Select all that apply.',
+    'cond-cancer': 'Active cancer or undergoing oncological treatment',
+    'cond-preg': 'Pregnancy or breastfeeding',
+    'cond-immuno': 'Immunosuppressant medications (biologics, systemic corticosteroids)',
+    'cond-immuno-sub': 'E.g.: Prednisone, Methotrexate, Biologics',
+    'cond-cardio': 'Severe cardiovascular disease or uncontrolled hypertension',
+    'cond-diabetes': 'Type 1 or 2 diabetes with insulin',
+    'cond-none': '<strong>None of the above</strong>',
+    's3-eyebrow': 'Your goals', 's3-title': 'What do you want to <em>achieve?</em>',
+    's3-desc': 'Select up to 2 primary goals. This determines your primary recommendation.',
+    's3-hint': 'Select 1 or 2 options',
+    'goal-muscle': 'Muscle & Performance', 'goal-muscle-sub': 'Mass, strength, growth hormone',
+    'goal-energy': 'Energy & Vitality', 'goal-energy-sub': 'Chronic fatigue, mental clarity, metabolism',
+    'goal-recovery': 'Recovery & Healing', 'goal-recovery-sub': 'Injuries, joints, muscle tissue',
+    'goal-skin': 'Skin & Beauty', 'goal-skin-sub': 'Collagen, elasticity, anti-aging',
+    'goal-immune': 'Immune System', 'goal-immune-sub': 'Defenses, chronic inflammation, resilience',
+    'goal-libido': 'Libido & Intimate Wellness', 'goal-libido-sub': 'Sexual desire, connection, intimate vitality',
+    'goal-antioxidant': 'Detox & Antioxidant', 'goal-antioxidant-sub': 'Glutathione, oxidative stress, liver',
+    'goal-weight': 'Body Composition', 'goal-weight-sub': 'Fat loss, metabolism, body shape',
+    'goal-cognitive': 'Mental Focus', 'goal-cognitive-sub': 'Concentration, memory, neuroprotection',
+    'goal-longevity': 'Longevity & Anti-Aging', 'goal-longevity-sub': 'NAD+, sirtuins, cellular aging',
+    's4-eyebrow': 'Physical profile', 's4-title': 'Activity level and <em>symptoms</em>',
+    's4-desc': 'This allows us to fine-tune your protocol with greater precision.',
+    's4-activity-label': 'Physical activity level', 's4-sym-label': 'Current symptoms (select all that apply)',
+    'act-sed': 'Sedentary / Minimally active', 'act-sed-sub': 'Desk job, no regular exercise',
+    'act-light': 'Lightly active', 'act-light-sub': 'Walks, yoga, 1–2x per week',
+    'act-mod': 'Moderately active', 'act-mod-sub': 'Regular exercise 3–4x per week',
+    'act-very': 'Very active', 'act-very-sub': 'Intense training 5–6x per week',
+    'act-ath': 'Athlete / Competitive', 'act-ath-sub': 'Daily high-performance training',
+    'sym-fatigue': 'Chronic fatigue or persistent lack of energy',
+    'sym-joint': 'Chronic joint or muscle pain',
+    'sym-gut': 'Digestive or gut issues',
+    'sym-ill': 'I get sick frequently / slow recovery',
+    'sym-skin': 'Signs of skin aging, loss of firmness',
+    'sym-fog': 'Brain fog, difficulty concentrating',
+    'sym-libido': 'Low sexual desire or intimate dysfunction',
+    'sym-soreness': 'Slow muscle recovery after training',
+    'sym-stress': 'High stress or chronic anxiety',
+    'sym-hair': 'Hair loss or thinning',
+    's5-eyebrow': 'Last step', 's5-title': 'Receive your protocol <em>by email</em>',
+    's5-desc': 'We\'ll send your personalized recommendation and detailed usage protocol. No spam, no commitments.',
+    'form-name': 'Name', 'form-email': 'Email address',
+    'ph-name': 'Your name', 'form-note': 'Your protocol will arrive in your inbox within minutes.',
+    'btn-next': 'Continue →', 'btn-back': 'Back', 'btn-submit': 'See my protocol →',
+    'loading-text': 'Analyzing your profile and generating your protocol...',
+    'rf-title': 'Medical consultation recommended',
+    'rf-body': 'Based on the health conditions you indicated, we recommend consulting a specialist physician before starting any peptide protocol. Your safety is our priority.',
+    'rf-cta': 'Talk to our team →', 'rf-sub': 'Our team can guide you and coordinate with healthcare professionals.',
+    'footer-privacy': 'Privacy', 'footer-terms': 'Terms', 'footer-contact': 'Contact',
+    'disc-p1': 'This interactive guide is an informational and educational resource. It does not constitute medical diagnosis, therapeutic advice, or prescription of any kind.',
+    'disc-p2': 'The peptides mentioned in this guide are compounds researched for wellness purposes. Biogradix does not claim that any product cures, treats, or prevents any disease.',
+    'disc-p3': 'Results may vary based on individual biology, lifestyle, and other factors. Always consult a physician or qualified healthcare professional before starting any supplementation.',
+    'disc-p4': 'By continuing, you confirm that you are 18 years of age or older and that you use this information at your own responsibility.',
+    'step-label': 'Step',
+    'step-of': 'of',
+    'match-label': 'Match',
+    'primary-eyebrow': 'Your primary recommendation',
+    'why-label': 'Why this peptide for you?',
+    'protocol-dose': 'Dosage', 'protocol-timing': 'Application', 'protocol-duration': 'Duration',
+    'tips-label': 'For best results', 'cautions-label': 'Precautions',
+    'secondary-label': 'Recommended complement',
+    'email-sent-title': 'Protocol sent to your email',
+    'email-sent-sub': 'Check your inbox (and spam just in case).',
+    'see-product': 'View product →', 'whatsapp-cta': 'Free WhatsApp consultation',
+    'non-catalog-label': 'You might also be interested in',
+    'disclaimer-result-text': 'LEGAL DISCLAIMER: This recommendation is advisory and does not replace professional medical consultation. The peptides mentioned are wellness compounds, not medications approved by regulatory bodies for the indicated uses. Always consult a physician before starting any protocol. Biogradix is not responsible for misuse of this information.',
+  }
+};
+function t(k){ return T[S.lang][k] || k; }
+
+// ─── PRODUCT DATA ─────────────────────────────────────────────────────────────
+const PRODUCTS = {
+  musclemaxx: {
+    name: 'MUSCLEMAXX™', peptide: 'CJC-1295 / Ipamorelin',
+    img: 'img-musclemaxx-display.png', url: '/producto/musclemaxx',
+    tagline: { es: 'Optimización Hormonal & Rendimiento', en: 'Hormonal Optimization & Performance' },
+    why: {
+      es: 'Tu perfil de actividad física y objetivos de rendimiento hacen de MUSCLEMAXX™ la elección ideal. CJC-1295 e Ipamorelin actúan sinérgicamente en el eje de la hormona del crecimiento, maximizando la síntesis proteica y la recuperación muscular de forma natural.',
+      en: 'Your activity profile and performance goals make MUSCLEMAXX™ the ideal choice. CJC-1295 and Ipamorelin act synergistically on the growth hormone axis, maximizing protein synthesis and muscle recovery naturally.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
+      timing: { es: '30–60 min antes de dormir', en: '30–60 min before sleep' },
+      duration: { es: 'Ciclos de 12–16 semanas', en: '12–16 week cycles' },
+    },
+    tips: {
+      es: ['Aplica a la misma hora cada noche para mantener ritmo circadiano de GH', 'Ayuna 2 horas antes de la aplicación para optimizar la respuesta hormonal', 'Combina con entrenamiento de fuerza 3–5x por semana', 'Ingesta de proteína: 1.6–2.2 g/kg de peso corporal diario', 'Descanso de 4 semanas entre ciclos de 12–16 semanas'],
+      en: ['Apply at the same time each night to maintain GH circadian rhythm', 'Fast 2 hours before application to optimize hormonal response', 'Combine with strength training 3–5x per week', 'Protein intake: 1.6–2.2 g/kg body weight daily', '4-week break between 12–16 week cycles']
+    },
+    cautions: {
+      es: ['No usar si tienes historial de cáncer activo (GH puede estimular proliferación celular)', 'Consultar con médico si tienes diabetes o resistencia a la insulina', 'Monitorear niveles de IGF-1 si usas más de 16 semanas continuas'],
+      en: ['Do not use with active cancer history (GH may stimulate cell proliferation)', 'Consult doctor if you have diabetes or insulin resistance', 'Monitor IGF-1 levels if using more than 16 continuous weeks']
+    }
+  },
+  recoverypro: {
+    name: 'RECOVERYPRO™', peptide: 'BPC-157',
+    img: 'img-recoverypro-display.png', url: '/producto/recoverypro',
+    tagline: { es: 'Recuperación Total del Cuerpo', en: 'Total Body Recovery' },
+    why: {
+      es: 'Tu perfil indica necesidad de reparación y recuperación. BPC-157 es conocido como el "péptido de la recuperación" por su capacidad única de estimular la reparación de tejido muscular, ligamentos, articulaciones y mucosa digestiva de forma sistémica.',
+      en: 'Your profile indicates a need for repair and recovery. BPC-157 is known as the "recovery peptide" for its unique ability to stimulate repair of muscle tissue, ligaments, joints, and digestive mucosa systemically.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
+      timing: { es: 'Mañana en ayunas o antes de dormir', en: 'Morning on empty stomach or before bed' },
+      duration: { es: '8–12 semanas continuas', en: '8–12 continuous weeks' },
+    },
+    tips: {
+      es: ['La consistencia es clave: aplicar a la misma hora todos los días', 'Combinar con ingesta adecuada de proteínas y colágeno', 'Para lesiones específicas: aplicar cerca del área afectada si es posible', 'Hidratación óptima (2–3 L de agua por día) potencia los efectos', 'Resultados notables en articulaciones típicamente en 3–6 semanas'],
+      en: ['Consistency is key: apply at the same time every day', 'Combine with adequate protein and collagen intake', 'For specific injuries: apply near the affected area if possible', 'Optimal hydration (2–3 L of water per day) enhances effects', 'Noticeable joint results typically in 3–6 weeks']
+    },
+    cautions: {
+      es: ['Precaución en historial oncológico (factor de crecimiento)', 'Consultar médico en caso de cirugía reciente o lesiones severas', 'No es un sustituto de tratamiento médico para lesiones graves'],
+      en: ['Caution with oncological history (growth factor)', 'Consult doctor in case of recent surgery or severe injuries', 'Not a substitute for medical treatment for serious injuries']
+    }
+  },
+  radiancemax: {
+    name: 'RADIANCEMAX™', peptide: 'GHK-Cu',
+    img: 'img-radiancemax-display.png', url: '/producto/radiancemax',
+    tagline: { es: 'Belleza Regenerativa desde Adentro', en: 'Regenerative Beauty from Within' },
+    why: {
+      es: 'Tu perfil de objetivos y síntomas apunta claramente a RADIANCEMAX™. GHK-Cu (péptido de cobre) estimula directamente los fibroblastos para producir colágeno tipo I, II y III, elastina y ácido hialurónico — los tres pilares de una piel joven y radiante.',
+      en: 'Your goals and symptom profile clearly points to RADIANCEMAX™. GHK-Cu (copper peptide) directly stimulates fibroblasts to produce type I, II and III collagen, elastin, and hyaluronic acid — the three pillars of youthful, radiant skin.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
+      timing: { es: 'Mañana con el desayuno', en: 'Morning with breakfast' },
+      duration: { es: '12 semanas, evaluación continua', en: '12 weeks, continuous evaluation' },
+    },
+    tips: {
+      es: ['Combinar con vitamina C (500–1000 mg/día) para potenciar síntesis de colágeno', 'Hidratación abundante: el colágeno necesita agua para formarse', 'Protector solar diario: proteger el colágeno nuevo de la degradación UV', 'Primeros cambios notables en firmeza: 2–4 semanas', 'Efecto acumulativo: los mejores resultados se ven a las 8–12 semanas'],
+      en: ['Combine with vitamin C (500–1000 mg/day) to enhance collagen synthesis', 'Abundant hydration: collagen needs water to form', 'Daily sunscreen: protect new collagen from UV degradation', 'First noticeable changes in firmness: 2–4 weeks', 'Cumulative effect: best results seen at 8–12 weeks']
+    },
+    cautions: {
+      es: ['No hay contraindicaciones mayores conocidas para GHK-Cu oral', 'Consultar médico si estás bajo tratamiento dermatológico activo', 'En caso de embarazo, consultar médico antes del uso'],
+      en: ['No major known contraindications for oral GHK-Cu', 'Consult doctor if under active dermatological treatment', 'In case of pregnancy, consult doctor before use']
+    }
+  },
+  vitacharge: {
+    name: 'VITACHARGE™', peptide: 'NAD+',
+    img: 'img-vitacharge-display.png', url: '/producto/vitacharge',
+    tagline: { es: 'Energía Celular & Longevidad', en: 'Cellular Energy & Longevity' },
+    why: {
+      es: 'Tu perfil indica una necesidad de optimización celular profunda. NAD+ es la coenzima más crítica del metabolismo energético — presente en cada mitocondria. Con la edad sus niveles caen hasta un 50%, generando fatiga, niebla mental y envejecimiento acelerado.',
+      en: 'Your profile indicates a need for deep cellular optimization. NAD+ is the most critical coenzyme in energy metabolism — present in every mitochondria. With age, levels drop by up to 50%, generating fatigue, brain fog, and accelerated aging.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
+      timing: { es: 'Mañana, en ayunas o con desayuno ligero', en: 'Morning, fasting or with light breakfast' },
+      duration: { es: 'Uso continuo o ciclos de 12 semanas', en: 'Continuous use or 12-week cycles' },
+    },
+    tips: {
+      es: ['Aplicar en la mañana: la energía celular se alinea con el ritmo circadiano diurno', 'Combinar con complejo B (B1, B2, B3) para optimizar el ciclo NAD+', 'Reducir alcohol: depleta NAD+ significativamente', 'Primeros cambios en energía y claridad mental: 3–7 días', 'Para longevidad máxima, combinar con ejercicio aeróbico regular'],
+      en: ['Apply in the morning: cellular energy aligns with daytime circadian rhythm', 'Combine with B complex (B1, B2, B3) to optimize NAD+ cycle', 'Reduce alcohol: significantly depletes NAD+', 'First changes in energy and mental clarity: 3–7 days', 'For maximum longevity, combine with regular aerobic exercise']
+    },
+    cautions: {
+      es: ['Precaución en historial de cáncer (NAD+ es combustible para todas las células)', 'Consultar médico si usas medicamentos para diabetes (metformina interactúa con NAD+)', 'Puede causar leve sensación de calor al inicio — completamente normal'],
+      en: ['Caution with cancer history (NAD+ fuels all cells)', 'Consult doctor if using diabetes medications (metformin interacts with NAD+)', 'May cause mild warming sensation initially — completely normal']
+    }
+  },
+  passionboost: {
+    name: 'PASSIONBOOST™', peptide: 'PT-141 + Oxitocina',
+    img: 'img-passionboost-display.png', url: '/producto/passionboost',
+    tagline: { es: 'Vitalidad Íntima & Conexión', en: 'Intimate Vitality & Connection' },
+    why: {
+      es: 'Tu perfil apunta claramente a PASSIONBOOST™. PT-141 actúa directamente en receptores de melanocortina del sistema nervioso central — estimulando el deseo de forma genuina sin mecanismos vasculares. La Oxitocina profundiza la conexión emocional y la satisfacción.',
+      en: 'Your profile clearly points to PASSIONBOOST™. PT-141 acts directly on melanocortin receptors in the central nervous system — stimulating desire genuinely without vascular mechanisms. Oxytocin deepens emotional connection and satisfaction.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal según necesidad', en: '1 oral patch as needed' },
+      timing: { es: '1–2 horas antes de la actividad íntima', en: '1–2 hours before intimate activity' },
+      duration: { es: 'Uso según demanda, no diario', en: 'On-demand use, not daily' },
+    },
+    tips: {
+      es: ['No es de uso diario: aplicar según necesidad para mejores resultados', 'El efecto se potencia en un ambiente relajado y de conexión emocional', 'Efecto en 30–90 minutos post-aplicación', 'Combinar con buenas prácticas de salud hormonal general', 'Para mujeres: puede ser especialmente efectivo en diferentes fases del ciclo'],
+      en: ['Not for daily use: apply as needed for best results', 'The effect is enhanced in a relaxed and emotionally connected environment', 'Effect in 30–90 minutes post-application', 'Combine with good general hormonal health practices', 'For women: may be especially effective at different phases of the cycle']
+    },
+    cautions: {
+      es: ['Consultar médico si tienes enfermedad cardiovascular severa o hipertensión no controlada', 'No usar si estás bajo medicación con inhibidores de PDE5 sin consulta médica', 'PT-141 puede causar leve enrojecimiento o náusea al inicio — generalmente transitorio'],
+      en: ['Consult doctor if you have severe cardiovascular disease or uncontrolled hypertension', 'Do not use if on PDE5 inhibitor medication without medical consultation', 'PT-141 may cause mild flushing or nausea initially — generally transient']
+    }
+  },
+  immunefort: {
+    name: 'IMMUNEFORT™', peptide: 'Thymosin Alpha-1',
+    img: 'img-immunefort-display.png', url: '/producto/immunefort',
+    tagline: { es: 'Protección Inmune Total', en: 'Total Immune Protection' },
+    why: {
+      es: 'Tu perfil indica que el sistema inmune necesita apoyo. Thymosin Alpha-1 es el péptido inmunológico más potente del cuerpo — regula tanto la inmunidad innata como la adaptativa, optimizando la maduración de células T y la comunicación entre células inmunológicas.',
+      en: 'Your profile indicates your immune system needs support. Thymosin Alpha-1 is the most potent immunological peptide in the body — regulating both innate and adaptive immunity, optimizing T-cell maturation and communication between immune cells.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
+      timing: { es: 'Mañana, horario consistente', en: 'Morning, consistent schedule' },
+      duration: { es: 'Ciclos de 8–12 semanas', en: '8–12 week cycles' },
+    },
+    tips: {
+      es: ['La consistencia horaria es crítica: el sistema inmune responde a ritmos circadianos', 'Sueño de calidad (7–9 horas): potencia el efecto en 40–60%', 'Combinar con vitamina D3 + K2 para sinergia inmunológica', 'Reducir estrés crónico: el cortisol antagoniza los efectos', 'Primeros cambios en resiliencia inmune: 3–4 semanas'],
+      en: ['Time consistency is critical: the immune system responds to circadian rhythms', 'Quality sleep (7–9 hours): enhances the effect by 40–60%', 'Combine with vitamin D3 + K2 for immunological synergy', 'Reduce chronic stress: cortisol antagonizes the effects', 'First changes in immune resilience: 3–4 weeks']
+    },
+    cautions: {
+      es: ['No usar si estás bajo medicación inmunosupresora sin supervisión médica', 'En enfermedades autoinmunes activas: consultar médico (puede exacerbar respuesta inmune)', 'Consultar médico si tienes lupus, esclerosis múltiple u otras condiciones autoinmunes'],
+      en: ['Do not use if on immunosuppressive medication without medical supervision', 'In active autoimmune diseases: consult doctor (may exacerbate immune response)', 'Consult doctor if you have lupus, multiple sclerosis, or other autoimmune conditions']
+    }
+  },
+  celldew: {
+    name: 'CELLDEW™', peptide: 'Glutatión',
+    img: 'img-celledew-display.png', url: '/producto/celldew',
+    tagline: { es: 'Soporte Antioxidante Maestro', en: 'Master Antioxidant Support' },
+    why: {
+      es: 'Tu perfil apunta a CELLDEW™. El glutatión es el antioxidante maestro del cuerpo — presente en cada célula donde neutraliza radicales libres, desintoxica el hígado y regula el sistema inmune. Sus niveles caen con el estrés, el alcohol y el envejecimiento.',
+      en: 'Your profile points to CELLDEW™. Glutathione is the master antioxidant of the body — present in every cell where it neutralizes free radicals, detoxifies the liver, and regulates the immune system. Its levels drop with stress, alcohol, and aging.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
+      timing: { es: 'Mañana, en ayunas preferiblemente', en: 'Morning, preferably fasting' },
+      duration: { es: 'Uso continuo o ciclos de 12 semanas', en: 'Continuous use or 12-week cycles' },
+    },
+    tips: {
+      es: ['Evitar alcohol: el etanol depleta el glutatión de forma directa e inmediata', 'Combinar con vitamina C (500 mg/día) para reciclar el glutatión oxidado', 'Aumentar alimentos ricos en azufre: brócoli, ajo, cebolla, huevo', 'Reducir exposición a tóxicos ambientales para no "gastar" el glutatión', 'Primeros efectos en energía y claridad de piel: 2–4 semanas'],
+      en: ['Avoid alcohol: ethanol directly and immediately depletes glutathione', 'Combine with vitamin C (500 mg/day) to recycle oxidized glutathione', 'Increase sulfur-rich foods: broccoli, garlic, onion, egg', 'Reduce exposure to environmental toxins to avoid depleting glutathione', 'First effects on energy and skin clarity: 2–4 weeks']
+    },
+    cautions: {
+      es: ['No hay contraindicaciones mayores conocidas para glutatión oral', 'En dosis muy altas puede interferir con algunos quimioterapéuticos — consultar oncólogo', 'Alérgicos al azufre: consultar médico antes del uso'],
+      en: ['No major known contraindications for oral glutathione', 'In very high doses may interfere with some chemotherapeutics — consult oncologist', 'Sulfur-sensitive individuals: consult doctor before use']
+    }
+  }
+};
+
+// Non-catalog entries for specific needs
+const NON_CATALOG = {
+  _glp1: {
+    title: { es: 'Péptidos GLP-1 (Semaglutide / Tirzepatide)', en: 'GLP-1 Peptides (Semaglutide / Tirzepatide)' },
+    desc: { es: 'Basado en tu objetivo de composición corporal extrema, existen péptidos GLP-1 agonistas ampliamente investigados que podrían ser de interés en tu caso específico.', en: 'Based on your body composition goal, there are widely researched GLP-1 agonist peptides that may be of interest in your specific case.' },
+    cta: { es: 'Escríbenos para explorar opciones →', en: 'Contact us to explore options →' }
+  },
+  _cognitive: {
+    title: { es: 'Péptidos Nootrópicos (Semax / Selank)', en: 'Nootropic Peptides (Semax / Selank)' },
+    desc: { es: 'Tu perfil indica un interés marcado en optimización cognitiva. Existen péptidos nootrópicos investigados específicamente para esta función que podrían complementar tu protocolo.', en: 'Your profile indicates a strong interest in cognitive optimization. There are peptides researched specifically for this function that could complement your protocol.' },
+    cta: { es: 'Escríbenos para explorar opciones →', en: 'Contact us to explore options →' }
+  }
+};
+
+// ─── RECOMMENDATION ENGINE ────────────────────────────────────────────────────
+function computeRecommendation() {
+  const d = S.data;
+  const sc = { musclemaxx:0, recoverypro:0, radiancemax:0, vitacharge:0, passionboost:0, immunefort:0, celldew:0, _glp1:0, _cognitive:0 };
+
+  const goalMap = {
+    muscle:     { musclemaxx:15, recoverypro:3 },
+    energy:     { vitacharge:15, celldew:4 },
+    recovery:   { recoverypro:15, musclemaxx:3 },
+    skin:       { radiancemax:15, celldew:4 },
+    immune:     { immunefort:15, celldew:5 },
+    libido:     { passionboost:15 },
+    antioxidant:{ celldew:15, vitacharge:3 },
+    weight:     { musclemaxx:6, vitacharge:5, _glp1:12 },
+    cognitive:  { vitacharge:10, _cognitive:10 },
+    longevity:  { vitacharge:10, celldew:7, radiancemax:4 }
+  };
+  for (const g of d.goals) { if (goalMap[g]) for (const [k,v] of Object.entries(goalMap[g])) sc[k] += v; }
+
+  const age = parseInt((d.age||'30').split('-')[0]);
+  if (age >= 40) { sc.vitacharge += 5; sc.radiancemax += 3; }
+  if (age >= 50) { sc.vitacharge += 5; sc.immunefort += 4; }
+  if (age >= 60) { sc.celldew += 3; sc.immunefort += 3; }
+  if (age < 30)  { sc.musclemaxx += 3; }
+
+  if (d.sex === 'female') { sc.radiancemax += 3; sc.celldew += 2; }
+  if (d.sex === 'male')   { sc.musclemaxx += 2; }
+
+  const actMap = { athlete:{musclemaxx:6,recoverypro:5}, very_active:{musclemaxx:4,recoverypro:3}, moderate:{recoverypro:2}, light:{vitacharge:2}, sedentary:{vitacharge:4,celldew:3} };
+  if (d.activity && actMap[d.activity]) for (const [k,v] of Object.entries(actMap[d.activity])) sc[k] += v;
+
+  const symMap = {
+    fatigue:{vitacharge:8,celldew:4}, joint_pain:{recoverypro:10}, gut_issues:{recoverypro:8},
+    frequent_illness:{immunefort:10}, skin_aging:{radiancemax:10}, brain_fog:{vitacharge:8,_cognitive:5},
+    low_libido:{passionboost:10}, muscle_soreness:{recoverypro:6,musclemaxx:3},
+    stress:{celldew:5,vitacharge:3}, hair_thinning:{radiancemax:6}
+  };
+  for (const s of d.symptoms) { if (symMap[s]) for (const [k,v] of Object.entries(symMap[s])) sc[k] += v; }
+
+  // Cardiovascular flag: suppress passionboost
+  if (d.conditions.includes('cardiovascular')) sc.passionboost = 0;
+
+  const catalog = ['musclemaxx','recoverypro','radiancemax','vitacharge','passionboost','immunefort','celldew'];
+  catalog.sort((a,b) => sc[b]-sc[a]);
+  const primary = catalog[0];
+  const secondary = sc[catalog[1]] > 4 ? catalog[1] : null;
+
+  const nonCatalogTop = ['_glp1','_cognitive'].sort((a,b) => sc[b]-sc[a])[0];
+  const showNonCatalog = sc[nonCatalogTop] > 10 && sc[nonCatalogTop] > sc[primary] * 0.55;
+
+  const maxScore = Math.max(...catalog.map(k=>sc[k]));
+  const matchPct = Math.min(98, Math.round(60 + (sc[primary] / Math.max(maxScore,1)) * 38));
+
+  return { primary, secondary, nonCatalog: showNonCatalog ? nonCatalogTop : null, matchPct, scores: sc };
+}
+
+// ─── NAVIGATION ───────────────────────────────────────────────────────────────
+function goTo(step) {
+  document.getElementById('step-'+S.step).classList.remove('active');
+  S.step = step;
+  document.getElementById('step-'+step).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const TOTAL = 5;
+  const progressWrap = document.getElementById('progressWrap');
+  const hidden = [0,'loading','redflag','result'].includes(S.step);
+  progressWrap.style.display = hidden ? 'none' : 'flex';
+  if (!hidden && typeof S.step === 'number') {
+    const pct = ((S.step) / TOTAL) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = t('step-label') + ' ' + S.step + ' ' + t('step-of') + ' ' + TOTAL;
+  }
+}
+
+// ─── STEP INTERACTIONS ────────────────────────────────────────────────────────
+function updateNextBtn(step) {
+  const btn = document.getElementById('next-' + step);
+  if (!btn) return;
+  if (step === 0) btn.disabled = !document.getElementById('disclaimerCheck').checked;
+  if (step === 1) btn.disabled = !(S.data.age && S.data.sex);
+  if (step === 3) btn.disabled = S.data.goals.length === 0;
+  if (step === 4) btn.disabled = !S.data.activity;
+}
+
+function selectCard(field, el) {
+  const grid = el.closest('.card-grid-2');
+  grid.querySelectorAll('.sel-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  S.data[field] = el.dataset.val;
+  updateNextBtn(1);
+}
+
+function toggleGoal(el) {
+  const val = el.dataset.val;
+  if (el.classList.contains('selected')) {
+    el.classList.remove('selected');
+    S.data.goals = S.data.goals.filter(g => g !== val);
+  } else {
+    if (S.data.goals.length >= 2) {
+      document.querySelectorAll('.goal-card.selected')[0]?.click();
+    }
+    el.classList.add('selected');
+    S.data.goals.push(val);
+  }
+  updateNextBtn(3);
+}
+
+function handleCondition(cb) {
+  if (cb.value === 'none') return;
+  document.getElementById('condNone').checked = false;
+  document.getElementById('noneItem').classList.remove('checked');
+  S.data.conditions = Array.from(document.querySelectorAll('#conditionList input:not([value="none"]):checked')).map(i => i.value);
+  cb.closest('.check-item').classList.toggle('checked', cb.checked);
+  document.getElementById('next-2').disabled = S.data.conditions.length === 0 && !document.getElementById('condNone').checked;
+}
+
+function handleNoneCondition(cb) {
+  document.querySelectorAll('#conditionList input:not([value="none"])').forEach(i => { i.checked = false; i.closest('.check-item').classList.remove('checked'); });
+  S.data.conditions = [];
+  cb.closest('.check-item').classList.toggle('checked', cb.checked);
+  document.getElementById('next-2').disabled = !cb.checked;
+}
+
+function proceedFromHealth() {
+  const hardStop = ['cancer','pregnancy','immunosuppressants'];
+  const hasRedFlag = S.data.conditions.some(c => hardStop.includes(c));
+  if (hasRedFlag) { goTo('redflag'); } else { goTo(3); }
+}
+
+function selectActivity(el, val) {
+  document.querySelectorAll('#activityList .radio-item').forEach(r => r.classList.remove('selected'));
+  el.classList.add('selected');
+  S.data.activity = val;
+  updateNextBtn(4);
+}
+
+function toggleSymptom(cb) {
+  if (cb.checked) { S.data.symptoms.push(cb.value); }
+  else { S.data.symptoms = S.data.symptoms.filter(s => s !== cb.value); }
+  cb.closest('.check-item').classList.toggle('checked', cb.checked);
+}
+
+function updateContactNext() {
+  S.data.name = document.getElementById('inputName').value.trim();
+  S.data.email = document.getElementById('inputEmail').value.trim();
+  const valid = S.data.name.length > 0 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(S.data.email);
+  document.getElementById('next-5').disabled = !valid;
+}
+
+// ─── SUBMISSION ───────────────────────────────────────────────────────────────
+async function submitQuiz() {
+  const rec = computeRecommendation();
+  const prod = PRODUCTS[rec.primary];
+
+  goTo('loading');
+
+  try {
+    await fetch('/api/send-protocol', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: S.data.name,
+        email: S.data.email,
+        lang: S.lang,
+        productName: prod.name,
+        peptide: prod.peptide,
+        productUrl: prod.url,
+        matchPct: rec.matchPct,
+        why: prod.why[S.lang],
+        dose: prod.protocol.dose[S.lang],
+        timing: prod.protocol.timing[S.lang],
+        duration: prod.protocol.duration[S.lang],
+        tips: prod.tips[S.lang],
+        cautions: prod.cautions[S.lang],
+        secondaryName: rec.secondary ? PRODUCTS[rec.secondary].name : null,
+      })
+    });
+  } catch(e) { console.error('Email send failed:', e); }
+
+  renderResults(rec);
+  goTo('result');
+
+  if (typeof gtag !== 'undefined') gtag('event','quiz_complete',{event_category:'quiz',event_label:rec.primary});
+}
+
+// ─── RENDER RESULTS ───────────────────────────────────────────────────────────
+function renderResults(rec) {
+  const prod = PRODUCTS[rec.primary];
+  const sec  = rec.secondary ? PRODUCTS[rec.secondary] : null;
+  const nc   = rec.nonCatalog ? NON_CATALOG[rec.nonCatalog] : null;
+  const l    = S.lang;
+  const name = S.data.name.split(' ')[0];
+
+  const tipsHtml = prod.tips[l].map(tip => `<li><span class="dot"></span>${tip}</li>`).join('');
+  const cautsHtml = prod.cautions[l].map(c => `<li><span class="dot"></span>${c}</li>`).join('');
+  const secHtml = sec ? `
+    <a href="${sec.url}" class="secondary-card">
+      <img src="${sec.img}" alt="${sec.name}" class="secondary-card-img"/>
+      <div>
+        <div class="secondary-card-label">${t('secondary-label')}</div>
+        <div class="secondary-card-name">${sec.name}</div>
+        <div class="secondary-card-desc">${sec.tagline[l]}</div>
+      </div>
+      <div class="secondary-card-arrow">→</div>
+    </a>` : '';
+
+  const ncHtml = nc ? `
+    <div class="non-catalog-card">
+      <div class="non-catalog-label">${t('non-catalog-label')}</div>
+      <div class="non-catalog-title">${nc.title[l]}</div>
+      <div class="non-catalog-desc">${nc.desc[l]}</div>
+      <a href="https://wa.me/message/biogradix" class="btn-ghost" target="_blank">${nc.cta[l]}</a>
+    </div>` : '';
+
+  document.getElementById('resultContent').innerHTML = `
+    <div class="result-banner">
+      <div>
+        <div class="result-greeting">${name ? name + ', ' : ''}<em>${prod.tagline[l]}</em></div>
+        <div class="result-greeting-sub">${t('primary-eyebrow')}</div>
+      </div>
+      <div class="match-pill">
+        <span class="match-pill-label">${t('match-label')}</span>
+        <span class="match-pill-value">${rec.matchPct}%</span>
+      </div>
+    </div>
+
+    <div class="email-confirm">
+      <div class="email-confirm-icon">
+        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <div class="email-confirm-title">${t('email-sent-title')}</div>
+        <div class="email-confirm-sub">${t('email-sent-sub')}</div>
+      </div>
+    </div>
+
+    <div class="result-product-card">
+      <div class="result-product-header">
+        <img src="${prod.img}" alt="${prod.name}" class="result-product-img"/>
+        <div class="result-product-info">
+          <div class="result-product-eyebrow">${t('primary-eyebrow')}</div>
+          <div class="result-product-name">${prod.name}</div>
+          <div class="result-product-peptide">${prod.peptide}</div>
+          <div class="result-product-why">${prod.why[l]}</div>
+        </div>
+      </div>
+
+      <div class="protocol-section">
+        <div class="protocol-grid">
+          <div class="protocol-cell">
+            <div class="protocol-cell-label">${t('protocol-dose')}</div>
+            <div class="protocol-cell-value">${prod.protocol.dose[l]}</div>
+          </div>
+          <div class="protocol-cell">
+            <div class="protocol-cell-label">${t('protocol-timing')}</div>
+            <div class="protocol-cell-value">${prod.protocol.timing[l]}</div>
+          </div>
+          <div class="protocol-cell">
+            <div class="protocol-cell-label">${t('protocol-duration')}</div>
+            <div class="protocol-cell-value">${prod.protocol.duration[l]}</div>
+          </div>
+        </div>
+
+        <div class="protocol-block">
+          <div class="protocol-block-title">${t('tips-label')}</div>
+          <ul class="protocol-list">${tipsHtml}</ul>
+        </div>
+
+        <div class="protocol-block">
+          <div class="protocol-block-title">${t('cautions-label')}</div>
+          <ul class="protocol-list warn">${cautsHtml}</ul>
+        </div>
+      </div>
+
+      <div class="result-ctas">
+        <a href="${prod.url}" class="btn-primary">${t('see-product')}</a>
+        <a href="https://wa.me/message/biogradix" class="btn-outline" target="_blank">${t('whatsapp-cta')}</a>
+      </div>
+    </div>
+
+    ${secHtml}
+    ${ncHtml}
+
+    <div class="result-disclaimer">
+      <p><strong>AVISO LEGAL / LEGAL DISCLAIMER:</strong> ${t('disclaimer-result-text')}</p>
+    </div>
+  `;
+}
+
+// ─── LANGUAGE SWITCH ─────────────────────────────────────────────────────────
+function setLang(lang) {
+  S.lang = lang;
+  document.getElementById('htmlRoot').lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el => { const v = T[lang][el.dataset.i18n]; if(v) el.textContent = v; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { const v = T[lang][el.dataset.i18nHtml]; if(v) el.innerHTML = v; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = T[lang][el.dataset.i18nPh]; if(v) el.placeholder = v; });
+  // disclaimer paragraphs
+  ['p1','p2','p3','p4'].forEach(k => { const el = document.getElementById('disc-'+k); if(el) el.textContent = T[lang]['disc-'+k] || ''; });
+  document.title = T[lang]['page-title'] || document.title;
+}
+
+// ─── NAV SCROLL ───────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10); });
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+setLang('es');
+updateProgress();
+</script>
+</body>
+</html>
