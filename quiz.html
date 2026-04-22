@@ -85,7 +85,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .sel-card{border:1.5px solid var(--silver);border-radius:12px;padding:16px 18px;cursor:pointer;background:#fff;display:flex;align-items:center;gap:14px;transition:border-color .2s,background .2s,transform .15s;user-select:none;}
 .sel-card:hover{border-color:rgba(15,110,86,.4);background:var(--mint);}
 .sel-card.selected{border-color:var(--teal);background:var(--mint);box-shadow:0 0 0 3px rgba(15,110,86,.1);}
-.sel-card-icon{font-size:26px;line-height:1;flex-shrink:0;}
+.sel-card-icon{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:color .2s;}.sel-card.selected .sel-card-icon{color:var(--teal);}
 .sel-card-title{font-weight:600;font-size:14px;color:var(--navy);margin-bottom:2px;}
 .sel-card-sub{font-size:12px;color:var(--text-2);}
 
@@ -99,7 +99,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 .goal-card-check{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--silver);display:flex;align-items:center;justify-content:center;transition:all .2s;background:#fff;}
 .goal-card.selected .goal-card-check{background:var(--teal);border-color:var(--teal);}
 .goal-card.selected .goal-card-check::after{content:'';display:block;width:5px;height:8px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg) translate(-1px,-1px);}
-.goal-card-icon{font-size:26px;margin-bottom:8px;}
+.goal-card-icon{width:36px;height:36px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:color .2s;}.goal-card.selected .goal-card-icon{color:var(--teal);}
 .goal-card-title{font-weight:600;font-size:13px;color:var(--navy);line-height:1.3;}
 .goal-card-sub{font-size:11px;color:var(--text-3);margin-top:2px;}
 
@@ -317,17 +317,17 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 
         <p class="step-eyebrow" style="margin-bottom:10px" data-i18n="s1-age-label">Rango de edad</p>
         <div class="card-grid-2" id="ageGrid">
-          <div class="sel-card" data-val="18-25" onclick="selectCard('age',this)"><span class="sel-card-icon">🌱</span><div><div class="sel-card-title">18–25</div><div class="sel-card-sub" data-i18n="age-18">Adulto joven</div></div></div>
-          <div class="sel-card" data-val="26-35" onclick="selectCard('age',this)"><span class="sel-card-icon">⚡</span><div><div class="sel-card-title">26–35</div><div class="sel-card-sub" data-i18n="age-26">Peak de rendimiento</div></div></div>
-          <div class="sel-card" data-val="36-45" onclick="selectCard('age',this)"><span class="sel-card-icon">🎯</span><div><div class="sel-card-title">36–45</div><div class="sel-card-sub" data-i18n="age-36">Madurez activa</div></div></div>
-          <div class="sel-card" data-val="46-55" onclick="selectCard('age',this)"><span class="sel-card-icon">🌿</span><div><div class="sel-card-title">46–55</div><div class="sel-card-sub" data-i18n="age-46">Transición hormonal</div></div></div>
-          <div class="sel-card" data-val="56+" onclick="selectCard('age',this)"><span class="sel-card-icon">✨</span><div><div class="sel-card-title">56+</div><div class="sel-card-sub" data-i18n="age-56">Longevidad activa</div></div></div>
+          <div class="sel-card" data-val="18-25" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></svg></span><div><div class="sel-card-title">18–25</div><div class="sel-card-sub" data-i18n="age-18">Adulto joven</div></div></div>
+          <div class="sel-card" data-val="26-35" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H12L11 22l9-12H13z"/></svg></span><div><div class="sel-card-title">26–35</div><div class="sel-card-sub" data-i18n="age-26">Peak de rendimiento</div></div></div>
+          <div class="sel-card" data-val="36-45" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg></span><div><div class="sel-card-title">36–45</div><div class="sel-card-sub" data-i18n="age-36">Madurez activa</div></div></div>
+          <div class="sel-card" data-val="46-55" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M5 5c5 0 7 4 7 8-3 0-7-3-7-8z"/><path d="M19 5c-5 0-7 4-7 8 3 0 7-3 7-8z"/></svg></span><div><div class="sel-card-title">46–55</div><div class="sel-card-sub" data-i18n="age-46">Transición hormonal</div></div></div>
+          <div class="sel-card" data-val="56+" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 6.5H21l-5.5 4 2 6.5L12 15.5l-5.5 4 2-6.5L3 9.5h6.5z"/></svg></span><div><div class="sel-card-title">56+</div><div class="sel-card-sub" data-i18n="age-56">Longevidad activa</div></div></div>
         </div>
 
         <p class="step-eyebrow" style="margin-bottom:10px;margin-top:4px" data-i18n="s1-sex-label">Sexo biológico</p>
         <div class="card-grid-2" id="sexGrid">
-          <div class="sel-card" data-val="male" onclick="selectCard('sex',this)"><span class="sel-card-icon">♂️</span><div><div class="sel-card-title" data-i18n="sex-male">Masculino</div></div></div>
-          <div class="sel-card" data-val="female" onclick="selectCard('sex',this)"><span class="sel-card-icon">♀️</span><div><div class="sel-card-title" data-i18n="sex-female">Femenino</div></div></div>
+          <div class="sel-card" data-val="male" onclick="selectCard('sex',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="14.5" r="5.5"/><path d="M14 10l5.5-5.5"/><path d="M15.5 4H20v4.5"/></svg></span><div><div class="sel-card-title" data-i18n="sex-male">Masculino</div></div></div>
+          <div class="sel-card" data-val="female" onclick="selectCard('sex',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.5" r="5.5"/><path d="M12 15v5.5"/><path d="M9.5 18h5"/></svg></span><div><div class="sel-card-title" data-i18n="sex-female">Femenino</div></div></div>
         </div>
 
         <div class="quiz-nav">
@@ -385,61 +385,61 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <div class="goal-grid" id="goalGrid">
           <div class="goal-card" data-val="muscle" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">💪</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="10.5" width="1.5" height="3" rx="0.5"/><rect x="4" y="9.5" width="1.5" height="5" rx="0.5"/><path d="M5.5 12h13"/><rect x="18.5" y="9.5" width="1.5" height="5" rx="0.5"/><rect x="21" y="10.5" width="1.5" height="3" rx="0.5"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-muscle">Músculo & Rendimiento</div>
             <div class="goal-card-sub" data-i18n="goal-muscle-sub">Masa, fuerza, hormona del crecimiento</div>
           </div>
           <div class="goal-card" data-val="energy" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">⚡</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H12L11 22l9-12H13z"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-energy">Energía & Vitalidad</div>
             <div class="goal-card-sub" data-i18n="goal-energy-sub">Fatiga crónica, claridad mental, metabolismo</div>
           </div>
           <div class="goal-card" data-val="recovery" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">🔄</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8A9 9 0 1 1 5.3 5.3"/><path d="M21 3v5h-5"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-recovery">Recuperación & Curación</div>
             <div class="goal-card-sub" data-i18n="goal-recovery-sub">Lesiones, articulaciones, tejido muscular</div>
           </div>
           <div class="goal-card" data-val="skin" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">✨</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.41 1.41M18.36 18.36l1.41 1.41M2 12h2M20 12h2M4.22 19.78l1.41-1.41M18.36 5.64l1.41-1.41"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-skin">Piel & Belleza</div>
             <div class="goal-card-sub" data-i18n="goal-skin-sub">Colágeno, elasticidad, anti-envejecimiento</div>
           </div>
           <div class="goal-card" data-val="immune" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">🛡️</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C12 22 4 17 4 11V5.5L12 3l8 2.5V11c0 6-8 11-8 11z"/><path d="M9.5 12l2 2 3-3.5"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-immune">Sistema Inmune</div>
             <div class="goal-card-sub" data-i18n="goal-immune-sub">Defensas, inflamación crónica, resiliencia</div>
           </div>
           <div class="goal-card" data-val="libido" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">💑</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 3.5 15.5 3.5 9.5A4.5 4.5 0 0 1 8 5c1.8 0 3.3 1 4 2.5.7-1.5 2.2-2.5 4-2.5a4.5 4.5 0 0 1 4.5 4.5C20.5 15.5 12 21 12 21z"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-libido">Libido & Bienestar Íntimo</div>
             <div class="goal-card-sub" data-i18n="goal-libido-sub">Deseo sexual, conexión, vitalidad íntima</div>
           </div>
           <div class="goal-card" data-val="antioxidant" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">🌿</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M5 5c5 0 7 4 7 8-3 0-7-3-7-8z"/><path d="M19 5c-5 0-7 4-7 8 3 0 7-3 7-8z"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-antioxidant">Detox & Antioxidante</div>
             <div class="goal-card-sub" data-i18n="goal-antioxidant-sub">Glutatión, estrés oxidativo, hígado</div>
           </div>
           <div class="goal-card" data-val="weight" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">📉</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14M12 4v17"/><path d="M6 8l6-4 6 4"/><path d="M5 8l3.5 9a3.5 3.5 0 0 0 7 0L19 8"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-weight">Composición Corporal</div>
             <div class="goal-card-sub" data-i18n="goal-weight-sub">Pérdida de grasa, metabolismo, forma física</div>
           </div>
           <div class="goal-card" data-val="cognitive" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">🧠</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M6 9H4M6 12H4M6 15H4M18 9h2M18 12h2M18 15h2M9 6V4M12 6V4M15 6V4M9 18v2M12 18v2M15 18v2"/><path d="M9.5 9.5h2v2h-2zM12.5 9.5h2v2h-2zM9.5 12.5h2v2h-2zM12.5 12.5h2v2h-2z"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-cognitive">Enfoque Mental</div>
             <div class="goal-card-sub" data-i18n="goal-cognitive-sub">Concentración, memoria, neuroprotección</div>
           </div>
           <div class="goal-card" data-val="longevity" onclick="toggleGoal(this)">
             <div class="goal-card-check"></div>
-            <div class="goal-card-icon">⏳</div>
+            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg></div>
             <div class="goal-card-title" data-i18n="goal-longevity">Longevidad & Anti-Aging</div>
             <div class="goal-card-sub" data-i18n="goal-longevity-sub">NAD+, sirtuínas, envejecimiento celular</div>
           </div>
