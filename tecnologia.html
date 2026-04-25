@@ -270,6 +270,24 @@ section { padding: clamp(60px, 10vw, 120px) clamp(1.25rem, 6vw, 4rem); }
   .timeline-grid { grid-template-columns: 1fr 1fr; }
   .bioavail-row { grid-template-columns: 1fr; gap: .5rem; }
   .comparison-table { font-size: 0.8rem; }
+  /* Grid collapse */
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;}
+  [style*="grid-template-columns:2fr 1fr 1fr 1fr"]{grid-template-columns:1fr!important;}
+  /* Section padding reduction */
+  [style*="padding:120px 80px"],[style*="padding:140px 80px"],[style*="padding:100px 80px"]{padding:60px 20px!important;}
+  [style*="padding:120px"]{padding:60px 20px!important;}
+  [style*="padding:80px"]{padding:48px 20px!important;}
+  [style*="padding:64px 80px"]{padding:40px 20px!important;}
+  /* Hero section specific */
+  [style*="padding:100px 64px"]{padding:60px 20px!important;}
+  /* Footer */
+  footer[style]{grid-template-columns:1fr!important;padding:40px 20px!important;}
+  /* Overflow prevention */
+  [style*="gap:80px"]{gap:32px!important;}
+  [style*="gap:64px"]{gap:24px!important;}
 }
 @media (max-width: 480px) {
   .quality-grid { grid-template-columns: 1fr; }

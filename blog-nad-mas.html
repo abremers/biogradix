@@ -129,6 +129,24 @@ body{background:var(--bone);color:var(--ink);font-family:'Cormorant',serif;font-
   [data-footer-grid]{grid-template-columns:1fr !important;}
   .data-row{flex-direction:column;align-items:flex-start;gap:.25rem;}
   .mech-grid{grid-template-columns:1fr;}
+  /* Grid collapse */
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;}
+  [style*="grid-template-columns:2fr 1fr 1fr 1fr"]{grid-template-columns:1fr!important;}
+  /* Section padding reduction */
+  [style*="padding:120px 80px"],[style*="padding:140px 80px"],[style*="padding:100px 80px"]{padding:60px 20px!important;}
+  [style*="padding:120px"]{padding:60px 20px!important;}
+  [style*="padding:80px"]{padding:48px 20px!important;}
+  [style*="padding:64px 80px"]{padding:40px 20px!important;}
+  /* Hero section specific */
+  [style*="padding:100px 64px"]{padding:60px 20px!important;}
+  /* Footer */
+  footer[style]{grid-template-columns:1fr!important;padding:40px 20px!important;}
+  /* Overflow prevention */
+  [style*="gap:80px"]{gap:32px!important;}
+  [style*="gap:64px"]{gap:24px!important;}
 }
 
 #mobileMenu{position:fixed;inset:0;z-index:99;background:rgba(24,20,15,.5);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
