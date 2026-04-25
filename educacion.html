@@ -1,290 +1,271 @@
 <!DOCTYPE html>
-<html lang="es" id="htmlRoot">
+<html lang="es">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Centro de Educación — biogradix</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-<style>
-:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--alert:#D4534E;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
-.container{max-width:1200px;margin:0 auto;padding:0 48px;}
-@media(max-width:768px){.container{padding:0 20px;}}
-.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
-.serif{font-family:'Instrument Serif',serif;font-style:italic;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.up{opacity:1;transform:none;}
-.reveal-delay-1{transition-delay:.08s;}.reveal-delay-2{transition-delay:.16s;}.reveal-delay-3{transition-delay:.24s;}.reveal-delay-4{transition-delay:.32s;}
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
-.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
-.nav-inner{display:flex;align-items:center;gap:0;height:64px;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
-.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
-.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--teal);}
-.nav-links a.active{color:var(--teal);}
-.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
-.lang-btn.active,.lang-btn:hover{color:var(--teal);}
-.lang-sep{color:var(--silver);font-size:12px;}
-.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
-.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
-@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
-.mobile-menu.open{opacity:1;pointer-events:all;}
-.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
-.mobile-menu.open .mobile-menu-panel{transform:none;}
-.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
-.mobile-menu-panel a:hover{color:var(--teal);}
-.mobile-menu-panel a.active{color:var(--teal);}
-.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
-/* HERO */
-.edu-hero{background:var(--navy);padding:80px 0 72px;margin-top:64px;position:relative;overflow:hidden;}
-#helix-canvas{position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;opacity:.15;}
-.edu-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-.hero-cat-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;}
-.hero-cat-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-active);}
-.edu-hero-h1{font-weight:500;font-size:48px;letter-spacing:-.8px;color:#fff;margin-bottom:20px;line-height:1.1;}
-.edu-hero-h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.edu-hero-sub{font-size:16px;color:rgba(255,255,255,.6);line-height:1.75;max-width:440px;}
-.hero-dna-card{background:rgba(255,255,255,.04);border:1px solid rgba(29,158,117,.35);border-radius:20px;padding:48px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px;gap:20px;}
-.hero-dna-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-active);}
-@media(max-width:900px){.edu-hero-inner{grid-template-columns:1fr;}.edu-hero-h1{font-size:34px;}}
-/* SECTION GENERAL */
-.section-header{text-align:center;margin-bottom:52px;}
-.section-header .label{margin-bottom:12px;display:block;}
-.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:32px;letter-spacing:-.4px;color:var(--navy);margin-bottom:10px;}
-.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.section-sub{font-size:15px;color:var(--text-2);max-width:520px;margin:0 auto;}
-/* SECTION 1 — PEPTIDES */
-.peptides-section{padding:80px 0;background:#fff;}
-.peptides-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-@media(max-width:900px){.peptides-grid{grid-template-columns:1fr;}}
-.peptides-text p{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:18px;}
-.peptides-text p:last-child{margin-bottom:0;}
-.comparison-card{background:var(--navy);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px;}
-.compare-row{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;}
-.compare-icon{width:40px;height:40px;border-radius:10px;background:rgba(29,158,117,.15);border:1px solid rgba(29,158,117,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.compare-info{flex:1;}
-.compare-name{font-weight:600;font-size:14px;color:#fff;margin-bottom:2px;}
-.compare-desc{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.45);}
-/* SECTION 2 — ABSORPTION */
-.absorption-section{padding:80px 0;background:var(--mint);}
-.steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
-.steps-grid::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--mint),var(--teal),var(--mint));}
-.step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
-.step-dot{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--teal);}
-.step-label{font-weight:500;font-size:13px;color:var(--navy);margin-bottom:6px;}
-.step-desc{font-size:12px;color:var(--text-2);line-height:1.5;}
-@media(max-width:768px){.steps-grid{grid-template-columns:1fr 1fr;gap:24px;}.steps-grid::before{display:none;}}
-.absorption-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
-@media(max-width:768px){.absorption-compare{grid-template-columns:1fr;}}
-.abs-card{background:#fff;border:1px solid var(--silver);border-radius:16px;padding:28px;position:relative;}
-.abs-card.recommended{border-color:var(--teal);box-shadow:0 8px 32px rgba(15,110,86,.15);}
-.abs-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;border-radius:20px;padding:4px 14px;white-space:nowrap;}
-.abs-icon{width:44px;height:44px;border-radius:10px;background:var(--mint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-.abs-title{font-weight:600;font-size:15px;color:var(--navy);margin-bottom:8px;}
-.abs-body{font-size:13px;color:var(--text-2);line-height:1.65;}
-/* SECTION 3 — FAQ */
-.faq-section{padding:80px 0;background:#fff;}
-.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
-.faq-item{border-bottom:1px solid var(--silver);}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;cursor:pointer;user-select:none;}
-.faq-q-text{font-weight:500;font-size:15px;color:var(--navy);}
-.faq-arrow{width:28px;height:28px;border-radius:50%;background:var(--cloud);border:1px solid var(--silver);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .2s;}
-.faq-item.open .faq-arrow{transform:rotate(180deg);background:var(--mint);border-color:var(--teal);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1);}
-.faq-a-inner{font-size:14px;color:var(--text-2);line-height:1.75;padding-bottom:20px;}
-/* SECTION 4 — PRODUCTS */
-.products-section{padding:80px 0;background:var(--cloud);}
-.products-mini-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-@media(max-width:900px){.products-mini-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.products-mini-grid{grid-template-columns:1fr;}}
-.mini-card{background:#fff;border:1px solid var(--silver);border-radius:12px;padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:box-shadow .25s,transform .25s,border-color .25s;}
-.mini-card:hover{box-shadow:0 8px 32px rgba(11,26,43,.1);transform:translateY(-2px);border-color:rgba(15,110,86,.3);}
-.mini-card-name{font-weight:700;font-size:15px;color:var(--navy);}
-.mini-card-peptide{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);}
-.mini-card-badge{display:inline-block;background:var(--navy);color:#fff;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;border-radius:20px;padding:3px 10px;}
-.mini-card-tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);}
-/* CTA */
-.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
-.cta-helix{position:absolute;inset:0;opacity:.05;pointer-events:none;}
-.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
-.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
-.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
-.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
-.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 10px 30px rgba(15,110,86,.4);}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:8px;padding:13px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
-.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
-/* FOOTER */
-.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
-@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
-.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
-.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
-.footer-links{display:flex;flex-direction:column;gap:10px;}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--teal-active);}
-.footer-links a.active{color:var(--teal-active);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-copy{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);}
-.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.15);text-align:center;}
-.footer-legal{display:flex;gap:20px;}
-.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
-.footer-legal a:hover{color:rgba(255,255,255,.5);}
-.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro de Educación | Biogradix</title>
+<meta name="description" content="Entiende la ciencia detrás de los péptidos, la absorción por mucosa oral y los suplementos de rendimiento humano.">
+<meta property="og:title" content="Centro de Educación | Biogradix">
+<meta property="og:url" content="https://biogradix.com/educacion.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
+
+<style>
+:root {
+  --bone: #F5F1EB; --stone: #EDE8E0; --ink: #18140F;
+  --ink-soft: #4A443C; --ink-faint: #9A9189; --forest: #2E4A3A;
+  --rule: rgba(24,20,15,.1);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; font-weight: 300; background: var(--bone); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: 'Cormorant Display', serif; font-weight: 400; line-height: 1.15; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; display: flex; align-items: center; padding: 0 clamp(1.25rem,5vw,3rem); background: rgba(245,241,235,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark { width: 32px; height: 32px; border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.65rem; letter-spacing: 0.08em; color: var(--forest); }
+.nav-logo-text { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.8rem; letter-spacing: 0.18em; color: var(--ink); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-actions { display: flex; align-items: center; gap: 1rem; }
+.lang-btn { background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; color: var(--ink-faint); padding: 0; transition: color .2s; }
+.lang-btn.active { color: var(--ink); }
+.nav-wa { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; color: var(--forest); text-decoration: none; transition: opacity .2s; }
+.nav-wa svg { width: 14px; height: 14px; fill: var(--forest); }
+.nav-wa:hover { opacity: .7; }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1px; background: var(--ink); transition: all .3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.mobile-menu { position: fixed; top: 64px; right: 0; bottom: 0; width: 280px; z-index: 99; background: var(--bone); border-left: 1px solid var(--rule); transform: translateX(100%); transition: transform .35s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; padding: 2rem 1.5rem; gap: 1.25rem; }
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu a { font-size: 1rem; color: var(--ink-soft); text-decoration: none; padding-bottom: 1.25rem; border-bottom: 1px solid var(--rule); display: block; font-weight: 300; }
+.mobile-menu a:hover { color: var(--ink); }
+.mobile-actions { display: flex; gap: 1rem; margin-top: .5rem; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.up { transform: translateY(32px); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* SECTION */
+section { padding: clamp(60px,10vw,120px) clamp(1.25rem,6vw,4rem); }
+.section-inner { max-width: 1140px; margin: 0 auto; }
+.section-label { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--forest); margin-bottom: 0.75rem; }
+.section-title { font-size: clamp(2rem,4vw,3rem); font-weight: 300; margin-bottom: 1.5rem; }
+.section-lead { font-family: 'Cormorant', serif; font-size: 1.15rem; font-weight: 300; color: var(--ink-soft); max-width: 640px; line-height: 1.65; margin-bottom: 3rem; }
+
+/* HERO */
+.hero { padding: 140px clamp(1.25rem,6vw,4rem) 100px; background: var(--ink); border-bottom: 1px solid rgba(245,241,235,.08); }
+.hero-inner { max-width: 1140px; margin: 0 auto; }
+.hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,241,235,.5); border-left: 2px solid var(--forest); padding-left: 0.75rem; margin-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(2.8rem,6vw,5rem); font-weight: 300; color: var(--bone); margin-bottom: 1.5rem; max-width: 700px; }
+.hero h1 em { font-style: italic; color: rgba(245,241,235,.6); }
+.hero-lead { font-family: 'Cormorant', serif; font-size: 1.25rem; font-weight: 300; color: rgba(245,241,235,.7); max-width: 560px; line-height: 1.65; }
+
+/* PEPTIDOS SECTION */
+.peptidos-section { background: var(--bone); }
+.peptidos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.peptidos-text h3 { font-size: 1.8rem; font-weight: 300; margin-bottom: 1rem; }
+.peptidos-text p { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.25rem; }
+.peptidos-comparison { border: 1px solid var(--rule); }
+.comp-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--rule); }
+.comp-row:last-child { border-bottom: none; }
+.comp-cell { padding: 1.25rem 1rem; border-right: 1px solid var(--rule); }
+.comp-cell:last-child { border-right: none; }
+.comp-cell.header { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+.comp-cell .comp-name { font-family: 'Cormorant Display', serif; font-size: 1.2rem; font-weight: 300; color: var(--ink); margin-bottom: 0.25rem; }
+.comp-cell .comp-def { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.5; }
+
+/* ABSORCION SECTION */
+.absorcion-section { background: var(--stone); }
+.absorcion-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border: 1px solid var(--rule); margin-bottom: 3rem; }
+.absorcion-step { padding: 1.75rem 1.25rem; border-right: 1px solid var(--rule); }
+.absorcion-step:last-child { border-right: none; }
+.step-arrow { font-family: 'Cormorant Display', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 0.5rem; }
+.step-name { font-size: 0.8rem; font-weight: 500; color: var(--ink); margin-bottom: 0.4rem; }
+.step-note { font-size: 0.75rem; color: var(--ink-soft); line-height: 1.5; }
+.absorcion-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); }
+.compare-card { padding: 2rem 1.75rem; border-right: 1px solid var(--rule); }
+.compare-card:last-child { border-right: none; }
+.compare-card.recommended { background: rgba(46,74,58,.05); }
+.compare-pct { font-family: 'Cormorant Display', serif; font-size: 3rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 0.25rem; }
+.compare-name { font-size: 0.85rem; font-weight: 500; color: var(--ink); margin-bottom: 0.5rem; }
+.compare-desc { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.55; }
+.badge-rec { display: inline-block; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border: 1px solid var(--forest); color: var(--forest); margin-bottom: 0.75rem; }
+
+/* FAQ SECTION */
+.faq-section { background: var(--bone); }
+.faq-list { border: 1px solid var(--rule); }
+.faq-item { border-bottom: 1px solid var(--rule); }
+.faq-item:last-child { border-bottom: none; }
+.faq-question { padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 1rem; }
+.faq-q-text { font-size: 0.95rem; font-weight: 400; color: var(--ink); }
+.faq-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--ink-faint); transition: transform .3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { display: none; padding: 0 2rem 1.75rem; font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
+.faq-item.open .faq-answer { display: block; }
+
+/* COLLECTION SECTION */
+.collection-section { background: var(--stone); }
+.product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--rule); margin-top: 3rem; }
+.product-card { padding: 2rem 1.5rem; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.product-card:nth-child(4n) { border-right: none; }
+.product-card:nth-last-child(-n+3) { border-bottom: none; }
+.product-card:last-child { border-bottom: none; }
+.product-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--forest); margin-bottom: 0.5rem; }
+.product-name { font-family: 'Cormorant Display', serif; font-size: 1.3rem; font-weight: 300; color: var(--ink); margin-bottom: 0.5rem; }
+.product-active { font-size: 0.75rem; color: var(--ink-faint); margin-bottom: 0.75rem; }
+.product-desc { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.55; }
+
+/* CTA */
+.cta-section { background: var(--ink); padding: clamp(60px,10vw,120px) clamp(1.25rem,6vw,4rem); text-align: center; }
+.cta-section h2 { font-family: 'Cormorant Display', serif; font-size: clamp(2rem,4vw,3.2rem); font-weight: 300; color: var(--bone); margin-bottom: 1rem; }
+.cta-section p { font-size: 0.95rem; color: rgba(245,241,235,.6); margin-bottom: 2rem; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--forest); color: var(--bone); font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.9rem 2rem; text-decoration: none; border-radius: 2px; transition: opacity .2s; }
+.btn-primary:hover { opacity: .85; }
+.btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--bone); font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.9rem 2rem; text-decoration: none; border: 1px solid rgba(245,241,235,.3); border-radius: 2px; transition: opacity .2s; margin-left: 1rem; }
+.btn-outline:hover { opacity: .7; }
+
+/* FOOTER */
+footer { background: var(--ink); padding: 4rem clamp(1.25rem,5vw,3rem) 2rem; border-top: 1px solid rgba(245,241,235,.08); }
+.footer-grid { display: grid; grid-template-columns: 2fr repeat(3,1fr); gap: 2.5rem; max-width: 1140px; margin: 0 auto 3rem; }
+.footer-brand p { font-size: 0.82rem; color: rgba(245,241,235,.4); margin-top: 0.75rem; max-width: 260px; line-height: 1.6; }
+.footer-col h5 { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,241,235,.3); margin-bottom: 0.9rem; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.5rem; }
+.footer-col a { font-size: 0.82rem; color: rgba(245,241,235,.5); text-decoration: none; transition: color .2s; }
+.footer-col a:hover { color: var(--bone); }
+.footer-bottom { max-width: 1140px; margin: 0 auto; padding-top: 1.5rem; border-top: 1px solid rgba(245,241,235,.08); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+.footer-bottom p { font-size: 0.75rem; color: rgba(245,241,235,.28); }
+.footer-disclaimer { max-width: 1140px; margin: 1.5rem auto 0; font-size: 0.7rem; color: rgba(245,241,235,.2); line-height: 1.6; }
+
+@media (max-width: 1024px) {
+  .peptidos-grid { grid-template-columns: 1fr; }
+  .absorcion-steps { grid-template-columns: repeat(3,1fr); }
+  .absorcion-step:nth-child(3) { border-right: none; }
+  .absorcion-step:nth-child(4),
+  .absorcion-step:nth-child(5) { border-top: 1px solid var(--rule); }
+  .absorcion-step:nth-child(5) { border-right: none; }
+  .product-grid { grid-template-columns: repeat(2,1fr); }
+  .product-card:nth-child(2n) { border-right: none; }
+  .product-card:nth-child(5),
+  .product-card:nth-child(6),
+  .product-card:nth-child(7) { border-bottom: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-wa span { display: none; }
+  .hamburger { display: flex; }
+  .absorcion-steps { grid-template-columns: 1fr 1fr; }
+  .absorcion-step { border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule); border-top: none !important; }
+  .absorcion-step:nth-child(2n) { border-right: none; }
+  .absorcion-step:last-child { border-bottom: none; }
+  .absorcion-compare { grid-template-columns: 1fr; }
+  .compare-card { border-right: none; border-bottom: 1px solid var(--rule); }
+  .compare-card:last-child { border-bottom: none; }
+  .comp-row { grid-template-columns: 1fr; }
+  .comp-cell { border-right: none; border-bottom: 1px solid var(--rule); }
+  .comp-cell:last-child { border-bottom: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .product-card { border-right: none; border-bottom: 1px solid var(--rule) !important; }
+  .product-card:last-child { border-bottom: none !important; }
+}
+</style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
-        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
-        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
-        <a href="educacion.html" class="active" data-i18n="nav-educacion">Educación</a>
-        <a href="blog.html" data-i18n="nav-blog">Blog</a>
-        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
-        <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
-      </div>
-      <div class="nav-right">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <span class="lang-sep">/</span>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <a href="https://wa.me/13467189350" class="btn-wa">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          WhatsApp
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-      </div>
-    </div>
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">BG</div>
+    <span class="nav-logo-text">BIOGRADIX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#productos" data-i18n="nav_productos">Productos</a></li>
+    <li><a href="tecnologia.html" data-i18n="nav_tecnologia">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_educacion">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span data-i18n="nav_whatsapp">WhatsApp</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-panel">
-    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
-    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
-    <a href="educacion.html" class="active" data-i18n="nav-educacion">Educación</a>
-    <a href="blog.html" data-i18n="nav-blog">Blog</a>
-        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
-    <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
-    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--silver);">
-      <button class="lang-btn active" onclick="setLang('es');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">ES</button>
-      <span class="lang-sep">/</span>
-      <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">EN</button>
-    </div>
-    <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#productos" onclick="toggleMenu()" data-i18n="nav_productos">Productos</a>
+  <a href="tecnologia.html" onclick="toggleMenu()" data-i18n="nav_tecnologia">Tecnología</a>
+  <a href="educacion.html" onclick="toggleMenu()" data-i18n="nav_educacion">Educación</a>
+  <a href="blog.html" onclick="toggleMenu()" data-i18n="nav_blog">Blog</a>
+  <a href="index.html#faq" onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
+  <div class="mobile-actions">
+    <button class="lang-btn" onclick="setLang('es'); toggleMenu();">ES</button>
+    <button class="lang-btn" onclick="setLang('en'); toggleMenu();">EN</button>
   </div>
+  <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" style="margin-top:0.5rem;">WhatsApp</a>
 </div>
 
 <!-- HERO -->
-<section class="edu-hero">
-  <canvas id="helix-canvas"></canvas>
-  <div class="container">
-    <div class="edu-hero-inner">
-      <div>
-        <div class="hero-cat-badge reveal">
-          <div class="hero-cat-dot"></div>
-          <span class="label" style="color:var(--teal-active);" data-i18n="edu-hero-label">Centro de Educación</span>
-        </div>
-        <h1 class="edu-hero-h1 reveal reveal-delay-1" data-i18n-html="edu-hero-h1">Entiende la Ciencia<br/>que te <em>Transforma</em></h1>
-        <p class="edu-hero-sub reveal reveal-delay-2" data-i18n="edu-hero-sub">Todo lo que necesitas saber sobre péptidos, absorción por mucosa oral y suplementos de nueva generación.</p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="hero-dna-card">
-          <!-- DNA Helix SVG icon -->
-          <svg width="72" height="96" viewBox="0 0 72 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8 Q36 20, 60 8" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 24 Q36 12, 60 24" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 40 Q36 52, 60 40" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 56 Q36 44, 60 56" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 72 Q36 84, 60 72" stroke="#1D9E75" stroke-width="2" stroke-linecap="round"/>
-            <path d="M12 88 Q36 76, 60 88" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/>
-            <line x1="12" y1="8" x2="12" y2="88" stroke="rgba(29,158,117,0.3)" stroke-width="1.2"/>
-            <line x1="60" y1="8" x2="60" y2="88" stroke="rgba(15,110,86,0.3)" stroke-width="1.2"/>
-            <circle cx="12" cy="8" r="3" fill="#1D9E75"/>
-            <circle cx="60" cy="8" r="3" fill="#0F6E56"/>
-            <circle cx="12" cy="24" r="3" fill="#0F6E56"/>
-            <circle cx="60" cy="24" r="3" fill="#1D9E75"/>
-            <circle cx="12" cy="40" r="3" fill="#1D9E75"/>
-            <circle cx="60" cy="40" r="3" fill="#0F6E56"/>
-            <circle cx="12" cy="56" r="3" fill="#0F6E56"/>
-            <circle cx="60" cy="56" r="3" fill="#1D9E75"/>
-            <circle cx="12" cy="72" r="3" fill="#1D9E75"/>
-            <circle cx="60" cy="72" r="3" fill="#0F6E56"/>
-            <circle cx="12" cy="88" r="3" fill="#0F6E56"/>
-            <circle cx="60" cy="88" r="3" fill="#1D9E75"/>
-          </svg>
-          <span class="hero-dna-label">Péptidos / Peptides</span>
-        </div>
-      </div>
-    </div>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow reveal" data-i18n="hero_eyebrow">Centro de Educación</p>
+    <h1 class="reveal up" data-i18n-html="hero_h1">Entiende la Ciencia<br><em>que te Transforma</em></h1>
+    <p class="hero-lead reveal" data-i18n="hero_lead">Péptidos, absorción, biodisponibilidad. No necesitas un doctorado para tomar decisiones inteligentes sobre tu salud. Necesitas la información correcta.</p>
   </div>
 </section>
 
-<!-- SECTION 1: ¿Qué son los Péptidos? -->
-<section class="peptides-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label" data-i18n="pep-label">Fundamentos</span>
-      <h2 class="section-h2" data-i18n-html="pep-h2">¿Qué son <em>exactamente</em> los péptidos?</h2>
-      <p class="section-sub" data-i18n="pep-sub">La ciencia detrás de los mensajeros moleculares más importantes del cuerpo.</p>
-    </div>
-    <div class="peptides-grid">
-      <div class="peptides-text reveal">
-        <p data-i18n="pep-p1">Los péptidos son moléculas formadas por cadenas cortas de aminoácidos — los bloques fundamentales de la vida. La diferencia entre péptidos y proteínas es principalmente el tamaño: los péptidos son cadenas más cortas (2–50 aminoácidos), mientras que las proteínas son cadenas más largas (50+ aminoácidos).</p>
-        <p data-i18n="pep-p2">Piensa en los aminoácidos como letras del alfabeto. Las proteínas son palabras largas; los péptidos son sílabas o palabras cortas. A veces, palabras más cortas comunican mensajes más específicos y poderosos.</p>
-        <p data-i18n="pep-p3">Tu cuerpo es fundamentalmente un sistema de comunicación. Diferentes células, órganos y sistemas necesitan 'hablar' entre sí constantemente para coordinarse. Los péptidos son los mensajeros específicos de este sistema. Cada péptido tiene un trabajo específico porque encaja en receptores específicos en células específicas — como una llave en una cerradura. Solo la llave correcta abre la cerradura correcta.</p>
+<!-- PEPTIDOS -->
+<section class="peptidos-section">
+  <div class="section-inner">
+    <p class="section-label reveal" data-i18n="pep_label">Módulo 1</p>
+    <h2 class="section-title reveal" data-i18n="pep_title">¿Qué son los Péptidos?</h2>
+    <div class="peptidos-grid">
+      <div class="peptidos-text">
+        <h3 class="reveal" data-i18n="pep_h3">Las moléculas de señalización del cuerpo</h3>
+        <p class="reveal" data-i18n="pep_p1">Los péptidos son cadenas cortas de aminoácidos — los mismos bloques que forman las proteínas, pero en secuencias más cortas y específicas. Esta especificidad es lo que los hace tan poderosos: en lugar de ser materiales de construcción generales, son mensajes moleculares precisos.</p>
+        <p class="reveal" data-i18n="pep_p2">El cuerpo humano produce miles de péptidos naturalmente. Algunos regulan el sueño, otros controlan el metabolismo, otros dirigen la reparación de tejidos. La investigación en péptidos bioactivos se centra en identificar estas señales y en desarrollar formas de amplificarlas cuando el cuerpo las produce en cantidades insuficientes debido a la edad, el estrés o la enfermedad.</p>
+        <p class="reveal" data-i18n="pep_p3">La diferencia entre péptidos y proteínas no es solo de tamaño — es de función. Las proteínas son estructurales (músculo, colágeno, enzimas). Los péptidos son reguladores: dicen a las células qué hacer, cuándo hacerlo, y con qué intensidad.</p>
       </div>
-      <div class="reveal reveal-delay-2">
-        <div class="comparison-card">
-          <!-- Row 1: Amino acids -->
-          <div class="compare-row">
-            <div class="compare-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><line x1="14.12" y1="10.12" x2="17.17" y2="6.83"/><line x1="9.88" y1="10.12" x2="6.83" y2="6.83"/><line x1="14.12" y1="13.88" x2="17.17" y2="17.17"/><line x1="9.88" y1="13.88" x2="6.83" y2="17.17"/></svg>
-            </div>
-            <div class="compare-info">
-              <div class="compare-name" data-i18n="cmp-aa-name">Aminoácidos</div>
-              <div class="compare-desc" data-i18n="cmp-aa-desc">Los bloques · The building blocks</div>
-            </div>
+      <div class="reveal">
+        <div class="peptidos-comparison">
+          <div class="comp-row">
+            <div class="comp-cell header" data-i18n="comp_aminoacid">Aminoácido</div>
+            <div class="comp-cell header" data-i18n="comp_peptide">Péptido (2–50 aa)</div>
+            <div class="comp-cell header" data-i18n="comp_protein">Proteína (50+ aa)</div>
           </div>
-          <!-- Row 2: Peptides -->
-          <div class="compare-row" style="border-color:rgba(29,158,117,.4);background:rgba(29,158,117,.08);">
-            <div class="compare-icon" style="background:rgba(29,158,117,.25);border-color:rgba(29,158,117,.5);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+          <div class="comp-row">
+            <div class="comp-cell">
+              <div class="comp-name" data-i18n="aa_name">Unidad base</div>
+              <div class="comp-def" data-i18n="aa_def">El ladrillo. Por sí solo no tiene función biológica específica más allá de ser combustible o material.</div>
             </div>
-            <div class="compare-info">
-              <div class="compare-name" data-i18n="cmp-pep-name">Péptidos</div>
-              <div class="compare-desc" data-i18n="cmp-pep-desc">2–50 aminoácidos · 2–50 amino acids</div>
+            <div class="comp-cell">
+              <div class="comp-name" data-i18n="pep_name">Mensaje molecular</div>
+              <div class="comp-def" data-i18n="pep_def">Señal biológica de alta especificidad. Activa receptores celulares precisos para funciones definidas.</div>
             </div>
-          </div>
-          <!-- Row 3: Proteins -->
-          <div class="compare-row">
-            <div class="compare-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 Q8 4,12 8 Q16 12,20 8"/><path d="M4 12 Q8 16,12 12 Q16 8,20 12"/><path d="M4 16 Q8 12,12 16 Q16 20,20 16"/></svg>
-            </div>
-            <div class="compare-info">
-              <div class="compare-name" data-i18n="cmp-pro-name">Proteínas</div>
-              <div class="compare-desc" data-i18n="cmp-pro-desc">50+ aminoácidos · 50+ amino acids</div>
+            <div class="comp-cell">
+              <div class="comp-name" data-i18n="prot_name">Estructura funcional</div>
+              <div class="comp-def" data-i18n="prot_def">Músculo, enzima, anticuerpo. Trabaja por su forma tridimensional, no por señalización directa.</div>
             </div>
           </div>
         </div>
@@ -293,468 +274,368 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
   </div>
 </section>
 
-<!-- SECTION 2: Absorción por Mucosa Oral -->
-<section class="absorption-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label" data-i18n="abs-label">BiogradixRelease®</span>
-      <h2 class="section-h2" data-i18n-html="abs-h2">Absorción por <em>Mucosa Oral</em></h2>
-      <p class="section-sub" data-i18n="abs-sub">Por qué aplicar contra la mejilla interna o encía superior cambia todo.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-item reveal">
-        <div class="step-dot">1</div>
-        <div class="step-label" data-i18n="abs-step1-label">Aplicación</div>
-        <div class="step-desc" data-i18n="abs-step1-desc">Coloca el suplemento contra la mejilla interna o encía superior según indicación</div>
+<!-- ABSORCION -->
+<section class="absorcion-section">
+  <div class="section-inner">
+    <p class="section-label reveal" data-i18n="abs_label">Módulo 2</p>
+    <h2 class="section-title reveal" data-i18n="abs_title">Absorción por Mucosa Oral</h2>
+    <p class="section-lead reveal" data-i18n="abs_lead">La vía de entrega determina cuánto activo llega a su destino. El proceso de absorción por mucosa oral en 5 etapas.</p>
+    <div class="absorcion-steps reveal">
+      <div class="absorcion-step">
+        <div class="step-arrow">→</div>
+        <div class="step-name" data-i18n="abs_step1">Colocación</div>
+        <div class="step-note" data-i18n="abs_step1_note">Oblea bajo la lengua o entre mejilla y encía</div>
       </div>
-      <div class="step-item reveal reveal-delay-1">
-        <div class="step-dot">2</div>
-        <div class="step-label" data-i18n="abs-step2-label">Contacto con Mucosa</div>
-        <div class="step-desc" data-i18n="abs-step2-desc">La mucosa oral absorbe los bioactivos directamente</div>
+      <div class="absorcion-step">
+        <div class="step-arrow">→</div>
+        <div class="step-name" data-i18n="abs_step2">Disolución</div>
+        <div class="step-note" data-i18n="abs_step2_note">Liberación controlada del activo en 60–90 seg</div>
       </div>
-      <div class="step-item reveal reveal-delay-2">
-        <div class="step-dot">3</div>
-        <div class="step-label" data-i18n="abs-step3-label">Entrada Directa</div>
-        <div class="step-desc" data-i18n="abs-step3-desc">Los ingredientes entran al torrente sanguíneo en minutos</div>
+      <div class="absorcion-step">
+        <div class="step-arrow">→</div>
+        <div class="step-name" data-i18n="abs_step3">Difusión Mucosa</div>
+        <div class="step-note" data-i18n="abs_step3_note">El activo penetra el epitelio no queratinizado</div>
       </div>
-      <div class="step-item reveal reveal-delay-3">
-        <div class="step-dot">4</div>
-        <div class="step-label" data-i18n="abs-step4-label">Sin Primer Paso</div>
-        <div class="step-desc" data-i18n="abs-step4-desc">Se evita el metabolismo hepático de primer paso completamente</div>
+      <div class="absorcion-step">
+        <div class="step-arrow">→</div>
+        <div class="step-name" data-i18n="abs_step4">Absorción Capilar</div>
+        <div class="step-note" data-i18n="abs_step4_note">Red vascular sublingual de acceso directo</div>
       </div>
-      <div class="step-item reveal reveal-delay-4">
-        <div class="step-dot">5</div>
-        <div class="step-label" data-i18n="abs-step5-label">Biodisponibilidad Total</div>
-        <div class="step-desc" data-i18n="abs-step5-desc">2–3× más efectivo que cápsulas orales convencionales</div>
+      <div class="absorcion-step">
+        <div class="step-arrow">✓</div>
+        <div class="step-name" data-i18n="abs_step5">Circulación Sistémica</div>
+        <div class="step-note" data-i18n="abs_step5_note">Distribución por todo el organismo en 15–20 min</div>
       </div>
     </div>
-
-    <div class="absorption-compare">
-      <!-- Card 1: Pills -->
-      <div class="abs-card reveal">
-        <div class="abs-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20H4a2 2 0 01-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 011.66.9l.82 1.2a2 2 0 001.66.9H20a2 2 0 012 2v3"/><circle cx="18" cy="18" r="4"/><path d="M15.3 15.3l5.4 5.4"/></svg>
-        </div>
-        <div class="abs-title" data-i18n="abs-c1-title">Pastillas Orales</div>
-        <div class="abs-body" data-i18n="abs-c1-body">Biodisponibilidad: 20–40%. El hígado degrada 60–80% del principio activo antes de que llegue al torrente sanguíneo.</div>
+    <div class="absorcion-compare reveal">
+      <div class="compare-card">
+        <div class="compare-pct">20–40%</div>
+        <div class="compare-name" data-i18n="abs_c1_name">Pastillas Orales</div>
+        <div class="compare-desc" data-i18n="abs_c1_desc">Digestión ácida + enzimas proteolíticas + efecto de primer paso hepático. En el mejor de los casos, un tercio llega activo a circulación.</div>
       </div>
-      <!-- Card 2: BiogradixRelease® (recommended) -->
-      <div class="abs-card recommended reveal reveal-delay-1">
-        <div class="abs-badge" data-i18n="abs-recommended-badge">RECOMENDADO</div>
-        <div class="abs-icon" style="background:var(--mint);border:1px solid var(--teal);">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        </div>
-        <div class="abs-title" style="color:var(--teal);">BiogradixRelease®</div>
-        <div class="abs-body" data-i18n="abs-c2-body">Biodisponibilidad: 80–93%. Absorción directa por mucosa — sin pérdidas digestivas, sin metabolismo hepático.</div>
+      <div class="compare-card recommended">
+        <div class="badge-rec" data-i18n="abs_badge">Recomendado</div>
+        <div class="compare-pct">80–93%</div>
+        <div class="compare-name" data-i18n="abs_c2_name">BiogradixRelease®</div>
+        <div class="compare-desc" data-i18n="abs_c2_desc">Absorción directa por la mucosa sublingual. Evita la digestión y el primer paso hepático. Acción en 15–20 minutos sin inyecciones.</div>
       </div>
-      <!-- Card 3: Injectable -->
-      <div class="abs-card reveal reveal-delay-2">
-        <div class="abs-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l4 4-9.5 9.5-5-1.5L18 2z"/><path d="M13.5 6.5l4 4"/><path d="M2 22l5.5-5.5"/></svg>
-        </div>
-        <div class="abs-title" data-i18n="abs-c3-title">Inyectable</div>
-        <div class="abs-body" data-i18n="abs-c3-body">Biodisponibilidad: 90–95%. Requiere agujas, reconstitución, técnica aséptica y refrigeración estricta.</div>
+      <div class="compare-card">
+        <div class="compare-pct">90–95%</div>
+        <div class="compare-name" data-i18n="abs_c3_name">Inyectable 503A</div>
+        <div class="compare-desc" data-i18n="abs_c3_desc">Alta biodisponibilidad pero requiere receta médica, refrigeración, técnica de inyección estéril y supervisión profesional.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 3: FAQ -->
+<!-- FAQ -->
 <section class="faq-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label" data-i18n="faq-label">Dudas Comunes</span>
-      <h2 class="section-h2" data-i18n-html="faq-h2">Respuestas <em>directas</em></h2>
-    </div>
+  <div class="section-inner">
+    <p class="section-label reveal" data-i18n="faq_label">Módulo 3</p>
+    <h2 class="section-title reveal" data-i18n="faq_title">Preguntas Frecuentes</h2>
     <div class="faq-list reveal">
 
       <div class="faq-item">
-        <div class="faq-q">
-          <span class="faq-q-text" data-i18n="faq-q1">¿Son seguros los péptidos de Biogradix?</span>
-          <div class="faq-arrow">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq1_q">¿Son seguros los péptidos bioactivos?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
         </div>
-        <div class="faq-a">
-          <div class="faq-a-inner" data-i18n="faq-a1">Sí. Los péptidos que utilizamos ocurren naturalmente en el cuerpo humano o son análogos naturales estrechamente relacionados. El cuerpo reconoce estas moléculas. Décadas de investigación médica respaldan su seguridad. Todos nuestros productos son fabricados bajo estándares GMP con pureza ≥99% verificada por HPLC en laboratorio independiente. Menos del 1% de usuarios reporta efectos secundarios, generalmente leves y transitorios.</div>
-        </div>
+        <div class="faq-answer" data-i18n="faq1_a">Los péptidos bioactivos como el Glutatión, BPC-157, GHK-Cu y Thymosin Alpha-1 tienen décadas de investigación preclínica y un perfil de seguridad bien documentado. Son secuencias peptídicas que el propio organismo reconoce, lo que minimiza el riesgo de reacciones adversas inespecíficas. Sin embargo, como con cualquier suplemento, la calidad de la formulación y la vía de administración son determinantes. Siempre consulte con un profesional de salud antes de iniciar cualquier protocolo.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
-          <span class="faq-q-text" data-i18n="faq-q2">¿Cuánto tiempo hasta ver resultados?</span>
-          <div class="faq-arrow">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq2_q">¿Cuánto tiempo tardan en verse resultados?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
         </div>
-        <div class="faq-a">
-          <div class="faq-a-inner" data-i18n="faq-a2">Depende del péptido y el objetivo: Energía (VITACHARGE™/NAD+): 3–7 días. Rendimiento físico (RECOVERYPRO™/BPC-157, MUSCLEMAXX™): 1–2 semanas. Composición corporal (MUSCLEMAXX™): 4–6 semanas. Cambios cosméticos (RADIANCEMAX™/GHK-Cu, CELLDEW™/Glutatión): 4–8 semanas. Cambios estructurales profundos (articulaciones): 8–12 semanas. La constancia es clave — los mejores resultados se obtienen con uso continuo.</div>
-        </div>
+        <div class="faq-answer" data-i18n="faq2_a">Depende del compuesto y del objetivo. Los efectos de energía y claridad mental (NAD+/VITACHARGE™) suelen percibirse en 1–3 días. Los cambios en recuperación muscular (BPC-157/RECOVERYPRO™) en 1–2 semanas. Las mejoras en piel y colágeno (GHK-Cu/RADIANCEMAX™) requieren 4–12 semanas de uso consistente para ser clínicamente significativas. Los biomarkers como NAD+ plasmático o ratio GSH/GSSG pueden monitorizarse para seguimiento objetivo.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
-          <span class="faq-q-text" data-i18n="faq-q3">¿Puedo usar múltiples productos juntos?</span>
-          <div class="faq-arrow">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq3_q">¿Se pueden combinar varios productos?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
         </div>
-        <div class="faq-a">
-          <div class="faq-a-inner" data-i18n="faq-a3">Sí. De hecho, muchos usuarios ven beneficios sinérgicos. Combinaciones frecuentes: VITACHARGE™ + CELLDEW™ (energía + desintoxicación), RECOVERYPRO™ + MUSCLEMAXX™ (rendimiento deportivo completo), RADIANCEMAX™ + CELLDEW™ (belleza desde adentro completa). No hay interacciones negativas conocidas entre los productos Biogradix. Contáctanos por WhatsApp para una recomendación personalizada.</div>
-        </div>
+        <div class="faq-answer" data-i18n="faq3_a">Sí, y de hecho las combinaciones estratégicas potencian los resultados. Por ejemplo: CELLDEW™ (Glutatión) + VITACHARGE™ (NAD+) actúan sinérgicamente — el NAD+ regenera el glutatión oxidado mientras el glutatión protege las mitocondrias. RECOVERYPRO™ + MUSCLEMAXX™ se complementan para recuperación y anabolismo. Nuestro quiz de protocolo identifica las combinaciones más apropiadas para cada perfil de objetivos.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
-          <span class="faq-q-text" data-i18n="faq-q4">¿Hay efectos secundarios?</span>
-          <div class="faq-arrow">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq4_q">¿Hay efectos secundarios conocidos?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
         </div>
-        <div class="faq-a">
-          <div class="faq-a-inner" data-i18n="faq-a4">Generalmente no. Los péptidos de Biogradix son bien tolerados. En menos del 1% de usuarios se reporta: sensibilidad leve en la boca en el punto de aplicación (transitoria), o respuesta alérgica individual (como con cualquier suplemento). Todos los productos incluyen ficha de seguridad completa. Consulta con tu médico si tienes condiciones de salud preexistentes.</div>
-        </div>
+        <div class="faq-answer" data-i18n="faq4_a">Los efectos secundarios documentados con los compuestos en la línea Biogradix son mínimos y generalmente transitorios. Algunos usuarios reportan leve sensación de calor o energía en las primeras dosis de VITACHARGE™ (NAD+), que se normaliza. El Glutatión puede causar leve detoxificación inicial en personas con alta carga oxidativa. Los péptidos como BPC-157 tienen un perfil de seguridad notablemente limpio en la literatura preclínica. No se han documentado interacciones medicamentosas significativas, pero siempre es recomendable consultar con su médico si toma medicamentos de prescripción.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
-          <span class="faq-q-text" data-i18n="faq-q5">¿Cómo se aplica correctamente el suplemento?</span>
-          <div class="faq-arrow">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq5_q">¿Cómo aplicar correctamente las obleas?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
         </div>
-        <div class="faq-a">
-          <div class="faq-a-inner" data-i18n="faq-a5">El suplemento se coloca contra la mejilla interna o la encía superior — no bajo la lengua. Este contacto directo con la mucosa oral permite la absorción óptima. Mantén el suplemento en contacto con la mucosa durante el tiempo indicado en las instrucciones de cada producto. Evita comer, beber o enjuagarte la boca durante 15 minutos después de la aplicación para maximizar la absorción.</div>
-        </div>
+        <div class="faq-answer" data-i18n="faq5_a">El protocolo estándar: (1) Coloque la oblea bajo la lengua o entre la mejilla y la encía — ambas posiciones acceden a la red capilar sublingual y bucal. (2) Permita que se disuelva completamente sin masticar. El tiempo de disolución es de 60–90 segundos. (3) Minimice la deglución de saliva durante ese tiempo para maximizar el tiempo de contacto de la oblea con la mucosa. (4) No coma ni beba (excepto agua) durante los 15 minutos siguientes. (5) Para mejor absorción, adminístrelo en ayunas o al menos 30 minutos después de comer.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">
-          <span class="faq-q-text" data-i18n="faq-q6">¿Son legales en México y Latinoamérica?</span>
-          <div class="faq-arrow">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq6_q">¿Es legal comprar y usar estos productos?</span>
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>
         </div>
-        <div class="faq-a">
-          <div class="faq-a-inner" data-i18n="faq-a6">Nuestros productos están formulados como suplementos dietéticos de uso personal y no requieren prescripción médica. A diferencia de las versiones inyectables, la presentación en parche/mucosa oral está sujeta a regulaciones menos restrictivas. Recomendamos verificar la normativa vigente en tu país antes de importar. Todos nuestros productos cuentan con documentación COA disponible.</div>
-        </div>
+        <div class="faq-answer" data-i18n="faq6_a">Los compuestos en la línea Biogradix son péptidos para investigación y uso personal, no medicamentos de prescripción. En Estados Unidos y la mayoría de países latinoamericanos, la compra y uso personal de estos compuestos es legal. Sin embargo, las regulaciones varían por país y se actualizan periódicamente. Es responsabilidad del usuario determinar el marco legal en su jurisdicción específica. Biogradix provee información actualizada sobre el estatus regulatorio de los compuestos en las jurisdicciones donde opera.</div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- SECTION 4: Product Collection -->
-<section class="products-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label" data-i18n="col-label">La Colección</span>
-      <h2 class="section-h2" data-i18n-html="col-h2">Siete péptidos, <em>una misión</em></h2>
-      <p class="section-sub" data-i18n="col-sub">Cada producto formulado para un objetivo específico, todos con absorción por mucosa oral.</p>
-    </div>
-    <div class="products-mini-grid">
-      <a href="producto-celldew.html" class="mini-card reveal">
-        <div class="mini-card-name">CELLDEW™</div>
-        <div class="mini-card-peptide">Glutatión</div>
-        <div><span class="mini-card-badge" data-i18n="badge-detox">Detox</span></div>
-        <div class="mini-card-tagline" data-i18n="mc-celldew-tagline">Antioxidante Maestro</div>
-      </a>
-      <a href="producto-vitacharge.html" class="mini-card reveal reveal-delay-1">
-        <div class="mini-card-name">VITACHARGE™</div>
-        <div class="mini-card-peptide">NAD+</div>
-        <div><span class="mini-card-badge" data-i18n="badge-energia">Energía</span></div>
-        <div class="mini-card-tagline" data-i18n="mc-vitacharge-tagline">Energía Celular</div>
-      </a>
-      <a href="producto-radiancemax.html" class="mini-card reveal reveal-delay-2">
-        <div class="mini-card-name">RADIANCEMAX™</div>
-        <div class="mini-card-peptide">GHK-Cu</div>
-        <div><span class="mini-card-badge" data-i18n="badge-belleza">Belleza</span></div>
-        <div class="mini-card-tagline" data-i18n="mc-radiancemax-tagline">Belleza Regenerativa</div>
-      </a>
-      <a href="producto-recoverypro.html" class="mini-card reveal reveal-delay-3">
-        <div class="mini-card-name">RECOVERYPRO™</div>
-        <div class="mini-card-peptide">BPC-157</div>
-        <div><span class="mini-card-badge" data-i18n="badge-recuperacion">Recuperación</span></div>
-        <div class="mini-card-tagline" data-i18n="mc-recoverypro-tagline">Reparación Total</div>
-      </a>
-      <a href="producto-immunefort.html" class="mini-card reveal">
-        <div class="mini-card-name">IMMUNEFORT™</div>
-        <div class="mini-card-peptide">Thymosin Alpha-1</div>
-        <div><span class="mini-card-badge" data-i18n="badge-inmunidad">Inmunidad</span></div>
-        <div class="mini-card-tagline" data-i18n="mc-immunefort-tagline">Protección Total</div>
-      </a>
-      <a href="producto-passionboost.html" class="mini-card reveal reveal-delay-1">
-        <div class="mini-card-name">PASSIONBOOST™</div>
-        <div class="mini-card-peptide" data-i18n="mc-passionboost-peptide">PT-141 + Oxitocina</div>
-        <div><span class="mini-card-badge" data-i18n="badge-intimidad">Intimidad</span></div>
-        <div class="mini-card-tagline" data-i18n="mc-passionboost-tagline">Vitalidad Íntima</div>
-      </a>
-      <a href="producto-musclemaxx.html" class="mini-card reveal reveal-delay-2">
-        <div class="mini-card-name">MUSCLEMAXX™</div>
-        <div class="mini-card-peptide">CJC-1295 / Ipamorelin</div>
-        <div><span class="mini-card-badge" data-i18n="badge-musculo">Músculo</span></div>
-        <div class="mini-card-tagline" data-i18n="mc-musclemaxx-tagline">Rendimiento Máximo</div>
-      </a>
+<!-- COLLECTION -->
+<section class="collection-section">
+  <div class="section-inner">
+    <p class="section-label reveal" data-i18n="col_label">Módulo 4</p>
+    <h2 class="section-title reveal" data-i18n="col_title">La Colección Biogradix</h2>
+    <p class="section-lead reveal" data-i18n="col_lead">Siete formulaciones especializadas, cada una diseñada para un objetivo fisiológico específico y entregada vía BiogradixRelease®.</p>
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <div class="product-tag">Antioxidante</div>
+        <div class="product-name">CELLDEW™</div>
+        <div class="product-active">Glutatión</div>
+        <div class="product-desc" data-i18n="prod1_desc">Antioxidante maestro. Detox hepático, protección celular, claridad cutánea. El escudo molecular más importante del organismo.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Energía Celular</div>
+        <div class="product-name">VITACHARGE™</div>
+        <div class="product-active">NMN / NAD⁺</div>
+        <div class="product-desc" data-i18n="prod2_desc">Restaura el NAD⁺ celular. Activa sirtuinas, mejora mitocondrias, claridad mental y vitalidad. El combustible del envejecimiento saludable.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Piel &amp; Colágeno</div>
+        <div class="product-name">RADIANCEMAX™</div>
+        <div class="product-active">GHK-Cu</div>
+        <div class="product-desc" data-i18n="prod3_desc">Péptido de cobre que regula 4,000+ genes. Estimula colágeno tipos I, III y IV. Firmeza, densidad dérmica y reparación tisular.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Recuperación</div>
+        <div class="product-name">RECOVERYPRO™</div>
+        <div class="product-active">BPC-157</div>
+        <div class="product-desc" data-i18n="prod4_desc">Péptido gástrico de 15 aminoácidos. Regenera músculo, tendón y ligamento. Reduce DOMS y acelera la vuelta al entrenamiento.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Inmunidad</div>
+        <div class="product-name">IMMUNEFORT™</div>
+        <div class="product-active">Thymosin Alpha-1</div>
+        <div class="product-desc" data-i18n="prod5_desc">Péptido tímico que modula la inmunidad adaptativa. Activa células T, NK y equilibra la respuesta inmune sin sobre-estimularla.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Vitalidad</div>
+        <div class="product-name">PASSIONBOOST™</div>
+        <div class="product-active">PT-141 + Oxitocina</div>
+        <div class="product-desc" data-i18n="prod6_desc">Activación del receptor de melanocortina MC4R y vínculo social. Vitalidad, deseo y conexión emocional desde el sistema nervioso central.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Masa Muscular</div>
+        <div class="product-name">MUSCLEMAXX™</div>
+        <div class="product-active">CJC-1295 / Ipamorelin</div>
+        <div class="product-desc" data-i18n="prod7_desc">Estimulación fisiológica de la hormona de crecimiento. Anabolismo, reducción de grasa corporal y recuperación sin supresión del eje hipofisiario.</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <svg class="cta-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#0F6E56" stroke-width="1.5"><path d="M0 100 Q60 60,120 100 Q180 140,240 100 Q300 60,360 100 Q420 140,480 100 Q540 60,600 100 Q660 140,720 100 Q780 60,840 100 Q900 140,960 100 Q1020 60,1080 100 Q1140 140,1200 100"/><path d="M0 200 Q60 160,120 200 Q180 240,240 200 Q300 160,360 200 Q420 240,480 200 Q540 160,600 200 Q660 240,720 200 Q780 160,840 200 Q900 240,960 200 Q1020 160,1080 200 Q1140 240,1200 200"/></g></svg>
-  <div class="container">
-    <div class="cta-inner reveal">
-      <span class="label" style="color:var(--teal-active);" data-i18n="cta-label">¿Listo para empezar?</span>
-      <h2 class="cta-h2" data-i18n-html="cta-h2">Consulta gratuita<br/><em>por WhatsApp</em></h2>
-      <p class="cta-body" data-i18n="cta-body">Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.</p>
-      <a href="https://wa.me/13467189350" class="btn-wa-lg">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        <span data-i18n="cta-btn">Contactar por WhatsApp</span>
-      </a>
+  <div class="section-inner">
+    <h2 class="reveal" data-i18n="cta_h2">¿Qué Protocolo es Correcto para Ti?</h2>
+    <p class="reveal" data-i18n="cta_p">Nuestro quiz identifica en 3 minutos el protocolo más apropiado según tu perfil, objetivos y situación de salud actual.</p>
+    <div class="reveal">
+      <a href="quiz.html" class="btn-primary" data-i18n="cta_btn1">Hacer el Quiz</a>
+      <a href="https://wa.me/13467189350" class="btn-outline" target="_blank" rel="noopener" data-i18n="cta_btn2">Consultar con Especialista</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:4px;">
-          <svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
-          <span class="nav-logo-text" style="color:inherit;"><span style="color:var(--teal)">bio</span><span style="color:var(--silver)">gradix</span></span>
-        </a>
-        <p class="footer-brand-text" data-i18n="footer-brand">Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.</p>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-col-products">Productos</div>
-        <div class="footer-links">
-          <a href="producto-celldew.html">CELLDEW™</a>
-          <a href="producto-vitacharge.html">VITACHARGE™</a>
-          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
-          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
-          <a href="producto-immunefort.html">IMMUNEFORT™</a>
-          <a href="producto-passionboost.html">PASSIONBOOST™</a>
-          <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-col-resources">Recursos</div>
-        <div class="footer-links">
-          <a href="tecnologia.html" data-i18n="footer-res-tech">Tecnología</a>
-          <a href="educacion.html" class="active" data-i18n="footer-res-edu">Educación</a>
-          <a href="blog.html" data-i18n="footer-res-blog">Blog</a>
-          <a href="index.html#faq" data-i18n="footer-res-faq">FAQ</a>
-          <a href="#" data-i18n="footer-res-coa">Certificados COA</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-col-contact">Contacto</div>
-        <div class="footer-links">
-          <a href="https://wa.me/13467189350">WhatsApp</a>
-          <a href="#">Instagram</a>
-          <a href="mailto:hola@biogradix.com">hola@biogradix.com</a>
-        </div>
-      </div>
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="display:inline-flex;">
+        <div class="nav-logo-mark">BG</div>
+        <span class="nav-logo-text">BIOGRADIX</span>
+      </a>
+      <p data-i18n="footer_brand_p">Péptidos de grado farmacéutico para rendimiento humano optimizado. Ciencia aplicada, resultados medibles.</p>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy" data-i18n="footer-copy">© 2026 biogradix. Todos los derechos reservados.</span>
-      <span class="footer-disclaimer" data-i18n="footer-disclaimer">Solo para uso personal. Consulta a tu médico antes de usar.</span>
-      <div class="footer-legal">
-        <a href="#" data-i18n="footer-terms">Términos</a>
-        <a href="#" data-i18n="footer-privacy">Privacidad</a>
-      </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer_col1_h">Productos</h5>
+      <ul>
+        <li><a href="index.html#productos">CELLDEW™</a></li>
+        <li><a href="index.html#productos">VITACHARGE™</a></li>
+        <li><a href="index.html#productos">RADIANCEMAX™</a></li>
+        <li><a href="index.html#productos" data-i18n="footer_all_products">Ver todos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer_col2_h">Recursos</h5>
+      <ul>
+        <li><a href="tecnologia.html" data-i18n="nav_tecnologia">Tecnología</a></li>
+        <li><a href="educacion.html" data-i18n="nav_educacion">Educación</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+        <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer_col3_h">Legal</h5>
+      <ul>
+        <li><a href="privacy.html" data-i18n="footer_privacy">Privacidad</a></li>
+        <li><a href="terms.html" data-i18n="footer_terms">Términos</a></li>
+        <li><a href="contacto.html" data-i18n="footer_contact">Contacto</a></li>
+      </ul>
     </div>
   </div>
+  <div class="footer-bottom">
+    <p data-i18n="footer_copy">&copy; 2026 Biogradix. Todos los derechos reservados.</p>
+    <p data-i18n="footer_tagline">Péptidos. Ciencia. Resultados.</p>
+  </div>
+  <p class="footer-disclaimer" data-i18n="footer_disclaimer">Este contenido es exclusivamente informativo y no constituye consejo médico. Los péptidos descritos son para uso en investigación. Consulte a un profesional de la salud antes de iniciar cualquier protocolo. Las afirmaciones no han sido evaluadas por ninguna agencia regulatoria gubernamental.</p>
 </footer>
 
 <script>
-// Nav scroll
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
-
-// Mobile menu
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
-mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; } });
-
-// Scroll reveal
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); revealObserver.unobserve(e.target); } });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// FAQ accordion
-document.querySelectorAll('.faq-item').forEach(item => {
-  const q = item.querySelector('.faq-q');
-  const a = item.querySelector('.faq-a');
-  q.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(openItem => {
-      openItem.classList.remove('open');
-      openItem.querySelector('.faq-a').style.maxHeight = '0';
-    });
-    if (!isOpen) {
-      item.classList.add('open');
-      a.style.maxHeight = a.scrollHeight + 'px';
-    }
-  });
-});
-
-// Helix canvas
-(function(){
-  const canvas = document.getElementById('helix-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const TEAL='#0F6E56', TEAL_LITE='#1D9E75';
-  let W, H, dpr, phase=0;
-  function resize(){
-    const rect = canvas.parentElement.getBoundingClientRect();
-    dpr = window.devicePixelRatio||1;
-    W = rect.width*0.52; H = rect.height;
-    canvas.width=W*dpr; canvas.height=H*dpr;
-    canvas.style.width=W+'px'; canvas.style.height=H+'px';
-    ctx.scale(dpr,dpr);
+const T = {
+  es: {
+    nav_productos:'Productos',nav_tecnologia:'Tecnología',nav_educacion:'Educación',nav_blog:'Blog',nav_faq:'FAQ',nav_whatsapp:'WhatsApp',
+    hero_eyebrow:'Centro de Educación',hero_h1:'Entiende la Ciencia<br><em>que te Transforma</em>',
+    hero_lead:'Péptidos, absorción, biodisponibilidad. No necesitas un doctorado para tomar decisiones inteligentes sobre tu salud. Necesitas la información correcta.',
+    pep_label:'Módulo 1',pep_title:'¿Qué son los Péptidos?',pep_h3:'Las moléculas de señalización del cuerpo',
+    pep_p1:'Los péptidos son cadenas cortas de aminoácidos — los mismos bloques que forman las proteínas, pero en secuencias más cortas y específicas. Esta especificidad es lo que los hace tan poderosos: en lugar de ser materiales de construcción generales, son mensajes moleculares precisos.',
+    pep_p2:'El cuerpo humano produce miles de péptidos naturalmente. Algunos regulan el sueño, otros controlan el metabolismo, otros dirigen la reparación de tejidos. La investigación en péptidos bioactivos se centra en identificar estas señales y amplificarlas cuando el cuerpo las produce en cantidades insuficientes.',
+    pep_p3:'La diferencia entre péptidos y proteínas no es solo de tamaño — es de función. Las proteínas son estructurales. Los péptidos son reguladores: dicen a las células qué hacer, cuándo hacerlo, y con qué intensidad.',
+    comp_aminoacid:'Aminoácido',comp_peptide:'Péptido (2–50 aa)',comp_protein:'Proteína (50+ aa)',
+    aa_name:'Unidad base',aa_def:'El ladrillo. Por sí solo no tiene función biológica específica más allá de ser combustible o material.',
+    pep_name:'Mensaje molecular',pep_def:'Señal biológica de alta especificidad. Activa receptores celulares precisos para funciones definidas.',
+    prot_name:'Estructura funcional',prot_def:'Músculo, enzima, anticuerpo. Trabaja por su forma tridimensional, no por señalización directa.',
+    abs_label:'Módulo 2',abs_title:'Absorción por Mucosa Oral',
+    abs_lead:'La vía de entrega determina cuánto activo llega a su destino. El proceso de absorción por mucosa oral en 5 etapas.',
+    abs_step1:'Colocación',abs_step1_note:'Oblea bajo la lengua o entre mejilla y encía',
+    abs_step2:'Disolución',abs_step2_note:'Liberación controlada del activo en 60–90 seg',
+    abs_step3:'Difusión Mucosa',abs_step3_note:'El activo penetra el epitelio no queratinizado',
+    abs_step4:'Absorción Capilar',abs_step4_note:'Red vascular sublingual de acceso directo',
+    abs_step5:'Circulación Sistémica',abs_step5_note:'Distribución por todo el organismo en 15–20 min',
+    abs_badge:'Recomendado',
+    abs_c1_name:'Pastillas Orales',abs_c1_desc:'Digestión ácida + enzimas proteolíticas + efecto de primer paso hepático. En el mejor de los casos, un tercio llega activo a circulación.',
+    abs_c2_name:'BiogradixRelease®',abs_c2_desc:'Absorción directa por la mucosa sublingual. Evita la digestión y el primer paso hepático. Acción en 15–20 minutos sin inyecciones.',
+    abs_c3_name:'Inyectable 503A',abs_c3_desc:'Alta biodisponibilidad pero requiere receta médica, refrigeración, técnica de inyección estéril y supervisión profesional.',
+    faq_label:'Módulo 3',faq_title:'Preguntas Frecuentes',
+    faq1_q:'¿Son seguros los péptidos bioactivos?',faq1_a:'Los péptidos bioactivos como el Glutatión, BPC-157, GHK-Cu y Thymosin Alpha-1 tienen décadas de investigación preclínica y un perfil de seguridad bien documentado. Son secuencias peptídicas que el propio organismo reconoce, lo que minimiza el riesgo de reacciones adversas inespecíficas. Consulte con un profesional de salud antes de iniciar cualquier protocolo.',
+    faq2_q:'¿Cuánto tiempo tardan en verse resultados?',faq2_a:'Depende del compuesto y del objetivo. Los efectos de energía y claridad mental (NAD+/VITACHARGE™) suelen percibirse en 1–3 días. Los cambios en recuperación muscular (BPC-157/RECOVERYPRO™) en 1–2 semanas. Las mejoras en piel y colágeno (GHK-Cu/RADIANCEMAX™) requieren 4–12 semanas de uso consistente.',
+    faq3_q:'¿Se pueden combinar varios productos?',faq3_a:'Sí, y de hecho las combinaciones estratégicas potencian los resultados. CELLDEW™ + VITACHARGE™ actúan sinérgicamente — el NAD+ regenera el glutatión oxidado. RECOVERYPRO™ + MUSCLEMAXX™ se complementan para recuperación y anabolismo. Nuestro quiz de protocolo identifica las combinaciones más apropiadas.',
+    faq4_q:'¿Hay efectos secundarios conocidos?',faq4_a:'Los efectos secundarios documentados son mínimos y generalmente transitorios. Algunos usuarios reportan leve sensación de energía en las primeras dosis de VITACHARGE™. El Glutatión puede causar leve detoxificación inicial. Los péptidos como BPC-157 tienen perfil de seguridad notablemente limpio en la literatura preclínica.',
+    faq5_q:'¿Cómo aplicar correctamente las obleas?',faq5_a:'(1) Coloque la oblea bajo la lengua o entre la mejilla y la encía. (2) Permita que se disuelva completamente sin masticar en 60–90 segundos. (3) Minimice la deglución de saliva durante ese tiempo. (4) No coma ni beba (excepto agua) durante los 15 minutos siguientes. (5) Para mejor absorción, adminístrelo en ayunas o al menos 30 minutos después de comer.',
+    faq6_q:'¿Es legal comprar y usar estos productos?',faq6_a:'Los compuestos en la línea Biogradix son péptidos para investigación y uso personal, no medicamentos de prescripción. En Estados Unidos y la mayoría de países latinoamericanos, la compra y uso personal es legal. Las regulaciones varían por país. Es responsabilidad del usuario determinar el marco legal en su jurisdicción específica.',
+    col_label:'Módulo 4',col_title:'La Colección Biogradix',
+    col_lead:'Siete formulaciones especializadas, cada una diseñada para un objetivo fisiológico específico y entregada vía BiogradixRelease®.',
+    prod1_desc:'Antioxidante maestro. Detox hepático, protección celular, claridad cutánea.',
+    prod2_desc:'Restaura el NAD⁺ celular. Activa sirtuinas, mejora mitocondrias, claridad mental y vitalidad.',
+    prod3_desc:'Péptido de cobre que regula 4,000+ genes. Estimula colágeno tipos I, III y IV.',
+    prod4_desc:'Péptido gástrico de 15 aminoácidos. Regenera músculo, tendón y ligamento.',
+    prod5_desc:'Péptido tímico que modula la inmunidad adaptativa. Activa células T y NK.',
+    prod6_desc:'Activación del receptor MC4R y vínculo social. Vitalidad y conexión emocional.',
+    prod7_desc:'Estimulación fisiológica de la hormona de crecimiento. Anabolismo y recuperación.',
+    cta_h2:'¿Qué Protocolo es Correcto para Ti?',
+    cta_p:'Nuestro quiz identifica en 3 minutos el protocolo más apropiado según tu perfil, objetivos y situación de salud actual.',
+    cta_btn1:'Hacer el Quiz',cta_btn2:'Consultar con Especialista',
+    footer_brand_p:'Péptidos de grado farmacéutico para rendimiento humano optimizado. Ciencia aplicada, resultados medibles.',
+    footer_col1_h:'Productos',footer_col2_h:'Recursos',footer_col3_h:'Legal',
+    footer_all_products:'Ver todos',footer_privacy:'Privacidad',footer_terms:'Términos',footer_contact:'Contacto',
+    footer_copy:'© 2026 Biogradix. Todos los derechos reservados.',footer_tagline:'Péptidos. Ciencia. Resultados.',
+    footer_disclaimer:'Este contenido es exclusivamente informativo y no constituye consejo médico. Los péptidos descritos son para uso en investigación. Consulte a un profesional de la salud antes de iniciar cualquier protocolo. Las afirmaciones no han sido evaluadas por ninguna agencia regulatoria gubernamental.',
+  },
+  en: {
+    nav_productos:'Products',nav_tecnologia:'Technology',nav_educacion:'Education',nav_blog:'Blog',nav_faq:'FAQ',nav_whatsapp:'WhatsApp',
+    hero_eyebrow:'Education Center',hero_h1:'Understand the Science<br><em>That Transforms You</em>',
+    hero_lead:'Peptides, absorption, bioavailability. You don\'t need a PhD to make smart decisions about your health. You need the right information.',
+    pep_label:'Module 1',pep_title:'What Are Peptides?',pep_h3:'The body\'s signaling molecules',
+    pep_p1:'Peptides are short chains of amino acids — the same building blocks that form proteins, but in shorter, more specific sequences. This specificity is what makes them so powerful: rather than being general construction materials, they are precise molecular messages.',
+    pep_p2:'The human body naturally produces thousands of peptides. Some regulate sleep, others control metabolism, others direct tissue repair. Bioactive peptide research focuses on identifying these signals and amplifying them when the body produces insufficient quantities due to age, stress, or illness.',
+    pep_p3:'The difference between peptides and proteins isn\'t just size — it\'s function. Proteins are structural. Peptides are regulatory: they tell cells what to do, when to do it, and at what intensity.',
+    comp_aminoacid:'Amino Acid',comp_peptide:'Peptide (2–50 aa)',comp_protein:'Protein (50+ aa)',
+    aa_name:'Basic unit',aa_def:'The building block. On its own, it has no specific biological function beyond fuel or material.',
+    pep_name:'Molecular message',pep_def:'High-specificity biological signal. Activates precise cellular receptors for defined functions.',
+    prot_name:'Functional structure',prot_def:'Muscle, enzyme, antibody. Works through its three-dimensional shape, not direct signaling.',
+    abs_label:'Module 2',abs_title:'Oral Mucosal Absorption',
+    abs_lead:'The delivery route determines how much active compound reaches its destination. The oral mucosal absorption process in 5 stages.',
+    abs_step1:'Placement',abs_step1_note:'Wafer under tongue or between cheek and gum',
+    abs_step2:'Dissolution',abs_step2_note:'Controlled release of active in 60–90 sec',
+    abs_step3:'Mucosal Diffusion',abs_step3_note:'Active penetrates non-keratinized epithelium',
+    abs_step4:'Capillary Absorption',abs_step4_note:'Sublingual vascular network with direct access',
+    abs_step5:'Systemic Circulation',abs_step5_note:'Distribution throughout body in 15–20 min',
+    abs_badge:'Recommended',
+    abs_c1_name:'Oral Capsules',abs_c1_desc:'Acid digestion + proteolytic enzymes + hepatic first-pass effect. At best, one third arrives active in circulation.',
+    abs_c2_name:'BiogradixRelease®',abs_c2_desc:'Direct absorption through sublingual mucosa. Bypasses digestion and hepatic first-pass. Action in 15–20 minutes without injections.',
+    abs_c3_name:'503A Injectable',abs_c3_desc:'High bioavailability but requires prescription, refrigeration, sterile injection technique, and professional supervision.',
+    faq_label:'Module 3',faq_title:'Frequently Asked Questions',
+    faq1_q:'Are bioactive peptides safe?',faq1_a:'Bioactive peptides like Glutathione, BPC-157, GHK-Cu, and Thymosin Alpha-1 have decades of preclinical research and a well-documented safety profile. They are peptide sequences the body itself recognizes, minimizing the risk of nonspecific adverse reactions. Always consult a healthcare professional before starting any protocol.',
+    faq2_q:'How long until results are visible?',faq2_a:'It depends on the compound and goal. Energy and mental clarity effects (NAD+/VITACHARGE™) are usually felt within 1–3 days. Muscle recovery improvements (BPC-157/RECOVERYPRO™) within 1–2 weeks. Skin and collagen improvements (GHK-Cu/RADIANCEMAX™) require 4–12 weeks of consistent use to be clinically significant.',
+    faq3_q:'Can multiple products be combined?',faq3_a:'Yes, and strategic combinations actually enhance results. CELLDEW™ + VITACHARGE™ work synergistically — NAD+ regenerates oxidized glutathione. RECOVERYPRO™ + MUSCLEMAXX™ complement each other for recovery and anabolism. Our protocol quiz identifies the most appropriate combinations for each objective profile.',
+    faq4_q:'Are there known side effects?',faq4_a:'Documented side effects are minimal and generally transient. Some users report a mild energy sensation in the first doses of VITACHARGE™. Glutathione may cause mild initial detoxification. Peptides like BPC-157 have a notably clean safety profile in preclinical literature.',
+    faq5_q:'How to correctly apply the wafers?',faq5_a:'(1) Place the wafer under the tongue or between the cheek and gum. (2) Allow it to dissolve completely without chewing in 60–90 seconds. (3) Minimize saliva swallowing during that time. (4) Do not eat or drink (except water) for 15 minutes afterward. (5) For best absorption, administer on an empty stomach or at least 30 minutes after eating.',
+    faq6_q:'Is it legal to buy and use these products?',faq6_a:'The compounds in the Biogradix line are peptides for research and personal use, not prescription medications. In the United States and most Latin American countries, personal purchase and use is legal. Regulations vary by country. It is the user\'s responsibility to determine the legal framework in their specific jurisdiction.',
+    col_label:'Module 4',col_title:'The Biogradix Collection',
+    col_lead:'Seven specialized formulations, each designed for a specific physiological goal and delivered via BiogradixRelease®.',
+    prod1_desc:'Master antioxidant. Hepatic detox, cellular protection, skin clarity.',
+    prod2_desc:'Restores cellular NAD⁺. Activates sirtuins, improves mitochondria, mental clarity and vitality.',
+    prod3_desc:'Copper peptide regulating 4,000+ genes. Stimulates collagen types I, III, and IV.',
+    prod4_desc:'15-amino acid gastric peptide. Regenerates muscle, tendon and ligament.',
+    prod5_desc:'Thymic peptide modulating adaptive immunity. Activates T cells and NK cells.',
+    prod6_desc:'MC4R receptor activation and social bonding. Vitality and emotional connection.',
+    prod7_desc:'Physiological growth hormone stimulation. Anabolism and recovery.',
+    cta_h2:'What Protocol is Right for You?',
+    cta_p:'Our quiz identifies in 3 minutes the most appropriate protocol based on your profile, goals, and current health situation.',
+    cta_btn1:'Take the Quiz',cta_btn2:'Consult a Specialist',
+    footer_brand_p:'Pharmaceutical-grade peptides for optimized human performance. Applied science, measurable results.',
+    footer_col1_h:'Products',footer_col2_h:'Resources',footer_col3_h:'Legal',
+    footer_all_products:'View all',footer_privacy:'Privacy',footer_terms:'Terms',footer_contact:'Contact',
+    footer_copy:'© 2026 Biogradix. All rights reserved.',footer_tagline:'Peptides. Science. Results.',
+    footer_disclaimer:'This content is for informational purposes only and does not constitute medical advice. The peptides described are intended for research use. Consult a healthcare professional before starting any protocol. These statements have not been evaluated by any governmental regulatory agency.',
   }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    const cx=W*0.5, amp=W*0.22, pitch=H/5.5, steps=220, rung=6;
-    for(let strand=0;strand<2;strand++){
-      const phaseOff=strand===0?0:Math.PI;
-      ctx.beginPath();
-      for(let i=0;i<=steps;i++){
-        const t=i/steps, y=t*H, angle=(t*Math.PI*2*(H/pitch))-phase+phaseOff, x=cx+Math.cos(angle)*amp;
-        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-      }
-      const grad=ctx.createLinearGradient(0,0,0,H);
-      grad.addColorStop(0,strand===0?TEAL:TEAL_LITE); grad.addColorStop(0.5,strand===0?TEAL_LITE:TEAL); grad.addColorStop(1,strand===0?TEAL:TEAL_LITE);
-      ctx.strokeStyle=grad; ctx.lineWidth=1.8; ctx.lineCap='round'; ctx.stroke();
-    }
-    const turns=H/pitch, rungsN=Math.floor(turns*rung);
-    for(let r=0;r<=rungsN;r++){
-      const t=r/rungsN, y=t*H, angle=(t*Math.PI*2*turns)-phase;
-      const x1=cx+Math.cos(angle)*amp, x2=cx+Math.cos(angle+Math.PI)*amp, depth=Math.sin(angle), alpha=0.12+0.28*((depth+1)/2);
-      ctx.beginPath(); ctx.arc(x1,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(15,110,86,${alpha+0.3})`; ctx.fill();
-      ctx.beginPath(); ctx.arc(x2,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(29,158,117,${alpha+0.3})`; ctx.fill();
-      ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2,y); ctx.strokeStyle=`rgba(15,110,86,${alpha})`; ctx.lineWidth=1; ctx.stroke();
-    }
-    phase+=0.008; requestAnimationFrame(draw);
-  }
-  resize(); window.addEventListener('resize',()=>{ctx.resetTransform();resize();}); draw();
-})();
-
-// i18n
-const TRANSLATIONS = {
-  'nav-productos':{es:'Productos',en:'Products'},
-  'nav-tecnologia':{es:'Tecnología',en:'Technology'},
-  'nav-educacion':{es:'Educación',en:'Education'},
-  'nav-blog':{es:'Blog',en:'Blog'},
-  'nav-faq':{es:'FAQ',en:'FAQ'},'nav-contacto':{es:'Contacto',en:'Contact'},
-  // Hero
-  'edu-hero-label':{es:'Centro de Educación',en:'Education Center'},
-  'edu-hero-h1':{es:'Entiende la Ciencia<br/>que te <em>Transforma</em>',en:'Understand the Science<br/>that <em>Transforms</em> You'},
-  'edu-hero-sub':{es:'Todo lo que necesitas saber sobre péptidos, absorción por mucosa oral y suplementos de nueva generación.',en:'Everything you need to know about peptides, oral mucosa absorption, and next-generation supplements.'},
-  // Section 1: Peptides
-  'pep-label':{es:'Fundamentos',en:'Fundamentals'},
-  'pep-h2':{es:'¿Qué son <em>exactamente</em> los péptidos?',en:'What <em>exactly</em> are peptides?'},
-  'pep-sub':{es:'La ciencia detrás de los mensajeros moleculares más importantes del cuerpo.',en:"The science behind the body's most important molecular messengers."},
-  'pep-p1':{es:'Los péptidos son moléculas formadas por cadenas cortas de aminoácidos — los bloques fundamentales de la vida. La diferencia entre péptidos y proteínas es principalmente el tamaño: los péptidos son cadenas más cortas (2–50 aminoácidos), mientras que las proteínas son cadenas más largas (50+ aminoácidos).',en:'Peptides are molecules made up of short chains of amino acids — the fundamental building blocks of life. The difference between peptides and proteins is mainly size: peptides are shorter chains (2–50 amino acids), while proteins are longer chains (50+ amino acids).'},
-  'pep-p2':{es:"Piensa en los aminoácidos como letras del alfabeto. Las proteínas son palabras largas; los péptidos son sílabas o palabras cortas. A veces, palabras más cortas comunican mensajes más específicos y poderosos.",en:"Think of amino acids as letters of the alphabet. Proteins are long words; peptides are syllables or short words. Sometimes shorter words communicate more specific and powerful messages."},
-  'pep-p3':{es:"Tu cuerpo es fundamentalmente un sistema de comunicación. Diferentes células, órganos y sistemas necesitan 'hablar' entre sí constantemente para coordinarse. Los péptidos son los mensajeros específicos de este sistema. Cada péptido tiene un trabajo específico porque encaja en receptores específicos en células específicas — como una llave en una cerradura. Solo la llave correcta abre la cerradura correcta.",en:"Your body is fundamentally a communication system. Different cells, organs, and systems need to 'talk' to each other constantly to coordinate. Peptides are the specific messengers of this system. Each peptide has a specific job because it fits into specific receptors on specific cells — like a key in a lock. Only the right key opens the right lock."},
-  'cmp-aa-name':{es:'Aminoácidos',en:'Amino Acids'},
-  'cmp-aa-desc':{es:'Los bloques · The building blocks',en:'The building blocks · Los bloques'},
-  'cmp-pep-name':{es:'Péptidos',en:'Peptides'},
-  'cmp-pep-desc':{es:'2–50 aminoácidos · 2–50 amino acids',en:'2–50 amino acids · 2–50 aminoácidos'},
-  'cmp-pro-name':{es:'Proteínas',en:'Proteins'},
-  'cmp-pro-desc':{es:'50+ aminoácidos · 50+ amino acids',en:'50+ amino acids · 50+ aminoácidos'},
-  // Section 2: Absorption
-  'abs-label':{es:'BiogradixRelease®',en:'BiogradixRelease®'},
-  'abs-h2':{es:'Absorción por <em>Mucosa Oral</em>',en:'Oral <em>Mucosa</em> Absorption'},
-  'abs-sub':{es:'Por qué aplicar contra la mejilla interna o encía superior cambia todo.',en:'Why applying against the inner cheek or upper gum changes everything.'},
-  'abs-step1-label':{es:'Aplicación',en:'Application'},
-  'abs-step1-desc':{es:'Coloca el suplemento contra la mejilla interna o encía superior según indicación',en:'Place the supplement against the inner cheek or upper gum as directed'},
-  'abs-step2-label':{es:'Contacto con Mucosa',en:'Mucosal Contact'},
-  'abs-step2-desc':{es:'La mucosa oral absorbe los bioactivos directamente',en:'The oral mucosa absorbs bioactives directly'},
-  'abs-step3-label':{es:'Entrada Directa',en:'Direct Entry'},
-  'abs-step3-desc':{es:'Los ingredientes entran al torrente sanguíneo en minutos',en:'Ingredients enter the bloodstream within minutes'},
-  'abs-step4-label':{es:'Sin Primer Paso',en:'No First Pass'},
-  'abs-step4-desc':{es:'Se evita el metabolismo hepático de primer paso completamente',en:'Hepatic first-pass metabolism is completely bypassed'},
-  'abs-step5-label':{es:'Biodisponibilidad Total',en:'Full Bioavailability'},
-  'abs-step5-desc':{es:'2–3× más efectivo que cápsulas orales convencionales',en:'2–3× more effective than conventional oral capsules'},
-  'abs-c1-title':{es:'Pastillas Orales',en:'Oral Pills'},
-  'abs-c1-body':{es:'Biodisponibilidad: 20–40%. El hígado degrada 60–80% del principio activo antes de que llegue al torrente sanguíneo.',en:'Bioavailability: 20–40%. The liver degrades 60–80% of the active ingredient before it reaches the bloodstream.'},
-  'abs-c2-body':{es:'Biodisponibilidad: 80–93%. Absorción directa por mucosa — sin pérdidas digestivas, sin metabolismo hepático.',en:'Bioavailability: 80–93%. Direct mucosal absorption — no digestive losses, no hepatic metabolism.'},
-  'abs-c3-title':{es:'Inyectable',en:'Injectable'},
-  'abs-c3-body':{es:'Biodisponibilidad: 90–95%. Requiere agujas, reconstitución, técnica aséptica y refrigeración estricta.',en:'Bioavailability: 90–95%. Requires needles, reconstitution, aseptic technique, and strict refrigeration.'},
-  'abs-recommended-badge':{es:'RECOMENDADO',en:'RECOMMENDED'},
-  // Section 3: FAQ
-  'faq-label':{es:'Dudas Comunes',en:'Common Questions'},
-  'faq-h2':{es:'Respuestas <em>directas</em>',en:'Straight <em>answers</em>'},
-  'faq-q1':{es:'¿Son seguros los péptidos de Biogradix?',en:'Are Biogradix peptides safe?'},
-  'faq-a1':{es:'Sí. Los péptidos que utilizamos ocurren naturalmente en el cuerpo humano o son análogos naturales estrechamente relacionados. El cuerpo reconoce estas moléculas. Décadas de investigación médica respaldan su seguridad. Todos nuestros productos son fabricados bajo estándares GMP con pureza ≥99% verificada por HPLC en laboratorio independiente. Menos del 1% de usuarios reporta efectos secundarios, generalmente leves y transitorios.',en:'Yes. The peptides we use naturally occur in the human body or are closely related natural analogs. The body recognizes these molecules. Decades of medical research support their safety. All our products are manufactured under GMP standards with ≥99% purity verified by HPLC in an independent laboratory. Less than 1% of users report side effects, generally mild and transient.'},
-  'faq-q2':{es:'¿Cuánto tiempo hasta ver resultados?',en:'How long until I see results?'},
-  'faq-a2':{es:'Depende del péptido y el objetivo: Energía (VITACHARGE™/NAD+): 3–7 días. Rendimiento físico (RECOVERYPRO™/BPC-157, MUSCLEMAXX™): 1–2 semanas. Composición corporal (MUSCLEMAXX™): 4–6 semanas. Cambios cosméticos (RADIANCEMAX™/GHK-Cu, CELLDEW™/Glutatión): 4–8 semanas. Cambios estructurales profundos (articulaciones): 8–12 semanas. La constancia es clave — los mejores resultados se obtienen con uso continuo.',en:'It depends on the peptide and goal: Energy (VITACHARGE™/NAD+): 3–7 days. Physical performance (RECOVERYPRO™/BPC-157, MUSCLEMAXX™): 1–2 weeks. Body composition (MUSCLEMAXX™): 4–6 weeks. Cosmetic changes (RADIANCEMAX™/GHK-Cu, CELLDEW™/Glutathione): 4–8 weeks. Deep structural changes (joints): 8–12 weeks. Consistency is key — best results come with continuous use.'},
-  'faq-q3':{es:'¿Puedo usar múltiples productos juntos?',en:'Can I use multiple products together?'},
-  'faq-a3':{es:'Sí. De hecho, muchos usuarios ven beneficios sinérgicos. Combinaciones frecuentes: VITACHARGE™ + CELLDEW™ (energía + desintoxicación), RECOVERYPRO™ + MUSCLEMAXX™ (rendimiento deportivo completo), RADIANCEMAX™ + CELLDEW™ (belleza desde adentro completa). No hay interacciones negativas conocidas entre los productos Biogradix. Contáctanos por WhatsApp para una recomendación personalizada.',en:'Yes. In fact, many users see synergistic benefits. Common combinations: VITACHARGE™ + CELLDEW™ (energy + detox), RECOVERYPRO™ + MUSCLEMAXX™ (complete athletic performance), RADIANCEMAX™ + CELLDEW™ (complete inner beauty). No known negative interactions between Biogradix products. Contact us via WhatsApp for a personalized recommendation.'},
-  'faq-q4':{es:'¿Hay efectos secundarios?',en:'Are there side effects?'},
-  'faq-a4':{es:'Generalmente no. Los péptidos de Biogradix son bien tolerados. En menos del 1% de usuarios se reporta: sensibilidad leve en la boca en el punto de aplicación (transitoria), o respuesta alérgica individual (como con cualquier suplemento). Todos los productos incluyen ficha de seguridad completa. Consulta con tu médico si tienes condiciones de salud preexistentes.',en:'Generally no. Biogradix peptides are well tolerated. Less than 1% of users report: mild mouth sensitivity at the application point (transient), or individual allergic response (as with any supplement). All products include complete safety data sheets. Consult your doctor if you have pre-existing health conditions.'},
-  'faq-q5':{es:'¿Cómo se aplica correctamente el suplemento?',en:'How is the supplement correctly applied?'},
-  'faq-a5':{es:'El suplemento se coloca contra la mejilla interna o la encía superior — no bajo la lengua. Este contacto directo con la mucosa oral permite la absorción óptima. Mantén el suplemento en contacto con la mucosa durante el tiempo indicado en las instrucciones de cada producto. Evita comer, beber o enjuagarte la boca durante 15 minutos después de la aplicación para maximizar la absorción.',en:'The supplement is placed against the inner cheek or upper gum — not under the tongue. This direct contact with the oral mucosa allows for optimal absorption. Keep the supplement in contact with the mucosa for the time indicated in each product\'s instructions. Avoid eating, drinking or rinsing your mouth for 15 minutes after application to maximize absorption.'},
-  'faq-q6':{es:'¿Son legales en México y Latinoamérica?',en:'Are they legal in Mexico and Latin America?'},
-  'faq-a6':{es:'Nuestros productos están formulados como suplementos dietéticos de uso personal y no requieren prescripción médica. A diferencia de las versiones inyectables, la presentación en parche/mucosa oral está sujeta a regulaciones menos restrictivas. Recomendamos verificar la normativa vigente en tu país antes de importar. Todos nuestros productos cuentan con documentación COA disponible.',en:'Our products are formulated as dietary supplements for personal use and do not require a medical prescription. Unlike injectable versions, the patch/oral mucosa presentation is subject to less restrictive regulations. We recommend verifying current regulations in your country before importing. All our products have COA documentation available.'},
-  // Section 4: Products
-  'col-label':{es:'La Colección',en:'The Collection'},
-  'col-h2':{es:'Siete péptidos, <em>una misión</em>',en:'Seven peptides, <em>one mission</em>'},
-  'col-sub':{es:'Cada producto formulado para un objetivo específico, todos con absorción por mucosa oral.',en:'Each product formulated for a specific goal, all with oral mucosa absorption.'},
-  'badge-detox':{es:'Detox',en:'Detox'},
-  'badge-energia':{es:'Energía',en:'Energy'},
-  'badge-belleza':{es:'Belleza',en:'Beauty'},
-  'badge-recuperacion':{es:'Recuperación',en:'Recovery'},
-  'badge-inmunidad':{es:'Inmunidad',en:'Immunity'},
-  'badge-intimidad':{es:'Intimidad',en:'Intimacy'},
-  'badge-musculo':{es:'Músculo',en:'Muscle'},
-  'mc-celldew-tagline':{es:'Antioxidante Maestro',en:'Master Antioxidant'},
-  'mc-vitacharge-tagline':{es:'Energía Celular',en:'Cellular Energy'},
-  'mc-radiancemax-tagline':{es:'Belleza Regenerativa',en:'Regenerative Beauty'},
-  'mc-recoverypro-tagline':{es:'Reparación Total',en:'Total Repair'},
-  'mc-immunefort-tagline':{es:'Protección Total',en:'Total Protection'},
-  'mc-passionboost-peptide':{es:'PT-141 + Oxitocina',en:'PT-141 + Oxytocin'},
-  'mc-passionboost-tagline':{es:'Vitalidad Íntima',en:'Intimate Vitality'},
-  'mc-musclemaxx-tagline':{es:'Rendimiento Máximo',en:'Maximum Performance'},
-  // CTA
-  'cta-label':{es:'¿Listo para empezar?',en:'Ready to start?'},
-  'cta-h2':{es:'Consulta gratuita<br/><em>por WhatsApp</em>',en:'Free consultation<br/><em>via WhatsApp</em>'},
-  'cta-body':{es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.',en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},
-  'cta-btn':{es:'Contactar por WhatsApp',en:'Contact via WhatsApp'},
-  // Footer
-  'footer-brand':{es:'Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.',en:'Pharmaceutical-grade wellness supplements. Accessible science for the global market.'},
-  'footer-col-products':{es:'Productos',en:'Products'},
-  'footer-col-resources':{es:'Recursos',en:'Resources'},
-  'footer-col-contact':{es:'Contacto',en:'Contact'},
-  'footer-res-tech':{es:'Tecnología',en:'Technology'},
-  'footer-res-edu':{es:'Educación',en:'Education'},
-  'footer-res-blog':{es:'Blog',en:'Blog'},
-  'footer-res-faq':{es:'FAQ',en:'FAQ'},
-  'footer-res-coa':{es:'Certificados COA',en:'COA Certificates'},
-  'footer-copy':{es:'© 2026 biogradix. Todos los derechos reservados.',en:'© 2026 biogradix. All rights reserved.'},
-  'footer-disclaimer':{es:'Solo para uso personal. Consulta a tu médico antes de usar.',en:'For personal use only. Consult your doctor before use.'},
-  'footer-terms':{es:'Términos',en:'Terms'},
-  'footer-privacy':{es:'Privacidad',en:'Privacy'},
 };
 
-function setLang(lang){
-  localStorage.setItem('bgLang',lang);
-  document.getElementById('htmlRoot').setAttribute('lang',lang);
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.textContent=TRANSLATIONS[k][lang];});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.innerHTML=TRANSLATIONS[k][lang];});
-  document.querySelectorAll('.lang-btn').forEach(btn=>{btn.classList.toggle('active',btn.textContent.trim().toLowerCase()===lang);});
+let currentLang = localStorage.getItem('bgLang') || 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('bgLang', lang);
+  document.documentElement.lang = lang;
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  const t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
 }
-(function(){const s=localStorage.getItem('bgLang')||'es';setLang(s);})();
+
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('hamburger');
+  const isOpen = menu.classList.toggle('open');
+  burger.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+function observeReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', () => { setLang(currentLang); observeReveal(); });
 </script>
 </body>
 </html>

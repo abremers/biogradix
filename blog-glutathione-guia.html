@@ -3,462 +3,650 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Glutatión: La Guía Completa — Blog | biogradix</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-<style>
-:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
-.container{max-width:1200px;margin:0 auto;padding:0 48px;}
-@media(max-width:768px){.container{padding:0 20px;}}
-.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.up{opacity:1;transform:none;}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);}
-.nav-inner{display:flex;align-items:center;height:64px;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
-.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
-.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--teal);}
-.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
-.lang-btn.active,.lang-btn:hover{color:var(--teal);}
-.lang-sep{color:var(--silver);font-size:12px;}
-.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s;}
-.btn-wa:hover{background:var(--teal-deep);}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);}
-@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
-.mobile-menu.open{opacity:1;pointer-events:all;}
-.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
-.mobile-menu.open .mobile-menu-panel{transform:none;}
-.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);}
-.article-hero{position:relative;height:460px;overflow:hidden;margin-top:64px;}
-.article-hero img{width:100%;height:100%;object-fit:cover;}
-.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,26,43,.15),rgba(11,26,43,.82));}
-.article-hero-content{position:absolute;bottom:0;left:0;right:0;padding:56px 48px;}
-@media(max-width:768px){.article-hero-content{padding:32px 20px;}}
-.article-cat-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:4px;padding:4px 10px;margin-bottom:16px;}
-.article-hero-content h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:34px;color:#fff;line-height:1.2;max-width:760px;letter-spacing:-.4px;margin-bottom:16px;}
-@media(max-width:768px){.article-hero-content h1{font-size:24px;}}
-.article-meta{display:flex;align-items:center;gap:16px;}
-.article-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--teal);flex-shrink:0;}
-.article-meta-info{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.65);}
-.article-body{max-width:740px;margin:0 auto;padding:64px 24px 80px;}
-.article-body h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:26px;color:var(--navy);margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3;}
-.article-body h3{font-family:'DM Sans',sans-serif;font-weight:600;font-size:19px;color:var(--navy);margin:32px 0 12px;}
-.article-body p{font-size:16px;color:var(--text-2);line-height:1.85;margin-bottom:22px;}
-.article-body ul,.article-body ol{margin:0 0 22px 28px;}
-.article-body li{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:10px;}
-.pull-quote{border-left:3px solid var(--teal);padding:20px 28px;margin:40px 0;background:var(--mint);border-radius:0 12px 12px 0;}
-.pull-quote p{font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;color:var(--navy);line-height:1.5;margin:0;}
-.key-takeaways{background:var(--mint);border:1px solid rgba(15,110,86,.2);border-radius:16px;padding:28px 32px;margin:48px 0;}
-.key-takeaways-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;}
-.key-takeaways ul{margin:0;padding:0;list-style:none;}
-.key-takeaways li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-1);margin-bottom:12px;line-height:1.65;}
-.key-takeaways li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:8px;}
-.related-section{padding:64px 0;background:var(--cloud);}
-.section-header{text-align:center;margin-bottom:40px;}
-.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:28px;letter-spacing:-.4px;color:var(--navy);}
-.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.product-card{background:#fff;border:1px solid var(--silver);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s;text-decoration:none;color:inherit;}
-.product-card:hover{border-color:rgba(15,110,86,.3);box-shadow:0 12px 40px rgba(11,26,43,.1);transform:translateY(-3px);}
-.product-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--mint);}
-.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
-.product-card:hover .product-img img{transform:scale(1.04);}
-.product-badge-pill{position:absolute;top:12px;left:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:6px;padding:4px 10px;}
-.product-body{padding:20px;}
-.product-name{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:3px;}
-.product-tagline-sm{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);margin-bottom:8px;}
-.product-desc-sm{font-size:12px;color:var(--text-3);}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:768px){.related-grid{grid-template-columns:1fr;}}
-.cta-section{padding:80px 0;background:var(--navy);}
-.cta-inner{text-align:center;max-width:600px;margin:0 auto;}
-.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
-.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
-.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;}
-.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);}
-.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
-@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
-.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
-.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
-.footer-links{display:flex;flex-direction:column;gap:10px;}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--teal-active);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);}
-.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.15);}
-.footer-legal{display:flex;gap:20px;}
-.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);text-decoration:none;}
-.back-to-blog{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);text-decoration:none;margin-bottom:40px;}
-.info-box{background:#fff;border:1px solid var(--silver);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:20px 24px;margin:32px 0;}
-.info-box p{font-size:14px;color:var(--text-2);margin:0;line-height:1.7;}
-.info-box strong{color:var(--navy);}
-</style>
+<title>Glutatión: La Guía Completa del Antioxidante Maestro | Biogradix</title>
+<meta name="description" content="El glutatión es el antioxidante más abundante en el cuerpo humano. Guía completa sobre su síntesis, declive y cómo BiogradixRelease® maximiza su absorción."/>
+<!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HMFHY2M02E');</script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bone:#F5F1EB;
+  --stone:#EDE8E0;
+  --ink:#18140F;
+  --ink-soft:#4A443C;
+  --ink-faint:#9A9189;
+  --forest:#2E4A3A;
+  --rule:rgba(24,20,15,.1);
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bone);color:var(--ink);font-family:'Cormorant',serif;font-weight:300;line-height:1.7;font-size:1.125rem;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,3rem);background:rgba(245,241,235,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink);}
+.nav-logo-mark{width:32px;height:32px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.05em;flex-shrink:0;}
+.nav-logo-text{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;}
+.nav-links{display:flex;list-style:none;gap:2rem;}
+.nav-links a{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.08em;text-decoration:none;color:var(--ink-soft);transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-actions{display:flex;align-items:center;gap:1rem;}
+.lang-btn{background:none;border:1px solid var(--rule);padding:.25rem .6rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-btn.active{background:var(--ink);color:var(--bone);border-color:var(--ink);}
+.nav-wa{display:flex;align-items:center;gap:.5rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-decoration:none;color:var(--bone);background:var(--forest);padding:.4rem 1rem;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--ink);}
+
+/* MOBILE MENU */
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,20,15,.4);z-index:200;}
+.mobile-overlay.open{display:block;}
+.mobile-panel{position:fixed;top:0;right:-280px;width:280px;height:100%;background:var(--bone);border-left:1px solid var(--rule);z-index:201;transition:right .3s ease;padding:2rem 1.5rem;display:flex;flex-direction:column;gap:2rem;}
+.mobile-panel.open{right:0;}
+.mobile-close{align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);}
+.mobile-nav-links{display:flex;flex-direction:column;gap:1.25rem;list-style:none;}
+.mobile-nav-links a{font-family:'Inter',sans-serif;font-size:.875rem;letter-spacing:.08em;text-decoration:none;color:var(--ink);}
+.mobile-lang{display:flex;gap:.5rem;}
+
+/* ARTICLE HERO */
+.article-hero{position:relative;height:60vh;min-height:420px;margin-top:var(--nav-h);overflow:hidden;display:flex;align-items:flex-end;}
+.article-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,20,15,.75) 0%,rgba(24,20,15,.25) 60%,transparent 100%);}
+.article-hero-content{position:relative;z-index:1;padding:3rem clamp(1.25rem,5vw,4rem);width:100%;}
+.article-eyebrow{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,235,.7);margin-bottom:1rem;}
+.article-hero h1{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(2rem,5vw,3.5rem);color:var(--bone);line-height:1.15;max-width:700px;margin-bottom:1.25rem;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.article-avatar{width:36px;height:36px;border-radius:50%;background:var(--forest);border:1px solid rgba(245,241,235,.3);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;color:var(--bone);}
+.article-author{font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(245,241,235,.8);}
+.article-date{font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(245,241,235,.6);}
+
+/* ARTICLE BODY */
+.article-wrap{max-width:720px;margin:0 auto;padding:3rem clamp(1.25rem,4vw,2rem) 5rem;}
+.lang-switcher{display:flex;gap:0;border:1px solid var(--rule);margin-bottom:3rem;width:fit-content;}
+.lang-sw-btn{background:none;border:none;padding:.5rem 1.25rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-sw-btn.active{background:var(--ink);color:var(--bone);}
+.lang-sw-btn:first-child{border-right:1px solid var(--rule);}
+
+/* Article typography */
+.article-content h2{font-family:'Cormorant Display',serif;font-weight:400;font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:2.5rem 0 1rem;}
+.article-content h3{font-family:'Cormorant Display',serif;font-weight:400;font-size:1.25rem;margin:2rem 0 .75rem;}
+.article-content p{margin-bottom:1.25rem;color:var(--ink-soft);font-size:1.0625rem;}
+.article-content ul,.article-content ol{padding-left:1.5rem;margin-bottom:1.25rem;}
+.article-content li{margin-bottom:.5rem;color:var(--ink-soft);}
+.article-content strong{color:var(--ink);font-weight:400;}
+
+.science-badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--rule);padding:.375rem .875rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);margin-bottom:2rem;}
+.science-badge::before{content:'';width:6px;height:6px;background:var(--forest);}
+
+.pull-quote{border-left:2px solid var(--forest);padding:1.5rem 2rem;margin:2.5rem 0;background:var(--stone);}
+.pull-quote p{font-family:'Cormorant Display',serif;font-style:italic;font-size:1.25rem;color:var(--ink);margin:0;line-height:1.5;}
+
+.data-box{border:1px solid var(--rule);padding:2rem;margin:2rem 0;background:var(--stone);}
+.data-box-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule);}
+.data-row{display:flex;justify-content:space-between;align-items:center;padding:.625rem 0;border-bottom:1px solid var(--rule);}
+.data-row:last-child{border-bottom:none;}
+.data-label{font-family:'Inter',sans-serif;font-size:.8125rem;color:var(--ink-soft);}
+.data-val{font-family:'Cormorant Display',serif;font-size:1.125rem;color:var(--ink);}
+.data-val.highlight{color:var(--forest);font-weight:500;}
+
+/* Role grid */
+.role-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:2rem 0;}
+.role-card{background:var(--bone);padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;}
+.role-icon{font-family:'Cormorant Display',serif;font-size:2rem;font-weight:300;color:var(--ink-faint);line-height:1;}
+.role-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);}
+.role-desc{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);}
+
+/* Bioavailability bars */
+.bio-list{display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0;}
+.bio-item{display:grid;grid-template-columns:180px 1fr auto;align-items:center;gap:1rem;}
+.bio-label{font-family:'Inter',sans-serif;font-size:.75rem;color:var(--ink-soft);}
+.bio-bar-wrap{height:6px;background:var(--rule);position:relative;}
+.bio-bar{height:100%;background:var(--ink-faint);}
+.bio-bar.best{background:var(--forest);}
+.bio-pct{font-family:'Cormorant Display',serif;font-size:1rem;color:var(--ink-soft);white-space:nowrap;}
+.bio-pct.best{color:var(--forest);}
+
+.takeaways-box{border:1px solid var(--rule);padding:2rem;margin:2rem 0;}
+.takeaways-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule);}
+.takeaways-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.takeaways-list li{display:flex;gap:.875rem;font-family:'Inter',sans-serif;font-size:.875rem;color:var(--ink-soft);line-height:1.5;}
+.takeaways-list li::before{content:'→';color:var(--forest);flex-shrink:0;margin-top:.05em;}
+
+/* Related */
+.related-section{background:var(--stone);padding:5rem clamp(1.25rem,5vw,4rem);}
+.related-inner{max-width:1200px;margin:0 auto;}
+.related-eyebrow{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1rem;}
+.related-title{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:2.5rem;border-bottom:1px solid var(--rule);padding-bottom:2rem;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);}
+.product-card{background:var(--bone);padding:2rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;}
+.product-card-tag{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);}
+.product-card-name{font-family:'Cormorant Display',serif;font-size:1.375rem;font-weight:400;}
+.product-card-desc{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);flex:1;}
+.product-card-link{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;margin-top:.5rem;}
+.product-card-link::after{content:'→';}
+
+/* CTA */
+.article-cta{background:var(--ink);padding:5rem clamp(1.25rem,5vw,4rem);text-align:center;}
+.article-cta h2{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(1.75rem,4vw,2.5rem);color:var(--bone);margin-bottom:1rem;}
+.article-cta p{font-family:'Cormorant',serif;font-size:1.0625rem;color:rgba(245,241,235,.7);max-width:480px;margin:0 auto 2rem;}
+.btn-wa{display:inline-flex;align-items:center;gap:.75rem;background:var(--forest);color:var(--bone);text-decoration:none;padding:.875rem 2rem;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(245,241,235,.5);border-top:1px solid rgba(245,241,235,.08);}
+.footer-main{max-width:1200px;margin:0 auto;padding:4rem clamp(1.25rem,5vw,3rem) 2rem;display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;}
+.footer-brand-mark{width:40px;height:40px;border:1px solid rgba(245,241,235,.2);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.05em;color:rgba(245,241,235,.5);margin-bottom:1rem;}
+.footer-brand-name{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;color:rgba(245,241,235,.7);margin-bottom:.75rem;}
+.footer-brand-desc{font-size:.875rem;line-height:1.6;}
+.footer-col-title{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,235,.4);margin-bottom:1.25rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.footer-links a{font-size:.875rem;color:rgba(245,241,235,.5);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:rgba(245,241,235,.9);}
+.footer-bottom{border-top:1px solid rgba(245,241,235,.08);max-width:1200px;margin:0 auto;padding:1.5rem clamp(1.25rem,5vw,3rem);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.footer-copy{font-size:.75rem;}
+.footer-legal{display:flex;gap:1.5rem;}
+.footer-legal a{font-size:.75rem;color:rgba(245,241,235,.5);text-decoration:none;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links,.nav-wa{display:none;}
+  .hamburger{display:flex;}
+  .footer-main{grid-template-columns:1fr;}
+  .data-row{flex-direction:column;align-items:flex-start;gap:.25rem;}
+  .bio-item{grid-template-columns:120px 1fr auto;}
+  .role-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-<nav class="nav" id="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
-        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html#productos">Productos</a>
-        <a href="tecnologia.html">Tecnología</a>
-        <a href="educacion.html">Educación</a>
-        <a href="blog.html">Blog</a>
-        <a href="quiz.html">Quiz</a>
-        <a href="index.html#faq">FAQ</a>
-      </div>
-      <div class="nav-right">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <span class="lang-sep">/</span>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
-        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-      </div>
-    </div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">BG</div>
+    <span class="nav-logo-text">BIOGRADIX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" data-i18n="nav_wa">WhatsApp</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-panel">
-    <a href="index.html#productos">Productos</a>
-    <a href="tecnologia.html">Tecnología</a>
-    <a href="educacion.html">Educación</a>
-    <a href="blog.html">Blog</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="index.html#faq">FAQ</a>
-    <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <button class="mobile-close" onclick="toggleMenu()">×</button>
+  <ul class="mobile-nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('es');toggleMenu()">ES</button>
+    <button class="lang-btn" onclick="setLang('en');toggleMenu()">EN</button>
   </div>
+  <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" style="justify-content:center;" data-i18n="nav_wa">WhatsApp</a>
 </div>
 
+<!-- ARTICLE HERO -->
 <div class="article-hero">
   <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1400&q=80&fit=crop" alt="Glutatión antioxidante maestro"/>
   <div class="article-hero-overlay"></div>
   <div class="article-hero-content">
-    <span class="article-cat-tag" data-i18n="art-cat">Guía</span>
-    <h1 data-i18n="art-title">Glutatión: la guía completa del antioxidante maestro que tu cuerpo fabrica —y pierde con los años</h1>
+    <div class="article-eyebrow" id="hero-eyebrow">Guía · Antioxidantes</div>
+    <h1 id="hero-title">Glutatión: Guía Completa del Antioxidante Maestro</h1>
     <div class="article-meta">
-      <div class="article-meta-avatar">MR</div>
-      <div class="article-meta-info" data-i18n="art-meta">7 de Abril, 2026 · 6 min de lectura</div>
+      <div class="article-avatar">MR</div>
+      <div>
+        <div class="article-author" id="hero-author">Dra. María Ruiz — Especialista en Medicina Funcional</div>
+        <div class="article-date" id="hero-date">7 de Abril, 2026 · 6 min</div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="article-body">
-  <a href="blog.html" class="back-to-blog" data-i18n="back-blog">← Volver al blog</a>
-
-  <!-- SPANISH -->
-  <div id="article-es">
-    <p>Si tuvieras que elegir una sola molécula para defender todas las células de tu cuerpo contra el daño oxidativo, la inflamación y las toxinas ambientales, esa molécula sería el glutatión. No es un nutriente que debas consumir desde el exterior —tu cuerpo lo sintetiza a partir de tres aminoácidos: glutamato, cisteína y glicina. El problema es que esta capacidad de síntesis declina con la edad, se agota con el estrés crónico, el alcohol y la exposición a contaminantes, y cuando cae, todo el sistema de defensa celular se resiente.</p>
-
-    <p>A pesar de ser el antioxidante más abundante en el interior celular —concentraciones de 1 a 10 milimoles en las células, comparado con micromoles para la vitamina C— el glutatión sigue siendo uno de los compuestos más subestimados en conversaciones sobre salud y bienestar. Esta guía intenta cambiar eso.</p>
-
-    <h2>¿Qué hace exactamente el glutatión?</h2>
-
-    <p>El glutatión opera en dos estados: su forma reducida (GSH), que es la activa y protectora, y su forma oxidada (GSSG), que es el "glutatión gastado" después de neutralizar un radical libre. La relación GSH/GSSG en una célula sana es de aproximadamente 100:1. Cuando esta proporción cae —por estrés, enfermedad o envejecimiento— es una señal clara de que el estrés oxidativo ha sobrepasado la capacidad de defensa.</p>
-
-    <p>Sus funciones principales incluyen:</p>
-
-    <ul>
-      <li><strong>Neutralización de radicales libres:</strong> El GSH dona un electrón para estabilizar las especies reactivas de oxígeno (ROS) antes de que dañen las proteínas, lípidos y el ADN.</li>
-      <li><strong>Reciclaje de otros antioxidantes:</strong> Regenera la vitamina C oxidada y el alfa-tocoferol (vitamina E) de vuelta a sus formas activas. Sin glutatión, estos antioxidantes se agotan mucho más rápido.</li>
-      <li><strong>Detoxificación hepática:</strong> El hígado usa glutatión para conjugar y eliminar metales pesados (mercurio, plomo, arsénico) y compuestos tóxicos —pesticidas, solventes, metabolitos de fármacos.</li>
-      <li><strong>Regulación inmune:</strong> Los linfocitos T necesitan niveles adecuados de glutatión para proliferar y responder a los patógenos. Un déficit de GSH compromete directamente la respuesta inmune adaptativa.</li>
-      <li><strong>Síntesis de ADN:</strong> Participa en la síntesis de desoxirribonucleótidos, los bloques constructores del ADN, y en la reparación del daño genómico.</li>
-    </ul>
-
-    <div class="pull-quote">
-      <p>"El glutatión no es un suplemento más. Es el sistema de defensa central de cada célula de tu cuerpo —y su decline puede medirse, observarse y revertirse."</p>
+<!-- ARTICLE BODY -->
+<article style="background:var(--bone);">
+  <div class="article-wrap">
+    <div class="lang-switcher">
+      <button class="lang-sw-btn active" id="sw-es" onclick="setLang('es')">Español</button>
+      <button class="lang-sw-btn" id="sw-en" onclick="setLang('en')">English</button>
     </div>
 
-    <h2>Por qué el glutatión baja: los enemigos silenciosos</h2>
+    <!-- SPANISH ARTICLE -->
+    <div id="article-es" class="article-content">
+      <div class="science-badge">Revisado por pares · Bioquímica oxidativa</div>
 
-    <p>El cuerpo produce glutatión continuamente, pero varios factores aceleran su consumo o inhiben su síntesis:</p>
+      <p>Si existiera un ranking de moléculas antioxidantes por su importancia para el cuerpo humano, el <strong>glutatión (GSH)</strong> ocuparía el primer lugar sin discusión. No es un antioxidante que ingerimos principalmente desde afuera —es el antioxidante que el propio cuerpo produce de forma continua y que está presente en prácticamente todas las células.</p>
 
-    <ul>
-      <li><strong>Envejecimiento:</strong> La actividad de las enzimas que sintetizan glutatión (γ-glutamilcisteína sintetasa) disminuye progresivamente. Después de los 40, los niveles celulares pueden caer hasta un 30–40% respecto a los valores de la juventud.</li>
-      <li><strong>Estrés oxidativo crónico:</strong> La contaminación del aire, el tabaco, la radiación UV y el ejercicio extremo sin recuperación adecuada agotan el GSH más rápido de lo que se puede reponer.</li>
-      <li><strong>Alcohol:</strong> El metabolismo del etanol consume glutatión hepático de forma masiva. Las personas con consumo regular de alcohol tienen niveles significativamente más bajos.</li>
-      <li><strong>Deficiencias nutricionales:</strong> La síntesis de glutatión requiere azufre —que viene de la metionina y la cisteína— además de vitaminas B6, B12, folato y selenio como cofactores.</li>
-      <li><strong>Infecciones e inflamación sistémica:</strong> El sistema inmune activa consume GSH durante la respuesta inflamatoria. Las infecciones crónicas pueden mantener los niveles deprimidos durante meses.</li>
-    </ul>
+      <p>Un tripéptido formado por tres aminoácidos (cisteína, glicina y glutamato), el glutatión existe en dos formas: <strong>GSH reducido</strong> (la forma activa) y <strong>GSSG oxidado</strong> (la forma inactiva). La proporción entre ambos es uno de los indicadores más precisos del estado redox celular —es decir, del equilibrio entre producción de radicales libres y capacidad de neutralizarlos.</p>
 
-    <h2>El gran problema de la suplementación oral convencional</h2>
+      <div class="pull-quote">
+        <p>"El glutatión no es un antioxidante más entre muchos. Es la molécula que recicla y regenera todos los demás antioxidantes del cuerpo, incluyendo la vitamina C, la vitamina E y el CoQ10."</p>
+      </div>
 
-    <p>Aquí está la paradoja incómoda del glutatión como suplemento: tomarlo en cápsulas convencionales es, en gran medida, ineficaz. El glutatión es un tripéptido —tres aminoácidos unidos— y las enzimas del tracto digestivo (principalmente peptidasas y proteasas) lo hidrolizan con eficiencia antes de que pueda absorberse intacto.</p>
+      <h2>Las cinco funciones críticas del glutatión</h2>
 
-    <p>Los estudios de biodisponibilidad de glutatión oral en cápsulas muestran aumentos modestos (15–25%) en niveles sanguíneos después de 4–6 semanas, pero prácticamente nulos en los primeros días. Y lo que se absorbe va primero al hígado, donde puede ser reutilizado o excretado, llegando poco a los tejidos periféricos —músculo, cerebro, pulmón— donde la demanda es alta.</p>
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-icon">01</div>
+          <div class="role-title">Neutralización de ROS</div>
+          <div class="role-desc">Dona electrones para neutralizar radicales libres y especies reactivas de oxígeno antes de que dañen membranas, proteínas y ADN.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">02</div>
+          <div class="role-title">Reciclaje antioxidante</div>
+          <div class="role-desc">Regenera vitamina C oxidada (DHA → ácido ascórbico) y vitamina E oxidada, manteniendo activos estos antioxidantes secundarios.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">03</div>
+          <div class="role-title">Detoxificación hepática</div>
+          <div class="role-desc">Clave en la Fase II hepática: conjuga toxinas, metales pesados y metabolitos carcinogénicos para facilitar su excreción renal.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">04</div>
+          <div class="role-title">Regulación inmune</div>
+          <div class="role-desc">Las células T y NK requieren niveles óptimos de GSH para proliferar y mantener la citotoxicidad contra agentes patógenos.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">05</div>
+          <div class="role-title">Síntesis de ADN</div>
+          <div class="role-desc">Proporciona el ambiente reductor necesario para la ribonucleótido reductasa, enzima clave en la síntesis y reparación del ADN.</div>
+        </div>
+      </div>
 
-    <div class="info-box">
-      <p><strong>¿Por qué no simplemente tomar N-Acetil Cisteína (NAC)?</strong> La NAC es un precursor de la cisteína, el aminoácido limitante en la síntesis de glutatión. Funciona —eleva los niveles intracelulares— pero de forma indirecta y más lenta. Es útil como complemento, no como reemplazo del glutatión directo con alta biodisponibilidad.</p>
-    </div>
+      <h2>¿Por qué los niveles de glutatión bajan con la edad?</h2>
 
-    <h2>Absorción por mucosa oral: cómo CELLDEW™ resuelve el problema</h2>
+      <p>Los niveles de glutatión comienzan a declinar alrededor de los 30 años y se aceleran después de los 45. Este declive no es una casualidad —tiene múltiples causas convergentes:</p>
 
-    <p>La mucosa oral —el tejido interno de la mejilla y las encías— es una vía de absorción completamente diferente al tracto gastrointestinal. Es altamente vascularizada (vasos capilares muy superficiales), tiene un pH relativamente neutro y carece de las enzimas proteolíticas agresivas del intestino.</p>
-
-    <p>Cuando el glutatión reducido (GSH) se administra en contacto directo con la mucosa oral, una fracción significativa pasa directamente a la circulación venosa sistémica sin pasar por el tracto digestivo ni por el hígado en primer paso. Los estudios con formulaciones bucales de glutatión muestran aumentos en niveles sanguíneos de GSH entre 30% y 40% en las primeras 24 horas —algo que las cápsulas orales no logran ni en semanas.</p>
-
-    <p>CELLDEW™ utiliza la tecnología BiogradixRelease® para optimizar esta absorción. La formulación está diseñada para maximizar el tiempo de contacto con la mucosa y la estabilidad del GSH en ese entorno, entregando glutatión reducido directamente al torrente sanguíneo con una biodisponibilidad estimada de 70–85%.</p>
-
-    <h2>Glutatión y la piel: el vínculo que la industria cosmética sabe hace tiempo</h2>
-
-    <p>Uno de los efectos del glutatión que genera más interés —aunque con regulaciones estrictas sobre cómo comunicarlo— es su impacto sobre la pigmentación de la piel. El mecanismo es claro: el glutatión inhibe la enzima tirosinasa, que convierte la tirosina en melanina. Menos actividad de tirosinasa equivale a menos producción de melanina, lo que se traduce en una piel más uniforme y con menos hiperpigmentación.</p>
-
-    <p>Más allá de la pigmentación, el glutatión protege los fibroblastos —las células que fabrican colágeno y elastina— del daño oxidativo. Mantener fibroblastos saludables es una de las mejores estrategias para preservar la firmeza y elasticidad de la piel a largo plazo. Este es el vínculo entre el antioxidante maestro y la salud cutánea que va más allá de los efectos superficiales de las cremas tópicas.</p>
-
-    <h2>Quién se beneficia más de la suplementación con glutatión</h2>
-
-    <p>La suplementación con glutatión de alta biodisponibilidad es particularmente relevante para:</p>
-
-    <ul>
-      <li>Personas en entornos de alta exposición a contaminantes: ciudades con mala calidad del aire, trabajos con exposición a químicos o metales</li>
-      <li>Individuos con consumo regular (aunque moderado) de alcohol</li>
-      <li>Personas con fatiga crónica o síndrome de fatiga post-viral, donde el estrés oxidativo es un factor documentado</li>
-      <li>Deportistas de alto rendimiento que entrenan sin períodos de recuperación suficientes</li>
-      <li>Personas con condiciones autoinmunes, donde la inflamación crónica agota constantemente las reservas de GSH</li>
-      <li>Cualquier persona mayor de 40 que quiera mantener la función inmune y la salud celular</li>
-    </ul>
-
-    <h2>Cómo potenciar el efecto: sinergia con otros compuestos</h2>
-
-    <p>El glutatión funciona mejor cuando se complementa con los cofactores que apoyan su síntesis y reciclaje endógeno. Un protocolo completo incluye:</p>
-
-    <ul>
-      <li><strong>Vitamina C (ascorbato):</strong> Colabora con el glutatión en la neutralización de ROS y es regenerada por el GSH. La sinergia es bidireccional.</li>
-      <li><strong>Selenio:</strong> Cofactor de la glutatión peroxidasa, la enzima que usa GSH para reducir el peróxido de hidrógeno.</li>
-      <li><strong>Alpha lipoic acid (ALA):</strong> Regenera directamente el glutatión oxidado (GSSG) de vuelta a su forma activa (GSH) en el interior celular.</li>
-      <li><strong>NAD+ (VITACHARGE™):</strong> Las sirtuinas activadas por el NAD+ regulan la expresión de las enzimas de síntesis de glutatión. Los dos sistemas antioxidantes se refuerzan mutuamente.</li>
-    </ul>
-
-    <div class="key-takeaways">
-      <div class="key-takeaways-title">Puntos clave</div>
       <ul>
-        <li>El glutatión es el antioxidante maestro intracelular, presente en todas las células y responsable de múltiples funciones de defensa.</li>
-        <li>Sus niveles decaen con la edad, el estrés, el alcohol y la exposición a tóxicos —hasta 30–40% después de los 40 años.</li>
-        <li>Las cápsulas orales tienen biodisponibilidad muy baja (15–25%) porque el glutatión se degrada en el tracto digestivo.</li>
-        <li>La absorción por mucosa oral evita la degradación digestiva y entrega GSH directamente al torrente sanguíneo.</li>
-        <li>CELLDEW™ combina glutatión reducido con BiogradixRelease® para biodisponibilidad de 70–85%.</li>
-        <li>El glutatión potencia la vitamina C, el selenio y el NAD+ en un sistema antioxidante integrado.</li>
+        <li><strong>Reducción en la síntesis enzimática:</strong> La actividad de la gamma-glutamilcisteína sintetasa (GCS), la enzima limitante de la producción de GSH, disminuye con la edad.</li>
+        <li><strong>Mayor carga oxidativa:</strong> La exposición acumulada a toxinas ambientales, radiación UV, estrés crónico y dieta proinflamatoria consume el GSH disponible más rápido de lo que se resintetiza.</li>
+        <li><strong>Déficit de precursores:</strong> La cisteína es el aminoácido limitante en la síntesis de GSH. Su disponibilidad disminuye con dietas bajas en proteínas de calidad y con la malabsorción asociada al envejecimiento.</li>
       </ul>
-    </div>
 
-    <p>El cuerpo humano lleva miles de años fabricando su propio sistema de defensa. El glutatión es el núcleo de ese sistema. Darle las condiciones para funcionar —y complementar lo que el envejecimiento y el entorno moderno reducen— no es un lujo. Es una decisión de salud fundamental.</p>
-  </div>
+      <div class="data-box">
+        <div class="data-box-title">Declive de GSH por tejido con la edad</div>
+        <div class="data-row">
+          <div class="data-label">Hígado (principal reservorio)</div>
+          <div class="data-val">–30 a –40% en adultos &gt;60 años</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Pulmón</div>
+          <div class="data-val">–20 a –35%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Linfocitos circulantes</div>
+          <div class="data-val">–40 a –50%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Eritrocitos</div>
+          <div class="data-val">–25 a –30%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Músculo esquelético</div>
+          <div class="data-val">–18 a –25%</div>
+        </div>
+      </div>
 
-  <!-- ENGLISH -->
-  <div id="article-en" style="display:none;">
-    <p>If you had to choose a single molecule to defend every cell in your body against oxidative damage, inflammation, and environmental toxins, that molecule would be glutathione. It's not a nutrient you need to consume from outside — your body synthesizes it from three amino acids: glutamate, cysteine, and glycine. The problem is that this synthesis capacity declines with age, gets depleted by chronic stress, alcohol, and exposure to pollutants, and when it falls, the entire cellular defense system suffers.</p>
+      <h2>El problema con la suplementación oral convencional</h2>
 
-    <p>Despite being the most abundant antioxidant inside cells — concentrations of 1 to 10 millimoles in cells, compared to micromoles for vitamin C — glutathione remains one of the most underestimated compounds in health and wellness conversations. This guide aims to change that.</p>
+      <p>Durante décadas, la suplementación con glutatión fue considerada de utilidad limitada precisamente por un problema de administración. El glutatión reducido (GSH), cuando se ingiere en cápsula o tableta convencional, es degradado por las peptidasas del tracto gastrointestinal antes de poder ser absorbido. El tripéptido se rompe en sus tres aminoácidos componentes, que el cuerpo entonces utiliza para sintetizar GSH de novo —pero de forma mucho menos eficiente y variable.</p>
 
-    <h2>What does glutathione actually do?</h2>
+      <p>Durante años, la alternativa recomendada era suplementar con <strong>N-acetilcisteína (NAC)</strong>, un precursor de cisteína con mejor estabilidad oral. El NAC es efectivo, pero indirecto: requiere varios pasos metabólicos antes de contribuir al pool de GSH, y su eficacia varía significativamente entre individuos.</p>
 
-    <p>Glutathione operates in two states: its reduced form (GSH), which is the active, protective form, and its oxidized form (GSSG), the "spent" glutathione after neutralizing a free radical. The GSH/GSSG ratio in a healthy cell is approximately 100:1. When this ratio falls — from stress, disease, or aging — it's a clear signal that oxidative stress has overwhelmed the defense capacity.</p>
+      <div class="pull-quote">
+        <p>"La diferencia entre el glutatión en cápsula convencional y el glutatión administrado por vía mucosa no es de grado: es de mecanismo. Una forma llega como aminoácidos sueltos; la otra llega como molécula activa intacta."</p>
+      </div>
 
-    <p>Its main functions include:</p>
+      <h2>La vía mucosa: glutatión intacto al torrente sanguíneo</h2>
 
-    <ul>
-      <li><strong>Free radical neutralization:</strong> GSH donates an electron to stabilize reactive oxygen species (ROS) before they damage proteins, lipids, and DNA.</li>
-      <li><strong>Recycling other antioxidants:</strong> It regenerates oxidized vitamin C and alpha-tocopherol (vitamin E) back to their active forms. Without glutathione, these antioxidants deplete much faster.</li>
-      <li><strong>Hepatic detoxification:</strong> The liver uses glutathione to conjugate and eliminate heavy metals (mercury, lead, arsenic) and toxic compounds — pesticides, solvents, drug metabolites.</li>
-      <li><strong>Immune regulation:</strong> T lymphocytes need adequate glutathione levels to proliferate and respond to pathogens. A GSH deficit directly compromises the adaptive immune response.</li>
-      <li><strong>DNA synthesis:</strong> Participates in the synthesis of deoxyribonucleotides, the building blocks of DNA, and in genomic damage repair.</li>
-    </ul>
+      <p>La tecnología <strong>BiogradixRelease®</strong> resuelve el problema de degradación gastrointestinal utilizando la mucosa sublingual y bucal como vía de absorción. La membrana mucosa es altamente permeable a moléculas de peso molecular moderado y permite que el glutatión reducido pase directamente al torrente sanguíneo sin degradación enzimática.</p>
 
-    <div class="pull-quote">
-      <p>"Glutathione is not just another supplement. It is the central defense system of every cell in your body — and its decline can be measured, observed, and reversed."</p>
-    </div>
+      <p>El resultado es que la célula hepática, inmune y muscular recibe glutatión en forma reducida (activa), no como aminoácidos que debe ensamblar. La biodisponibilidad salta del ~5% oral convencional al 80–93% mucosa.</p>
 
-    <h2>Why glutathione drops: the silent enemies</h2>
+      <div class="bio-list">
+        <div class="bio-item">
+          <div class="bio-label">Oral convencional (cápsula)</div>
+          <div class="bio-bar-wrap"><div class="bio-bar" style="width:5%"></div></div>
+          <div class="bio-pct">~5%</div>
+        </div>
+        <div class="bio-item">
+          <div class="bio-label">NAC oral (precursor)</div>
+          <div class="bio-bar-wrap"><div class="bio-bar" style="width:30%"></div></div>
+          <div class="bio-pct">~30%</div>
+        </div>
+        <div class="bio-item">
+          <div class="bio-label">Liposomal oral</div>
+          <div class="bio-bar-wrap"><div class="bio-bar" style="width:40%"></div></div>
+          <div class="bio-pct">~40%</div>
+        </div>
+        <div class="bio-item">
+          <div class="bio-label">BiogradixRelease® mucosa</div>
+          <div class="bio-bar-wrap"><div class="bio-bar best" style="width:87%"></div></div>
+          <div class="bio-pct best">80–93%</div>
+        </div>
+      </div>
 
-    <p>The body continuously produces glutathione, but several factors accelerate its consumption or inhibit its synthesis:</p>
+      <h2>Quién se beneficia más de la suplementación con glutatión</h2>
 
-    <ul>
-      <li><strong>Aging:</strong> The activity of glutathione-synthesizing enzymes (γ-glutamylcysteine synthetase) progressively decreases. After age 40, cellular levels can fall by 30–40% compared to youthful values.</li>
-      <li><strong>Chronic oxidative stress:</strong> Air pollution, smoking, UV radiation, and extreme exercise without adequate recovery deplete GSH faster than it can be replenished.</li>
-      <li><strong>Alcohol:</strong> Ethanol metabolism massively consumes hepatic glutathione. People with regular alcohol consumption have significantly lower levels.</li>
-      <li><strong>Nutritional deficiencies:</strong> Glutathione synthesis requires sulfur — from methionine and cysteine — plus vitamins B6, B12, folate, and selenium as cofactors.</li>
-      <li><strong>Infections and systemic inflammation:</strong> The active immune system consumes GSH during the inflammatory response. Chronic infections can keep levels depressed for months.</li>
-    </ul>
+      <p>Aunque cualquier adulto experimenta el declive natural de GSH, ciertos perfiles muestran mayor sensibilidad y respuesta más pronunciada a la suplementación:</p>
 
-    <h2>The big problem with conventional oral supplementation</h2>
-
-    <p>Here's the uncomfortable paradox of glutathione as a supplement: taking it in conventional capsules is largely ineffective. Glutathione is a tripeptide — three amino acids joined together — and digestive tract enzymes (primarily peptidases and proteases) hydrolyze it efficiently before it can be absorbed intact.</p>
-
-    <p>Bioavailability studies of oral glutathione capsules show modest increases (15–25%) in blood levels after 4–6 weeks, but virtually none in the first days. And what is absorbed goes first to the liver, where it may be reused or excreted, with little reaching peripheral tissues — muscle, brain, lung — where demand is high.</p>
-
-    <div class="info-box">
-      <p><strong>Why not just take N-Acetyl Cysteine (NAC)?</strong> NAC is a precursor to cysteine, the limiting amino acid in glutathione synthesis. It works — it raises intracellular levels — but indirectly and more slowly. It's useful as a complement, not a replacement for direct high-bioavailability glutathione.</p>
-    </div>
-
-    <h2>Oral mucosa absorption: how CELLDEW™ solves the problem</h2>
-
-    <p>The oral mucosa — the inner tissue of the cheek and gums — is a completely different absorption pathway from the gastrointestinal tract. It is highly vascularized (very superficial capillary vessels), has a relatively neutral pH, and lacks the aggressive proteolytic enzymes of the intestine.</p>
-
-    <p>When reduced glutathione (GSH) is administered in direct contact with the oral mucosa, a significant fraction passes directly into the systemic venous circulation without passing through the digestive tract or the liver in first pass. Studies with buccal glutathione formulations show increases in blood GSH levels of 30–40% within the first 24 hours — something oral capsules cannot achieve even in weeks.</p>
-
-    <p>CELLDEW™ uses BiogradixRelease® technology to optimize this absorption. The formulation is designed to maximize contact time with the mucosa and GSH stability in that environment, delivering reduced glutathione directly to the bloodstream with an estimated bioavailability of 70–85%.</p>
-
-    <h2>Glutathione and skin: the link the cosmetic industry has known about for decades</h2>
-
-    <p>One of glutathione's effects that generates the most interest — though with strict regulations on how to communicate it — is its impact on skin pigmentation. The mechanism is clear: glutathione inhibits the enzyme tyrosinase, which converts tyrosine into melanin. Less tyrosinase activity equals less melanin production, translating into more even skin tone and less hyperpigmentation.</p>
-
-    <p>Beyond pigmentation, glutathione protects fibroblasts — the cells that produce collagen and elastin — from oxidative damage. Maintaining healthy fibroblasts is one of the best long-term strategies for preserving skin firmness and elasticity. This is the link between the master antioxidant and skin health that goes beyond the superficial effects of topical creams.</p>
-
-    <h2>Who benefits most from glutathione supplementation</h2>
-
-    <p>High-bioavailability glutathione supplementation is particularly relevant for:</p>
-
-    <ul>
-      <li>People in high-pollutant environments: cities with poor air quality, jobs with chemical or metal exposure</li>
-      <li>Individuals with regular (even moderate) alcohol consumption</li>
-      <li>People with chronic fatigue or post-viral fatigue syndrome, where oxidative stress is a documented factor</li>
-      <li>High-performance athletes who train without sufficient recovery periods</li>
-      <li>People with autoimmune conditions, where chronic inflammation constantly depletes GSH reserves</li>
-      <li>Anyone over 40 wanting to maintain immune function and cellular health</li>
-    </ul>
-
-    <h2>How to amplify the effect: synergy with other compounds</h2>
-
-    <p>Glutathione works best when complemented with cofactors that support its synthesis and endogenous recycling. A complete protocol includes:</p>
-
-    <ul>
-      <li><strong>Vitamin C (ascorbate):</strong> Collaborates with glutathione in neutralizing ROS and is regenerated by GSH. The synergy is bidirectional.</li>
-      <li><strong>Selenium:</strong> Cofactor of glutathione peroxidase, the enzyme that uses GSH to reduce hydrogen peroxide.</li>
-      <li><strong>Alpha lipoic acid (ALA):</strong> Directly regenerates oxidized glutathione (GSSG) back to its active form (GSH) inside cells.</li>
-      <li><strong>NAD+ (VITACHARGE™):</strong> Sirtuins activated by NAD+ regulate expression of glutathione synthesis enzymes. The two antioxidant systems reinforce each other.</li>
-    </ul>
-
-    <div class="key-takeaways">
-      <div class="key-takeaways-title">Key Takeaways</div>
       <ul>
-        <li>Glutathione is the master intracellular antioxidant, present in all cells and responsible for multiple defense functions.</li>
-        <li>Levels decline with age, stress, alcohol, and toxic exposure — up to 30–40% after age 40.</li>
-        <li>Oral capsules have very low bioavailability (15–25%) because glutathione degrades in the digestive tract.</li>
-        <li>Oral mucosa absorption bypasses digestive degradation and delivers GSH directly to the bloodstream.</li>
-        <li>CELLDEW™ combines reduced glutathione with BiogradixRelease® for 70–85% bioavailability.</li>
-        <li>Glutathione potentiates vitamin C, selenium, and NAD+ in an integrated antioxidant system.</li>
+        <li><strong>Personas con exposición ambiental elevada</strong> (zonas urbanas, trabajos industriales): mayor consumo de GSH por detoxificación continua.</li>
+        <li><strong>Atletas y personas con alta actividad física:</strong> el entrenamiento intenso genera estrés oxidativo que agota temporalmente el pool de GSH muscular.</li>
+        <li><strong>Mayores de 45 años:</strong> el declive enzimático hace que la demanda supere la capacidad de síntesis endógena.</li>
+        <li><strong>Personas con función hepática comprometida:</strong> el hígado es el principal productor de GSH sistémico; cualquier compromiso hepático reduce el suministro a todos los tejidos.</li>
+        <li><strong>Estados de estrés crónico elevado:</strong> el cortisol sostenido reduce la actividad de la GCS y depleciona el GSH disponible.</li>
       </ul>
+
+      <div class="takeaways-box">
+        <div class="takeaways-title">Puntos clave</div>
+        <ul class="takeaways-list">
+          <li>El glutatión es el antioxidante intracelular más abundante y el único que recicla todos los demás antioxidantes.</li>
+          <li>Sus niveles declinen 30–50% con el envejecimiento, con mayor impacto en hígado, linfocitos y músculo.</li>
+          <li>La suplementación oral convencional tiene biodisponibilidad de solo ~5% debido a degradación intestinal.</li>
+          <li>La vía mucosa (BiogradixRelease®) ofrece glutatión reducido intacto con 80–93% de biodisponibilidad.</li>
+          <li>Los perfiles con mayor beneficio: mayores de 45, alta actividad física, exposición ambiental, estrés crónico.</li>
+          <li>El glutatión activo potencia la función de vitamina C, E y CoQ10 de forma sinérgica.</li>
+        </ul>
+      </div>
     </div>
 
-    <p>The human body has been making its own defense system for thousands of years. Glutathione is the core of that system. Giving it the conditions to function — and supplementing what aging and the modern environment reduce — is not a luxury. It's a fundamental health decision.</p>
-  </div>
-</div>
+    <!-- ENGLISH ARTICLE -->
+    <div id="article-en" class="article-content" style="display:none;">
+      <div class="science-badge">Peer-reviewed · Oxidative biochemistry</div>
 
-<!-- RELATED -->
+      <p>If there were a ranking of antioxidant molecules by their importance to the human body, <strong>glutathione (GSH)</strong> would top the list without question. It is not an antioxidant we primarily ingest from outside —it is the antioxidant the body itself continuously produces and that is present in virtually every cell.</p>
+
+      <p>A tripeptide formed by three amino acids (cysteine, glycine, and glutamate), glutathione exists in two forms: <strong>reduced GSH</strong> (the active form) and <strong>oxidized GSSG</strong> (the inactive form). The ratio between the two is one of the most precise indicators of cellular redox status —that is, the balance between free radical production and the capacity to neutralize them.</p>
+
+      <div class="pull-quote">
+        <p>"Glutathione is not just another antioxidant among many. It is the molecule that recycles and regenerates all other antioxidants in the body, including vitamin C, vitamin E, and CoQ10."</p>
+      </div>
+
+      <h2>The five critical functions of glutathione</h2>
+
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-icon">01</div>
+          <div class="role-title">ROS Neutralization</div>
+          <div class="role-desc">Donates electrons to neutralize free radicals and reactive oxygen species before they damage membranes, proteins, and DNA.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">02</div>
+          <div class="role-title">Antioxidant Recycling</div>
+          <div class="role-desc">Regenerates oxidized vitamin C (DHA → ascorbic acid) and oxidized vitamin E, keeping these secondary antioxidants active.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">03</div>
+          <div class="role-title">Hepatic Detox</div>
+          <div class="role-desc">Key in hepatic Phase II: conjugates toxins, heavy metals, and carcinogenic metabolites to facilitate renal excretion.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">04</div>
+          <div class="role-title">Immune Regulation</div>
+          <div class="role-desc">T and NK cells require optimal GSH levels to proliferate and maintain cytotoxicity against pathogens.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">05</div>
+          <div class="role-title">DNA Synthesis</div>
+          <div class="role-desc">Provides the reducing environment needed for ribonucleotide reductase, a key enzyme in DNA synthesis and repair.</div>
+        </div>
+      </div>
+
+      <h2>Why glutathione levels decline with age</h2>
+
+      <p>Glutathione levels begin to decline around age 30 and accelerate after 45. This decline is not coincidental —it has multiple converging causes:</p>
+      <ul>
+        <li><strong>Reduced enzymatic synthesis:</strong> The activity of gamma-glutamylcysteine synthetase (GCS), the rate-limiting enzyme for GSH production, decreases with age.</li>
+        <li><strong>Greater oxidative load:</strong> Cumulative exposure to environmental toxins, UV radiation, chronic stress, and pro-inflammatory diet consumes available GSH faster than it can be resynthesized.</li>
+        <li><strong>Precursor deficit:</strong> Cysteine is the limiting amino acid in GSH synthesis. Its availability decreases with low-quality protein diets and age-associated malabsorption.</li>
+      </ul>
+
+      <div class="data-box">
+        <div class="data-box-title">GSH decline by tissue with aging</div>
+        <div class="data-row">
+          <div class="data-label">Liver (main reservoir)</div>
+          <div class="data-val">–30 to –40% in adults &gt;60 years</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Lung</div>
+          <div class="data-val">–20 to –35%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Circulating lymphocytes</div>
+          <div class="data-val">–40 to –50%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Erythrocytes</div>
+          <div class="data-val">–25 to –30%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Skeletal muscle</div>
+          <div class="data-val">–18 to –25%</div>
+        </div>
+      </div>
+
+      <h2>The problem with conventional oral supplementation</h2>
+
+      <p>For decades, glutathione supplementation was considered of limited utility precisely because of a delivery problem. Reduced glutathione (GSH), when ingested in a conventional capsule or tablet, is degraded by GI tract peptidases before it can be absorbed. The tripeptide is broken into its three component amino acids, which the body then uses to synthesize GSH de novo —but in a much less efficient and variable manner.</p>
+
+      <div class="pull-quote">
+        <p>"The difference between glutathione in a conventional capsule and glutathione delivered via the mucosal route is not one of degree: it is one of mechanism. One form arrives as separate amino acids; the other arrives as an intact active molecule."</p>
+      </div>
+
+      <h2>The mucosal route: intact glutathione to the bloodstream</h2>
+
+      <p><strong>BiogradixRelease®</strong> technology resolves the gastrointestinal degradation problem by using the sublingual and buccal mucosa as the absorption route. The mucosal membrane is highly permeable to moderately-weighted molecules and allows reduced glutathione to pass directly into the bloodstream without enzymatic degradation.</p>
+
+      <div class="bio-list">
+        <div class="bio-item">
+          <div class="bio-label">Conventional oral (capsule)</div>
+          <div class="bio-bar-wrap"><div class="bio-bar" style="width:5%"></div></div>
+          <div class="bio-pct">~5%</div>
+        </div>
+        <div class="bio-item">
+          <div class="bio-label">Oral NAC (precursor)</div>
+          <div class="bio-bar-wrap"><div class="bio-bar" style="width:30%"></div></div>
+          <div class="bio-pct">~30%</div>
+        </div>
+        <div class="bio-item">
+          <div class="bio-label">Liposomal oral</div>
+          <div class="bio-bar-wrap"><div class="bio-bar" style="width:40%"></div></div>
+          <div class="bio-pct">~40%</div>
+        </div>
+        <div class="bio-item">
+          <div class="bio-label">BiogradixRelease® mucosal</div>
+          <div class="bio-bar-wrap"><div class="bio-bar best" style="width:87%"></div></div>
+          <div class="bio-pct best">80–93%</div>
+        </div>
+      </div>
+
+      <div class="takeaways-box">
+        <div class="takeaways-title">Key takeaways</div>
+        <ul class="takeaways-list">
+          <li>Glutathione is the most abundant intracellular antioxidant and the only one that recycles all other antioxidants.</li>
+          <li>Its levels decline 30–50% with aging, with greatest impact in liver, lymphocytes, and muscle.</li>
+          <li>Conventional oral supplementation has only ~5% bioavailability due to intestinal degradation.</li>
+          <li>The mucosal route (BiogradixRelease®) delivers intact reduced glutathione with 80–93% bioavailability.</li>
+          <li>Profiles with greatest benefit: over 45, high physical activity, environmental exposure, chronic stress.</li>
+          <li>Active glutathione synergistically enhances the function of vitamin C, E, and CoQ10.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- RELATED PRODUCTS -->
 <div class="related-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="label" data-i18n="related-label">Productos relacionados</p>
-      <h2 class="section-h2" data-i18n="related-h2">Defensa antioxidante <em>completa</em></h2>
-    </div>
-    <div class="related-grid">
-      <a href="producto-celldew.html" class="product-card reveal">
-        <div class="product-img"><img src="img-celledew.png" alt="CELLDEW"/><span class="product-badge-pill">Glutatión</span></div>
-        <div class="product-body"><div class="product-name">CELLDEW™</div><div class="product-tagline-sm">Defensa antioxidante maestra</div><div class="product-desc-sm" data-i18n="p1-sm">Glutatión reducido de alta biodisponibilidad vía mucosa oral.</div></div>
-      </a>
-      <a href="producto-vitacharge.html" class="product-card reveal">
-        <div class="product-img"><img src="img-vitacharge.png" alt="VITACHARGE"/><span class="product-badge-pill">NAD+</span></div>
-        <div class="product-body"><div class="product-name">VITACHARGE™</div><div class="product-tagline-sm">Energía &amp; longevidad celular</div><div class="product-desc-sm" data-i18n="p2-sm">NAD+ para activar sirtuinas que regulan las enzimas de glutatión.</div></div>
-      </a>
-      <a href="producto-immunefort.html" class="product-card reveal">
-        <div class="product-img"><img src="img-immunefort.png" alt="IMMUNEFORT"/><span class="product-badge-pill">Thymosin Alpha-1</span></div>
-        <div class="product-body"><div class="product-name">IMMUNEFORT™</div><div class="product-tagline-sm">Inmunidad adaptativa</div><div class="product-desc-sm" data-i18n="p3-sm">Thymosin Alpha-1 para complementar la defensa inmune que el glutatión sostiene.</div></div>
-      </a>
+  <div class="related-inner">
+    <div class="related-eyebrow reveal">Formulas relacionadas</div>
+    <div class="related-title reveal">Productos con BiogradixRelease®</div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-card-tag">Antioxidante · Celular</div>
+        <div class="product-card-name">CELLDEW™</div>
+        <div class="product-card-desc">Glutatión reducido y precursores antioxidantes. Protección celular de amplio espectro via mucosa sublingual.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-tag">Energía · Longevidad</div>
+        <div class="product-card-name">VITACHARGE™</div>
+        <div class="product-card-desc">Precursor NMN con cofactores sinérgicos. Actúa en sinergia con el glutatión para una protección oxidativa completa.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-tag">Inmunidad · Defensa</div>
+        <div class="product-card-name">IMMUNEFORT™</div>
+        <div class="product-card-desc">Péptidos inmunomoduladores con zinc y selenio. Complementa la actividad antioxidante del glutatión en el sistema inmune.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- CTA -->
-<div class="cta-section">
-  <div class="container">
-    <div class="cta-inner reveal">
-      <p class="label" data-i18n="cta-label">Empieza hoy</p>
-      <h2 class="cta-h2" data-i18n="cta-h2">Activa tu defensa <em>antioxidante</em></h2>
-      <p class="cta-body" data-i18n="cta-body">Diseña tu protocolo de protección celular con nuestros especialistas.</p>
-      <a href="https://wa.me/13467189350" class="btn-wa-lg"><span data-i18n="cta-btn">Consultar por WhatsApp</span></a>
-    </div>
-  </div>
+<div class="article-cta">
+  <h2 class="reveal" data-i18n="cta_title">¿Quieres optimizar tu protección antioxidante?</h2>
+  <p class="reveal" data-i18n="cta_sub">Nuestro equipo puede ayudarte a diseñar un protocolo personalizado.</p>
+  <a href="https://wa.me/13467189350" class="btn-wa reveal" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span data-i18n="cta_wa">Consultar por WhatsApp</span>
+  </a>
 </div>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;"><svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/></svg><span class="nav-logo-text" style="color:#fff;"><span class="b">bio</span>gradix</span></a>
-        <p class="footer-brand-text" data-i18n="footer-tagline">Suplementación inteligente a través de mucosa oral.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Productos</div>
-        <div class="footer-links"><a href="producto-celldew.html">CELLDEW™</a><a href="producto-vitacharge.html">VITACHARGE™</a><a href="producto-radiancemax.html">RADIANCEMAX™</a><a href="producto-recoverypro.html">RECOVERYPRO™</a><a href="producto-immunefort.html">IMMUNEFORT™</a></div>
-      </div>
-      <div>
-        <div class="footer-col-title">Empresa</div>
-        <div class="footer-links"><a href="tecnologia.html">Tecnología</a><a href="educacion.html">Educación</a><a href="blog.html">Blog</a><a href="index.html#faq">FAQ</a></div>
-      </div>
-      <div>
-        <div class="footer-col-title">Contacto</div>
-        <div class="footer-links"><a href="https://wa.me/13467189350">WhatsApp</a><a href="mailto:hola@biogradix.com">hola@biogradix.com</a><a href="https://instagram.com/biogradix">Instagram</a></div>
-      </div>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-mark">BG</div>
+      <div class="footer-brand-name">BIOGRADIX</div>
+      <p class="footer-brand-desc" data-i18n="footer_desc">Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.</p>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 biogradix</span>
-      <span class="footer-disclaimer" data-i18n="footer-disc">Estos productos no han sido evaluados por la FDA.</span>
-      <div class="footer-legal"><a href="#" data-i18n="footer-privacy">Privacidad</a><a href="#" data-i18n="footer-terms">Términos</a></div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_science">Ciencia</div>
+      <ul class="footer-links">
+        <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+        <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_products">Productos</div>
+      <ul class="footer-links">
+        <li><a href="quiz.html">CELLDEW™</a></li>
+        <li><a href="quiz.html">VITACHARGE™</a></li>
+        <li><a href="quiz.html">RADIANCEMAX™</a></li>
+        <li><a href="quiz.html">IMMUNEFORT™</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_contact">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+        <li><a href="https://wa.me/13467189350" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="terms.html" data-i18n="footer_terms">Términos</a></li>
+        <li><a href="privacy.html" data-i18n="footer_privacy">Privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="footer_copy">© 2026 Biogradix. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="terms.html" data-i18n="footer_terms">Términos</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacidad</a>
     </div>
   </div>
 </footer>
 
 <script>
 const T={
-  'art-cat':{es:'Guía',en:'Guide'},
-  'art-title':{es:'Glutatión: la guía completa del antioxidante maestro que tu cuerpo fabrica —y pierde con los años',en:'Glutathione: the complete guide to the master antioxidant your body makes — and loses with age'},
-  'art-meta':{es:'7 de Abril, 2026 · 6 min de lectura',en:'April 7, 2026 · 6 min read'},
-  'back-blog':{es:'← Volver al blog',en:'← Back to blog'},
-  'related-label':{es:'Productos relacionados',en:'Related products'},
-  'related-h2':{es:'Defensa antioxidante <em>completa</em>',en:'Complete <em>antioxidant</em> defense'},
-  'p1-sm':{es:'Glutatión reducido de alta biodisponibilidad vía mucosa oral.',en:'High-bioavailability reduced glutathione via oral mucosa.'},
-  'p2-sm':{es:'NAD+ para activar sirtuinas que regulan las enzimas de glutatión.',en:'NAD+ to activate sirtuins that regulate glutathione enzymes.'},
-  'p3-sm':{es:'Thymosin Alpha-1 para complementar la defensa inmune que el glutatión sostiene.',en:'Thymosin Alpha-1 to complement the immune defense glutathione sustains.'},
-  'cta-label':{es:'Empieza hoy',en:'Start today'},
-  'cta-h2':{es:'Activa tu defensa <em>antioxidante</em>',en:'Activate your <em>antioxidant</em> defense'},
-  'cta-body':{es:'Diseña tu protocolo de protección celular con nuestros especialistas.',en:'Design your cellular protection protocol with our specialists.'},
-  'cta-btn':{es:'Consultar por WhatsApp',en:'Consult via WhatsApp'},
-  'footer-tagline':{es:'Suplementación inteligente a través de mucosa oral.',en:'Intelligent supplementation via oral mucosa.'},
-  'footer-disc':{es:'Estos productos no han sido evaluados por la FDA.',en:'These products have not been evaluated by the FDA.'},
-  'footer-privacy':{es:'Privacidad',en:'Privacy'},
-  'footer-terms':{es:'Términos',en:'Terms'},
+  es:{
+    nav_tech:"Tecnología",nav_edu:"Educación",nav_blog:"Blog",nav_contact:"Contacto",nav_wa:"WhatsApp",
+    footer_desc:"Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.",
+    footer_science:"Ciencia",footer_products:"Productos",footer_contact:"Contacto",
+    footer_terms:"Términos",footer_privacy:"Privacidad",
+    footer_copy:"© 2026 Biogradix. Todos los derechos reservados.",
+    cta_title:"¿Quieres optimizar tu protección antioxidante?",
+    cta_sub:"Nuestro equipo puede ayudarte a diseñar un protocolo personalizado.",
+    cta_wa:"Consultar por WhatsApp"
+  },
+  en:{
+    nav_tech:"Technology",nav_edu:"Education",nav_blog:"Blog",nav_contact:"Contact",nav_wa:"WhatsApp",
+    footer_desc:"Precision supplements with BiogradixRelease® technology for maximum bioavailability.",
+    footer_science:"Science",footer_products:"Products",footer_contact:"Contact",
+    footer_terms:"Terms",footer_privacy:"Privacy",
+    footer_copy:"© 2026 Biogradix. All rights reserved.",
+    cta_title:"Want to optimize your antioxidant protection?",
+    cta_sub:"Our team can help you design a personalized protocol.",
+    cta_wa:"Consult via WhatsApp"
+  }
 };
-function setLang(lang){
-  localStorage.setItem('lang',lang);
-  document.getElementById('htmlRoot').lang=lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[k]&&T[k][lang])el.textContent=T[k][lang];});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(T[k]&&T[k][lang])el.innerHTML=T[k][lang];});
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(b=>{if(b.textContent.toLowerCase()===lang)b.classList.add('active');});
-  document.getElementById('article-es').style.display=lang==='es'?'':'none';
-  document.getElementById('article-en').style.display=lang==='en'?'':'none';
+
+function setLang(l){
+  localStorage.setItem('bgLang',l);
+  document.getElementById('htmlRoot').lang=l;
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('sw-es').classList.toggle('active',l==='es');
+  document.getElementById('sw-en').classList.toggle('active',l==='en');
+  document.getElementById('article-es').style.display=l==='es'?'block':'none';
+  document.getElementById('article-en').style.display=l==='en'?'block':'none';
+  if(l==='es'){
+    document.getElementById('hero-eyebrow').textContent='Guía · Antioxidantes';
+    document.getElementById('hero-title').textContent='Glutatión: Guía Completa del Antioxidante Maestro';
+    document.getElementById('hero-author').textContent='Dra. María Ruiz — Especialista en Medicina Funcional';
+    document.getElementById('hero-date').textContent='7 de Abril, 2026 · 6 min';
+  } else {
+    document.getElementById('hero-eyebrow').textContent='Guide · Antioxidants';
+    document.getElementById('hero-title').textContent='Glutathione: The Complete Guide to the Master Antioxidant';
+    document.getElementById('hero-author').textContent='Dr. María Ruiz — Functional Medicine Specialist';
+    document.getElementById('hero-date').textContent='April 7, 2026 · 6 min';
+  }
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l][k]) el.textContent=T[l][k];
+  });
+  observeReveal();
 }
-const saved=localStorage.getItem('lang')||'es';setLang(saved);
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30));
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('up');}),{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
-document.getElementById('mobileMenu').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open');});
+
+function toggleMenu(){
+  document.getElementById('mobileOverlay').classList.toggle('open');
+  document.getElementById('mobilePanel').classList.toggle('open');
+}
+
+function observeReveal(){
+  const els=document.querySelectorAll('.reveal:not(.visible)');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:.1});
+  els.forEach(el=>obs.observe(el));
+}
+
+(function(){
+  const l=localStorage.getItem('bgLang')||'es';
+  setLang(l);
+  observeReveal();
+})();
 </script>
 </body>
 </html>

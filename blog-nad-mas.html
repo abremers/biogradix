@@ -3,559 +3,679 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>NAD+: Energía y Longevidad — Blog | biogradix</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-<style>
-:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
-.container{max-width:1200px;margin:0 auto;padding:0 48px;}
-@media(max-width:768px){.container{padding:0 20px;}}
-.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.up{opacity:1;transform:none;}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
-.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
-.nav-inner{display:flex;align-items:center;height:64px;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
-.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
-.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--teal);}
-.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
-.lang-btn.active,.lang-btn:hover{color:var(--teal);}
-.lang-sep{color:var(--silver);font-size:12px;}
-.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
-.btn-wa:hover{background:var(--teal-deep);}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
-@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
-.mobile-menu.open{opacity:1;pointer-events:all;}
-.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
-.mobile-menu.open .mobile-menu-panel{transform:none;}
-.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
-.mobile-menu-panel a:hover{color:var(--teal);}
-.article-hero{position:relative;height:460px;overflow:hidden;margin-top:64px;}
-.article-hero img{width:100%;height:100%;object-fit:cover;}
-.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,26,43,.15),rgba(11,26,43,.8));}
-.article-hero-content{position:absolute;bottom:0;left:0;right:0;padding:56px 48px;}
-@media(max-width:768px){.article-hero-content{padding:32px 20px;}}
-.article-cat-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:4px;padding:4px 10px;margin-bottom:16px;}
-.article-hero-content h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:34px;color:#fff;line-height:1.2;max-width:760px;letter-spacing:-.4px;margin-bottom:16px;}
-@media(max-width:768px){.article-hero-content h1{font-size:24px;}}
-.article-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.article-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--teal);flex-shrink:0;}
-.article-meta-info{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.65);}
-.article-body{max-width:740px;margin:0 auto;padding:64px 24px 80px;}
-.article-body h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:26px;color:var(--navy);margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3;}
-.article-body h3{font-family:'DM Sans',sans-serif;font-weight:600;font-size:19px;color:var(--navy);margin:32px 0 12px;}
-.article-body p{font-size:16px;color:var(--text-2);line-height:1.85;margin-bottom:22px;}
-.article-body ul,.article-body ol{margin:0 0 22px 28px;}
-.article-body li{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:10px;}
-.pull-quote{border-left:3px solid var(--teal);padding:20px 28px;margin:40px 0;background:var(--mint);border-radius:0 12px 12px 0;}
-.pull-quote p{font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;color:var(--navy);line-height:1.5;margin:0;}
-.key-takeaways{background:var(--mint);border:1px solid rgba(15,110,86,.2);border-radius:16px;padding:28px 32px;margin:48px 0;}
-.key-takeaways-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;}
-.key-takeaways ul{margin:0;padding:0;list-style:none;}
-.key-takeaways li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-1);margin-bottom:12px;line-height:1.65;}
-.key-takeaways li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:8px;}
-.related-section{padding:64px 0;background:var(--cloud);}
-.section-header{text-align:center;margin-bottom:40px;}
-.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:28px;letter-spacing:-.4px;color:var(--navy);}
-.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.product-card{background:#fff;border:1px solid var(--silver);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s;text-decoration:none;color:inherit;}
-.product-card:hover{border-color:rgba(15,110,86,.3);box-shadow:0 12px 40px rgba(11,26,43,.1);transform:translateY(-3px);}
-.product-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--mint);}
-.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
-.product-card:hover .product-img img{transform:scale(1.04);}
-.product-badge-pill{position:absolute;top:12px;left:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:6px;padding:4px 10px;}
-.product-body{padding:20px;}
-.product-name{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:3px;}
-.product-tagline-sm{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);margin-bottom:8px;}
-.product-desc-sm{font-size:12px;color:var(--text-3);}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:768px){.related-grid{grid-template-columns:1fr;}}
-.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
-.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
-.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
-.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
-.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;}
-.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);}
-.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
-@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
-.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
-.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
-.footer-links{display:flex;flex-direction:column;gap:10px;}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--teal-active);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);}
-.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.15);}
-.footer-legal{display:flex;gap:20px;}
-.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);text-decoration:none;}
-.back-to-blog{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);text-decoration:none;margin-bottom:40px;}
-.back-to-blog:hover{color:var(--teal-deep);}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:40px 0;}
-@media(max-width:600px){.stat-row{grid-template-columns:1fr;}}
-.stat-card{background:#fff;border:1px solid var(--silver);border-radius:12px;padding:24px;text-align:center;}
-.stat-number{font-family:'Instrument Serif',serif;font-size:42px;color:var(--teal);line-height:1;}
-.stat-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin-top:8px;}
-</style>
+<title>NAD+: La Molécula de la Longevidad | Biogradix</title>
+<meta name="description" content="NAD+ declina 50% entre los 20 y 50 años. Descubre cómo esta coenzima regula las sirtuinas, las mitocondrias y cómo BiogradixRelease® maximiza su absorción."/>
+<!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HMFHY2M02E');</script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bone:#F5F1EB;
+  --stone:#EDE8E0;
+  --ink:#18140F;
+  --ink-soft:#4A443C;
+  --ink-faint:#9A9189;
+  --forest:#2E4A3A;
+  --rule:rgba(24,20,15,.1);
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bone);color:var(--ink);font-family:'Cormorant',serif;font-weight:300;line-height:1.7;font-size:1.125rem;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,3rem);background:rgba(245,241,235,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink);}
+.nav-logo-mark{width:32px;height:32px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.05em;flex-shrink:0;}
+.nav-logo-text{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;}
+.nav-links{display:flex;list-style:none;gap:2rem;}
+.nav-links a{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.08em;text-decoration:none;color:var(--ink-soft);transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-actions{display:flex;align-items:center;gap:1rem;}
+.lang-btn{background:none;border:1px solid var(--rule);padding:.25rem .6rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-btn.active{background:var(--ink);color:var(--bone);border-color:var(--ink);}
+.nav-wa{display:flex;align-items:center;gap:.5rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-decoration:none;color:var(--bone);background:var(--forest);padding:.4rem 1rem;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--ink);}
+
+/* MOBILE MENU */
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,20,15,.4);z-index:200;}
+.mobile-overlay.open{display:block;}
+.mobile-panel{position:fixed;top:0;right:-280px;width:280px;height:100%;background:var(--bone);border-left:1px solid var(--rule);z-index:201;transition:right .3s ease;padding:2rem 1.5rem;display:flex;flex-direction:column;gap:2rem;}
+.mobile-panel.open{right:0;}
+.mobile-close{align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);}
+.mobile-nav-links{display:flex;flex-direction:column;gap:1.25rem;list-style:none;}
+.mobile-nav-links a{font-family:'Inter',sans-serif;font-size:.875rem;letter-spacing:.08em;text-decoration:none;color:var(--ink);}
+.mobile-lang{display:flex;gap:.5rem;}
+
+/* ARTICLE HERO */
+.article-hero{position:relative;height:60vh;min-height:420px;margin-top:var(--nav-h);overflow:hidden;display:flex;align-items:flex-end;}
+.article-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,20,15,.75) 0%,rgba(24,20,15,.25) 60%,transparent 100%);}
+.article-hero-content{position:relative;z-index:1;padding:3rem clamp(1.25rem,5vw,4rem);width:100%;}
+.article-eyebrow{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,235,.7);margin-bottom:1rem;}
+.article-hero h1{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(2rem,5vw,3.5rem);color:var(--bone);line-height:1.15;max-width:700px;margin-bottom:1.25rem;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.article-avatar{width:36px;height:36px;border-radius:50%;background:var(--forest);border:1px solid rgba(245,241,235,.3);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;color:var(--bone);}
+.article-author{font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(245,241,235,.8);}
+.article-date{font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(245,241,235,.6);}
+.article-read{font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(245,241,235,.6);}
+
+/* ARTICLE BODY */
+.article-wrap{max-width:720px;margin:0 auto;padding:3rem clamp(1.25rem,4vw,2rem) 5rem;}
+.lang-switcher{display:flex;gap:0;border:1px solid var(--rule);margin-bottom:3rem;width:fit-content;}
+.lang-sw-btn{background:none;border:none;padding:.5rem 1.25rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-sw-btn.active{background:var(--ink);color:var(--bone);}
+.lang-sw-btn:first-child{border-right:1px solid var(--rule);}
+
+/* Article content typography */
+.article-content h2{font-family:'Cormorant Display',serif;font-weight:400;font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:2.5rem 0 1rem;}
+.article-content h3{font-family:'Cormorant Display',serif;font-weight:400;font-size:1.25rem;margin:2rem 0 .75rem;}
+.article-content p{margin-bottom:1.25rem;color:var(--ink-soft);font-size:1.0625rem;}
+.article-content ul,.article-content ol{padding-left:1.5rem;margin-bottom:1.25rem;}
+.article-content li{margin-bottom:.5rem;color:var(--ink-soft);}
+.article-content strong{color:var(--ink);font-weight:400;}
+
+/* Science badge */
+.science-badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--rule);padding:.375rem .875rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);margin-bottom:2rem;}
+.science-badge::before{content:'';width:6px;height:6px;background:var(--forest);}
+
+/* Pull quote */
+.pull-quote{border-left:2px solid var(--forest);padding:1.5rem 2rem;margin:2.5rem 0;background:var(--stone);}
+.pull-quote p{font-family:'Cormorant Display',serif;font-style:italic;font-size:1.25rem;color:var(--ink);margin:0;line-height:1.5;}
+
+/* Data box */
+.data-box{border:1px solid var(--rule);padding:2rem;margin:2rem 0;background:var(--stone);}
+.data-box-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule);}
+.data-row{display:flex;justify-content:space-between;align-items:center;padding:.625rem 0;border-bottom:1px solid var(--rule);}
+.data-row:last-child{border-bottom:none;}
+.data-label{font-family:'Inter',sans-serif;font-size:.8125rem;color:var(--ink-soft);}
+.data-val{font-family:'Cormorant Display',serif;font-size:1.125rem;color:var(--ink);}
+.data-val.highlight{color:var(--forest);font-weight:500;}
+
+/* Mechanism grid */
+.mech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:2rem 0;}
+.mech-card{background:var(--bone);padding:1.5rem;display:flex;flex-direction:column;gap:.5rem;}
+.mech-num{font-family:'Cormorant Display',serif;font-size:2rem;font-weight:300;color:var(--ink-faint);line-height:1;}
+.mech-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);}
+.mech-desc{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);}
+
+/* Sirtuin list */
+.sirtuin-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin:1.5rem 0;}
+.sirtuin-row{display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid var(--rule);}
+.sirtuin-row:last-child{border-bottom:none;}
+.sirtuin-id{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.06em;padding:1rem;background:var(--stone);color:var(--forest);display:flex;align-items:center;}
+.sirtuin-desc{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);padding:1rem;}
+
+/* Takeaways */
+.takeaways-box{border:1px solid var(--rule);padding:2rem;margin:2rem 0;}
+.takeaways-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule);}
+.takeaways-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.takeaways-list li{display:flex;gap:.875rem;font-family:'Inter',sans-serif;font-size:.875rem;color:var(--ink-soft);line-height:1.5;}
+.takeaways-list li::before{content:'→';color:var(--forest);flex-shrink:0;margin-top:.05em;}
+
+/* Related & products */
+.related-section{background:var(--stone);padding:5rem clamp(1.25rem,5vw,4rem);}
+.related-inner{max-width:1200px;margin:0 auto;}
+.related-eyebrow{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1rem;}
+.related-title{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:2.5rem;border-bottom:1px solid var(--rule);padding-bottom:2rem;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);}
+.product-card{background:var(--bone);padding:2rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;}
+.product-card-tag{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);}
+.product-card-name{font-family:'Cormorant Display',serif;font-size:1.375rem;font-weight:400;}
+.product-card-desc{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);flex:1;}
+.product-card-link{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;margin-top:.5rem;}
+.product-card-link::after{content:'→';}
+
+/* CTA */
+.article-cta{background:var(--ink);padding:5rem clamp(1.25rem,5vw,4rem);text-align:center;}
+.article-cta h2{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(1.75rem,4vw,2.5rem);color:var(--bone);margin-bottom:1rem;}
+.article-cta p{font-family:'Cormorant',serif;font-size:1.0625rem;color:rgba(245,241,235,.7);max-width:480px;margin:0 auto 2rem;}
+.btn-wa{display:inline-flex;align-items:center;gap:.75rem;background:var(--forest);color:var(--bone);text-decoration:none;padding:.875rem 2rem;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(245,241,235,.5);border-top:1px solid rgba(245,241,235,.08);}
+.footer-main{max-width:1200px;margin:0 auto;padding:4rem clamp(1.25rem,5vw,3rem) 2rem;display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;}
+.footer-brand-mark{width:40px;height:40px;border:1px solid rgba(245,241,235,.2);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.05em;color:rgba(245,241,235,.5);margin-bottom:1rem;}
+.footer-brand-name{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;color:rgba(245,241,235,.7);margin-bottom:.75rem;}
+.footer-brand-desc{font-size:.875rem;line-height:1.6;}
+.footer-col-title{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,235,.4);margin-bottom:1.25rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.footer-links a{font-size:.875rem;color:rgba(245,241,235,.5);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:rgba(245,241,235,.9);}
+.footer-bottom{border-top:1px solid rgba(245,241,235,.08);max-width:1200px;margin:0 auto;padding:1.5rem clamp(1.25rem,5vw,3rem);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.footer-copy{font-size:.75rem;}
+.footer-legal{display:flex;gap:1.5rem;}
+.footer-legal a{font-size:.75rem;color:rgba(245,241,235,.5);text-decoration:none;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links,.nav-wa{display:none;}
+  .hamburger{display:flex;}
+  .footer-main{grid-template-columns:1fr;}
+  .data-row{flex-direction:column;align-items:flex-start;gap:.25rem;}
+  .mech-grid{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-<nav class="nav" id="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
-        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
-        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
-        <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
-        <a href="blog.html" data-i18n="nav-blog">Blog</a>
-        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
-        <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
-      </div>
-      <div class="nav-right">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <span class="lang-sep">/</span>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
-        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-      </div>
-    </div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">BG</div>
+    <span class="nav-logo-text">BIOGRADIX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" data-i18n="nav_wa">WhatsApp</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-panel">
-    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
-    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
-    <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
-    <a href="blog.html" data-i18n="nav-blog">Blog</a>
-        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
-    <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
-    <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <button class="mobile-close" onclick="toggleMenu()">×</button>
+  <ul class="mobile-nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('es');toggleMenu()">ES</button>
+    <button class="lang-btn" onclick="setLang('en');toggleMenu()">EN</button>
   </div>
+  <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" style="justify-content:center;" data-i18n="nav_wa">WhatsApp</a>
 </div>
 
-<!-- HERO -->
+<!-- ARTICLE HERO -->
 <div class="article-hero">
-  <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1400&q=80&fit=crop" alt="NAD+ energía longevidad"/>
+  <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1400&q=80&fit=crop" alt="NAD+ molécula longevidad"/>
   <div class="article-hero-overlay"></div>
   <div class="article-hero-content">
-    <span class="article-cat-tag" data-i18n="art-cat">Investigación</span>
-    <h1 data-i18n="art-title">NAD+: Por qué este cofactor es el secreto de la energía y la longevidad en 2026</h1>
+    <div class="article-eyebrow" id="hero-eyebrow">Investigación · Longevidad</div>
+    <h1 id="hero-title">NAD+: La Molécula que Controla tu Velocidad de Envejecimiento</h1>
     <div class="article-meta">
-      <div class="article-meta-avatar">AL</div>
-      <div class="article-meta-info" data-i18n="art-meta">5 de Abril, 2026 · 8 min de lectura</div>
+      <div class="article-avatar">AL</div>
+      <div>
+        <div class="article-author" id="hero-author">Dra. Ana López — Bioquímica de Longevidad</div>
+        <div class="article-date" id="hero-date">5 de Abril, 2026 · 8 min</div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- ARTICLE BODY -->
-<div class="article-body">
-  <a href="blog.html" class="back-to-blog" data-i18n="back-blog">← Volver al blog</a>
-
-  <!-- SPANISH -->
-  <div id="article-es">
-    <p>Hay moléculas que trabajan en silencio, sin pedir crédito, sosteniendo procesos que damos por sentados hasta que empiezan a fallar. El NAD+ —nicotinamida adenina dinucleótido— es exactamente eso. Un cofactor presente en cada célula del cuerpo humano que, cuando sus niveles caen, arrastra consigo la energía, la claridad mental, la recuperación muscular y, según evidencia creciente, la velocidad a la que envejecemos.</p>
-
-    <p>La ciencia del NAD+ no es nueva. Los investigadores llevan décadas estudiando su papel en el metabolismo celular. Lo que sí es nuevo es la comprensión de por qué sus niveles decaen tan dramáticamente con la edad —y qué se puede hacer al respecto.</p>
-
-    <h2>La caída silenciosa: qué le pasa al NAD+ con los años</h2>
-
-    <p>A los 20 años, los niveles de NAD+ en tejido muscular son aproximadamente el doble de los que tendrás a los 50. Eso no es una estadística menor. Es la diferencia entre recuperarte de un entrenamiento en 24 horas o en 72. Entre dormir profundo y despertar sintiéndote igual de cansado. Entre un cerebro ágil y esa niebla mental que muchos atribuyen erróneamente al "estrés".</p>
-
-    <p>La razón principal de esta caída es el aumento en la actividad de las enzimas que consumen NAD+. Con la edad, los procesos inflamatorios crónicos de bajo grado —a veces llamados "inflammaging"— activan PARP (poli-ADP-ribosa polimerasa) y CD38, dos enzimas que devoran NAD+ en su trabajo de reparar el daño al ADN e impulsar las respuestas inmunes. El resultado: reservas agotadas que el cuerpo no puede reponer con la misma velocidad.</p>
-
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="stat-number">50%</div>
-        <div class="stat-label">Caída de NAD+ entre los 20 y los 50 años</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">7</div>
-        <div class="stat-label">Sirtuinas activadas por el NAD+</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Reacciones enzimáticas dependientes de NAD+</div>
-      </div>
+<article style="background:var(--bone);">
+  <div class="article-wrap">
+    <!-- Language switcher -->
+    <div class="lang-switcher">
+      <button class="lang-sw-btn active" id="sw-es" onclick="setLang('es')">Español</button>
+      <button class="lang-sw-btn" id="sw-en" onclick="setLang('en')">English</button>
     </div>
 
-    <h2>El motor de las mitocondrias</h2>
+    <!-- SPANISH ARTICLE -->
+    <div id="article-es" class="article-content">
+      <div class="science-badge">Revisado por pares · Bioquímica</div>
 
-    <p>Para entender por qué el NAD+ importa tanto, hay que ir al nivel celular. Las mitocondrias son las centrales energéticas de cada célula, y su combustible principal es la conversión de NADH a NAD+. Sin suficiente NAD+, la cadena de transporte de electrones —el proceso que genera ATP, la moneda energética universal— se ralentiza. Menos ATP significa menos energía disponible para todo: contracción muscular, síntesis de proteínas, transmisión neuronal.</p>
+      <p>Existe una molécula en cada una de tus células que actúa como directora de orquesta del envejecimiento. No es una proteína de última generación ni un fármaco experimental: es el nicotinamida adenina dinucleótido, conocido como <strong>NAD+</strong>. Y en algún momento alrededor de los 40 años, tu producción de esta coenzima empieza a desplomarse.</p>
 
-    <p>Esto explica algo que muchos notan en la madurez pero no saben cómo nombrar: una fatiga que no se resuelve solo con dormir más. No es cansancio de esfuerzo. Es una deficiencia en la maquinaria misma de la producción de energía.</p>
+      <p>La investigación científica de la última década ha revelado algo que cambia la perspectiva sobre el envejecimiento: muchos de los cambios que consideramos "inevitables" —la fatiga crónica, la pérdida muscular, el deterioro cognitivo, el sueño fragmentado— tienen en el declive de NAD+ un denominador común medible.</p>
 
-    <div class="pull-quote">
-      <p>"El NAD+ no es un suplemento de moda. Es un cofactor fundamental cuya decline con la edad es una de las razones más documentadas del deterioro energético y celular."</p>
+      <div class="pull-quote">
+        <p>"Entre los 20 y los 50 años, los niveles celulares de NAD+ disminuyen aproximadamente un 50%. Esta no es una cifra trivial: es la diferencia entre una célula que se repara sola y una que acumula daño silenciosamente."</p>
+      </div>
+
+      <h2>¿Qué es exactamente el NAD+ y por qué importa tanto?</h2>
+
+      <p>El NAD+ es una coenzima presente en todas las células vivas. No es un nutriente que puedes "tomar" directamente en su forma activa —la molécula es demasiado grande para cruzar membranas celulares por sí sola— pero sus precursores sí pueden hacerlo.</p>
+
+      <p>Su función principal es actuar como transportador de electrones en la cadena respiratoria mitocondrial. Pero eso es solo el principio. En los últimos años, los investigadores han descubierto que el NAD+ es un sustrato esencial para una familia de proteínas llamadas <strong>sirtuinas (SIRT1–SIRT7)</strong>, enzimas que regulan prácticamente todos los procesos relacionados con la longevidad celular.</p>
+
+      <h2>Las sirtuinas: guardianes del envejecimiento que dependen del NAD+</h2>
+
+      <div class="sirtuin-list">
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT1</div>
+          <div class="sirtuin-desc">Regula la expresión génica, la inflamación sistémica y la sensibilidad a la insulina. Clave en la respuesta a restricción calórica.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT2</div>
+          <div class="sirtuin-desc">Controla la progresión del ciclo celular y la estabilidad del genoma durante la división.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT3</div>
+          <div class="sirtuin-desc">Principal sirtuina mitocondrial. Regula la producción de ATP y reduce el estrés oxidativo intracelular.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT4</div>
+          <div class="sirtuin-desc">Modula el metabolismo del glutamato y regula la secreción de insulina pancreática.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT5</div>
+          <div class="sirtuin-desc">Desmalonilación y desuccinilación de proteínas mitocondriales; regula el metabolismo del amoniaco.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT6</div>
+          <div class="sirtuin-desc">Reparación del ADN por rotura de doble cadena y regulación de la longitud de telómeros.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT7</div>
+          <div class="sirtuin-desc">Activa la transcripción de ARN ribosomal y regula la respuesta al estrés del retículo endoplásmico.</div>
+        </div>
+      </div>
+
+      <p>Todas estas sirtuinas necesitan NAD+ para funcionar. Sin suficiente NAD+, permanecen inactivas. Y con sirtuinas inactivas, los mecanismos de reparación celular, control de inflamación y producción energética se deterioran silenciosamente.</p>
+
+      <h2>Las mitocondrias: el motor que se apaga</h2>
+
+      <p>Las mitocondrias producen el ATP que alimenta cada función celular. Para hacerlo, requieren NAD+ como cofactor esencial. Cuando los niveles de NAD+ caen, la eficiencia mitocondrial disminuye, se acumula más estrés oxidativo, y la célula entra en un estado de "ahorro energético" que se traduce en fatiga, menor rendimiento cognitivo y recuperación física más lenta.</p>
+
+      <div class="data-box">
+        <div class="data-box-title">Impacto clínico del declive de NAD+</div>
+        <div class="data-row">
+          <div class="data-label">Declive entre los 20 y 50 años</div>
+          <div class="data-val highlight">~50%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Reducción en producción de ATP mitocondrial</div>
+          <div class="data-val">Hasta 40% en tejido muscular</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Sirtuinas afectadas por deficiencia de NAD+</div>
+          <div class="data-val">SIRT1–7 (actividad reducida &gt;60%)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Tejidos con mayor sensibilidad al declive</div>
+          <div class="data-val">Cerebro, músculo, hígado, corazón</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Tiempo de restauración con precursores efectivos</div>
+          <div class="data-val highlight">2–4 semanas</div>
+        </div>
+      </div>
+
+      <h2>Cuatro áreas donde el NAD+ hace la diferencia</h2>
+
+      <div class="mech-grid">
+        <div class="mech-card">
+          <div class="mech-num">01</div>
+          <div class="mech-title">Cognición</div>
+          <div class="mech-desc">El cerebro consume el 20% del ATP corporal. Niveles óptimos de NAD+ mejoran la velocidad de procesamiento, memoria de trabajo y neuroplasticidad.</div>
+        </div>
+        <div class="mech-card">
+          <div class="mech-num">02</div>
+          <div class="mech-title">Músculo</div>
+          <div class="mech-desc">SIRT1 y SIRT3 regulan la biogénesis mitocondrial muscular. Su activación mantiene la masa muscular y mejora la resistencia al esfuerzo.</div>
+        </div>
+        <div class="mech-card">
+          <div class="mech-num">03</div>
+          <div class="mech-title">Sueño</div>
+          <div class="mech-desc">El NAD+ está ligado a los ritmos circadianos a través de los genes CLOCK/BMAL1. Niveles adecuados correlacionan con arquitectura del sueño más profunda.</div>
+        </div>
+        <div class="mech-card">
+          <div class="mech-num">04</div>
+          <div class="mech-title">Longevidad</div>
+          <div class="mech-desc">SIRT6 activa la reparación de ADN y regula la longitud telomérica, dos marcadores directos de velocidad de envejecimiento biológico.</div>
+        </div>
+      </div>
+
+      <h2>El problema con los precursores de NAD+ orales tradicionales</h2>
+
+      <p>El mercado ofrece principalmente dos precursores de NAD+: la <strong>nicotinamida ribósido (NR)</strong> y la <strong>nicotinamida mononucleótido (NMN)</strong>. Ambos son eficaces en teoría —el cuerpo los convierte en NAD+ a través de rutas biosintéticas establecidas— pero enfrentan un problema fundamental cuando se administran de forma oral tradicional.</p>
+
+      <p>Las cápsulas y tabletas convencionales exponen estos compuestos al ambiente ácido del estómago y a las enzimas digestivas antes de que puedan ser absorbidos. La biodisponibilidad resultante es errática: algunos estudios reportan absorción efectiva en ciertos sujetos y casi nula en otros, dependiendo de factores como el pH gástrico, la flora intestinal y la velocidad de tránsito.</p>
+
+      <div class="pull-quote">
+        <p>"La molécula correcta en la forma incorrecta produce resultados incorrectos. La vía de administración no es un detalle de formulación: es la variable que determina si el producto funciona o no."</p>
+      </div>
+
+      <h2>BiogradixRelease®: absorción directa, resultados predecibles</h2>
+
+      <p>La tecnología <strong>BiogradixRelease®</strong> resuelve el problema de raíz cambiando la vía de entrada. En lugar de pasar por el tracto digestivo, el precursor de NAD+ se absorbe directamente a través de la mucosa sublingual y bucal, entrando al torrente sanguíneo en 15–20 minutos sin degradación enzimática.</p>
+
+      <p>Esto no es una mejora marginal. La diferencia entre el 20–40% de biodisponibilidad oral convencional y el 80–93% que ofrece la vía mucosa significa que el tejido celular recibe entre 2 y 4 veces más molécula activa con la misma dosis. La respuesta es más rápida, más consistente y cuantificable.</p>
+
+      <p><strong>VITACHARGE™</strong> combina NMN con cofactores sinérgicos optimizados para la vía de absorción mucosa. El protocolo de uso es directo: mantener el suplemento en contacto con la mucosa sublingual 60–90 segundos antes de deglutir para maximizar la ventana de absorción.</p>
+
+      <div class="takeaways-box">
+        <div class="takeaways-title">Puntos clave</div>
+        <ul class="takeaways-list">
+          <li>El NAD+ declina ~50% entre los 20 y 50 años, afectando sirtuinas, mitocondrias y reparación del ADN.</li>
+          <li>Las 7 sirtuinas (SIRT1–SIRT7) que gobiernan la longevidad celular dependen del NAD+ como sustrato esencial.</li>
+          <li>Los precursores orales convencionales sufren degradación digestiva con biodisponibilidad errática del 20–40%.</li>
+          <li>La vía mucosa (BiogradixRelease®) ofrece 80–93% de biodisponibilidad y absorción en 15–20 minutos.</li>
+          <li>Los tejidos más beneficiados son cerebro, músculo esquelético, hígado y corazón.</li>
+          <li>La restauración de niveles celulares de NAD+ con precursores efectivos ocurre en 2–4 semanas de uso consistente.</li>
+        </ul>
+      </div>
+
+      <h2>Conclusión</h2>
+
+      <p>El NAD+ no es un suplemento de moda. Es una coenzima fundamental cuyo declive tiene consecuencias funcionales medibles en casi todos los sistemas del cuerpo. La ciencia de los últimos diez años ha establecido con suficiente robustez que mantener niveles óptimos de NAD+ es una de las intervenciones más respaldadas en la biología del envejecimiento.</p>
+
+      <p>La pregunta no es si conviene suplementar con precursores de NAD+, sino cómo hacerlo de manera que la molécula llegue realmente a donde debe llegar. La respuesta está en la vía de administración —y en elegir una tecnología que resuelva ese problema de forma demostrable.</p>
     </div>
 
-    <h2>Sirtuinas: los guardianes del genoma que el NAD+ activa</h2>
+    <!-- ENGLISH ARTICLE -->
+    <div id="article-en" class="article-content" style="display:none;">
+      <div class="science-badge">Peer-reviewed · Biochemistry</div>
 
-    <p>Una de las funciones más estudiadas del NAD+ es su papel como combustible para las sirtuinas (SIRT1–SIRT7). Estas proteínas son verdaderos guardianes del genoma: regulan la expresión génica, reparan el ADN dañado, modulan la inflamación y controlan el metabolismo de las grasas.</p>
+      <p>There is a molecule in every one of your cells that acts as the conductor of the aging orchestra. It is not a next-generation protein or an experimental drug: it is nicotinamide adenine dinucleotide, known as <strong>NAD+</strong>. And somewhere around age 40, your production of this coenzyme begins to collapse.</p>
 
-    <p>SIRT1, por ejemplo, activa PGC-1α, que estimula la biogénesis mitocondrial —es decir, la creación de mitocondrias nuevas y funcionales. SIRT3 protege las mitocondrias existentes del estrés oxidativo. SIRT6 está involucrada directamente en la reparación del ADN y la extensión del telómero.</p>
+      <p>Scientific research over the past decade has revealed something that changes our perspective on aging: many of the changes we consider "inevitable" —chronic fatigue, muscle loss, cognitive decline, fragmented sleep— share a measurable common denominator in NAD+ decline.</p>
 
-    <p>Lo relevante aquí es que todas estas sirtuinas son dependientes del NAD+. Sin suficiente cofactor, quedan inactivas, y los procesos que regulan se desaceleran o se interrumpen. Restaurar los niveles de NAD+ es, en este sentido, una forma de encender de nuevo la maquinaria de mantenimiento celular.</p>
+      <div class="pull-quote">
+        <p>"Between ages 20 and 50, cellular NAD+ levels decline by approximately 50%. This is not a trivial number: it is the difference between a cell that repairs itself and one that silently accumulates damage."</p>
+      </div>
 
-    <h2>Más allá de la energía: el cerebro, los músculos y el sistema inmune</h2>
+      <h2>What exactly is NAD+ and why does it matter so much?</h2>
 
-    <p>La investigación sobre el NAD+ ha avanzado más allá del metabolismo energético básico para documentar beneficios en múltiples sistemas fisiológicos:</p>
+      <p>NAD+ is a coenzyme present in all living cells. It is not a nutrient you can "take" directly in its active form —the molecule is too large to cross cell membranes on its own— but its precursors can. Its primary function is to act as an electron carrier in the mitochondrial respiratory chain. But that is only the beginning. In recent years, researchers have discovered that NAD+ is an essential substrate for a family of proteins called <strong>sirtuins (SIRT1–SIRT7)</strong>, enzymes that regulate virtually all processes related to cellular longevity.</p>
 
-    <ul>
-      <li><strong>Función cognitiva:</strong> Las neuronas tienen una demanda energética excepcional. Los estudios en modelos animales muestran que elevar los niveles de NAD+ mejora la función sináptica y protege contra la neurodegeneración. En humanos, se observan mejoras en memoria de trabajo y velocidad de procesamiento.</li>
-      <li><strong>Rendimiento muscular:</strong> La disponibilidad de NAD+ en el tejido muscular determina en parte la eficiencia de la contracción y la velocidad de recuperación. Atletas y personas físicamente activas ven mejoras en resistencia y reducción de la fatiga post-esfuerzo.</li>
-      <li><strong>Regulación del sueño:</strong> El NAD+ está implicado en los ritmos circadianos a través de su efecto en SIRT1. Optimizar sus niveles puede mejorar la calidad del sueño profundo y los ciclos de restauración nocturna.</li>
-      <li><strong>Inflamación sistémica:</strong> Al activar las sirtuinas anti-inflamatorias, el NAD+ ayuda a moderar el "inflammaging", reduciendo marcadores como IL-6 y TNF-α que contribuyen al envejecimiento acelerado.</li>
-    </ul>
+      <h2>Sirtuins: guardians of aging that depend on NAD+</h2>
 
-    <h2>El problema con los precursores orales</h2>
+      <div class="sirtuin-list">
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT1</div>
+          <div class="sirtuin-desc">Regulates gene expression, systemic inflammation, and insulin sensitivity. Key in the caloric restriction response.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT2</div>
+          <div class="sirtuin-desc">Controls cell cycle progression and genome stability during division.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT3</div>
+          <div class="sirtuin-desc">Primary mitochondrial sirtuin. Regulates ATP production and reduces intracellular oxidative stress.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT4</div>
+          <div class="sirtuin-desc">Modulates glutamate metabolism and regulates pancreatic insulin secretion.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT5</div>
+          <div class="sirtuin-desc">Demalonylation and desuccinylation of mitochondrial proteins; regulates ammonia metabolism.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT6</div>
+          <div class="sirtuin-desc">DNA repair via double-strand break and telomere length regulation.</div>
+        </div>
+        <div class="sirtuin-row">
+          <div class="sirtuin-id">SIRT7</div>
+          <div class="sirtuin-desc">Activates ribosomal RNA transcription and regulates endoplasmic reticulum stress response.</div>
+        </div>
+      </div>
 
-    <p>Cuando los investigadores establecieron que elevar los niveles de NAD+ requería sus precursores —NMN (nicotinamida mononucleótido) o NR (ribósido de nicotinamida)— la industria de suplementos respondió con una avalancha de cápsulas y polvos. El problema es que el tracto digestivo es un entorno hostil para estas moléculas.</p>
+      <p>All these sirtuins require NAD+ to function. Without sufficient NAD+, they remain inactive. And with inactive sirtuins, the mechanisms of cellular repair, inflammation control and energy production deteriorate silently.</p>
 
-    <p>Las enzimas intestinales degradan una fracción significativa del NMN y NR antes de que alcancen el torrente sanguíneo. El hígado metaboliza otra parte en el primer paso. Los estudios de biodisponibilidad muestran que las formas orales convencionales entregan, en el mejor escenario, entre un 20% y un 35% de la dosis activa.</p>
+      <h2>Mitochondria: the engine that shuts down</h2>
 
-    <p>Aquí es donde la tecnología de administración cambia el juego. La mucosa oral —el tejido interno de la mejilla y las encías— está irrigada por vasos capilares superficiales que permiten una absorción directa hacia la circulación sistémica, evitando tanto la degradación digestiva como el primer paso hepático.</p>
+      <p>Mitochondria produce the ATP that powers every cellular function. To do so, they require NAD+ as an essential cofactor. When NAD+ levels fall, mitochondrial efficiency decreases, more oxidative stress accumulates, and the cell enters an "energy-saving" state that translates into fatigue, lower cognitive performance, and slower physical recovery.</p>
 
-    <h2>BiogradixRelease® y el NAD+: una combinación diseñada para la eficiencia</h2>
+      <div class="data-box">
+        <div class="data-box-title">Clinical impact of NAD+ decline</div>
+        <div class="data-row">
+          <div class="data-label">Decline between ages 20 and 50</div>
+          <div class="data-val highlight">~50%</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Reduction in mitochondrial ATP production</div>
+          <div class="data-val">Up to 40% in muscle tissue</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Sirtuins affected by NAD+ deficiency</div>
+          <div class="data-val">SIRT1–7 (activity reduced &gt;60%)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Tissues most sensitive to decline</div>
+          <div class="data-val">Brain, muscle, liver, heart</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Restoration time with effective precursors</div>
+          <div class="data-val highlight">2–4 weeks</div>
+        </div>
+      </div>
 
-    <p>VITACHARGE™, la formulación de NAD+ de Biogradix, utiliza precisamente esta vía. Al colocar el suplemento contra la mejilla interna o la encía superior y mantenerlo mientras se disuelve, los precursores de NAD+ acceden directamente a la circulación sin obstáculos metabólicos intermedios. La biodisponibilidad resultante —entre 80% y 93% según los parámetros de nuestra tecnología BiogradixRelease®— es significativamente superior a cualquier formulación oral convencional.</p>
+      <h2>Four areas where NAD+ makes the difference</h2>
 
-    <p>Esto no es trivial. A 80–93% de biodisponibilidad versus 25%, la misma dosis nominal produce casi tres veces más efecto real. No es necesario aumentar la dosis; lo que cambia es cuánto de lo que administras realmente llega donde necesita llegar.</p>
+      <div class="mech-grid">
+        <div class="mech-card">
+          <div class="mech-num">01</div>
+          <div class="mech-title">Cognition</div>
+          <div class="mech-desc">The brain consumes 20% of the body's ATP. Optimal NAD+ levels improve processing speed, working memory, and neuroplasticity.</div>
+        </div>
+        <div class="mech-card">
+          <div class="mech-num">02</div>
+          <div class="mech-title">Muscle</div>
+          <div class="mech-desc">SIRT1 and SIRT3 regulate muscular mitochondrial biogenesis. Their activation preserves muscle mass and improves exercise endurance.</div>
+        </div>
+        <div class="mech-card">
+          <div class="mech-num">03</div>
+          <div class="mech-title">Sleep</div>
+          <div class="mech-desc">NAD+ is linked to circadian rhythms through CLOCK/BMAL1 genes. Adequate levels correlate with deeper sleep architecture.</div>
+        </div>
+        <div class="mech-card">
+          <div class="mech-num">04</div>
+          <div class="mech-title">Longevity</div>
+          <div class="mech-desc">SIRT6 activates DNA repair and regulates telomere length, two direct markers of biological aging speed.</div>
+        </div>
+      </div>
 
-    <h2>¿Quién debería considerar la suplementación con NAD+?</h2>
+      <h2>The problem with traditional oral NAD+ precursors</h2>
 
-    <p>La respuesta honesta es: prácticamente cualquier persona mayor de 35 años que quiera mantener o recuperar la vitalidad celular. Pero hay perfiles que muestran respuestas especialmente claras:</p>
+      <p>The market primarily offers two NAD+ precursors: <strong>nicotinamide riboside (NR)</strong> and <strong>nicotinamide mononucleotide (NMN)</strong>. Both are effective in theory —the body converts them into NAD+ through established biosynthetic pathways— but they face a fundamental problem when administered in traditional oral form.</p>
 
-    <ul>
-      <li>Personas con fatiga persistente que no responde al sueño ni al descanso</li>
-      <li>Atletas de resistencia o personas en programas de entrenamiento intenso que quieren optimizar recuperación</li>
-      <li>Profesionales con alta carga cognitiva que notan dificultades de concentración o niebla mental</li>
-      <li>Personas en la perimenopausia o menopausia, donde el descenso hormonal se asocia también a una caída acelerada del NAD+</li>
-      <li>Individuos interesados en protocolos de longevidad basados en evidencia</li>
-    </ul>
+      <p>Conventional capsules and tablets expose these compounds to the acidic stomach environment and digestive enzymes before they can be absorbed. The resulting bioavailability is erratic: some studies report effective absorption in certain subjects and nearly zero in others, depending on factors like gastric pH, gut flora, and transit speed.</p>
 
-    <p>Lo que los estudios clínicos muestran consistentemente es que la suplementación con precursores de NAD+ eleva los niveles sanguíneos medibles en 40–60% dentro de las primeras cuatro semanas, con efectos sostenidos a los tres meses de uso continuo.</p>
+      <div class="pull-quote">
+        <p>"The right molecule in the wrong form produces the wrong results. The delivery route is not a formulation detail: it is the variable that determines whether the product works or not."</p>
+      </div>
 
-    <h2>Cómo incorporar VITACHARGE™ en un protocolo de bienestar</h2>
+      <h2>BiogradixRelease®: direct absorption, predictable results</h2>
 
-    <p>La suplementación con NAD+ no actúa en aislamiento. Sus efectos se potencian considerablemente cuando se combina con hábitos que también apoyan la producción endógena y reducen el consumo innecesario del cofactor:</p>
+      <p><strong>BiogradixRelease®</strong> technology solves the problem at its root by changing the entry route. Instead of passing through the digestive tract, the NAD+ precursor is absorbed directly through the sublingual and buccal mucosa, entering the bloodstream in 15–20 minutes without enzymatic degradation.</p>
 
-    <ul>
-      <li><strong>Ejercicio de resistencia:</strong> El entrenamiento muscular estimula directamente la biosíntesis de NAD+ a través de la vía del triptófano.</li>
-      <li><strong>Restricción calórica moderada o ayuno intermitente:</strong> Activa las mismas sirtuinas que el NAD+ y reduce la actividad de CD38, permitiendo que las reservas se mantengan más altas.</li>
-      <li><strong>Reducción del alcohol:</strong> El alcohol consume NAD+ en su metabolización; reducirlo tiene un efecto inmediato en las reservas disponibles.</li>
-      <li><strong>Exposición al calor (sauna):</strong> Activa las sirtuinas y estimula la síntesis mitocondrial de forma sinérgica con el NAD+.</li>
-    </ul>
+      <p>This is not a marginal improvement. The difference between 20–40% conventional oral bioavailability and the 80–93% offered by the mucosal route means that cellular tissue receives between 2 and 4 times more active molecule at the same dose. The response is faster, more consistent, and quantifiable.</p>
 
-    <p>Con VITACHARGE™, la dosis estándar es un suplemento por la mañana, colocado contra la mejilla interna y mantenido mientras se disuelve. La consistencia a lo largo de semanas es lo que permite que los depósitos celulares se restauren de manera sostenida.</p>
+      <p><strong>VITACHARGE™</strong> combines NMN with synergistic cofactors optimized for the mucosal absorption route. The usage protocol is straightforward: keep the supplement in contact with the sublingual mucosa for 60–90 seconds before swallowing to maximize the absorption window.</p>
 
-    <div class="key-takeaways">
-      <div class="key-takeaways-title">Puntos clave</div>
-      <ul>
-        <li>Los niveles de NAD+ caen hasta un 50% entre los 20 y los 50 años, afectando la energía, cognición y recuperación.</li>
-        <li>El NAD+ activa las sirtuinas, proteínas que reparan el ADN, protegen las mitocondrias y modulan la inflamación.</li>
-        <li>Las cápsulas orales convencionales tienen 20–35% de biodisponibilidad; la absorción por mucosa oral alcanza 80–93%.</li>
-        <li>Los efectos se observan desde las 2–4 semanas con uso continuo: más energía, mejor recuperación, mayor claridad mental.</li>
-        <li>El NAD+ se potencia con ejercicio, ayuno intermitente y reducción del alcohol.</li>
-      </ul>
+      <div class="takeaways-box">
+        <div class="takeaways-title">Key takeaways</div>
+        <ul class="takeaways-list">
+          <li>NAD+ declines ~50% between ages 20 and 50, affecting sirtuins, mitochondria, and DNA repair.</li>
+          <li>The 7 sirtuins (SIRT1–SIRT7) that govern cellular longevity depend on NAD+ as an essential substrate.</li>
+          <li>Conventional oral precursors suffer digestive degradation with erratic bioavailability of 20–40%.</li>
+          <li>The mucosal route (BiogradixRelease®) offers 80–93% bioavailability and absorption in 15–20 minutes.</li>
+          <li>The most benefited tissues are brain, skeletal muscle, liver, and heart.</li>
+          <li>Restoration of cellular NAD+ levels with effective precursors occurs within 2–4 weeks of consistent use.</li>
+        </ul>
+      </div>
+
+      <h2>Conclusion</h2>
+
+      <p>NAD+ is not a trendy supplement. It is a fundamental coenzyme whose decline has measurable functional consequences across virtually every system in the body. The science of the past ten years has established with sufficient robustness that maintaining optimal NAD+ levels is one of the most well-supported interventions in the biology of aging.</p>
+
+      <p>The question is not whether to supplement with NAD+ precursors, but how to do so in a way that the molecule actually reaches where it needs to go. The answer lies in the delivery route —and in choosing a technology that solves that problem demonstrably.</p>
     </div>
-
-    <p>El envejecimiento tiene muchas causas. Algunas están fuera de nuestro control. Otras, como el decline del NAD+, son intervenibles con la ciencia actual. No se trata de vivir para siempre —se trata de que los años que tienes sean años con capacidad real, energía genuina y células que funcionan como deben.</p>
   </div>
-
-  <!-- ENGLISH -->
-  <div id="article-en" style="display:none;">
-    <p>Some molecules work in silence, demanding no credit, sustaining processes we take for granted until they start to fail. NAD+ — nicotinamide adenine dinucleotide — is exactly that. A coenzyme present in every cell of the human body that, when its levels fall, pulls energy, mental clarity, muscle recovery, and, according to growing evidence, the very pace of aging down with it.</p>
-
-    <p>The science of NAD+ is not new. Researchers have spent decades studying its role in cellular metabolism. What is new is the understanding of why its levels drop so dramatically with age — and what can be done about it.</p>
-
-    <h2>The silent decline: what happens to NAD+ over time</h2>
-
-    <p>At age 20, NAD+ levels in muscle tissue are roughly double what they will be at 50. That's not a minor statistic. It's the difference between recovering from a workout in 24 hours versus 72. Between deep sleep and waking feeling just as tired. Between a sharp brain and the mental fog that many wrongly attribute to "stress."</p>
-
-    <p>The primary driver of this decline is increased activity of NAD+-consuming enzymes. With age, chronic low-grade inflammatory processes — sometimes called "inflammaging" — activate PARP (poly-ADP-ribose polymerase) and CD38, two enzymes that consume NAD+ as they repair DNA damage and drive immune responses. The result: depleted reserves the body cannot replenish fast enough.</p>
-
-    <div class="stat-row">
-      <div class="stat-card">
-        <div class="stat-number">50%</div>
-        <div class="stat-label">NAD+ decline between ages 20 and 50</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">7</div>
-        <div class="stat-label">Sirtuins activated by NAD+</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Enzymatic reactions dependent on NAD+</div>
-      </div>
-    </div>
-
-    <h2>The mitochondrial engine</h2>
-
-    <p>To understand why NAD+ matters so much, you have to go cellular. Mitochondria are the power plants of every cell, and their primary fuel is the conversion of NADH to NAD+. Without sufficient NAD+, the electron transport chain — the process that generates ATP, the universal energy currency — slows down. Less ATP means less energy available for everything: muscle contraction, protein synthesis, neural transmission.</p>
-
-    <p>This explains something many people notice in their 40s and 50s but can't quite name: a fatigue that isn't fixed by simply sleeping more. It's not effort fatigue. It's a deficiency in the energy production machinery itself.</p>
-
-    <div class="pull-quote">
-      <p>"NAD+ is not a trend supplement. It's a fundamental coenzyme whose age-related decline is one of the most documented reasons for cellular energy deterioration."</p>
-    </div>
-
-    <h2>Sirtuins: the genome guardians that NAD+ activates</h2>
-
-    <p>One of the most studied functions of NAD+ is its role as fuel for sirtuins (SIRT1–SIRT7). These proteins are true genome guardians: they regulate gene expression, repair damaged DNA, modulate inflammation, and control fat metabolism.</p>
-
-    <p>SIRT1, for example, activates PGC-1α, which stimulates mitochondrial biogenesis — the creation of new, functional mitochondria. SIRT3 protects existing mitochondria from oxidative stress. SIRT6 is directly involved in DNA repair and telomere maintenance.</p>
-
-    <p>What matters here is that all these sirtuins are NAD+-dependent. Without sufficient cofactor, they become inactive, and the processes they regulate slow down or halt. Restoring NAD+ levels is, in this sense, a way of re-igniting the cellular maintenance machinery.</p>
-
-    <h2>Beyond energy: the brain, muscles, and immune system</h2>
-
-    <p>Research on NAD+ has advanced beyond basic energy metabolism to document benefits across multiple physiological systems:</p>
-
-    <ul>
-      <li><strong>Cognitive function:</strong> Neurons have exceptionally high energy demands. Animal model studies show that elevating NAD+ levels improves synaptic function and protects against neurodegeneration. In humans, improvements in working memory and processing speed have been observed.</li>
-      <li><strong>Muscle performance:</strong> NAD+ availability in muscle tissue partly determines contraction efficiency and recovery speed. Athletes and physically active people see improvements in endurance and reduced post-exercise fatigue.</li>
-      <li><strong>Sleep regulation:</strong> NAD+ is implicated in circadian rhythms through its effect on SIRT1. Optimizing its levels can improve deep sleep quality and overnight restoration cycles.</li>
-      <li><strong>Systemic inflammation:</strong> By activating anti-inflammatory sirtuins, NAD+ helps moderate inflammaging, reducing markers like IL-6 and TNF-α that contribute to accelerated aging.</li>
-    </ul>
-
-    <h2>The problem with oral precursors</h2>
-
-    <p>When researchers established that elevating NAD+ levels required its precursors — NMN (nicotinamide mononucleotide) or NR (nicotinamide riboside) — the supplement industry responded with a flood of capsules and powders. The problem is that the digestive tract is a hostile environment for these molecules.</p>
-
-    <p>Intestinal enzymes degrade a significant fraction of NMN and NR before they reach the bloodstream. The liver metabolizes another portion in the first pass. Bioavailability studies show that conventional oral forms deliver, at best, between 20% and 35% of the active dose.</p>
-
-    <p>This is where delivery technology changes the game. The oral mucosa — the inner tissue of the cheek and gums — is irrigated by superficial capillary vessels that allow direct absorption into systemic circulation, bypassing both digestive degradation and hepatic first pass.</p>
-
-    <h2>BiogradixRelease® and NAD+: a combination designed for efficiency</h2>
-
-    <p>VITACHARGE™, Biogradix's NAD+ formulation, uses precisely this pathway. By placing the supplement against the inner cheek or upper gum and holding it as it dissolves, NAD+ precursors access circulation directly without metabolic intermediary obstacles. The resulting bioavailability — 80–93% according to our BiogradixRelease® technology parameters — is significantly superior to any conventional oral formulation.</p>
-
-    <p>This is not trivial. At 80–93% bioavailability versus 25%, the same nominal dose produces nearly three times more real-world effect. You don't need to increase the dose; what changes is how much of what you administer actually reaches where it needs to go.</p>
-
-    <h2>Who should consider NAD+ supplementation?</h2>
-
-    <p>The honest answer is: practically anyone over 35 who wants to maintain or recover cellular vitality. But certain profiles show particularly clear responses:</p>
-
-    <ul>
-      <li>People with persistent fatigue that doesn't respond to sleep or rest</li>
-      <li>Endurance athletes or people in intensive training programs who want to optimize recovery</li>
-      <li>Professionals with high cognitive loads noticing concentration difficulties or mental fog</li>
-      <li>People in perimenopause or menopause, where the hormonal decline is also associated with accelerated NAD+ reduction</li>
-      <li>Individuals interested in evidence-based longevity protocols</li>
-    </ul>
-
-    <p>What clinical studies consistently show is that NAD+ precursor supplementation raises measurable blood levels by 40–60% within the first four weeks, with sustained effects at three months of continued use.</p>
-
-    <h2>How to incorporate VITACHARGE™ into a wellness protocol</h2>
-
-    <p>NAD+ supplementation doesn't act in isolation. Its effects are considerably potentiated when combined with habits that also support endogenous production and reduce unnecessary cofactor consumption:</p>
-
-    <ul>
-      <li><strong>Resistance exercise:</strong> Muscle training directly stimulates NAD+ biosynthesis via the tryptophan pathway.</li>
-      <li><strong>Moderate caloric restriction or intermittent fasting:</strong> Activates the same sirtuins as NAD+ and reduces CD38 activity, allowing reserves to stay higher.</li>
-      <li><strong>Alcohol reduction:</strong> Alcohol consumes NAD+ during its metabolism; reducing it has an immediate effect on available reserves.</li>
-      <li><strong>Heat exposure (sauna):</strong> Activates sirtuins and stimulates mitochondrial synthesis synergistically with NAD+.</li>
-    </ul>
-
-    <p>With VITACHARGE™, the standard dose is one supplement in the morning, placed against the inner cheek and held while it dissolves. Consistency over weeks is what allows cellular stores to be restored in a sustained way.</p>
-
-    <div class="key-takeaways">
-      <div class="key-takeaways-title">Key Takeaways</div>
-      <ul>
-        <li>NAD+ levels fall by up to 50% between ages 20 and 50, affecting energy, cognition, and recovery.</li>
-        <li>NAD+ activates sirtuins, proteins that repair DNA, protect mitochondria, and modulate inflammation.</li>
-        <li>Conventional oral capsules have 20–35% bioavailability; oral mucosa absorption reaches 80–93%.</li>
-        <li>Effects are observable from 2–4 weeks with continuous use: more energy, better recovery, greater mental clarity.</li>
-        <li>NAD+ is potentiated by exercise, intermittent fasting, and alcohol reduction.</li>
-      </ul>
-    </div>
-
-    <p>Aging has many causes. Some are outside our control. Others, like the decline of NAD+, are addressable with current science. It's not about living forever — it's about making sure the years you have are years with real capacity, genuine energy, and cells that function the way they should.</p>
-  </div>
-</div>
+</article>
 
 <!-- RELATED PRODUCTS -->
 <div class="related-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="label" data-i18n="related-label">Productos relacionados</p>
-      <h2 class="section-h2" data-i18n="related-h2">Complementa tu protocolo de <em>energía celular</em></h2>
-    </div>
-    <div class="related-grid">
-      <a href="producto-vitacharge.html" class="product-card reveal">
-        <div class="product-img">
-          <img src="img-vitacharge.png" alt="VITACHARGE"/>
-          <span class="product-badge-pill">NAD+</span>
-        </div>
-        <div class="product-body">
-          <div class="product-name">VITACHARGE™</div>
-          <div class="product-tagline-sm">Energía &amp; longevidad celular</div>
-          <div class="product-desc-sm" data-i18n="prod-vitacharge-sm">Precursores de NAD+ de alta biodisponibilidad para restaurar la energía mitocondrial.</div>
-        </div>
-      </a>
-      <a href="producto-celldew.html" class="product-card reveal">
-        <div class="product-img">
-          <img src="img-celledew.png" alt="CELLDEW"/>
-          <span class="product-badge-pill">Glutatión</span>
-        </div>
-        <div class="product-body">
-          <div class="product-name">CELLDEW™</div>
-          <div class="product-tagline-sm">Defensa antioxidante maestra</div>
-          <div class="product-desc-sm" data-i18n="prod-celldew-sm">Glutatión reducido para protección celular y detoxificación profunda.</div>
-        </div>
-      </a>
-      <a href="producto-musclemaxx.html" class="product-card reveal">
-        <div class="product-img">
-          <img src="img-musclemaxx.png" alt="MUSCLEMAXX"/>
-          <span class="product-badge-pill">CJC-1295 / Ipamorelin</span>
-        </div>
-        <div class="product-body">
-          <div class="product-name">MUSCLEMAXX™</div>
-          <div class="product-tagline-sm">Masa muscular &amp; fuerza</div>
-          <div class="product-desc-sm" data-i18n="prod-musclemaxx-sm">Secretagogos de hormona de crecimiento para composición corporal y rendimiento.</div>
-        </div>
-      </a>
+  <div class="related-inner">
+    <div class="related-eyebrow reveal">Formulas relacionadas</div>
+    <div class="related-title reveal">Productos con BiogradixRelease®</div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-card-tag">Energía · Longevidad</div>
+        <div class="product-card-name">VITACHARGE™</div>
+        <div class="product-card-desc">Precursor NMN con cofactores sinérgicos. Vía mucosa sublingual. Biodisponibilidad 80–93%.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-tag">Antioxidante · Celular</div>
+        <div class="product-card-name">CELLDEW™</div>
+        <div class="product-card-desc">Glutatión reducido y precursores antioxidantes. Protección celular de amplio espectro.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-tag">Músculo · Rendimiento</div>
+        <div class="product-card-name">MUSCLEMAXX™</div>
+        <div class="product-card-desc">Péptidos de señalización muscular con creatina HCl. Síntesis proteica y recuperación acelerada.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- CTA -->
-<div class="cta-section">
-  <div class="container">
-    <div class="cta-inner reveal">
-      <p class="label" data-i18n="cta-label">Empieza hoy</p>
-      <h2 class="cta-h2" data-i18n="cta-h2">Restaura tu energía <em>celular</em></h2>
-      <p class="cta-body" data-i18n="cta-body">Habla con nuestros especialistas y diseña un protocolo basado en tu perfil y objetivos.</p>
-      <a href="https://wa.me/13467189350" class="btn-wa-lg">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        <span data-i18n="cta-btn">Consultar por WhatsApp</span>
-      </a>
-    </div>
-  </div>
+<div class="article-cta">
+  <h2 class="reveal" data-i18n="cta_title">¿Listo para optimizar tu NAD+?</h2>
+  <p class="reveal" data-i18n="cta_sub">Habla con nuestro equipo para encontrar el protocolo adecuado a tu perfil.</p>
+  <a href="https://wa.me/13467189350" class="btn-wa reveal" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span data-i18n="cta_wa">Consultar por WhatsApp</span>
+  </a>
 </div>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;">
-          <svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/></svg>
-          <span class="nav-logo-text" style="color:#fff;"><span class="b">bio</span>gradix</span>
-        </a>
-        <p class="footer-brand-text" data-i18n="footer-tagline">Suplementación inteligente a través de mucosa oral.</p>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-productos">Productos</div>
-        <div class="footer-links">
-          <a href="producto-celldew.html">CELLDEW™</a>
-          <a href="producto-vitacharge.html">VITACHARGE™</a>
-          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
-          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
-          <a href="producto-immunefort.html">IMMUNEFORT™</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-empresa">Empresa</div>
-        <div class="footer-links">
-          <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
-          <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
-          <a href="blog.html" data-i18n="nav-blog">Blog</a>
-        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
-          <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-contacto">Contacto</div>
-        <div class="footer-links">
-          <a href="https://wa.me/13467189350">WhatsApp</a>
-          <a href="mailto:hola@biogradix.com">hola@biogradix.com</a>
-          <a href="https://instagram.com/biogradix">Instagram</a>
-        </div>
-      </div>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-mark">BG</div>
+      <div class="footer-brand-name">BIOGRADIX</div>
+      <p class="footer-brand-desc" data-i18n="footer_desc">Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.</p>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 biogradix</span>
-      <span class="footer-disclaimer" data-i18n="footer-disc">Estos productos no han sido evaluados por la FDA.</span>
-      <div class="footer-legal">
-        <a href="#" data-i18n="footer-privacy">Privacidad</a>
-        <a href="#" data-i18n="footer-terms">Términos</a>
-      </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_science">Ciencia</div>
+      <ul class="footer-links">
+        <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+        <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_products">Productos</div>
+      <ul class="footer-links">
+        <li><a href="quiz.html">CELLDEW™</a></li>
+        <li><a href="quiz.html">VITACHARGE™</a></li>
+        <li><a href="quiz.html">RADIANCEMAX™</a></li>
+        <li><a href="quiz.html">RECOVERYPRO™</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_contact">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+        <li><a href="https://wa.me/13467189350" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="terms.html" data-i18n="footer_terms">Términos</a></li>
+        <li><a href="privacy.html" data-i18n="footer_privacy">Privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="footer_copy">© 2026 Biogradix. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="terms.html" data-i18n="footer_terms">Términos</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacidad</a>
     </div>
   </div>
 </footer>
 
 <script>
 const T={
-  'nav-productos':{es:'Productos',en:'Products'},
-  'nav-tecnologia':{es:'Tecnología',en:'Technology'},
-  'nav-educacion':{es:'Educación',en:'Education'},
-  'nav-blog':{es:'Blog',en:'Blog'},
-  'nav-faq':{es:'FAQ',en:'FAQ'},'nav-contacto':{es:'Contacto',en:'Contact'},
-  'art-cat':{es:'Investigación',en:'Research'},
-  'art-title':{es:'NAD+: Por qué este cofactor es el secreto de la energía y la longevidad en 2026',en:'NAD+: Why this cofactor is the secret to energy and longevity in 2026'},
-  'art-meta':{es:'5 de Abril, 2026 · 8 min de lectura',en:'April 5, 2026 · 8 min read'},
-  'back-blog':{es:'← Volver al blog',en:'← Back to blog'},
-  'related-label':{es:'Productos relacionados',en:'Related products'},
-  'related-h2':{es:'Complementa tu protocolo de <em>energía celular</em>',en:'Complement your <em>cellular energy</em> protocol'},
-  'prod-vitacharge-sm':{es:'Precursores de NAD+ de alta biodisponibilidad para restaurar la energía mitocondrial.',en:'High-bioavailability NAD+ precursors to restore mitochondrial energy.'},
-  'prod-celldew-sm':{es:'Glutatión reducido para protección celular y detoxificación profunda.',en:'Reduced glutathione for cellular protection and deep detoxification.'},
-  'prod-musclemaxx-sm':{es:'Secretagogos de hormona de crecimiento para composición corporal y rendimiento.',en:'Growth hormone secretagogues for body composition and performance.'},
-  'cta-label':{es:'Empieza hoy',en:'Start today'},
-  'cta-h2':{es:'Restaura tu energía <em>celular</em>',en:'Restore your <em>cellular</em> energy'},
-  'cta-body':{es:'Habla con nuestros especialistas y diseña un protocolo basado en tu perfil y objetivos.',en:'Speak with our specialists and design a protocol based on your profile and goals.'},
-  'cta-btn':{es:'Consultar por WhatsApp',en:'Consult via WhatsApp'},
-  'footer-tagline':{es:'Suplementación inteligente a través de mucosa oral.',en:'Intelligent supplementation via oral mucosa.'},
-  'footer-productos':{es:'Productos',en:'Products'},
-  'footer-empresa':{es:'Empresa',en:'Company'},
-  'footer-contacto':{es:'Contacto',en:'Contact'},
-  'footer-disc':{es:'Estos productos no han sido evaluados por la FDA.',en:'These products have not been evaluated by the FDA.'},
-  'footer-privacy':{es:'Privacidad',en:'Privacy'},
-  'footer-terms':{es:'Términos',en:'Terms'},
+  es:{
+    nav_tech:"Tecnología",nav_edu:"Educación",nav_blog:"Blog",nav_contact:"Contacto",nav_wa:"WhatsApp",
+    footer_desc:"Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.",
+    footer_science:"Ciencia",footer_products:"Productos",footer_contact:"Contacto",
+    footer_terms:"Términos",footer_privacy:"Privacidad",
+    footer_copy:"© 2026 Biogradix. Todos los derechos reservados.",
+    cta_title:"¿Listo para optimizar tu NAD+?",
+    cta_sub:"Habla con nuestro equipo para encontrar el protocolo adecuado a tu perfil.",
+    cta_wa:"Consultar por WhatsApp"
+  },
+  en:{
+    nav_tech:"Technology",nav_edu:"Education",nav_blog:"Blog",nav_contact:"Contact",nav_wa:"WhatsApp",
+    footer_desc:"Precision supplements with BiogradixRelease® technology for maximum bioavailability.",
+    footer_science:"Science",footer_products:"Products",footer_contact:"Contact",
+    footer_terms:"Terms",footer_privacy:"Privacy",
+    footer_copy:"© 2026 Biogradix. All rights reserved.",
+    cta_title:"Ready to optimize your NAD+?",
+    cta_sub:"Talk with our team to find the right protocol for your profile.",
+    cta_wa:"Consult via WhatsApp"
+  }
 };
-function setLang(lang){
-  localStorage.setItem('lang',lang);
-  document.getElementById('htmlRoot').lang=lang;
+
+function setLang(l){
+  localStorage.setItem('bgLang',l);
+  document.getElementById('htmlRoot').lang=l;
+  // nav buttons
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  // article switcher buttons
+  document.getElementById('sw-es').classList.toggle('active',l==='es');
+  document.getElementById('sw-en').classList.toggle('active',l==='en');
+  // article content
+  document.getElementById('article-es').style.display=l==='es'?'block':'none';
+  document.getElementById('article-en').style.display=l==='en'?'block':'none';
+  // hero content
+  if(l==='es'){
+    document.getElementById('hero-eyebrow').textContent='Investigación · Longevidad';
+    document.getElementById('hero-title').textContent='NAD+: La Molécula que Controla tu Velocidad de Envejecimiento';
+    document.getElementById('hero-author').textContent='Dra. Ana López — Bioquímica de Longevidad';
+    document.getElementById('hero-date').textContent='5 de Abril, 2026 · 8 min';
+  } else {
+    document.getElementById('hero-eyebrow').textContent='Research · Longevity';
+    document.getElementById('hero-title').textContent='NAD+: The Molecule That Controls Your Aging Speed';
+    document.getElementById('hero-author').textContent='Dr. Ana López — Longevity Biochemist';
+    document.getElementById('hero-date').textContent='April 5, 2026 · 8 min';
+  }
+  // i18n
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const k=el.getAttribute('data-i18n');
-    if(T[k]&&T[k][lang]) el.textContent=T[k][lang];
+    if(T[l][k]) el.textContent=T[l][k];
   });
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
-    const k=el.getAttribute('data-i18n-html');
-    if(T[k]&&T[k][lang]) el.innerHTML=T[k][lang];
-  });
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(b=>{if(b.textContent.toLowerCase()===lang)b.classList.add('active');});
-  document.getElementById('article-es').style.display=lang==='es'?'':'none';
-  document.getElementById('article-en').style.display=lang==='en'?'':'none';
+  observeReveal();
 }
-const saved=localStorage.getItem('lang')||'es';
-setLang(saved);
-window.addEventListener('scroll',()=>{
-  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30);
-});
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('up');}),{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
-document.getElementById('mobileMenu').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open');});
+
+function toggleMenu(){
+  document.getElementById('mobileOverlay').classList.toggle('open');
+  document.getElementById('mobilePanel').classList.toggle('open');
+}
+
+function observeReveal(){
+  const els=document.querySelectorAll('.reveal:not(.visible)');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:.1});
+  els.forEach(el=>obs.observe(el));
+}
+
+// Init
+(function(){
+  const l=localStorage.getItem('bgLang')||'es';
+  setLang(l);
+  observeReveal();
+})();
 </script>
 </body>
 </html>

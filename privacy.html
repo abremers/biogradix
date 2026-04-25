@@ -1,266 +1,469 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" id="htmlRoot">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidad | biogradix</title>
-<meta name="description" content="Política de privacidad de biogradix.com">
-<meta property="og:title" content="Política de Privacidad | biogradix">
-<meta property="og:url" content="https://biogradix.com/privacy.html">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Política de Privacidad | Biogradix</title>
+<meta name="description" content="Política de privacidad de Biogradix. Cómo recopilamos, usamos y protegemos tu información."/>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HMFHY2M02E');</script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-:root{--bx-navy:#0B1A2B;--bx-teal:#0F6E56;--bx-cloud:#FAFBFC;--bx-silver:#E8EAED;--bx-text-primary:#0B1A2B;--bx-text-secondary:#4A5568}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bx-cloud);color:var(--bx-text-primary);line-height:1.7}
-a{color:var(--bx-teal);text-decoration:none}a:hover{text-decoration:underline}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bone:#F5F1EB;
+  --stone:#EDE8E0;
+  --ink:#18140F;
+  --ink-soft:#4A443C;
+  --ink-faint:#9A9189;
+  --forest:#2E4A3A;
+  --rule:rgba(24,20,15,.1);
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bone);color:var(--ink);font-family:'Cormorant',serif;font-weight:300;line-height:1.7;font-size:1.0625rem;}
 
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#fff;border-bottom:1px solid var(--bx-silver);height:64px;display:flex;align-items:center;padding:0 40px}
-.nav-container{display:flex;justify-content:space-between;align-items:center;width:100%}
-.logo{font-family:'DM Sans';font-size:18px;font-weight:600}.logo .b{color:var(--bx-teal)}
-.nav-links{display:flex;gap:20px}.nav-link{font-size:13px;color:var(--bx-text-secondary)}.nav-link:hover{color:var(--bx-teal)}
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,3rem);background:rgba(245,241,235,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink);}
+.nav-logo-mark{width:32px;height:32px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.05em;flex-shrink:0;}
+.nav-logo-text{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;}
+.nav-links{display:flex;list-style:none;gap:2rem;}
+.nav-links a{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.08em;text-decoration:none;color:var(--ink-soft);transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-actions{display:flex;align-items:center;gap:1rem;}
+.lang-btn{background:none;border:1px solid var(--rule);padding:.25rem .6rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-btn.active{background:var(--ink);color:var(--bone);border-color:var(--ink);}
+.nav-wa{display:flex;align-items:center;gap:.5rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-decoration:none;color:var(--bone);background:var(--forest);padding:.4rem 1rem;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--ink);}
 
-.container{max-width:900px;margin:0 auto;padding:100px 40px 60px}
-h1{font-size:36px;color:var(--bx-navy);margin-bottom:24px;margin-top:40px}
-h2{font-size:24px;color:var(--bx-navy);margin-top:32px;margin-bottom:16px}
-p{margin-bottom:16px;font-size:14px;color:var(--bx-text-secondary)}
-ul{margin-left:20px;margin-bottom:16px}li{margin-bottom:8px;font-size:14px;color:var(--bx-text-secondary)}
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,20,15,.4);z-index:200;}
+.mobile-overlay.open{display:block;}
+.mobile-panel{position:fixed;top:0;right:-280px;width:280px;height:100%;background:var(--bone);border-left:1px solid var(--rule);z-index:201;transition:right .3s ease;padding:2rem 1.5rem;display:flex;flex-direction:column;gap:2rem;}
+.mobile-panel.open{right:0;}
+.mobile-close{align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);}
+.mobile-nav-links{display:flex;flex-direction:column;gap:1.25rem;list-style:none;}
+.mobile-nav-links a{font-family:'Inter',sans-serif;font-size:.875rem;letter-spacing:.08em;text-decoration:none;color:var(--ink);}
+.mobile-lang{display:flex;gap:.5rem;}
 
-footer{background:var(--bx-navy);color:#fff;padding:40px;text-align:center;font-size:12px;margin-top:60px}
+.page-hero{margin-top:var(--nav-h);background:var(--stone);padding:5rem clamp(1.25rem,5vw,4rem) 4rem;border-bottom:1px solid var(--rule);}
+.page-hero-inner{max-width:800px;margin:0 auto;}
+.page-eyebrow{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;}
+.page-title{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(2.25rem,5vw,3.5rem);line-height:1.1;margin-bottom:1rem;}
+.page-meta{font-family:'Inter',sans-serif;font-size:.75rem;color:var(--ink-faint);}
 
-[data-lang="es"]{display:block}[data-lang="en"]{display:none}
-html[lang="en"] [data-lang="es"]{display:none}html[lang="en"] [data-lang="en"]{display:block}
+.legal-wrap{max-width:800px;margin:0 auto;padding:4rem clamp(1.25rem,4vw,2rem) 6rem;}
 
-.lang-toggle{position:fixed;top:72px;right:40px;z-index:99;background:#fff;border:1px solid var(--bx-silver);border-radius:6px;padding:6px;display:flex;gap:6px}
-.lang-btn{padding:6px 10px;border:none;background:none;cursor:pointer;font-size:12px;font-weight:600;border-radius:4px}
-.lang-btn.active{background:rgba(15,110,86,0.1);color:var(--bx-teal)}
+.lang-switcher{display:flex;gap:0;border:1px solid var(--rule);margin-bottom:3rem;width:fit-content;}
+.lang-sw-btn{background:none;border:none;padding:.5rem 1.25rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-sw-btn.active{background:var(--ink);color:var(--bone);}
+.lang-sw-btn:first-child{border-right:1px solid var(--rule);}
+
+.legal-section{margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--rule);}
+.legal-section:last-child{border-bottom:none;}
+.section-num{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--forest);margin-bottom:.5rem;}
+.section-title{font-family:'Cormorant Display',serif;font-weight:400;font-size:1.5rem;margin-bottom:1.25rem;}
+.legal-section p{color:var(--ink-soft);margin-bottom:1rem;font-size:1rem;}
+.legal-section ul{padding-left:1.5rem;margin-bottom:1rem;}
+.legal-section li{color:var(--ink-soft);margin-bottom:.5rem;font-size:1rem;}
+.legal-section strong{color:var(--ink);font-weight:400;}
+.legal-section a{color:var(--forest);text-decoration:none;}
+.legal-section a:hover{text-decoration:underline;}
+
+footer{background:var(--ink);color:rgba(245,241,235,.5);border-top:1px solid rgba(245,241,235,.08);}
+.footer-main{max-width:1200px;margin:0 auto;padding:4rem clamp(1.25rem,5vw,3rem) 2rem;display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;}
+.footer-brand-mark{width:40px;height:40px;border:1px solid rgba(245,241,235,.2);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.05em;color:rgba(245,241,235,.5);margin-bottom:1rem;}
+.footer-brand-name{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;color:rgba(245,241,235,.7);margin-bottom:.75rem;}
+.footer-brand-desc{font-size:.875rem;line-height:1.6;}
+.footer-col-title{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,235,.4);margin-bottom:1.25rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.footer-links a{font-size:.875rem;color:rgba(245,241,235,.5);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:rgba(245,241,235,.9);}
+.footer-bottom{border-top:1px solid rgba(245,241,235,.08);max-width:1200px;margin:0 auto;padding:1.5rem clamp(1.25rem,5vw,3rem);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.footer-copy{font-size:.75rem;}
+.footer-legal{display:flex;gap:1.5rem;}
+.footer-legal a{font-size:.75rem;color:rgba(245,241,235,.5);text-decoration:none;}
 
 @media(max-width:768px){
-  .container{padding:100px 20px 40px}
-  h1{font-size:24px}
-  h2{font-size:18px}
-}
-
-/* ── HAMBURGER BUTTON ── */
-.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:44px;height:44px;cursor:pointer;border-radius:8px;transition:background 0.2s;gap:5px;background:none;border:none;padding:0;flex-shrink:0}
-.hamburger:hover{background:var(--bx-mint)}
-.hamburger-line{display:block;width:22px;height:2px;background:var(--bx-navy);border-radius:2px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
-.hamburger.open .hamburger-line:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open .hamburger-line:nth-child(2){opacity:0;transform:scaleX(0)}
-.hamburger.open .hamburger-line:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* ── MOBILE DRAWER ── */
-.mobile-menu{position:fixed;top:64px;left:0;right:0;bottom:0;background:#fff;z-index:99;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;display:flex;flex-direction:column;padding:0}
-.mobile-menu.open{transform:translateX(0)}
-.mobile-menu-inner{padding:8px 0 48px;flex:1}
-.mobile-nav-section{padding:8px 24px 4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--bx-text-tertiary);margin-top:16px}
-.mobile-nav-link{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;font-size:16px;font-weight:500;color:var(--bx-navy);text-decoration:none;border-bottom:1px solid rgba(232,234,237,0.6);transition:background 0.15s}
-.mobile-nav-link:hover,.mobile-nav-link:active{background:var(--bx-mint);color:var(--bx-teal)}
-.mobile-nav-link svg{opacity:0.3;flex-shrink:0}
-.mobile-lang-row{display:flex;gap:8px;padding:20px 24px;border-bottom:1px solid rgba(232,234,237,0.6)}
-.mobile-lang-btn{flex:1;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:12px;border-radius:8px;border:1.5px solid var(--bx-silver);background:none;color:var(--bx-text-tertiary);cursor:pointer;transition:all 0.2s;text-align:center}
-.mobile-lang-btn.active{background:var(--bx-mint);color:var(--bx-teal);border-color:rgba(15,110,86,0.25);font-weight:600}
-.mobile-wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;margin:20px 24px 8px;background:var(--bx-teal);color:#fff;padding:16px;border-radius:12px;font-size:15px;font-weight:500;text-decoration:none;transition:background 0.2s}
-.mobile-wa-btn:hover{background:var(--bx-deep-teal)}
-.mobile-menu-overlay{position:fixed;top:64px;left:0;right:0;bottom:0;background:rgba(11,26,43,0.4);z-index:98;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(2px)}
-.mobile-menu-overlay.open{opacity:1;pointer-events:all}
-body.menu-open{overflow:hidden}
-
-/* ── MOBILE BREAKPOINTS ── */
-@media(max-width:768px){
-  .hamburger{display:flex}
-  .nav-links{display:none!important}
-  .nav{padding:0 16px!important}
-  .trust-bar{padding:10px 16px;font-size:10px}
-}
-@media(max-width:480px){
-  .container,.page,.page-container{padding-left:16px!important;padding-right:16px!important}
-  .page-hero h1,.hero-headline{font-size:28px!important}
-  .section-title{font-size:26px!important}
+  .nav-links,.nav-wa{display:none;}
+  .hamburger{display:flex;}
+  .footer-main{grid-template-columns:1fr;}
 }
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
 </head>
-
 <body>
 
+<!-- NAV -->
 <nav class="nav">
-  <div class="nav-container">
-    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none">
-      <svg width="44" height="20" viewBox="0 0 44 20" style="flex-shrink:0">
-        <path d="M2 5 Q9 1, 16 5 Q23 9, 30 5 Q37 1, 44 5" fill="none" stroke="#0F6E56" stroke-width="1.6" opacity="0.6"/>
-        <path d="M2 11 Q9 15, 16 11 Q23 7, 30 11 Q37 15, 44 11" fill="none" stroke="#1D9E75" stroke-width="1" opacity="0.3"/>
-        <line x1="9" y1="3" x2="9" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-        <line x1="30" y1="3" x2="30" y2="13" stroke="#0F6E56" stroke-width="0.5" opacity="0.15"/>
-      </svg>
-      <span><span class="b">bio</span><span style="color:#0B1A2B">gradix</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link"><span data-lang="es">Inicio</span><span data-lang="en">Home</span></a>
-    </div>
-      <!-- Hamburger (mobile only) -->
-    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" onclick="toggleMobileMenu()">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">BG</div>
+    <span class="nav-logo-text">BIOGRADIX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" data-i18n="nav_wa">WhatsApp</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- Mobile overlay -->
-<div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <button class="mobile-close" onclick="toggleMenu()">×</button>
+  <ul class="mobile-nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('es');toggleMenu()">ES</button>
+    <button class="lang-btn" onclick="setLang('en');toggleMenu()">EN</button>
+  </div>
+  <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" style="justify-content:center;" data-i18n="nav_wa">WhatsApp</a>
+</div>
 
-<!-- Mobile drawer -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-  <div class="mobile-menu-inner">
-    <div class="mobile-lang-row">
-      <button class="mobile-lang-btn active" id="mobileLangEs" onclick="setLang('es');updateMobileLangBtns('es')">🇲🇽 Español</button>
-      <button class="mobile-lang-btn" id="mobileLangEn" onclick="setLang('en');updateMobileLangBtns('en')">🇺🇸 English</button>
-    </div>
-    <div class="mobile-nav-section"><span data-lang="es">Navegación</span><span data-lang="en">Navigation</span></div>
-    <a href="index.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">🏠 Inicio</span><span data-lang="en">🏠 Home</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="index.html#productos" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">🧬 Productos</span><span data-lang="en">🧬 Products</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="tecnologia.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">⚡ Tecnología</span><span data-lang="en">⚡ Technology</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="educacion.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">📚 Capacitación</span><span data-lang="en">📚 Training</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="blog.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span>📝 Blog</span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="index.html#faq" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span>❓ FAQ</span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <div class="mobile-nav-section"><span data-lang="es">Legal</span><span data-lang="en">Legal</span></div>
-    <a href="terms.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">📄 Términos</span><span data-lang="en">📄 Terms</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="privacy.html" class="mobile-nav-link" onclick="closeMobileMenu()">
-      <span><span data-lang="es">🔒 Privacidad</span><span data-lang="en">🔒 Privacy</span></span>
-      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="https://wa.me/525512345678" target="_blank" class="mobile-wa-btn" onclick="closeMobileMenu()">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#fff" opacity="0.2"/><path d="M15.5 13.5c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1-.4-2.1-1.2-2.9-2.2-.6-.7-1.1-1.6-1.2-2-.1-.3 0-.5.1-.7.1-.1.3-.3.4-.5.1-.2.1-.3.2-.6 0-.2 0-.5-.1-.7-.1-.2-.7-1.6-1-2.2-.2-.6-.5-.5-.7-.5H5.9c-.2 0-.5.1-.8.4C4.8 7.2 4 8.3 4 9.9c0 1.6 1.2 3.2 1.4 3.4.2.2 2.3 3.5 5.6 4.8.8.3 1.4.5 1.9.6.8.2 1.5.2 2.1.1.6-.1 1.9-.8 2.1-1.5.2-.7.2-1.4.1-1.5-.1-.1-.3-.2-.6-.3z" fill="#fff"/></svg>
-      <span data-lang="es">Contactar por WhatsApp</span>
-      <span data-lang="en">Contact via WhatsApp</span>
-    </a>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow" id="hero-eyebrow">Legal</div>
+    <h1 class="page-title" id="hero-title">Política de Privacidad</h1>
+    <p class="page-meta" id="hero-meta">Última actualización: Enero 2026</p>
   </div>
 </div>
 
-<div class="lang-toggle">
-  <button class="lang-btn active" onclick="setLang('es')">ES</button>
-  <button class="lang-btn" onclick="setLang('en')">EN</button>
+<!-- LEGAL CONTENT -->
+<div class="legal-wrap">
+  <div class="lang-switcher">
+    <button class="lang-sw-btn active" id="sw-es" onclick="setLang('es')">Español</button>
+    <button class="lang-sw-btn" id="sw-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <!-- SPANISH -->
+  <div id="content-es">
+
+    <div class="legal-section">
+      <div class="section-num">01</div>
+      <div class="section-title">Información que Recopilamos</div>
+      <p>Biogradix recopila información de las siguientes formas cuando usted utiliza nuestro sitio web:</p>
+      <ul>
+        <li><strong>Información proporcionada voluntariamente:</strong> Nombre, apellido, correo electrónico, teléfono, país y cualquier otra información que usted nos proporcione al completar formularios de contacto o al comunicarse con nosotros por WhatsApp.</li>
+        <li><strong>Información de uso del sitio:</strong> Páginas visitadas, tiempo de permanencia, dispositivo utilizado, navegador y dirección IP (recopilada de forma anónima a través de Google Analytics).</li>
+        <li><strong>Preferencias del usuario:</strong> Idioma seleccionado (ES/EN), almacenado localmente en su dispositivo mediante localStorage.</li>
+        <li><strong>Comunicaciones:</strong> El contenido de los mensajes que nos envía a través del formulario de contacto o WhatsApp.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">02</div>
+      <div class="section-title">Google Analytics</div>
+      <p>Utilizamos Google Analytics (ID: G-HMFHY2M02E) para analizar el tráfico de nuestro sitio web. Esta herramienta recopila información de forma anónima sobre cómo los visitantes interactúan con nuestro sitio.</p>
+      <p>Los datos recopilados por Google Analytics incluyen:</p>
+      <ul>
+        <li>Páginas visitadas y duración de las visitas</li>
+        <li>Fuente de tráfico (búsqueda orgánica, redes sociales, directo)</li>
+        <li>Tipo de dispositivo, navegador y sistema operativo</li>
+        <li>País y región geográfica aproximada</li>
+      </ul>
+      <p>Esta información no incluye datos personales identificables. Para más información sobre cómo Google maneja estos datos, consulte la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>. Puede optar por no participar en Google Analytics instalando el <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">complemento de inhabilitación de Google Analytics</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">03</div>
+      <div class="section-title">Uso de Información</div>
+      <p>La información que recopilamos se utiliza exclusivamente para:</p>
+      <ul>
+        <li>Responder a sus consultas y proporcionar el soporte solicitado</li>
+        <li>Personalizar su experiencia en el sitio web</li>
+        <li>Mejorar nuestros productos, servicios y contenido educativo</li>
+        <li>Enviar información relevante sobre nuestros productos (solo con su consentimiento explícito)</li>
+        <li>Analizar el uso del sitio para mejorar su funcionamiento y contenido</li>
+        <li>Cumplir con obligaciones legales aplicables</li>
+      </ul>
+      <p><strong>No vendemos, alquilamos ni compartimos su información personal con terceros</strong> con fines comerciales, salvo en los casos descritos en esta política o cuando así lo exija la ley.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">04</div>
+      <div class="section-title">Protección de Datos</div>
+      <p>Implementamos medidas técnicas y organizativas razonables para proteger su información personal contra acceso no autorizado, pérdida, destrucción o divulgación. Estas medidas incluyen:</p>
+      <ul>
+        <li>Transmisión segura de datos mediante cifrado SSL/TLS</li>
+        <li>Acceso restringido a la información personal únicamente al personal autorizado</li>
+        <li>Revisión periódica de nuestras prácticas de seguridad</li>
+        <li>Almacenamiento mínimo de datos: solo conservamos la información estrictamente necesaria</li>
+      </ul>
+      <p>Sin embargo, ningún sistema de transmisión de datos por Internet puede garantizar seguridad absoluta. Utilizamos nuestros mejores esfuerzos para proteger su información, pero no podemos garantizar la seguridad perfecta de los datos transmitidos a través de nuestro sitio.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">05</div>
+      <div class="section-title">Cookies</div>
+      <p>Nuestro sitio web utiliza las siguientes tecnologías de almacenamiento local:</p>
+      <ul>
+        <li><strong>localStorage:</strong> Almacenamos su preferencia de idioma (ES/EN) localmente en su navegador. Este dato permanece en su dispositivo y no se envía a nuestros servidores.</li>
+        <li><strong>Cookies de Google Analytics:</strong> Google Analytics utiliza cookies para recopilar información anónima sobre el uso del sitio. Estas cookies incluyen _ga, _gid y _gat, y tienen una duración de entre 24 horas y 2 años.</li>
+      </ul>
+      <p>Puede configurar su navegador para rechazar cookies o para que le notifique cuando se envía una cookie. Sin embargo, algunas funciones del sitio pueden no funcionar correctamente si deshabilita las cookies.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">06</div>
+      <div class="section-title">Links Externos</div>
+      <p>Nuestro sitio web puede contener enlaces a sitios web de terceros, incluyendo recursos científicos, publicaciones académicas y plataformas como WhatsApp. Biogradix no es responsable de las prácticas de privacidad o el contenido de estos sitios externos.</p>
+      <p>Le recomendamos revisar la política de privacidad de cualquier sitio externo que visite a través de enlaces en nuestro sitio.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">07</div>
+      <div class="section-title">Sus Derechos</div>
+      <p>Dependiendo de su jurisdicción, usted puede tener derecho a:</p>
+      <ul>
+        <li><strong>Acceso:</strong> Solicitar una copia de la información personal que tenemos sobre usted.</li>
+        <li><strong>Rectificación:</strong> Solicitar la corrección de información inexacta o incompleta.</li>
+        <li><strong>Eliminación:</strong> Solicitar la eliminación de su información personal de nuestros registros.</li>
+        <li><strong>Portabilidad:</strong> Solicitar una copia de sus datos en un formato estructurado y legible por máquina.</li>
+        <li><strong>Oposición:</strong> Oponerse al procesamiento de sus datos para determinados fines.</li>
+      </ul>
+      <p>Para ejercer cualquiera de estos derechos, contáctenos a través de los medios indicados en la sección de Contacto.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">08</div>
+      <div class="section-title">Cambios a esta Política</div>
+      <p>Nos reservamos el derecho de actualizar esta Política de Privacidad periódicamente para reflejar cambios en nuestras prácticas o por requisitos legales. La fecha de "Última actualización" al inicio de esta página indica cuándo se realizaron los cambios más recientes.</p>
+      <p>Le recomendamos revisar esta política periódicamente. El uso continuado del sitio después de la publicación de cambios constituye su aceptación de la política actualizada.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">09</div>
+      <div class="section-title">Contacto</div>
+      <p>Si tiene preguntas, inquietudes o solicitudes relacionadas con su privacidad, puede contactarnos a través de:</p>
+      <ul>
+        <li>Formulario de contacto: <a href="contacto.html">Página de contacto</a></li>
+        <li>WhatsApp: <a href="https://wa.me/13467189350" target="_blank" rel="noopener">+1 346 718 9350</a></li>
+      </ul>
+      <p>Nuestro equipo responderá en un plazo máximo de 48 horas hábiles.</p>
+    </div>
+
+  </div>
+
+  <!-- ENGLISH -->
+  <div id="content-en" style="display:none;">
+
+    <div class="legal-section">
+      <div class="section-num">01</div>
+      <div class="section-title">Information We Collect</div>
+      <p>Biogradix collects information in the following ways when you use our website:</p>
+      <ul>
+        <li><strong>Voluntarily provided information:</strong> Name, last name, email, phone, country, and any other information you provide when completing contact forms or communicating with us via WhatsApp.</li>
+        <li><strong>Site usage information:</strong> Pages visited, time spent, device used, browser, and IP address (collected anonymously through Google Analytics).</li>
+        <li><strong>User preferences:</strong> Selected language (ES/EN), stored locally on your device via localStorage.</li>
+        <li><strong>Communications:</strong> The content of messages you send us through the contact form or WhatsApp.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">02</div>
+      <div class="section-title">Google Analytics</div>
+      <p>We use Google Analytics (ID: G-HMFHY2M02E) to analyze our website traffic. This tool collects information anonymously about how visitors interact with our site.</p>
+      <p>Data collected by Google Analytics includes:</p>
+      <ul>
+        <li>Pages visited and visit duration</li>
+        <li>Traffic source (organic search, social media, direct)</li>
+        <li>Device type, browser, and operating system</li>
+        <li>Country and approximate geographic region</li>
+      </ul>
+      <p>This information does not include personally identifiable data. For more information on how Google handles this data, see the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>. You may opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out add-on</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">03</div>
+      <div class="section-title">Use of Information</div>
+      <p>The information we collect is used exclusively to:</p>
+      <ul>
+        <li>Respond to your inquiries and provide requested support</li>
+        <li>Personalize your website experience</li>
+        <li>Improve our products, services, and educational content</li>
+        <li>Send relevant information about our products (only with your explicit consent)</li>
+        <li>Analyze site usage to improve functionality and content</li>
+        <li>Comply with applicable legal obligations</li>
+      </ul>
+      <p><strong>We do not sell, rent, or share your personal information with third parties</strong> for commercial purposes, except in cases described in this policy or as required by law.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">04</div>
+      <div class="section-title">Data Protection</div>
+      <p>We implement reasonable technical and organizational measures to protect your personal information against unauthorized access, loss, destruction, or disclosure. These measures include:</p>
+      <ul>
+        <li>Secure data transmission via SSL/TLS encryption</li>
+        <li>Access to personal information restricted to authorized personnel only</li>
+        <li>Periodic review of our security practices</li>
+        <li>Minimal data storage: we only retain strictly necessary information</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">05</div>
+      <div class="section-title">Cookies</div>
+      <p>Our website uses the following local storage technologies:</p>
+      <ul>
+        <li><strong>localStorage:</strong> We store your language preference (ES/EN) locally in your browser. This data remains on your device and is not sent to our servers.</li>
+        <li><strong>Google Analytics cookies:</strong> Google Analytics uses cookies to collect anonymous information about site usage. These cookies include _ga, _gid, and _gat, with durations between 24 hours and 2 years.</li>
+      </ul>
+      <p>You can configure your browser to refuse cookies or notify you when a cookie is sent. However, some site features may not function correctly if you disable cookies.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">06</div>
+      <div class="section-title">External Links</div>
+      <p>Our website may contain links to third-party websites, including scientific resources, academic publications, and platforms like WhatsApp. Biogradix is not responsible for the privacy practices or content of these external sites.</p>
+      <p>We recommend reviewing the privacy policy of any external site you visit through links on our site.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">07</div>
+      <div class="section-title">Your Rights</div>
+      <p>Depending on your jurisdiction, you may have the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal information we hold about you.</li>
+        <li><strong>Rectification:</strong> Request correction of inaccurate or incomplete information.</li>
+        <li><strong>Erasure:</strong> Request deletion of your personal information from our records.</li>
+        <li><strong>Portability:</strong> Request a copy of your data in a structured, machine-readable format.</li>
+        <li><strong>Objection:</strong> Object to the processing of your data for certain purposes.</li>
+      </ul>
+      <p>To exercise any of these rights, contact us through the means indicated in the Contact section.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">08</div>
+      <div class="section-title">Changes to this Policy</div>
+      <p>We reserve the right to update this Privacy Policy periodically to reflect changes in our practices or legal requirements. The "Last updated" date at the top of this page indicates when the most recent changes were made.</p>
+      <p>We recommend reviewing this policy periodically. Continued use of the site after publication of changes constitutes your acceptance of the updated policy.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="section-num">09</div>
+      <div class="section-title">Contact</div>
+      <p>If you have questions, concerns, or requests related to your privacy, you can contact us through:</p>
+      <ul>
+        <li>Contact form: <a href="contacto.html">Contact page</a></li>
+        <li>WhatsApp: <a href="https://wa.me/13467189350" target="_blank" rel="noopener">+1 346 718 9350</a></li>
+      </ul>
+      <p>Our team will respond within a maximum of 48 business hours.</p>
+    </div>
+
+  </div>
 </div>
 
-<div class="container">
-
-<h1><span data-lang="es">Política de Privacidad</span><span data-lang="en">Privacy Policy</span></h1>
-
-<p><span data-lang="es">Última actualización: Abril 2026</span><span data-lang="en">Last updated: April 2026</span></p>
-
-<h2><span data-lang="es">1. Información que Recopilamos</span><span data-lang="en">1. Information We Collect</span></h2>
-<p><span data-lang="es">Biogradix recopila información que usted proporciona voluntariamente a través de consultas de WhatsApp, formularios de contacto, y interacciones del sitio web. Esta información puede incluir nombre, número de teléfono, y consultas de productos.</span><span data-lang="en">Biogradix collects information you voluntarily provide through WhatsApp inquiries, contact forms, and website interactions. This information may include name, phone number, and product inquiries.</span></p>
-
-<h2><span data-lang="es">2. Google Analytics</span><span data-lang="en">2. Google Analytics</span></h2>
-<p><span data-lang="es">Usamos Google Analytics para entender cómo usuarios interactúan con nuestro sitio. Google Analytics colecta información anónima incluida dirección IP, tipo de navegador, y páginas visitadas. Esta información se mantiene privada y se usa únicamente para mejorar el sitio web.</span><span data-lang="en">We use Google Analytics to understand how users interact with our site. Google Analytics collects anonymous information including IP address, browser type, and visited pages. This information is kept private and used only to improve the website.</span></p>
-
-<h2><span data-lang="es">3. Uso de Información</span><span data-lang="en">3. Use of Information</span></h2>
-<p><span data-lang="es">Usamos la información recopilada para responder inquirencias, mejorar nuestros servicios, y enviar actualizaciones de productos. Nunca vendemos o compartimos información personal sin consentimiento.</span><span data-lang="en">We use collected information to respond to inquiries, improve our services, and send product updates. We never sell or share personal information without consent.</span></p>
-
-<h2><span data-lang="es">4. Protección de Datos</span><span data-lang="en">4. Data Protection</span></h2>
-<p><span data-lang="es">Biogradix toma medidas razonables para proteger información personal contra acceso no autorizado, alteración, y destrucción. Sin embargo, ningún método de transmisión por internet es 100% seguro.</span><span data-lang="en">Biogradix takes reasonable measures to protect personal information against unauthorized access, alteration, and destruction. However, no internet transmission method is 100% secure.</span></p>
-
-<h2><span data-lang="es">5. Cookies</span><span data-lang="en">5. Cookies</span></h2>
-<p><span data-lang="es">Nuestro sitio utiliza cookies para recordar su preferencia de idioma (ES/EN). Estas cookies no rastrean información sensible y puede deshabilitarlas en su navegador si lo desea.</span><span data-lang="en">Our site uses cookies to remember your language preference (ES/EN). These cookies do not track sensitive information and you can disable them in your browser if you wish.</span></p>
-
-<h2><span data-lang="es">6. Links Externos</span><span data-lang="en">6. External Links</span></h2>
-<p><span data-lang="es">Nuestro sitio contiene links a sitios externos. Biogradix no es responsable por las políticas de privacidad de sitios externos. Por favor revise sus políticas de privacidad antes de usar.</span><span data-lang="en">Our site contains links to external websites. Biogradix is not responsible for the privacy policies of external sites. Please review their privacy policies before use.</span></p>
-
-<h2><span data-lang="es">7. Cambios a esta Política</span><span data-lang="en">7. Changes to This Policy</span></h2>
-<p><span data-lang="es">Biogradix se reserva el derecho de actualizar esta política de privacidad en cualquier momento. Cambios entrarán en efecto inmediatamente.</span><span data-lang="en">Biogradix reserves the right to update this privacy policy at any time. Changes will take effect immediately.</span></p>
-
-<h2><span data-lang="es">8. Contacto</span><span data-lang="en">8. Contact</span></h2>
-<p><span data-lang="es">Para preguntas sobre esta política, contacte a través de WhatsApp: <a href="https://wa.me/525512345678" target="_blank">+52 55 1234 5678</a></span><span data-lang="en">For questions about this policy, contact via WhatsApp: <a href="https://wa.me/525512345678" target="_blank">+52 55 1234 5678</a></span></p>
-
-</div>
-
+<!-- FOOTER -->
 <footer>
-  <p><span data-lang="es">© 2026 Biogradix. Solo para investigación. Todos los derechos reservados.</span><span data-lang="en">© 2026 Biogradix. Research use only. All rights reserved.</span></p>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-mark">BG</div>
+      <div class="footer-brand-name">BIOGRADIX</div>
+      <p class="footer-brand-desc" data-i18n="footer_desc">Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.</p>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_science">Ciencia</div>
+      <ul class="footer-links">
+        <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+        <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_products">Productos</div>
+      <ul class="footer-links">
+        <li><a href="quiz.html">CELLDEW™</a></li>
+        <li><a href="quiz.html">VITACHARGE™</a></li>
+        <li><a href="quiz.html">RADIANCEMAX™</a></li>
+        <li><a href="quiz.html">RECOVERYPRO™</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_contact">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+        <li><a href="https://wa.me/13467189350" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="terms.html" data-i18n="footer_terms">Términos</a></li>
+        <li><a href="privacy.html" data-i18n="footer_privacy">Privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="footer_copy">© 2026 Biogradix. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="terms.html" data-i18n="footer_terms">Términos</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacidad</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-let currentLang = localStorage.getItem('bx-lang') || 'es';
-document.documentElement.lang = currentLang;
-
-function setLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-  localStorage.setItem('bx-lang', lang);
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    if ((currentLang === 'es' && btn.textContent === 'ES') || (currentLang === 'en' && btn.textContent === 'EN')) {
-      btn.classList.add('active');
-    }
-  });
-});
-
-/* ── MOBILE MENU ── */
-function toggleMobileMenu() {
-  var menu = document.getElementById('mobileMenu');
-  var overlay = document.getElementById('mobileOverlay');
-  var btn = document.getElementById('hamburgerBtn');
-  if (!menu) return;
-  var isOpen = menu.classList.contains('open');
-  if (isOpen) { closeMobileMenu(); }
-  else {
-    menu.classList.add('open');
-    overlay.classList.add('open');
-    btn.classList.add('open');
-    btn.setAttribute('aria-expanded','true');
-    document.body.classList.add('menu-open');
+const T={
+  es:{
+    nav_tech:"Tecnología",nav_edu:"Educación",nav_blog:"Blog",nav_contact:"Contacto",nav_wa:"WhatsApp",
+    footer_desc:"Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.",
+    footer_science:"Ciencia",footer_products:"Productos",footer_contact:"Contacto",
+    footer_terms:"Términos",footer_privacy:"Privacidad",
+    footer_copy:"© 2026 Biogradix. Todos los derechos reservados."
+  },
+  en:{
+    nav_tech:"Technology",nav_edu:"Education",nav_blog:"Blog",nav_contact:"Contact",nav_wa:"WhatsApp",
+    footer_desc:"Precision supplements with BiogradixRelease® technology for maximum bioavailability.",
+    footer_science:"Science",footer_products:"Products",footer_contact:"Contact",
+    footer_terms:"Terms",footer_privacy:"Privacy",
+    footer_copy:"© 2026 Biogradix. All rights reserved."
   }
-}
-function closeMobileMenu() {
-  var menu = document.getElementById('mobileMenu');
-  var overlay = document.getElementById('mobileOverlay');
-  var btn = document.getElementById('hamburgerBtn');
-  if (!menu) return;
-  menu.classList.remove('open');
-  overlay.classList.remove('open');
-  btn.classList.remove('open');
-  btn.setAttribute('aria-expanded','false');
-  document.body.classList.remove('menu-open');
-}
-function updateMobileLangBtns(lang) {
-  var esBtn = document.getElementById('mobileLangEs');
-  var enBtn = document.getElementById('mobileLangEn');
-  if (!esBtn || !enBtn) return;
-  if (lang === 'es') { esBtn.classList.add('active'); enBtn.classList.remove('active'); }
-  else { enBtn.classList.add('active'); esBtn.classList.remove('active'); }
-}
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMobileMenu(); });
-</script>
+};
 
+function setLang(l){
+  localStorage.setItem('bgLang',l);
+  document.getElementById('htmlRoot').lang=l;
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('sw-es').classList.toggle('active',l==='es');
+  document.getElementById('sw-en').classList.toggle('active',l==='en');
+  document.getElementById('content-es').style.display=l==='es'?'block':'none';
+  document.getElementById('content-en').style.display=l==='en'?'block':'none';
+  if(l==='es'){
+    document.getElementById('hero-eyebrow').textContent='Legal';
+    document.getElementById('hero-title').textContent='Política de Privacidad';
+    document.getElementById('hero-meta').textContent='Última actualización: Enero 2026';
+  } else {
+    document.getElementById('hero-eyebrow').textContent='Legal';
+    document.getElementById('hero-title').textContent='Privacy Policy';
+    document.getElementById('hero-meta').textContent='Last updated: January 2026';
+  }
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l][k]) el.textContent=T[l][k];
+  });
+}
+
+function toggleMenu(){
+  document.getElementById('mobileOverlay').classList.toggle('open');
+  document.getElementById('mobilePanel').classList.toggle('open');
+}
+
+(function(){
+  const l=localStorage.getItem('bgLang')||'es';
+  setLang(l);
+})();
+</script>
 </body>
 </html>

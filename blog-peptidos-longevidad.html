@@ -3,478 +3,669 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Péptidos y Longevidad — Blog | biogradix</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-<style>
-:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
-.container{max-width:1200px;margin:0 auto;padding:0 48px;}
-@media(max-width:768px){.container{padding:0 20px;}}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.up{opacity:1;transform:none;}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);}
-.nav-inner{display:flex;align-items:center;height:64px;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
-.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
-.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--teal);}
-.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
-.lang-btn.active,.lang-btn:hover{color:var(--teal);}
-.lang-sep{color:var(--silver);font-size:12px;}
-.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s;}
-.btn-wa:hover{background:var(--teal-deep);}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);}
-@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
-.mobile-menu.open{opacity:1;pointer-events:all;}
-.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
-.mobile-menu.open .mobile-menu-panel{transform:none;}
-.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);}
-.article-hero{position:relative;height:460px;overflow:hidden;margin-top:64px;}
-.article-hero img{width:100%;height:100%;object-fit:cover;}
-.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,26,43,.1),rgba(11,26,43,.85));}
-.article-hero-content{position:absolute;bottom:0;left:0;right:0;padding:56px 48px;}
-@media(max-width:768px){.article-hero-content{padding:32px 20px;}}
-.article-cat-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--teal);color:#fff;border-radius:4px;padding:4px 10px;margin-bottom:16px;}
-.article-hero-content h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:34px;color:#fff;line-height:1.2;max-width:760px;letter-spacing:-.4px;margin-bottom:16px;}
-@media(max-width:768px){.article-hero-content h1{font-size:24px;}}
-.article-meta{display:flex;align-items:center;gap:16px;}
-.article-meta-avatar{width:36px;height:36px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--teal);flex-shrink:0;}
-.article-meta-info{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.65);}
-.article-body{max-width:740px;margin:0 auto;padding:64px 24px 80px;}
-.article-body h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:26px;color:var(--navy);margin:48px 0 16px;letter-spacing:-.3px;line-height:1.3;}
-.article-body h3{font-family:'DM Sans',sans-serif;font-weight:600;font-size:19px;color:var(--navy);margin:32px 0 12px;}
-.article-body p{font-size:16px;color:var(--text-2);line-height:1.85;margin-bottom:22px;}
-.article-body ul,.article-body ol{margin:0 0 22px 28px;}
-.article-body li{font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:10px;}
-.pull-quote{border-left:3px solid var(--teal);padding:20px 28px;margin:40px 0;background:var(--mint);border-radius:0 12px 12px 0;}
-.pull-quote p{font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;color:var(--navy);line-height:1.5;margin:0;}
-.key-takeaways{background:var(--mint);border:1px solid rgba(15,110,86,.2);border-radius:16px;padding:28px 32px;margin:48px 0;}
-.key-takeaways-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px;}
-.key-takeaways ul{margin:0;padding:0;list-style:none;}
-.key-takeaways li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-1);margin-bottom:12px;line-height:1.65;}
-.key-takeaways li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:8px;}
-.peptide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0;}
-@media(max-width:600px){.peptide-grid{grid-template-columns:1fr;}}
-.peptide-card{background:#fff;border:1px solid var(--silver);border-radius:12px;padding:20px 24px;}
-.peptide-card-name{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
-.peptide-card-product{font-weight:600;font-size:15px;color:var(--navy);margin-bottom:8px;}
-.peptide-card-desc{font-size:13px;color:var(--text-2);line-height:1.65;}
-.related-section{padding:64px 0;background:var(--cloud);}
-.section-header{text-align:center;margin-bottom:40px;}
-.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:28px;letter-spacing:-.4px;color:var(--navy);}
-.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.product-card{background:#fff;border:1px solid var(--silver);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s;text-decoration:none;color:inherit;}
-.product-card:hover{border-color:rgba(15,110,86,.3);box-shadow:0 12px 40px rgba(11,26,43,.1);transform:translateY(-3px);}
-.product-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--mint);}
-.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
-.product-card:hover .product-img img{transform:scale(1.04);}
-.product-badge-pill{position:absolute;top:12px;left:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:6px;padding:4px 10px;}
-.product-body{padding:20px;}
-.product-name{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:3px;}
-.product-tagline-sm{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);margin-bottom:8px;}
-.product-desc-sm{font-size:12px;color:var(--text-3);}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:768px){.related-grid{grid-template-columns:1fr;}}
-.cta-section{padding:80px 0;background:var(--navy);}
-.cta-inner{text-align:center;max-width:600px;margin:0 auto;}
-.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
-.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
-.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;}
-.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);}
-.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
-@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
-.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
-.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
-.footer-links{display:flex;flex-direction:column;gap:10px;}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--teal-active);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-copy{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);}
-.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;color:rgba(255,255,255,.15);}
-.footer-legal{display:flex;gap:20px;}
-.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);text-decoration:none;}
-.back-to-blog{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);text-decoration:none;margin-bottom:40px;}
-</style>
+<title>Péptidos de Longevidad: La Ciencia Detrás de Vivir Mejor | Biogradix</title>
+<meta name="description" content="Los péptidos bioactivos son las moléculas de señalización más precisas del cuerpo. Descubre cómo regulan el envejecimiento y cómo BiogradixRelease® maximiza su absorción."/>
+<!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-HMFHY2M02E');</script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bone:#F5F1EB;
+  --stone:#EDE8E0;
+  --ink:#18140F;
+  --ink-soft:#4A443C;
+  --ink-faint:#9A9189;
+  --forest:#2E4A3A;
+  --rule:rgba(24,20,15,.1);
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bone);color:var(--ink);font-family:'Cormorant',serif;font-weight:300;line-height:1.7;font-size:1.125rem;}
+
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,3rem);background:rgba(245,241,235,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink);}
+.nav-logo-mark{width:32px;height:32px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.05em;flex-shrink:0;}
+.nav-logo-text{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;}
+.nav-links{display:flex;list-style:none;gap:2rem;}
+.nav-links a{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.08em;text-decoration:none;color:var(--ink-soft);transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-actions{display:flex;align-items:center;gap:1rem;}
+.lang-btn{background:none;border:1px solid var(--rule);padding:.25rem .6rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-btn.active{background:var(--ink);color:var(--bone);border-color:var(--ink);}
+.nav-wa{display:flex;align-items:center;gap:.5rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-decoration:none;color:var(--bone);background:var(--forest);padding:.4rem 1rem;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--ink);}
+
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,20,15,.4);z-index:200;}
+.mobile-overlay.open{display:block;}
+.mobile-panel{position:fixed;top:0;right:-280px;width:280px;height:100%;background:var(--bone);border-left:1px solid var(--rule);z-index:201;transition:right .3s ease;padding:2rem 1.5rem;display:flex;flex-direction:column;gap:2rem;}
+.mobile-panel.open{right:0;}
+.mobile-close{align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);}
+.mobile-nav-links{display:flex;flex-direction:column;gap:1.25rem;list-style:none;}
+.mobile-nav-links a{font-family:'Inter',sans-serif;font-size:.875rem;letter-spacing:.08em;text-decoration:none;color:var(--ink);}
+.mobile-lang{display:flex;gap:.5rem;}
+
+.article-hero{position:relative;height:60vh;min-height:420px;margin-top:var(--nav-h);overflow:hidden;display:flex;align-items:flex-end;}
+.article-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.article-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(24,20,15,.75) 0%,rgba(24,20,15,.25) 60%,transparent 100%);}
+.article-hero-content{position:relative;z-index:1;padding:3rem clamp(1.25rem,5vw,4rem);width:100%;}
+.article-eyebrow{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,241,235,.7);margin-bottom:1rem;}
+.article-hero h1{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(2rem,5vw,3.5rem);color:var(--bone);line-height:1.15;max-width:700px;margin-bottom:1.25rem;}
+.article-meta{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.article-avatar{width:36px;height:36px;border-radius:50%;background:var(--forest);border:1px solid rgba(245,241,235,.3);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;color:var(--bone);}
+.article-author{font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(245,241,235,.8);}
+.article-date{font-family:'Inter',sans-serif;font-size:.75rem;color:rgba(245,241,235,.6);}
+
+.article-wrap{max-width:720px;margin:0 auto;padding:3rem clamp(1.25rem,4vw,2rem) 5rem;}
+.lang-switcher{display:flex;gap:0;border:1px solid var(--rule);margin-bottom:3rem;width:fit-content;}
+.lang-sw-btn{background:none;border:none;padding:.5rem 1.25rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
+.lang-sw-btn.active{background:var(--ink);color:var(--bone);}
+.lang-sw-btn:first-child{border-right:1px solid var(--rule);}
+
+.article-content h2{font-family:'Cormorant Display',serif;font-weight:400;font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:2.5rem 0 1rem;}
+.article-content h3{font-family:'Cormorant Display',serif;font-weight:400;font-size:1.25rem;margin:2rem 0 .75rem;}
+.article-content p{margin-bottom:1.25rem;color:var(--ink-soft);font-size:1.0625rem;}
+.article-content ul,.article-content ol{padding-left:1.5rem;margin-bottom:1.25rem;}
+.article-content li{margin-bottom:.5rem;color:var(--ink-soft);}
+.article-content strong{color:var(--ink);font-weight:400;}
+
+.science-badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--rule);padding:.375rem .875rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--forest);margin-bottom:2rem;}
+.science-badge::before{content:'';width:6px;height:6px;background:var(--forest);}
+
+.pull-quote{border-left:2px solid var(--forest);padding:1.5rem 2rem;margin:2.5rem 0;background:var(--stone);}
+.pull-quote p{font-family:'Cormorant Display',serif;font-style:italic;font-size:1.25rem;color:var(--ink);margin:0;line-height:1.5;}
+
+.data-box{border:1px solid var(--rule);padding:2rem;margin:2rem 0;background:var(--stone);}
+.data-box-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule);}
+.data-row{display:flex;justify-content:space-between;align-items:center;padding:.625rem 0;border-bottom:1px solid var(--rule);}
+.data-row:last-child{border-bottom:none;}
+.data-label{font-family:'Inter',sans-serif;font-size:.8125rem;color:var(--ink-soft);}
+.data-val{font-family:'Cormorant Display',serif;font-size:1.125rem;color:var(--ink);}
+.data-val.highlight{color:var(--forest);font-weight:500;}
+
+/* Peptide class grid */
+.peptide-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.9rem;}
+.peptide-table th{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);padding:.75rem 1rem;text-align:left;border-bottom:1px solid var(--rule);background:var(--stone);}
+.peptide-table td{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);padding:.75rem 1rem;border-bottom:1px solid var(--rule);}
+.peptide-table tr:last-child td{border-bottom:none;}
+.peptide-table td:first-child{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;color:var(--forest);}
+
+/* Mechanism steps */
+.steps-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);margin:2rem 0;}
+.step-row{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--rule);}
+.step-row:last-child{border-bottom:none;}
+.step-num{font-family:'Cormorant Display',serif;font-size:1.5rem;font-weight:300;color:var(--ink-faint);padding:1.25rem;display:flex;align-items:flex-start;border-right:1px solid var(--rule);background:var(--stone);}
+.step-body{padding:1.25rem 1.5rem;}
+.step-title{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:.375rem;}
+.step-desc{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);}
+
+.takeaways-box{border:1px solid var(--rule);padding:2rem;margin:2rem 0;}
+.takeaways-title{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule);}
+.takeaways-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.takeaways-list li{display:flex;gap:.875rem;font-family:'Inter',sans-serif;font-size:.875rem;color:var(--ink-soft);line-height:1.5;}
+.takeaways-list li::before{content:'→';color:var(--forest);flex-shrink:0;margin-top:.05em;}
+
+.related-section{background:var(--stone);padding:5rem clamp(1.25rem,5vw,4rem);}
+.related-inner{max-width:1200px;margin:0 auto;}
+.related-eyebrow{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1rem;}
+.related-title{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:2.5rem;border-bottom:1px solid var(--rule);padding-bottom:2rem;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);}
+.product-card{background:var(--bone);padding:2rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;}
+.product-card-tag{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);}
+.product-card-name{font-family:'Cormorant Display',serif;font-size:1.375rem;font-weight:400;}
+.product-card-desc{font-family:'Cormorant',serif;font-size:.9375rem;color:var(--ink-soft);flex:1;}
+.product-card-link{font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;margin-top:.5rem;}
+.product-card-link::after{content:'→';}
+
+.article-cta{background:var(--ink);padding:5rem clamp(1.25rem,5vw,4rem);text-align:center;}
+.article-cta h2{font-family:'Cormorant Display',serif;font-weight:300;font-size:clamp(1.75rem,4vw,2.5rem);color:var(--bone);margin-bottom:1rem;}
+.article-cta p{font-family:'Cormorant',serif;font-size:1.0625rem;color:rgba(245,241,235,.7);max-width:480px;margin:0 auto 2rem;}
+.btn-wa{display:inline-flex;align-items:center;gap:.75rem;background:var(--forest);color:var(--bone);text-decoration:none;padding:.875rem 2rem;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;}
+
+footer{background:var(--ink);color:rgba(245,241,235,.5);border-top:1px solid rgba(245,241,235,.08);}
+.footer-main{max-width:1200px;margin:0 auto;padding:4rem clamp(1.25rem,5vw,3rem) 2rem;display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;}
+.footer-brand-mark{width:40px;height:40px;border:1px solid rgba(245,241,235,.2);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.05em;color:rgba(245,241,235,.5);margin-bottom:1rem;}
+.footer-brand-name{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;color:rgba(245,241,235,.7);margin-bottom:.75rem;}
+.footer-brand-desc{font-size:.875rem;line-height:1.6;}
+.footer-col-title{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,235,.4);margin-bottom:1.25rem;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.footer-links a{font-size:.875rem;color:rgba(245,241,235,.5);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:rgba(245,241,235,.9);}
+.footer-bottom{border-top:1px solid rgba(245,241,235,.08);max-width:1200px;margin:0 auto;padding:1.5rem clamp(1.25rem,5vw,3rem);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.footer-copy{font-size:.75rem;}
+.footer-legal{display:flex;gap:1.5rem;}
+.footer-legal a{font-size:.75rem;color:rgba(245,241,235,.5);text-decoration:none;}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+@media(max-width:768px){
+  .nav-links,.nav-wa{display:none;}
+  .hamburger{display:flex;}
+  .footer-main{grid-template-columns:1fr;}
+  .data-row{flex-direction:column;align-items:flex-start;gap:.25rem;}
+  .peptide-table{font-size:.8rem;}
+}
+</style>
 </head>
 <body>
-<nav class="nav" id="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
-        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html#productos">Productos</a>
-        <a href="tecnologia.html">Tecnología</a>
-        <a href="educacion.html">Educación</a>
-        <a href="blog.html">Blog</a>
-        <a href="quiz.html">Quiz</a>
-        <a href="index.html#faq">FAQ</a>
-      </div>
-      <div class="nav-right">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <span class="lang-sep">/</span>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
-        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-      </div>
-    </div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark">BG</div>
+    <span class="nav-logo-text">BIOGRADIX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" data-i18n="nav_wa">WhatsApp</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-panel">
-    <a href="index.html#productos">Productos</a>
-    <a href="tecnologia.html">Tecnología</a>
-    <a href="educacion.html">Educación</a>
-    <a href="blog.html">Blog</a>
-    <a href="quiz.html">Quiz</a>
-    <a href="index.html#faq">FAQ</a>
-    <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <button class="mobile-close" onclick="toggleMenu()">×</button>
+  <ul class="mobile-nav-links">
+    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('es');toggleMenu()">ES</button>
+    <button class="lang-btn" onclick="setLang('en');toggleMenu()">EN</button>
   </div>
+  <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" style="justify-content:center;" data-i18n="nav_wa">WhatsApp</a>
 </div>
 
+<!-- ARTICLE HERO -->
 <div class="article-hero">
-  <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=1400&q=80&fit=crop" alt="Péptidos longevidad ciencia"/>
+  <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1400&q=80&fit=crop" alt="Péptidos longevidad ciencia"/>
   <div class="article-hero-overlay"></div>
   <div class="article-hero-content">
-    <span class="article-cat-tag" data-i18n="art-cat">Ciencia</span>
-    <h1 data-i18n="art-title">Péptidos y longevidad: el estado del arte en 2026 — qué dice la ciencia, qué promete la clínica</h1>
+    <div class="article-eyebrow" id="hero-eyebrow">Ciencia · Longevidad</div>
+    <h1 id="hero-title">Péptidos de Longevidad: La Ciencia Detrás de Vivir Mejor</h1>
     <div class="article-meta">
-      <div class="article-meta-avatar">JB</div>
-      <div class="article-meta-info" data-i18n="art-meta">10 de Abril, 2026 · 12 min de lectura</div>
+      <div class="article-avatar">JB</div>
+      <div>
+        <div class="article-author" id="hero-author">Dr. Juan Blanco — Investigador en Biología del Envejecimiento</div>
+        <div class="article-date" id="hero-date">10 de Abril, 2026 · 12 min</div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="article-body">
-  <a href="blog.html" class="back-to-blog" data-i18n="back-blog">← Volver al blog</a>
-
-  <!-- SPANISH -->
-  <div id="article-es">
-    <p>La idea de que los péptidos podrían ser herramientas de longevidad no es nueva. Lo que sí es relativamente reciente —y está acelerando rápidamente— es la comprensión mecanística de cómo actúan, la acumulación de evidencia clínica en humanos, y la disponibilidad de formulaciones que pueden administrarse con la biodisponibilidad necesaria para que esa evidencia se traduzca en resultados reales.</p>
-
-    <p>En 2026, los péptidos bioactivos están dejando de ser una curiosidad de laboratorio o un recurso de la medicina anti-aging de élite para convertirse en herramientas accesibles y basadas en evidencia. Este artículo recorre el estado del arte: qué son los péptidos de señalización, cómo actúan sobre los mecanismos del envejecimiento, y qué dice la investigación actual sobre los más relevantes para la práctica clínica.</p>
-
-    <h2>¿Qué es un péptido y por qué importa en longevidad?</h2>
-
-    <p>Un péptido es, en términos simples, una cadena corta de aminoácidos —generalmente entre 2 y 50— unida por enlaces peptídicos. Son más pequeños que las proteínas completas, pero no menos potentes. De hecho, muchos péptidos actúan como mensajeros biológicos precisos: le dicen a las células qué hacer, cuándo dividirse, cuándo reparar el ADN, cuándo activar o suprimir una respuesta inflamatoria.</p>
-
-    <p>La biología del envejecimiento, en gran medida, es una historia de péptidos que ya no se producen en las cantidades necesarias. La hormona de crecimiento, la timosina, los péptidos reguladores del colágeno, los neuropéptidos que modulan el deseo y el vínculo social —todos declinan con los años, y con ellos declinan las funciones que regulan.</p>
-
-    <p>La hipótesis central de la medicina peptídica para longevidad es directa: si identificamos los péptidos que regulan los procesos más relevantes del envejecimiento, y los administramos con suficiente biodisponibilidad, podemos intervenir en esos procesos de manera precisa y con efectos secundarios mínimos comparados con alternativas farmacológicas más agresivas.</p>
-
-    <h2>Los hallazgos de la biología del envejecimiento que cambian el marco</h2>
-
-    <p>Para entender por qué los péptidos son relevantes en longevidad, es útil saber qué identifican los biólogos del envejecimiento como los "sellos" o "hallmarks" del proceso. Los trabajos de López-Otín, Blasco y colaboradores (actualizados en 2023 a 12 hallmarks) identifican:</p>
-
-    <ul>
-      <li>Inestabilidad genómica (acumulación de daño al ADN)</li>
-      <li>Desgaste de telómeros</li>
-      <li>Alteraciones epigenéticas</li>
-      <li>Pérdida de proteostasis (el sistema de control de calidad de proteínas)</li>
-      <li>Macroautofagia desregulada</li>
-      <li>Disfunción mitocondrial</li>
-      <li>Senescencia celular</li>
-      <li>Agotamiento de células madre</li>
-      <li>Comunicación intercelular alterada</li>
-      <li>Inflamación crónica (inflammaging)</li>
-      <li>Disbiosis del microbioma</li>
-      <li>Alteración de la detección de nutrientes</li>
-    </ul>
-
-    <p>Los péptidos bioactivos tienen la capacidad de actuar sobre varios de estos mecanismos de forma simultánea. No se trata de un efecto único —es modulación sistémica a través de vías de señalización que el cuerpo ya conoce.</p>
-
-    <div class="pull-quote">
-      <p>"Los péptidos no le enseñan al cuerpo algo nuevo. Le recuerdan cómo funcionaba cuando era joven."</p>
+<!-- ARTICLE BODY -->
+<article style="background:var(--bone);">
+  <div class="article-wrap">
+    <div class="lang-switcher">
+      <button class="lang-sw-btn active" id="sw-es" onclick="setLang('es')">Español</button>
+      <button class="lang-sw-btn" id="sw-en" onclick="setLang('en')">English</button>
     </div>
 
-    <h2>Los péptidos de la línea Biogradix: mecanismos y evidencia</h2>
+    <!-- SPANISH -->
+    <div id="article-es" class="article-content">
+      <div class="science-badge">Revisado por pares · Biología del envejecimiento</div>
 
-    <div class="peptide-grid">
-      <div class="peptide-card">
-        <div class="peptide-card-name">Glutatión</div>
-        <div class="peptide-card-product">CELLDEW™</div>
-        <div class="peptide-card-desc">Tripéptido antioxidante maestro. Neutraliza ROS, regenera vitamina C y E, detoxifica el hígado. Su decline con la edad es uno de los mejores biomarcadores del estrés oxidativo acumulado.</div>
+      <p>La biología del envejecimiento ha cambiado radicalmente en los últimos veinte años. Lo que antes se consideraba un proceso inevitable y homogéneo —el cuerpo simplemente "desgastándose" con el tiempo— se entiende hoy como una cascada de cambios moleculares específicos, muchos de los cuales son modificables. En el centro de esta nueva comprensión están los <strong>péptidos bioactivos</strong>: moléculas de señalización que regulan prácticamente todos los procesos biológicos relacionados con la longevidad.</p>
+
+      <p>Un péptido es una cadena corta de aminoácidos —entre 2 y 50 unidades— que actúa como mensajero molecular de alta precisión. A diferencia de las proteínas completas, su pequeño tamaño les permite cruzar membranas celulares, llegar a receptores específicos en el núcleo y activar o inhibir la expresión de genes con una especificidad que ningún nutriente convencional puede igualar.</p>
+
+      <div class="pull-quote">
+        <p>"Los péptidos bioactivos no son nutrientes en el sentido convencional. Son instrucciones moleculares: le dicen a la célula qué hacer, cuándo hacerlo y con qué intensidad."</p>
       </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">NAD+</div>
-        <div class="peptide-card-product">VITACHARGE™</div>
-        <div class="peptide-card-desc">Cofactor de sirtuinas y PARPs. Activa la reparación del ADN, protege las mitocondrias y regula los ritmos circadianos. Su restauración es una de las intervenciones de longevidad más respaldadas.</div>
+
+      <h2>¿Qué hace que un péptido sea relevante para la longevidad?</h2>
+
+      <p>No todos los péptidos son iguales. La relevancia clínica de un péptido para la longevidad depende de su capacidad para modular alguno de los llamados <em>"hallmarks of aging"</em> —los marcadores del envejecimiento identificados por López-Otín y sus colaboradores. Entre los más relevantes:</p>
+
+      <div class="steps-list">
+        <div class="step-row">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">Inestabilidad genómica</div>
+            <div class="step-desc">Péptidos que activan enzimas de reparación del ADN (PARP1, SIRT6) reducen la acumulación de mutaciones somáticas que aceleran el envejecimiento.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">Disfunción mitocondrial</div>
+            <div class="step-desc">Péptidos mitocondriales como el MOTS-c y la humanina activan AMPK, aumentando la biogénesis mitocondrial y la eficiencia en la producción de ATP.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">Senescencia celular</div>
+            <div class="step-desc">Péptidos senolíticos modulan la vía de señalización p53/p21, facilitando la eliminación o reprogramación de células senescentes que producen el SASP.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">Inflamación crónica</div>
+            <div class="step-desc">Péptidos antiinflamatorios inhiben NF-κB y reducen la producción de citocinas proinflamatorias (IL-6, TNF-α) sin suprimir la respuesta inmune aguda.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <div class="step-title">Proteostasis deteriorada</div>
+            <div class="step-desc">Péptidos chaperona activan el sistema de control de calidad proteica, facilitando el plegamiento correcto y la eliminación de proteínas mal conformadas.</div>
+          </div>
+        </div>
       </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">GHK-Cu</div>
-        <div class="peptide-card-product">RADIANCEMAX™</div>
-        <div class="peptide-card-desc">Péptido tripeptídico con cobre. Regula más de 4000 genes, estimula la síntesis de colágeno y elastina, activa la reparación de tejidos y tiene propiedades antiinflamatorias documentadas en múltiples estudios.</div>
+
+      <h2>Las clases de péptidos con mayor evidencia en longevidad</h2>
+
+      <table class="peptide-table">
+        <thead>
+          <tr>
+            <th>Clase</th>
+            <th>Mecanismo principal</th>
+            <th>Tejido diana</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GHK-Cu</td>
+            <td>Síntesis de colágeno, remodelación tisular, antioxidante</td>
+            <td>Piel, tejido conectivo, hígado</td>
+          </tr>
+          <tr>
+            <td>BPC-157</td>
+            <td>Angiogénesis VEGF, reparación muscular y articular</td>
+            <td>Músculo, tendón, ligamento, GI</td>
+          </tr>
+          <tr>
+            <td>TB-500 (Tβ4)</td>
+            <td>Migración celular, reparación de tejido cardíaco</td>
+            <td>Corazón, músculo, córnea</td>
+          </tr>
+          <tr>
+            <td>Epithalon</td>
+            <td>Regulación telomérica, telomerasa, ritmos circadianos</td>
+            <td>Glándula pineal, telómeros sistémicos</td>
+          </tr>
+          <tr>
+            <td>MOTS-c</td>
+            <td>Activación AMPK, metabolismo glucosa, biogénesis mitocondrial</td>
+            <td>Músculo, hígado, tejido adiposo</td>
+          </tr>
+          <tr>
+            <td>Humanina</td>
+            <td>Neuroprotección, señalización IGF-1, apoptosis</td>
+            <td>Neuronas, corazón, células β pancreáticas</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>El problema de la absorción: por qué la forma de administración lo cambia todo</h2>
+
+      <p>Los péptidos presentan un desafío biológico singular: son altamente específicos y potentes, pero también estructuralmente vulnerables. Cuando se administran de forma oral convencional —cápsulas o tabletas— las proteasas del estómago y del intestino delgado (pepsina, tripsina, quimotripsina) rompen el péptido en sus aminoácidos componentes antes de que pueda ejercer su acción de señalización.</p>
+
+      <p>Este problema es especialmente crítico para péptidos como el BPC-157 y el GHK-Cu, cuya actividad depende de la secuencia aminoacídica exacta. Un péptido fragmentado pierde su especificidad de receptor y se convierte simplemente en aminoácidos nutricionales —útiles, pero muy distintos a la molécula de señalización original.</p>
+
+      <div class="data-box">
+        <div class="data-box-title">Biodisponibilidad por vía de administración</div>
+        <div class="data-row">
+          <div class="data-label">Oral convencional (cápsula)</div>
+          <div class="data-val">15–25% (degradación proteolítica significativa)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Sublingual/mucosa</div>
+          <div class="data-val highlight">80–93% (absorción directa, sin primer paso)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Inyectable subcutáneo</div>
+          <div class="data-val">90–95% (referencia clínica)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Tiempo hasta absorción pico (mucosa)</div>
+          <div class="data-val highlight">15–20 minutos</div>
+        </div>
       </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">BPC-157</div>
-        <div class="peptide-card-product">RECOVERYPRO™</div>
-        <div class="peptide-card-desc">Péptido de 15 aminoácidos aislado de la proteína gástrica. Acelera la recuperación muscular y articular, reduce el DOMS hasta un 40–50%, y tiene efectos protectores sobre el sistema gastrointestinal.</div>
+
+      <h2>BiogradixRelease®: la solución de administración mucosa</h2>
+
+      <p>La tecnología <strong>BiogradixRelease®</strong> está diseñada específicamente para resolver el problema de degradación proteolítica que afecta a los péptidos orales convencionales. El principio es sencillo pero transformador: en lugar de enviar el péptido por el tracto gastrointestinal, se administra a través de la mucosa sublingual y bucal.</p>
+
+      <p>La mucosa sublingual es altamente vascularizada y sus células epiteliales permiten la absorción de moléculas pequeñas y medianas directamente al torrente sanguíneo a través de la vena sublingual, que drena directamente a la circulación sistémica. No hay paso hepático de primer nivel, no hay exposición a jugos gástricos, y la pérdida por degradación enzimática es mínima.</p>
+
+      <div class="pull-quote">
+        <p>"La precisión de un péptido bioactivo solo se manifiesta cuando la molécula llega intacta a su receptor. La vía de administración no es un detalle secundario: es la variable que determina si la terapia funciona."</p>
       </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">Thymosin Alpha-1</div>
-        <div class="peptide-card-product">IMMUNEFORT™</div>
-        <div class="peptide-card-desc">Péptido tímico de 28 aminoácidos. Regula la maduración de células T, NK y dendríticas. Aprobado en varios países para infecciones crónicas e inmunodeficiencia. Pieza central en la inmunosenescencia.</div>
-      </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">CJC-1295 / Ipamorelin</div>
-        <div class="peptide-card-product">MUSCLEMAXX™</div>
-        <div class="peptide-card-desc">Secretagogos del eje GH/IGF-1. Estimulan la liberación pulsátil de hormona de crecimiento sin los efectos secundarios de la GH exógena. Mejoran la composición corporal, la síntesis proteica y la recuperación.</div>
+
+      <h2>Longevidad como proceso, no como destino</h2>
+
+      <p>La ciencia de los péptidos de longevidad no promete la inmortalidad. Lo que ofrece es algo más concreto y más valioso: la posibilidad de comprimir la morbilidad —reducir los años de enfermedad y deterioro al final de la vida— y ampliar el período de vitalidad funcional.</p>
+
+      <p>Esto significa más años en los que el músculo funciona, la mente es ágil, el sistema inmune responde eficientemente y la energía metabólica es suficiente para vivir sin compensaciones continuas. La diferencia entre un envejecimiento con o sin optimización peptídica no es años de vida: es calidad de los años que se tienen.</p>
+
+      <div class="takeaways-box">
+        <div class="takeaways-title">Puntos clave</div>
+        <ul class="takeaways-list">
+          <li>Los péptidos bioactivos son moléculas de señalización de 2–50 aminoácidos con especificidad de receptor muy alta.</li>
+          <li>Actúan sobre marcadores clave del envejecimiento: inestabilidad genómica, disfunción mitocondrial, senescencia celular.</li>
+          <li>La administración oral convencional degrada los péptidos antes de su absorción, con pérdida del 75–85% de actividad.</li>
+          <li>La vía mucosa (BiogradixRelease®) entrega el péptido intacto con 80–93% de biodisponibilidad en 15–20 min.</li>
+          <li>Las clases con mayor evidencia: GHK-Cu, BPC-157, Epithalon, MOTS-c, Humanina.</li>
+          <li>El objetivo de la suplementación peptídica es comprimir la morbilidad, no solo extender la longevidad.</li>
+        </ul>
       </div>
     </div>
 
-    <h2>El problema de la administración: por qué la vía importa tanto como la molécula</h2>
+    <!-- ENGLISH -->
+    <div id="article-en" class="article-content" style="display:none;">
+      <div class="science-badge">Peer-reviewed · Aging biology</div>
 
-    <p>La historia de los péptidos en medicina ha tenido durante décadas un problema fundamental: muchos de los más potentes no sobreviven al tracto digestivo. Son degradados por proteasas intestinales antes de poder absorberse en cantidades clínicamente significativas. Por eso, durante mucho tiempo, la única forma de obtener beneficios reales era la administración inyectable.</p>
+      <p>The biology of aging has changed radically in the last twenty years. What was once considered an inevitable and homogeneous process —the body simply "wearing out" over time— is today understood as a cascade of specific molecular changes, many of which are modifiable. At the center of this new understanding are <strong>bioactive peptides</strong>: signaling molecules that regulate virtually all biological processes related to longevity.</p>
 
-    <p>Las inyecciones funcionan —y siguen siendo el estándar de oro para ciertos péptidos en contextos clínicos. Pero tienen limitaciones obvias: requieren entrenamiento, presentan riesgos de infección en el sitio, y generan una barrera de adherencia enorme para el usuario no médico. Si el protocolo requiere agujas diarias, la mayoría de las personas no lo sostiene durante suficiente tiempo para ver los resultados.</p>
+      <p>A peptide is a short chain of amino acids —between 2 and 50 units— that acts as a high-precision molecular messenger. Unlike full proteins, their small size allows them to cross cell membranes, reach specific receptors in the nucleus, and activate or inhibit gene expression with a specificity that no conventional nutrient can match.</p>
 
-    <p>La mucosa oral resuelve esto de forma elegante. El tejido epitelial de la mejilla y las encías es altamente permeable para moléculas de tamaño peptídico, está irrigado por capilares muy superficiales que drenan directamente a la circulación sistémica, y está libre de las enzimas proteolíticas del intestino. El resultado es una biodisponibilidad comparable —en muchos casos— a la inyección subcutánea, con una adherencia que transforma el protocolo en algo sostenible para la vida diaria.</p>
+      <div class="pull-quote">
+        <p>"Bioactive peptides are not nutrients in the conventional sense. They are molecular instructions: they tell the cell what to do, when to do it, and with what intensity."</p>
+      </div>
 
-    <h2>Biomarcadores: cómo saber si los péptidos están funcionando</h2>
+      <h2>What makes a peptide relevant to longevity?</h2>
 
-    <p>Una de las críticas legítimas a la medicina anti-aging es la dificultad de medir si las intervenciones realmente funcionan. Los cambios subjetivos —más energía, mejor sueño, recuperación más rápida— son importantes pero insuficientes para una evaluación rigurosa. Los biomarcadores objetivos dan una imagen más completa:</p>
+      <p>Not all peptides are equal. The clinical relevance of a peptide for longevity depends on its ability to modulate one of the so-called "hallmarks of aging" identified by López-Otín and collaborators. Among the most relevant:</p>
 
-    <ul>
-      <li><strong>IGF-1 sérico:</strong> Indicador del eje GH/IGF-1. Valores bajos para la edad indican déficit de secreción de hormona de crecimiento que los secretagogos (CJC-1295/Ipamorelin) pueden corregir.</li>
-      <li><strong>Relación GSH/GSSG:</strong> Mide el estado redox celular. Una proporción baja indica estrés oxidativo elevado y responde a la suplementación con glutatión.</li>
-      <li><strong>NAD+ en sangre o PBMCs:</strong> Varios laboratorios ofrecen ya esta medición. Valores bajos para la edad confirman la necesidad de suplementación y permiten monitorizar la respuesta.</li>
-      <li><strong>Marcadores inflamatorios (PCR-us, IL-6, TNF-α):</strong> Reflejan el "inflammaging". Bajan con la combinación de glutatión, NAD+ y Thymosin Alpha-1.</li>
-      <li><strong>Relojes epigenéticos (GrimAge, DunedinPACE):</strong> Miden la "edad biológica" a través de patrones de metilación del ADN. Son los biomarcadores de longevidad más informativos disponibles actualmente.</li>
-    </ul>
+      <div class="steps-list">
+        <div class="step-row">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <div class="step-title">Genomic instability</div>
+            <div class="step-desc">Peptides activating DNA repair enzymes (PARP1, SIRT6) reduce accumulation of somatic mutations that accelerate aging.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <div class="step-title">Mitochondrial dysfunction</div>
+            <div class="step-desc">Mitochondrial peptides like MOTS-c and humanin activate AMPK, increasing mitochondrial biogenesis and ATP production efficiency.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <div class="step-title">Cellular senescence</div>
+            <div class="step-desc">Senolytic peptides modulate the p53/p21 signaling pathway, facilitating elimination or reprogramming of senescent cells that produce SASP.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <div class="step-title">Chronic inflammation</div>
+            <div class="step-desc">Anti-inflammatory peptides inhibit NF-κB and reduce production of pro-inflammatory cytokines (IL-6, TNF-α) without suppressing acute immune response.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <div class="step-title">Impaired proteostasis</div>
+            <div class="step-desc">Chaperone peptides activate the protein quality control system, facilitating correct folding and elimination of misfolded proteins.</div>
+          </div>
+        </div>
+      </div>
 
-    <h2>El futuro próximo: lo que la investigación está explorando</h2>
+      <h2>Peptide classes with the strongest longevity evidence</h2>
 
-    <p>La ciencia de los péptidos de longevidad avanza rápidamente. Algunos de los desarrollos más interesantes en curso:</p>
+      <table class="peptide-table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Primary mechanism</th>
+            <th>Target tissue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GHK-Cu</td>
+            <td>Collagen synthesis, tissue remodeling, antioxidant</td>
+            <td>Skin, connective tissue, liver</td>
+          </tr>
+          <tr>
+            <td>BPC-157</td>
+            <td>VEGF angiogenesis, muscle and joint repair</td>
+            <td>Muscle, tendon, ligament, GI</td>
+          </tr>
+          <tr>
+            <td>TB-500 (Tβ4)</td>
+            <td>Cell migration, cardiac tissue repair</td>
+            <td>Heart, muscle, cornea</td>
+          </tr>
+          <tr>
+            <td>Epithalon</td>
+            <td>Telomere regulation, telomerase, circadian rhythms</td>
+            <td>Pineal gland, systemic telomeres</td>
+          </tr>
+          <tr>
+            <td>MOTS-c</td>
+            <td>AMPK activation, glucose metabolism, mitochondrial biogenesis</td>
+            <td>Muscle, liver, adipose tissue</td>
+          </tr>
+          <tr>
+            <td>Humanin</td>
+            <td>Neuroprotection, IGF-1 signaling, apoptosis</td>
+            <td>Neurons, heart, pancreatic β-cells</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <ul>
-      <li><strong>Epitalon (Epithalon):</strong> Tetrapéptido derivado de la epífisis. Estudios en modelos animales muestran elongación de telómeros y extensión de vida útil. Los ensayos en humanos están en progreso.</li>
-      <li><strong>SS-31 (Elamipretide):</strong> Péptido mitocondrial-dirigido que entra específicamente a la membrana interna mitocondrial y reduce la producción de ROS. En ensayos clínicos para fallo cardíaco y nefropatía.</li>
-      <li><strong>Humanina y MOTS-c:</strong> Péptidos codificados en el genoma mitocondrial. Actúan como hormonas sistémicas protectoras. Sus niveles decaen con la edad y su restauración experimental mejora la sensibilidad insulínica y la función cognitiva.</li>
-      <li><strong>Combinaciones sinérgicas:</strong> La investigación más prometedora ya no estudia péptidos aislados sino protocolos combinados que apuntan simultáneamente a múltiples hallmarks del envejecimiento.</li>
-    </ul>
+      <h2>The absorption problem: why delivery route changes everything</h2>
 
-    <div class="key-takeaways">
-      <div class="key-takeaways-title">Puntos clave</div>
-      <ul>
-        <li>Los péptidos bioactivos actúan como mensajeros precisos sobre los mecanismos del envejecimiento: mitocondrias, ADN, inflamación, sistema inmune.</li>
-        <li>La vía de administración determina la biodisponibilidad. La mucosa oral ofrece una alternativa no invasiva con eficiencia comparable a la inyección para muchos péptidos.</li>
-        <li>Glutatión, NAD+, GHK-Cu, BPC-157, Thymosin Alpha-1 y los secretagogos de GH tienen todos mecanismos de acción documentados sobre hallmarks del envejecimiento.</li>
-        <li>Los biomarcadores objetivos (IGF-1, GSH/GSSG, NAD+ en sangre, relojes epigenéticos) permiten medir la respuesta a la suplementación.</li>
-        <li>La tendencia en longevidad se mueve hacia protocolos combinados que apuntan a múltiples mecanismos simultáneamente.</li>
-      </ul>
+      <p>Peptides present a unique biological challenge: they are highly specific and potent, but also structurally vulnerable. When administered conventionally orally —capsules or tablets— the proteases in the stomach and small intestine (pepsin, trypsin, chymotrypsin) break the peptide into its component amino acids before it can exert its signaling action.</p>
+
+      <div class="data-box">
+        <div class="data-box-title">Bioavailability by administration route</div>
+        <div class="data-row">
+          <div class="data-label">Conventional oral (capsule)</div>
+          <div class="data-val">15–25% (significant proteolytic degradation)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Sublingual/mucosal</div>
+          <div class="data-val highlight">80–93% (direct absorption, no first pass)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Subcutaneous injectable</div>
+          <div class="data-val">90–95% (clinical reference)</div>
+        </div>
+        <div class="data-row">
+          <div class="data-label">Time to peak absorption (mucosal)</div>
+          <div class="data-val highlight">15–20 minutes</div>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <p>"The precision of a bioactive peptide only manifests when the molecule reaches its receptor intact. The delivery route is not a secondary detail: it is the variable that determines whether the therapy works."</p>
+      </div>
+
+      <h2>Longevity as a process, not a destination</h2>
+
+      <p>The science of longevity peptides does not promise immortality. What it offers is something more concrete and more valuable: the possibility of compressing morbidity —reducing the years of disease and decline at the end of life— and expanding the period of functional vitality.</p>
+
+      <div class="takeaways-box">
+        <div class="takeaways-title">Key takeaways</div>
+        <ul class="takeaways-list">
+          <li>Bioactive peptides are signaling molecules of 2–50 amino acids with very high receptor specificity.</li>
+          <li>They act on key aging hallmarks: genomic instability, mitochondrial dysfunction, cellular senescence.</li>
+          <li>Conventional oral delivery degrades peptides before absorption, with 75–85% loss of activity.</li>
+          <li>The mucosal route (BiogradixRelease®) delivers intact peptide with 80–93% bioavailability in 15–20 min.</li>
+          <li>Classes with strongest evidence: GHK-Cu, BPC-157, Epithalon, MOTS-c, Humanin.</li>
+          <li>The goal of peptide supplementation is to compress morbidity, not merely extend longevity.</li>
+        </ul>
+      </div>
     </div>
-
-    <p>Estamos en un momento peculiarmente interesante en la biología del envejecimiento: por primera vez en la historia, tenemos tanto la comprensión mecanística como las herramientas para intervenir de forma inteligente. Los péptidos son, en muchos sentidos, la vanguardia de esa intervención —moléculas que el cuerpo ya entiende, administradas de formas cada vez más accesibles, con una base de evidencia que crece cada año.</p>
   </div>
+</article>
 
-  <!-- ENGLISH -->
-  <div id="article-en" style="display:none;">
-    <p>The idea that peptides could be longevity tools isn't new. What is relatively recent — and accelerating rapidly — is the mechanistic understanding of how they work, the accumulation of clinical evidence in humans, and the availability of formulations that can be administered with the bioavailability necessary for that evidence to translate into real results.</p>
-
-    <p>In 2026, bioactive peptides are moving from being laboratory curiosities or resources of elite anti-aging medicine to becoming accessible, evidence-based tools. This article surveys the state of the art: what signaling peptides are, how they act on aging mechanisms, and what current research says about the most relevant ones for clinical practice.</p>
-
-    <h2>What is a peptide and why does it matter for longevity?</h2>
-
-    <p>A peptide is, simply put, a short chain of amino acids — generally between 2 and 50 — joined by peptide bonds. They're smaller than full proteins, but no less potent. In fact, many peptides act as precise biological messengers: they tell cells what to do, when to divide, when to repair DNA, when to activate or suppress an inflammatory response.</p>
-
-    <p>The biology of aging, in large part, is a story of peptides that are no longer produced in necessary quantities. Growth hormone, thymosin, collagen-regulating peptides, neuropeptides that modulate desire and social bonding — all decline with age, and the functions they regulate decline with them.</p>
-
-    <p>The central hypothesis of peptide medicine for longevity is straightforward: if we identify the peptides that regulate the most relevant aging processes, and administer them with sufficient bioavailability, we can intervene in those processes precisely and with minimal side effects compared to more aggressive pharmacological alternatives.</p>
-
-    <h2>Aging biology findings that change the framework</h2>
-
-    <p>To understand why peptides are relevant in longevity, it helps to know what aging biologists identify as the "hallmarks" of the process. The work of López-Otín, Blasco, and collaborators (updated in 2023 to 12 hallmarks) identifies: genomic instability, telomere attrition, epigenetic alterations, loss of proteostasis, deregulated macroautophagy, mitochondrial dysfunction, cellular senescence, stem cell exhaustion, altered intercellular communication, chronic inflammation (inflammaging), microbiome dysbiosis, and dysregulated nutrient sensing.</p>
-
-    <p>Bioactive peptides have the ability to act on several of these mechanisms simultaneously. It's not a single effect — it's systemic modulation through signaling pathways the body already knows.</p>
-
-    <div class="pull-quote">
-      <p>"Peptides don't teach the body anything new. They remind it how it functioned when it was young."</p>
-    </div>
-
-    <h2>The Biogradix peptide line: mechanisms and evidence</h2>
-
-    <div class="peptide-grid">
-      <div class="peptide-card">
-        <div class="peptide-card-name">Glutathione</div>
-        <div class="peptide-card-product">CELLDEW™</div>
-        <div class="peptide-card-desc">Master antioxidant tripeptide. Neutralizes ROS, regenerates vitamins C and E, detoxifies the liver. Its age-related decline is one of the best biomarkers of accumulated oxidative stress.</div>
-      </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">NAD+</div>
-        <div class="peptide-card-product">VITACHARGE™</div>
-        <div class="peptide-card-desc">Sirtuin and PARP cofactor. Activates DNA repair, protects mitochondria, and regulates circadian rhythms. Its restoration is one of the most supported longevity interventions.</div>
-      </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">GHK-Cu</div>
-        <div class="peptide-card-product">RADIANCEMAX™</div>
-        <div class="peptide-card-desc">Copper-containing tripeptide. Regulates over 4,000 genes, stimulates collagen and elastin synthesis, activates tissue repair and has anti-inflammatory properties documented in multiple studies.</div>
-      </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">BPC-157</div>
-        <div class="peptide-card-product">RECOVERYPRO™</div>
-        <div class="peptide-card-desc">15-amino acid peptide isolated from gastric protein. Accelerates muscle and joint recovery, reduces DOMS by 40–50%, and has protective effects on the gastrointestinal system.</div>
-      </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">Thymosin Alpha-1</div>
-        <div class="peptide-card-product">IMMUNEFORT™</div>
-        <div class="peptide-card-desc">28-amino acid thymic peptide. Regulates maturation of T cells, NK cells, and dendritic cells. Approved in several countries for chronic infections and immunodeficiency. Central to immunosenescence.</div>
-      </div>
-      <div class="peptide-card">
-        <div class="peptide-card-name">CJC-1295 / Ipamorelin</div>
-        <div class="peptide-card-product">MUSCLEMAXX™</div>
-        <div class="peptide-card-desc">GH/IGF-1 axis secretagogues. Stimulate pulsatile growth hormone release without the side effects of exogenous GH. Improve body composition, protein synthesis, and recovery.</div>
-      </div>
-    </div>
-
-    <h2>The administration problem: why the route matters as much as the molecule</h2>
-
-    <p>The history of peptides in medicine has had a fundamental problem for decades: many of the most potent ones don't survive the digestive tract. They're degraded by intestinal proteases before they can be absorbed in clinically significant amounts. That's why, for a long time, the only way to get real benefits was injectable administration.</p>
-
-    <p>Injections work — and remain the gold standard for certain peptides in clinical settings. But they have obvious limitations: they require training, present infection risks at the site, and create a massive adherence barrier for the non-medical user. If the protocol requires daily needles, most people don't sustain it long enough to see results.</p>
-
-    <p>The oral mucosa solves this elegantly. The epithelial tissue of the cheek and gums is highly permeable to peptide-sized molecules, is irrigated by very superficial capillaries that drain directly to systemic circulation, and is free from the proteolytic enzymes of the intestine. The result is bioavailability comparable — in many cases — to subcutaneous injection, with adherence that transforms the protocol into something sustainable for daily life.</p>
-
-    <h2>Biomarkers: how to know if peptides are working</h2>
-
-    <p>One legitimate criticism of anti-aging medicine is the difficulty of measuring whether interventions are actually working. Subjective changes — more energy, better sleep, faster recovery — are important but insufficient for rigorous evaluation. Objective biomarkers give a more complete picture:</p>
-
-    <ul>
-      <li><strong>Serum IGF-1:</strong> Indicator of the GH/IGF-1 axis. Values low for age indicate growth hormone secretion deficit that secretagogues (CJC-1295/Ipamorelin) can correct.</li>
-      <li><strong>GSH/GSSG ratio:</strong> Measures cellular redox status. A low ratio indicates elevated oxidative stress and responds to glutathione supplementation.</li>
-      <li><strong>NAD+ in blood or PBMCs:</strong> Several labs now offer this measurement. Values low for age confirm supplementation need and allow response monitoring.</li>
-      <li><strong>Inflammatory markers (hs-CRP, IL-6, TNF-α):</strong> Reflect inflammaging. They decrease with the combination of glutathione, NAD+, and Thymosin Alpha-1.</li>
-      <li><strong>Epigenetic clocks (GrimAge, DunedinPACE):</strong> Measure "biological age" through DNA methylation patterns. They are the most informative longevity biomarkers currently available.</li>
-    </ul>
-
-    <h2>The near future: what research is exploring</h2>
-
-    <p>Longevity peptide science is advancing rapidly. Some of the most interesting developments underway include Epithalon (a tetrapeptide showing telomere elongation in animal models), SS-31/Elamipretide (mitochondria-targeted, in clinical trials for heart failure and nephropathy), and humanin and MOTS-c (mitochondrially encoded peptides that act as systemic protective hormones, declining with age). The most promising research is moving toward combined protocols targeting multiple hallmarks simultaneously.</p>
-
-    <div class="key-takeaways">
-      <div class="key-takeaways-title">Key Takeaways</div>
-      <ul>
-        <li>Bioactive peptides act as precise messengers on aging mechanisms: mitochondria, DNA, inflammation, immune system.</li>
-        <li>Administration route determines bioavailability. Oral mucosa offers a non-invasive alternative with efficiency comparable to injection for many peptides.</li>
-        <li>Glutathione, NAD+, GHK-Cu, BPC-157, Thymosin Alpha-1, and GH secretagogues all have documented mechanisms of action on aging hallmarks.</li>
-        <li>Objective biomarkers (IGF-1, GSH/GSSG, blood NAD+, epigenetic clocks) allow measurement of supplementation response.</li>
-        <li>The longevity trend is moving toward combined protocols targeting multiple mechanisms simultaneously.</li>
-      </ul>
-    </div>
-
-    <p>We are at a peculiarly interesting moment in aging biology: for the first time in history, we have both the mechanistic understanding and the tools to intervene intelligently. Peptides are, in many ways, the vanguard of that intervention — molecules the body already understands, administered in increasingly accessible ways, with an evidence base that grows every year.</p>
-  </div>
-</div>
-
-<!-- RELATED -->
+<!-- RELATED PRODUCTS -->
 <div class="related-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="label" data-i18n="related-label">Explora los péptidos</p>
-      <h2 class="section-h2" data-i18n="related-h2">Toda la línea de <em>longevidad activa</em></h2>
-    </div>
-    <div class="related-grid">
-      <a href="producto-vitacharge.html" class="product-card reveal">
-        <div class="product-img"><img src="img-vitacharge.png" alt="VITACHARGE"/><span class="product-badge-pill">NAD+</span></div>
-        <div class="product-body"><div class="product-name">VITACHARGE™</div><div class="product-tagline-sm">Energía &amp; longevidad celular</div><div class="product-desc-sm" data-i18n="p1-sm">Precursores de NAD+ para restaurar la energía mitocondrial y activar sirtuinas.</div></div>
-      </a>
-      <a href="producto-immunefort.html" class="product-card reveal">
-        <div class="product-img"><img src="img-immunefort.png" alt="IMMUNEFORT"/><span class="product-badge-pill">Thymosin Alpha-1</span></div>
-        <div class="product-body"><div class="product-name">IMMUNEFORT™</div><div class="product-tagline-sm">Inmunidad adaptativa</div><div class="product-desc-sm" data-i18n="p2-sm">Péptido tímico para regular la respuesta inmune innata y adaptativa.</div></div>
-      </a>
-      <a href="producto-musclemaxx.html" class="product-card reveal">
-        <div class="product-img"><img src="img-musclemaxx.png" alt="MUSCLEMAXX"/><span class="product-badge-pill">CJC-1295 / Ipamorelin</span></div>
-        <div class="product-body"><div class="product-name">MUSCLEMAXX™</div><div class="product-tagline-sm">Masa muscular &amp; fuerza</div><div class="product-desc-sm" data-i18n="p3-sm">Secretagogos de GH para estimular el eje hormonal de forma pulsátil y natural.</div></div>
-      </a>
+  <div class="related-inner">
+    <div class="related-eyebrow reveal">Formulas relacionadas</div>
+    <div class="related-title reveal">Productos con BiogradixRelease®</div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-card-tag">Energía · Longevidad</div>
+        <div class="product-card-name">VITACHARGE™</div>
+        <div class="product-card-desc">Precursor NMN con cofactores sinérgicos para longevidad celular. Biodisponibilidad 80–93% vía mucosa.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-tag">Inmunidad · Defensa</div>
+        <div class="product-card-name">IMMUNEFORT™</div>
+        <div class="product-card-desc">Péptidos inmunomoduladores con zinc y selenio. Fortalece la respuesta inmune innata y adaptativa.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-tag">Músculo · Rendimiento</div>
+        <div class="product-card-name">MUSCLEMAXX™</div>
+        <div class="product-card-desc">Péptidos de señalización muscular con creatina HCl. Síntesis proteica y biogénesis mitocondrial.</div>
+        <a href="quiz.html" class="product-card-link">Descubrir</a>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- CTA -->
-<div class="cta-section">
-  <div class="container">
-    <div class="cta-inner reveal">
-      <p class="label">Diseña tu protocolo</p>
-      <h2 class="cta-h2" data-i18n="cta-h2">Longevidad <em>personalizada</em></h2>
-      <p class="cta-body" data-i18n="cta-body">Habla con nuestros especialistas y encuentra los péptidos que corresponden a tu perfil y objetivos específicos.</p>
-      <a href="https://wa.me/13467189350" class="btn-wa-lg"><span data-i18n="cta-btn">Consultar por WhatsApp</span></a>
-    </div>
-  </div>
+<div class="article-cta">
+  <h2 class="reveal" data-i18n="cta_title">¿Listo para diseñar tu protocolo de longevidad?</h2>
+  <p class="reveal" data-i18n="cta_sub">Habla con nuestro equipo especializado para encontrar las fórmulas correctas para tu perfil.</p>
+  <a href="https://wa.me/13467189350" class="btn-wa reveal" target="_blank" rel="noopener">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span data-i18n="cta_wa">Consultar por WhatsApp</span>
+  </a>
 </div>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="nav-logo" style="margin-bottom:12px;display:inline-flex;"><svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/></svg><span class="nav-logo-text" style="color:#fff;"><span class="b">bio</span>gradix</span></a>
-        <p class="footer-brand-text">Suplementación inteligente a través de mucosa oral.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Productos</div>
-        <div class="footer-links"><a href="producto-celldew.html">CELLDEW™</a><a href="producto-vitacharge.html">VITACHARGE™</a><a href="producto-radiancemax.html">RADIANCEMAX™</a><a href="producto-recoverypro.html">RECOVERYPRO™</a><a href="producto-immunefort.html">IMMUNEFORT™</a></div>
-      </div>
-      <div>
-        <div class="footer-col-title">Empresa</div>
-        <div class="footer-links"><a href="tecnologia.html">Tecnología</a><a href="educacion.html">Educación</a><a href="blog.html">Blog</a><a href="index.html#faq">FAQ</a></div>
-      </div>
-      <div>
-        <div class="footer-col-title">Contacto</div>
-        <div class="footer-links"><a href="https://wa.me/13467189350">WhatsApp</a><a href="mailto:hola@biogradix.com">hola@biogradix.com</a><a href="https://instagram.com/biogradix">Instagram</a></div>
-      </div>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-mark">BG</div>
+      <div class="footer-brand-name">BIOGRADIX</div>
+      <p class="footer-brand-desc" data-i18n="footer_desc">Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.</p>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 biogradix</span>
-      <span class="footer-disclaimer" data-i18n="footer-disc">Estos productos no han sido evaluados por la FDA.</span>
-      <div class="footer-legal"><a href="#">Privacidad</a><a href="#">Términos</a></div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_science">Ciencia</div>
+      <ul class="footer-links">
+        <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
+        <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
+        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_products">Productos</div>
+      <ul class="footer-links">
+        <li><a href="quiz.html">VITACHARGE™</a></li>
+        <li><a href="quiz.html">IMMUNEFORT™</a></li>
+        <li><a href="quiz.html">MUSCLEMAXX™</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-i18n="footer_contact">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
+        <li><a href="https://wa.me/13467189350" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="terms.html" data-i18n="footer_terms">Términos</a></li>
+        <li><a href="privacy.html" data-i18n="footer_privacy">Privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-i18n="footer_copy">© 2026 Biogradix. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="terms.html" data-i18n="footer_terms">Términos</a>
+      <a href="privacy.html" data-i18n="footer_privacy">Privacidad</a>
     </div>
   </div>
 </footer>
 
 <script>
 const T={
-  'art-cat':{es:'Ciencia',en:'Science'},
-  'art-title':{es:'Péptidos y longevidad: el estado del arte en 2026 — qué dice la ciencia, qué promete la clínica',en:'Peptides and longevity: the 2026 state of the art — what science says, what the clinic promises'},
-  'art-meta':{es:'10 de Abril, 2026 · 12 min de lectura',en:'April 10, 2026 · 12 min read'},
-  'back-blog':{es:'← Volver al blog',en:'← Back to blog'},
-  'related-label':{es:'Explora los péptidos',en:'Explore the peptides'},
-  'related-h2':{es:'Toda la línea de <em>longevidad activa</em>',en:'The complete <em>active longevity</em> line'},
-  'p1-sm':{es:'Precursores de NAD+ para restaurar la energía mitocondrial y activar sirtuinas.',en:'NAD+ precursors to restore mitochondrial energy and activate sirtuins.'},
-  'p2-sm':{es:'Péptido tímico para regular la respuesta inmune innata y adaptativa.',en:'Thymic peptide to regulate innate and adaptive immune response.'},
-  'p3-sm':{es:'Secretagogos de GH para estimular el eje hormonal de forma pulsátil y natural.',en:'GH secretagogues to stimulate the hormonal axis in a pulsatile, natural way.'},
-  'cta-h2':{es:'Longevidad <em>personalizada</em>',en:'<em>Personalized</em> longevity'},
-  'cta-body':{es:'Habla con nuestros especialistas y encuentra los péptidos que corresponden a tu perfil y objetivos específicos.',en:'Talk with our specialists and find the peptides that match your profile and specific goals.'},
-  'cta-btn':{es:'Consultar por WhatsApp',en:'Consult via WhatsApp'},
-  'footer-disc':{es:'Estos productos no han sido evaluados por la FDA.',en:'These products have not been evaluated by the FDA.'},
+  es:{
+    nav_tech:"Tecnología",nav_edu:"Educación",nav_blog:"Blog",nav_contact:"Contacto",nav_wa:"WhatsApp",
+    footer_desc:"Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.",
+    footer_science:"Ciencia",footer_products:"Productos",footer_contact:"Contacto",
+    footer_terms:"Términos",footer_privacy:"Privacidad",
+    footer_copy:"© 2026 Biogradix. Todos los derechos reservados.",
+    cta_title:"¿Listo para diseñar tu protocolo de longevidad?",
+    cta_sub:"Habla con nuestro equipo especializado para encontrar las fórmulas correctas para tu perfil.",
+    cta_wa:"Consultar por WhatsApp"
+  },
+  en:{
+    nav_tech:"Technology",nav_edu:"Education",nav_blog:"Blog",nav_contact:"Contact",nav_wa:"WhatsApp",
+    footer_desc:"Precision supplements with BiogradixRelease® technology for maximum bioavailability.",
+    footer_science:"Science",footer_products:"Products",footer_contact:"Contact",
+    footer_terms:"Terms",footer_privacy:"Privacy",
+    footer_copy:"© 2026 Biogradix. All rights reserved.",
+    cta_title:"Ready to design your longevity protocol?",
+    cta_sub:"Talk with our specialized team to find the right formulas for your profile.",
+    cta_wa:"Consult via WhatsApp"
+  }
 };
-function setLang(lang){
-  localStorage.setItem('lang',lang);
-  document.getElementById('htmlRoot').lang=lang;
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[k]&&T[k][lang])el.textContent=T[k][lang];});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(T[k]&&T[k][lang])el.innerHTML=T[k][lang];});
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(b=>{if(b.textContent.toLowerCase()===lang)b.classList.add('active');});
-  document.getElementById('article-es').style.display=lang==='es'?'':'none';
-  document.getElementById('article-en').style.display=lang==='en'?'':'none';
+
+function setLang(l){
+  localStorage.setItem('bgLang',l);
+  document.getElementById('htmlRoot').lang=l;
+  document.getElementById('btn-es').classList.toggle('active',l==='es');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('sw-es').classList.toggle('active',l==='es');
+  document.getElementById('sw-en').classList.toggle('active',l==='en');
+  document.getElementById('article-es').style.display=l==='es'?'block':'none';
+  document.getElementById('article-en').style.display=l==='en'?'block':'none';
+  if(l==='es'){
+    document.getElementById('hero-eyebrow').textContent='Ciencia · Longevidad';
+    document.getElementById('hero-title').textContent='Péptidos de Longevidad: La Ciencia Detrás de Vivir Mejor';
+    document.getElementById('hero-author').textContent='Dr. Juan Blanco — Investigador en Biología del Envejecimiento';
+    document.getElementById('hero-date').textContent='10 de Abril, 2026 · 12 min';
+  } else {
+    document.getElementById('hero-eyebrow').textContent='Science · Longevity';
+    document.getElementById('hero-title').textContent='Longevity Peptides: The Science Behind Living Better';
+    document.getElementById('hero-author').textContent='Dr. Juan Blanco — Aging Biology Researcher';
+    document.getElementById('hero-date').textContent='April 10, 2026 · 12 min';
+  }
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l][k]) el.textContent=T[l][k];
+  });
+  observeReveal();
 }
-const saved=localStorage.getItem('lang')||'es';setLang(saved);
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>30));
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('up');}),{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.add('open'));
-document.getElementById('mobileMenu').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open');});
+
+function toggleMenu(){
+  document.getElementById('mobileOverlay').classList.toggle('open');
+  document.getElementById('mobilePanel').classList.toggle('open');
+}
+
+function observeReveal(){
+  const els=document.querySelectorAll('.reveal:not(.visible)');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:.1});
+  els.forEach(el=>obs.observe(el));
+}
+
+(function(){
+  const l=localStorage.getItem('bgLang')||'es';
+  setLang(l);
+  observeReveal();
+})();
 </script>
 </body>
 </html>
