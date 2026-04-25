@@ -55,7 +55,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 .product-shadow{width:80px;height:12px;background:radial-gradient(ellipse,rgba(24,20,15,.15) 0%,transparent 70%);margin:0 auto;margin-top:4px;}
 
 @media(max-width:768px){
-  nav>div:nth-child(2){display:none;}
+  nav>div:nth-child(2){display:none!important;}
   .hero-right-panel{display:none!important;}
   section[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
   section[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
@@ -66,6 +66,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   [style*="padding:64px 80px"]{padding:40px 20px!important;}
   footer[style]{grid-template-columns:1fr!important;padding:40px 20px!important;}
   #hamburger{display:flex!important;}
+  nav{padding:0 20px!important;}
   .nav-quiz-btn{display:none!important;}
 }
 </style>

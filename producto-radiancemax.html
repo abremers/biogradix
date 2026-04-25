@@ -28,7 +28,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 .ben-card{padding:48px 36px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
 .coa-stat{padding:40px 36px;border:1px solid rgba(245,241,235,.1);}
 @media(max-width:768px){
-  nav>div:nth-child(2){display:none;}
+  nav>div:nth-child(2){display:none!important;}
   [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
   [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important;}
   [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
@@ -38,6 +38,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   [style*="padding:80px"]{padding:48px 20px!important;}
   footer[style]{grid-template-columns:1fr!important;padding:40px 20px!important;}
   #hamburger{display:flex!important;}
+  nav{padding:0 20px!important;}
   .nav-quiz-btn{display:none!important;}
   .product-image-col{display:none!important;}
 }
@@ -122,7 +123,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   </div>
   <div class="product-image-col" style="background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:calc(100vh - 64px);">
     <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
-      <img src="img-radiancemax-display.png" alt="RadianceMax" style="max-height:420px;max-width:280px;object-fit:contain;position:relative;z-index:1;"/>
+      <img src="img-radiancemax-display.png" alt="RadianceMax" style="max-height:65vh;max-width:360px;width:100%;object-fit:contain;position:relative;z-index:1;"/>
       <div style="position:absolute;top:24px;right:-20px;background:var(--bone);border:1px solid var(--rule);padding:12px 18px;border-radius:2px;z-index:2;">
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;" data-i18n="badge-purity">Pureza</div>
         <div style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;">98<span style="font-size:14px;">%</span></div>

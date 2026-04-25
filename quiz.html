@@ -28,7 +28,8 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bone);line
 .mobile-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--bone);padding:80px 32px 40px;display:flex;flex-direction:column;gap:4px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);border-left:1px solid var(--rule);}
 #mobileMenu.open .mobile-panel{transform:none;}
 .mobile-panel a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--rule);}
-@media(max-width:768px){nav>div:nth-child(2){display:none;}#hamburger{display:flex!important;}.nav-quiz-btn{display:none!important;}}
+@media(max-width:768px){nav>div:nth-child(2){display:none!important;}#hamburger{display:flex!important;}
+  nav{padding:0 20px!important;}.nav-quiz-btn{display:none!important;}}
 
 /* ── HERO ── */
 .quiz-hero{background:var(--ink);padding:96px 0 72px;margin-top:64px;border-bottom:1px solid var(--rule-strong);}
