@@ -4,611 +4,340 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>RECOVERYPRO™ — Total Recovery | biogradix</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-<style>
-:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--alert:#D4534E;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
-.container{max-width:1200px;margin:0 auto;padding:0 48px;}
-@media(max-width:768px){.container{padding:0 20px;}}
-.label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);}
-.serif{font-family:'Instrument Serif',serif;font-style:italic;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.up{opacity:1;transform:none;}
-.reveal-delay-1{transition-delay:.08s;}.reveal-delay-2{transition-delay:.16s;}.reveal-delay-3{transition-delay:.24s;}.reveal-delay-4{transition-delay:.32s;}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
-.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
-.nav-inner{display:flex;align-items:center;gap:0;height:64px;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
-.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
-.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--teal);}
-.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
-.lang-btn.active,.lang-btn:hover{color:var(--teal);}
-.lang-sep{color:var(--silver);font-size:12px;}
-.btn-wa{display:flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
-.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
-@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
-.mobile-menu.open{opacity:1;pointer-events:all;}
-.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
-.mobile-menu.open .mobile-menu-panel{transform:none;}
-.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);transition:color .2s;}
-.mobile-menu-panel a:hover{color:var(--teal);}
-.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
-/* HERO */
-.product-hero{background:var(--cloud);padding:80px 0 72px;margin-top:64px;position:relative;overflow:hidden;}
-#helix-canvas{position:absolute;right:0;top:0;width:52%;height:100%;pointer-events:none;opacity:.12;}
-.product-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-.product-cat-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;}
-.product-cat-dot{width:6px;height:6px;border-radius:50%;background:var(--teal-active);}
-.product-hero-name{font-weight:700;font-size:52px;letter-spacing:-.8px;color:var(--navy);margin-bottom:4px;line-height:1;}
-.product-hero-tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;color:var(--teal);margin-bottom:20px;}
-.product-hero-desc{font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:28px;max-width:440px;}
-.product-hero-benefits{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
-.product-hero-benefits li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-1);}
-.benefit-check{width:20px;height:20px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.product-hero-meta{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:28px;}
-.meta-chip{display:flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);background:var(--cloud);border:1px solid var(--silver);border-radius:20px;padding:6px 12px;}
-.hero-img-wrap{border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 24px 64px rgba(11,26,43,.12);position:relative;}
-.hero-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
-.hero-img-badge{position:absolute;bottom:20px;left:20px;background:rgba(250,251,252,.95);backdrop-filter:blur(8px);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;border:1px solid var(--silver);}
-.hero-badge-icon{width:36px;height:36px;border-radius:8px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.hero-badge-text .t1{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--teal);display:block;}
-.hero-badge-text .t2{font-size:13px;font-weight:500;color:var(--navy);}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:8px;padding:13px 24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
-.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
-@media(max-width:900px){.product-hero-inner{grid-template-columns:1fr;}.product-hero-name{font-size:36px;}}
-/* HOW IT WORKS */
-.how-section{padding:80px 0;background:#fff;}
-.section-header{text-align:center;margin-bottom:52px;}
-.section-header .label{margin-bottom:12px;display:block;}
-.section-h2{font-family:'DM Sans',sans-serif;font-weight:500;font-size:32px;letter-spacing:-.4px;color:var(--navy);margin-bottom:10px;}
-.section-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.section-sub{font-size:15px;color:var(--text-2);max-width:520px;margin:0 auto;}
-.steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
-.steps-grid::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--mint),var(--teal),var(--mint));}
-.step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 8px;}
-.step-dot{width:56px;height:56px;border-radius:50%;background:var(--mint);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--teal);}
-.step-label{font-weight:500;font-size:13px;color:var(--navy);margin-bottom:6px;}
-.step-desc{font-size:12px;color:var(--text-2);line-height:1.5;}
-@media(max-width:768px){.steps-grid{grid-template-columns:1fr 1fr;gap:24px;}.steps-grid::before{display:none;}}
-.product-peptide-name{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;opacity:.8;}
-/* WHY CARDS */
-.why-card{background:#fff;border:1px solid var(--silver);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:box-shadow .25s,transform .25s;}
-.why-card:hover{box-shadow:0 8px 32px rgba(15,110,86,.1);transform:translateY(-2px);}
-.why-icon{width:44px;height:44px;border-radius:10px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.why-title{font-weight:600;font-size:15px;color:var(--navy);}
-.why-body{font-size:13px;color:var(--text-2);line-height:1.65;}
-/* COA */
-.coa-section{padding:80px 0;background:var(--navy);}
-.coa-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-@media(max-width:768px){.coa-inner{grid-template-columns:1fr;}}
-.coa-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-active);display:block;margin-bottom:12px;}
-.coa-h2{font-weight:500;font-size:30px;letter-spacing:-.4px;color:#fff;margin-bottom:16px;}
-.coa-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.coa-body{font-size:15px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:28px;}
-.coa-list{display:flex;flex-direction:column;gap:12px;}
-.coa-item{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.7);}
-.coa-check{width:20px;height:20px;border-radius:50%;background:rgba(29,158,117,.2);border:1px solid var(--teal-active);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.coa-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.coa-stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;text-align:center;}
-.coa-stat-val{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;color:var(--teal-active);display:block;margin-bottom:6px;}
-.coa-stat-label{font-size:12px;color:rgba(255,255,255,.4);}
-/* RELATED */
-.related-section{padding:80px 0;background:var(--cloud);}
-.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-@media(max-width:768px){.related-grid{grid-template-columns:1fr;}}
-.product-card{background:#fff;border:1px solid var(--silver);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s;cursor:pointer;text-decoration:none;color:inherit;}
-.product-card:hover{border-color:rgba(15,110,86,.3);box-shadow:0 12px 40px rgba(11,26,43,.1);transform:translateY(-3px);}
-.product-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--mint);}
-.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
-.product-card:hover .product-img img{transform:scale(1.04);}
-.product-badge-pill{position:absolute;top:12px;left:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:6px;padding:4px 10px;}
-.product-body{padding:20px;flex:1;}
-.product-name{font-weight:600;font-size:16px;color:var(--navy);margin-bottom:3px;}
-.product-tagline-sm{font-family:'Instrument Serif',serif;font-style:italic;font-size:13px;color:var(--text-2);margin-bottom:10px;}
-.product-desc-sm{font-size:12px;color:var(--text-3);}
-/* CTA */
-.cta-section{padding:80px 0;background:var(--navy);position:relative;overflow:hidden;}
-.cta-helix{position:absolute;inset:0;opacity:.05;pointer-events:none;}
-.cta-inner{position:relative;z-index:1;text-align:center;max-width:600px;margin:0 auto;}
-.cta-h2{font-weight:500;font-size:36px;letter-spacing:-.5px;color:#fff;margin:12px 0 16px;}
-.cta-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.cta-body{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:32px;}
-.btn-wa-lg{display:inline-flex;align-items:center;gap:10px;background:var(--teal);color:#fff;border-radius:10px;padding:16px 32px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;}
-.btn-wa-lg:hover{background:var(--teal-active);transform:translateY(-2px);box-shadow:0 10px 30px rgba(15,110,86,.4);}
-/* FOOTER */
-.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:56px 0 32px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px;}}
-@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
-.footer-brand-text{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin:12px 0 20px;}
-.footer-col-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px;}
-.footer-links{display:flex;flex-direction:column;gap:10px;}
-.footer-links a{font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:var(--teal-active);}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-copy{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);}
-.footer-disclaimer{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.5px;color:rgba(255,255,255,.15);text-align:center;}
-.footer-legal{display:flex;gap:20px;}
-.footer-legal a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
-.footer-legal a:hover{color:rgba(255,255,255,.5);}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--bone:#F5F1EB;--stone:#EDE8E0;--ink:#18140F;--ink-soft:#4A443C;--ink-faint:#9A9189;--forest:#2E4A3A;--rule:rgba(24,20,15,.1);}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.up{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}.reveal-delay-3{transition-delay:.3s;}
+#mobileMenu{position:fixed;inset:0;z-index:99;background:rgba(24,20,15,.5);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
+#mobileMenu.open{opacity:1;pointer-events:all;}
+.mobile-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--bone);padding:80px 32px 40px;display:flex;flex-direction:column;gap:4px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);border-left:1px solid var(--rule);}
+#mobileMenu.open .mobile-panel{transform:none;}
+.mobile-panel a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--rule);}
+.benefit-check{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-top:1px solid var(--rule);}
+.benefit-check:last-child{border-bottom:1px solid var(--rule);}
+.step-line{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);}
+.step-cell{background:var(--bone);padding:40px 32px;}
+.step-num{font-family:'Cormorant Display',serif;font-size:48px;font-weight:300;color:var(--rule);line-height:1;margin-bottom:16px;}
+.ben-card{padding:48px 36px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.coa-stat{padding:40px 36px;border:1px solid rgba(245,241,235,.1);}
+@media(max-width:768px){
+  nav>div:nth-child(2){display:none;}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important;}
+  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important;}
+  .step-line{grid-template-columns:1fr!important;}
+  [style*="padding:120px 80px"],[style*="padding:140px 80px"],[style*="padding:100px 80px"]{padding:60px 20px!important;}
+  [style*="padding:80px"]{padding:48px 20px!important;}
+  footer[style]{grid-template-columns:1fr!important;padding:40px 20px!important;}
+  #hamburger{display:flex!important;}
+  .nav-quiz-btn{display:none!important;}
+  .product-image-col{display:none!important;}
+}
+</style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <svg width="32" height="18" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
-        <span class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
-        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
-        <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
-        <a href="blog.html" data-i18n="nav-blog">Blog</a>
-        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
-        <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
-      </div>
-      <div class="nav-right">
-        <button class="lang-btn active" onclick="setLang('es')">ES</button>
-        <span class="lang-sep">/</span>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <a href="https://wa.me/13467189350" class="btn-wa">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          WhatsApp
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-      </div>
-    </div>
+<!-- NAV -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(245,241,235,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);">
+  <a href="index.html" style="font-family:'Cormorant Display',serif;font-size:17px;font-weight:400;letter-spacing:.5px;color:var(--ink);text-decoration:none;">bio<em style="font-style:italic;color:var(--forest);">gradix</em></a>
+  <div style="display:flex;gap:36px;position:absolute;left:50%;transform:translateX(-50%);">
+    <a href="index.html#productos" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-blog">Blog</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <button onclick="setLang('es')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">ES</button>
+    <span style="color:var(--rule);">/</span>
+    <button onclick="setLang('en')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">EN</button>
+    <a href="quiz.html" class="nav-quiz-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:10px 22px;border-radius:2px;text-decoration:none;" data-i18n="nav-quiz">Quiz</a>
+    <button id="hamburger" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;">
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+    </button>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-panel">
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+  <div class="mobile-panel">
     <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
     <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
     <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
     <a href="blog.html" data-i18n="nav-blog">Blog</a>
-        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
-    <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
-    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--silver);">
-      <button class="lang-btn active" onclick="setLang('es');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">ES</button>
-      <span class="lang-sep">/</span>
-      <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">EN</button>
+    <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
+    <div style="display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <button onclick="setLang('es')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">ES</button>
+      <button onclick="setLang('en')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">EN</button>
     </div>
-    <a href="https://wa.me/13467189350" class="btn-wa">WhatsApp</a>
+    <a href="https://wa.me/13467189350" style="margin-top:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:12px 20px;border-radius:2px;text-decoration:none;text-align:center;">WhatsApp</a>
   </div>
 </div>
 
-<!-- HERO -->
-<section class="product-hero">
-  <canvas id="helix-canvas"></canvas>
-  <div class="container">
-    <div class="product-hero-inner">
-      <div>
-        <div class="product-cat-badge reveal">
-          <div class="product-cat-dot"></div>
-          <span class="label" data-i18n="rp-cat">Recuperación · Rendimiento</span>
-        </div>
-        <div class="product-hero-name reveal reveal-delay-1">RECOVERYPRO™</div>
-        <div class="product-peptide-name">BPC-157</div>
-        <div class="product-hero-tagline reveal reveal-delay-1">Total Recovery</div>
-        <p class="product-hero-desc reveal reveal-delay-2" data-i18n="rp-desc">RECOVERYPRO™ es nuestro sistema premium de recuperación basado en BPC-157, un péptido naturalmente presente en el cuerpo descubierto originalmente en proteínas gástricas. Conocido como 'el péptido de la recuperación', BPC-157 estimula los procesos naturales más poderosos de reparación del cuerpo — desde músculo hasta tejido articular y digestivo. Absorción directa por mucosa oral para acción sistémica rápida.</p>
-        <ul class="product-hero-benefits reveal reveal-delay-2">
-          <li>
-            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="rp-hero-b1">Reducción drástica de inflamación post-esfuerzo</span>
-          </li>
-          <li>
-            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="rp-hero-b2">Reparación muscular y articular acelerada</span>
-          </li>
-          <li>
-            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="rp-hero-b3">Recuperación nocturna profunda y regeneradora</span>
-          </li>
-          <li>
-            <div class="benefit-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="rp-hero-b4">Retorno al entrenamiento 40% más rápido</span>
-          </li>
-        </ul>
-        <div class="product-hero-meta reveal reveal-delay-3">
-          <div class="meta-chip">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span data-i18n="rp-timeline-chip">1–2 semanas</span>
-          </div>
-          <div class="meta-chip">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            <span data-i18n="rp-aud-chip">Atletas · Lesiones · Alto rendimiento</span>
-          </div>
-        </div>
-        <a href="https://wa.me/13467189350" class="btn-primary reveal reveal-delay-3">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          <span data-i18n="hero-cta-wa">Consultar por WhatsApp</span>
-        </a>
+<!-- PRODUCT HERO -->
+<section style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr;margin-top:64px;">
+  <div style="padding:100px 64px 80px 80px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;">
+    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:24px;" data-i18n="rp-cat">Recuperación · Rendimiento</div>
+    <h1 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(56px,6vw,96px);font-weight:300;line-height:1;letter-spacing:-.5px;color:var(--ink);margin-bottom:12px;">RecoveryPro<sup style="font-size:.4em;vertical-align:super;">™</sup></h1>
+    <div class="reveal reveal-delay-1" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;">BPC-157</div>
+    <div class="reveal reveal-delay-2" style="font-family:'Cormorant',serif;font-size:22px;font-weight:300;font-style:italic;color:var(--ink-soft);margin-bottom:40px;" data-i18n="rp-tagline">Total Recovery</div>
+    <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:400px;margin-bottom:48px;" data-i18n="rp-desc">El BPC-157 es un pentadecapéptido derivado de proteínas gástricas. Presente de forma natural en el jugo gástrico, es el péptido de reparación natural del organismo — activa rutas de recuperación que permanecen dormidas en el cuerpo adulto.</p>
+    <div class="reveal reveal-delay-3" style="margin-bottom:48px;">
+      <div class="benefit-check">
+        <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rp-hero-b1">Reducción de inflamación muscular y articular</span>
       </div>
-      <div class="reveal reveal-delay-2">
-        <div class="hero-img-wrap">
-          <img src="img-recoverypro-display.png" alt="RECOVERYPRO Total Recovery"/>
-          <div class="hero-img-badge">
-            <div class="hero-badge-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
-            </div>
-            <div class="hero-badge-text">
-              <span class="t1" data-i18n="badge-purity-label">Pureza verificada</span>
-              <span class="t2">≥99% HPLC · GMP</span>
-            </div>
-          </div>
-        </div>
+      <div class="benefit-check">
+        <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rp-hero-b2">Reparación de músculo y tejido articular acelerada</span>
+      </div>
+      <div class="benefit-check">
+        <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rp-hero-b3">Recuperación nocturna profunda durante el sueño</span>
+      </div>
+      <div class="benefit-check">
+        <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rp-hero-b4">40% más rápido en retorno al entrenamiento</span>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-3" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;">
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;">1–2 semanas</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="rp-aud">Atletas · Lesiones · Alto rendimiento</span>
+    </div>
+    <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
+      <a href="https://wa.me/13467189350" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 28px;border-radius:2px;text-decoration:none;" data-i18n="hero-wa">Consultar vía WhatsApp</a>
+      <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
+    </div>
+  </div>
+  <div class="product-image-col" style="background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:calc(100vh - 64px);">
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+      <img src="img-recoverypro-display.png" alt="RecoveryPro" style="max-height:420px;max-width:280px;object-fit:contain;position:relative;z-index:1;"/>
+      <div style="position:absolute;top:24px;right:-20px;background:var(--bone);border:1px solid var(--rule);padding:12px 18px;border-radius:2px;z-index:2;">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;" data-i18n="badge-purity">Pureza</div>
+        <div style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;">98<span style="font-size:14px;">%</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label" data-i18n="how-label">BiogradixRelease®</span>
-      <h2 class="section-h2" data-i18n-html="how-h2">Cómo <em>funciona</em></h2>
-      <p class="section-sub" data-i18n="how-sub">Absorción por mucosa oral directa para biodisponibilidad máxima. Sin pérdidas por metabolismo hepático.</p>
+<section style="padding:120px 80px;background:var(--bone);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="how-overline">Tecnología de absorción</div>
+    <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:8px;" data-i18n-html="how-h2">BiogradixRelease<sup style="font-size:.5em;vertical-align:super;">®</sup></h2>
+    <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:520px;margin-bottom:72px;" data-i18n="how-sub">Absorción sublingual de precisión — cinco pasos desde la gota hasta la célula.</p>
+    <div class="step-line reveal reveal-delay-3">
+      <div class="step-cell"><div class="step-num">01</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step1-label">Sublingual</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step1-desc">La fórmula se deposita bajo la lengua, en contacto directo con la mucosa oral altamente vascularizada.</div></div>
+      <div class="step-cell"><div class="step-num">02</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step2-label">Difusión</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step2-desc">Las moléculas difunden a través del epitelio oral sin necesidad de digestión enzimática ni metabolismo hepático.</div></div>
+      <div class="step-cell"><div class="step-num">03</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step3-label">Absorción</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step3-desc">El péptido pasa directamente a los capilares sublinguales, evitando el efecto de primer paso hepático.</div></div>
+      <div class="step-cell"><div class="step-num">04</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step4-label">Circulación</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step4-desc">El compuesto activo entra al torrente sanguíneo sistémico en minutos, alcanzando tejidos diana con rapidez.</div></div>
+      <div class="step-cell"><div class="step-num">05</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step5-label">Acción celular</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step5-desc">El péptido interactúa con receptores específicos a nivel celular, activando las cascadas biológicas deseadas.</div></div>
     </div>
-    <div class="steps-grid">
-      <div class="step-item reveal">
-        <div class="step-dot">1</div>
-        <div class="step-label" data-i18n="step1-label">Aplicación</div>
-        <div class="step-desc" data-i18n="step1-desc">Coloca el suplemento contra la mejilla interna o encía superior</div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section style="padding:0 80px 120px;background:var(--bone);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="ben-label">Beneficios clínicos</div>
+    <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:64px;" data-i18n="rp-ben-h2">Lo que RecoveryPro repara en ti</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--rule);">
+      <div class="ben-card reveal">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">01</div>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rp-ben-t1">Recuperación Muscular Acelerada</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rp-ben-b1">Reduce el DOMS (dolor muscular de aparición tardía) hasta en un 40–50%. Acelera la eliminación de metabolitos de desecho y la resíntesis de glucógeno, permitiendo entrenamientos más frecuentes e intensos.</p>
       </div>
-      <div class="step-item reveal reveal-delay-1">
-        <div class="step-dot">2</div>
-        <div class="step-label" data-i18n="step2-label">Absorción</div>
-        <div class="step-desc" data-i18n="step2-desc">La mucosa bucal absorbe los bioactivos de inmediato</div>
+      <div class="ben-card reveal reveal-delay-1">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">02</div>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rp-ben-t2">Reparación Articular y Ligamentosa</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rp-ben-b2">Estimula la proliferación de fibroblastos y la síntesis de colágeno en tendones y ligamentos. Activa la angiogénesis local, mejorando el flujo sanguíneo hacia tejidos avasculares que naturalmente se reparan con lentitud.</p>
       </div>
-      <div class="step-item reveal reveal-delay-2">
-        <div class="step-dot">3</div>
-        <div class="step-label" data-i18n="step3-label">Entrada directa</div>
-        <div class="step-desc" data-i18n="step3-desc">Ingredientes entran al torrente sanguíneo en minutos</div>
+      <div class="ben-card reveal" style="border-top:1px solid var(--rule);">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">03</div>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rp-ben-t3">Salud Digestiva</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rp-ben-b3">BPC-157 tiene efectos gastroprotectores comprobados. Protege la mucosa gástrica, reduce la inflamación intestinal y mejora la permeabilidad del intestino delgado, optimizando la absorción de nutrientes.</p>
       </div>
-      <div class="step-item reveal reveal-delay-3">
-        <div class="step-dot">4</div>
-        <div class="step-label" data-i18n="step4-label">Sin hígado</div>
-        <div class="step-desc" data-i18n="step4-desc">Se evita el metabolismo de primer paso hepático</div>
-      </div>
-      <div class="step-item reveal reveal-delay-4">
-        <div class="step-dot">5</div>
-        <div class="step-label" data-i18n="step5-label">Biodisponibilidad total</div>
-        <div class="step-desc" data-i18n="step5-desc">2–3× más efectivo que cápsulas orales convencionales</div>
+      <div class="ben-card reveal reveal-delay-1" style="border-top:1px solid var(--rule);">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">04</div>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rp-ben-t4">Reducción de Inflamación</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rp-ben-b4">Modula vías proinflamatorias (COX-2, TNF-α, IL-6) sin los efectos secundarios de los AINEs convencionales. Resolución de inflamación crónica de baja intensidad asociada al sobreentrenamiento.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BENEFITS SECTION -->
-<section style="padding:80px 0;background:#fff;">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label" data-i18n="ben-label">Beneficios científicamente respaldados</span>
-      <h2 class="section-h2" data-i18n-html="ben-h2">Lo que <em>RECOVERYPRO™</em> hace por ti</h2>
+<!-- COA -->
+<section style="padding:120px 80px;background:var(--ink);">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+    <div>
+      <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="coa-label">Certificaciones &amp; Calidad</div>
+      <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--bone);margin-bottom:40px;">Pureza que<br/><em style="font-style:italic;color:var(--forest);">se certifica.</em></h2>
+      <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-faint);margin-bottom:48px;" data-i18n="rp-coa-body">Cada lote de RecoveryPro se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico.</p>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c1">GMP Farmacéutico certificado</span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c2">Análisis HPLC por lote</span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c3">Prueba de endotoxinas LAL</span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);border-bottom:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c4">Verificación de identidad molecular</span></div>
+      </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:0;">
-      <div class="why-card reveal">
-        <div class="why-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-        </div>
-        <div class="why-title" data-i18n="ben-t1">Recuperación Muscular Acelerada</div>
-        <div class="why-body" data-i18n="ben-b1">BPC-157 acelera síntesis proteica muscular. Reduce el dolor muscular tardío (DOMS) en un 40–50%. Disminuye tiempo de recuperación entre sesiones de entrenamiento.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-1">
-        <div class="why-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <div class="why-title" data-i18n="ben-t2">Reparación Articular y Ligamentosa</div>
-        <div class="why-body" data-i18n="ben-b2">Estimula síntesis de colágeno en cartílago y ligamentos. Acelera recuperación de esguinces y distensiones. Apoya salud de rodillas, hombros y muñecas de alto uso.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-2">
-        <div class="why-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-        </div>
-        <div class="why-title" data-i18n="ben-t3">Salud Digestiva</div>
-        <div class="why-body" data-i18n="ben-b3">BPC-157 tiene propiedades gastroprotectoras documentadas. Apoya reparación del revestimiento gástrico e intestinal. Útil en síndromes de intestino permeable y inflamación digestiva.</div>
-      </div>
-      <div class="why-card reveal reveal-delay-3">
-        <div class="why-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97 0 9-2.69 9-6v-4a9 9 0 10-18 0v4c0 3.31 4.03 6 9 6z"/></svg>
-        </div>
-        <div class="why-title" data-i18n="ben-t4">Reducción de Inflamación</div>
-        <div class="why-body" data-i18n="ben-b4">BPC-157 reduce inflamación sistémica sin efectos secundarios de AINEs. Promueve angiogénesis para mejor irrigación de tejidos en reparación.</div>
-      </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(245,241,235,.1);">
+      <div class="coa-stat reveal" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">98<span style="font-size:24px;color:var(--forest);">%</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s1">Pureza mínima</div></div>
+      <div class="coa-stat reveal reveal-delay-1" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">40<span style="font-size:24px;color:var(--forest);">%</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="rp-coa-s2">Reducción del DOMS</div></div>
+      <div class="coa-stat reveal reveal-delay-2" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">15<span style="font-size:24px;color:var(--forest);">min</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s3">Inicio de absorción</div></div>
+      <div class="coa-stat reveal reveal-delay-3" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">1<span style="font-size:24px;color:var(--forest);">–2w</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s4">Resultados observables</div></div>
     </div>
   </div>
 </section>
 
-<!-- COA SECTION -->
-<section class="coa-section">
-  <div class="container">
-    <div class="coa-inner">
-      <div class="reveal">
-        <span class="coa-label" data-i18n="coa-label">Transparencia total</span>
-        <h2 class="coa-h2" data-i18n-html="coa-h2">Certificado de análisis <em>por lote</em></h2>
-        <p class="coa-body" data-i18n="rp-coa-body">Cada lote de RECOVERYPRO™ es analizado por un laboratorio independiente certificado. Puedes solicitar el COA completo de tu lote en cualquier momento — sin excepciones.</p>
-        <div class="coa-list">
-          <div class="coa-item">
-            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="coa-i1">Análisis HPLC — pureza ≥99% verificada</span>
-          </div>
-          <div class="coa-item">
-            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="coa-i2">Espectrometría de masas — identidad molecular</span>
-          </div>
-          <div class="coa-item">
-            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="coa-i3">Prueba de esterilidad y endotoxinas</span>
-          </div>
-          <div class="coa-item">
-            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="coa-i4">Fabricado bajo estándares GMP certificados</span>
-          </div>
-          <div class="coa-item">
-            <div class="coa-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-            <span data-i18n="coa-i5">Test de estabilidad a 6 meses</span>
-          </div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="coa-stats">
-          <div class="coa-stat"><span class="coa-stat-val">≥99%</span><span class="coa-stat-label" data-i18n="coa-stat1">Pureza HPLC</span></div>
-          <div class="coa-stat"><span class="coa-stat-val">GMP</span><span class="coa-stat-label" data-i18n="coa-stat2">Certificación</span></div>
-          <div class="coa-stat"><span class="coa-stat-val">2–3×</span><span class="coa-stat-label" data-i18n="coa-stat3">Biodisponibilidad</span></div>
-          <div class="coa-stat"><span class="coa-stat-val">1–2w</span><span class="coa-stat-label" data-i18n="rp-coa-stat4">Recuperación</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RELATED PRODUCTS -->
-<section class="related-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="label" data-i18n="related-label">También puede interesarte</span>
-      <h2 class="section-h2" data-i18n-html="related-h2">Productos <em>relacionados</em></h2>
-    </div>
-    <div class="related-grid">
-      <a href="producto-musclemaxx.html" class="product-card reveal">
-        <div class="product-img">
-          <img src="img-musclemaxx.png" alt="MUSCLEMAXX"/>
-          <div class="product-badge-pill" data-i18n="badge-musculo">Músculo</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">MUSCLEMAXX™</div>
-          <div class="product-tagline-sm">Peak Performance</div>
-          <div class="product-desc-sm" data-i18n="rp-rel-mm">IGF-1 LR3 + Creatina. La pareja perfecta post-entreno.</div>
-        </div>
+<!-- RELATED -->
+<section style="padding:120px 80px;background:var(--stone);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="rel-label">También te puede interesar</div>
+    <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:64px;" data-i18n="rel-h2">Protocolos relacionados</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);">
+      <a href="producto-musclemaxx.html" style="display:block;padding:48px 36px;border-right:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Músculo · Rendimiento</div>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">MuscleMaxx<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">CJC-1295 / Ipamorelin</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="rel-mm">Ver protocolo →</div>
       </a>
-      <a href="producto-vitacharge.html" class="product-card reveal reveal-delay-1">
-        <div class="product-img">
-          <img src="img-vitacharge.png" alt="VITACHARGE"/>
-          <div class="product-badge-pill" data-i18n="badge-energia">Energía</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">VITACHARGE™</div>
-          <div class="product-tagline-sm">Cellular Energy</div>
-          <div class="product-desc-sm" data-i18n="rp-rel-vc">NMN 500mg. Recupera la energía entre sesiones.</div>
-        </div>
+      <a href="producto-vitacharge.html" style="display:block;padding:48px 36px;border-right:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Energía · Nootropicos</div>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">VitaCharge<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">NAD+</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="rel-vc">Ver protocolo →</div>
       </a>
-      <a href="producto-immunefort.html" class="product-card reveal reveal-delay-2">
-        <div class="product-img">
-          <img src="img-immunefort.png" alt="IMMUNEFORT"/>
-          <div class="product-badge-pill" data-i18n="badge-inmunidad">Inmunidad</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">IMMUNEFORT™</div>
-          <div class="product-tagline-sm">Total Protection</div>
-          <div class="product-desc-sm" data-i18n="rp-rel-if">Beta-Glucan + Zinc. Mantén las defensas altas.</div>
-        </div>
+      <a href="producto-immunefort.html" style="display:block;padding:48px 36px;text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
+        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Inmunidad · Adaptógenos</div>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">ImmuneFort<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Thymosin Alpha-1</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="rel-if">Ver protocolo →</div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-  <svg class="cta-helix" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#0F6E56" stroke-width="1.5"><path d="M0 100 Q60 60,120 100 Q180 140,240 100 Q300 60,360 100 Q420 140,480 100 Q540 60,600 100 Q660 140,720 100 Q780 60,840 100 Q900 140,960 100 Q1020 60,1080 100 Q1140 140,1200 100"/><path d="M0 200 Q60 160,120 200 Q180 240,240 200 Q300 160,360 200 Q420 240,480 200 Q540 160,600 200 Q660 240,720 200 Q780 160,840 200 Q900 240,960 200 Q1020 160,1080 200 Q1140 240,1200 200"/></g></svg>
-  <div class="container">
-    <div class="cta-inner reveal">
-      <span class="label" style="color:var(--teal-active);" data-i18n="cta-label">¿Listo para empezar?</span>
-      <h2 class="cta-h2" data-i18n-html="cta-h2">Consulta gratuita<br/><em>por WhatsApp</em></h2>
-      <p class="cta-body" data-i18n="cta-body">Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.</p>
-      <a href="https://wa.me/13467189350" class="btn-wa-lg">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        <span data-i18n="cta-btn">Contactar por WhatsApp</span>
-      </a>
-    </div>
+<!-- QUIZ CTA -->
+<section style="padding:140px 80px;background:var(--stone);border-top:1px solid var(--rule);">
+  <div style="max-width:1160px;margin:0 auto;text-align:center;">
+    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="quiz-overline">Protocolo personalizado</div>
+    <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:24px;" data-i18n-html="quiz-h">¿Cuál es tu<br/><em style="font-style:italic;color:var(--forest);">protocolo ideal?</em></h2>
+    <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:440px;margin:0 auto 48px;" data-i18n="quiz-sub">Responde 5 preguntas y recibe una recomendación personalizada basada en tus objetivos.</p>
+    <div class="reveal reveal-delay-3"><a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:16px 36px;border-radius:2px;text-decoration:none;" data-i18n="quiz-cta">Iniciar el quiz</a></div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="nav-logo" style="display:inline-flex;margin-bottom:4px;">
-          <svg width="28" height="16" viewBox="0 0 64 36" fill="none"><path d="M4 10 Q13 4,22 10 Q31 16,40 10 Q49 4,58 10" stroke="#0F6E56" stroke-width="2" stroke-linecap="round"/><path d="M4 18 Q13 24,22 18 Q31 12,40 18 Q49 24,58 18" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round" opacity=".45"/></svg>
-          <span class="nav-logo-text" style="color:inherit;"><span style="color:var(--teal)">bio</span><span style="color:var(--silver)">gradix</span></span>
-        </a>
-        <p class="footer-brand-text" data-i18n="footer-brand">Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.</p>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-col-products">Productos</div>
-        <div class="footer-links">
-          <a href="producto-celldew.html">CELLDEW™</a>
-          <a href="producto-vitacharge.html">VITACHARGE™</a>
-          <a href="producto-radiancemax.html">RADIANCEMAX™</a>
-          <a href="producto-recoverypro.html">RECOVERYPRO™</a>
-          <a href="producto-immunefort.html">IMMUNEFORT™</a>
-          <a href="producto-passionboost.html">PASSIONBOOST™</a>
-          <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-col-resources">Recursos</div>
-        <div class="footer-links">
-          <a href="tecnologia.html" data-i18n="footer-res-tech">Tecnología</a>
-          <a href="educacion.html" data-i18n="footer-res-edu">Educación</a>
-          <a href="blog.html" data-i18n="footer-res-blog">Blog</a>
-          <a href="index.html#faq" data-i18n="footer-res-faq">FAQ</a>
-          <a href="#" data-i18n="footer-res-coa">Certificados COA</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer-col-contact">Contacto</div>
-        <div class="footer-links">
-          <a href="https://wa.me/13467189350">WhatsApp</a>
-          <a href="#">Instagram</a>
-          <a href="mailto:hola@biogradix.com">hola@biogradix.com</a>
-        </div>
-      </div>
+<footer style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:0;padding:80px;background:var(--ink);border-top:1px solid rgba(245,241,235,.1);">
+  <div style="padding-right:64px;border-right:1px solid rgba(245,241,235,.08);">
+    <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;letter-spacing:.5px;color:var(--bone);margin-bottom:16px;">bio<em style="font-style:italic;color:var(--forest);">gradix</em></div>
+    <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-faint);max-width:260px;margin-bottom:32px;" data-i18n="foot-desc">Péptidos bioactivos de grado farmacéutico. Absorción sublingual de precisión.</p>
+    <a href="https://wa.me/13467189350" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:12px 24px;border-radius:2px;text-decoration:none;" data-i18n="foot-wa">WhatsApp</a>
+  </div>
+  <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-products">Productos</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="producto-celldew.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">CellDew</a>
+      <a href="producto-vitacharge.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">VitaCharge</a>
+      <a href="producto-radiancemax.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RadianceMax</a>
+      <a href="producto-recoverypro.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RecoveryPro</a>
+      <a href="producto-immunefort.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">ImmuneFort</a>
+      <a href="producto-passionboost.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">PassionBoost</a>
+      <a href="producto-musclemaxx.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">MuscleMaxx</a>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy" data-i18n="footer-copy">© 2026 biogradix. Todos los derechos reservados.</span>
-      <span class="footer-disclaimer" data-i18n="footer-disclaimer">Solo para uso personal. Consulta a tu médico antes de usar.</span>
-      <div class="footer-legal">
-        <a href="#" data-i18n="footer-terms">Términos</a>
-        <a href="#" data-i18n="footer-privacy">Privacidad</a>
-      </div>
+  </div>
+  <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-company">Compañía</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="tecnologia.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-tecnologia">Tecnología</a>
+      <a href="educacion.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-educacion">Educación</a>
+      <a href="blog.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-blog">Blog</a>
+      <a href="quiz.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-quiz">Quiz</a>
     </div>
+  </div>
+  <div style="padding-left:40px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-legal">Legal</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="#" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="foot-privacy">Privacidad</a>
+      <a href="#" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="foot-terms">Términos</a>
+    </div>
+    <div style="margin-top:48px;font-size:11px;font-weight:300;color:var(--ink-faint);line-height:1.6;" data-i18n="foot-disclaimer">Uso exclusivo adultos. No sustituye diagnóstico médico.</div>
   </div>
 </footer>
 
 <script>
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
-mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; } });
-const revealObserver = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); revealObserver.unobserve(e.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// Helix canvas
-(function(){
-  const canvas = document.getElementById('helix-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const TEAL='#0F6E56', TEAL_LITE='#1D9E75';
-  let W, H, dpr, phase=0;
-  function resize(){
-    const rect = canvas.parentElement.getBoundingClientRect();
-    dpr = window.devicePixelRatio||1;
-    W = rect.width*0.52; H = rect.height;
-    canvas.width=W*dpr; canvas.height=H*dpr;
-    canvas.style.width=W+'px'; canvas.style.height=H+'px';
-    ctx.scale(dpr,dpr);
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    const cx=W*0.5, amp=W*0.22, pitch=H/5.5, steps=220, rung=6;
-    for(let strand=0;strand<2;strand++){
-      const phaseOff=strand===0?0:Math.PI;
-      ctx.beginPath();
-      for(let i=0;i<=steps;i++){
-        const t=i/steps, y=t*H, angle=(t*Math.PI*2*(H/pitch))-phase+phaseOff, x=cx+Math.cos(angle)*amp;
-        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-      }
-      const grad=ctx.createLinearGradient(0,0,0,H);
-      grad.addColorStop(0,strand===0?TEAL:TEAL_LITE); grad.addColorStop(0.5,strand===0?TEAL_LITE:TEAL); grad.addColorStop(1,strand===0?TEAL:TEAL_LITE);
-      ctx.strokeStyle=grad; ctx.lineWidth=1.8; ctx.lineCap='round'; ctx.stroke();
-    }
-    const turns=H/pitch, rungsN=Math.floor(turns*rung);
-    for(let r=0;r<=rungsN;r++){
-      const t=r/rungsN, y=t*H, angle=(t*Math.PI*2*turns)-phase;
-      const x1=cx+Math.cos(angle)*amp, x2=cx+Math.cos(angle+Math.PI)*amp, depth=Math.sin(angle), alpha=0.12+0.28*((depth+1)/2);
-      ctx.beginPath(); ctx.arc(x1,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(15,110,86,${alpha+0.3})`; ctx.fill();
-      ctx.beginPath(); ctx.arc(x2,y,2.2,0,Math.PI*2); ctx.fillStyle=`rgba(29,158,117,${alpha+0.3})`; ctx.fill();
-      ctx.beginPath(); ctx.moveTo(x1,y); ctx.lineTo(x2,y); ctx.strokeStyle=`rgba(15,110,86,${alpha})`; ctx.lineWidth=1; ctx.stroke();
-    }
-    phase+=0.008; requestAnimationFrame(draw);
-  }
-  resize(); window.addEventListener('resize',()=>{ctx.resetTransform();resize();}); draw();
-})();
-
-// i18n
 const TRANSLATIONS = {
-  'nav-productos':{es:'Productos',en:'Products'},'nav-tecnologia':{es:'Tecnología',en:'Technology'},'nav-educacion':{es:'Educación',en:'Education'},'nav-blog':{es:'Blog',en:'Blog'},'nav-faq':{es:'FAQ',en:'FAQ'},'nav-contacto':{es:'Contacto',en:'Contact'},
-  'rp-cat':{es:'Recuperación · Rendimiento',en:'Recovery · Performance'},
-  'rp-desc':{es:'RECOVERYPRO™ es nuestro sistema premium de recuperación basado en BPC-157, un péptido naturalmente presente en el cuerpo descubierto originalmente en proteínas gástricas. Conocido como \'el péptido de la recuperación\', BPC-157 estimula los procesos naturales más poderosos de reparación del cuerpo — desde músculo hasta tejido articular y digestivo. Absorción directa por mucosa oral para acción sistémica rápida.',en:'RECOVERYPRO™ is our premium recovery system based on BPC-157, a peptide naturally present in the body originally discovered in gastric proteins. Known as \'the recovery peptide\', BPC-157 stimulates the body\'s most powerful natural repair processes — from muscle to joint and digestive tissue. Direct oral mucosa absorption for rapid systemic action.'},
-  'rp-hero-b1':{es:'Reducción drástica de inflamación post-esfuerzo',en:'Drastic reduction of post-exercise inflammation'},
-  'rp-hero-b2':{es:'Reparación muscular y articular acelerada',en:'Accelerated muscle and joint repair'},
-  'rp-hero-b3':{es:'Recuperación nocturna profunda y regeneradora',en:'Deep and regenerative overnight recovery'},
-  'rp-hero-b4':{es:'Retorno al entrenamiento 40% más rápido',en:'Return to training 40% faster'},
-  'rp-timeline-chip':{es:'1–2 semanas',en:'1–2 weeks'},
-  'rp-aud-chip':{es:'Atletas · Lesiones · Alto rendimiento',en:'Athletes · Injuries · High performance'},
-  'hero-cta-wa':{es:'Consultar por WhatsApp',en:'Contact via WhatsApp'},
-  'badge-purity-label':{es:'Pureza verificada',en:'Verified purity'},
-  'how-label':{es:'BiogradixRelease®',en:'BiogradixRelease®'},
-  'how-h2':{es:'Cómo <em>funciona</em>',en:'How it <em>works</em>'},
-  'how-sub':{es:'Absorción por mucosa oral directa para biodisponibilidad máxima. Sin pérdidas por metabolismo hepático.',en:'Direct oral mucosa absorption for maximum bioavailability. No losses from hepatic metabolism.'},
-  'step1-label':{es:'Aplicación',en:'Application'},'step1-desc':{es:'Coloca el suplemento contra la mejilla interna o encía superior',en:'Place the supplement against the inner cheek or upper gum'},
-  'step2-label':{es:'Absorción',en:'Absorption'},'step2-desc':{es:'La mucosa bucal absorbe los bioactivos de inmediato',en:'The buccal mucosa absorbs bioactives immediately'},
-  'step3-label':{es:'Entrada directa',en:'Direct entry'},'step3-desc':{es:'Ingredientes entran al torrente sanguíneo en minutos',en:'Ingredients enter the bloodstream within minutes'},
-  'step4-label':{es:'Sin hígado',en:'Bypasses liver'},'step4-desc':{es:'Se evita el metabolismo de primer paso hepático',en:'Hepatic first-pass metabolism is bypassed'},
-  'step5-label':{es:'Biodisponibilidad total',en:'Full bioavailability'},'step5-desc':{es:'2–3× más efectivo que cápsulas orales convencionales',en:'2–3× more effective than conventional oral capsules'},
-  'ben-label':{es:'Beneficios científicamente respaldados',en:'Scientifically backed benefits'},
-  'ben-h2':{es:'Lo que <em>RECOVERYPRO™</em> hace por ti',en:'What <em>RECOVERYPRO™</em> does for you'},
-  'ben-t1':{es:'Recuperación Muscular Acelerada',en:'Accelerated Muscle Recovery'},
-  'ben-b1':{es:'BPC-157 acelera síntesis proteica muscular. Reduce el dolor muscular tardío (DOMS) en un 40–50%. Disminuye tiempo de recuperación entre sesiones de entrenamiento.',en:'BPC-157 accelerates muscle protein synthesis. Reduces delayed onset muscle soreness (DOMS) by 40–50%. Decreases recovery time between training sessions.'},
-  'ben-t2':{es:'Reparación Articular y Ligamentosa',en:'Joint and Ligament Repair'},
-  'ben-b2':{es:'Estimula síntesis de colágeno en cartílago y ligamentos. Acelera recuperación de esguinces y distensiones. Apoya salud de rodillas, hombros y muñecas de alto uso.',en:'Stimulates collagen synthesis in cartilage and ligaments. Accelerates recovery from sprains and strains. Supports health of high-use knees, shoulders and wrists.'},
-  'ben-t3':{es:'Salud Digestiva',en:'Digestive Health'},
-  'ben-b3':{es:'BPC-157 tiene propiedades gastroprotectoras documentadas. Apoya reparación del revestimiento gástrico e intestinal. Útil en síndromes de intestino permeable y inflamación digestiva.',en:'BPC-157 has documented gastroprotective properties. Supports repair of gastric and intestinal lining. Useful in leaky gut syndromes and digestive inflammation.'},
-  'ben-t4':{es:'Reducción de Inflamación',en:'Inflammation Reduction'},
-  'ben-b4':{es:'BPC-157 reduce inflamación sistémica sin efectos secundarios de AINEs. Promueve angiogénesis para mejor irrigación de tejidos en reparación.',en:'BPC-157 reduces systemic inflammation without NSAID side effects. Promotes angiogenesis for better blood supply to repairing tissues.'},
-  'coa-label':{es:'Transparencia total',en:'Full transparency'},'coa-h2':{es:'Certificado de análisis <em>por lote</em>',en:'Certificate of analysis <em>per batch</em>'},
-  'rp-coa-body':{es:'Cada lote de RECOVERYPRO™ es analizado por un laboratorio independiente certificado. Puedes solicitar el COA completo de tu lote en cualquier momento — sin excepciones.',en:'Every RECOVERYPRO™ batch is tested by a certified independent laboratory. You can request the full COA for your batch at any time — no exceptions.'},
-  'coa-i1':{es:'Análisis HPLC — pureza ≥99% verificada',en:'HPLC analysis — ≥99% verified purity'},
-  'coa-i2':{es:'Espectrometría de masas — identidad molecular',en:'Mass spectrometry — molecular identity'},
-  'coa-i3':{es:'Prueba de esterilidad y endotoxinas',en:'Sterility and endotoxin testing'},
-  'coa-i4':{es:'Fabricado bajo estándares GMP certificados',en:'Manufactured under certified GMP standards'},
-  'coa-i5':{es:'Test de estabilidad a 6 meses',en:'6-month stability testing'},
-  'coa-stat1':{es:'Pureza HPLC',en:'HPLC Purity'},'coa-stat2':{es:'Certificación',en:'Certification'},'coa-stat3':{es:'Biodisponibilidad',en:'Bioavailability'},
-  'rp-coa-stat4':{es:'Recuperación',en:'Recovery'},
-  'related-label':{es:'También puede interesarte',en:'You may also like'},'related-h2':{es:'Productos <em>relacionados</em>',en:'Related <em>products</em>'},
-  'badge-musculo':{es:'Músculo',en:'Muscle'},'badge-energia':{es:'Energía',en:'Energy'},'badge-inmunidad':{es:'Inmunidad',en:'Immunity'},
-  'rp-rel-mm':{es:'IGF-1 LR3 + Creatina. La pareja perfecta post-entreno.',en:'IGF-1 LR3 + Creatine. The perfect post-workout pair.'},
-  'rp-rel-vc':{es:'NMN 500mg. Recupera la energía entre sesiones.',en:'NMN 500mg. Restore energy between sessions.'},
-  'rp-rel-if':{es:'Beta-Glucan + Zinc. Mantén las defensas altas.',en:'Beta-Glucan + Zinc. Keep your defenses high.'},
-  'cta-label':{es:'¿Listo para empezar?',en:'Ready to start?'},'cta-h2':{es:'Consulta gratuita<br/><em>por WhatsApp</em>',en:'Free consultation<br/><em>via WhatsApp</em>'},'cta-body':{es:'Respuesta en menos de 2 horas. Te ayudamos a elegir el producto correcto para tus objetivos, sin presión y con toda la información científica que necesitas.',en:'Response in less than 2 hours. We help you choose the right product for your goals, no pressure and with all the scientific information you need.'},'cta-btn':{es:'Contactar por WhatsApp',en:'Contact via WhatsApp'},
-  'footer-brand':{es:'Suplementos wellness de grado farmacéutico. Ciencia accesible para el mercado hispanohablante.',en:'Pharmaceutical-grade wellness supplements. Accessible science for the global market.'},
-  'footer-col-products':{es:'Productos',en:'Products'},'footer-col-resources':{es:'Recursos',en:'Resources'},'footer-col-contact':{es:'Contacto',en:'Contact'},
-  'footer-res-tech':{es:'Tecnología',en:'Technology'},'footer-res-edu':{es:'Educación',en:'Education'},'footer-res-blog':{es:'Blog',en:'Blog'},'footer-res-faq':{es:'FAQ',en:'FAQ'},'footer-res-coa':{es:'Certificados COA',en:'COA Certificates'},
-  'footer-copy':{es:'© 2026 biogradix. Todos los derechos reservados.',en:'© 2026 biogradix. All rights reserved.'},'footer-disclaimer':{es:'Solo para uso personal. Consulta a tu médico antes de usar.',en:'For personal use only. Consult your doctor before use.'},'footer-terms':{es:'Términos',en:'Terms'},'footer-privacy':{es:'Privacidad',en:'Privacy'},
+  es:{
+    "nav-productos":"Productos","nav-tecnologia":"Tecnología","nav-educacion":"Educación","nav-blog":"Blog","nav-quiz":"Quiz",
+    "rp-cat":"Recuperación · Rendimiento","rp-tagline":"Total Recovery","rp-aud":"Atletas · Lesiones · Alto rendimiento",
+    "rp-desc":"El BPC-157 es un pentadecapéptido derivado de proteínas gástricas. Presente de forma natural en el jugo gástrico, es el péptido de reparación natural del organismo — activa rutas de recuperación que permanecen dormidas en el cuerpo adulto.",
+    "rp-hero-b1":"Reducción de inflamación muscular y articular","rp-hero-b2":"Reparación de músculo y tejido articular acelerada","rp-hero-b3":"Recuperación nocturna profunda durante el sueño","rp-hero-b4":"40% más rápido en retorno al entrenamiento",
+    "hero-wa":"Consultar vía WhatsApp","hero-quiz":"Hacer el quiz →","badge-purity":"Pureza",
+    "how-overline":"Tecnología de absorción","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Absorción sublingual de precisión — cinco pasos desde la gota hasta la célula.",
+    "step1-label":"Sublingual","step1-desc":"La fórmula se deposita bajo la lengua, en contacto directo con la mucosa oral altamente vascularizada.",
+    "step2-label":"Difusión","step2-desc":"Las moléculas difunden a través del epitelio oral sin necesidad de digestión enzimática ni metabolismo hepático.",
+    "step3-label":"Absorción","step3-desc":"El péptido pasa directamente a los capilares sublinguales, evitando el efecto de primer paso hepático.",
+    "step4-label":"Circulación","step4-desc":"El compuesto activo entra al torrente sanguíneo sistémico en minutos, alcanzando tejidos diana con rapidez.",
+    "step5-label":"Acción celular","step5-desc":"El péptido interactúa con receptores específicos a nivel celular, activando las cascadas biológicas deseadas.",
+    "ben-label":"Beneficios clínicos","rp-ben-h2":"Lo que RecoveryPro repara en ti",
+    "rp-ben-t1":"Recuperación Muscular Acelerada","rp-ben-b1":"Reduce el DOMS hasta en un 40–50%. Acelera la eliminación de metabolitos de desecho y la resíntesis de glucógeno, permitiendo entrenamientos más frecuentes e intensos.",
+    "rp-ben-t2":"Reparación Articular y Ligamentosa","rp-ben-b2":"Estimula la proliferación de fibroblastos y la síntesis de colágeno en tendones y ligamentos. Activa la angiogénesis local, mejorando el flujo sanguíneo hacia tejidos avasculares.",
+    "rp-ben-t3":"Salud Digestiva","rp-ben-b3":"BPC-157 tiene efectos gastroprotectores comprobados. Protege la mucosa gástrica, reduce la inflamación intestinal y mejora la permeabilidad del intestino delgado.",
+    "rp-ben-t4":"Reducción de Inflamación","rp-ben-b4":"Modula vías proinflamatorias (COX-2, TNF-α, IL-6) sin los efectos secundarios de los AINEs convencionales. Resolución de inflamación crónica de baja intensidad.",
+    "coa-label":"Certificaciones & Calidad","rp-coa-body":"Cada lote de RecoveryPro se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico.",
+    "coa-c1":"GMP Farmacéutico certificado","coa-c2":"Análisis HPLC por lote","coa-c3":"Prueba de endotoxinas LAL","coa-c4":"Verificación de identidad molecular",
+    "coa-s1":"Pureza mínima","rp-coa-s2":"Reducción del DOMS","coa-s3":"Inicio de absorción","coa-s4":"Resultados observables",
+    "rel-label":"También te puede interesar","rel-h2":"Protocolos relacionados","rel-mm":"Ver protocolo →","rel-vc":"Ver protocolo →","rel-if":"Ver protocolo →",
+    "quiz-overline":"Protocolo personalizado","quiz-h":"¿Cuál es tu<br/><em style=\"font-style:italic;color:var(--forest);\">protocolo ideal?</em>","quiz-sub":"Responde 5 preguntas y recibe una recomendación personalizada basada en tus objetivos.","quiz-cta":"Iniciar el quiz",
+    "foot-desc":"Péptidos bioactivos de grado farmacéutico. Absorción sublingual de precisión.","foot-wa":"WhatsApp","foot-products":"Productos","foot-company":"Compañía","foot-legal":"Legal","foot-privacy":"Privacidad","foot-terms":"Términos","foot-disclaimer":"Uso exclusivo adultos. No sustituye diagnóstico médico."
+  },
+  en:{
+    "nav-productos":"Products","nav-tecnologia":"Technology","nav-educacion":"Education","nav-blog":"Blog","nav-quiz":"Quiz",
+    "rp-cat":"Recovery · Performance","rp-tagline":"Total Recovery","rp-aud":"Athletes · Injuries · High performance",
+    "rp-desc":"BPC-157 is a pentadecapeptide derived from gastric proteins. Naturally present in gastric juice, it is the body's natural repair peptide — activating recovery pathways that remain dormant in the adult body.",
+    "rp-hero-b1":"Reduction of muscular and joint inflammation","rp-hero-b2":"Accelerated muscle and joint tissue repair","rp-hero-b3":"Deep nocturnal recovery during sleep","rp-hero-b4":"40% faster return to training",
+    "hero-wa":"Consult via WhatsApp","hero-quiz":"Take the quiz →","badge-purity":"Purity",
+    "how-overline":"Absorption technology","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Precision sublingual absorption — five steps from drop to cell.",
+    "step1-label":"Sublingual","step1-desc":"The formula is deposited under the tongue, in direct contact with the highly vascularized oral mucosa.",
+    "step2-label":"Diffusion","step2-desc":"Molecules diffuse through the oral epithelium without enzymatic digestion or hepatic metabolism.",
+    "step3-label":"Absorption","step3-desc":"The peptide passes directly into sublingual capillaries, bypassing first-pass hepatic effect.",
+    "step4-label":"Circulation","step4-desc":"The active compound enters systemic bloodstream within minutes, rapidly reaching target tissues.",
+    "step5-label":"Cellular action","step5-desc":"The peptide interacts with specific receptors at the cellular level, activating desired biological cascades.",
+    "ben-label":"Clinical benefits","rp-ben-h2":"What RecoveryPro repairs in you",
+    "rp-ben-t1":"Accelerated Muscle Recovery","rp-ben-b1":"Reduces DOMS by up to 40–50%. Accelerates waste metabolite clearance and glycogen resynthesis, allowing more frequent and intense training.",
+    "rp-ben-t2":"Joint and Ligament Repair","rp-ben-b2":"Stimulates fibroblast proliferation and collagen synthesis in tendons and ligaments. Activates local angiogenesis, improving blood flow to avascular tissues.",
+    "rp-ben-t3":"Digestive Health","rp-ben-b3":"BPC-157 has proven gastroprotective effects. Protects gastric mucosa, reduces intestinal inflammation, and improves small intestine permeability.",
+    "rp-ben-t4":"Inflammation Reduction","rp-ben-b4":"Modulates pro-inflammatory pathways (COX-2, TNF-α, IL-6) without the side effects of conventional NSAIDs. Resolution of chronic low-grade inflammation.",
+    "coa-label":"Certifications & Quality","rp-coa-body":"Each RecoveryPro batch undergoes HPLC purity analysis, LAL endotoxin testing, and molecular identity verification. Production under pharmaceutical GMP standards.",
+    "coa-c1":"Pharmaceutical GMP certified","coa-c2":"HPLC analysis per batch","coa-c3":"LAL endotoxin test","coa-c4":"Molecular identity verification",
+    "coa-s1":"Minimum purity","rp-coa-s2":"DOMS reduction","coa-s3":"Absorption onset","coa-s4":"Observable results",
+    "rel-label":"You may also like","rel-h2":"Related protocols","rel-mm":"View protocol →","rel-vc":"View protocol →","rel-if":"View protocol →",
+    "quiz-overline":"Personalized protocol","quiz-h":"What is your<br/><em style=\"font-style:italic;color:var(--forest);\">ideal protocol?</em>","quiz-sub":"Answer 5 questions and receive a personalized recommendation based on your goals.","quiz-cta":"Start the quiz",
+    "foot-desc":"Pharmaceutical-grade bioactive peptides. Precision sublingual absorption.","foot-wa":"WhatsApp","foot-products":"Products","foot-company":"Company","foot-legal":"Legal","foot-privacy":"Privacy","foot-terms":"Terms","foot-disclaimer":"For adult use only. Does not replace medical diagnosis."
+  }
 };
-function setLang(lang){
-  localStorage.setItem('bgLang',lang);
-  document.getElementById('htmlRoot').setAttribute('lang',lang);
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.textContent=TRANSLATIONS[k][lang];});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.innerHTML=TRANSLATIONS[k][lang];});
-  document.querySelectorAll('.lang-btn').forEach(btn=>{btn.classList.toggle('active',btn.textContent.trim().toLowerCase()===lang);});
+let currentLang = localStorage.getItem('bgLang') || 'es';
+function setLang(lang) {
+  currentLang = lang; localStorage.setItem('bgLang', lang);
+  const T = TRANSLATIONS[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (T[k] !== undefined) el.textContent = T[k]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { const k = el.getAttribute('data-i18n-html'); if (T[k] !== undefined) el.innerHTML = T[k]; });
+  document.querySelectorAll('.lang-btn').forEach(btn => { btn.style.color = btn.textContent.toLowerCase() === lang ? 'var(--ink)' : 'var(--ink-faint)'; });
 }
-(function(){const s=localStorage.getItem('bgLang')||'es';setLang(s);})();
+const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } }); }, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+document.getElementById('mobileMenu').addEventListener('click', (e) => { if (e.target === document.getElementById('mobileMenu')) document.getElementById('mobileMenu').classList.remove('open'); });
+setLang(currentLang);
 </script>
 </body>
 </html>
