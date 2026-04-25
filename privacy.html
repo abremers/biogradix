@@ -27,28 +27,9 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bone);color:var(--ink);font-family:'Cormorant',serif;font-weight:300;line-height:1.7;font-size:1.0625rem;}
 
-.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,4vw,3rem);background:rgba(245,241,235,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);}
-.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--ink);}
-.nav-logo-mark{width:32px;height:32px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.05em;flex-shrink:0;}
-.nav-logo-text{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;}
-.nav-links{display:flex;list-style:none;gap:2rem;}
-.nav-links a{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:400;letter-spacing:.08em;text-decoration:none;color:var(--ink-soft);transition:color .2s;}
-.nav-links a:hover{color:var(--ink);}
-.nav-actions{display:flex;align-items:center;gap:1rem;}
-.lang-btn{background:none;border:1px solid var(--rule);padding:.25rem .6rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;cursor:pointer;color:var(--ink-soft);transition:all .2s;}
-.lang-btn.active{background:var(--ink);color:var(--bone);border-color:var(--ink);}
-.nav-wa{display:flex;align-items:center;gap:.5rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-decoration:none;color:var(--bone);background:var(--forest);padding:.4rem 1rem;}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1px;background:var(--ink);}
-
-.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(24,20,15,.4);z-index:200;}
-.mobile-overlay.open{display:block;}
-.mobile-panel{position:fixed;top:0;right:-280px;width:280px;height:100%;background:var(--bone);border-left:1px solid var(--rule);z-index:201;transition:right .3s ease;padding:2rem 1.5rem;display:flex;flex-direction:column;gap:2rem;}
-.mobile-panel.open{right:0;}
-.mobile-close{align-self:flex-end;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);}
-.mobile-nav-links{display:flex;flex-direction:column;gap:1.25rem;list-style:none;}
-.mobile-nav-links a{font-family:'Inter',sans-serif;font-size:.875rem;letter-spacing:.08em;text-decoration:none;color:var(--ink);}
-.mobile-lang{display:flex;gap:.5rem;}
+/* nav/mobile via inline styles */
+.lang-btn{background:none;border:1px solid rgba(24,20,15,.1);padding:.25rem .6rem;font-family:'Inter',sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.08em;cursor:pointer;color:#4A443C;transition:all .2s;}
+.lang-btn.active{background:#18140F !important;color:#F5F1EB !important;border-color:#18140F !important;}
 
 .page-hero{margin-top:var(--nav-h);background:var(--stone);padding:5rem clamp(1.25rem,5vw,4rem) 4rem;border-bottom:1px solid var(--rule);}
 .page-hero-inner{max-width:800px;margin:0 auto;}
@@ -74,66 +55,55 @@ body{background:var(--bone);color:var(--ink);font-family:'Cormorant',serif;font-
 .legal-section a{color:var(--forest);text-decoration:none;}
 .legal-section a:hover{text-decoration:underline;}
 
-footer{background:var(--ink);color:rgba(245,241,235,.5);border-top:1px solid rgba(245,241,235,.08);}
-.footer-main{max-width:1200px;margin:0 auto;padding:4rem clamp(1.25rem,5vw,3rem) 2rem;display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;}
-.footer-brand-mark{width:40px;height:40px;border:1px solid rgba(245,241,235,.2);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.05em;color:rgba(245,241,235,.5);margin-bottom:1rem;}
-.footer-brand-name{font-family:'Inter',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.15em;color:rgba(245,241,235,.7);margin-bottom:.75rem;}
-.footer-brand-desc{font-size:.875rem;line-height:1.6;}
-.footer-col-title{font-family:'Inter',sans-serif;font-size:.625rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,235,.4);margin-bottom:1.25rem;}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
-.footer-links a{font-size:.875rem;color:rgba(245,241,235,.5);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:rgba(245,241,235,.9);}
-.footer-bottom{border-top:1px solid rgba(245,241,235,.08);max-width:1200px;margin:0 auto;padding:1.5rem clamp(1.25rem,5vw,3rem);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
-.footer-copy{font-size:.75rem;}
-.footer-legal{display:flex;gap:1.5rem;}
-.footer-legal a{font-size:.75rem;color:rgba(245,241,235,.5);text-decoration:none;}
+/* footer via inline styles */
 
 @media(max-width:768px){
-  .nav-links,.nav-wa{display:none;}
-  .hamburger{display:flex;}
-  .footer-main{grid-template-columns:1fr;}
+  #nav-links,nav [href*="wa.me"]{display:none !important;}
+  #hamburger{display:flex !important;}
+  [data-footer-grid]{grid-template-columns:1fr !important;}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">
-    <div class="nav-logo-mark">BG</div>
-    <span class="nav-logo-text">BIOGRADIX</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
-    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
-    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
-    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
-  </ul>
-  <div class="nav-actions">
-    <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-    <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" data-i18n="nav_wa">WhatsApp</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+<!-- NAV -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(245,241,235,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);">
+  <a href="index.html" style="font-family:'Cormorant Display',serif;font-size:17px;font-weight:400;letter-spacing:.5px;color:var(--ink);text-decoration:none;">bio<em style="font-style:italic;color:var(--forest);">gradix</em></a>
+  <div style="display:flex;gap:36px;position:absolute;left:50%;transform:translateX(-50%);">
+    <a href="index.html#productos" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-blog">Blog</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <button onclick="setLang('es')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">ES</button>
+    <span style="color:var(--rule);">/</span>
+    <button onclick="setLang('en')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">EN</button>
+    <a href="quiz.html" class="nav-quiz-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:10px 22px;border-radius:2px;text-decoration:none;" data-i18n="nav-quiz">Quiz</a>
+    <button id="hamburger" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;">
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
     </button>
   </div>
 </nav>
-
-<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
-<div class="mobile-panel" id="mobilePanel">
-  <button class="mobile-close" onclick="toggleMenu()">×</button>
-  <ul class="mobile-nav-links">
-    <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
-    <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
-    <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
-    <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
-  </ul>
-  <div class="mobile-lang">
-    <button class="lang-btn" onclick="setLang('es');toggleMenu()">ES</button>
-    <button class="lang-btn" onclick="setLang('en');toggleMenu()">EN</button>
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+  <div class="mobile-panel">
+    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" data-i18n="nav-blog">Blog</a>
+    <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
+    <div style="display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <button onclick="setLang('es')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">ES</button>
+      <button onclick="setLang('en')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">EN</button>
+    </div>
+    <a href="https://wa.me/13467189350" style="margin-top:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:12px 20px;border-radius:2px;text-decoration:none;text-align:center;">WhatsApp</a>
   </div>
-  <a href="https://wa.me/13467189350" class="nav-wa" target="_blank" rel="noopener" style="justify-content:center;" data-i18n="nav_wa">WhatsApp</a>
 </div>
+
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -147,8 +117,8 @@ footer{background:var(--ink);color:rgba(245,241,235,.5);border-top:1px solid rgb
 <!-- LEGAL CONTENT -->
 <div class="legal-wrap">
   <div class="lang-switcher">
-    <button class="lang-sw-btn active" id="sw-es" onclick="setLang('es')">Español</button>
-    <button class="lang-sw-btn" id="sw-en" onclick="setLang('en')">English</button>
+    <button class="lang-sw-btn active" id="sw-es">Español</button>
+    <button class="lang-sw-btn" id="sw-en">English</button>
   </div>
 
   <!-- SPANISH -->
@@ -370,72 +340,76 @@ footer{background:var(--ink);color:rgba(245,241,235,.5);border-top:1px solid rgb
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-main">
-    <div>
-      <div class="footer-brand-mark">BG</div>
-      <div class="footer-brand-name">BIOGRADIX</div>
-      <p class="footer-brand-desc" data-i18n="footer_desc">Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.</p>
-    </div>
-    <div>
-      <div class="footer-col-title" data-i18n="footer_science">Ciencia</div>
-      <ul class="footer-links">
-        <li><a href="tecnologia.html" data-i18n="nav_tech">Tecnología</a></li>
-        <li><a href="educacion.html" data-i18n="nav_edu">Educación</a></li>
-        <li><a href="blog.html" data-i18n="nav_blog">Blog</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title" data-i18n="footer_products">Productos</div>
-      <ul class="footer-links">
-        <li><a href="quiz.html">CELLDEW™</a></li>
-        <li><a href="quiz.html">VITACHARGE™</a></li>
-        <li><a href="quiz.html">RADIANCEMAX™</a></li>
-        <li><a href="quiz.html">RECOVERYPRO™</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title" data-i18n="footer_contact">Contacto</div>
-      <ul class="footer-links">
-        <li><a href="contacto.html" data-i18n="nav_contact">Contacto</a></li>
-        <li><a href="https://wa.me/13467189350" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="terms.html" data-i18n="footer_terms">Términos</a></li>
-        <li><a href="privacy.html" data-i18n="footer_privacy">Privacidad</a></li>
-      </ul>
+<footer style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:0;padding:80px;background:var(--ink);border-top:1px solid rgba(245,241,235,.1);">
+  <div style="padding-right:64px;border-right:1px solid rgba(245,241,235,.08);">
+    <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;color:var(--bone);margin-bottom:16px;">bio<em style="font-style:italic;color:var(--forest);">gradix</em></div>
+    <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-faint);max-width:260px;margin-bottom:32px;" data-i18n="foot-desc">Péptidos bioactivos de grado farmacéutico. Absorción sublingual de precisión.</p>
+    <a href="https://wa.me/13467189350" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:12px 24px;border-radius:2px;text-decoration:none;" data-i18n="foot-wa">WhatsApp</a>
+  </div>
+  <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-products">Productos</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="producto-celldew.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">CellDew&#x2122;</a>
+      <a href="producto-vitacharge.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">VitaCharge&#x2122;</a>
+      <a href="producto-radiancemax.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RadianceMax&#x2122;</a>
+      <a href="producto-recoverypro.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RecoveryPro&#x2122;</a>
+      <a href="producto-immunefort.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">ImmuneFort&#x2122;</a>
+      <a href="producto-passionboost.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">PassionBoost&#x2122;</a>
+      <a href="producto-musclemaxx.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">MuscleMaxx&#x2122;</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy" data-i18n="footer_copy">© 2026 Biogradix. Todos los derechos reservados.</span>
-    <div class="footer-legal">
-      <a href="terms.html" data-i18n="footer_terms">Términos</a>
-      <a href="privacy.html" data-i18n="footer_privacy">Privacidad</a>
+  <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-company">Compa&#xF1;&#xED;a</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="tecnologia.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-tecnologia">Tecnolog&#xED;a</a>
+      <a href="educacion.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-educacion">Educaci&#xF3;n</a>
+      <a href="blog.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-blog">Blog</a>
+      <a href="contacto.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-contacto">Contacto</a>
+      <a href="quiz.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="nav-quiz">Quiz</a>
     </div>
+  </div>
+  <div style="padding-left:40px;">
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-legal">Legal</div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="privacy.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="foot-privacy">Privacidad</a>
+      <a href="terms.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;" data-i18n="foot-terms">T&#xE9;rminos</a>
+    </div>
+    <div style="margin-top:48px;font-size:11px;font-weight:300;color:var(--ink-faint);line-height:1.6;" data-i18n="foot-disclaimer">Uso exclusivo adultos. No sustituye diagn&#xF3;stico m&#xE9;dico.</div>
   </div>
 </footer>
+
 
 <script>
 const T={
   es:{
     nav_tech:"Tecnología",nav_edu:"Educación",nav_blog:"Blog",nav_contact:"Contacto",nav_wa:"WhatsApp",
+    "nav-tech":"Tecnología","nav-edu":"Educación","nav-blog":"Blog","nav-contact":"Contacto","nav-wa":"WhatsApp",
     footer_desc:"Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.",
     footer_science:"Ciencia",footer_products:"Productos",footer_contact:"Contacto",
     footer_terms:"Términos",footer_privacy:"Privacidad",
-    footer_copy:"© 2026 Biogradix. Todos los derechos reservados."
+    footer_copy:"© 2026 Biogradix. Todos los derechos reservados.",
+    "foot-desc":"Suplementos de precisión con tecnología BiogradixRelease® para máxima biodisponibilidad.",
+    "foot-col-productos":"Productos","foot-col-empresa":"Empresa","foot-col-legal":"Legal",
+    "foot-terms":"Términos","foot-privacy":"Privacidad","foot-copy":"© 2026 Biogradix. Todos los derechos reservados."
   },
   en:{
     nav_tech:"Technology",nav_edu:"Education",nav_blog:"Blog",nav_contact:"Contact",nav_wa:"WhatsApp",
+    "nav-tech":"Technology","nav-edu":"Education","nav-blog":"Blog","nav-contact":"Contact","nav-wa":"WhatsApp",
     footer_desc:"Precision supplements with BiogradixRelease® technology for maximum bioavailability.",
     footer_science:"Science",footer_products:"Products",footer_contact:"Contact",
     footer_terms:"Terms",footer_privacy:"Privacy",
-    footer_copy:"© 2026 Biogradix. All rights reserved."
+    footer_copy:"© 2026 Biogradix. All rights reserved.",
+    "foot-desc":"Precision supplements with BiogradixRelease® technology for maximum bioavailability.",
+    "foot-col-productos":"Products","foot-col-empresa":"Company","foot-col-legal":"Legal",
+    "foot-terms":"Terms","foot-privacy":"Privacy","foot-copy":"© 2026 Biogradix. All rights reserved."
   }
 };
 
 function setLang(l){
   localStorage.setItem('bgLang',l);
   document.getElementById('htmlRoot').lang=l;
-  document.getElementById('btn-es').classList.toggle('active',l==='es');
-  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  ['btn-es','mob-btn-es'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',l==='es');});
+  ['btn-en','mob-btn-en'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',l==='en');});
   document.getElementById('sw-es').classList.toggle('active',l==='es');
   document.getElementById('sw-en').classList.toggle('active',l==='en');
   document.getElementById('content-es').style.display=l==='es'?'block':'none';
@@ -455,15 +429,32 @@ function setLang(l){
   });
 }
 
-function toggleMenu(){
-  document.getElementById('mobileOverlay').classList.toggle('open');
-  document.getElementById('mobilePanel').classList.toggle('open');
+function openMenu(){
+  const m=document.getElementById('mobileMenu');
+  const p=m.querySelector('.mobile-panel');
+  m.style.opacity='1';m.style.pointerEvents='auto';
+  p.style.transform='translateX(0)';
+}
+function closeMenu(){
+  const m=document.getElementById('mobileMenu');
+  const p=m.querySelector('.mobile-panel');
+  m.style.opacity='0';m.style.pointerEvents='none';
+  p.style.transform='translateX(100%)';
 }
 
-(function(){
+document.addEventListener('DOMContentLoaded',()=>{
   const l=localStorage.getItem('bgLang')||'es';
   setLang(l);
-})();
+  document.getElementById('hamburger').addEventListener('click',openMenu);
+  document.getElementById('mobileClose').addEventListener('click',closeMenu);
+  document.getElementById('mobileMenu').addEventListener('click',function(e){if(e.target===this)closeMenu();});
+  document.getElementById('mob-btn-es').addEventListener('click',function(){setLang('es');closeMenu();});
+  document.getElementById('mob-btn-en').addEventListener('click',function(){setLang('en');closeMenu();});
+  document.getElementById('btn-es').addEventListener('click',function(){setLang('es');});
+  document.getElementById('btn-en').addEventListener('click',function(){setLang('en');});
+  document.getElementById('sw-es').addEventListener('click',function(){setLang('es');});
+  document.getElementById('sw-en').addEventListener('click',function(){setLang('en');});
+});
 </script>
 </body>
 </html>
