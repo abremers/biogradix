@@ -5,248 +5,284 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Quiz de Péptidos — biogradix</title>
 <meta name="description" content="Descubre qué péptido Biogradix es ideal para ti. Guía personalizada basada en tu perfil de salud."/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
 <style>
-:root{--navy:#0B1A2B;--teal:#0F6E56;--teal-deep:#085041;--teal-active:#1D9E75;--mint:#E1F5EE;--cloud:#FAFBFC;--silver:#E8EAED;--gold:#C9A84C;--alert:#D4534E;--text-1:#0B1A2B;--text-2:#4A5568;--text-3:#8A9BAD;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud);line-height:1.7;overflow-x:hidden;}
+:root{
+  --bone:#F5F1EB;--stone:#EDE8E0;--ink:#18140F;--ink-soft:#4A443C;--ink-faint:#9A9189;
+  --forest:#2E4A3A;--forest-light:rgba(46,74,58,.08);--rule:rgba(24,20,15,.1);
+  --rule-strong:rgba(24,20,15,.18);--alert:#8B2020;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bone);line-height:1.6;overflow-x:hidden;font-weight:300;}
 .container{max-width:1200px;margin:0 auto;padding:0 48px;}
-@media(max-width:768px){.container{padding:0 20px;}}
+@media(max-width:768px){.container{padding:0 24px;}}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,251,252,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--silver);transition:box-shadow .3s;}
-.nav.scrolled{box-shadow:0 2px 16px rgba(11,26,43,.06);}
-.nav-inner{display:flex;align-items:center;height:64px;}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-.nav-logo-text{font-family:'DM Sans',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.3px;}
-.nav-logo-text .b{color:var(--teal);}.nav-logo-text .g{color:var(--navy);}
-.nav-links{display:flex;align-items:center;gap:28px;margin-left:40px;}
-.nav-links a{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover,.nav-links a.active{color:var(--teal);}
-.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;}
-.lang-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--text-3);cursor:pointer;padding:4px 6px;transition:color .2s;}
-.lang-btn.active,.lang-btn:hover{color:var(--teal);}
-.lang-sep{color:var(--silver);font-size:12px;}
-.btn-wa{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;}
-.btn-wa:hover{background:var(--teal-deep);transform:translateY(-1px);}
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(245,241,235,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);transition:border-color .3s;}
+.nav-inner{display:flex;align-items:center;height:64px;position:relative;}
+.nav-logo{display:flex;align-items:center;text-decoration:none;z-index:2;}
+.nav-logo-mark{font-family:'Inter',sans-serif;font-weight:400;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--ink);text-decoration:none;}
+.nav-center{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:36px;}
+.nav-center a{font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;transition:color .2s;}
+.nav-center a:hover,.nav-center a.active{color:var(--ink);}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:16px;z-index:2;}
+.lang-btn{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;color:var(--ink-faint);cursor:pointer;padding:4px 2px;transition:color .2s;}
+.lang-btn.active,.lang-btn:hover{color:var(--ink);}
+.lang-sep{color:var(--rule-strong);font-size:12px;}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--navy);}
-@media(max-width:768px){.nav-links,.nav-right .lang-btn,.nav-right .lang-sep{display:none;}.hamburger{display:flex;}.nav-right{gap:8px;}}
-.mobile-menu{position:fixed;inset:0;z-index:99;background:rgba(11,26,43,.4);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;}
-.mobile-menu.open{opacity:1;pointer-events:all;}
-.mobile-menu-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--cloud);padding:80px 32px 40px;display:flex;flex-direction:column;gap:8px;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
-.mobile-menu.open .mobile-menu-panel{transform:none;}
-.mobile-menu-panel a{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--silver);}
-.mobile-menu-panel .btn-wa{margin-top:16px;justify-content:center;}
-.mob-lang{display:flex;gap:12px;padding:12px 0;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--ink);}
+@media(max-width:900px){.nav-center{display:none;}.hamburger{display:flex;}}
 
-/* HERO */
-.quiz-hero{background:var(--navy);padding:88px 0 72px;margin-top:64px;position:relative;overflow:hidden;}
-.quiz-hero::after{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;background:rgba(15,110,86,.08);pointer-events:none;}
-.quiz-hero-inner{position:relative;z-index:1;max-width:680px;}
-.quiz-hero .label{color:var(--teal-active);margin-bottom:12px;display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;}
-.quiz-hero h1{font-family:'DM Sans',sans-serif;font-weight:500;font-size:44px;color:#fff;line-height:1.1;letter-spacing:-.5px;margin-bottom:16px;}
-.quiz-hero h1 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--teal-active);}
-.quiz-hero-sub{font-size:15px;color:rgba(255,255,255,.5);line-height:1.75;max-width:480px;}
-@media(max-width:768px){.quiz-hero h1{font-size:28px;}.quiz-hero{padding:72px 0 52px;}}
+/* ── MOBILE MENU ── */
+#mobileMenu{position:fixed;inset:0;z-index:200;background:rgba(24,20,15,.4);opacity:0;pointer-events:none;transition:opacity .3s;}
+#mobileMenu.open{opacity:1;pointer-events:all;}
+.mobile-panel{position:absolute;top:0;right:0;bottom:0;width:280px;background:var(--bone);padding:80px 32px 40px;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+#mobileMenu.open .mobile-panel{transform:none;}
+.mobile-panel a{font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--rule);display:block;}
+.mob-lang{display:flex;gap:12px;padding:16px 0;}
 
-/* QUIZ MAIN */
-.quiz-main{padding:56px 0 100px;}
-.quiz-wrap{max-width:700px;margin:0 auto;}
+/* ── HERO ── */
+.quiz-hero{background:var(--ink);padding:96px 0 72px;margin-top:64px;border-bottom:1px solid var(--rule-strong);}
+.quiz-hero-inner{max-width:640px;}
+.hero-eyebrow{font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:20px;display:block;}
+.hero-h1{font-family:'Cormorant Display',serif;font-size:clamp(42px,6vw,68px);font-weight:400;color:var(--bone);line-height:1.05;letter-spacing:-.5px;margin-bottom:20px;}
+.hero-h1 em{font-style:italic;color:rgba(245,241,235,.6);}
+.hero-sub{font-size:14px;font-weight:300;color:rgba(245,241,235,.45);line-height:1.75;max-width:480px;}
+@media(max-width:768px){.quiz-hero{padding:80px 0 56px;}}
 
-/* PROGRESS */
-.progress-wrap{display:flex;align-items:center;gap:16px;margin-bottom:36px;}
-.progress-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);white-space:nowrap;}
-.progress-bar{flex:1;height:3px;background:var(--silver);border-radius:2px;overflow:hidden;}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-active));border-radius:2px;transition:width .5s cubic-bezier(.16,1,.3,1);}
+/* ── QUIZ MAIN ── */
+.quiz-main{padding:64px 0 100px;}
+.quiz-wrap{max-width:660px;margin:0 auto;}
 
-/* STEPS */
+/* ── PROGRESS ── */
+#progressWrap{display:flex;align-items:center;gap:20px;margin-bottom:48px;padding-bottom:32px;border-bottom:1px solid var(--rule);}
+.progress-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;min-width:90px;}
+.progress-bar{flex:1;height:1px;background:var(--rule-strong);}
+.progress-fill{height:100%;background:var(--forest);transition:width .5s cubic-bezier(.16,1,.3,1);}
+
+/* ── STEPS ── */
 .quiz-step{display:none;}
-.quiz-step.active{display:block;animation:fadeUp .4s cubic-bezier(.16,1,.3,1);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
-.step-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
-.step-title{font-family:'DM Sans',sans-serif;font-weight:500;font-size:26px;letter-spacing:-.4px;color:var(--navy);margin-bottom:8px;line-height:1.25;}
-.step-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.step-desc{font-size:14px;color:var(--text-2);margin-bottom:28px;line-height:1.65;}
+.quiz-step.active{display:block;animation:fadeUp .35s cubic-bezier(.16,1,.3,1);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+.step-eyebrow{font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:12px;}
+.step-title{font-family:'Cormorant Display',serif;font-size:clamp(28px,4vw,40px);font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:10px;}
+.step-title em{font-style:italic;color:var(--ink-faint);}
+.step-desc{font-size:14px;font-weight:300;color:var(--ink-soft);line-height:1.7;margin-bottom:32px;}
+.sub-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;display:block;}
 
-/* DISCLAIMER */
-.disclaimer-box{background:#fff;border:1px solid var(--silver);border-radius:14px;padding:24px;max-height:260px;overflow-y:auto;margin-bottom:20px;font-size:13px;color:var(--text-2);line-height:1.75;}
+/* ── DISCLAIMER ── */
+.disclaimer-box{border:1px solid var(--rule-strong);padding:24px 28px;max-height:240px;overflow-y:auto;margin-bottom:24px;font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.8;}
 .disclaimer-box p{margin-bottom:10px;}.disclaimer-box p:last-child{margin-bottom:0;}
-.disclaimer-box strong{color:var(--text-1);}
-.check-accept{display:flex;align-items:flex-start;gap:12px;margin-bottom:24px;cursor:pointer;}
-.check-accept input{width:17px;height:17px;min-width:17px;margin-top:3px;accent-color:var(--teal);cursor:pointer;}
-.check-accept-label{font-size:14px;color:var(--text-1);line-height:1.5;}
+.check-accept{display:flex;align-items:flex-start;gap:14px;margin-bottom:32px;cursor:pointer;}
+.check-accept input{width:16px;height:16px;min-width:16px;margin-top:3px;accent-color:var(--forest);cursor:pointer;}
+.check-accept-label{font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.6;}
 
-/* SELECTION CARDS */
-.card-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
-@media(max-width:480px){.card-grid-2{grid-template-columns:1fr;}}
-.sel-card{border:1.5px solid var(--silver);border-radius:12px;padding:16px 18px;cursor:pointer;background:#fff;display:flex;align-items:center;gap:14px;transition:border-color .2s,background .2s,transform .15s;user-select:none;}
-.sel-card:hover{border-color:rgba(15,110,86,.4);background:var(--mint);}
-.sel-card.selected{border-color:var(--teal);background:var(--mint);box-shadow:0 0 0 3px rgba(15,110,86,.1);}
-.sel-card-icon{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:color .2s;}.sel-card.selected .sel-card-icon{color:var(--teal);}
-.sel-card-title{font-weight:600;font-size:14px;color:var(--navy);margin-bottom:2px;}
-.sel-card-sub{font-size:12px;color:var(--text-2);}
+/* ── OPTION CARDS (rule-line style) ── */
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:32px;border:1px solid var(--rule-strong);}
+.card-grid .sel-card{border:none;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);}
+.card-grid .sel-card:nth-child(even){border-right:none;}
+.card-grid .sel-card:nth-last-child(-n+2){border-bottom:none;}
+@media(max-width:480px){
+  .card-grid{grid-template-columns:1fr;}
+  .card-grid .sel-card:nth-child(even){border-right:1px solid var(--rule);}
+  .card-grid .sel-card{border-right:none!important;}
+  .card-grid .sel-card:last-child{border-bottom:none;}
+}
+.sel-card{padding:18px 20px;cursor:pointer;background:var(--bone);display:flex;align-items:center;gap:14px;transition:background .15s;user-select:none;position:relative;}
+.sel-card:hover{background:var(--stone);}
+.sel-card.selected{background:var(--stone);}
+.sel-card.selected::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--forest);}
+.sel-card-circle{width:18px;height:18px;min-width:18px;border-radius:50%;border:1px solid var(--rule-strong);display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.sel-card.selected .sel-card-circle{border-color:var(--forest);background:var(--forest);}
+.sel-card.selected .sel-card-circle::after{content:'';display:block;width:5px;height:8px;border-right:1.5px solid var(--bone);border-bottom:1.5px solid var(--bone);transform:rotate(45deg) translate(-1px,-1px);}
+.sel-card-title{font-size:14px;font-weight:400;color:var(--ink);line-height:1.2;}
+.sel-card-sub{font-size:11px;font-weight:300;color:var(--ink-faint);margin-top:2px;}
 
-/* GOAL CARDS */
-.goal-hint{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;}
-.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
-@media(max-width:480px){.goal-grid{grid-template-columns:1fr;}}
-.goal-card{border:1.5px solid var(--silver);border-radius:12px;padding:16px 14px;cursor:pointer;background:#fff;text-align:center;transition:border-color .2s,background .2s,transform .15s;user-select:none;position:relative;}
-.goal-card:hover{border-color:rgba(15,110,86,.4);background:var(--mint);transform:translateY(-2px);}
-.goal-card.selected{border-color:var(--teal);background:var(--mint);box-shadow:0 0 0 3px rgba(15,110,86,.1);}
-.goal-card-check{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--silver);display:flex;align-items:center;justify-content:center;transition:all .2s;background:#fff;}
-.goal-card.selected .goal-card-check{background:var(--teal);border-color:var(--teal);}
-.goal-card.selected .goal-card-check::after{content:'';display:block;width:5px;height:8px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg) translate(-1px,-1px);}
-.goal-card-icon{width:36px;height:36px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:var(--text-2);transition:color .2s;}.goal-card.selected .goal-card-icon{color:var(--teal);}
-.goal-card-title{font-weight:600;font-size:13px;color:var(--navy);line-height:1.3;}
-.goal-card-sub{font-size:11px;color:var(--text-3);margin-top:2px;}
+/* ── GOAL GRID ── */
+.goal-hint{font-family:'Inter',sans-serif;font-size:10px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px;}
+.goal-grid{border:1px solid var(--rule-strong);margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr;}
+.goal-card{padding:18px 20px;cursor:pointer;background:var(--bone);transition:background .15s;user-select:none;position:relative;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);}
+.goal-card:nth-child(even){border-right:none;}
+.goal-card:nth-last-child(-n+2):not(:nth-child(even)+*){border-bottom:none;}
+.goal-card:last-child{border-bottom:none;}
+.goal-card:nth-last-child(2):not(:nth-child(even)){border-bottom:none;}
+.goal-card:hover{background:var(--stone);}
+.goal-card.selected{background:var(--stone);}
+.goal-card.selected::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--forest);}
+.goal-card-check{width:16px;height:16px;border-radius:50%;border:1px solid var(--rule-strong);position:absolute;top:14px;right:14px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--bone);}
+.goal-card.selected .goal-card-check{background:var(--forest);border-color:var(--forest);}
+.goal-card.selected .goal-card-check::after{content:'';display:block;width:4px;height:7px;border-right:1.5px solid var(--bone);border-bottom:1.5px solid var(--bone);transform:rotate(45deg) translate(-1px,-1px);}
+.goal-card-title{font-size:13px;font-weight:400;color:var(--ink);margin-bottom:2px;padding-right:24px;}
+.goal-card-sub{font-size:11px;font-weight:300;color:var(--ink-faint);}
+@media(max-width:480px){
+  .goal-grid{grid-template-columns:1fr;}
+  .goal-card{border-right:none!important;}
+  .goal-card:nth-last-child(-n+2){border-bottom:1px solid var(--rule);}
+  .goal-card:last-child{border-bottom:none;}
+}
 
-/* CHECKLIST */
-.checklist{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
-.check-item{display:flex;align-items:flex-start;gap:12px;border:1.5px solid var(--silver);border-radius:10px;padding:13px 15px;cursor:pointer;background:#fff;transition:border-color .2s,background .2s;user-select:none;}
-.check-item:hover{border-color:rgba(15,110,86,.35);background:var(--mint);}
-.check-item.checked{border-color:var(--teal);background:var(--mint);}
-.check-item.danger:hover,.check-item.danger.checked{border-color:rgba(212,83,78,.4);background:rgba(212,83,78,.04);}
-.check-item input{width:16px;height:16px;min-width:16px;margin-top:2px;accent-color:var(--teal);cursor:pointer;}
+/* ── CHECKLIST ── */
+.checklist{border:1px solid var(--rule-strong);margin-bottom:32px;}
+.check-item{display:flex;align-items:flex-start;gap:14px;padding:15px 20px;cursor:pointer;background:var(--bone);transition:background .15s;user-select:none;border-bottom:1px solid var(--rule);position:relative;}
+.check-item:last-child{border-bottom:none;}
+.check-item:hover{background:var(--stone);}
+.check-item.checked{background:var(--stone);}
+.check-item.checked::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--forest);}
+.check-item.danger.checked::before{background:var(--alert);}
+.check-item input{width:16px;height:16px;min-width:16px;margin-top:2px;accent-color:var(--forest);cursor:pointer;}
 .check-item.danger input{accent-color:var(--alert);}
-.check-item-label{font-size:14px;color:var(--text-1);line-height:1.4;}
-.check-item-sub{font-size:11px;color:var(--text-2);margin-top:1px;}
+.check-item-label{font-size:13px;font-weight:400;color:var(--ink);line-height:1.4;}
+.check-item-sub{font-size:11px;font-weight:300;color:var(--ink-faint);margin-top:2px;}
 
-/* RADIO LIST */
-.radio-list{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;}
-.radio-item{display:flex;align-items:center;gap:12px;border:1.5px solid var(--silver);border-radius:10px;padding:12px 15px;cursor:pointer;background:#fff;transition:border-color .2s,background .2s;user-select:none;}
-.radio-item:hover{border-color:rgba(15,110,86,.35);background:var(--mint);}
-.radio-item.selected{border-color:var(--teal);background:var(--mint);}
-.radio-item input{accent-color:var(--teal);}
-.radio-item-label{font-weight:500;font-size:14px;color:var(--navy);}
-.radio-item-sub{font-size:11px;color:var(--text-2);margin-left:auto;}
+/* ── RADIO LIST ── */
+.radio-list{border:1px solid var(--rule-strong);margin-bottom:32px;}
+.radio-item{display:flex;align-items:center;gap:14px;padding:15px 20px;cursor:pointer;background:var(--bone);transition:background .15s;user-select:none;border-bottom:1px solid var(--rule);position:relative;}
+.radio-item:last-child{border-bottom:none;}
+.radio-item:hover{background:var(--stone);}
+.radio-item.selected{background:var(--stone);}
+.radio-item.selected::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--forest);}
+.radio-item input{accent-color:var(--forest);min-width:16px;}
+.radio-item-label{font-size:13px;font-weight:400;color:var(--ink);}
+.radio-item-sub{font-size:11px;font-weight:300;color:var(--ink-faint);margin-left:auto;}
 
-/* FORM */
-.form-group{margin-bottom:18px;}
-.form-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-2);margin-bottom:8px;display:block;}
-.form-input{width:100%;padding:13px 15px;border:1.5px solid var(--silver);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text-1);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;}
-.form-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(15,110,86,.1);}
-.form-note{font-size:12px;color:var(--text-3);margin-top:6px;}
+/* ── FORM ── */
+.form-group{margin-bottom:20px;}
+.form-label{font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;display:block;}
+.form-input{width:100%;padding:14px 16px;border:1px solid var(--rule-strong);background:var(--bone);font-family:'Inter',sans-serif;font-size:14px;font-weight:300;color:var(--ink);outline:none;transition:border-color .2s;border-radius:0;}
+.form-input:focus{border-color:var(--forest);}
+.form-note{font-size:11px;font-weight:300;color:var(--ink-faint);margin-top:6px;}
 
-/* NAV BUTTONS */
-.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:32px;padding-top:24px;border-top:1px solid var(--silver);}
-.btn-back{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--text-3);border:none;padding:10px 0;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:color .2s;}
-.btn-back:hover{color:var(--teal);}
-.btn-next{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border:none;border-radius:10px;padding:14px 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
-.btn-next:hover:not(:disabled){background:var(--teal-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(15,110,86,.25);}
-.btn-next:disabled{background:var(--silver);color:var(--text-3);cursor:not-allowed;}
+/* ── NAV BUTTONS ── */
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:40px;padding-top:28px;border-top:1px solid var(--rule);}
+.btn-back{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--ink-faint);border:none;padding:10px 0;font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:color .2s;}
+.btn-back:hover{color:var(--ink);}
+.btn-next{display:inline-flex;align-items:center;gap:10px;background:var(--forest);color:var(--bone);border:none;padding:14px 32px;font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;border-radius:0;}
+.btn-next:hover:not(:disabled){opacity:.85;}
+.btn-next:disabled{background:var(--rule-strong);color:var(--ink-faint);cursor:not-allowed;}
 
-/* RED FLAG */
-.redflag-card{background:#fff;border:1.5px solid rgba(212,83,78,.25);border-radius:16px;padding:40px 32px;text-align:center;}
-.redflag-icon{font-size:52px;margin-bottom:20px;}
-.redflag-title{font-weight:600;font-size:22px;color:var(--navy);margin-bottom:12px;}
-.redflag-body{font-size:15px;color:var(--text-2);line-height:1.7;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;}
+/* ── RED FLAG ── */
+.redflag-card{border:1px solid var(--rule-strong);padding:48px 40px;text-align:center;}
+.redflag-eyebrow{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--alert);margin-bottom:16px;}
+.redflag-title{font-family:'Cormorant Display',serif;font-size:32px;font-weight:400;color:var(--ink);margin-bottom:16px;}
+.redflag-body{font-size:14px;font-weight:300;color:var(--ink-soft);line-height:1.7;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;}
+.btn-forest{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--bone);border:none;padding:14px 28px;font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:opacity .2s;}
+.btn-forest:hover{opacity:.85;}
 
-/* LOADING */
-.loading-screen{text-align:center;padding:64px 20px;}
-.loading-spinner{width:44px;height:44px;border:3px solid var(--silver);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 20px;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.loading-text{font-size:15px;color:var(--text-2);}
+/* ── LOADING ── */
+.loading-screen{text-align:center;padding:80px 20px;}
+.loading-line{width:1px;height:60px;background:var(--rule-strong);margin:0 auto 32px;position:relative;overflow:hidden;}
+.loading-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--forest);animation:lineDown 1s ease-in-out infinite;}
+@keyframes lineDown{0%{top:-100%;}100%{top:100%;}}
+.loading-text{font-size:12px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);}
 
-/* RESULTS */
-.result-banner{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-active) 100%);border-radius:16px;padding:28px 28px;color:#fff;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-.result-greeting{font-size:20px;font-weight:500;line-height:1.3;}
-.result-greeting em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;}
-.result-greeting-sub{font-size:13px;opacity:.7;margin-top:4px;}
-.match-pill{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:10px 16px;text-align:center;flex-shrink:0;}
-.match-pill-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;opacity:.7;display:block;}
-.match-pill-value{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;display:block;}
+/* ── RESULTS ── */
+.result-header{border:1px solid var(--rule-strong);padding:32px 32px 28px;margin-bottom:1px;background:var(--ink);display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.result-greeting{font-family:'Cormorant Display',serif;font-size:28px;font-weight:400;color:var(--bone);line-height:1.2;margin-bottom:4px;}
+.result-greeting em{font-style:italic;color:rgba(245,241,235,.55);}
+.result-greeting-sub{font-size:11px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:rgba(245,241,235,.4);}
+.match-block{text-align:right;flex-shrink:0;}
+.match-label{font-size:10px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:rgba(245,241,235,.4);display:block;margin-bottom:4px;}
+.match-value{font-family:'Cormorant Display',serif;font-size:48px;font-weight:300;color:var(--bone);line-height:1;}
 
-.result-product-card{background:#fff;border:1.5px solid var(--silver);border-radius:16px;overflow:hidden;margin-bottom:16px;}
-.result-product-header{display:flex;align-items:flex-start;gap:18px;padding:22px 22px 18px;}
-.result-product-img{width:84px;height:84px;object-fit:cover;border-radius:10px;background:var(--mint);flex-shrink:0;}
-.result-product-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;}
-.result-product-name{font-weight:600;font-size:22px;color:var(--navy);letter-spacing:-.3px;margin-bottom:3px;}
-.result-product-peptide{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;}
-.result-product-why{font-size:13px;color:var(--text-2);line-height:1.65;}
+.email-confirm{border:1px solid var(--rule-strong);border-top:none;padding:16px 32px;margin-bottom:1px;display:flex;align-items:center;gap:14px;background:var(--stone);}
+.email-confirm-dot{width:8px;height:8px;border-radius:50%;background:var(--forest);flex-shrink:0;}
+.email-confirm-title{font-size:12px;font-weight:400;color:var(--forest);letter-spacing:.5px;}
+.email-confirm-sub{font-size:11px;font-weight:300;color:var(--ink-faint);}
 
-.protocol-section{padding:0 22px 22px;}
-.protocol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+.result-card{border:1px solid var(--rule-strong);border-top:none;margin-bottom:1px;}
+.result-card-header{display:flex;align-items:flex-start;gap:20px;padding:28px 32px 20px;border-bottom:1px solid var(--rule);}
+.result-product-img{width:72px;height:72px;object-fit:cover;background:var(--stone);flex-shrink:0;}
+.result-product-eyebrow{font-size:10px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--forest);margin-bottom:4px;}
+.result-product-name{font-family:'Cormorant Display',serif;font-size:26px;font-weight:400;color:var(--ink);letter-spacing:-.3px;margin-bottom:2px;}
+.result-product-peptide{font-size:10px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;}
+.result-product-why{font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.7;}
+
+.protocol-grid{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule);}
 @media(max-width:480px){.protocol-grid{grid-template-columns:1fr 1fr;}}
-.protocol-cell{background:var(--cloud);border-radius:10px;padding:12px 14px;}
-.protocol-cell-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:3px;}
-.protocol-cell-value{font-size:13px;color:var(--navy);font-weight:500;line-height:1.35;}
+.protocol-cell{padding:18px 24px;border-right:1px solid var(--rule);}
+.protocol-cell:last-child{border-right:none;}
+.protocol-cell-label{font-size:9px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--forest);margin-bottom:4px;}
+.protocol-cell-value{font-size:13px;font-weight:400;color:var(--ink);line-height:1.35;}
 
-.protocol-block{margin-bottom:16px;}
-.protocol-block-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;}
-.protocol-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
-.protocol-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-2);line-height:1.5;}
-.protocol-list li .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-active);flex-shrink:0;margin-top:6px;}
-.protocol-list.warn li .dot{background:var(--gold);}
+.protocol-block{padding:20px 32px;border-bottom:1px solid var(--rule);}
+.protocol-block:last-child{border-bottom:none;}
+.protocol-block-title{font-size:9px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px;}
+.protocol-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.protocol-list li{display:flex;align-items:flex-start;gap:12px;font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.55;}
+.dot{width:1px;height:1px;border-radius:50%;background:var(--forest);flex-shrink:0;margin-top:7px;width:4px;height:4px;}
+.protocol-list.warn .dot{background:var(--ink-faint);}
 
-.result-ctas{display:flex;gap:10px;flex-wrap:wrap;padding:0 22px 22px;}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;border-radius:10px;padding:13px 22px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s;}
-.btn-primary:hover{background:var(--teal-deep);transform:translateY(-1px);}
-.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);border:1.5px solid var(--teal);border-radius:10px;padding:12px 22px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .2s,transform .15s;}
-.btn-outline:hover{background:var(--mint);transform:translateY(-1px);}
+.result-ctas{display:flex;gap:12px;flex-wrap:wrap;padding:24px 32px;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--bone);padding:13px 24px;font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s;}
+.btn-primary:hover{opacity:.85;}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--ink);border:1px solid var(--rule-strong);padding:12px 24px;font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .15s;}
+.btn-outline:hover{background:var(--stone);}
 
-.email-confirm{background:var(--mint);border:1px solid rgba(15,110,86,.2);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:16px;}
-.email-confirm-icon{width:34px;height:34px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.email-confirm-title{font-weight:600;font-size:13px;color:var(--teal-deep);margin-bottom:2px;}
-.email-confirm-sub{font-size:12px;color:var(--teal-deep);opacity:.75;}
+.secondary-card{border:1px solid var(--rule-strong);border-top:none;padding:20px 32px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:background .15s;margin-bottom:1px;}
+.secondary-card:hover{background:var(--stone);}
+.secondary-card-img{width:48px;height:48px;object-fit:cover;background:var(--stone);flex-shrink:0;}
+.secondary-card-label{font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:2px;}
+.secondary-card-name{font-size:15px;font-weight:400;color:var(--ink);}
+.secondary-card-desc{font-size:12px;font-weight:300;color:var(--ink-faint);}
+.secondary-card-arrow{margin-left:auto;color:var(--ink-faint);font-size:18px;}
 
-.secondary-card{background:#fff;border:1px solid var(--silver);border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px;margin-bottom:14px;text-decoration:none;transition:border-color .2s,transform .15s;}
-.secondary-card:hover{border-color:rgba(15,110,86,.3);transform:translateY(-1px);}
-.secondary-card-img{width:52px;height:52px;border-radius:8px;object-fit:cover;background:var(--mint);flex-shrink:0;}
-.secondary-card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);margin-bottom:2px;}
-.secondary-card-name{font-weight:600;font-size:15px;color:var(--navy);}
-.secondary-card-desc{font-size:12px;color:var(--text-2);}
-.secondary-card-arrow{margin-left:auto;color:var(--text-3);}
+.non-catalog-card{border:1px solid var(--rule-strong);border-top:none;padding:24px 32px;margin-bottom:1px;background:var(--stone);}
+.non-catalog-label{font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:6px;}
+.non-catalog-title{font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:6px;}
+.non-catalog-desc{font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.65;margin-bottom:16px;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--forest);border:1px solid var(--forest);padding:10px 20px;font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .15s;}
+.btn-ghost:hover{background:var(--forest-light);}
 
-.non-catalog-card{background:var(--navy);border-radius:12px;padding:20px 22px;margin-bottom:14px;}
-.non-catalog-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-active);margin-bottom:5px;}
-.non-catalog-title{font-weight:500;font-size:16px;color:#fff;margin-bottom:5px;}
-.non-catalog-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:14px;}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .2s;}
-.btn-ghost:hover{background:rgba(255,255,255,.18);}
+.result-disclaimer{border:1px solid var(--rule);border-top:none;padding:18px 32px;margin-bottom:24px;}
+.result-disclaimer p{font-size:11px;font-weight:300;color:var(--ink-faint);line-height:1.7;}
 
-.result-disclaimer{background:var(--cloud);border:1px solid var(--silver);border-radius:12px;padding:18px 20px;margin-bottom:20px;}
-.result-disclaimer p{font-size:11px;color:var(--text-3);line-height:1.7;}
-.result-disclaimer strong{color:var(--text-2);}
+/* ── FOOTER ── */
+.footer{background:var(--ink);padding:0;margin-top:80px;border-top:1px solid rgba(245,241,235,.08);}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding:64px 0 48px;}
+.foot-brand-name{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--bone);margin-bottom:16px;}
+.foot-desc{font-size:13px;font-weight:300;color:rgba(245,241,235,.4);line-height:1.7;max-width:280px;}
+.foot-col-title{font-family:'Inter',sans-serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,241,235,.3);margin-bottom:20px;}
+.foot-col a{display:block;font-size:13px;font-weight:300;color:rgba(245,241,235,.55);text-decoration:none;margin-bottom:10px;transition:color .2s;}
+.foot-col a:hover{color:var(--bone);}
+.foot-bottom{border-top:1px solid rgba(245,241,235,.08);padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.foot-copy{font-size:11px;font-weight:300;color:rgba(245,241,235,.25);letter-spacing:.5px;}
+.foot-bottom-links{display:flex;gap:24px;}
+.foot-bottom-links a{font-size:11px;font-weight:300;color:rgba(245,241,235,.35);text-decoration:none;transition:color .2s;}
+.foot-bottom-links a:hover{color:rgba(245,241,235,.7);}
+.foot-disclaimer{font-size:11px;font-weight:300;color:rgba(245,241,235,.2);line-height:1.6;padding:16px 0;border-top:1px solid rgba(245,241,235,.06);}
+@media(max-width:768px){.foot-top{grid-template-columns:1fr 1fr;gap:32px;padding:48px 0 36px;}.foot-top>:first-child{grid-column:1/-1;}}
+@media(max-width:480px){.foot-top{grid-template-columns:1fr;}}
 
-/* FOOTER */
-.footer{background:var(--navy);padding:40px 0;margin-top:60px;}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
-.footer-logo{font-family:'DM Sans',sans-serif;font-weight:500;font-size:17px;color:#fff;text-decoration:none;}
-.footer-logo .b{color:var(--teal-active);}
-.footer-links{display:flex;gap:24px;}
-.footer-links a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
-.footer-links a:hover{color:rgba(255,255,255,.7);}
+/* ── FLOATING WHATSAPP ── */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:500;width:52px;height:52px;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(46,74,58,.35);transition:transform .2s,box-shadow .2s;}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(46,74,58,.45);}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav id="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <div class="nav-logo-text"><span class="b">bio</span><span class="g">gradix</span></div>
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-mark">biogradix</span>
       </a>
-      <div class="nav-links">
-        <a href="/#productos" data-i18n="nav-productos">Productos</a>
-        <a href="/tecnologia" data-i18n="nav-tech">Tecnología</a>
-        <a href="/educacion" data-i18n="nav-edu">Educación</a>
-        <a href="/blog">Blog</a>
-        <a href="/#faq" data-i18n="nav-faq">FAQ</a>
-        <a href="/contacto" data-i18n="nav-contacto">Contacto</a>
-        <a href="/quiz" class="active" data-i18n="nav-quiz">Quiz</a>
+      <div class="nav-center">
+        <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+        <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+        <a href="blog.html" data-i18n="nav-blog">Blog</a>
+        <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
+        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
+        <a href="quiz.html" class="active" data-i18n="nav-quiz">Quiz</a>
       </div>
       <div class="nav-right">
         <button class="lang-btn active" onclick="setLang('es')">ES</button>
         <span class="lang-sep">|</span>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <a href="https://wa.me/13467189350" class="btn-wa" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.082a.75.75 0 00.921.921l5.27-1.484A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.947 0-3.775-.5-5.37-1.376l-.385-.215-3.985 1.121 1.1-3.893-.228-.38A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          WhatsApp
-        </a>
         <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('open')?'hidden':''">
           <span></span><span></span><span></span>
         </button>
@@ -255,16 +291,15 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu" onclick="if(event.target===this){this.classList.remove('open');document.body.style.overflow='';}">
-  <div class="mobile-menu-panel">
-    <a href="/#productos" data-i18n="nav-productos">Productos</a>
-    <a href="/tecnologia" data-i18n="nav-tech">Tecnología</a>
-    <a href="/educacion" data-i18n="nav-edu">Educación</a>
-    <a href="/blog">Blog</a>
-    <a href="/#faq" data-i18n="nav-faq">FAQ</a>
-    <a href="/contacto" data-i18n="nav-contacto">Contacto</a>
-    <a href="/quiz" data-i18n="nav-quiz">Quiz</a>
-    <a href="https://wa.me/13467189350" target="_blank">WhatsApp</a>
+<div id="mobileMenu" onclick="if(event.target===this){this.classList.remove('open');document.body.style.overflow='';}">
+  <div class="mobile-panel">
+    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" data-i18n="nav-blog">Blog</a>
+    <a href="index.html#faq" data-i18n="nav-faq">FAQ</a>
+    <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
+    <a href="quiz.html" class="active" data-i18n="nav-quiz">Quiz</a>
     <div class="mob-lang">
       <button class="lang-btn active" onclick="setLang('es');document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''">ES</button>
       <span class="lang-sep">|</span>
@@ -277,9 +312,9 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
 <section class="quiz-hero">
   <div class="container">
     <div class="quiz-hero-inner">
-      <span class="label" data-i18n="hero-label">Guía Personalizada</span>
-      <h1 data-i18n-html="hero-h1">Encuentra tu <em>péptido ideal</em></h1>
-      <p class="quiz-hero-sub" data-i18n="hero-sub">Responde algunas preguntas sobre tu perfil de salud y objetivos. Te recomendaremos el protocolo más adecuado para ti.</p>
+      <span class="hero-eyebrow" data-i18n="hero-label">Guía Personalizada</span>
+      <h1 class="hero-h1" data-i18n-html="hero-h1">Cinco preguntas.<br><em>Un protocolo exacto.</em></h1>
+      <p class="hero-sub" data-i18n="hero-sub">Responde algunas preguntas sobre tu perfil de salud y objetivos. Te recomendaremos el protocolo más adecuado para ti.</p>
     </div>
   </div>
 </section>
@@ -290,7 +325,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
     <div class="quiz-wrap">
 
       <!-- PROGRESS -->
-      <div class="progress-wrap" id="progressWrap">
+      <div id="progressWrap">
         <span class="progress-label" id="progressLabel">Paso 1 de 5</span>
         <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
       </div>
@@ -321,19 +356,19 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <h2 class="step-title" data-i18n-html="s1-title">Cuéntanos sobre <em>ti</em></h2>
         <p class="step-desc" data-i18n="s1-desc">Esta información nos ayuda a calibrar las recomendaciones de dosis y protocolo.</p>
 
-        <p class="step-eyebrow" style="margin-bottom:10px" data-i18n="s1-age-label">Rango de edad</p>
-        <div class="card-grid-2" id="ageGrid">
-          <div class="sel-card" data-val="18-25" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></svg></span><div><div class="sel-card-title">18–25</div><div class="sel-card-sub" data-i18n="age-18">Adulto joven</div></div></div>
-          <div class="sel-card" data-val="26-35" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H12L11 22l9-12H13z"/></svg></span><div><div class="sel-card-title">26–35</div><div class="sel-card-sub" data-i18n="age-26">Peak de rendimiento</div></div></div>
-          <div class="sel-card" data-val="36-45" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg></span><div><div class="sel-card-title">36–45</div><div class="sel-card-sub" data-i18n="age-36">Madurez activa</div></div></div>
-          <div class="sel-card" data-val="46-55" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M5 5c5 0 7 4 7 8-3 0-7-3-7-8z"/><path d="M19 5c-5 0-7 4-7 8 3 0 7-3 7-8z"/></svg></span><div><div class="sel-card-title">46–55</div><div class="sel-card-sub" data-i18n="age-46">Transición hormonal</div></div></div>
-          <div class="sel-card" data-val="56+" onclick="selectCard('age',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 6.5H21l-5.5 4 2 6.5L12 15.5l-5.5 4 2-6.5L3 9.5h6.5z"/></svg></span><div><div class="sel-card-title">56+</div><div class="sel-card-sub" data-i18n="age-56">Longevidad activa</div></div></div>
+        <span class="sub-label" data-i18n="s1-age-label">Rango de edad</span>
+        <div class="card-grid" id="ageGrid">
+          <div class="sel-card" data-val="18-25" onclick="selectCard('age',this)"><div class="sel-card-circle"></div><div><div class="sel-card-title">18–25</div><div class="sel-card-sub" data-i18n="age-18">Adulto joven</div></div></div>
+          <div class="sel-card" data-val="26-35" onclick="selectCard('age',this)"><div class="sel-card-circle"></div><div><div class="sel-card-title">26–35</div><div class="sel-card-sub" data-i18n="age-26">Peak de rendimiento</div></div></div>
+          <div class="sel-card" data-val="36-45" onclick="selectCard('age',this)"><div class="sel-card-circle"></div><div><div class="sel-card-title">36–45</div><div class="sel-card-sub" data-i18n="age-36">Madurez activa</div></div></div>
+          <div class="sel-card" data-val="46-55" onclick="selectCard('age',this)"><div class="sel-card-circle"></div><div><div class="sel-card-title">46–55</div><div class="sel-card-sub" data-i18n="age-46">Transición hormonal</div></div></div>
+          <div class="sel-card" data-val="56+" onclick="selectCard('age',this)"><div class="sel-card-circle"></div><div><div class="sel-card-title">56+</div><div class="sel-card-sub" data-i18n="age-56">Longevidad activa</div></div></div>
         </div>
 
-        <p class="step-eyebrow" style="margin-bottom:10px;margin-top:4px" data-i18n="s1-sex-label">Sexo biológico</p>
-        <div class="card-grid-2" id="sexGrid">
-          <div class="sel-card" data-val="male" onclick="selectCard('sex',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="14.5" r="5.5"/><path d="M14 10l5.5-5.5"/><path d="M15.5 4H20v4.5"/></svg></span><div><div class="sel-card-title" data-i18n="sex-male">Masculino</div></div></div>
-          <div class="sel-card" data-val="female" onclick="selectCard('sex',this)"><span class="sel-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.5" r="5.5"/><path d="M12 15v5.5"/><path d="M9.5 18h5"/></svg></span><div><div class="sel-card-title" data-i18n="sex-female">Femenino</div></div></div>
+        <span class="sub-label" style="margin-top:8px" data-i18n="s1-sex-label">Sexo biológico</span>
+        <div class="card-grid" id="sexGrid">
+          <div class="sel-card" data-val="male" onclick="selectCard('sex',this)"><div class="sel-card-circle"></div><div><div class="sel-card-title" data-i18n="sex-male">Masculino</div></div></div>
+          <div class="sel-card" data-val="female" onclick="selectCard('sex',this)"><div class="sel-card-circle"></div><div><div class="sel-card-title" data-i18n="sex-female">Femenino</div></div></div>
         </div>
 
         <div class="quiz-nav">
@@ -342,12 +377,11 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         </div>
       </div>
 
-      <!-- STEP 2: HEALTH SCREEN -->
+      <!-- STEP 2: HEALTH -->
       <div class="quiz-step" id="step-2">
         <div class="step-eyebrow" data-i18n="s2-eyebrow">Salud actual</div>
         <h2 class="step-title" data-i18n-html="s2-title">¿Tienes alguna de estas <em>condiciones?</em></h2>
         <p class="step-desc" data-i18n="s2-desc">Esta información es confidencial y solo se usa para tu seguridad. Selecciona todas las que apliquen.</p>
-
         <div class="checklist" id="conditionList">
           <label class="check-item danger">
             <input type="checkbox" value="cancer" onchange="handleCondition(this)"/>
@@ -374,7 +408,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
             <div><div class="check-item-label" data-i18n-html="cond-none"><strong>Ninguna de las anteriores</strong></div></div>
           </label>
         </div>
-
         <div class="quiz-nav">
           <button class="btn-back" onclick="goTo(1)">← <span data-i18n="btn-back">Atrás</span></button>
           <button class="btn-next" id="next-2" disabled onclick="proceedFromHealth()" data-i18n="btn-next">Continuar →</button>
@@ -387,70 +420,18 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <h2 class="step-title" data-i18n-html="s3-title">¿Qué quieres <em>lograr?</em></h2>
         <p class="step-desc" data-i18n="s3-desc">Selecciona hasta 2 objetivos principales. Esto determinará tu recomendación primaria.</p>
         <div class="goal-hint" data-i18n="s3-hint">Selecciona 1 o 2 opciones</div>
-
         <div class="goal-grid" id="goalGrid">
-          <div class="goal-card" data-val="muscle" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="10.5" width="1.5" height="3" rx="0.5"/><rect x="4" y="9.5" width="1.5" height="5" rx="0.5"/><path d="M5.5 12h13"/><rect x="18.5" y="9.5" width="1.5" height="5" rx="0.5"/><rect x="21" y="10.5" width="1.5" height="3" rx="0.5"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-muscle">Músculo & Rendimiento</div>
-            <div class="goal-card-sub" data-i18n="goal-muscle-sub">Masa, fuerza, hormona del crecimiento</div>
-          </div>
-          <div class="goal-card" data-val="energy" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H12L11 22l9-12H13z"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-energy">Energía & Vitalidad</div>
-            <div class="goal-card-sub" data-i18n="goal-energy-sub">Fatiga crónica, claridad mental, metabolismo</div>
-          </div>
-          <div class="goal-card" data-val="recovery" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8A9 9 0 1 1 5.3 5.3"/><path d="M21 3v5h-5"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-recovery">Recuperación & Curación</div>
-            <div class="goal-card-sub" data-i18n="goal-recovery-sub">Lesiones, articulaciones, tejido muscular</div>
-          </div>
-          <div class="goal-card" data-val="skin" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.41 1.41M18.36 18.36l1.41 1.41M2 12h2M20 12h2M4.22 19.78l1.41-1.41M18.36 5.64l1.41-1.41"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-skin">Piel & Belleza</div>
-            <div class="goal-card-sub" data-i18n="goal-skin-sub">Colágeno, elasticidad, anti-envejecimiento</div>
-          </div>
-          <div class="goal-card" data-val="immune" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C12 22 4 17 4 11V5.5L12 3l8 2.5V11c0 6-8 11-8 11z"/><path d="M9.5 12l2 2 3-3.5"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-immune">Sistema Inmune</div>
-            <div class="goal-card-sub" data-i18n="goal-immune-sub">Defensas, inflamación crónica, resiliencia</div>
-          </div>
-          <div class="goal-card" data-val="libido" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C12 21 3.5 15.5 3.5 9.5A4.5 4.5 0 0 1 8 5c1.8 0 3.3 1 4 2.5.7-1.5 2.2-2.5 4-2.5a4.5 4.5 0 0 1 4.5 4.5C20.5 15.5 12 21 12 21z"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-libido">Libido & Bienestar Íntimo</div>
-            <div class="goal-card-sub" data-i18n="goal-libido-sub">Deseo sexual, conexión, vitalidad íntima</div>
-          </div>
-          <div class="goal-card" data-val="antioxidant" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8"/><path d="M5 5c5 0 7 4 7 8-3 0-7-3-7-8z"/><path d="M19 5c-5 0-7 4-7 8 3 0 7-3 7-8z"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-antioxidant">Detox & Antioxidante</div>
-            <div class="goal-card-sub" data-i18n="goal-antioxidant-sub">Glutatión, estrés oxidativo, hígado</div>
-          </div>
-          <div class="goal-card" data-val="weight" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14M12 4v17"/><path d="M6 8l6-4 6 4"/><path d="M5 8l3.5 9a3.5 3.5 0 0 0 7 0L19 8"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-weight">Composición Corporal</div>
-            <div class="goal-card-sub" data-i18n="goal-weight-sub">Pérdida de grasa, metabolismo, forma física</div>
-          </div>
-          <div class="goal-card" data-val="cognitive" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M6 9H4M6 12H4M6 15H4M18 9h2M18 12h2M18 15h2M9 6V4M12 6V4M15 6V4M9 18v2M12 18v2M15 18v2"/><path d="M9.5 9.5h2v2h-2zM12.5 9.5h2v2h-2zM9.5 12.5h2v2h-2zM12.5 12.5h2v2h-2z"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-cognitive">Enfoque Mental</div>
-            <div class="goal-card-sub" data-i18n="goal-cognitive-sub">Concentración, memoria, neuroprotección</div>
-          </div>
-          <div class="goal-card" data-val="longevity" onclick="toggleGoal(this)">
-            <div class="goal-card-check"></div>
-            <div class="goal-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg></div>
-            <div class="goal-card-title" data-i18n="goal-longevity">Longevidad & Anti-Aging</div>
-            <div class="goal-card-sub" data-i18n="goal-longevity-sub">NAD+, sirtuínas, envejecimiento celular</div>
-          </div>
+          <div class="goal-card" data-val="muscle" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-muscle">Músculo & Rendimiento</div><div class="goal-card-sub" data-i18n="goal-muscle-sub">Masa, fuerza, hormona del crecimiento</div></div>
+          <div class="goal-card" data-val="energy" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-energy">Energía & Vitalidad</div><div class="goal-card-sub" data-i18n="goal-energy-sub">Fatiga crónica, claridad mental, metabolismo</div></div>
+          <div class="goal-card" data-val="recovery" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-recovery">Recuperación & Curación</div><div class="goal-card-sub" data-i18n="goal-recovery-sub">Lesiones, articulaciones, tejido muscular</div></div>
+          <div class="goal-card" data-val="skin" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-skin">Piel & Belleza</div><div class="goal-card-sub" data-i18n="goal-skin-sub">Colágeno, elasticidad, anti-envejecimiento</div></div>
+          <div class="goal-card" data-val="immune" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-immune">Sistema Inmune</div><div class="goal-card-sub" data-i18n="goal-immune-sub">Defensas, inflamación crónica, resiliencia</div></div>
+          <div class="goal-card" data-val="libido" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-libido">Libido & Bienestar Íntimo</div><div class="goal-card-sub" data-i18n="goal-libido-sub">Deseo sexual, conexión, vitalidad íntima</div></div>
+          <div class="goal-card" data-val="antioxidant" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-antioxidant">Detox & Antioxidante</div><div class="goal-card-sub" data-i18n="goal-antioxidant-sub">Glutatión, estrés oxidativo, hígado</div></div>
+          <div class="goal-card" data-val="weight" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-weight">Composición Corporal</div><div class="goal-card-sub" data-i18n="goal-weight-sub">Pérdida de grasa, metabolismo, forma física</div></div>
+          <div class="goal-card" data-val="cognitive" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-cognitive">Enfoque Mental</div><div class="goal-card-sub" data-i18n="goal-cognitive-sub">Concentración, memoria, neuroprotección</div></div>
+          <div class="goal-card" data-val="longevity" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-longevity">Longevidad & Anti-Aging</div><div class="goal-card-sub" data-i18n="goal-longevity-sub">NAD+, sirtuínas, envejecimiento celular</div></div>
         </div>
-
         <div class="quiz-nav">
           <button class="btn-back" onclick="goTo(2)">← <span data-i18n="btn-back">Atrás</span></button>
           <button class="btn-next" id="next-3" disabled onclick="goTo(4)" data-i18n="btn-next">Continuar →</button>
@@ -463,36 +444,16 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <h2 class="step-title" data-i18n-html="s4-title">Nivel de actividad y <em>síntomas</em></h2>
         <p class="step-desc" data-i18n="s4-desc">Esto nos permite afinar el protocolo con mayor precisión.</p>
 
-        <p class="step-eyebrow" style="margin-bottom:10px" data-i18n="s4-activity-label">Nivel de actividad física</p>
+        <span class="sub-label" data-i18n="s4-activity-label">Nivel de actividad física</span>
         <div class="radio-list" id="activityList">
-          <label class="radio-item" onclick="selectActivity(this,'sedentary')">
-            <input type="radio" name="activity" value="sedentary"/>
-            <span class="radio-item-label" data-i18n="act-sed">Sedentario / Poco activo</span>
-            <span class="radio-item-sub" data-i18n="act-sed-sub">Trabajo de escritorio, sin ejercicio regular</span>
-          </label>
-          <label class="radio-item" onclick="selectActivity(this,'light')">
-            <input type="radio" name="activity" value="light"/>
-            <span class="radio-item-label" data-i18n="act-light">Levemente activo</span>
-            <span class="radio-item-sub" data-i18n="act-light-sub">Caminatas, yoga, 1–2x por semana</span>
-          </label>
-          <label class="radio-item" onclick="selectActivity(this,'moderate')">
-            <input type="radio" name="activity" value="moderate"/>
-            <span class="radio-item-label" data-i18n="act-mod">Moderadamente activo</span>
-            <span class="radio-item-sub" data-i18n="act-mod-sub">Ejercicio regular 3–4x por semana</span>
-          </label>
-          <label class="radio-item" onclick="selectActivity(this,'very_active')">
-            <input type="radio" name="activity" value="very_active"/>
-            <span class="radio-item-label" data-i18n="act-very">Muy activo</span>
-            <span class="radio-item-sub" data-i18n="act-very-sub">Entrenamiento intenso 5–6x por semana</span>
-          </label>
-          <label class="radio-item" onclick="selectActivity(this,'athlete')">
-            <input type="radio" name="activity" value="athlete"/>
-            <span class="radio-item-label" data-i18n="act-ath">Atleta / Competitivo</span>
-            <span class="radio-item-sub" data-i18n="act-ath-sub">Entrenamiento diario de alto rendimiento</span>
-          </label>
+          <label class="radio-item" onclick="selectActivity(this,'sedentary')"><input type="radio" name="activity" value="sedentary"/><span class="radio-item-label" data-i18n="act-sed">Sedentario / Poco activo</span><span class="radio-item-sub" data-i18n="act-sed-sub">Sin ejercicio regular</span></label>
+          <label class="radio-item" onclick="selectActivity(this,'light')"><input type="radio" name="activity" value="light"/><span class="radio-item-label" data-i18n="act-light">Levemente activo</span><span class="radio-item-sub" data-i18n="act-light-sub">1–2x por semana</span></label>
+          <label class="radio-item" onclick="selectActivity(this,'moderate')"><input type="radio" name="activity" value="moderate"/><span class="radio-item-label" data-i18n="act-mod">Moderadamente activo</span><span class="radio-item-sub" data-i18n="act-mod-sub">3–4x por semana</span></label>
+          <label class="radio-item" onclick="selectActivity(this,'very_active')"><input type="radio" name="activity" value="very_active"/><span class="radio-item-label" data-i18n="act-very">Muy activo</span><span class="radio-item-sub" data-i18n="act-very-sub">5–6x por semana</span></label>
+          <label class="radio-item" onclick="selectActivity(this,'athlete')"><input type="radio" name="activity" value="athlete"/><span class="radio-item-label" data-i18n="act-ath">Atleta / Competitivo</span><span class="radio-item-sub" data-i18n="act-ath-sub">Alto rendimiento diario</span></label>
         </div>
 
-        <p class="step-eyebrow" style="margin-bottom:10px;margin-top:4px" data-i18n="s4-sym-label">Síntomas actuales (selecciona todos los que apliquen)</p>
+        <span class="sub-label" data-i18n="s4-sym-label">Síntomas actuales (opcional)</span>
         <div class="checklist" id="symptomList">
           <label class="check-item"><input type="checkbox" value="fatigue" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-fatigue">Fatiga crónica o falta de energía persistente</div></div></label>
           <label class="check-item"><input type="checkbox" value="joint_pain" onchange="toggleSymptom(this)"/><div><div class="check-item-label" data-i18n="sym-joint">Dolor articular o muscular crónico</div></div></label>
@@ -517,7 +478,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <div class="step-eyebrow" data-i18n="s5-eyebrow">Último paso</div>
         <h2 class="step-title" data-i18n-html="s5-title">Recibe tu protocolo <em>por email</em></h2>
         <p class="step-desc" data-i18n="s5-desc">Te enviaremos tu recomendación personalizada y protocolo de uso detallado. Sin spam, sin compromisos.</p>
-
         <div class="form-group">
           <label class="form-label" data-i18n="form-name">Nombre</label>
           <input type="text" class="form-input" id="inputName" placeholder="Tu nombre" data-i18n-ph="ph-name" oninput="updateContactNext()"/>
@@ -527,7 +487,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
           <input type="email" class="form-input" id="inputEmail" placeholder="tu@email.com" oninput="updateContactNext()"/>
           <div class="form-note" data-i18n="form-note">Tu protocolo llegará a este correo en los próximos minutos.</div>
         </div>
-
         <div class="quiz-nav">
           <button class="btn-back" onclick="goTo(4)">← <span data-i18n="btn-back">Atrás</span></button>
           <button class="btn-next" id="next-5" disabled onclick="submitQuiz()" data-i18n="btn-submit">Ver mi protocolo →</button>
@@ -537,19 +496,18 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
       <!-- LOADING -->
       <div class="quiz-step" id="step-loading">
         <div class="loading-screen">
-          <div class="loading-spinner"></div>
-          <p class="loading-text" data-i18n="loading-text">Analizando tu perfil y generando tu protocolo...</p>
+          <div class="loading-line"></div>
+          <p class="loading-text" data-i18n="loading-text">Analizando tu perfil...</p>
         </div>
       </div>
 
       <!-- RED FLAG -->
       <div class="quiz-step" id="step-redflag">
         <div class="redflag-card">
-          <div class="redflag-icon">🩺</div>
+          <div class="redflag-eyebrow">Atención</div>
           <div class="redflag-title" data-i18n="rf-title">Consulta médica recomendada</div>
           <p class="redflag-body" data-i18n="rf-body">Basado en las condiciones de salud que indicaste, te recomendamos consultar con un médico especialista antes de iniciar cualquier protocolo de péptidos. Tu seguridad es nuestra prioridad.</p>
-          <a href="https://wa.me/13467189350" class="btn-primary" target="_blank" data-i18n="rf-cta">Habla con nuestro equipo →</a>
-          <p style="margin-top:16px;font-size:12px;color:var(--text-3)" data-i18n="rf-sub">Nuestro equipo puede orientarte y coordinar con profesionales de salud.</p>
+          <a href="https://wa.me/13467189350" class="btn-forest" target="_blank" data-i18n="rf-cta">Habla con nuestro equipo →</a>
         </div>
         <div class="quiz-nav" style="border-top:none;margin-top:20px;">
           <button class="btn-back" onclick="goTo(2)">← <span data-i18n="btn-back">Atrás</span></button>
@@ -562,29 +520,65 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-1);background:var(--cloud
         <div id="resultContent"></div>
       </div>
 
-    </div><!-- /quiz-wrap -->
-  </div><!-- /container -->
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-inner">
-      <a href="/" class="footer-logo"><span class="b">bio</span>gradix</a>
-      <div class="footer-links">
-        <a href="/privacy" data-i18n="footer-privacy">Privacidad</a>
-        <a href="/terms" data-i18n="footer-terms">Términos</a>
-        <a href="/contacto" data-i18n="footer-contact">Contacto</a>
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand-name">biogradix</div>
+        <p class="foot-desc" data-i18n="foot-desc">Péptidos de precisión por vía sublingual. Ciencia aplicada al rendimiento humano.</p>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title" data-i18n="foot-products">Productos</div>
+        <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
+        <a href="producto-recoverypro.html">RECOVERYPRO™</a>
+        <a href="producto-radiancemax.html">RADIANCEMAX™</a>
+        <a href="producto-vitacharge.html">VITACHARGE™</a>
+        <a href="producto-passionboost.html">PASSIONBOOST™</a>
+        <a href="producto-immunefort.html">IMMUNEFORT™</a>
+        <a href="producto-celldew.html">CELLDEW™</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title" data-i18n="foot-company">Compañía</div>
+        <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+        <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+        <a href="blog.html" data-i18n="nav-blog">Blog</a>
+        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
+        <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
+      </div>
+      <div class="foot-col">
+        <div class="foot-col-title" data-i18n="foot-legal">Legal</div>
+        <a href="privacy.html" data-i18n="foot-privacy">Privacidad</a>
+        <a href="terms.html" data-i18n="foot-terms">Términos</a>
+        <a href="https://wa.me/13467189350" target="_blank" data-i18n="foot-wa">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-disclaimer" data-i18n="foot-disclaimer">* Estos productos no han sido evaluados por la FDA. No están destinados a diagnosticar, tratar, curar ni prevenir ninguna enfermedad. Consulta a tu médico antes de usar.</div>
+    <div class="foot-bottom">
+      <span class="foot-copy">© 2025 Biogradix LLC. All rights reserved.</span>
+      <div class="foot-bottom-links">
+        <a href="privacy.html" data-i18n="foot-privacy">Privacidad</a>
+        <a href="terms.html" data-i18n="foot-terms">Términos</a>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/13467189350" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L.057 23.082a.75.75 0 00.921.921l5.27-1.484A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.947 0-3.775-.5-5.37-1.376l-.385-.215-3.985 1.121 1.1-3.893-.228-.38A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
 
 <script>
 // ─── STATE ───────────────────────────────────────────────────────────────────
 const S = {
   lang: 'es',
   step: 0,
+  rec: null,
   data: { age: null, sex: null, conditions: [], goals: [], activity: null, symptoms: [], name: '', email: '' }
 };
 
@@ -592,9 +586,10 @@ const S = {
 const T = {
   es: {
     'page-title': 'Quiz de Péptidos — biogradix',
-    'nav-tech': 'Tecnología', 'nav-edu': 'Educación', 'nav-quiz': 'Quiz',
+    'nav-productos':'Productos','nav-tecnologia':'Tecnología','nav-educacion':'Educación',
+    'nav-blog':'Blog','nav-faq':'FAQ','nav-contacto':'Contacto','nav-quiz':'Quiz',
     'hero-label': 'Guía Personalizada',
-    'hero-h1': 'Encuentra tu <em>péptido ideal</em>',
+    'hero-h1': 'Cinco preguntas.<br><em>Un protocolo exacto.</em>',
     'hero-sub': 'Responde algunas preguntas sobre tu perfil de salud y objetivos. Te recomendaremos el protocolo más adecuado para ti.',
     's0-eyebrow': 'Antes de comenzar', 's0-title': 'Aviso <em>importante</em>',
     's0-accept': 'Entiendo que esta guía es únicamente informativa, no constituye consejo médico y me comprometo a consultar con un profesional de salud antes de iniciar cualquier protocolo.',
@@ -627,12 +622,12 @@ const T = {
     'goal-longevity': 'Longevidad & Anti-Aging', 'goal-longevity-sub': 'NAD+, sirtuínas, envejecimiento celular',
     's4-eyebrow': 'Perfil físico', 's4-title': 'Nivel de actividad y <em>síntomas</em>',
     's4-desc': 'Esto nos permite afinar el protocolo con mayor precisión.',
-    's4-activity-label': 'Nivel de actividad física', 's4-sym-label': 'Síntomas actuales (selecciona todos los que apliquen)',
-    'act-sed': 'Sedentario / Poco activo', 'act-sed-sub': 'Trabajo de escritorio, sin ejercicio regular',
-    'act-light': 'Levemente activo', 'act-light-sub': 'Caminatas, yoga, 1–2x por semana',
-    'act-mod': 'Moderadamente activo', 'act-mod-sub': 'Ejercicio regular 3–4x por semana',
-    'act-very': 'Muy activo', 'act-very-sub': 'Entrenamiento intenso 5–6x por semana',
-    'act-ath': 'Atleta / Competitivo', 'act-ath-sub': 'Entrenamiento diario de alto rendimiento',
+    's4-activity-label': 'Nivel de actividad física', 's4-sym-label': 'Síntomas actuales (opcional)',
+    'act-sed': 'Sedentario / Poco activo', 'act-sed-sub': 'Sin ejercicio regular',
+    'act-light': 'Levemente activo', 'act-light-sub': '1–2x por semana',
+    'act-mod': 'Moderadamente activo', 'act-mod-sub': '3–4x por semana',
+    'act-very': 'Muy activo', 'act-very-sub': '5–6x por semana',
+    'act-ath': 'Atleta / Competitivo', 'act-ath-sub': 'Alto rendimiento diario',
     'sym-fatigue': 'Fatiga crónica o falta de energía persistente',
     'sym-joint': 'Dolor articular o muscular crónico',
     'sym-gut': 'Problemas digestivos o intestinales',
@@ -648,20 +643,21 @@ const T = {
     'form-name': 'Nombre', 'form-email': 'Correo electrónico',
     'ph-name': 'Tu nombre', 'form-note': 'Tu protocolo llegará a este correo en los próximos minutos.',
     'btn-next': 'Continuar →', 'btn-back': 'Atrás', 'btn-submit': 'Ver mi protocolo →',
-    'loading-text': 'Analizando tu perfil y generando tu protocolo...',
+    'loading-text': 'Analizando tu perfil...',
     'rf-title': 'Consulta médica recomendada',
     'rf-body': 'Basado en las condiciones de salud que indicaste, te recomendamos consultar con un médico especialista antes de iniciar cualquier protocolo de péptidos. Tu seguridad es nuestra prioridad.',
-    'rf-cta': 'Habla con nuestro equipo →', 'rf-sub': 'Nuestro equipo puede orientarte y coordinar con profesionales de salud.',
-    'footer-privacy': 'Privacidad', 'footer-terms': 'Términos', 'footer-contact': 'Contacto',
+    'rf-cta': 'Habla con nuestro equipo →',
+    'foot-desc':'Péptidos de precisión por vía sublingual. Ciencia aplicada al rendimiento humano.',
+    'foot-products':'Productos','foot-company':'Compañía','foot-legal':'Legal',
+    'foot-privacy':'Privacidad','foot-terms':'Términos','foot-wa':'WhatsApp',
+    'foot-disclaimer':'* Estos productos no han sido evaluados por la FDA. No están destinados a diagnosticar, tratar, curar ni prevenir ninguna enfermedad.',
     'disc-p1': 'Esta guía interactiva es un recurso informativo y educativo. No constituye diagnóstico médico, consejo terapéutico ni prescripción de ningún tipo.',
     'disc-p2': 'Los péptidos mencionados en esta guía son compuestos investigados con fines de bienestar. Biogradix no afirma que ningún producto cure, trate o prevenga ninguna enfermedad.',
     'disc-p3': 'Los resultados pueden variar según la biología individual, estilo de vida y otros factores. Siempre consulta con un médico o profesional de salud calificado antes de iniciar cualquier suplementación.',
     'disc-p4': 'Al continuar, confirmas que tienes 18 años o más y que utilizas esta información bajo tu propia responsabilidad.',
-    'step-label': 'Paso',
-    'step-of': 'de',
+    'step-label': 'Paso', 'step-of': 'de',
     'match-label': 'Compatibilidad',
     'primary-eyebrow': 'Tu recomendación principal',
-    'why-label': '¿Por qué este péptido para ti?',
     'protocol-dose': 'Dosis', 'protocol-timing': 'Aplicación', 'protocol-duration': 'Duración',
     'tips-label': 'Para mejores resultados', 'cautions-label': 'Precauciones',
     'secondary-label': 'Complemento recomendado',
@@ -669,16 +665,17 @@ const T = {
     'email-sent-sub': 'Revisa tu bandeja de entrada (y spam por las dudas).',
     'see-product': 'Ver producto →', 'whatsapp-cta': 'Consulta gratis por WhatsApp',
     'non-catalog-label': 'También podría interesarte',
-    'disclaimer-result-text': 'AVISO LEGAL: Esta recomendación es orientativa y no reemplaza la consulta médica profesional. Los péptidos mencionados son compuestos de bienestar, no medicamentos aprobados por organismos regulatorios para los usos indicados. Consulta siempre con un médico antes de iniciar cualquier protocolo. Biogradix no se responsabiliza por el uso inadecuado de esta información.',
+    'disclaimer-result-text': 'AVISO LEGAL: Esta recomendación es orientativa y no reemplaza la consulta médica profesional. Los péptidos mencionados son compuestos de bienestar, no medicamentos aprobados por organismos regulatorios para los usos indicados. Consulta siempre con un médico antes de iniciar cualquier protocolo.',
   },
   en: {
     'page-title': 'Peptide Quiz — biogradix',
-    'nav-tech': 'Technology', 'nav-edu': 'Education', 'nav-quiz': 'Quiz',
+    'nav-productos':'Products','nav-tecnologia':'Technology','nav-educacion':'Education',
+    'nav-blog':'Blog','nav-faq':'FAQ','nav-contacto':'Contact','nav-quiz':'Quiz',
     'hero-label': 'Personalized Guide',
-    'hero-h1': 'Find your <em>ideal peptide</em>',
-    'hero-sub': 'Answer a few questions about your health profile and goals. We\'ll recommend the most suitable protocol for you.',
+    'hero-h1': 'Five questions.<br><em>One exact protocol.</em>',
+    'hero-sub': "Answer a few questions about your health profile and goals. We'll recommend the most suitable protocol for you.",
     's0-eyebrow': 'Before we begin', 's0-title': '<em>Important</em> disclaimer',
-    's0-accept': 'I understand this guide is for informational purposes only, does not constitute medical advice, and I agree to consult a healthcare professional before starting any protocol.',
+    's0-accept': "I understand this guide is for informational purposes only, does not constitute medical advice, and I agree to consult a healthcare professional before starting any protocol.",
     's1-eyebrow': 'Your profile', 's1-title': 'Tell us about <em>yourself</em>',
     's1-desc': 'This information helps us calibrate dosage and protocol recommendations.',
     's1-age-label': 'Age range', 's1-sex-label': 'Biological sex',
@@ -708,11 +705,11 @@ const T = {
     'goal-longevity': 'Longevity & Anti-Aging', 'goal-longevity-sub': 'NAD+, sirtuins, cellular aging',
     's4-eyebrow': 'Physical profile', 's4-title': 'Activity level and <em>symptoms</em>',
     's4-desc': 'This allows us to fine-tune your protocol with greater precision.',
-    's4-activity-label': 'Physical activity level', 's4-sym-label': 'Current symptoms (select all that apply)',
-    'act-sed': 'Sedentary / Minimally active', 'act-sed-sub': 'Desk job, no regular exercise',
-    'act-light': 'Lightly active', 'act-light-sub': 'Walks, yoga, 1–2x per week',
-    'act-mod': 'Moderately active', 'act-mod-sub': 'Regular exercise 3–4x per week',
-    'act-very': 'Very active', 'act-very-sub': 'Intense training 5–6x per week',
+    's4-activity-label': 'Physical activity level', 's4-sym-label': 'Current symptoms (optional)',
+    'act-sed': 'Sedentary / Minimally active', 'act-sed-sub': 'No regular exercise',
+    'act-light': 'Lightly active', 'act-light-sub': '1–2x per week',
+    'act-mod': 'Moderately active', 'act-mod-sub': '3–4x per week',
+    'act-very': 'Very active', 'act-very-sub': '5–6x per week',
     'act-ath': 'Athlete / Competitive', 'act-ath-sub': 'Daily high-performance training',
     'sym-fatigue': 'Chronic fatigue or persistent lack of energy',
     'sym-joint': 'Chronic joint or muscle pain',
@@ -725,89 +722,91 @@ const T = {
     'sym-stress': 'High stress or chronic anxiety',
     'sym-hair': 'Hair loss or thinning',
     's5-eyebrow': 'Last step', 's5-title': 'Receive your protocol <em>by email</em>',
-    's5-desc': 'We\'ll send your personalized recommendation and detailed usage protocol. No spam, no commitments.',
+    's5-desc': "We'll send your personalized recommendation and detailed usage protocol. No spam, no commitments.",
     'form-name': 'Name', 'form-email': 'Email address',
     'ph-name': 'Your name', 'form-note': 'Your protocol will arrive in your inbox within minutes.',
     'btn-next': 'Continue →', 'btn-back': 'Back', 'btn-submit': 'See my protocol →',
-    'loading-text': 'Analyzing your profile and generating your protocol...',
+    'loading-text': 'Analyzing your profile...',
     'rf-title': 'Medical consultation recommended',
     'rf-body': 'Based on the health conditions you indicated, we recommend consulting a specialist physician before starting any peptide protocol. Your safety is our priority.',
-    'rf-cta': 'Talk to our team →', 'rf-sub': 'Our team can guide you and coordinate with healthcare professionals.',
-    'footer-privacy': 'Privacy', 'footer-terms': 'Terms', 'footer-contact': 'Contact',
+    'rf-cta': 'Talk to our team →',
+    'foot-desc':'Precision peptides via sublingual delivery. Science applied to human performance.',
+    'foot-products':'Products','foot-company':'Company','foot-legal':'Legal',
+    'foot-privacy':'Privacy','foot-terms':'Terms','foot-wa':'WhatsApp',
+    'foot-disclaimer':'* These products have not been evaluated by the FDA. Not intended to diagnose, treat, cure, or prevent any disease.',
     'disc-p1': 'This interactive guide is an informational and educational resource. It does not constitute medical diagnosis, therapeutic advice, or prescription of any kind.',
     'disc-p2': 'The peptides mentioned in this guide are compounds researched for wellness purposes. Biogradix does not claim that any product cures, treats, or prevents any disease.',
     'disc-p3': 'Results may vary based on individual biology, lifestyle, and other factors. Always consult a physician or qualified healthcare professional before starting any supplementation.',
     'disc-p4': 'By continuing, you confirm that you are 18 years of age or older and that you use this information at your own responsibility.',
-    'step-label': 'Step',
-    'step-of': 'of',
+    'step-label': 'Step', 'step-of': 'of',
     'match-label': 'Match',
     'primary-eyebrow': 'Your primary recommendation',
-    'why-label': 'Why this peptide for you?',
     'protocol-dose': 'Dosage', 'protocol-timing': 'Application', 'protocol-duration': 'Duration',
     'tips-label': 'For best results', 'cautions-label': 'Precautions',
     'secondary-label': 'Recommended complement',
     'email-sent-title': 'Protocol sent to your email',
     'email-sent-sub': 'Check your inbox (and spam just in case).',
-    'see-product': 'View product →', 'whatsapp-cta': 'Free WhatsApp consultation',
-    'non-catalog-label': 'You might also be interested in',
-    'disclaimer-result-text': 'LEGAL DISCLAIMER: This recommendation is advisory and does not replace professional medical consultation. The peptides mentioned are wellness compounds, not medications approved by regulatory bodies for the indicated uses. Always consult a physician before starting any protocol. Biogradix is not responsible for misuse of this information.',
+    'see-product': 'See product →', 'whatsapp-cta': 'Free WhatsApp consultation',
+    'non-catalog-label': 'You may also be interested in',
+    'disclaimer-result-text': 'LEGAL DISCLAIMER: This recommendation is informational and does not replace professional medical advice. The peptides mentioned are wellness compounds, not medications approved by regulatory agencies for the indicated uses. Always consult a doctor before starting any protocol.',
   }
 };
-function t(k){ return T[S.lang][k] || k; }
 
-// ─── PRODUCT DATA ─────────────────────────────────────────────────────────────
+function t(k) { return T[S.lang][k] || T.es[k] || k; }
+
+// ─── PRODUCTS ────────────────────────────────────────────────────────────────
 const PRODUCTS = {
   musclemaxx: {
-    name: 'MUSCLEMAXX™', peptide: 'CJC-1295 / Ipamorelin',
+    name: 'MUSCLEMAXX™', peptide: 'GHRP-6 + CJC-1295',
     img: 'img-musclemaxx-display.png', url: '/producto-musclemaxx',
-    tagline: { es: 'Optimización Hormonal & Rendimiento', en: 'Hormonal Optimization & Performance' },
+    tagline: { es: 'Masa Muscular & Hormona de Crecimiento', en: 'Muscle Mass & Growth Hormone' },
     why: {
-      es: 'Tu perfil de actividad física y objetivos de rendimiento hacen de MUSCLEMAXX™ la elección ideal. CJC-1295 e Ipamorelin actúan sinérgicamente en el eje de la hormona del crecimiento, maximizando la síntesis proteica y la recuperación muscular de forma natural.',
-      en: 'Your activity profile and performance goals make MUSCLEMAXX™ the ideal choice. CJC-1295 and Ipamorelin act synergistically on the growth hormone axis, maximizing protein synthesis and muscle recovery naturally.'
+      es: 'Tu perfil indica que MUSCLEMAXX™ es tu mejor aliado. La combinación GHRP-6 + CJC-1295 estimula la liberación pulsátil de hormona del crecimiento de forma natural — maximizando la síntesis proteica, la recuperación y la composición corporal sin los riesgos de la HGH exógena.',
+      en: 'Your profile indicates MUSCLEMAXX™ is your best ally. The GHRP-6 + CJC-1295 combination stimulates pulsatile growth hormone release naturally — maximizing protein synthesis, recovery, and body composition without the risks of exogenous HGH.'
     },
     protocol: {
       dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
-      timing: { es: '30–60 min antes de dormir', en: '30–60 min before sleep' },
-      duration: { es: 'Ciclos de 12–16 semanas', en: '12–16 week cycles' },
+      timing: { es: 'Noche, 30–60 min antes de dormir', en: 'Night, 30–60 min before sleep' },
+      duration: { es: 'Ciclos de 12 semanas, 4 semanas de descanso', en: '12-week cycles, 4-week rest' },
     },
     tips: {
-      es: ['Aplica a la misma hora cada noche para mantener ritmo circadiano de GH', 'Ayuna 2 horas antes de la aplicación para optimizar la respuesta hormonal', 'Combina con entrenamiento de fuerza 3–5x por semana', 'Ingesta de proteína: 1.6–2.2 g/kg de peso corporal diario', 'Descanso de 4 semanas entre ciclos de 12–16 semanas'],
-      en: ['Apply at the same time each night to maintain GH circadian rhythm', 'Fast 2 hours before application to optimize hormonal response', 'Combine with strength training 3–5x per week', 'Protein intake: 1.6–2.2 g/kg body weight daily', '4-week break between 12–16 week cycles']
+      es: ['Aplicar en ayunas o 2h post-comida para maximizar el pulso de GH', 'Entrenamiento de fuerza potencia la respuesta 3–5x', 'Dormir 7–9 horas: el 80% de la GH se libera en sueño profundo', 'Primeros cambios en recuperación: 2–3 semanas', 'Cambios en composición corporal: 6–8 semanas'],
+      en: ['Apply fasting or 2h post-meal to maximize GH pulse', 'Strength training amplifies the response 3–5x', 'Sleep 7–9 hours: 80% of GH is released during deep sleep', 'First recovery changes: 2–3 weeks', 'Body composition changes: 6–8 weeks']
     },
     cautions: {
-      es: ['No usar si tienes historial de cáncer activo (GH puede estimular proliferación celular)', 'Consultar con médico si tienes diabetes o resistencia a la insulina', 'Monitorear niveles de IGF-1 si usas más de 16 semanas continuas'],
-      en: ['Do not use with active cancer history (GH may stimulate cell proliferation)', 'Consult doctor if you have diabetes or insulin resistance', 'Monitor IGF-1 levels if using more than 16 continuous weeks']
+      es: ['No usar con diabetes activa (GHRP-6 puede elevar glucosa transitoriamente)', 'Consultar médico si tienes historial de cáncer', 'Puede aumentar el apetito significativamente — normal con GHRP-6'],
+      en: ['Do not use with active diabetes (GHRP-6 may transiently raise glucose)', 'Consult doctor if you have a cancer history', 'May significantly increase appetite — normal with GHRP-6']
     }
   },
   recoverypro: {
     name: 'RECOVERYPRO™', peptide: 'BPC-157',
     img: 'img-recoverypro-display.png', url: '/producto-recoverypro',
-    tagline: { es: 'Recuperación Total del Cuerpo', en: 'Total Body Recovery' },
+    tagline: { es: 'Regeneración & Curación Acelerada', en: 'Regeneration & Accelerated Healing' },
     why: {
-      es: 'Tu perfil indica necesidad de reparación y recuperación. BPC-157 es conocido como el "péptido de la recuperación" por su capacidad única de estimular la reparación de tejido muscular, ligamentos, articulaciones y mucosa digestiva de forma sistémica.',
-      en: 'Your profile indicates a need for repair and recovery. BPC-157 is known as the "recovery peptide" for its unique ability to stimulate repair of muscle tissue, ligaments, joints, and digestive mucosa systemically.'
+      es: 'Tu perfil apunta a RECOVERYPRO™. BPC-157 es uno de los péptidos más investigados para regeneración tisular — actúa sobre tendones, ligamentos, músculo y mucosa intestinal simultáneamente, acelerando procesos que normalmente toman meses.',
+      en: 'Your profile points to RECOVERYPRO™. BPC-157 is one of the most researched peptides for tissue regeneration — acting on tendons, ligaments, muscle, and intestinal mucosa simultaneously, accelerating processes that normally take months.'
     },
     protocol: {
       dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
-      timing: { es: 'Mañana en ayunas o antes de dormir', en: 'Morning on empty stomach or before bed' },
-      duration: { es: '8–12 semanas continuas', en: '8–12 continuous weeks' },
+      timing: { es: 'Mañana en ayunas para máxima absorción', en: 'Morning fasting for maximum absorption' },
+      duration: { es: 'Ciclos de 8–12 semanas según la condición', en: '8–12 week cycles depending on condition' },
     },
     tips: {
-      es: ['La consistencia es clave: aplicar a la misma hora todos los días', 'Combinar con ingesta adecuada de proteínas y colágeno', 'Para lesiones específicas: aplicar cerca del área afectada si es posible', 'Hidratación óptima (2–3 L de agua por día) potencia los efectos', 'Resultados notables en articulaciones típicamente en 3–6 semanas'],
-      en: ['Consistency is key: apply at the same time every day', 'Combine with adequate protein and collagen intake', 'For specific injuries: apply near the affected area if possible', 'Optimal hydration (2–3 L of water per day) enhances effects', 'Noticeable joint results typically in 3–6 weeks']
+      es: ['Aplicar en la mañana en ayunas para máxima absorción', 'Para lesiones específicas: aplicar lo más cerca posible del área afectada si es posible', 'La curación es progresiva: evaluar a las 4 semanas', 'Combinar con colágeno hidrolizado (10g/día) para sinergia', 'Reducir actividad de alto impacto las primeras 2 semanas'],
+      en: ['Apply in the morning fasting for maximum absorption', 'For specific injuries: apply as close as possible to the affected area if possible', 'Healing is progressive: evaluate at 4 weeks', 'Combine with hydrolyzed collagen (10g/day) for synergy', 'Reduce high-impact activity for the first 2 weeks']
     },
     cautions: {
-      es: ['Precaución en historial oncológico (factor de crecimiento)', 'Consultar médico en caso de cirugía reciente o lesiones severas', 'No es un sustituto de tratamiento médico para lesiones graves'],
-      en: ['Caution with oncological history (growth factor)', 'Consult doctor in case of recent surgery or severe injuries', 'Not a substitute for medical treatment for serious injuries']
+      es: ['No hay contraindicaciones mayores conocidas para BPC-157 oral', 'Consultar médico si estás bajo tratamiento activo de lesiones graves', 'En caso de embarazo, consultar médico antes del uso'],
+      en: ['No major known contraindications for oral BPC-157', 'Consult doctor if under active treatment for serious injuries', 'In case of pregnancy, consult doctor before use']
     }
   },
   radiancemax: {
     name: 'RADIANCEMAX™', peptide: 'GHK-Cu',
     img: 'img-radiancemax-display.png', url: '/producto-radiancemax',
-    tagline: { es: 'Belleza Regenerativa desde Adentro', en: 'Regenerative Beauty from Within' },
+    tagline: { es: 'Rejuvenecimiento Dérmico & Anti-Aging', en: 'Dermal Rejuvenation & Anti-Aging' },
     why: {
-      es: 'Tu perfil de objetivos y síntomas apunta claramente a RADIANCEMAX™. GHK-Cu (péptido de cobre) estimula directamente los fibroblastos para producir colágeno tipo I, II y III, elastina y ácido hialurónico — los tres pilares de una piel joven y radiante.',
-      en: 'Your goals and symptom profile clearly points to RADIANCEMAX™. GHK-Cu (copper peptide) directly stimulates fibroblasts to produce type I, II and III collagen, elastin, and hyaluronic acid — the three pillars of youthful, radiant skin.'
+      es: 'Tu perfil indica que RADIANCEMAX™ es tu recomendación ideal. GHK-Cu es el péptido de cobre más estudiado para la piel — activa más de 4,000 genes relacionados con la regeneración celular, estimulando la producción de colágeno tipo I, II y III, elastina y ácido hialurónico.',
+      en: 'Your profile indicates RADIANCEMAX™ is your ideal recommendation. GHK-Cu is the most studied copper peptide for skin — activating over 4,000 genes related to cellular regeneration, stimulating production of type I, II and III collagen, elastin, and hyaluronic acid.'
     },
     protocol: {
       dose: { es: '1 parche bucal diario', en: '1 oral patch daily' },
@@ -913,7 +912,6 @@ const PRODUCTS = {
   }
 };
 
-// Non-catalog entries for specific needs
 const NON_CATALOG = {
   _glp1: {
     title: { es: 'Péptidos GLP-1 (Semaglutide / Tirzepatide)', en: 'GLP-1 Peptides (Semaglutide / Tirzepatide)' },
@@ -931,7 +929,6 @@ const NON_CATALOG = {
 function computeRecommendation() {
   const d = S.data;
   const sc = { musclemaxx:0, recoverypro:0, radiancemax:0, vitacharge:0, passionboost:0, immunefort:0, celldew:0, _glp1:0, _cognitive:0 };
-
   const goalMap = {
     muscle:     { musclemaxx:15, recoverypro:3 },
     energy:     { vitacharge:15, celldew:4 },
@@ -945,19 +942,15 @@ function computeRecommendation() {
     longevity:  { vitacharge:10, celldew:7, radiancemax:4 }
   };
   for (const g of d.goals) { if (goalMap[g]) for (const [k,v] of Object.entries(goalMap[g])) sc[k] += v; }
-
   const age = parseInt((d.age||'30').split('-')[0]);
   if (age >= 40) { sc.vitacharge += 5; sc.radiancemax += 3; }
   if (age >= 50) { sc.vitacharge += 5; sc.immunefort += 4; }
   if (age >= 60) { sc.celldew += 3; sc.immunefort += 3; }
   if (age < 30)  { sc.musclemaxx += 3; }
-
   if (d.sex === 'female') { sc.radiancemax += 3; sc.celldew += 2; }
   if (d.sex === 'male')   { sc.musclemaxx += 2; }
-
   const actMap = { athlete:{musclemaxx:6,recoverypro:5}, very_active:{musclemaxx:4,recoverypro:3}, moderate:{recoverypro:2}, light:{vitacharge:2}, sedentary:{vitacharge:4,celldew:3} };
   if (d.activity && actMap[d.activity]) for (const [k,v] of Object.entries(actMap[d.activity])) sc[k] += v;
-
   const symMap = {
     fatigue:{vitacharge:8,celldew:4}, joint_pain:{recoverypro:10}, gut_issues:{recoverypro:8},
     frequent_illness:{immunefort:10}, skin_aging:{radiancemax:10}, brain_fog:{vitacharge:8,_cognitive:5},
@@ -965,21 +958,15 @@ function computeRecommendation() {
     stress:{celldew:5,vitacharge:3}, hair_thinning:{radiancemax:6}
   };
   for (const s of d.symptoms) { if (symMap[s]) for (const [k,v] of Object.entries(symMap[s])) sc[k] += v; }
-
-  // Cardiovascular flag: suppress passionboost
   if (d.conditions.includes('cardiovascular')) sc.passionboost = 0;
-
   const catalog = ['musclemaxx','recoverypro','radiancemax','vitacharge','passionboost','immunefort','celldew'];
   catalog.sort((a,b) => sc[b]-sc[a]);
   const primary = catalog[0];
   const secondary = sc[catalog[1]] > 4 ? catalog[1] : null;
-
   const nonCatalogTop = ['_glp1','_cognitive'].sort((a,b) => sc[b]-sc[a])[0];
   const showNonCatalog = sc[nonCatalogTop] > 10 && sc[nonCatalogTop] > sc[primary] * 0.55;
-
   const maxScore = Math.max(...catalog.map(k=>sc[k]));
   const matchPct = Math.min(98, Math.round(60 + (sc[primary] / Math.max(maxScore,1)) * 38));
-
   return { primary, secondary, nonCatalog: showNonCatalog ? nonCatalogTop : null, matchPct, scores: sc };
 }
 
@@ -1015,7 +1002,7 @@ function updateNextBtn(step) {
 }
 
 function selectCard(field, el) {
-  const grid = el.closest('.card-grid-2');
+  const grid = el.closest('.card-grid');
   grid.querySelectorAll('.sel-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
   S.data[field] = el.dataset.val;
@@ -1084,36 +1071,24 @@ async function submitQuiz() {
   const rec = computeRecommendation();
   S.rec = rec;
   const prod = PRODUCTS[rec.primary];
-
   goTo('loading');
-
   try {
     await fetch('/api/send-protocol', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name: S.data.name,
-        email: S.data.email,
-        lang: S.lang,
-        productName: prod.name,
-        peptide: prod.peptide,
-        productUrl: prod.url,
-        matchPct: rec.matchPct,
-        why: prod.why[S.lang],
-        dose: prod.protocol.dose[S.lang],
-        timing: prod.protocol.timing[S.lang],
-        duration: prod.protocol.duration[S.lang],
-        tips: prod.tips[S.lang],
-        cautions: prod.cautions[S.lang],
+        name: S.data.name, email: S.data.email, lang: S.lang,
+        productName: prod.name, peptide: prod.peptide, productUrl: prod.url,
+        matchPct: rec.matchPct, why: prod.why[S.lang],
+        dose: prod.protocol.dose[S.lang], timing: prod.protocol.timing[S.lang], duration: prod.protocol.duration[S.lang],
+        tips: prod.tips[S.lang], cautions: prod.cautions[S.lang],
         secondaryName: rec.secondary ? PRODUCTS[rec.secondary].name : null,
         secondaryUrl: rec.secondary ? PRODUCTS[rec.secondary].url : null,
       })
     });
   } catch(e) { console.error('Email send failed:', e); }
-
   renderResults(rec);
   goTo('result');
-
   if (typeof gtag !== 'undefined') gtag('event','quiz_complete',{event_category:'quiz',event_label:rec.primary});
 }
 
@@ -1127,6 +1102,7 @@ function renderResults(rec) {
 
   const tipsHtml = prod.tips[l].map(tip => `<li><span class="dot"></span>${tip}</li>`).join('');
   const cautsHtml = prod.cautions[l].map(c => `<li><span class="dot"></span>${c}</li>`).join('');
+
   const secHtml = sec ? `
     <a href="${sec.url}" class="secondary-card">
       <img src="${sec.img}" alt="${sec.name}" class="secondary-card-img"/>
@@ -1147,65 +1123,57 @@ function renderResults(rec) {
     </div>` : '';
 
   document.getElementById('resultContent').innerHTML = `
-    <div class="result-banner">
+    <div class="result-header">
       <div>
         <div class="result-greeting">${name ? name + ', ' : ''}<em>${prod.tagline[l]}</em></div>
         <div class="result-greeting-sub">${t('primary-eyebrow')}</div>
       </div>
-      <div class="match-pill">
-        <span class="match-pill-label">${t('match-label')}</span>
-        <span class="match-pill-value">${rec.matchPct}%</span>
+      <div class="match-block">
+        <span class="match-label">${t('match-label')}</span>
+        <span class="match-value">${rec.matchPct}%</span>
       </div>
     </div>
 
     <div class="email-confirm">
-      <div class="email-confirm-icon">
-        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
+      <div class="email-confirm-dot"></div>
       <div>
         <div class="email-confirm-title">${t('email-sent-title')}</div>
         <div class="email-confirm-sub">${t('email-sent-sub')}</div>
       </div>
     </div>
 
-    <div class="result-product-card">
-      <div class="result-product-header">
+    <div class="result-card">
+      <div class="result-card-header">
         <img src="${prod.img}" alt="${prod.name}" class="result-product-img"/>
-        <div class="result-product-info">
+        <div>
           <div class="result-product-eyebrow">${t('primary-eyebrow')}</div>
           <div class="result-product-name">${prod.name}</div>
           <div class="result-product-peptide">${prod.peptide}</div>
           <div class="result-product-why">${prod.why[l]}</div>
         </div>
       </div>
-
-      <div class="protocol-section">
-        <div class="protocol-grid">
-          <div class="protocol-cell">
-            <div class="protocol-cell-label">${t('protocol-dose')}</div>
-            <div class="protocol-cell-value">${prod.protocol.dose[l]}</div>
-          </div>
-          <div class="protocol-cell">
-            <div class="protocol-cell-label">${t('protocol-timing')}</div>
-            <div class="protocol-cell-value">${prod.protocol.timing[l]}</div>
-          </div>
-          <div class="protocol-cell">
-            <div class="protocol-cell-label">${t('protocol-duration')}</div>
-            <div class="protocol-cell-value">${prod.protocol.duration[l]}</div>
-          </div>
+      <div class="protocol-grid">
+        <div class="protocol-cell">
+          <div class="protocol-cell-label">${t('protocol-dose')}</div>
+          <div class="protocol-cell-value">${prod.protocol.dose[l]}</div>
         </div>
-
-        <div class="protocol-block">
-          <div class="protocol-block-title">${t('tips-label')}</div>
-          <ul class="protocol-list">${tipsHtml}</ul>
+        <div class="protocol-cell">
+          <div class="protocol-cell-label">${t('protocol-timing')}</div>
+          <div class="protocol-cell-value">${prod.protocol.timing[l]}</div>
         </div>
-
-        <div class="protocol-block">
-          <div class="protocol-block-title">${t('cautions-label')}</div>
-          <ul class="protocol-list warn">${cautsHtml}</ul>
+        <div class="protocol-cell">
+          <div class="protocol-cell-label">${t('protocol-duration')}</div>
+          <div class="protocol-cell-value">${prod.protocol.duration[l]}</div>
         </div>
       </div>
-
+      <div class="protocol-block">
+        <div class="protocol-block-title">${t('tips-label')}</div>
+        <ul class="protocol-list">${tipsHtml}</ul>
+      </div>
+      <div class="protocol-block">
+        <div class="protocol-block-title">${t('cautions-label')}</div>
+        <ul class="protocol-list warn">${cautsHtml}</ul>
+      </div>
       <div class="result-ctas">
         <a href="${prod.url}" class="btn-primary">${t('see-product')}</a>
         <a href="https://wa.me/13467189350" class="btn-outline" target="_blank">${t('whatsapp-cta')}</a>
@@ -1216,7 +1184,7 @@ function renderResults(rec) {
     ${ncHtml}
 
     <div class="result-disclaimer">
-      <p><strong>AVISO LEGAL / LEGAL DISCLAIMER:</strong> ${t('disclaimer-result-text')}</p>
+      <p>${t('disclaimer-result-text')}</p>
     </div>
   `;
 }
@@ -1229,10 +1197,8 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => { const v = T[lang][el.dataset.i18n]; if(v) el.textContent = v; });
   document.querySelectorAll('[data-i18n-html]').forEach(el => { const v = T[lang][el.dataset.i18nHtml]; if(v) el.innerHTML = v; });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { const v = T[lang][el.dataset.i18nPh]; if(v) el.placeholder = v; });
-  // disclaimer paragraphs
   ['p1','p2','p3','p4'].forEach(k => { const el = document.getElementById('disc-'+k); if(el) el.textContent = T[lang]['disc-'+k] || ''; });
   document.title = T[lang]['page-title'] || document.title;
-  // Re-render results in the new language if results are currently shown
   if (S.rec && S.step === 'result') renderResults(S.rec);
 }
 
