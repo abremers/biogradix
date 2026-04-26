@@ -1064,6 +1064,9 @@ async function submitQuiz() {
         tips: prod.tips[S.lang], cautions: prod.cautions[S.lang],
         secondaryName: rec.secondary ? PRODUCTS[rec.secondary].name : null,
         secondaryUrl: rec.secondary ? PRODUCTS[rec.secondary].url : null,
+        // Full quiz profile for lead capture
+        age: S.data.age, sex: S.data.sex, goals: S.data.goals,
+        activity: S.data.activity, conditions: S.data.conditions, symptoms: S.data.symptoms,
       })
     });
   } catch(e) { console.error('Email send failed:', e); }
