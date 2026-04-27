@@ -113,7 +113,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       </div>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;">
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;">1–2 semanas</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="if-duration">1–2 semanas</span>
       <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="if-aud">Viajeros · Inmunocompromiso · Estrés</span>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
@@ -183,7 +183,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
     <div>
       <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="coa-label">Certificaciones &amp; Calidad</div>
-      <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--bone);margin-bottom:40px;">Pureza que<br/><em style="font-style:italic;color:var(--forest);">se certifica.</em></h2>
+      <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--bone);margin-bottom:40px;" data-i18n-html="coa-h2">Pureza que<br/><em style="font-style:italic;color:var(--forest);">se certifica.</em></h2>
       <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-faint);margin-bottom:48px;" data-i18n="if-coa-body">Cada lote de ImmuneFort se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico.</p>
       <div style="display:flex;flex-direction:column;gap:0;">
         <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c1">GMP Farmacéutico certificado</span></div>
@@ -296,7 +296,8 @@ const TRANSLATIONS = {
     "if-ben-t2":"Adaptógeno al Estrés","if-ben-b2":"El estrés crónico eleva el cortisol, suprimiendo la inmunidad adaptativa. ImmuneFort actúa como adaptógeno peptídico, moderando el impacto del eje HHA sobre las células inmunes y restaurando la resiliencia sistémica.",
     "if-ben-t3":"Defensa Estacional","if-ben-b3":"Aumenta la producción de interferones y potencia la vigilancia antiviral. Protección proactiva frente a infecciones estacionales con mayor rapidez de resolución.",
     "if-ben-t4":"Activación NK y Macrófagos","if-ben-b4":"Potencia la citotoxicidad de células Natural Killer y la capacidad fagocítica de macrófagos. Respuesta inmune más ágil en las primeras horas de exposición patogénica.",
-    "coa-label":"Certificaciones & Calidad","if-coa-body":"Cada lote de ImmuneFort se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico.",
+    "if-duration":"1–2 semanas",
+    "coa-label":"Certificaciones & Calidad","coa-h2":"Pureza que<br/><em style=\"font-style:italic;color:var(--forest);\">se certifica.</em>","if-coa-body":"Cada lote de ImmuneFort se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico.",
     "coa-c1":"GMP Farmacéutico certificado","coa-c2":"Análisis HPLC por lote","coa-c3":"Prueba de endotoxinas LAL","coa-c4":"Verificación de identidad molecular",
     "coa-s1":"Pureza mínima","coa-s2":"Biodisponibilidad oral vs. cápsula","coa-s3":"Inicio de absorción","coa-s4":"Resultados observables",
     "rel-label":"También te puede interesar","rel-h2":"Protocolos relacionados","rel-cd":"Ver protocolo →","rel-vc":"Ver protocolo →","rel-rp":"Ver protocolo →",
@@ -321,7 +322,8 @@ const TRANSLATIONS = {
     "if-ben-t2":"Stress Adaptogen","if-ben-b2":"Chronic stress elevates cortisol, suppressing adaptive immunity. ImmuneFort acts as a peptide adaptogen, moderating HPA axis impact on immune cells and restoring systemic resilience.",
     "if-ben-t3":"Seasonal Defense","if-ben-b3":"Increases interferon production and enhances antiviral surveillance. Proactive protection against seasonal infections with faster resolution when infection occurs.",
     "if-ben-t4":"NK and Macrophage Activation","if-ben-b4":"Enhances Natural Killer cell cytotoxicity and macrophage phagocytic capacity. More agile immune response in the first hours of pathogenic exposure.",
-    "coa-label":"Certifications & Quality","if-coa-body":"Each ImmuneFort batch undergoes HPLC purity analysis, LAL endotoxin testing, and molecular identity verification. Production under pharmaceutical GMP standards.",
+    "if-duration":"1–2 weeks",
+    "coa-label":"Certifications & Quality","coa-h2":"Purity that<br/><em style=\"font-style:italic;color:var(--forest);\">is certified.</em>","if-coa-body":"Each ImmuneFort batch undergoes HPLC purity analysis, LAL endotoxin testing, and molecular identity verification. Production under pharmaceutical GMP standards.",
     "coa-c1":"Pharmaceutical GMP certified","coa-c2":"HPLC analysis per batch","coa-c3":"LAL endotoxin test","coa-c4":"Molecular identity verification",
     "coa-s1":"Minimum purity","coa-s2":"Oral bioavailability vs. capsule","coa-s3":"Absorption onset","coa-s4":"Observable results",
     "rel-label":"You may also like","rel-h2":"Related protocols","rel-cd":"View protocol →","rel-vc":"View protocol →","rel-rp":"View protocol →",

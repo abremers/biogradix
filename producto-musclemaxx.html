@@ -113,7 +113,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       </div>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;">
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;">4–6 semanas</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="mm-duration">4–6 semanas</span>
       <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="mm-aud">Atletas · Culturismo · Rendimiento</span>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
@@ -183,7 +183,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
     <div>
       <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="coa-label">Certificaciones &amp; Calidad</div>
-      <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--bone);margin-bottom:40px;">Pureza que<br/><em style="font-style:italic;color:var(--forest);">se certifica.</em></h2>
+      <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--bone);margin-bottom:40px;" data-i18n-html="coa-h2">Pureza que<br/><em style="font-style:italic;color:var(--forest);">se certifica.</em></h2>
       <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-faint);margin-bottom:48px;" data-i18n="mm-coa-body">Cada lote de MuscleMaxx se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico con documentación completa de cadena de custodia.</p>
       <div style="display:flex;flex-direction:column;gap:0;">
         <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c1">GMP Farmacéutico certificado</span></div>
@@ -296,7 +296,8 @@ const TRANSLATIONS = {
     "mm-ben-t2":"Fuerza y Resistencia Explosivas","mm-ben-b2":"El IGF-1 activa vías anabólicas (PI3K/Akt/mTOR) que aumentan la densidad de unidades motoras y la eficiencia neuromuscular. Mejoras significativas en fuerza máxima y resistencia al esfuerzo en 4–6 semanas.",
     "mm-ben-t3":"Optimización de Composición Corporal","mm-ben-b3":"GH estimula la lipólisis, movilizando ácidos grasos libres como combustible. El resultado es un reemplazo simultáneo de grasa por músculo — reducción de porcentaje graso con aumento de masa magra.",
     "mm-ben-t4":"Recuperación Acelerada","mm-ben-b4":"La GH potencia la síntesis de colágeno en tendones y ligamentos, reduciendo el riesgo de lesión. Menor tiempo de recuperación entre sesiones de alta intensidad, permitiendo mayor volumen semanal.",
-    "coa-label":"Certificaciones & Calidad","mm-coa-body":"Cada lote de MuscleMaxx se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico con documentación completa de cadena de custodia.",
+    "mm-duration":"4–6 semanas",
+    "coa-label":"Certificaciones & Calidad","coa-h2":"Pureza que<br/><em style=\"font-style:italic;color:var(--forest);\">se certifica.</em>","mm-coa-body":"Cada lote de MuscleMaxx se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico con documentación completa de cadena de custodia.",
     "coa-c1":"GMP Farmacéutico certificado","coa-c2":"Análisis HPLC por lote","coa-c3":"Prueba de endotoxinas LAL","coa-c4":"Verificación de identidad molecular",
     "coa-s1":"Pureza mínima","mm-coa-s2":"Aumento síntesis proteica","coa-s3":"Inicio de absorción","coa-s4":"Resultados observables",
     "rel-label":"También te puede interesar","rel-h2":"Protocolos relacionados","rel-vc":"Ver protocolo →","rel-rp":"Ver protocolo →","rel-cd":"Ver protocolo →",
@@ -321,7 +322,8 @@ const TRANSLATIONS = {
     "mm-ben-t2":"Explosive Strength and Endurance","mm-ben-b2":"IGF-1 activates anabolic pathways (PI3K/Akt/mTOR) that increase motor unit density and neuromuscular efficiency. Significant improvements in maximum strength and endurance in 4–6 weeks.",
     "mm-ben-t3":"Body Composition Optimization","mm-ben-b3":"GH stimulates lipolysis, mobilizing free fatty acids as fuel. The result is simultaneous fat-to-muscle replacement — reduced body fat percentage with increased lean mass, without extreme caloric deficit.",
     "mm-ben-t4":"Accelerated Recovery","mm-ben-b4":"GH enhances collagen synthesis in tendons and ligaments, reducing injury risk. Shorter recovery time between high-intensity sessions, allowing greater weekly training volume.",
-    "coa-label":"Certifications & Quality","mm-coa-body":"Each MuscleMaxx batch undergoes HPLC purity analysis, LAL endotoxin testing, and molecular identity verification. Production under pharmaceutical GMP standards with complete chain of custody documentation.",
+    "mm-duration":"4–6 weeks",
+    "coa-label":"Certifications & Quality","coa-h2":"Purity that<br/><em style=\"font-style:italic;color:var(--forest);\">is certified.</em>","mm-coa-body":"Each MuscleMaxx batch undergoes HPLC purity analysis, LAL endotoxin testing, and molecular identity verification. Production under pharmaceutical GMP standards with complete chain of custody documentation.",
     "coa-c1":"Pharmaceutical GMP certified","coa-c2":"HPLC analysis per batch","coa-c3":"LAL endotoxin test","coa-c4":"Molecular identity verification",
     "coa-s1":"Minimum purity","mm-coa-s2":"Protein synthesis increase","coa-s3":"Absorption onset","coa-s4":"Observable results",
     "rel-label":"You may also like","rel-h2":"Related protocols","rel-vc":"View protocol →","rel-rp":"View protocol →","rel-cd":"View protocol →",
