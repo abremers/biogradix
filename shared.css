@@ -32,7 +32,8 @@ body {
     transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
     filter   0.9s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-.reveal.up {
+.reveal.up,
+.reveal.visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
   filter: blur(0) !important;
