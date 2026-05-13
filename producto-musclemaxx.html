@@ -28,6 +28,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 .ben-card{padding:48px 36px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
 .coa-stat{padding:40px 36px;border:1px solid rgba(245,241,235,.1);}
 @media(max-width:768px){
+  nav>div:nth-child(2){display:none!important;}
   [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
   [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important;}
   [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
@@ -36,66 +37,57 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   [style*="padding:120px 80px"],[style*="padding:140px 80px"],[style*="padding:100px 80px"]{padding:60px 20px!important;}
   [style*="padding:80px"]{padding:48px 20px!important;}
   footer[style]{grid-template-columns:1fr!important;padding:40px 20px!important;}
+  #hamburger{display:flex!important;}
+  nav{padding:0 20px!important;}
+  .nav-quiz-btn{display:none!important;}
   .product-image-col{display:none!important;}
 }
 </style>
-<link rel="stylesheet" href="shared.css"/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
 </head>
 <body>
-<div class="grain-overlay"></div>
 
 <!-- NAV -->
-<nav class="nav-outer">
-  <div class="nav-pill">
-    <a href="index.html" style="font-family:'Cormorant Display',serif;font-size:17px;font-weight:400;letter-spacing:.5px;color:var(--ink);text-decoration:none;flex-shrink:0;">bio<em style="font-style:italic;color:var(--forest);">gradix</em></a>
-    <div class="nav-links-center">
-      <a href="index.html#productos" class="nav-link" data-i18n="nav-productos">Productos</a>
-      <a href="tecnologia.html" class="nav-link" data-i18n="nav-tecnologia">Tecnología</a>
-      <a href="educacion.html" class="nav-link" data-i18n="nav-educacion">Educación</a>
-      <a href="blog.html" class="nav-link" data-i18n="nav-blog">Blog</a>
-      <a href="contacto.html" class="nav-link" data-i18n="nav-contacto">Contacto</a>
-    </div>
-    <div class="nav-actions">
-      <button onclick="setLang('es')" class="lang-btn nav-lang-btn">ES</button>
-      <span class="nav-lang-sep">/</span>
-      <button onclick="setLang('en')" class="lang-btn nav-lang-btn">EN</button>
-      <a href="quiz.html" class="nav-quiz-btn" data-i18n="nav-quiz">Quiz</a>
-      <button id="hamburger" class="hamburger" aria-label="Menu">
-        <span class="ham-line ham-top"></span>
-        <span class="ham-line ham-mid"></span>
-        <span class="ham-line ham-bot"></span>
-      </button>
-    </div>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(245,241,235,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);">
+  <a href="index.html" style="font-family:'Cormorant Display',serif;font-size:17px;font-weight:400;letter-spacing:.5px;color:var(--ink);text-decoration:none;">bio<em style="font-style:italic;color:var(--forest);">gradix</em></a>
+  <div style="display:flex;gap:36px;position:absolute;left:50%;transform:translateX(-50%);">
+    <a href="index.html#productos" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-blog">Blog</a>
+    <a href="contacto.html" style="font-size:11px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="nav-contacto">Contacto</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <button onclick="setLang('es')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">ES</button>
+    <span style="color:var(--rule);">/</span>
+    <button onclick="setLang('en')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">EN</button>
+    <a href="quiz.html" class="nav-quiz-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:10px 22px;border-radius:2px;text-decoration:none;" data-i18n="nav-quiz">Quiz</a>
+    <button id="hamburger" style="display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;">
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+      <span style="display:block;width:22px;height:1.5px;background:var(--ink);"></span>
+    </button>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div id="mobileMenu">
-  <div class="mobile-overlay-bg"></div>
-  <div class="mobile-menu-content">
-    <nav class="mobile-nav-items">
-      <a href="index.html#productos" class="mobile-nav-item" style="--i:0" data-i18n="nav-productos">Productos</a>
-      <a href="tecnologia.html" class="mobile-nav-item" style="--i:1" data-i18n="nav-tecnologia">Tecnología</a>
-      <a href="educacion.html" class="mobile-nav-item" style="--i:2" data-i18n="nav-educacion">Educación</a>
-      <a href="blog.html" class="mobile-nav-item" style="--i:3" data-i18n="nav-blog">Blog</a>
-      <a href="contacto.html" class="mobile-nav-item" style="--i:4" data-i18n="nav-contacto">Contacto</a>
-      <a href="quiz.html" class="mobile-nav-item" style="--i:5" data-i18n="nav-quiz">Quiz</a>
-    </nav>
-    <div class="mobile-menu-footer">
-      <div class="mobile-lang-row">
-        <button onclick="setLang('es')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:rgba(245,241,235,.5);">ES</button>
-        <button onclick="setLang('en')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:rgba(245,241,235,.5);">EN</button>
-      </div>
-      <a href="https://wa.me/13467189350" class="mobile-wa-btn">WhatsApp</a>
+  <div class="mobile-panel">
+    <a href="index.html#productos" data-i18n="nav-productos">Productos</a>
+    <a href="tecnologia.html" data-i18n="nav-tecnologia">Tecnología</a>
+    <a href="educacion.html" data-i18n="nav-educacion">Educación</a>
+    <a href="blog.html" data-i18n="nav-blog">Blog</a>
+        <a href="contacto.html" data-i18n="nav-contacto">Contacto</a>
+    <a href="quiz.html" data-i18n="nav-quiz">Quiz</a>
+    <div style="display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <button onclick="setLang('es')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">ES</button>
+      <button onclick="setLang('en')" class="lang-btn" style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;background:none;border:none;cursor:pointer;color:var(--ink-faint);">EN</button>
     </div>
+    <a href="https://wa.me/13467189350" style="margin-top:8px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:12px 20px;border-radius:2px;text-decoration:none;text-align:center;">WhatsApp</a>
   </div>
 </div>
 
 <!-- PRODUCT HERO -->
-<section style="min-height:100dvh;display:grid;grid-template-columns:1fr 1fr;margin-top:64px;">
+<section style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr;margin-top:64px;">
   <div style="padding:100px 64px 80px 80px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;">
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:24px;" data-i18n="mm-cat">Músculo · Rendimiento</div>
     <h1 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(56px,6vw,96px);font-weight:300;line-height:1;letter-spacing:-.5px;color:var(--ink);margin-bottom:12px;">MuscleMaxx<sup style="font-size:.4em;vertical-align:super;">™</sup></h1>
@@ -121,19 +113,18 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       </div>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;">
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:9999px;" data-i18n="mm-duration">4–6 semanas</span>
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:9999px;" data-i18n="mm-aud">Atletas · Culturismo · Rendimiento</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="mm-duration">4–6 semanas</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="mm-aud">Atletas · Culturismo · Rendimiento</span>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
-      <a href="https://wa.me/13467189350" class="btn-pill" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 32px 14px 32px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;" data-i18n="hero-wa">Consultar vía WhatsApp<span class="btn-icon">→</span></a>
+      <a href="https://wa.me/13467189350" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 28px;border-radius:2px;text-decoration:none;" data-i18n="hero-wa">Consultar vía WhatsApp</a>
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
     </div>
   </div>
-  <div class="product-image-col" style="background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:calc(100dvh - 64px);">
+  <div class="product-image-col" style="background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:calc(100vh - 64px);">
     <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
       <img src="img-musclemaxx-display.png" alt="MuscleMaxx" style="max-height:65vh;max-width:360px;width:100%;object-fit:contain;position:relative;z-index:1;"/>
-      <div class="purity-badge">
-        <div class="purity-badge-inner">
+      <div style="position:absolute;top:24px;right:-20px;background:var(--bone);border:1px solid var(--rule);padding:12px 18px;border-radius:2px;z-index:2;">
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;" data-i18n="badge-purity">Pureza</div>
         <div style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;">98<span style="font-size:14px;">%</span></div>
       </div>
@@ -244,7 +235,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="quiz-overline">Protocolo personalizado</div>
     <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:24px;" data-i18n-html="quiz-h">¿Cuál es tu<br/><em style="font-style:italic;color:var(--forest);">protocolo ideal?</em></h2>
     <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:440px;margin:0 auto 48px;" data-i18n="quiz-sub">Responde 5 preguntas y recibe una recomendación personalizada basada en tus objetivos.</p>
-    <div class="reveal reveal-delay-3"><a href="quiz.html" class="btn-pill" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:16px 40px 16px 40px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;" data-i18n="quiz-cta">Encontrar mi protocolo<span class="btn-icon">→</span></a></div>
+    <div class="reveal reveal-delay-3"><a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:16px 36px;border-radius:2px;text-decoration:none;" data-i18n="quiz-cta">Encontrar mi protocolo →</a></div>
   </div>
 </section>
 
@@ -253,7 +244,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   <div style="padding-right:64px;border-right:1px solid rgba(245,241,235,.08);">
     <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;letter-spacing:.5px;color:var(--bone);margin-bottom:16px;">bio<em style="font-style:italic;color:var(--forest);">gradix</em></div>
     <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-faint);max-width:260px;margin-bottom:32px;" data-i18n="foot-desc">Péptidos bioactivos de grado farmacéutico. Absorción por mucosa oral de precisión.</p>
-    <a href="https://wa.me/13467189350" class="btn-pill" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:11px 24px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;" data-i18n="foot-wa">WhatsApp<span class="btn-icon" style="background:rgba(245,241,235,0.2);">→</span></a>
+    <a href="https://wa.me/13467189350" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:12px 24px;border-radius:2px;text-decoration:none;" data-i18n="foot-wa">WhatsApp</a>
   </div>
   <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
     <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-products">Productos</div>
