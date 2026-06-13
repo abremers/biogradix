@@ -142,7 +142,7 @@ module.exports = async function handler(req, res) {
         <a href="https://biogradix.com${productUrl}" style="display:inline-block;background:#0F6E56;color:#ffffff;text-decoration:none;padding:13px 24px;border-radius:10px;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">${isEs ? 'Ver producto →' : 'View product →'}</a>
       </td>
       <td>
-        <a href="https://wa.me/13467189350" style="display:inline-block;background:transparent;color:#0F6E56;text-decoration:none;padding:12px 24px;border-radius:10px;border:1.5px solid #0F6E56;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">${isEs ? 'Consulta gratis por WhatsApp' : 'Free WhatsApp consultation'}</a>
+        <a href="https://wa.me/15559948100" style="display:inline-block;background:transparent;color:#0F6E56;text-decoration:none;padding:12px 24px;border-radius:10px;border:1.5px solid #0F6E56;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;">${isEs ? 'Consulta gratis por WhatsApp' : 'Free WhatsApp consultation'}</a>
       </td>
     </tr></table>
   </td></tr>
@@ -243,7 +243,7 @@ module.exports = async function handler(req, res) {
   <tr><td style="padding:24px 32px 32px;">
     <table cellpadding="0" cellspacing="0"><tr>
       <td style="padding-right:10px;">
-        <a href="https://wa.me/13467189350?text=Hola%20${encodeURIComponent(name)},%20vi%20tu%20perfil%20en%20Biogradix..." style="display:inline-block;background:#18140F;color:#F5F1EB;text-decoration:none;padding:10px 20px;font-family:monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;">Contactar →</a>
+        <a href="https://wa.me/15559948100?text=Hola%20${encodeURIComponent(name)},%20vi%20tu%20perfil%20en%20Biogradix..." style="display:inline-block;background:#18140F;color:#F5F1EB;text-decoration:none;padding:10px 20px;font-family:monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;">Contactar →</a>
       </td>
       <td>
         <a href="mailto:${email}" style="display:inline-block;background:transparent;color:#18140F;text-decoration:none;padding:9px 20px;border:1px solid #EDE8E0;font-family:monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;">Responder email</a>
