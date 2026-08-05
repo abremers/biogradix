@@ -246,6 +246,56 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bone);line
 /* ── FLOATING WHATSAPP ── */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:500;width:52px;height:52px;background:var(--forest);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(46,74,58,.35);transition:transform .2s,box-shadow .2s;}
 .wa-float:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(46,74,58,.45);}
+
+/* ═══════════ BGX-MOBILE-V2 — corrección responsive global ═══════════ */
+@media (max-width:768px){
+  /* Nada debe desbordar a lo ancho */
+  html,body{overflow-x:hidden!important;max-width:100%!important;}
+  img,svg,iframe,video{max-width:100%!important;}
+
+  /* Navegación */
+  nav{padding:0 20px!important;}
+  nav>div:nth-child(2){display:none!important;}
+  #hamburger{display:flex!important;}
+  .nav-quiz-btn{display:none!important;}
+
+  /* Cualquier rejilla (section o div) a una sola columna */
+  [style*="grid-template-columns"]{grid-template-columns:1fr!important;}
+
+  /* Bloques de dos columnas en flex → apilados */
+  [style*="display:flex"][style*="space-between"]:not(nav){
+    flex-direction:column!important;align-items:flex-start!important;gap:24px!important;
+  }
+  [style*="gap:80px"],[style*="gap:64px"]{gap:32px!important;}
+
+  /* Paddings laterales — valores reales del sitio */
+  [style*="padding:80px"]{padding:48px 20px!important;}
+  [style*="padding:120px 80px"]{padding:56px 20px!important;}
+  [style*="padding:140px 80px"]{padding:56px 20px!important;}
+  [style*="padding:0 80px 120px"]{padding:0 20px 56px!important;}
+  [style*="padding:72px 80px 48px"]{padding:40px 20px 28px!important;}
+  [style*="padding:64px 80px 40px"]{padding:40px 20px 32px!important;}
+  [style*="padding:20px 80px"]{padding:16px 20px!important;}
+  [style*="padding:100px 64px 80px 80px"]{padding:40px 20px 48px!important;}
+  [style*="padding:0 48px"]{padding:0 20px!important;}
+  [style*="padding:80px 48px"]{padding:48px 20px!important;}
+  [style*="padding:0 40px"]{padding:0 20px!important;}
+  [style*="padding:48px 40px"]{padding:32px 20px!important;}
+  [style*="padding:48px 36px"]{padding:32px 20px!important;}
+  [style*="padding:16px 36px"]{padding:16px 20px!important;}
+
+  /* Hero de portada */
+  [style*="min-height:100vh"]{min-height:0!important;}
+  .hero-right-panel{display:none!important;}
+
+  /* Divisiones verticales → horizontales */
+  [style*="border-right:1px solid var(--rule)"]{border-right:none!important;}
+  .product-cell{padding:32px 20px!important;border-right:none!important;border-bottom:1px solid var(--rule)!important;}
+
+  /* Tipografía a escala de teléfono */
+  h1{font-size:clamp(38px,10vw,56px)!important;line-height:1.1!important;}
+  h2{font-size:clamp(26px,7vw,40px)!important;line-height:1.18!important;}
+}
 </style>
 </head>
 <body>
