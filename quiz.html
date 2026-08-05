@@ -564,13 +564,11 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bone);line
       </div>
       <div class="foot-col">
         <div class="foot-col-title" data-i18n="foot-products">Productos</div>
-        <a href="producto-musclemaxx.html">MUSCLEMAXX™</a>
-        <a href="producto-recoverypro.html">RECOVERYPRO™</a>
-        <a href="producto-radiancemax.html">RADIANCEMAX™</a>
-        <a href="producto-vitacharge.html">VITACHARGE™</a>
-        <a href="producto-passionboost.html">PASSIONBOOST™</a>
-        <a href="producto-immunefort.html">IMMUNEFORT™</a>
-        <a href="producto-celldew.html">CELLDEW™</a>
+        <a href="producto-recoverypro.html">BPC-157</a>
+        <a href="producto-radiancemax.html">GHK-CU</a>
+        <a href="producto-tb500.html">TB-500</a>
+        <a href="producto-vitacharge.html">NAD+</a>
+        <a href="producto-motsc.html">MOTS-C</a>
       </div>
       <div class="foot-col">
         <div class="foot-col-title" data-i18n="foot-company">Compañía</div>
@@ -786,6 +784,50 @@ function t(k) { return T[S.lang][k] || T.es[k] || k; }
 
 // ─── PRODUCTS ────────────────────────────────────────────────────────────────
 const PRODUCTS = {
+  tb500: {
+    name: 'TB-500', peptide: 'Timosina β4',
+    img: 'img-tb500-display.png', url: '/producto-tb500',
+    tagline: { es: 'Reparación Estructural & Movilidad', en: 'Structural Repair & Mobility' },
+    why: {
+      es: 'Tu perfil apunta a TB-500. La Timosina β4 regula la actina, la proteína que permite a las células desplazarse hacia el tejido dañado — por eso actúa donde el problema no es dolor agudo sino rigidez, lesiones antiguas y pérdida de rango de movimiento.',
+      en: 'Your profile points to TB-500. Thymosin β4 regulates actin, the protein that lets cells migrate toward damaged tissue — which is why it works where the problem is not acute pain but stiffness, old injuries and lost range of motion.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario (250 mcg)', en: '1 buccal patch daily (250 mcg)' },
+      timing: { es: 'Mañana, preferentemente en ayunas', en: 'Morning, preferably fasting' },
+      duration: { es: 'Ciclos de 4–8 semanas según la lesión', en: '4–8 week cycles depending on the injury' },
+    },
+    tips: {
+      es: ['Combinar con movilidad suave diaria: el tejido se remodela con estímulo', 'Sinergia alta con BPC-157 para lesiones estructurales', 'Evaluar rango de movimiento a las 4 semanas, no antes', 'Hidratación y colágeno apoyan la síntesis de matriz', 'Evitar impacto alto las primeras 2 semanas'],
+      en: ['Combine with gentle daily mobility work: tissue remodels with stimulus', 'Strong synergy with BPC-157 for structural injuries', 'Assess range of motion at 4 weeks, not before', 'Hydration and collagen support matrix synthesis', 'Avoid high impact for the first 2 weeks']
+    },
+    cautions: {
+      es: ['No se conocen contraindicaciones mayores para TB-500 por mucosa oral', 'Consultar médico si hay historial oncológico activo', 'En caso de embarazo, consultar médico antes del uso'],
+      en: ['No major known contraindications for buccal TB-500', 'Consult a doctor with an active oncological history', 'In case of pregnancy, consult a doctor before use']
+    }
+  },
+  motsc: {
+    name: 'MOTS-c', peptide: 'Péptido mitocondrial',
+    img: 'img-motsc-display.png', url: '/producto-motsc',
+    tagline: { es: 'Metabolismo & Longevidad Celular', en: 'Metabolism & Cellular Longevity' },
+    why: {
+      es: 'Tu perfil indica MOTS-c. Es un péptido codificado dentro del propio ADN mitocondrial que activa AMPK — la misma vía que activan el ejercicio y el ayuno — mejorando sensibilidad a la insulina y uso de grasa como energía.',
+      en: 'Your profile indicates MOTS-c. It is a peptide encoded within mitochondrial DNA itself that activates AMPK — the same pathway triggered by exercise and fasting — improving insulin sensitivity and fat utilization for energy.'
+    },
+    protocol: {
+      dose: { es: '1 parche bucal diario (3 mg)', en: '1 buccal patch daily (3 mg)' },
+      timing: { es: 'Mañana en ayunas, antes de la primera comida', en: 'Morning fasting, before the first meal' },
+      duration: { es: 'Ciclos de 8–12 semanas', en: '8–12 week cycles' },
+    },
+    tips: {
+      es: ['Máximo efecto combinado con ventana de alimentación acotada', 'El ejercicio de resistencia amplifica la activación de AMPK', 'Medir glucosa en ayunas al inicio y a las 8 semanas', 'Priorizar proteína y fibra para estabilizar la respuesta glucémica', 'Cambios metabólicos medibles: 6–8 semanas'],
+      en: ['Maximum effect combined with a restricted eating window', 'Endurance exercise amplifies AMPK activation', 'Measure fasting glucose at baseline and at 8 weeks', 'Prioritize protein and fiber to stabilize glycemic response', 'Measurable metabolic changes: 6–8 weeks']
+    },
+    cautions: {
+      es: ['Si usas medicación para diabetes, vigilar glucosa: puede potenciar su efecto', 'Consultar médico en caso de hipoglucemia recurrente', 'En caso de embarazo, consultar médico antes del uso'],
+      en: ['If on diabetes medication, monitor glucose: effects may be additive', 'Consult a doctor in case of recurrent hypoglycemia', 'In case of pregnancy, consult a doctor before use']
+    }
+  },
   musclemaxx: {
     name: 'MUSCLEMAXX™', peptide: 'GHRP-6 + CJC-1295',
     img: 'img-musclemaxx-display.png', url: '/producto-musclemaxx',
@@ -958,38 +1000,39 @@ const NON_CATALOG = {
 // ─── RECOMMENDATION ENGINE ────────────────────────────────────────────────────
 function computeRecommendation() {
   const d = S.data;
-  const sc = { musclemaxx:0, recoverypro:0, radiancemax:0, vitacharge:0, passionboost:0, immunefort:0, celldew:0, _glp1:0, _cognitive:0 };
+  const sc = { musclemaxx:0, recoverypro:0, radiancemax:0, vitacharge:0, passionboost:0, immunefort:0, celldew:0, tb500:0, motsc:0, _glp1:0, _cognitive:0 };
   const goalMap = {
-    muscle:     { musclemaxx:15, recoverypro:3 },
-    energy:     { vitacharge:15, celldew:4 },
-    recovery:   { recoverypro:15, musclemaxx:3 },
+    muscle:     { musclemaxx:15, recoverypro:3, tb500:2 },
+    energy:     { vitacharge:15, celldew:4, motsc:5 },
+    recovery:   { recoverypro:15, musclemaxx:3, tb500:11 },
     skin:       { radiancemax:15, celldew:4 },
     immune:     { immunefort:15, celldew:5 },
     libido:     { passionboost:15 },
     antioxidant:{ celldew:15, vitacharge:3 },
-    weight:     { musclemaxx:6, vitacharge:5, _glp1:12 },
+    weight:     { musclemaxx:6, vitacharge:5, motsc:10, _glp1:12 },
     cognitive:  { vitacharge:10, _cognitive:10 },
-    longevity:  { vitacharge:10, celldew:7, radiancemax:4 }
+    longevity:  { vitacharge:10, celldew:7, radiancemax:4, motsc:9 }
   };
   for (const g of d.goals) { if (goalMap[g]) for (const [k,v] of Object.entries(goalMap[g])) sc[k] += v; }
   const age = parseInt((d.age||'30').split('-')[0]);
-  if (age >= 40) { sc.vitacharge += 5; sc.radiancemax += 3; }
-  if (age >= 50) { sc.vitacharge += 5; sc.immunefort += 4; }
+  if (age >= 40) { sc.vitacharge += 5; sc.radiancemax += 3; sc.motsc += 4; }
+  if (age >= 50) { sc.vitacharge += 5; sc.immunefort += 4; sc.motsc += 3; }
   if (age >= 60) { sc.celldew += 3; sc.immunefort += 3; }
   if (age < 30)  { sc.musclemaxx += 3; }
   if (d.sex === 'female') { sc.radiancemax += 3; sc.celldew += 2; }
   if (d.sex === 'male')   { sc.musclemaxx += 2; }
-  const actMap = { athlete:{musclemaxx:6,recoverypro:5}, very_active:{musclemaxx:4,recoverypro:3}, moderate:{recoverypro:2}, light:{vitacharge:2}, sedentary:{vitacharge:4,celldew:3} };
+  const actMap = { athlete:{musclemaxx:6,recoverypro:5,tb500:4}, very_active:{musclemaxx:4,recoverypro:3,tb500:3}, moderate:{recoverypro:2,tb500:2}, light:{vitacharge:2}, sedentary:{vitacharge:4,celldew:3,motsc:4} };
   if (d.activity && actMap[d.activity]) for (const [k,v] of Object.entries(actMap[d.activity])) sc[k] += v;
   const symMap = {
-    fatigue:{vitacharge:8,celldew:4}, joint_pain:{recoverypro:10}, gut_issues:{recoverypro:8},
+    fatigue:{vitacharge:8,celldew:4,motsc:4}, joint_pain:{recoverypro:10,tb500:9}, gut_issues:{recoverypro:8},
     frequent_illness:{immunefort:10}, skin_aging:{radiancemax:10}, brain_fog:{vitacharge:8,_cognitive:5},
-    low_libido:{passionboost:10}, muscle_soreness:{recoverypro:6,musclemaxx:3},
+    low_libido:{passionboost:10}, muscle_soreness:{recoverypro:6,musclemaxx:3,tb500:4},
     stress:{celldew:5,vitacharge:3}, hair_thinning:{radiancemax:6}
   };
   for (const s of d.symptoms) { if (symMap[s]) for (const [k,v] of Object.entries(symMap[s])) sc[k] += v; }
   if (d.conditions.includes('cardiovascular')) sc.passionboost = 0;
-  const catalog = ['musclemaxx','recoverypro','radiancemax','vitacharge','passionboost','immunefort','celldew'];
+  // Solo productos con inventario disponible — los agotados no se recomiendan
+  const catalog = ['recoverypro','radiancemax','tb500','vitacharge','motsc'];
   catalog.sort((a,b) => sc[b]-sc[a]);
   const primary = catalog[0];
   const secondary = sc[catalog[1]] > 4 ? catalog[1] : null;

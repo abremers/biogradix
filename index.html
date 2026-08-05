@@ -46,6 +46,11 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 .cell-bottle::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:20px;height:12px;background:linear-gradient(180deg,#D8D0C0,#CAC0AE);border-radius:2px 2px 0 0;}
 .cell-cta{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:8px;transition:color .2s,gap .3s;}
 .product-cell:hover .cell-cta{color:var(--ink);gap:14px;}
+.cell-dose{font-size:10px;letter-spacing:1px;color:var(--ink-faint);margin-bottom:16px;}
+.product-cell.is-soldout{opacity:.5;}
+.product-cell.is-soldout .cell-bottle{filter:grayscale(1);}
+.product-cell.is-soldout:hover{background:transparent;}
+.product-cell.is-soldout:hover .cell-cta{color:var(--ink-faint);gap:8px;}
 
 /* PRODUCT HERO OBJECT */
 .product-bottle{width:110px;height:260px;background:linear-gradient(160deg,#E8E2D8 0%,#D4CCBE 40%,#C8BFB0 100%);border-radius:6px 6px 12px 12px;position:relative;box-shadow:inset 1px 0 0 rgba(255,255,255,.5),inset -1px 0 0 rgba(0,0,0,.06),0 40px 80px rgba(24,20,15,.15),0 8px 24px rgba(24,20,15,.08);}
@@ -194,21 +199,21 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <span class="ticker-item">Glutatión</span>
-    <span class="ticker-item">NAD+</span>
-    <span class="ticker-item">GHK-Cu</span>
     <span class="ticker-item">BPC-157</span>
-    <span class="ticker-item">Thymosin α1</span>
-    <span class="ticker-item">PT-141</span>
-    <span class="ticker-item">IGF-1 LR3</span>
+    <span class="ticker-item">GHK-Cu</span>
+    <span class="ticker-item">TB-500</span>
+    <span class="ticker-item">NAD+</span>
+    <span class="ticker-item">MOTS-c</span>
+    <span class="ticker-item">Parche bucal</span>
+    <span class="ticker-item">20 unidades</span>
     <span class="ticker-item">BiogradixRelease®</span>
-    <span class="ticker-item">Glutatión</span>
-    <span class="ticker-item">NAD+</span>
-    <span class="ticker-item">GHK-Cu</span>
     <span class="ticker-item">BPC-157</span>
-    <span class="ticker-item">Thymosin α1</span>
-    <span class="ticker-item">PT-141</span>
-    <span class="ticker-item">IGF-1 LR3</span>
+    <span class="ticker-item">GHK-Cu</span>
+    <span class="ticker-item">TB-500</span>
+    <span class="ticker-item">NAD+</span>
+    <span class="ticker-item">MOTS-c</span>
+    <span class="ticker-item">Parche bucal</span>
+    <span class="ticker-item">20 unidades</span>
     <span class="ticker-item">BiogradixRelease®</span>
   </div>
 </div>
@@ -266,70 +271,90 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   <div style="padding:72px 80px 48px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--rule);">
     <div>
       <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="products-label">Formulaciones</div>
-      <h2 class="reveal" style="font-family:'Cormorant Display',serif;font-size:36px;font-weight:300;color:var(--ink);line-height:1.1;" data-i18n-html="products-h2">Siete protocolos.<br/><em style="font-style:italic;">Un estándar.</em></h2>
+      <h2 class="reveal" style="font-family:'Cormorant Display',serif;font-size:36px;font-weight:300;color:var(--ink);line-height:1.1;" data-i18n-html="products-h2">Cinco protocolos.<br/><em style="font-style:italic;">Un estándar.</em></h2>
     </div>
+    <div class="reveal" style="font-size:11px;font-weight:300;line-height:1.9;color:var(--ink-faint);max-width:280px;" data-i18n="products-format">Parche bucal · 20 unidades por caja · Un protocolo mensual completo.</div>
   </div>
-  <!-- Row 1: 4 products -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);">
-    <a href="producto-celldew.html" class="product-cell">
+  <!-- Disponibles: 5 productos -->
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);">
+    <a href="producto-recoverypro.html" class="product-cell">
       <div class="cell-bottle"></div>
       <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">01</div>
-      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">CellDew™</div>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">Glutatión</div>
-      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="cd-short">Antioxidante maestro. Neutralización de radicales libres y soporte hepático.</div>
-      <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
-    </a>
-    <a href="producto-vitacharge.html" class="product-cell">
-      <div class="cell-bottle"></div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">02</div>
-      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">VitaCharge™</div>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">NAD+</div>
-      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="vc-short">Restauración mitocondrial. Energía sostenida sin picos, sin caídas.</div>
+      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">RecoveryPro™</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:6px;">BPC-157</div>
+      <div class="cell-dose" data-i18n="rp-dose">500 mcg · parche bucal</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="rp-short">Reparación acelerada. Menos inflamación. Más tiempo para lo que importa.</div>
       <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
     </a>
     <a href="producto-radiancemax.html" class="product-cell">
       <div class="cell-bottle"></div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">03</div>
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">02</div>
       <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">RadianceMax™</div>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">GHK-Cu</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:6px;">GHK-Cu</div>
+      <div class="cell-dose" data-i18n="rm-dose">3 mg · parche bucal</div>
       <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="rm-short">Belleza regenerativa. Síntesis de colágeno y elastina desde dentro.</div>
       <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
     </a>
-    <a href="producto-recoverypro.html" class="product-cell" style="border-right:none;">
+    <a href="producto-tb500.html" class="product-cell">
+      <div class="cell-bottle"></div>
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">03</div>
+      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">TB-500</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:6px;">Timosina β4</div>
+      <div class="cell-dose" data-i18n="tb-dose">250 mcg · parche bucal</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="tb-short">Movilidad y reparación de tejido blando. Recuperación estructural profunda.</div>
+      <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
+    </a>
+    <a href="producto-vitacharge.html" class="product-cell">
       <div class="cell-bottle"></div>
       <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">04</div>
-      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">RecoveryPro™</div>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">BPC-157</div>
-      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="rp-short">Reparación acelerada. Menos inflamación. Más tiempo para lo que importa.</div>
+      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">VitaCharge™</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:6px;">NAD+</div>
+      <div class="cell-dose" data-i18n="vc-dose">150 mg · parche bucal</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="vc-short">Restauración mitocondrial. Energía sostenida sin picos, sin caídas.</div>
+      <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
+    </a>
+    <a href="producto-motsc.html" class="product-cell" style="border-right:none;">
+      <div class="cell-bottle"></div>
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">05</div>
+      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">MOTS-c</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:6px;">Péptido mitocondrial</div>
+      <div class="cell-dose" data-i18n="mc-dose">3 mg · parche bucal</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="mc-short">Metabolismo y longevidad. Sensibilidad a la insulina y eficiencia celular.</div>
       <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
     </a>
   </div>
-  <!-- Row 2: 3 products centered -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule);">
-    <div style="border-right:1px solid var(--rule);background:var(--bone);"></div>
-    <a href="producto-immunefort.html" class="product-cell">
+  <!-- Temporalmente agotados -->
+  <div style="padding:56px 80px 24px;border-top:1px solid var(--rule);">
+    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="products-soldout-label">Temporalmente agotados</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);">
+    <a href="producto-celldew.html" class="product-cell is-soldout">
       <div class="cell-bottle"></div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">05</div>
-      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">ImmuneFort™</div>
+      <div style="font-family:'Cormorant Display',serif;font-size:20px;font-weight:400;margin-bottom:4px;">CellDew™</div>
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">Glutatión</div>
+      <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="cd-short">Antioxidante maestro. Neutralización de radicales libres y soporte hepático.</div>
+      <div class="cell-cta" data-i18n="cta-soldout">Agotado</div>
+    </a>
+    <a href="producto-immunefort.html" class="product-cell is-soldout">
+      <div class="cell-bottle"></div>
+      <div style="font-family:'Cormorant Display',serif;font-size:20px;font-weight:400;margin-bottom:4px;">ImmuneFort™</div>
       <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">Thymosin α1</div>
       <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="if-short">Modulación inmune de precisión. El sistema de defensa, calibrado.</div>
-      <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
+      <div class="cell-cta" data-i18n="cta-soldout">Agotado</div>
     </a>
-    <a href="producto-passionboost.html" class="product-cell">
+    <a href="producto-passionboost.html" class="product-cell is-soldout">
       <div class="cell-bottle"></div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">06</div>
-      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">PassionBoost™</div>
+      <div style="font-family:'Cormorant Display',serif;font-size:20px;font-weight:400;margin-bottom:4px;">PassionBoost™</div>
       <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">PT-141</div>
       <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="pb-short">Vitalidad íntima en 30–90 minutos. Para hombres y mujeres.</div>
-      <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
+      <div class="cell-cta" data-i18n="cta-soldout">Agotado</div>
     </a>
-    <a href="producto-musclemaxx.html" class="product-cell" style="border-right:none;">
+    <a href="producto-musclemaxx.html" class="product-cell is-soldout" style="border-right:none;">
       <div class="cell-bottle"></div>
-      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;">07</div>
-      <div style="font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;margin-bottom:4px;">MuscleMaxx™</div>
+      <div style="font-family:'Cormorant Display',serif;font-size:20px;font-weight:400;margin-bottom:4px;">MuscleMaxx™</div>
       <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);margin-bottom:16px;">IGF-1 LR3</div>
       <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);flex:1;margin-bottom:28px;" data-i18n="mm-short">Rendimiento máximo. Síntesis proteica y masa magra acelerada.</div>
-      <div class="cell-cta" data-i18n="cta-explore">Explorar <span>→</span></div>
+      <div class="cell-cta" data-i18n="cta-soldout">Agotado</div>
     </a>
   </div>
 </section>
@@ -444,13 +469,15 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   <div>
     <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;" data-i18n="footer-col-products">Productos</div>
     <div style="display:flex;flex-direction:column;gap:12px;">
-      <a href="producto-celldew.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">CellDew™</a>
-      <a href="producto-vitacharge.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">VitaCharge™</a>
-      <a href="producto-radiancemax.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">RadianceMax™</a>
       <a href="producto-recoverypro.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">RecoveryPro™</a>
-      <a href="producto-immunefort.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">ImmuneFort™</a>
-      <a href="producto-passionboost.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">PassionBoost™</a>
-      <a href="producto-musclemaxx.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">MuscleMaxx™</a>
+      <a href="producto-radiancemax.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">RadianceMax™</a>
+      <a href="producto-tb500.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">TB-500</a>
+      <a href="producto-vitacharge.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">VitaCharge™</a>
+      <a href="producto-motsc.html" style="font-size:13px;font-weight:300;color:var(--ink-soft);text-decoration:none;">MOTS-c</a>
+      <a href="producto-celldew.html" style="font-size:13px;font-weight:300;color:var(--ink-faint);text-decoration:none;opacity:.55;">CellDew™</a>
+      <a href="producto-immunefort.html" style="font-size:13px;font-weight:300;color:var(--ink-faint);text-decoration:none;opacity:.55;">ImmuneFort™</a>
+      <a href="producto-passionboost.html" style="font-size:13px;font-weight:300;color:var(--ink-faint);text-decoration:none;opacity:.55;">PassionBoost™</a>
+      <a href="producto-musclemaxx.html" style="font-size:13px;font-weight:300;color:var(--ink-faint);text-decoration:none;opacity:.55;">MuscleMaxx™</a>
     </div>
   </div>
   <div>
