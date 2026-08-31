@@ -60,7 +60,7 @@ module.exports = async function handler(req, res) {
     : `Your personalized peptide protocol — ${name}`;
 
   const tipsHtml = (tips || []).map(t => `<tr><td style="padding:6px 0;font-size:13px;color:#4A5568;border-bottom:1px solid #f0f0f0;line-height:1.5;">• ${t}</td></tr>`).join('');
-  const cautsHtml = (cautions || []).map(c => `<tr><td style="padding:6px 0;font-size:13px;color:#4A5568;border-bottom:1px solid #f0f0f0;line-height:1.5;">⚠ ${c}</td></tr>`).join('');
+  const cautsHtml = (cautions || []).map(c => `<tr><td style="padding:6px 0;font-size:13px;color:#4A5568;border-bottom:1px solid #f0f0f0;line-height:1.5;">— ${c}</td></tr>`).join('');
 
   const clientHtml = `<!DOCTYPE html>
 <html lang="${lang || 'es'}">
@@ -295,7 +295,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         from: 'Biogradix Leads <protocolos@biogradix.com>',
         to: [ADMIN_EMAIL],
-        subject: `🧬 Nuevo lead: ${name} → ${productName} (${matchPct}%)`,
+        subject: `Nuevo lead: ${name} — ${productName} (${matchPct}%)`,
         html: adminHtml,
       }),
     });
