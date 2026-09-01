@@ -7,8 +7,8 @@
 -- Applied by the controlling session; do not run from the web track.
 -- ============================================================================
 
-update public.biogradix_products set product_url = '/producto/bpc-157'  where sku = 'bpc-157';
-update public.biogradix_products set product_url = '/producto/mots-c'   where sku = 'mots-c';
-update public.biogradix_products set product_url = '/producto/tb-500'   where sku = 'tb-500';
-update public.biogradix_products set product_url = '/producto/ghk-cu'   where sku = 'ghk-cu';
-update public.biogradix_products set product_url = '/producto/nad'      where sku = 'nad-plus';
+update public.biogradix_products set product_url = '/producto-bpc-157'  where sku = 'bpc-157';
+update public.biogradix_products set product_url = '/producto-mots-c'   where sku = 'mots-c';
+update public.biogradix_products set product_url = '/producto-tb-500'   where sku = 'tb-500';
+update public.biogradix_products set product_url = '/producto-ghk-cu'   where sku = 'ghk-cu';
+update public.biogradix_products set product_url = '/producto-nad'      where sku = 'nad-plus';
