@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>RADIANCEMAX™ — Regenerative Beauty | biogradix</title>
+<title>CELLDEW™ — Antioxidant Master | biogradix</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HMFHY2M02E"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-HMFHY2M02E");</script>
@@ -23,7 +23,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 .benefit-check{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-top:1px solid var(--rule);}
 .benefit-check:last-child{border-bottom:1px solid var(--rule);}
 .step-line{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);}
-.step-cell{background:var(--bone);padding:40px 32px;}
+.step-cell{background:var(--bone);padding:40px 32px;position:relative;}
 .step-num{font-family:'Cormorant Display',serif;font-size:48px;font-weight:300;color:var(--rule);line-height:1;margin-bottom:16px;}
 .ben-card{padding:48px 36px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
 .coa-stat{padding:40px 36px;border:1px solid rgba(245,241,235,.1);}
@@ -31,11 +31,13 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   nav>div:nth-child(2){display:none!important;}
   [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
   [style*="grid-template-columns:repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important;}
+  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;}
   [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
   [style*="grid-template-columns:repeat(2,1fr)"]{grid-template-columns:1fr!important;}
   .step-line{grid-template-columns:1fr!important;}
   [style*="padding:120px 80px"],[style*="padding:140px 80px"],[style*="padding:100px 80px"]{padding:60px 20px!important;}
   [style*="padding:80px"]{padding:48px 20px!important;}
+  [style*="padding:64px 80px"]{padding:40px 20px!important;}
   footer[style]{grid-template-columns:1fr!important;padding:40px 20px!important;}
   #hamburger{display:flex!important;}
   nav{padding:0 20px!important;}
@@ -138,44 +140,45 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 
 <!-- PRODUCT HERO -->
 <section style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr;margin-top:64px;">
+  <!-- LEFT -->
   <div style="padding:100px 64px 80px 80px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;">
-    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:24px;" data-i18n="rm-cat">Belleza · Anti-edad</div>
-    <h1 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(56px,6vw,96px);font-weight:300;line-height:1;letter-spacing:-.5px;color:var(--ink);margin-bottom:12px;">RadianceMax<sup style="font-size:.4em;vertical-align:super;">™</sup></h1>
-    <div class="reveal reveal-delay-1" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;">GHK-Cu</div>
-    <div class="reveal reveal-delay-2" style="font-family:'Cormorant',serif;font-size:22px;font-weight:300;font-style:italic;color:var(--ink-soft);margin-bottom:40px;" data-i18n="rm-tagline">Regenerative Beauty</div>
-    <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:400px;margin-bottom:48px;" data-i18n="rm-desc">El GHK-Cu es un péptido de cobre que estimula de forma directa la síntesis de colágeno, elastina y ácido hialurónico. Activa genes de reparación cutánea que se silencian con el envejecimiento, restaurando la arquitectura dérmica desde adentro.</p>
+    <div class="reveal" style="display:inline-flex;align-items:center;gap:10px;border:1px solid var(--rule);background:var(--stone);padding:10px 18px;border-radius:2px;margin-bottom:28px;align-self:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ink-faint);"></span><span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);" data-i18n="soldout-badge">Temporalmente agotado</span></div>
+    <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:24px;" data-i18n="cd-cat">Detox · Antioxidante</div>
+    <h1 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(56px,6vw,96px);font-weight:300;line-height:1;letter-spacing:-.5px;color:var(--ink);margin-bottom:12px;">CellDew<sup style="font-size:.4em;vertical-align:super;">™</sup></h1>
+    <div class="reveal reveal-delay-1" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;">Glutatión</div>
+    <div class="reveal reveal-delay-2" style="font-family:'Cormorant',serif;font-size:22px;font-weight:300;font-style:italic;color:var(--ink-soft);margin-bottom:40px;" data-i18n="cd-tagline">Antioxidant Master</div>
+    <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:400px;margin-bottom:48px;" data-i18n="cd-desc">El glutatión es el antioxidante maestro del cuerpo. Presente en cada célula, orquesta la desintoxicación de metales pesados, la neutralización de radicales libres y el soporte del sistema inmune. Su absorción por mucosa oral garantiza bioaccesibilidad máxima — sin pérdidas digestivas.</p>
     <div class="reveal reveal-delay-3" style="margin-bottom:48px;">
       <div class="benefit-check">
         <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
-        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rm-hero-b1">Aumento de colágeno 200–300% en 4–8 semanas</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="cd-hero-b1">Eliminación de metales pesados y toxinas acumuladas</span>
       </div>
       <div class="benefit-check">
         <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
-        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rm-hero-b2">Síntesis de elastina y recuperación de firmeza</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="cd-hero-b2">Neutralización de radicales libres y estrés oxidativo</span>
       </div>
       <div class="benefit-check">
         <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
-        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rm-hero-b3">Síntesis de ácido hialurónico e hidratación dérmica</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="cd-hero-b3">Soporte de linfocitos T para inmunidad robusta</span>
       </div>
       <div class="benefit-check">
         <span style="color:var(--forest);font-size:16px;margin-top:2px;">—</span>
-        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="rm-hero-b4">Estimulación de folículos pilosos y crecimiento capilar</span>
+        <span style="font-size:14px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="cd-hero-b4">Reducción de hiperpigmentación y luminosidad cutánea</span>
       </div>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;">
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="rm-format">Parche bucal · 3 mg · 20 unidades</span>
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="rm-duration">4–8 semanas</span>
-      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="rm-aud">Mujeres 35+ · Anti-edad · Skincare</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="cd-duration">4–8 semanas</span>
+      <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="cd-aud">Biohackers · Longevidad · 35+</span>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
-      <button type="button" onclick="startCheckout(this)" data-sku="ghk-cu" data-i18n="buy-cta" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:14px 28px;border-radius:2px;border:none;cursor:pointer;font-family:'Inter',sans-serif;">Comprar</button>
-      <a href="https://wa.me/15553471798" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 28px;border-radius:2px;text-decoration:none;" data-i18n="hero-wa">Consultar vía WhatsApp</a>
+      <a href="https://wa.me/15553471798?text=Quiero%20que%20me%20avisen%20cuando%20haya%20existencias" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--rule);padding:13px 27px;border-radius:2px;text-decoration:none;" data-i18n="soldout-notify">Avisarme cuando llegue</a>
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
     </div>
   </div>
+  <!-- RIGHT -->
   <div class="product-image-col" style="background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:calc(100vh - 64px);">
     <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
-      <img src="img-radiancemax-display.png" alt="RadianceMax" style="max-height:65vh;max-width:360px;width:100%;object-fit:contain;position:relative;z-index:1;"/>
+      <img src="img-glutation-display.png" alt="CellDew" style="max-height:65vh;max-width:360px;width:100%;object-fit:contain;position:relative;z-index:1;"/>
       <div style="position:absolute;top:24px;right:-20px;background:var(--bone);border:1px solid var(--rule);padding:12px 18px;border-radius:2px;z-index:2;">
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;" data-i18n="badge-purity">Pureza</div>
         <div style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;">98<span style="font-size:14px;">%</span></div>
@@ -184,98 +187,144 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- HOW IT WORKS — BiogradixRelease® -->
 <section style="padding:120px 80px;background:var(--bone);">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="how-overline">Tecnología de absorción</div>
     <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:8px;" data-i18n-html="how-h2">BiogradixRelease<sup style="font-size:.5em;vertical-align:super;">®</sup></h2>
     <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:520px;margin-bottom:72px;" data-i18n="how-sub">Absorción por mucosa oral de precisión — cinco pasos desde la gota hasta la célula.</p>
     <div class="step-line reveal reveal-delay-3">
-      <div class="step-cell"><div class="step-num">01</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step1-label">Mucosa oral</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step1-desc">El parche se coloca entre la mejilla y la encía, en contacto directo con la mucosa bucal altamente vascularizada.</div></div>
-      <div class="step-cell"><div class="step-num">02</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step2-label">Difusión</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step2-desc">Las moléculas difunden a través del epitelio oral sin necesidad de digestión enzimática ni metabolismo hepático.</div></div>
-      <div class="step-cell"><div class="step-num">03</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step3-label">Absorción</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step3-desc">El péptido pasa directamente a los capilares de la mucosa oral, evitando el efecto de primer paso hepático.</div></div>
-      <div class="step-cell"><div class="step-num">04</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step4-label">Circulación</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step4-desc">El compuesto activo entra al torrente sanguíneo sistémico en minutos, alcanzando tejidos diana con rapidez.</div></div>
-      <div class="step-cell"><div class="step-num">05</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step5-label">Acción celular</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step5-desc">El péptido interactúa con receptores específicos a nivel celular, activando las cascadas biológicas deseadas.</div></div>
+      <div class="step-cell">
+        <div class="step-num">01</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step1-label">Mucosa oral</div>
+        <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step1-desc">El parche se coloca entre la mejilla y la encía, en contacto directo con la mucosa bucal altamente vascularizada.</div>
+      </div>
+      <div class="step-cell">
+        <div class="step-num">02</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step2-label">Difusión</div>
+        <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step2-desc">Las moléculas difunden a través del epitelio oral sin necesidad de digestión enzimática ni metabolismo hepático.</div>
+      </div>
+      <div class="step-cell">
+        <div class="step-num">03</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step3-label">Absorción</div>
+        <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step3-desc">El péptido pasa directamente a los capilares de la mucosa oral, evitando el efecto de primer paso hepático.</div>
+      </div>
+      <div class="step-cell">
+        <div class="step-num">04</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step4-label">Circulación</div>
+        <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step4-desc">El compuesto activo entra al torrente sanguíneo sistémico en minutos, alcanzando tejidos diana con rapidez.</div>
+      </div>
+      <div class="step-cell">
+        <div class="step-num">05</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step5-label">Acción celular</div>
+        <div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step5-desc">El péptido interactúa con receptores específicos a nivel celular, activando las cascadas biológicas deseadas.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- BENEFITS -->
+<!-- BENEFITS — 2×2 grid -->
 <section style="padding:0 80px 120px;background:var(--bone);">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="ben-label">Beneficios clínicos</div>
-    <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:64px;" data-i18n="rm-ben-h2">Lo que RadianceMax renueva en ti</h2>
+    <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:64px;" data-i18n="ben-h2">Lo que CellDew activa en ti</h2>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--rule);">
       <div class="ben-card reveal">
         <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">01</div>
-        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rm-ben-t1">Síntesis de Colágeno Explosiva</h3>
-        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rm-ben-b1">GHK-Cu activa fibroblastos dérmicos, incrementando la producción de colágeno tipo I y III entre 200–300%. Restaura la densidad y volumen de la matriz extracelular, reduciendo visiblemente arrugas y flacidez.</p>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="cd-ben-t1">Desintoxicación Profunda</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="cd-ben-b1">El glutatión se conjuga con metales pesados (mercurio, plomo, arsénico) y toxinas liposolubles, facilitando su eliminación renal y biliar de forma segura y eficiente.</p>
       </div>
       <div class="ben-card reveal reveal-delay-1">
         <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">02</div>
-        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rm-ben-t2">Elastina y Firmeza</h3>
-        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rm-ben-b2">Estimula la síntesis de elastina y fibronectina, recuperando la elasticidad y tono cutáneo. La piel recupera su capacidad de retracción y resistencia mecánica característica de pieles jóvenes.</p>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="cd-ben-t2">Defensa Antioxidante Potente</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="cd-ben-b2">Neutraliza radicales libres intracelulares y recicla vitaminas C y E, amplificando la red antioxidante total. Reduce el daño oxidativo al ADN, proteínas y membranas lipídicas.</p>
       </div>
       <div class="ben-card reveal" style="border-top:1px solid var(--rule);">
         <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">03</div>
-        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rm-ben-t3">Hidratación Dérmica Profunda</h3>
-        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rm-ben-b3">Activa la síntesis endógena de ácido hialurónico, aumentando la capacidad de retención hídrica de la dermis. Piel visiblemente más hidratada, plump y luminosa desde la primera semana.</p>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="cd-ben-t3">Sistema Inmune Fortalecido</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="cd-ben-b3">Optimiza la proliferación y función de linfocitos T. Los niveles intracelulares de glutatión son críticos para la respuesta inmune adaptativa y la resolución eficaz de infecciones.</p>
       </div>
       <div class="ben-card reveal reveal-delay-1" style="border-top:1px solid var(--rule);">
         <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;">04</div>
-        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="rm-ben-t4">Cabello Radiante</h3>
-        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="rm-ben-b4">Estimula los folículos pilosos en fase telógena, promoviendo la reactivación del ciclo de crecimiento capilar. Mayor densidad, brillo y resistencia al quiebre del cabello.</p>
+        <h3 style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);margin-bottom:16px;" data-i18n="cd-ben-t4">Belleza y Luminosidad Desde Dentro</h3>
+        <p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--ink-soft);" data-i18n="cd-ben-b4">Inhibe la tirosinasa, reduciendo la hiperpigmentación y manchas cutáneas. Promueve un tono uniforme y luminoso desde el interior celular.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COA -->
+<!-- COA — dark section -->
 <section style="padding:120px 80px;background:var(--ink);">
   <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+    <!-- Certifications left -->
     <div>
       <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="coa-label">Certificaciones &amp; Calidad</div>
-      <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--bone);margin-bottom:40px;" data-i18n-html="coa-h2">Pureza que<br/><em style="font-style:italic;color:var(--forest);">se certifica.</em></h2>
-      <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-faint);margin-bottom:48px;" data-i18n="rm-coa-body">Cada lote de RadianceMax se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico.</p>
+      <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--bone);margin-bottom:40px;" data-i18n="coa-h2">Pureza que<br/><em style="font-style:italic;color:var(--forest);">se certifica.</em></h2>
+      <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-faint);margin-bottom:48px;" data-i18n="coa-body">Cada lote de CellDew se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico con cadena de custodia documentada.</p>
       <div style="display:flex;flex-direction:column;gap:0;">
-        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c1">GMP Farmacéutico certificado</span></div>
-        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c2">Análisis HPLC por lote</span></div>
-        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c3">Prueba de endotoxinas LAL</span></div>
-        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);border-bottom:1px solid rgba(245,241,235,.1);"><span style="font-size:16px;color:var(--forest);">—</span><span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c4">Verificación de identidad molecular</span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);">
+          <span style="font-size:16px;color:var(--forest);">—</span>
+          <span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c1">GMP Farmacéutico certificado</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);">
+          <span style="font-size:16px;color:var(--forest);">—</span>
+          <span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c2">Análisis HPLC por lote</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);">
+          <span style="font-size:16px;color:var(--forest);">—</span>
+          <span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c3">Prueba de endotoxinas LAL</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid rgba(245,241,235,.1);border-bottom:1px solid rgba(245,241,235,.1);">
+          <span style="font-size:16px;color:var(--forest);">—</span>
+          <span style="font-size:13px;font-weight:300;color:var(--bone);" data-i18n="coa-c4">Verificación de identidad molecular</span>
+        </div>
       </div>
     </div>
+    <!-- Stats right -->
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(245,241,235,.1);">
-      <div class="coa-stat reveal" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">98<span style="font-size:24px;color:var(--forest);">%</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s1">Pureza mínima</div></div>
-      <div class="coa-stat reveal reveal-delay-1" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">3<span style="font-size:24px;color:var(--forest);">×</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s2">Biodisponibilidad oral vs. cápsula</div></div>
-      <div class="coa-stat reveal reveal-delay-2" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">15<span style="font-size:24px;color:var(--forest);">min</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s3">Inicio de absorción</div></div>
-      <div class="coa-stat reveal reveal-delay-3" style="background:rgba(245,241,235,.04);"><div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">4<span style="font-size:24px;color:var(--forest);">–8w</span></div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s4">Resultados observables</div></div>
+      <div class="coa-stat reveal" style="background:rgba(245,241,235,.04);">
+        <div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">98<span style="font-size:24px;color:var(--forest);">%</span></div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s1">Pureza mínima</div>
+      </div>
+      <div class="coa-stat reveal reveal-delay-1" style="background:rgba(245,241,235,.04);">
+        <div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">3<span style="font-size:24px;color:var(--forest);">×</span></div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s2">Biodisponibilidad oral vs. cápsula</div>
+      </div>
+      <div class="coa-stat reveal reveal-delay-2" style="background:rgba(245,241,235,.04);">
+        <div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">15<span style="font-size:24px;color:var(--forest);">min</span></div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s3">Inicio de absorción</div>
+      </div>
+      <div class="coa-stat reveal reveal-delay-3" style="background:rgba(245,241,235,.04);">
+        <div style="font-family:'Cormorant Display',serif;font-size:52px;font-weight:300;color:var(--bone);line-height:1;margin-bottom:8px;">4<span style="font-size:24px;color:var(--forest);">–8w</span></div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);" data-i18n="coa-s4">Resultados observables</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RELATED -->
+<!-- RELATED PRODUCTS -->
 <section style="padding:120px 80px;background:var(--stone);">
   <div style="max-width:1160px;margin:0 auto;">
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px;" data-i18n="rel-label">También te puede interesar</div>
     <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:64px;" data-i18n="rel-h2">Protocolos relacionados</h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);">
-      <a href="producto-recoverypro.html" style="display:block;padding:48px 36px;border-right:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
-        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Recuperación · Reparación</div>
-        <h3 style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">RecoveryPro<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">BPC-157</div>
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);">Ver protocolo →</div>
+      <a href="producto-nad.html" style="display:block;padding:48px 36px;border-right:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
+        <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Energía · Nootropicos</div>
+        <h3 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">VitaCharge<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
+        <div class="reveal reveal-delay-2" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">NAD+</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:8px;" data-i18n="rel-vc">Ver protocolo →</div>
       </a>
-      <a href="producto-tb500.html" style="display:block;padding:48px 36px;border-right:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
-        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Reparación · Movilidad</div>
-        <h3 style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">TB-500</h3>
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Timosina β4</div>
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);">Ver protocolo →</div>
+      <a href="producto-ghk-cu.html" style="display:block;padding:48px 36px;border-right:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
+        <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Belleza · Anti-edad</div>
+        <h3 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">RadianceMax<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
+        <div class="reveal reveal-delay-2" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">GHK-Cu</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:8px;" data-i18n="rel-rm">Ver protocolo →</div>
       </a>
-      <a href="producto-vitacharge.html" style="display:block;padding:48px 36px;text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
-        <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Energía · Mitocondrial</div>
-        <h3 style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">VitaCharge<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
-        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">NAD+</div>
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);">Ver protocolo →</div>
+      <a href="producto-timosina-alfa-1.html" style="display:block;padding:48px 36px;text-decoration:none;color:var(--ink);transition:background .3s;" onmouseover="this.style.background='var(--bone)'" onmouseout="this.style.background='transparent'">
+        <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Inmunidad · Adaptógenos</div>
+        <h3 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:32px;font-weight:300;color:var(--ink);margin-bottom:8px;">ImmuneFort<sup style="font-size:.4em;vertical-align:super;">™</sup></h3>
+        <div class="reveal reveal-delay-2" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px;">Thymosin Alpha-1</div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:8px;" data-i18n="rel-if">Ver protocolo →</div>
       </a>
     </div>
   </div>
@@ -287,7 +336,9 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="quiz-overline">Protocolo personalizado</div>
     <h2 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(40px,5vw,72px);font-weight:300;line-height:1.1;color:var(--ink);margin-bottom:24px;" data-i18n-html="quiz-h">¿Cuál es tu<br/><em style="font-style:italic;color:var(--forest);">protocolo ideal?</em></h2>
     <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:440px;margin:0 auto 48px;" data-i18n="quiz-sub">Responde 5 preguntas y recibe una recomendación personalizada basada en tus objetivos.</p>
-    <div class="reveal reveal-delay-3"><a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:16px 36px;border-radius:2px;text-decoration:none;" data-i18n="quiz-cta">Encontrar mi protocolo →</a></div>
+    <div class="reveal reveal-delay-3">
+      <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:16px 36px;border-radius:2px;text-decoration:none;" data-i18n="quiz-cta">Encontrar mi protocolo →</a>
+    </div>
   </div>
 </section>
 
@@ -301,15 +352,15 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
     <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px;" data-i18n="foot-products">Productos</div>
     <div style="display:flex;flex-direction:column;gap:12px;">
-      <a href="producto-recoverypro.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RecoveryPro™</a>
-      <a href="producto-radiancemax.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RadianceMax™</a>
-      <a href="producto-tb500.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">TB-500</a>
-      <a href="producto-vitacharge.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">VitaCharge™</a>
-      <a href="producto-motsc.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">MOTS-c</a>
-      <a href="producto-celldew.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">CellDew™</a>
-      <a href="producto-immunefort.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">ImmuneFort™</a>
-      <a href="producto-passionboost.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">PassionBoost™</a>
-      <a href="producto-musclemaxx.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">MuscleMaxx™</a>
+      <a href="producto-bpc-157.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RecoveryPro™</a>
+      <a href="producto-ghk-cu.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">RadianceMax™</a>
+      <a href="producto-tb-500.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">TB-500</a>
+      <a href="producto-nad.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">VitaCharge™</a>
+      <a href="producto-mots-c.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">MOTS-c</a>
+      <a href="producto-glutation.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">CellDew™</a>
+      <a href="producto-timosina-alfa-1.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">ImmuneFort™</a>
+      <a href="producto-pt-141.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">PassionBoost™</a>
+      <a href="producto-cjc-1295-ipamorelin.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">MuscleMaxx™</a>
     </div>
   </div>
   <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
@@ -332,77 +383,112 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 </footer>
 
 <script>
+// TRANSLATIONS
 const TRANSLATIONS = {
   es:{
-    "rm-format":"Parche bucal · 3 mg · 20 unidades",
+    "soldout-badge":"Temporalmente agotado","soldout-notify":"Avisarme cuando llegue",
     "nav-productos":"Productos","nav-tecnologia":"Tecnología","nav-educacion":"Educación","nav-blog":"Blog","nav-quiz":"Quiz",
-    "rm-cat":"Belleza · Anti-edad","rm-tagline":"Regenerative Beauty","rm-aud":"Mujeres 35+ · Anti-edad · Skincare",
-    "rm-desc":"El GHK-Cu es un péptido de cobre que estimula de forma directa la síntesis de colágeno, elastina y ácido hialurónico. Activa genes de reparación cutánea que se silencian con el envejecimiento, restaurando la arquitectura dérmica desde adentro.",
-    "rm-hero-b1":"Aumento de colágeno 200–300% en 4–8 semanas","rm-hero-b2":"Síntesis de elastina y recuperación de firmeza","rm-hero-b3":"Síntesis de ácido hialurónico e hidratación dérmica","rm-hero-b4":"Estimulación de folículos pilosos y crecimiento capilar",
-    "hero-wa":"Consultar vía WhatsApp","buy-cta":"Comprar","hero-quiz":"Hacer el quiz →","badge-purity":"Pureza",
+    "cd-cat":"Detox · Antioxidante","cd-tagline":"Antioxidant Master","cd-aud":"Biohackers · Longevidad · 35+",
+    "cd-desc":"El glutatión es el antioxidante maestro del cuerpo. Presente en cada célula, orquesta la desintoxicación de metales pesados, la neutralización de radicales libres y el soporte del sistema inmune. Su absorción por mucosa oral garantiza bioaccesibilidad máxima — sin pérdidas digestivas.",
+    "cd-hero-b1":"Eliminación de metales pesados y toxinas acumuladas",
+    "cd-hero-b2":"Neutralización de radicales libres y estrés oxidativo",
+    "cd-hero-b3":"Soporte de linfocitos T para inmunidad robusta",
+    "cd-hero-b4":"Reducción de hiperpigmentación y luminosidad cutánea",
+    "hero-wa":"Consultar vía WhatsApp","hero-quiz":"Hacer el quiz →",
+    "badge-purity":"Pureza",
     "how-overline":"Tecnología de absorción","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Absorción por mucosa oral de precisión — cinco pasos desde la gota hasta la célula.",
     "step1-label":"Mucosa oral","step1-desc":"El parche se coloca entre la mejilla y la encía, en contacto directo con la mucosa bucal altamente vascularizada.",
     "step2-label":"Difusión","step2-desc":"Las moléculas difunden a través del epitelio oral sin necesidad de digestión enzimática ni metabolismo hepático.",
     "step3-label":"Absorción","step3-desc":"El péptido pasa directamente a los capilares de la mucosa oral, evitando el efecto de primer paso hepático.",
     "step4-label":"Circulación","step4-desc":"El compuesto activo entra al torrente sanguíneo sistémico en minutos, alcanzando tejidos diana con rapidez.",
     "step5-label":"Acción celular","step5-desc":"El péptido interactúa con receptores específicos a nivel celular, activando las cascadas biológicas deseadas.",
-    "ben-label":"Beneficios clínicos","rm-ben-h2":"Lo que RadianceMax renueva en ti",
-    "rm-ben-t1":"Síntesis de Colágeno Explosiva","rm-ben-b1":"GHK-Cu activa fibroblastos dérmicos, incrementando la producción de colágeno tipo I y III entre 200–300%. Restaura la densidad y volumen de la matriz extracelular, reduciendo visiblemente arrugas y flacidez.",
-    "rm-ben-t2":"Elastina y Firmeza","rm-ben-b2":"Estimula la síntesis de elastina y fibronectina, recuperando la elasticidad y tono cutáneo. La piel recupera su capacidad de retracción y resistencia mecánica característica de pieles jóvenes.",
-    "rm-ben-t3":"Hidratación Dérmica Profunda","rm-ben-b3":"Activa la síntesis endógena de ácido hialurónico, aumentando la capacidad de retención hídrica de la dermis. Piel visiblemente más hidratada, plump y luminosa desde la primera semana.",
-    "rm-ben-t4":"Cabello Radiante","rm-ben-b4":"Estimula los folículos pilosos en fase telógena, promoviendo la reactivación del ciclo de crecimiento capilar. Mayor densidad, brillo y resistencia al quiebre del cabello.",
-    "rm-duration":"4–8 semanas",
-    "coa-label":"Certificaciones & Calidad","coa-h2":"Pureza que<br/><em style=\"font-style:italic;color:var(--forest);\">se certifica.</em>","rm-coa-body":"Cada lote de RadianceMax se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico.",
+    "ben-label":"Beneficios clínicos","ben-h2":"Lo que CellDew activa en ti",
+    "cd-ben-t1":"Desintoxicación Profunda","cd-ben-b1":"El glutatión se conjuga con metales pesados (mercurio, plomo, arsénico) y toxinas liposolubles, facilitando su eliminación renal y biliar de forma segura y eficiente.",
+    "cd-ben-t2":"Defensa Antioxidante Potente","cd-ben-b2":"Neutraliza radicales libres intracelulares y recicla vitaminas C y E, amplificando la red antioxidante total. Reduce el daño oxidativo al ADN, proteínas y membranas lipídicas.",
+    "cd-ben-t3":"Sistema Inmune Fortalecido","cd-ben-b3":"Optimiza la proliferación y función de linfocitos T. Los niveles intracelulares de glutatión son críticos para la respuesta inmune adaptativa y la resolución eficaz de infecciones.",
+    "cd-ben-t4":"Belleza y Luminosidad Desde Dentro","cd-ben-b4":"Inhibe la tirosinasa, reduciendo la hiperpigmentación y manchas cutáneas. Promueve un tono uniforme y luminoso desde el interior celular.",
+    "coa-label":"Certificaciones & Calidad","coa-h2":"Pureza que se certifica.","coa-body":"Cada lote de CellDew se somete a análisis de pureza por HPLC, pruebas de endotoxinas LAL y verificación de identidad molecular. Producción bajo estándares GMP farmacéutico con cadena de custodia documentada.",
     "coa-c1":"GMP Farmacéutico certificado","coa-c2":"Análisis HPLC por lote","coa-c3":"Prueba de endotoxinas LAL","coa-c4":"Verificación de identidad molecular",
     "coa-s1":"Pureza mínima","coa-s2":"Biodisponibilidad oral vs. cápsula","coa-s3":"Inicio de absorción","coa-s4":"Resultados observables",
-    "rel-label":"También te puede interesar","rel-h2":"Protocolos relacionados","rel-cd":"Ver protocolo →","rel-vc":"Ver protocolo →","rel-if":"Ver protocolo →",
+    "rel-label":"También te puede interesar","rel-h2":"Protocolos relacionados","rel-vc":"Ver protocolo →","rel-rm":"Ver protocolo →","rel-if":"Ver protocolo →",
     "quiz-overline":"Protocolo personalizado","quiz-h":"¿Cuál es tu<br/><em style=\"font-style:italic;color:var(--forest);\">protocolo ideal?</em>","quiz-sub":"Responde 5 preguntas y recibe una recomendación personalizada basada en tus objetivos.","quiz-cta":"Encontrar mi protocolo →",
     "foot-desc":"Péptidos bioactivos de grado farmacéutico. Absorción por mucosa oral de precisión.","foot-wa":"WhatsApp","foot-products":"Productos","foot-company":"Compañía","foot-legal":"Legal","foot-privacy":"Privacidad","foot-terms":"Términos","foot-disclaimer":"Uso exclusivo adultos. No sustituye diagnóstico médico.",
+    "cd-duration":"4–8 semanas",
     'nav-contacto':'Contacto',
   },
   en:{
-    "rm-format":"Buccal patch · 3 mg · 20 units",
+    "soldout-badge":"Temporarily out of stock","soldout-notify":"Notify me when available",
     "nav-productos":"Products","nav-tecnologia":"Technology","nav-educacion":"Education","nav-blog":"Blog","nav-quiz":"Quiz",
-    "rm-cat":"Beauty · Anti-aging","rm-tagline":"Regenerative Beauty","rm-aud":"Women 35+ · Anti-aging · Skincare",
-    "rm-desc":"GHK-Cu is a copper peptide that directly stimulates the synthesis of collagen, elastin, and hyaluronic acid. It activates skin repair genes silenced by aging, restoring dermal architecture from within.",
-    "rm-hero-b1":"Collagen increase 200–300% in 4–8 weeks","rm-hero-b2":"Elastin synthesis and firmness recovery","rm-hero-b3":"Hyaluronic acid synthesis and dermal hydration","rm-hero-b4":"Hair follicle stimulation and hair growth",
-    "hero-wa":"Consult via WhatsApp","buy-cta":"Buy now","hero-quiz":"Take the quiz →","badge-purity":"Purity",
+    "cd-cat":"Detox · Antioxidant","cd-tagline":"Antioxidant Master","cd-aud":"Biohackers · Longevity · 35+",
+    "cd-desc":"Glutathione is the body's master antioxidant. Present in every cell, it orchestrates heavy metal detoxification, free radical neutralization, and immune system support. Mucosa oral absorption ensures maximum bioavailability — without digestive losses.",
+    "cd-hero-b1":"Elimination of heavy metals and accumulated toxins",
+    "cd-hero-b2":"Neutralization of free radicals and oxidative stress",
+    "cd-hero-b3":"T-lymphocyte support for robust immunity",
+    "cd-hero-b4":"Reduction of hyperpigmentation and skin luminosity",
+    "hero-wa":"Consult via WhatsApp","hero-quiz":"Take the quiz →",
+    "badge-purity":"Purity",
     "how-overline":"Absorption technology","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Precision oral mucosal absorption — five steps from drop to cell.",
     "step1-label":"Mucosa oral","step1-desc":"The patch is placed between the cheek and gum, in direct contact with the highly vascularized buccal mucosa.",
     "step2-label":"Diffusion","step2-desc":"Molecules diffuse through the oral epithelium without enzymatic digestion or hepatic metabolism.",
     "step3-label":"Absorption","step3-desc":"The peptide passes directly into oral mucosal capillaries, bypassing first-pass hepatic effect.",
     "step4-label":"Circulation","step4-desc":"The active compound enters systemic bloodstream within minutes, rapidly reaching target tissues.",
     "step5-label":"Cellular action","step5-desc":"The peptide interacts with specific receptors at the cellular level, activating desired biological cascades.",
-    "ben-label":"Clinical benefits","rm-ben-h2":"What RadianceMax renews in you",
-    "rm-ben-t1":"Explosive Collagen Synthesis","rm-ben-b1":"GHK-Cu activates dermal fibroblasts, increasing type I and III collagen production by 200–300%. Restores extracellular matrix density and volume, visibly reducing wrinkles and sagging.",
-    "rm-ben-t2":"Elastin and Firmness","rm-ben-b2":"Stimulates elastin and fibronectin synthesis, recovering skin elasticity and tone. Skin regains its retraction capacity and mechanical resistance characteristic of youthful skin.",
-    "rm-ben-t3":"Deep Dermal Hydration","rm-ben-b3":"Activates endogenous hyaluronic acid synthesis, increasing the dermis's water retention capacity. Visibly more hydrated, plump, and luminous skin from the first week.",
-    "rm-ben-t4":"Radiant Hair","rm-ben-b4":"Stimulates hair follicles in the telogen phase, promoting reactivation of the hair growth cycle. Greater density, shine, and resistance to hair breakage.",
-    "rm-duration":"4–8 weeks",
-    "coa-label":"Certifications & Quality","coa-h2":"Purity that<br/><em style=\"font-style:italic;color:var(--forest);\">is certified.</em>","rm-coa-body":"Each RadianceMax batch undergoes HPLC purity analysis, LAL endotoxin testing, and molecular identity verification. Production under pharmaceutical GMP standards.",
+    "ben-label":"Clinical benefits","ben-h2":"What CellDew activates in you",
+    "cd-ben-t1":"Deep Detoxification","cd-ben-b1":"Glutathione conjugates with heavy metals (mercury, lead, arsenic) and lipophilic toxins, facilitating their safe and efficient renal and biliary elimination.",
+    "cd-ben-t2":"Potent Antioxidant Defense","cd-ben-b2":"Neutralizes intracellular free radicals and recycles vitamins C and E, amplifying the total antioxidant network. Reduces oxidative damage to DNA, proteins, and lipid membranes.",
+    "cd-ben-t3":"Strengthened Immune System","cd-ben-b3":"Optimizes T-lymphocyte proliferation and function. Intracellular glutathione levels are critical for adaptive immune response and efficient infection resolution.",
+    "cd-ben-t4":"Beauty and Luminosity From Within","cd-ben-b4":"Inhibits tyrosinase, reducing hyperpigmentation and skin spots. Promotes an even and luminous tone from the cellular interior.",
+    "coa-label":"Certifications & Quality","coa-h2":"Purity that is certified.","coa-body":"Each CellDew batch undergoes HPLC purity analysis, LAL endotoxin testing, and molecular identity verification. Production under pharmaceutical GMP standards with documented chain of custody.",
     "coa-c1":"Pharmaceutical GMP certified","coa-c2":"HPLC analysis per batch","coa-c3":"LAL endotoxin test","coa-c4":"Molecular identity verification",
     "coa-s1":"Minimum purity","coa-s2":"Oral bioavailability vs. capsule","coa-s3":"Absorption onset","coa-s4":"Observable results",
-    "rel-label":"You may also like","rel-h2":"Related protocols","rel-cd":"View protocol →","rel-vc":"View protocol →","rel-if":"View protocol →",
+    "rel-label":"You may also like","rel-h2":"Related protocols","rel-vc":"View protocol →","rel-rm":"View protocol →","rel-if":"View protocol →",
     "quiz-overline":"Personalized protocol","quiz-h":"What is your<br/><em style=\"font-style:italic;color:var(--forest);\">ideal protocol?</em>","quiz-sub":"Answer 5 questions and receive a personalized recommendation based on your goals.","quiz-cta":"Find My Protocol →",
     "foot-desc":"Pharmaceutical-grade bioactive peptides. Precision oral mucosal absorption.","foot-wa":"WhatsApp","foot-products":"Products","foot-company":"Company","foot-legal":"Legal","foot-privacy":"Privacy","foot-terms":"Terms","foot-disclaimer":"For adult use only. Does not replace medical diagnosis.",
+    "cd-duration":"4–8 weeks",
     'nav-contacto':'Contact',
   }
 };
+
 let currentLang = localStorage.getItem('bgLang') || 'es';
+
 function setLang(lang) {
-  currentLang = lang; localStorage.setItem('bgLang', lang);
+  currentLang = lang;
+  localStorage.setItem('bgLang', lang);
   const T = TRANSLATIONS[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (T[k] !== undefined) el.textContent = T[k]; });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => { const k = el.getAttribute('data-i18n-html'); if (T[k] !== undefined) el.innerHTML = T[k]; });
-  document.querySelectorAll('.lang-btn').forEach(btn => { btn.style.color = btn.textContent.toLowerCase() === lang ? 'var(--ink)' : 'var(--ink-faint)'; });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (T[key] !== undefined) el.textContent = T[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (T[key] !== undefined) el.innerHTML = T[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.style.color = btn.textContent.toLowerCase() === lang ? 'var(--ink)' : 'var(--ink-faint)';
+  });
 }
-const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } }); }, { threshold: 0.12 });
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
-document.getElementById('mobileMenu').addEventListener('click', (e) => { if (e.target === document.getElementById('mobileMenu')) document.getElementById('mobileMenu').classList.remove('open'); });
+
+// Nav scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.borderBottomColor = window.scrollY > 20 ? 'var(--rule)' : 'var(--rule)';
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) mobileMenu.classList.remove('open'); });
+
+// Init lang
 setLang(currentLang);
 </script>
-<script src="assets/checkout.js" defer></script>
 <!-- WA FLOAT -->
 <a href="https://wa.me/15553471798" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;bottom:28px;right:28px;z-index:500;width:52px;height:52px;background:#2E4A3A;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(46,74,58,.35);" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(46,74,58,.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(46,74,58,.35)'">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>

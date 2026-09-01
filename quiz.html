@@ -564,11 +564,11 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bone);line
       </div>
       <div class="foot-col">
         <div class="foot-col-title" data-i18n="foot-products">Productos</div>
-        <a href="producto-recoverypro.html">BPC-157</a>
-        <a href="producto-radiancemax.html">GHK-CU</a>
-        <a href="producto-tb500.html">TB-500</a>
-        <a href="producto-vitacharge.html">NAD+</a>
-        <a href="producto-motsc.html">MOTS-C</a>
+        <a href="producto-bpc-157.html">BPC-157</a>
+        <a href="producto-ghk-cu.html">GHK-CU</a>
+        <a href="producto-tb-500.html">TB-500</a>
+        <a href="producto-nad.html">NAD+</a>
+        <a href="producto-mots-c.html">MOTS-C</a>
       </div>
       <div class="foot-col">
         <div class="foot-col-title" data-i18n="foot-company">Compañía</div>
@@ -786,7 +786,7 @@ function t(k) { return T[S.lang][k] || T.es[k] || k; }
 const PRODUCTS = {
   tb500: {
     name: 'TB-500', peptide: 'Timosina β4',
-    img: 'img-tb500-display.png', url: '/producto-tb500',
+    img: 'img-tb-500-display.png', url: '/producto-tb-500',
     tagline: { es: 'Reparación Estructural & Movilidad', en: 'Structural Repair & Mobility' },
     why: {
       es: 'Tu perfil apunta a TB-500. La Timosina β4 regula la actina, la proteína que permite a las células desplazarse hacia el tejido dañado — por eso actúa donde el problema no es dolor agudo sino rigidez, lesiones antiguas y pérdida de rango de movimiento.',
@@ -808,7 +808,7 @@ const PRODUCTS = {
   },
   motsc: {
     name: 'MOTS-c', peptide: 'Péptido mitocondrial',
-    img: 'img-motsc-display.png', url: '/producto-motsc',
+    img: 'img-mots-c-display.png', url: '/producto-mots-c',
     tagline: { es: 'Metabolismo & Longevidad Celular', en: 'Metabolism & Cellular Longevity' },
     why: {
       es: 'Tu perfil indica MOTS-c. Es un péptido codificado dentro del propio ADN mitocondrial que activa AMPK — la misma vía que activan el ejercicio y el ayuno — mejorando sensibilidad a la insulina y uso de grasa como energía.',
@@ -830,7 +830,7 @@ const PRODUCTS = {
   },
   musclemaxx: {
     name: 'MUSCLEMAXX™', peptide: 'GHRP-6 + CJC-1295',
-    img: 'img-musclemaxx-display.png', url: '/producto-musclemaxx',
+    img: 'img-cjc-1295-ipamorelin-display.png', url: '/producto-cjc-1295-ipamorelin',
     tagline: { es: 'Masa Muscular & Hormona de Crecimiento', en: 'Muscle Mass & Growth Hormone' },
     why: {
       es: 'Tu perfil indica que MUSCLEMAXX™ es tu mejor aliado. La combinación GHRP-6 + CJC-1295 estimula la liberación pulsátil de hormona del crecimiento de forma natural — maximizando la síntesis proteica, la recuperación y la composición corporal sin los riesgos de la HGH exógena.',
@@ -852,7 +852,7 @@ const PRODUCTS = {
   },
   recoverypro: {
     name: 'RECOVERYPRO™', peptide: 'BPC-157',
-    img: 'img-recoverypro-display.png', url: '/producto-recoverypro',
+    img: 'img-bpc-157-display.png', url: '/producto-bpc-157',
     tagline: { es: 'Regeneración & Curación Acelerada', en: 'Regeneration & Accelerated Healing' },
     why: {
       es: 'Tu perfil apunta a RECOVERYPRO™. BPC-157 es uno de los péptidos más investigados para regeneración tisular — actúa sobre tendones, ligamentos, músculo y mucosa intestinal simultáneamente, acelerando procesos que normalmente toman meses.',
@@ -874,7 +874,7 @@ const PRODUCTS = {
   },
   radiancemax: {
     name: 'RADIANCEMAX™', peptide: 'GHK-Cu',
-    img: 'img-radiancemax-display.png', url: '/producto-radiancemax',
+    img: 'img-ghk-cu-display.png', url: '/producto-ghk-cu',
     tagline: { es: 'Rejuvenecimiento Dérmico & Anti-Aging', en: 'Dermal Rejuvenation & Anti-Aging' },
     why: {
       es: 'Tu perfil indica que RADIANCEMAX™ es tu recomendación ideal. GHK-Cu es el péptido de cobre más estudiado para la piel — activa más de 4,000 genes relacionados con la regeneración celular, estimulando la producción de colágeno tipo I, II y III, elastina y ácido hialurónico.',
@@ -896,7 +896,7 @@ const PRODUCTS = {
   },
   vitacharge: {
     name: 'VITACHARGE™', peptide: 'NAD+',
-    img: 'img-vitacharge-display.png', url: '/producto-vitacharge',
+    img: 'img-nad-display.png', url: '/producto-nad',
     tagline: { es: 'Energía Celular & Longevidad', en: 'Cellular Energy & Longevity' },
     why: {
       es: 'Tu perfil indica una necesidad de optimización celular profunda. NAD+ es la coenzima más crítica del metabolismo energético — presente en cada mitocondria. Con la edad sus niveles caen hasta un 50%, generando fatiga, niebla mental y envejecimiento acelerado.',
@@ -918,7 +918,7 @@ const PRODUCTS = {
   },
   passionboost: {
     name: 'PASSIONBOOST™', peptide: 'PT-141 + Oxitocina',
-    img: 'img-passionboost-display.png', url: '/producto-passionboost',
+    img: 'img-pt-141-display.png', url: '/producto-pt-141',
     tagline: { es: 'Vitalidad Íntima & Conexión', en: 'Intimate Vitality & Connection' },
     why: {
       es: 'Tu perfil apunta claramente a PASSIONBOOST™. PT-141 actúa directamente en receptores de melanocortina del sistema nervioso central — estimulando el deseo de forma genuina sin mecanismos vasculares. La Oxitocina profundiza la conexión emocional y la satisfacción.',
@@ -940,7 +940,7 @@ const PRODUCTS = {
   },
   immunefort: {
     name: 'IMMUNEFORT™', peptide: 'Thymosin Alpha-1',
-    img: 'img-immunefort-display.png', url: '/producto-immunefort',
+    img: 'img-timosina-alfa-1-display.png', url: '/producto-timosina-alfa-1',
     tagline: { es: 'Protección Inmune Total', en: 'Total Immune Protection' },
     why: {
       es: 'Tu perfil indica que el sistema inmune necesita apoyo. Thymosin Alpha-1 es el péptido inmunológico más potente del cuerpo — regula tanto la inmunidad innata como la adaptativa, optimizando la maduración de células T y la comunicación entre células inmunológicas.',
@@ -962,7 +962,7 @@ const PRODUCTS = {
   },
   celldew: {
     name: 'CELLDEW™', peptide: 'Glutatión',
-    img: 'img-celledew-display.png', url: '/producto-celldew',
+    img: 'img-glutation-display.png', url: '/producto-glutation',
     tagline: { es: 'Soporte Antioxidante Maestro', en: 'Master Antioxidant Support' },
     why: {
       es: 'Tu perfil apunta a CELLDEW™. El glutatión es el antioxidante maestro del cuerpo — presente en cada célula donde neutraliza radicales libres, desintoxica el hígado y regula el sistema inmune. Sus niveles caen con el estrés, el alcohol y el envejecimiento.',
