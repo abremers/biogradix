@@ -5,8 +5,10 @@
 // and the admin, and fires a TikTok CompletePayment event when configured.
 //
 // Handles both checkout.session.completed (cards pay synchronously) and
-// checkout.session.async_payment_succeeded (OXXO pays hours/days later).
-// Orders are only recorded once payment_status is 'paid'.
+// checkout.session.async_payment_succeeded (OXXO, offered only on MXN
+// products, pays hours/days later). Orders are only recorded once
+// payment_status is 'paid'. Amounts are stored in the session currency
+// (launch: USD) with the currency recorded on the order row.
 
 const crypto = require('crypto');
 
@@ -68,9 +70,10 @@ function sbHeaders(serviceKey, extra) {
 }
 
 // ── MONEY FORMAT ─────────────────────────────────────────────────────────────
-function mxn(n) {
+function money(n, currency) {
   const fixed = Number(n || 0).toFixed(2);
-  return '$' + fixed.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' MXN';
+  const grouped = fixed.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return `$${grouped} ${(currency || 'USD').toUpperCase()}`;
 }
 
 function escapeHtml(s) {
@@ -91,11 +94,12 @@ function formatAddress(addr) {
 
 // ── EMAILS ───────────────────────────────────────────────────────────────────
 function buildCustomerEmail(order, isEs) {
+  const cur = order.currency;
   const rows = order.items.map((it) => `
       <tr>
         <td style="padding:12px 14px;font-size:13px;color:#18140F;border-bottom:1px solid #EDE8E0;">${escapeHtml(it.name)}</td>
         <td align="center" style="padding:12px 14px;font-size:13px;color:#4A443C;border-bottom:1px solid #EDE8E0;">${it.quantity}</td>
-        <td align="right" style="padding:12px 14px;font-size:13px;color:#18140F;border-bottom:1px solid #EDE8E0;">${mxn(it.total_mxn)}</td>
+        <td align="right" style="padding:12px 14px;font-size:13px;color:#18140F;border-bottom:1px solid #EDE8E0;">${money(it.total, cur)}</td>
       </tr>`).join('');
 
   return `<!DOCTYPE html>
@@ -117,7 +121,7 @@ function buildCustomerEmail(order, isEs) {
   <tr><td style="background:#2E4A3A;padding:12px 32px;">
     <table width="100%" cellpadding="0" cellspacing="0"><tr>
       <td style="color:#F5F1EB;font-size:12px;letter-spacing:1px;text-transform:uppercase;">${isEs ? 'Pedido' : 'Order'} #${order.id}</td>
-      <td align="right" style="color:#F5F1EB;font-size:16px;font-family:monospace;">${mxn(order.total_mxn)}</td>
+      <td align="right" style="color:#F5F1EB;font-size:16px;font-family:monospace;">${money(order.total, cur)}</td>
     </tr></table>
   </td></tr>
 
@@ -131,15 +135,15 @@ function buildCustomerEmail(order, isEs) {
       </tr>${rows}
       <tr>
         <td colspan="2" style="padding:10px 14px;font-size:12px;color:#9A9189;">${isEs ? 'Subtotal' : 'Subtotal'}</td>
-        <td align="right" style="padding:10px 14px;font-size:12px;color:#4A443C;">${mxn(order.subtotal_mxn)}</td>
+        <td align="right" style="padding:10px 14px;font-size:12px;color:#4A443C;">${money(order.subtotal, cur)}</td>
       </tr>
       <tr>
         <td colspan="2" style="padding:0 14px 10px;font-size:12px;color:#9A9189;">${isEs ? 'Envio' : 'Shipping'}</td>
-        <td align="right" style="padding:0 14px 10px;font-size:12px;color:#4A443C;">${Number(order.shipping_mxn) === 0 ? (isEs ? 'Gratis' : 'Free') : mxn(order.shipping_mxn)}</td>
+        <td align="right" style="padding:0 14px 10px;font-size:12px;color:#4A443C;">${Number(order.shipping) === 0 ? (isEs ? 'Gratis' : 'Free') : money(order.shipping, cur)}</td>
       </tr>
       <tr>
         <td colspan="2" style="padding:12px 14px;font-size:13px;color:#18140F;font-weight:600;border-top:1px solid #EDE8E0;">Total</td>
-        <td align="right" style="padding:12px 14px;font-size:13px;color:#18140F;font-weight:600;border-top:1px solid #EDE8E0;">${mxn(order.total_mxn)}</td>
+        <td align="right" style="padding:12px 14px;font-size:13px;color:#18140F;font-weight:600;border-top:1px solid #EDE8E0;">${money(order.total, cur)}</td>
       </tr>
     </table>
   </td></tr>
@@ -157,7 +161,7 @@ function buildCustomerEmail(order, isEs) {
   </td></tr>
 
   <tr><td style="padding:24px 32px 32px;">
-    <a href="https://wa.me/15553471798" style="display:inline-block;background:#2E4A3A;color:#F5F1EB;text-decoration:none;padding:12px 24px;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;">${isEs ? 'WhatsApp' : 'WhatsApp'}</a>
+    <a href="https://wa.me/15553471798" style="display:inline-block;background:#2E4A3A;color:#F5F1EB;text-decoration:none;padding:12px 24px;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;">WhatsApp</a>
   </td></tr>
 
   <tr><td style="background:#F5F1EB;padding:14px 32px;border-top:1px solid #EDE8E0;">
@@ -172,8 +176,9 @@ function buildCustomerEmail(order, isEs) {
 }
 
 function buildAdminEmail(order) {
+  const cur = order.currency;
   const itemsList = order.items
-    .map((it) => `${it.quantity} x ${escapeHtml(it.name)} (${escapeHtml(it.sku)}) - ${mxn(it.total_mxn)}`)
+    .map((it) => `${it.quantity} x ${escapeHtml(it.name)} (${escapeHtml(it.sku)}) - ${money(it.total, cur)}`)
     .join('<br/>');
 
   return `<!DOCTYPE html>
@@ -182,7 +187,7 @@ function buildAdminEmail(order) {
 <table width="600" align="center" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;margin:24px auto;background:#ffffff;">
   <tr><td style="background:#18140F;padding:20px 28px;border-bottom:2px solid #2E4A3A;">
     <p style="font-family:monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9A9189;margin:0 0 4px;">BIOGRADIX - NUEVO PEDIDO</p>
-    <h1 style="color:#F5F1EB;font-size:17px;margin:0;font-weight:400;">Pedido #${order.id} - ${mxn(order.total_mxn)}</h1>
+    <h1 style="color:#F5F1EB;font-size:17px;margin:0;font-weight:400;">Pedido #${order.id} - ${money(order.total, cur)}</h1>
   </td></tr>
   <tr><td style="padding:24px 28px;">
     <p style="font-size:13px;color:#18140F;margin:0 0 4px;"><strong>${escapeHtml(order.customer_name || 'Sin nombre')}</strong></p>
@@ -192,7 +197,7 @@ function buildAdminEmail(order) {
     <p style="font-size:13px;color:#18140F;line-height:1.8;margin:0 0 16px;">${itemsList}</p>
     <p style="font-family:monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#9A9189;margin:0 0 6px;">Envio</p>
     <p style="font-size:13px;color:#4A443C;line-height:1.7;margin:0 0 16px;">${escapeHtml(order.shipping_address_text || 'Sin direccion')}</p>
-    <p style="font-size:12px;color:#9A9189;margin:0;">Subtotal ${mxn(order.subtotal_mxn)} - Envio ${mxn(order.shipping_mxn)} - Stripe: ${escapeHtml(order.stripe_session_id)}</p>
+    <p style="font-size:12px;color:#9A9189;margin:0;">Subtotal ${money(order.subtotal, cur)} - Envio ${money(order.shipping, cur)} - Stripe: ${escapeHtml(order.stripe_session_id)}</p>
   </td></tr>
   <tr><td style="background:#F5F1EB;padding:12px 28px;border-top:1px solid #EDE8E0;">
     <p style="font-family:monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#9A9189;margin:0;">BIOGRADIX - INTERNAL</p>
@@ -248,14 +253,14 @@ async function sendTikTokEvent(order) {
           page: { url: 'https://biogradix.com' },
         },
         properties: {
-          currency: 'MXN',
-          value: Number(order.total_mxn),
+          currency: (order.currency || 'USD').toUpperCase(),
+          value: Number(order.total),
           content_type: 'product',
           contents: order.items.map((it) => ({
             content_id: it.sku,
             content_name: it.name,
             quantity: it.quantity,
-            price: Number(it.unit_price_mxn),
+            price: Number(it.unit_price),
           })),
         },
       }),
@@ -298,16 +303,20 @@ module.exports = async function handler(req, res) {
   }
 
   // Cards complete synchronously (completed, payment_status=paid).
-  // OXXO completes the session first, then pays later (async_payment_succeeded).
+  // OXXO (MXN only) completes the session first, then pays later
+  // (async_payment_succeeded).
   const relevant = event.type === 'checkout.session.completed'
     || event.type === 'checkout.session.async_payment_succeeded';
   if (!relevant) return res.status(200).json({ received: true });
 
   const session = event.data && event.data.object;
   if (!session || session.payment_status !== 'paid') {
-    // OXXO voucher issued but not yet paid: wait for async_payment_succeeded.
+    // Async payment (e.g. OXXO voucher issued, not yet paid): wait for
+    // async_payment_succeeded.
     return res.status(200).json({ received: true, pending: true });
   }
+
+  const sessionCurrency = (session.currency || 'usd').toUpperCase();
 
   try {
     // ── 1. IDEMPOTENCY ─────────────────────────────────────────────────────
@@ -335,8 +344,8 @@ module.exports = async function handler(req, res) {
             sku: (productMeta && productMeta.sku) || (session.metadata && session.metadata.sku) || 'unknown',
             name: li.description || 'Producto Biogradix',
             quantity: li.quantity || 1,
-            unit_price_mxn: li.price ? li.price.unit_amount / 100 : 0,
-            total_mxn: (li.amount_total != null ? li.amount_total : 0) / 100,
+            unit_price: li.price ? li.price.unit_amount / 100 : 0,
+            total: (li.amount_total != null ? li.amount_total : 0) / 100,
           };
         });
       }
@@ -345,12 +354,13 @@ module.exports = async function handler(req, res) {
     }
     if (items.length === 0 && session.metadata && session.metadata.sku) {
       // Fallback: reconstruct from session metadata
+      const qty = parseInt(session.metadata.quantity, 10) || 1;
       items = [{
         sku: session.metadata.sku,
         name: session.metadata.sku,
-        quantity: parseInt(session.metadata.quantity, 10) || 1,
-        unit_price_mxn: (session.amount_subtotal || 0) / 100 / (parseInt(session.metadata.quantity, 10) || 1),
-        total_mxn: (session.amount_subtotal || 0) / 100,
+        quantity: qty,
+        unit_price: (session.amount_subtotal || 0) / 100 / qty,
+        total: (session.amount_subtotal || 0) / 100,
       }];
     }
 
@@ -376,10 +386,10 @@ module.exports = async function handler(req, res) {
       customer_phone: cd.phone || null,
       shipping_address: shippingAddress,
       items: items,
-      subtotal_mxn: (session.amount_subtotal || 0) / 100,
-      shipping_mxn: ((session.total_details && session.total_details.amount_shipping) || 0) / 100,
-      total_mxn: (session.amount_total || 0) / 100,
-      currency: 'MXN',
+      subtotal: (session.amount_subtotal || 0) / 100,
+      shipping: ((session.total_details && session.total_details.amount_shipping) || 0) / 100,
+      total: (session.amount_total || 0) / 100,
+      currency: sessionCurrency,
       payment_provider: 'stripe',
       payment_id: typeof session.payment_intent === 'string' ? session.payment_intent : null,
       stripe_session_id: session.id,
@@ -442,14 +452,15 @@ module.exports = async function handler(req, res) {
     // ── 6. EMAILS + TIKTOK (best effort) ───────────────────────────────────
     const isEs = ((session.metadata && session.metadata.lang) || session.locale || 'es') !== 'en';
     const emailOrder = {
-      id: orderId || '—',
+      id: orderId || '-',
       customer_name: orderRow.customer_name,
       customer_email: orderRow.customer_email,
       customer_phone: orderRow.customer_phone,
       items,
-      subtotal_mxn: orderRow.subtotal_mxn,
-      shipping_mxn: orderRow.shipping_mxn,
-      total_mxn: orderRow.total_mxn,
+      subtotal: orderRow.subtotal,
+      shipping: orderRow.shipping,
+      total: orderRow.total,
+      currency: sessionCurrency,
       stripe_session_id: session.id,
       shipping_address_text: formatAddress(shippingAddress),
     };
@@ -468,7 +479,7 @@ module.exports = async function handler(req, res) {
       await sendResendEmail({
         from: 'Biogradix Pedidos <protocolos@biogradix.com>',
         to: [ADMIN_EMAIL],
-        subject: `Nuevo pedido #${emailOrder.id} — ${mxn(emailOrder.total_mxn)}`,
+        subject: `Nuevo pedido #${emailOrder.id} — ${money(emailOrder.total, sessionCurrency)}`,
         html: buildAdminEmail(emailOrder),
       });
     } catch (err) {

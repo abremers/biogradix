@@ -171,7 +171,6 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="cd-aud">Biohackers · Longevidad · 35+</span>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
-      <button type="button" onclick="startCheckout(this)" data-i18n="buy-cta" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:14px 28px;border-radius:2px;border:none;cursor:pointer;font-family:'Inter',sans-serif;">Comprar</button>
       <a href="https://wa.me/15553471798?text=Quiero%20que%20me%20avisen%20cuando%20haya%20existencias" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--rule);padding:13px 27px;border-radius:2px;text-decoration:none;" data-i18n="soldout-notify">Avisarme cuando llegue</a>
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
     </div>
@@ -395,7 +394,7 @@ const TRANSLATIONS = {
     "cd-hero-b2":"Neutralización de radicales libres y estrés oxidativo",
     "cd-hero-b3":"Soporte de linfocitos T para inmunidad robusta",
     "cd-hero-b4":"Reducción de hiperpigmentación y luminosidad cutánea",
-    "hero-wa":"Consultar vía WhatsApp","buy-cta":"Comprar","buy-loading":"Un momento...","hero-quiz":"Hacer el quiz →",
+    "hero-wa":"Consultar vía WhatsApp","hero-quiz":"Hacer el quiz →",
     "badge-purity":"Pureza",
     "how-overline":"Tecnología de absorción","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Absorción por mucosa oral de precisión — cinco pasos desde la gota hasta la célula.",
     "step1-label":"Mucosa oral","step1-desc":"El parche se coloca entre la mejilla y la encía, en contacto directo con la mucosa bucal altamente vascularizada.",
@@ -426,7 +425,7 @@ const TRANSLATIONS = {
     "cd-hero-b2":"Neutralization of free radicals and oxidative stress",
     "cd-hero-b3":"T-lymphocyte support for robust immunity",
     "cd-hero-b4":"Reduction of hyperpigmentation and skin luminosity",
-    "hero-wa":"Consult via WhatsApp","buy-cta":"Buy now","buy-loading":"One moment...","hero-quiz":"Take the quiz →",
+    "hero-wa":"Consult via WhatsApp","hero-quiz":"Take the quiz →",
     "badge-purity":"Purity",
     "how-overline":"Absorption technology","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Precision oral mucosal absorption — five steps from drop to cell.",
     "step1-label":"Mucosa oral","step1-desc":"The patch is placed between the cheek and gum, in direct contact with the highly vascularized buccal mucosa.",
@@ -488,32 +487,6 @@ hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) mobileMenu.classList.remove('open'); });
 
 // Init lang
-// Checkout
-const BUY_SKU = 'celldew';
-const BUY_FALLBACK_WA = 'https://wa.me/15553471798?text=Quiero%20que%20me%20avisen%20cuando%20haya%20existencias';
-async function startCheckout(btn) {
-  if (btn.dataset.busy === '1') return;
-  btn.dataset.busy = '1';
-  const original = btn.textContent;
-  btn.textContent = (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang]['buy-loading']) || 'Un momento...';
-  btn.style.opacity = '.6';
-  try {
-    const r = await fetch('/api/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sku: BUY_SKU, quantity: 1, lang: currentLang })
-    });
-    const data = await r.json().catch(() => ({}));
-    if (r.ok && data.url) { window.location.href = data.url; return; }
-    window.location.href = BUY_FALLBACK_WA;
-  } catch (err) {
-    window.location.href = BUY_FALLBACK_WA;
-  } finally {
-    btn.dataset.busy = '';
-    btn.textContent = original;
-    btn.style.opacity = '';
-  }
-}
 setLang(currentLang);
 </script>
 <!-- WA FLOAT -->
