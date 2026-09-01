@@ -168,6 +168,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="rm-aud">Mujeres 35+ · Anti-edad · Skincare</span>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
+      <button type="button" onclick="startCheckout(this)" data-i18n="buy-cta" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:14px 28px;border-radius:2px;border:none;cursor:pointer;font-family:'Inter',sans-serif;">Comprar</button>
       <a href="https://wa.me/15553471798" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 28px;border-radius:2px;text-decoration:none;" data-i18n="hero-wa">Consultar vía WhatsApp</a>
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
     </div>
@@ -338,7 +339,7 @@ const TRANSLATIONS = {
     "rm-cat":"Belleza · Anti-edad","rm-tagline":"Regenerative Beauty","rm-aud":"Mujeres 35+ · Anti-edad · Skincare",
     "rm-desc":"El GHK-Cu es un péptido de cobre que estimula de forma directa la síntesis de colágeno, elastina y ácido hialurónico. Activa genes de reparación cutánea que se silencian con el envejecimiento, restaurando la arquitectura dérmica desde adentro.",
     "rm-hero-b1":"Aumento de colágeno 200–300% en 4–8 semanas","rm-hero-b2":"Síntesis de elastina y recuperación de firmeza","rm-hero-b3":"Síntesis de ácido hialurónico e hidratación dérmica","rm-hero-b4":"Estimulación de folículos pilosos y crecimiento capilar",
-    "hero-wa":"Consultar vía WhatsApp","hero-quiz":"Hacer el quiz →","badge-purity":"Pureza",
+    "hero-wa":"Consultar vía WhatsApp","buy-cta":"Comprar","buy-loading":"Un momento...","hero-quiz":"Hacer el quiz →","badge-purity":"Pureza",
     "how-overline":"Tecnología de absorción","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Absorción por mucosa oral de precisión — cinco pasos desde la gota hasta la célula.",
     "step1-label":"Mucosa oral","step1-desc":"El parche se coloca entre la mejilla y la encía, en contacto directo con la mucosa bucal altamente vascularizada.",
     "step2-label":"Difusión","step2-desc":"Las moléculas difunden a través del epitelio oral sin necesidad de digestión enzimática ni metabolismo hepático.",
@@ -365,7 +366,7 @@ const TRANSLATIONS = {
     "rm-cat":"Beauty · Anti-aging","rm-tagline":"Regenerative Beauty","rm-aud":"Women 35+ · Anti-aging · Skincare",
     "rm-desc":"GHK-Cu is a copper peptide that directly stimulates the synthesis of collagen, elastin, and hyaluronic acid. It activates skin repair genes silenced by aging, restoring dermal architecture from within.",
     "rm-hero-b1":"Collagen increase 200–300% in 4–8 weeks","rm-hero-b2":"Elastin synthesis and firmness recovery","rm-hero-b3":"Hyaluronic acid synthesis and dermal hydration","rm-hero-b4":"Hair follicle stimulation and hair growth",
-    "hero-wa":"Consult via WhatsApp","hero-quiz":"Take the quiz →","badge-purity":"Purity",
+    "hero-wa":"Consult via WhatsApp","buy-cta":"Buy now","buy-loading":"One moment...","hero-quiz":"Take the quiz →","badge-purity":"Purity",
     "how-overline":"Absorption technology","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Precision oral mucosal absorption — five steps from drop to cell.",
     "step1-label":"Mucosa oral","step1-desc":"The patch is placed between the cheek and gum, in direct contact with the highly vascularized buccal mucosa.",
     "step2-label":"Diffusion","step2-desc":"Molecules diffuse through the oral epithelium without enzymatic digestion or hepatic metabolism.",
@@ -399,6 +400,32 @@ const observer = new IntersectionObserver((entries) => { entries.forEach(e => { 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
 document.getElementById('mobileMenu').addEventListener('click', (e) => { if (e.target === document.getElementById('mobileMenu')) document.getElementById('mobileMenu').classList.remove('open'); });
+// Checkout
+const BUY_SKU = 'radiancemax';
+const BUY_FALLBACK_WA = 'https://wa.me/15553471798';
+async function startCheckout(btn) {
+  if (btn.dataset.busy === '1') return;
+  btn.dataset.busy = '1';
+  const original = btn.textContent;
+  btn.textContent = (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang]['buy-loading']) || 'Un momento...';
+  btn.style.opacity = '.6';
+  try {
+    const r = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sku: BUY_SKU, quantity: 1, lang: currentLang })
+    });
+    const data = await r.json().catch(() => ({}));
+    if (r.ok && data.url) { window.location.href = data.url; return; }
+    window.location.href = BUY_FALLBACK_WA;
+  } catch (err) {
+    window.location.href = BUY_FALLBACK_WA;
+  } finally {
+    btn.dataset.busy = '';
+    btn.textContent = original;
+    btn.style.opacity = '';
+  }
+}
 setLang(currentLang);
 </script>
 <!-- WA FLOAT -->

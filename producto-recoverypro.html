@@ -168,6 +168,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="rp-aud">Atletas · Lesiones · Alto rendimiento</span>
     </div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
+      <button type="button" onclick="startCheckout(this)" data-i18n="buy-cta" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:14px 28px;border-radius:2px;border:none;cursor:pointer;font-family:'Inter',sans-serif;">Comprar</button>
       <a href="https://wa.me/15553471798" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 28px;border-radius:2px;text-decoration:none;" data-i18n="hero-wa">Consultar vía WhatsApp</a>
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
     </div>
@@ -338,7 +339,7 @@ const TRANSLATIONS = {
     "rp-cat":"Recuperación · Rendimiento","rp-tagline":"Total Recovery","rp-aud":"Atletas · Lesiones · Alto rendimiento",
     "rp-desc":"El BPC-157 es un pentadecapéptido derivado de proteínas gástricas. Presente de forma natural en el jugo gástrico, es el péptido de reparación natural del organismo — activa rutas de recuperación que permanecen dormidas en el cuerpo adulto.",
     "rp-hero-b1":"Reducción de inflamación muscular y articular","rp-hero-b2":"Reparación de músculo y tejido articular acelerada","rp-hero-b3":"Recuperación nocturna profunda durante el sueño","rp-hero-b4":"40% más rápido en retorno al entrenamiento",
-    "hero-wa":"Consultar vía WhatsApp","hero-quiz":"Hacer el quiz →","badge-purity":"Pureza",
+    "hero-wa":"Consultar vía WhatsApp","buy-cta":"Comprar","buy-loading":"Un momento...","hero-quiz":"Hacer el quiz →","badge-purity":"Pureza",
     "how-overline":"Tecnología de absorción","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Absorción por mucosa oral de precisión — cinco pasos desde la gota hasta la célula.",
     "step1-label":"Mucosa oral","step1-desc":"El parche se coloca entre la mejilla y la encía, en contacto directo con la mucosa bucal altamente vascularizada.",
     "step2-label":"Difusión","step2-desc":"Las moléculas difunden a través del epitelio oral sin necesidad de digestión enzimática ni metabolismo hepático.",
@@ -365,7 +366,7 @@ const TRANSLATIONS = {
     "rp-cat":"Recovery · Performance","rp-tagline":"Total Recovery","rp-aud":"Athletes · Injuries · High performance",
     "rp-desc":"BPC-157 is a pentadecapeptide derived from gastric proteins. Naturally present in gastric juice, it is the body's natural repair peptide — activating recovery pathways that remain dormant in the adult body.",
     "rp-hero-b1":"Reduction of muscular and joint inflammation","rp-hero-b2":"Accelerated muscle and joint tissue repair","rp-hero-b3":"Deep nocturnal recovery during sleep","rp-hero-b4":"40% faster return to training",
-    "hero-wa":"Consult via WhatsApp","hero-quiz":"Take the quiz →","badge-purity":"Purity",
+    "hero-wa":"Consult via WhatsApp","buy-cta":"Buy now","buy-loading":"One moment...","hero-quiz":"Take the quiz →","badge-purity":"Purity",
     "how-overline":"Absorption technology","how-h2":"BiogradixRelease<sup style=\"font-size:.5em;vertical-align:super;\">®</sup>","how-sub":"Precision oral mucosal absorption — five steps from drop to cell.",
     "step1-label":"Mucosa oral","step1-desc":"The patch is placed between the cheek and gum, in direct contact with the highly vascularized buccal mucosa.",
     "step2-label":"Diffusion","step2-desc":"Molecules diffuse through the oral epithelium without enzymatic digestion or hepatic metabolism.",
@@ -399,6 +400,32 @@ const observer = new IntersectionObserver((entries) => { entries.forEach(e => { 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
 document.getElementById('mobileMenu').addEventListener('click', (e) => { if (e.target === document.getElementById('mobileMenu')) document.getElementById('mobileMenu').classList.remove('open'); });
+// Checkout
+const BUY_SKU = 'recoverypro';
+const BUY_FALLBACK_WA = 'https://wa.me/15553471798';
+async function startCheckout(btn) {
+  if (btn.dataset.busy === '1') return;
+  btn.dataset.busy = '1';
+  const original = btn.textContent;
+  btn.textContent = (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang]['buy-loading']) || 'Un momento...';
+  btn.style.opacity = '.6';
+  try {
+    const r = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sku: BUY_SKU, quantity: 1, lang: currentLang })
+    });
+    const data = await r.json().catch(() => ({}));
+    if (r.ok && data.url) { window.location.href = data.url; return; }
+    window.location.href = BUY_FALLBACK_WA;
+  } catch (err) {
+    window.location.href = BUY_FALLBACK_WA;
+  } finally {
+    btn.dataset.busy = '';
+    btn.textContent = original;
+    btn.style.opacity = '';
+  }
+}
 setLang(currentLang);
 </script>
 <!-- WA FLOAT -->
