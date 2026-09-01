@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "crons": [
+    { "path": "/api/cron-lowstock", "schedule": "0 14 * * *" }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/quiz", "destination": "/quiz.html" },
