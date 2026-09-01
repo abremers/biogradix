@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Operaciones — biogradix</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--bone:#F5F1EB;--stone:#EDE8E0;--ink:#18140F;--ink-soft:#4A443C;--ink-faint:#9A9189;--forest:#2E4A3A;--rule:rgba(24,20,15,.1);--red:#7A2E2E;--amber:#8A6A1F;--blue:#2F4A6D;}
+body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);-webkit-font-smoothing:antialiased;font-size:14px;}
+button{font-family:'Inter',sans-serif;}
+a{color:var(--forest);}
+.num{font-variant-numeric:tabular-nums;}
+
+/* ── GATE ─────────────────────────────────────────────── */
+#gate{position:fixed;inset:0;background:var(--bone);display:flex;align-items:center;justify-content:center;z-index:50;padding:24px;}
+.gate-box{width:100%;max-width:360px;border:1px solid var(--rule);padding:40px 32px;background:var(--bone);}
+.gate-box .brand{font-size:13px;letter-spacing:4px;text-transform:uppercase;font-weight:500;}
+.gate-box .tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin:6px 0 28px;}
+#gateError{font-size:12px;color:var(--red);margin-top:14px;min-height:16px;}
+
+/* ── CONTROLES ────────────────────────────────────────── */
+input,select{width:100%;background:#FFFFFF;border:1px solid var(--rule);padding:11px 12px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);border-radius:0;appearance:none;-webkit-appearance:none;}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--ink-faint) 50%),linear-gradient(135deg,var(--ink-faint) 50%,transparent 50%);background-position:calc(100% - 16px) 50%,calc(100% - 11px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:32px;}
+input:focus,select:focus{outline:none;border-color:var(--ink);}
+.btn{display:inline-block;background:var(--ink);color:var(--bone);border:1px solid var(--ink);padding:11px 20px;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s;border-radius:0;}
+.btn:hover{background:var(--forest);border-color:var(--forest);}
+.btn[disabled]{opacity:.45;cursor:default;}
+.btn[disabled]:hover{background:var(--ink);border-color:var(--ink);}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--rule);}
+.btn-ghost:hover{background:transparent;border-color:var(--ink);}
+.btn-sm{padding:7px 12px;font-size:9px;letter-spacing:1.2px;}
+
+/* ── ESTRUCTURA ───────────────────────────────────────── */
+#app{min-height:100vh;display:flex;flex-direction:column;}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 32px;border-bottom:1px solid var(--rule);}
+header .brand{font-size:13px;letter-spacing:4px;text-transform:uppercase;font-weight:500;}
+header .brandtag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-left:12px;}
+header .actions{display:flex;gap:8px;}
+.tabs{display:flex;gap:4px;padding:0 32px;border-bottom:1px solid var(--rule);}
+.tab{background:none;border:none;border-bottom:1px solid transparent;margin-bottom:-1px;padding:16px 18px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);cursor:pointer;transition:color .2s;}
+.tab:hover{color:var(--ink-soft);}
+.tab.active{color:var(--ink);border-bottom-color:var(--ink);}
+.tab .count{color:var(--ink-faint);margin-left:6px;}
+main{flex:1;width:100%;max-width:1280px;margin:0 auto;padding:32px;}
+section[hidden]{display:none;}
+.toolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
+.toolbar label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);}
+.toolbar select{width:auto;min-width:180px;}
+.toolbar .spacer{flex:1;}
+.meta{font-size:11px;color:var(--ink-faint);letter-spacing:.5px;}
+#banner{display:none;margin:0 32px;margin-top:20px;padding:12px 16px;border:1px solid rgba(122,46,46,.35);background:rgba(122,46,46,.06);color:var(--red);font-size:12px;line-height:1.5;max-width:1216px;}
+#banner.show{display:block;}
+h2.subhead{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin:36px 0 14px;}
+
+/* ── TABLAS ───────────────────────────────────────────── */
+.tablewrap{border:1px solid var(--rule);overflow-x:auto;background:var(--bone);}
+table{width:100%;border-collapse:collapse;min-width:760px;}
+thead td{background:var(--stone);padding:10px 14px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;}
+tbody td{padding:13px 14px;border-top:1px solid var(--rule);font-size:13px;vertical-align:top;line-height:1.5;}
+tbody tr:hover td{background:rgba(237,232,224,.4);}
+tbody tr.detail-row:hover td,tbody tr.state-row:hover td{background:var(--stone);}
+td.right{text-align:right;}
+.cell-sub{font-size:11px;color:var(--ink-faint);margin-top:2px;word-break:break-all;}
+.cell-id{font-size:11px;color:var(--ink-soft);font-variant-numeric:tabular-nums;word-break:break-all;}
+.state-row td{background:var(--bone);color:var(--ink-faint);font-size:12px;padding:28px 14px;text-align:center;border-top:1px solid var(--rule);}
+.detail-row td{background:var(--stone);padding:18px 14px;}
+.detail-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}
+.detail-form .field{display:flex;flex-direction:column;gap:6px;}
+.detail-form .field span{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-faint);}
+.detail-form input,.detail-form select{width:auto;min-width:150px;}
+.detail-form input.wide{min-width:220px;}
+.detail-form input.narrow{min-width:90px;width:90px;}
+
+/* ── CHIPS DE ESTADO ──────────────────────────────────── */
+.chip{display:inline-block;padding:4px 10px;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;border:1px solid;white-space:nowrap;}
+.st-paid{color:var(--forest);border-color:rgba(46,74,58,.4);background:rgba(46,74,58,.08);}
+.st-preparing{color:var(--amber);border-color:rgba(138,106,31,.4);background:rgba(138,106,31,.08);}
+.st-shipped{color:var(--blue);border-color:rgba(47,74,109,.4);background:rgba(47,74,109,.08);}
+.st-delivered{color:var(--bone);border-color:var(--forest);background:var(--forest);}
+.st-refunded{color:var(--ink-faint);border-color:rgba(154,145,137,.5);background:rgba(154,145,137,.12);}
+.st-cancelled{color:var(--red);border-color:rgba(122,46,46,.4);background:rgba(122,46,46,.06);}
+.chip-low{display:inline-block;margin-left:8px;padding:2px 7px;font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);border:1px solid rgba(122,46,46,.4);background:rgba(122,46,46,.06);vertical-align:1px;}
+tr.low td{background:rgba(122,46,46,.035);}
+.delta-pos{color:var(--forest);font-weight:500;}
+.delta-neg{color:var(--red);font-weight:500;}
+
+/* ── RESUMEN INVENTARIO ───────────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);margin-bottom:20px;}
+.stat{padding:18px 20px;border-right:1px solid var(--rule);}
+.stat:last-child{border-right:none;}
+.stat .k{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px;}
+.stat .v{font-size:20px;font-weight:300;}
+
+/* ── VARIOS ───────────────────────────────────────────── */
+.rowlink{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--forest);text-decoration:none;border-bottom:1px solid rgba(46,74,58,.3);padding-bottom:1px;white-space:nowrap;}
+.rowlink:hover{border-bottom-color:var(--forest);}
+.rowlinks{display:flex;gap:14px;flex-wrap:wrap;}
+#toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(12px);background:var(--ink);color:var(--bone);padding:12px 22px;font-size:12px;letter-spacing:.5px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:80;max-width:calc(100vw - 48px);text-align:center;}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+#toast.err{background:var(--red);}
+footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);}
+
+@media(max-width:768px){
+  header{padding:14px 16px;flex-wrap:wrap;}
+  .tabs{padding:0 16px;overflow-x:auto;}
+  main{padding:20px 16px;}
+  #banner{margin:16px 16px 0;}
+  .stats{grid-template-columns:1fr;}
+  .stat{border-right:none;border-bottom:1px solid var(--rule);}
+  .stat:last-child{border-bottom:none;}
+  footer{padding:14px 16px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── PUERTA DE ACCESO ─────────────────────────────────── -->
+<div id="gate">
+  <form class="gate-box" id="gateForm">
+    <p class="brand">biogradix</p>
+    <p class="tag">Panel de operaciones · Acceso restringido</p>
+    <input type="password" id="gateInput" placeholder="Frase de acceso" autocomplete="current-password" autofocus/>
+    <p id="gateError"></p>
+    <button type="submit" class="btn" id="gateBtn" style="width:100%;margin-top:4px;">Entrar</button>
+  </form>
+</div>
+
+<!-- ── APP ──────────────────────────────────────────────── -->
+<div id="app" hidden>
+  <header>
+    <div>
+      <span class="brand">biogradix</span><span class="brandtag">Operaciones</span>
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost btn-sm" id="refreshBtn" type="button">Actualizar</button>
+      <button class="btn btn-ghost btn-sm" id="logoutBtn" type="button">Salir</button>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="pedidos" type="button">Pedidos<span class="count" id="countPedidos"></span></button>
+    <button class="tab" data-tab="inventario" type="button">Inventario<span class="count" id="countInventario"></span></button>
+    <button class="tab" data-tab="leads" type="button">Leads<span class="count" id="countLeads"></span></button>
+  </div>
+
+  <div id="banner"></div>
+
+  <main>
+    <!-- ── PEDIDOS ── -->
+    <section id="tab-pedidos">
+      <div class="toolbar">
+        <label for="statusFilter">Estado</label>
+        <select id="statusFilter">
+          <option value="">Todos</option>
+          <option value="paid">Pagado</option>
+          <option value="preparing">Preparando</option>
+          <option value="shipped">Enviado</option>
+          <option value="delivered">Entregado</option>
+          <option value="refunded">Reembolsado</option>
+          <option value="cancelled">Cancelado</option>
+        </select>
+        <div class="spacer"></div>
+        <span class="meta" id="ordersMeta"></span>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <td>Pedido</td><td>Fecha</td><td>Cliente</td><td>Productos</td>
+            <td class="right">Total</td><td>Estado</td><td>Guía</td><td></td>
+          </tr></thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── INVENTARIO ── -->
+    <section id="tab-inventario" hidden>
+      <div class="stats" id="invStats" hidden>
+        <div class="stat"><div class="k">SKUs activos</div><div class="v num" id="statSkus">—</div></div>
+        <div class="stat"><div class="k">Packs en stock</div><div class="v num" id="statUnits">—</div></div>
+        <div class="stat"><div class="k">Valor a precio de venta</div><div class="v num" id="statValue">—</div></div>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <td>SKU</td><td>Producto</td><td class="right">Stock</td><td class="right">Reservado</td>
+            <td class="right">Disponible</td><td class="right">Umbral</td><td class="right">Precio</td>
+            <td class="right">Valor inventario</td><td></td>
+          </tr></thead>
+          <tbody id="prodBody"></tbody>
+        </table>
+      </div>
+
+      <h2 class="subhead">Últimos 50 movimientos</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <td>Fecha</td><td>SKU</td><td class="right">Delta</td><td>Motivo</td><td>Pedido</td><td>Nota</td>
+          </tr></thead>
+          <tbody id="movBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── LEADS ── -->
+    <section id="tab-leads" hidden>
+      <div class="toolbar">
+        <span class="meta">Solo lectura · Leads del quiz, más recientes primero</span>
+        <div class="spacer"></div>
+        <span class="meta" id="leadsMeta"></span>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <td>Fecha</td><td>Nombre</td><td>Email</td><td>Producto recomendado</td>
+            <td class="right">Match</td><td>Objetivos</td><td>Contacto</td>
+          </tr></thead>
+          <tbody id="leadsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>Biogradix · Herramienta interna · No compartir el acceso</footer>
+</div>
+
+<div id="toast"></div>
+
+<datalist id="carriers">
+  <option value="Estafeta"></option>
+  <option value="DHL"></option>
+  <option value="FedEx"></option>
+  <option value="UPS"></option>
+  <option value="99minutos"></option>
+  <option value="Paquetexpress"></option>
+  <option value="Correos de México"></option>
+</datalist>
+
+<script>
+(function () {
+  'use strict';
+
+  var API = '/api/admin';
+  var KEY_STORE = 'bgx_admin_key';
+  var S = {
+    key: '',
+    orders: [], products: [], movements: [], leads: [],
+    tab: 'pedidos',
+    loaded: { pedidos: false, inventario: false, leads: false }
+  };
+  try { S.key = sessionStorage.getItem(KEY_STORE) || ''; } catch (e) { S.key = ''; }
+
+  var STATUS = {
+    paid:      { label: 'Pagado',      cls: 'st-paid',      advanceTo: 'preparing', advanceLabel: 'Preparar' },
+    preparing: { label: 'Preparando',  cls: 'st-preparing', ship: true,             advanceLabel: 'Enviar' },
+    shipped:   { label: 'Enviado',     cls: 'st-shipped',   advanceTo: 'delivered', advanceLabel: 'Entregado' },
+    delivered: { label: 'Entregado',   cls: 'st-delivered' },
+    refunded:  { label: 'Reembolsado', cls: 'st-refunded' },
+    cancelled: { label: 'Cancelado',   cls: 'st-cancelled' }
+  };
+  var REASONS = { sale: 'Venta', restock: 'Restock', sample: 'Muestra', damage: 'Daño', adjustment: 'Ajuste' };
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function esc(v) {
+    return String(v == null ? '' : v)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function money(n, cur) {
+    var v = Number(n || 0);
+    return '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + (cur || 'USD');
+  }
+  function fmtInt(n) { return Number(n || 0).toLocaleString('en-US'); }
+  function fmtDate(s) {
+    if (!s) return '—';
+    var d = new Date(s);
+    if (isNaN(d.getTime())) return '—';
+    return d.toLocaleString('es-MX', { day: '2-digit', month: 'short', year: '2-digit', hour: '2-digit', minute: '2-digit' });
+  }
+  function shortId(id) {
+    var s = String(id == null ? '' : id);
+    return s.length > 8 ? s.slice(0, 8) : s;
+  }
+  function toast(msg, isErr) {
+    var t = $('toast');
+    t.textContent = msg;
+    t.className = isErr ? 'show err' : 'show';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { t.className = ''; }, 4200);
+  }
+  function banner(msg) {
+    var b = $('banner');
+    if (!msg) { b.className = ''; b.textContent = ''; return; }
+    b.textContent = msg;
+    b.className = 'show';
+  }
+  function stateRow(tbodyId, colspan, text) {
+    $(tbodyId).innerHTML = '<tr class="state-row"><td colspan="' + colspan + '">' + esc(text) + '</td></tr>';
+  }
+
+  // ── API ─────────────────────────────────────────────────
+  function api(action, payload) {
+    var body = Object.assign({ action: action }, payload || {});
+    return fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.key },
+      body: JSON.stringify(body)
+    }).then(function (r) {
+      return r.json().catch(function () { return null; }).then(function (d) {
+        if (r.status === 401) {
+          setKey('');
+          showGate('La frase de acceso es incorrecta o la sesión expiró.');
+          var e1 = new Error((d && d.error && d.error.message) || 'No autorizado');
+          e1.code = 'unauthorized';
+          throw e1;
+        }
+        if (!r.ok) {
+          var e2 = new Error((d && d.error && d.error.message) || ('Error ' + r.status));
+          e2.code = (d && d.error && d.error.code) || 'error';
+          throw e2;
+        }
+        return d;
+      });
+    });
+  }
+  function setKey(k) {
+    S.key = k || '';
+    try {
+      if (S.key) sessionStorage.setItem(KEY_STORE, S.key);
+      else sessionStorage.removeItem(KEY_STORE);
+    } catch (e) { /* sesión sin storage: la clave vive solo en memoria */ }
+  }
+
+  // ── GATE ────────────────────────────────────────────────
+  function showGate(errMsg) {
+    $('app').hidden = true;
+    $('gate').style.display = 'flex';
+    $('gateError').textContent = errMsg || '';
+    $('gateInput').value = '';
+    setTimeout(function () { $('gateInput').focus(); }, 50);
+  }
+  function showApp() {
+    $('gate').style.display = 'none';
+    $('app').hidden = false;
+  }
+
+  $('gateForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var val = $('gateInput').value.trim();
+    if (!val) { $('gateError').textContent = 'Escribe la frase de acceso.'; return; }
+    var btn = $('gateBtn');
+    btn.disabled = true; btn.textContent = 'Verificando...';
+    S.key = val;
+    api('auth.check').then(function () {
+      setKey(val);
+      showApp();
+      loadTab(S.tab, true);
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') $('gateError').textContent = 'Frase incorrecta. Intenta de nuevo.';
+      else $('gateError').textContent = err.message;
+    }).finally(function () {
+      btn.disabled = false; btn.textContent = 'Entrar';
+    });
+  });
+
+  $('logoutBtn').addEventListener('click', function () {
+    setKey('');
+    showGate('Sesión cerrada.');
+  });
+  $('refreshBtn').addEventListener('click', function () { loadTab(S.tab, true); });
+
+  // ── TABS ────────────────────────────────────────────────
+  document.querySelectorAll('.tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      var name = t.getAttribute('data-tab');
+      S.tab = name;
+      document.querySelectorAll('.tab').forEach(function (x) { x.classList.toggle('active', x === t); });
+      ['pedidos', 'inventario', 'leads'].forEach(function (n) { $('tab-' + n).hidden = (n !== name); });
+      if (!S.loaded[name]) loadTab(name, true);
+    });
+  });
+
+  function loadTab(name, force) {
+    banner('');
+    if (name === 'pedidos') loadOrders(force);
+    else if (name === 'inventario') { loadInventory(force); loadMovements(force); }
+    else if (name === 'leads') loadLeads(force);
+  }
+
+  // ── PEDIDOS ─────────────────────────────────────────────
+  $('statusFilter').addEventListener('change', function () { loadOrders(true); });
+
+  function loadOrders() {
+    var status = $('statusFilter').value;
+    stateRow('ordersBody', 8, 'Cargando pedidos...');
+    $('ordersMeta').textContent = '';
+    api('orders.list', status ? { status: status } : {}).then(function (d) {
+      S.orders = d.orders || [];
+      S.loaded.pedidos = true;
+      renderOrders();
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') return;
+      stateRow('ordersBody', 8, 'No se pudieron cargar los pedidos.');
+      banner(err.message);
+    });
+  }
+
+  function itemsSummary(items) {
+    var arr = items;
+    if (typeof arr === 'string') { try { arr = JSON.parse(arr); } catch (e) { return esc(arr); } }
+    if (!Array.isArray(arr) || arr.length === 0) return '—';
+    return arr.map(function (it) {
+      var qty = Number(it.qty || it.quantity || 1);
+      var name = it.name || it.sku || '?';
+      return esc(qty + ' x ' + name);
+    }).join('<br/>');
+  }
+
+  function renderOrders() {
+    var tb = $('ordersBody');
+    $('countPedidos').textContent = '(' + S.orders.length + ')';
+    $('ordersMeta').textContent = S.orders.length + ' pedido' + (S.orders.length === 1 ? '' : 's');
+    if (S.orders.length === 0) {
+      stateRow('ordersBody', 8, $('statusFilter').value ? 'Sin pedidos con este estado.' : 'Sin pedidos todavía.');
+      return;
+    }
+    var html = '';
+    S.orders.forEach(function (o) {
+      var st = STATUS[o.status] || { label: o.status || '—', cls: 'st-refunded' };
+      var oid = esc(o.id);
+      var action = '';
+      if (st.ship) {
+        action = '<button class="btn btn-ghost btn-sm" type="button" data-shiptoggle="' + oid + '">' + st.advanceLabel + ' →</button>';
+      } else if (st.advanceTo) {
+        action = '<button class="btn btn-ghost btn-sm" type="button" data-advance="' + oid + '" data-to="' + st.advanceTo + '">' + st.advanceLabel + ' →</button>';
+      }
+      var tracking = o.tracking_number
+        ? esc(o.tracking_carrier || '—') + '<div class="cell-sub num">' + esc(o.tracking_number) + '</div>'
+        : '—';
+      html += '<tr>' +
+        '<td><span class="cell-id" title="' + oid + '">' + esc(shortId(o.id)) + '</span></td>' +
+        '<td class="num">' + esc(fmtDate(o.created_at)) + '</td>' +
+        '<td>' + esc(o.customer_name || '—') + '<div class="cell-sub">' + esc(o.customer_email || '') + '</div></td>' +
+        '<td>' + itemsSummary(o.items) + '</td>' +
+        '<td class="right num">' + esc(money(o.total, o.currency)) + '</td>' +
+        '<td><span class="chip ' + st.cls + '">' + esc(st.label) + '</span></td>' +
+        '<td>' + tracking + '</td>' +
+        '<td class="right">' + action + '</td>' +
+        '</tr>';
+      if (st.ship) {
+        html += '<tr class="detail-row" id="ship-' + oid + '" hidden><td colspan="8">' +
+          '<div class="detail-form">' +
+          '<div class="field"><span>Paquetería</span><input type="text" list="carriers" id="carrier-' + oid + '" placeholder="Estafeta, DHL..." class="wide"/></div>' +
+          '<div class="field"><span>Número de guía</span><input type="text" id="tracking-' + oid + '" placeholder="Guía" class="wide"/></div>' +
+          '<button class="btn btn-sm" type="button" data-shipconfirm="' + oid + '">Confirmar envío</button>' +
+          '<button class="btn btn-ghost btn-sm" type="button" data-shipcancel="' + oid + '">Cancelar</button>' +
+          '</div>' +
+          '<p style="font-size:11px;color:var(--ink-faint);margin-top:10px;">Al confirmar, el pedido pasa a Enviado y el cliente recibe un correo con su guía.</p>' +
+          '</td></tr>';
+      }
+    });
+    tb.innerHTML = html;
+  }
+
+  document.addEventListener('click', function (ev) {
+    var t = ev.target.closest ? ev.target.closest('button') : null;
+    if (!t) return;
+
+    var oid;
+    if (t.hasAttribute('data-advance')) {
+      oid = t.getAttribute('data-advance');
+      var to = t.getAttribute('data-to');
+      var label = STATUS[to] ? STATUS[to].label : to;
+      if (!window.confirm('¿Marcar el pedido ' + shortId(oid) + ' como ' + label + '?')) return;
+      t.disabled = true;
+      api('orders.updateStatus', { order_id: oid, status: to }).then(function () {
+        toast('Pedido ' + shortId(oid) + ' marcado como ' + label + '.');
+        loadOrders();
+      }).catch(function (err) {
+        t.disabled = false;
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
+
+    if (t.hasAttribute('data-shiptoggle')) {
+      oid = t.getAttribute('data-shiptoggle');
+      var row = $('ship-' + oid);
+      if (row) {
+        row.hidden = !row.hidden;
+        if (!row.hidden) { var c = $('carrier-' + oid); if (c) c.focus(); }
+      }
+      return;
+    }
+    if (t.hasAttribute('data-shipcancel')) {
+      oid = t.getAttribute('data-shipcancel');
+      var row2 = $('ship-' + oid);
+      if (row2) row2.hidden = true;
+      return;
+    }
+    if (t.hasAttribute('data-shipconfirm')) {
+      oid = t.getAttribute('data-shipconfirm');
+      var carrier = ($('carrier-' + oid) ? $('carrier-' + oid).value : '').trim();
+      var tracking = ($('tracking-' + oid) ? $('tracking-' + oid).value : '').trim();
+      if (!carrier || !tracking) { toast('Captura paquetería y número de guía.', true); return; }
+      t.disabled = true; t.textContent = 'Enviando...';
+      api('orders.markShipped', { order_id: oid, carrier: carrier, tracking_number: tracking }).then(function (d) {
+        if (d.email_sent) toast('Guía guardada. Correo de rastreo enviado al cliente.');
+        else toast('Guía guardada, pero el correo no se envió: ' + (d.email_detail || 'sin detalle'), true);
+        loadOrders();
+      }).catch(function (err) {
+        t.disabled = false; t.textContent = 'Confirmar envío';
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
+
+    var sku;
+    if (t.hasAttribute('data-adjtoggle')) {
+      sku = t.getAttribute('data-adjtoggle');
+      var arow = document.getElementById('adj-' + sku);
+      if (arow) {
+        arow.hidden = !arow.hidden;
+        if (!arow.hidden) { var di = document.getElementById('delta-' + sku); if (di) di.focus(); }
+      }
+      return;
+    }
+    if (t.hasAttribute('data-adjcancel')) {
+      sku = t.getAttribute('data-adjcancel');
+      var arow2 = document.getElementById('adj-' + sku);
+      if (arow2) arow2.hidden = true;
+      return;
+    }
+    if (t.hasAttribute('data-adjconfirm')) {
+      sku = t.getAttribute('data-adjconfirm');
+      var deltaEl = document.getElementById('delta-' + sku);
+      var reasonEl = document.getElementById('reason-' + sku);
+      var noteEl = document.getElementById('note-' + sku);
+      var delta = parseInt(deltaEl ? deltaEl.value : '', 10);
+      if (!Number.isFinite(delta) || delta === 0) { toast('El delta debe ser un entero distinto de cero.', true); return; }
+      t.disabled = true; t.textContent = 'Aplicando...';
+      api('inventory.adjust', {
+        sku: sku,
+        delta: delta,
+        reason: reasonEl ? reasonEl.value : 'adjustment',
+        note: noteEl ? noteEl.value.trim() : ''
+      }).then(function (d) {
+        if (d.warning) toast(d.warning, true);
+        else toast('Ajuste aplicado a ' + sku + ' (' + (delta > 0 ? '+' : '') + delta + ').');
+        loadInventory(true);
+        loadMovements(true);
+      }).catch(function (err) {
+        t.disabled = false; t.textContent = 'Aplicar ajuste';
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
+  });
+
+  // ── INVENTARIO ──────────────────────────────────────────
+  function loadInventory() {
+    stateRow('prodBody', 9, 'Cargando inventario...');
+    $('invStats').hidden = true;
+    api('inventory.list').then(function (d) {
+      S.products = d.products || [];
+      S.totals = d.totals || null;
+      S.loaded.inventario = true;
+      renderInventory();
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') return;
+      stateRow('prodBody', 9, 'No se pudo cargar el inventario.');
+      banner(err.message);
+    });
+  }
+
+  function renderInventory() {
+    $('countInventario').textContent = '(' + S.products.length + ')';
+    if (S.totals) {
+      $('invStats').hidden = false;
+      $('statSkus').textContent = S.products.length;
+      $('statUnits').textContent = fmtInt(S.totals.units);
+      $('statValue').textContent = money(S.totals.stock_value, S.totals.currency);
+    }
+    if (S.products.length === 0) {
+      stateRow('prodBody', 9, 'Sin productos todavía. Corre el seed de la Fase 1.');
+      return;
+    }
+    var html = '';
+    S.products.forEach(function (p) {
+      var stock = Number(p.stock || 0);
+      var threshold = Number(p.low_stock_threshold || 0);
+      var isLow = stock <= threshold;
+      var sku = esc(p.sku);
+      html += '<tr' + (isLow ? ' class="low"' : '') + '>' +
+        '<td class="num" style="font-weight:500;">' + sku + (isLow ? '<span class="chip-low">Bajo</span>' : '') + '</td>' +
+        '<td>' + esc(p.name || '—') + '<div class="cell-sub">' + esc(p.peptide || '') + '</div></td>' +
+        '<td class="right num"' + (isLow ? ' style="color:var(--red);font-weight:600;"' : '') + '>' + fmtInt(stock) + '</td>' +
+        '<td class="right num">' + fmtInt(p.reserved) + '</td>' +
+        '<td class="right num">' + fmtInt(p.available) + '</td>' +
+        '<td class="right num">' + fmtInt(threshold) + '</td>' +
+        '<td class="right num">' + esc(money(p.price, p.currency)) + '</td>' +
+        '<td class="right num">' + esc(money(p.stock_value, p.currency)) + '</td>' +
+        '<td class="right"><button class="btn btn-ghost btn-sm" type="button" data-adjtoggle="' + sku + '">Ajustar</button></td>' +
+        '</tr>';
+      html += '<tr class="detail-row" id="adj-' + sku + '" hidden><td colspan="9">' +
+        '<div class="detail-form">' +
+        '<div class="field"><span>Delta (+/-)</span><input type="number" step="1" id="delta-' + sku + '" placeholder="+10" class="narrow"/></div>' +
+        '<div class="field"><span>Motivo</span><select id="reason-' + sku + '">' +
+          '<option value="restock">Restock</option>' +
+          '<option value="sample">Muestra</option>' +
+          '<option value="damage">Daño</option>' +
+          '<option value="adjustment">Ajuste</option>' +
+        '</select></div>' +
+        '<div class="field" style="flex:1;min-width:200px;"><span>Nota</span><input type="text" id="note-' + sku + '" placeholder="Opcional" style="width:100%;"/></div>' +
+        '<button class="btn btn-sm" type="button" data-adjconfirm="' + sku + '">Aplicar ajuste</button>' +
+        '<button class="btn btn-ghost btn-sm" type="button" data-adjcancel="' + sku + '">Cancelar</button>' +
+        '</div>' +
+        '<p style="font-size:11px;color:var(--ink-faint);margin-top:10px;">Delta negativo descuenta stock (muestra, daño). El movimiento queda en el historial.</p>' +
+        '</td></tr>';
+    });
+    $('prodBody').innerHTML = html;
+  }
+
+  function loadMovements() {
+    stateRow('movBody', 6, 'Cargando movimientos...');
+    api('movements.list').then(function (d) {
+      S.movements = d.movements || [];
+      renderMovements();
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') return;
+      stateRow('movBody', 6, err.code === 'missing_table' ? err.message : 'No se pudieron cargar los movimientos.');
+    });
+  }
+
+  function renderMovements() {
+    if (S.movements.length === 0) {
+      stateRow('movBody', 6, 'Sin movimientos todavía.');
+      return;
+    }
+    var html = '';
+    S.movements.forEach(function (m) {
+      var d = Number(m.delta || 0);
+      html += '<tr>' +
+        '<td class="num">' + esc(fmtDate(m.created_at)) + '</td>' +
+        '<td class="num">' + esc(m.sku) + '</td>' +
+        '<td class="right num ' + (d >= 0 ? 'delta-pos' : 'delta-neg') + '">' + (d > 0 ? '+' : '') + fmtInt(d) + '</td>' +
+        '<td>' + esc(REASONS[m.reason] || m.reason || '—') + '</td>' +
+        '<td class="num">' + (m.order_id ? '<span class="cell-id" title="' + esc(m.order_id) + '">' + esc(shortId(m.order_id)) + '</span>' : '—') + '</td>' +
+        '<td>' + esc(m.note || '—') + '</td>' +
+        '</tr>';
+    });
+    $('movBody').innerHTML = html;
+  }
+
+  // ── LEADS ───────────────────────────────────────────────
+  function loadLeads() {
+    stateRow('leadsBody', 7, 'Cargando leads...');
+    $('leadsMeta').textContent = '';
+    api('leads.list').then(function (d) {
+      S.leads = d.leads || [];
+      S.loaded.leads = true;
+      renderLeads();
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') return;
+      stateRow('leadsBody', 7, 'No se pudieron cargar los leads.');
+      banner(err.message);
+    });
+  }
+
+  function renderLeads() {
+    $('countLeads').textContent = '(' + S.leads.length + ')';
+    $('leadsMeta').textContent = S.leads.length + ' lead' + (S.leads.length === 1 ? '' : 's');
+    if (S.leads.length === 0) {
+      stateRow('leadsBody', 7, 'Sin leads todavía.');
+      return;
+    }
+    var html = '';
+    S.leads.forEach(function (l) {
+      var waText = 'Hola ' + (l.name || '') + ', soy del equipo de Biogradix. Vi que completaste nuestro quiz y tu protocolo recomendado es ' + (l.product_name || 'uno de nuestros productos') + '. ¿Te puedo ayudar con alguna duda?';
+      var waHref = 'https://wa.me/?text=' + encodeURIComponent(waText);
+      var mailHref = 'mailto:' + encodeURIComponent(l.email || '') + '?subject=' + encodeURIComponent('Tu protocolo Biogradix — ' + (l.product_name || ''));
+      var goals = Array.isArray(l.goals) ? l.goals.join(', ') : (l.goals || '—');
+      html += '<tr>' +
+        '<td class="num">' + esc(fmtDate(l.created_at)) + '</td>' +
+        '<td>' + esc(l.name || '—') + '</td>' +
+        '<td><div class="cell-sub" style="margin:0;font-size:12px;color:var(--ink-soft);">' + esc(l.email || '—') + '</div></td>' +
+        '<td>' + esc(l.product_name || '—') + '<div class="cell-sub">' + esc(l.peptide || '') + '</div></td>' +
+        '<td class="right num">' + (l.match_pct != null ? esc(l.match_pct) + '%' : '—') + '</td>' +
+        '<td>' + esc(goals || '—') + '</td>' +
+        '<td><div class="rowlinks">' +
+          '<a class="rowlink" href="' + waHref + '" target="_blank" rel="noopener">WhatsApp</a>' +
+          '<a class="rowlink" href="' + mailHref + '">Email</a>' +
+        '</div></td>' +
+        '</tr>';
+    });
+    $('leadsBody').innerHTML = html;
+  }
+
+  // ── ARRANQUE ────────────────────────────────────────────
+  if (S.key) {
+    api('auth.check').then(function () {
+      showApp();
+      loadTab('pedidos', true);
+    }).catch(function () { /* showGate ya se disparó en el 401; otros errores dejan la puerta visible */ });
+  } else {
+    showGate('');
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!--
+  TikTok Pixel — codigo base (Biogradix)
+  ======================================
+
+  QUE ES
+  Snippet oficial del pixel de TikTok (loader ttq). Registra automaticamente
+  un evento de pagina (ttq.page()) en cada carga.
+
+  ANTES DE USAR
+  1. Reemplaza PIXEL_ID_PLACEHOLDER (aparece una sola vez, en ttq.load)
+     por el Pixel ID real de TikTok Ads Manager
+     (Assets > Events > Web Events > tu pixel > Settings).
+
+  CUANDO Y DONDE PEGARLO
+  2. Este archivo NO esta inyectado en ninguna pagina. La inyeccion se hace
+     EN EL MERGE (dia de lanzamiento), desde la sesion que controla el merge,
+     porque las paginas de producto pertenecen a la rama phase-1-checkout.
+  3. En el merge: pega el bloque <script> completo justo ANTES de </head>
+     en TODAS las paginas publicas (index, producto-*, quiz, blog*, tecnologia,
+     educacion, contacto, gracias). NO pegarlo en admin.html.
+
+  EVENTOS ADICIONALES (opcional, post-lanzamiento)
+  Con el loader instalado se pueden disparar eventos manuales, por ejemplo:
+    ttq.track('CompletePayment', { value: 350.00, currency: 'USD' });
+  en la pagina de gracias, o ttq.track('AddToCart') en los botones de compra.
+-->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject = t;
+  var ttq = w[t] = w[t] || [];
+  ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie", "holdConsent", "revokeConsent", "grantConsent"];
+  ttq.setAndDefer = function (t, e) {
+    t[e] = function () {
+      t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+    };
+  };
+  for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+  ttq.instance = function (t) {
+    for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+    return e;
+  };
+  ttq.load = function (e, n) {
+    var r = "https://analytics.tiktok.com/i18n/pixel/events.js";
+    var o = n && n.partner;
+    ttq._i = ttq._i || {};
+    ttq._i[e] = [];
+    ttq._i[e]._u = r;
+    ttq._t = ttq._t || {};
+    ttq._t[e] = +new Date();
+    ttq._o = ttq._o || {};
+    ttq._o[e] = n || {};
+    n = document.createElement("script");
+    n.type = "text/javascript";
+    n.async = !0;
+    n.src = r + "?sdkid=" + e + "&lib=" + t;
+    e = document.getElementsByTagName("script")[0];
+    e.parentNode.insertBefore(n, e);
+  };
+
+  ttq.load('PIXEL_ID_PLACEHOLDER');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
