@@ -5,7 +5,7 @@
 
 const crypto = require('crypto');
 
-const SUPABASE_URL = 'https://mwfnvqsyvvzpkjwqasbk.supabase.co';
+const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
 const ADMIN_EMAIL = 'hello@biogradix.com';
 
 const ORDER_STATUSES = ['paid', 'preparing', 'shipped', 'delivered', 'refunded', 'cancelled'];

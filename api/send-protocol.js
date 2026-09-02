@@ -1,5 +1,5 @@
-const SUPABASE_URL = 'https://mwfnvqsyvvzpkjwqasbk.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im13Zm52cXN5dnZ6cGtqd3Fhc2JrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTI5MTcsImV4cCI6MjA5MTkyODkxN30.lfrLJp1SRCcRGNSnhUOVeDueMfaKK-36hy5twwEW0iY';
+const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5pbWNtdnR5YW1kZ2VzbW1tdHloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgzMDI1NTIsImV4cCI6MjEwMzg3ODU1Mn0.ABaHlbMM9TjLieE6QIRdyiYAAipd7gTaarQ6Kow9VxA';
 const ADMIN_EMAIL = 'hello@biogradix.com';
 
 module.exports = async function handler(req, res) {

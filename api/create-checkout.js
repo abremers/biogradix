@@ -7,7 +7,7 @@
 // when the product currency is MXN (Stripe constraint), so switching a
 // product to MXN later is a data change, not a code change.
 
-const SUPABASE_URL = 'https://mwfnvqsyvvzpkjwqasbk.supabase.co';
+const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
 const SITE_URL = 'https://biogradix.com';
 
 const VALID_SKUS = ['bpc-157', 'mots-c', 'tb-500', 'ghk-cu', 'nad-plus'];

@@ -5,7 +5,7 @@
 
 const crypto = require('crypto');
 
-const SUPABASE_URL = 'https://mwfnvqsyvvzpkjwqasbk.supabase.co';
+const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
 const ADMIN_EMAIL = 'hello@biogradix.com';
 
 function safeEqual(a, b) {
