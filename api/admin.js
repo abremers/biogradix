@@ -10,6 +10,9 @@ const ADMIN_EMAIL = 'hello@biogradix.com';
 
 const ORDER_STATUSES = ['paid', 'preparing', 'shipped', 'delivered', 'refunded', 'cancelled'];
 const ADJUST_REASONS = ['restock', 'sample', 'damage', 'adjustment'];
+const EXPENSE_CATEGORIES = ['publicidad', 'muestras', 'envios', 'comisiones', 'herramientas', 'inventario', 'otros'];
+const EXPENSE_CURRENCIES = ['USD', 'MXN'];
+const PHASE3_SQL = 'sql/phase3-gastos-consumo.sql';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -64,9 +67,26 @@ async function sb(path, options) {
   return { ok: r.ok, status: r.status, data };
 }
 
-function tableError(res, table) {
+function tableError(res, table, sqlFile) {
   return sendError(res, 424, 'missing_table',
-    `La tabla ${table} no existe todavía en Supabase. Ejecuta primero el SQL de la Fase 1.`);
+    `La tabla ${table} no existe todavía en Supabase. Ejecuta primero ${sqlFile || 'el SQL de la Fase 1'}.`);
+}
+
+function round2(n) {
+  return Math.round(Number(n || 0) * 100) / 100;
+}
+
+// Limites del mes actual (UTC) para filtrar por la columna date "fecha".
+function monthBoundsUtc() {
+  const now = new Date();
+  const y = now.getUTCFullYear();
+  const m = now.getUTCMonth(); // 0-11
+  const pad2 = (v) => String(v).padStart(2, '0');
+  return {
+    start: `${y}-${pad2(m + 1)}-01`,
+    next: m === 11 ? `${y + 1}-01-01` : `${y}-${pad2(m + 2)}-01`,
+    key: `${y}-${pad2(m + 1)}`,
+  };
 }
 
 function dbError(res, result) {
@@ -414,6 +434,232 @@ async function leadsList(req, res) {
   return res.status(200).json({ leads: r.data || [] });
 }
 
+// ── Gastos ───────────────────────────────────────────────────────────────────
+
+async function expensesList(req, res) {
+  const r = await sb('biogradix_expenses?select=*&order=fecha.desc,id.desc&limit=200');
+  if (r.missingTable) return tableError(res, 'biogradix_expenses', PHASE3_SQL);
+  if (!r.ok) return dbError(res, r);
+
+  // Totales del mes en curso, por categoria y por moneda. Segunda consulta
+  // acotada al mes para no depender de que los 200 mas recientes lo cubran.
+  const { start, next, key } = monthBoundsUtc();
+  const m = await sb(`biogradix_expenses?select=categoria,monto,moneda&fecha=gte.${start}&fecha=lt.${next}&limit=1000`);
+  if (m.missingTable) return tableError(res, 'biogradix_expenses', PHASE3_SQL);
+  if (!m.ok) return dbError(res, m);
+
+  const byCat = {};
+  EXPENSE_CATEGORIES.forEach((c) => { byCat[c] = { categoria: c, usd: 0, mxn: 0 }; });
+  let totalUsd = 0;
+  let totalMxn = 0;
+  (m.data || []).forEach((row) => {
+    const cat = byCat[row.categoria] || (byCat[row.categoria] = { categoria: row.categoria, usd: 0, mxn: 0 });
+    const monto = Number(row.monto || 0);
+    if (row.moneda === 'MXN') { cat.mxn += monto; totalMxn += monto; }
+    else { cat.usd += monto; totalUsd += monto; }
+  });
+  const porCategoria = Object.values(byCat)
+    .map((c) => ({ categoria: c.categoria, usd: round2(c.usd), mxn: round2(c.mxn) }))
+    .sort((a, b) => (b.usd - a.usd) || (b.mxn - a.mxn));
+
+  return res.status(200).json({
+    expenses: r.data || [],
+    mes: key,
+    mes_totales: { usd: round2(totalUsd), mxn: round2(totalMxn), por_categoria: porCategoria },
+  });
+}
+
+async function expensesAdd(req, res) {
+  const b = req.body || {};
+  const categoria = b.categoria;
+  const concepto = b.concepto ? String(b.concepto).trim().slice(0, 300) : '';
+  const monto = Number(b.monto);
+  const moneda = b.moneda ? String(b.moneda).trim().toUpperCase() : 'USD';
+  const persona = b.persona ? String(b.persona).trim().slice(0, 120) : null;
+  const nota = b.nota ? String(b.nota).trim().slice(0, 500) : null;
+  const fecha = b.fecha ? String(b.fecha).trim() : null;
+
+  if (!EXPENSE_CATEGORIES.includes(categoria)) {
+    return sendError(res, 400, 'bad_request',
+      `Categoría inválida: ${categoria || '(vacía)'}. Usa: ${EXPENSE_CATEGORIES.join(', ')}`);
+  }
+  if (!concepto) return sendError(res, 400, 'bad_request', 'Falta el concepto');
+  if (!Number.isFinite(monto) || monto <= 0) {
+    return sendError(res, 400, 'bad_request', 'El monto debe ser un número mayor que cero');
+  }
+  if (monto > 10000000) return sendError(res, 400, 'bad_request', 'Monto fuera de rango');
+  if (!EXPENSE_CURRENCIES.includes(moneda)) {
+    return sendError(res, 400, 'bad_request', `Moneda inválida: ${moneda}. Usa: ${EXPENSE_CURRENCIES.join(', ')}`);
+  }
+  if (fecha && !/^\d{4}-\d{2}-\d{2}$/.test(fecha)) {
+    return sendError(res, 400, 'bad_request', 'Fecha inválida, usa el formato AAAA-MM-DD');
+  }
+
+  const body = { categoria, concepto, monto: round2(monto), moneda, persona, nota };
+  if (fecha) body.fecha = fecha; // sin fecha, la tabla aplica current_date
+
+  const r = await sb('biogradix_expenses', {
+    method: 'POST',
+    headers: { 'Prefer': 'return=representation' },
+    body,
+  });
+  if (r.missingTable) return tableError(res, 'biogradix_expenses', PHASE3_SQL);
+  if (!r.ok) return dbError(res, r);
+  return res.status(200).json({ expense: Array.isArray(r.data) ? r.data[0] : null });
+}
+
+async function expensesDelete(req, res) {
+  const id = parseInt(req.body && req.body.id, 10);
+  if (!Number.isFinite(id) || id < 1) {
+    return sendError(res, 400, 'bad_request', 'Falta un id válido');
+  }
+  const r = await sb(`biogradix_expenses?id=eq.${id}`, {
+    method: 'DELETE',
+    headers: { 'Prefer': 'return=representation' },
+  });
+  if (r.missingTable) return tableError(res, 'biogradix_expenses', PHASE3_SQL);
+  if (!r.ok) return dbError(res, r);
+  if (!Array.isArray(r.data) || r.data.length === 0) {
+    return sendError(res, 404, 'not_found', `No existe el gasto ${id}`);
+  }
+  return res.status(200).json({ deleted: r.data[0] });
+}
+
+// ── Consumo propio ───────────────────────────────────────────────────────────
+
+async function consumoList(req, res) {
+  const r = await sb('biogradix_consumo?select=*&order=created_at.desc&limit=200');
+  if (r.missingTable) return tableError(res, 'biogradix_consumo', PHASE3_SQL);
+  if (!r.ok) return dbError(res, r);
+
+  // Saldo pendiente por persona: suma de total con pagado=false. Las filas
+  // sin total (costo por confirmar) se cuentan aparte en sin_costo.
+  const p = await sb('biogradix_consumo?select=persona,total&pagado=eq.false&limit=1000');
+  if (!p.ok) return dbError(res, p);
+
+  const porPersona = {};
+  (p.data || []).forEach((row) => {
+    const key = row.persona || '—';
+    if (!porPersona[key]) porPersona[key] = { persona: key, total: 0, sin_costo: 0 };
+    if (row.total == null) porPersona[key].sin_costo += 1;
+    else porPersona[key].total += Number(row.total || 0);
+  });
+  const pendientes = Object.values(porPersona)
+    .map((x) => ({ persona: x.persona, total: round2(x.total), sin_costo: x.sin_costo }))
+    .sort((a, b) => a.persona.localeCompare(b.persona));
+
+  return res.status(200).json({ consumos: r.data || [], pendientes });
+}
+
+async function consumoAdd(req, res) {
+  const b = req.body || {};
+  const persona = b.persona ? String(b.persona).trim().slice(0, 120) : '';
+  const sku = b.sku ? String(b.sku).trim() : '';
+  const packs = parseInt(b.packs, 10);
+  const nota = b.nota ? String(b.nota).trim().slice(0, 500) : null;
+
+  let costoUnitario = null;
+  if (b.costo_unitario !== undefined && b.costo_unitario !== null && b.costo_unitario !== '') {
+    costoUnitario = Number(b.costo_unitario);
+    if (!Number.isFinite(costoUnitario) || costoUnitario < 0) {
+      return sendError(res, 400, 'bad_request', 'costo_unitario debe ser un número mayor o igual a cero');
+    }
+  }
+  if (!persona) return sendError(res, 400, 'bad_request', 'Falta la persona');
+  if (!sku) return sendError(res, 400, 'bad_request', 'Falta el SKU');
+  if (!Number.isFinite(packs) || packs < 1 || packs > 1000) {
+    return sendError(res, 400, 'bad_request', 'packs debe ser un entero entre 1 y 1000');
+  }
+
+  // 1. El producto debe existir y tener stock suficiente.
+  const cur = await sb(`biogradix_products?select=sku,stock,cost&sku=eq.${encodeURIComponent(sku)}&limit=1`);
+  if (cur.missingTable) return tableError(res, 'biogradix_products');
+  if (!cur.ok) return dbError(res, cur);
+  if (!Array.isArray(cur.data) || cur.data.length === 0) {
+    return sendError(res, 404, 'not_found', `No existe el SKU ${sku}`);
+  }
+  const product = cur.data[0];
+  const oldStock = Number(product.stock || 0);
+  if (oldStock < packs) {
+    return sendError(res, 409, 'insufficient_stock',
+      `Stock insuficiente: ${oldStock} packs de ${sku} y se pidieron ${packs}`);
+  }
+
+  // 2. Costo: el capturado; si no, el cost del producto; si ambos faltan la
+  //    fila entra con costo/total null (costo por confirmar). El registro
+  //    nunca bloquea el acto físico de tomar el pack.
+  if (costoUnitario == null && product.cost != null) costoUnitario = Number(product.cost);
+  const total = costoUnitario == null ? null : round2(packs * costoUnitario);
+
+  // 3. Insertar el consumo primero: si la tabla de la Fase 3 falta, se
+  //    responde 424 sin haber tocado el stock.
+  const ins = await sb('biogradix_consumo', {
+    method: 'POST',
+    headers: { 'Prefer': 'return=representation' },
+    body: { persona, sku, packs, costo_unitario: costoUnitario, total, nota },
+  });
+  if (ins.missingTable) return tableError(res, 'biogradix_consumo', PHASE3_SQL);
+  if (!ins.ok) return dbError(res, ins);
+  const consumo = Array.isArray(ins.data) ? ins.data[0] : null;
+
+  // 4. Descontar stock con la misma guardia optimista de inventory.adjust:
+  //    la escritura solo aplica si el stock sigue siendo el leído.
+  const upd = await sb(
+    `biogradix_products?sku=eq.${encodeURIComponent(sku)}&stock=eq.${oldStock}`,
+    { method: 'PATCH', headers: { 'Prefer': 'return=representation' }, body: { stock: oldStock - packs } }
+  );
+  const raced = upd.ok && (!Array.isArray(upd.data) || upd.data.length === 0);
+  if (!upd.ok || raced) {
+    // Revertir la fila de consumo para no dejar un registro sin descuento.
+    if (consumo && consumo.id != null) {
+      const undo = await sb(`biogradix_consumo?id=eq.${consumo.id}`, { method: 'DELETE' });
+      if (!undo.ok) console.error('No se pudo revertir el consumo tras fallo de stock:', undo.status, undo.data);
+    }
+    if (!upd.ok) return dbError(res, upd);
+    return sendError(res, 409, 'stock_changed',
+      'El stock cambió mientras se registraba el consumo. Recarga e intenta de nuevo.');
+  }
+
+  // 5. Movimiento de inventario con motivo 'consumo'.
+  const mov = await sb('biogradix_inventory_movements', {
+    method: 'POST',
+    headers: { 'Prefer': 'return=representation' },
+    body: { sku, delta: -packs, reason: 'consumo', note: nota ? `${persona}: ${nota}` : persona, order_id: null },
+  });
+  if (!mov.ok) {
+    console.error('Consumo movement insert failed:', mov.status, mov.data);
+    return res.status(200).json({
+      consumo,
+      product: upd.data[0],
+      movement: null,
+      warning: 'El consumo quedó registrado y el stock se descontó, pero el movimiento no entró al historial. Verifica que corriste completo sql/phase3-gastos-consumo.sql (habilita el motivo consumo).',
+    });
+  }
+  return res.status(200).json({
+    consumo,
+    product: upd.data[0],
+    movement: Array.isArray(mov.data) ? mov.data[0] : null,
+  });
+}
+
+async function consumoMarkPaid(req, res) {
+  const id = parseInt(req.body && req.body.id, 10);
+  if (!Number.isFinite(id) || id < 1) {
+    return sendError(res, 400, 'bad_request', 'Falta un id válido');
+  }
+  const r = await sb(`biogradix_consumo?id=eq.${id}`, {
+    method: 'PATCH',
+    headers: { 'Prefer': 'return=representation' },
+    body: { pagado: true, pagado_at: new Date().toISOString() },
+  });
+  if (r.missingTable) return tableError(res, 'biogradix_consumo', PHASE3_SQL);
+  if (!r.ok) return dbError(res, r);
+  if (!Array.isArray(r.data) || r.data.length === 0) {
+    return sendError(res, 404, 'not_found', `No existe el consumo ${id}`);
+  }
+  return res.status(200).json({ consumo: r.data[0] });
+}
+
 // ── Handler ──────────────────────────────────────────────────────────────────
 
 module.exports = async function handler(req, res) {
@@ -442,7 +688,10 @@ module.exports = async function handler(req, res) {
   }
 
   const action = (req.query && req.query.action) || (req.body && req.body.action);
-  const mutations = ['orders.updateStatus', 'orders.markShipped', 'inventory.adjust'];
+  const mutations = [
+    'orders.updateStatus', 'orders.markShipped', 'inventory.adjust',
+    'expenses.add', 'expenses.delete', 'consumo.add', 'consumo.markPaid',
+  ];
   if (mutations.includes(action) && req.method !== 'POST') {
     return sendError(res, 405, 'method_not_allowed', `${action} requiere POST`);
   }
@@ -457,6 +706,12 @@ module.exports = async function handler(req, res) {
       case 'inventory.adjust': return await inventoryAdjust(req, res);
       case 'movements.list':   return await movementsList(req, res);
       case 'leads.list':       return await leadsList(req, res);
+      case 'expenses.list':    return await expensesList(req, res);
+      case 'expenses.add':     return await expensesAdd(req, res);
+      case 'expenses.delete':  return await expensesDelete(req, res);
+      case 'consumo.list':     return await consumoList(req, res);
+      case 'consumo.add':      return await consumoAdd(req, res);
+      case 'consumo.markPaid': return await consumoMarkPaid(req, res);
       default:
         return sendError(res, 400, 'unknown_action', `Acción desconocida: ${action || '(vacia)'}`);
     }

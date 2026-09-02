@@ -82,6 +82,7 @@ td.right{text-align:right;}
 .st-delivered{color:var(--bone);border-color:var(--forest);background:var(--forest);}
 .st-refunded{color:var(--ink-faint);border-color:rgba(154,145,137,.5);background:rgba(154,145,137,.12);}
 .st-cancelled{color:var(--red);border-color:rgba(122,46,46,.4);background:rgba(122,46,46,.06);}
+.st-cat{color:var(--ink-soft);border-color:rgba(24,20,15,.25);background:rgba(24,20,15,.04);}
 .chip-low{display:inline-block;margin-left:8px;padding:2px 7px;font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);border:1px solid rgba(122,46,46,.4);background:rgba(122,46,46,.06);vertical-align:1px;}
 tr.low td{background:rgba(122,46,46,.035);}
 .delta-pos{color:var(--forest);font-weight:500;}
@@ -89,10 +90,20 @@ tr.low td{background:rgba(122,46,46,.035);}
 
 /* ── RESUMEN INVENTARIO ───────────────────────────────── */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);margin-bottom:20px;}
+.stats[hidden],.pendstrip[hidden]{display:none;}
 .stat{padding:18px 20px;border-right:1px solid var(--rule);}
 .stat:last-child{border-right:none;}
 .stat .k{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px;}
 .stat .v{font-size:20px;font-weight:300;}
+
+/* ── FORMULARIOS DE REGISTRO (GASTOS / CONSUMO) ───────── */
+.formpanel{border:1px solid var(--rule);padding:18px 20px;margin-bottom:20px;background:var(--bone);}
+.form-note{font-size:11px;color:var(--ink-faint);margin-top:12px;line-height:1.5;}
+.setupnote{display:none;margin-bottom:20px;padding:12px 16px;border:1px solid rgba(138,106,31,.4);background:rgba(138,106,31,.06);color:var(--amber);font-size:12px;line-height:1.5;}
+.setupnote.show{display:block;}
+.pendstrip{border:1px solid var(--rule);padding:14px 20px;margin-bottom:20px;font-size:13px;display:flex;gap:10px 28px;flex-wrap:wrap;background:var(--bone);}
+.pendstrip .who{color:var(--ink-faint);font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-right:8px;}
+.pendstrip .amt{font-weight:500;}
 
 /* ── VARIOS ───────────────────────────────────────────── */
 .rowlink{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--forest);text-decoration:none;border-bottom:1px solid rgba(46,74,58,.3);padding-bottom:1px;white-space:nowrap;}
@@ -143,6 +154,8 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
   <div class="tabs">
     <button class="tab active" data-tab="pedidos" type="button">Pedidos<span class="count" id="countPedidos"></span></button>
     <button class="tab" data-tab="inventario" type="button">Inventario<span class="count" id="countInventario"></span></button>
+    <button class="tab" data-tab="gastos" type="button">Gastos<span class="count" id="countGastos"></span></button>
+    <button class="tab" data-tab="consumo" type="button">Consumo<span class="count" id="countConsumo"></span></button>
     <button class="tab" data-tab="leads" type="button">Leads<span class="count" id="countLeads"></span></button>
   </div>
 
@@ -205,6 +218,108 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       </div>
     </section>
 
+    <!-- ── GASTOS ── -->
+    <section id="tab-gastos" hidden>
+      <div class="setupnote" id="gastosSetup">Tablas pendientes: ejecuta sql/phase3-gastos-consumo.sql en Supabase. El resto del panel sigue funcionando.</div>
+
+      <div class="stats" id="gastosStats" hidden>
+        <div class="stat"><div class="k">Gasto del mes · USD</div><div class="v num" id="statGastoUsd">—</div></div>
+        <div class="stat"><div class="k">Gasto del mes · MXN</div><div class="v num" id="statGastoMxn">—</div></div>
+        <div class="stat"><div class="k">Categoría principal</div><div class="v" id="statGastoTop">—</div></div>
+      </div>
+
+      <form class="formpanel" id="gastoForm">
+        <div class="detail-form">
+          <div class="field"><span>Fecha</span><input type="date" id="gFecha"/></div>
+          <div class="field"><span>Categoría</span><select id="gCategoria">
+            <option value="publicidad">Publicidad</option>
+            <option value="muestras">Muestras</option>
+            <option value="envios">Envíos</option>
+            <option value="comisiones">Comisiones</option>
+            <option value="herramientas">Herramientas</option>
+            <option value="inventario">Inventario</option>
+            <option value="otros">Otros</option>
+          </select></div>
+          <div class="field" style="flex:1;min-width:200px;"><span>Concepto</span><input type="text" id="gConcepto" placeholder="Qué se pagó" style="width:100%;"/></div>
+          <div class="field"><span>Monto</span><input type="number" id="gMonto" step="0.01" min="0.01" placeholder="0.00" class="narrow"/></div>
+          <div class="field"><span>Moneda</span><select id="gMoneda" style="min-width:90px;">
+            <option value="USD">USD</option>
+            <option value="MXN">MXN</option>
+          </select></div>
+          <div class="field"><span>Persona</span><select id="gPersona">
+            <option value="Ambos">Ambos</option>
+            <option value="Alejandro">Alejandro</option>
+            <option value="Beto">Beto</option>
+          </select></div>
+          <div class="field"><span>Nota</span><input type="text" id="gNota" placeholder="Opcional"/></div>
+          <button class="btn btn-sm" type="submit" id="gBtn">Registrar gasto</button>
+        </div>
+        <p class="form-note">Los topes mensuales viven en el Control Operativo; este es el registro.</p>
+      </form>
+
+      <div class="toolbar">
+        <span class="meta">Últimos 200 gastos, más recientes primero</span>
+        <div class="spacer"></div>
+        <span class="meta" id="gastosMeta"></span>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <td>Fecha</td><td>Categoría</td><td>Concepto</td><td>Persona</td><td class="right">Monto</td><td></td>
+          </tr></thead>
+          <tbody id="gastosBody"></tbody>
+        </table>
+      </div>
+
+      <h2 class="subhead">Totales del mes por categoría</h2>
+      <div class="tablewrap">
+        <table style="min-width:420px;">
+          <thead><tr>
+            <td>Categoría</td><td class="right">USD</td><td class="right">MXN</td>
+          </tr></thead>
+          <tbody id="gastosCatBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── CONSUMO ── -->
+    <section id="tab-consumo" hidden>
+      <div class="setupnote" id="consumoSetup">Tablas pendientes: ejecuta sql/phase3-gastos-consumo.sql en Supabase. El resto del panel sigue funcionando.</div>
+
+      <div class="toolbar">
+        <span class="meta">Pack que se toma un socio: se registra aquí, se paga a costo.</span>
+        <div class="spacer"></div>
+        <span class="meta" id="consumoMeta"></span>
+      </div>
+
+      <div class="pendstrip" id="consumoPend" hidden></div>
+
+      <form class="formpanel" id="consumoForm">
+        <div class="detail-form">
+          <div class="field"><span>Persona</span><select id="cPersona">
+            <option value="Alejandro">Alejandro</option>
+            <option value="Beto">Beto</option>
+          </select></div>
+          <div class="field"><span>SKU</span><select id="cSku" class="wide" style="min-width:220px;"><option value="">Cargando productos...</option></select></div>
+          <div class="field"><span>Packs</span><input type="number" id="cPacks" step="1" min="1" placeholder="1" class="narrow"/></div>
+          <div class="field"><span>Costo unitario</span><input type="number" id="cCosto" step="0.01" min="0" placeholder="costo por confirmar"/></div>
+          <div class="field" style="flex:1;min-width:180px;"><span>Nota</span><input type="text" id="cNota" placeholder="Opcional" style="width:100%;"/></div>
+          <button class="btn btn-sm" type="submit" id="cBtn">Registrar consumo</button>
+        </div>
+        <p class="form-note">Descuenta stock automáticamente; el movimiento queda en el historial de Inventario con motivo Consumo propio. Sin costo capturado se usa el costo del producto; si tampoco existe, la fila entra como costo por confirmar.</p>
+      </form>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr>
+            <td>Fecha</td><td>Persona</td><td>SKU</td><td class="right">Packs</td>
+            <td class="right">Costo unitario</td><td class="right">Total</td><td>Estado</td><td></td>
+          </tr></thead>
+          <tbody id="consumoBody"></tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- ── LEADS ── -->
     <section id="tab-leads" hidden>
       <div class="toolbar">
@@ -248,8 +363,9 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
   var S = {
     key: '',
     orders: [], products: [], movements: [], leads: [],
+    expenses: [], expTotals: null, consumos: [], pendientes: [],
     tab: 'pedidos',
-    loaded: { pedidos: false, inventario: false, leads: false }
+    loaded: { pedidos: false, inventario: false, gastos: false, consumo: false, leads: false }
   };
   try { S.key = sessionStorage.getItem(KEY_STORE) || ''; } catch (e) { S.key = ''; }
 
@@ -261,7 +377,12 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     refunded:  { label: 'Reembolsado', cls: 'st-refunded' },
     cancelled: { label: 'Cancelado',   cls: 'st-cancelled' }
   };
-  var REASONS = { sale: 'Venta', restock: 'Restock', sample: 'Muestra', damage: 'Daño', adjustment: 'Ajuste' };
+  var REASONS = { sale: 'Venta', restock: 'Restock', sample: 'Muestra', damage: 'Daño', adjustment: 'Ajuste', consumo: 'Consumo propio' };
+  var CATEGORIAS = {
+    publicidad: 'Publicidad', muestras: 'Muestras', envios: 'Envíos', comisiones: 'Comisiones',
+    herramientas: 'Herramientas', inventario: 'Inventario', otros: 'Otros'
+  };
+  var TABS = ['pedidos', 'inventario', 'gastos', 'consumo', 'leads'];
 
   var $ = function (id) { return document.getElementById(id); };
 
@@ -284,6 +405,22 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
   function shortId(id) {
     var s = String(id == null ? '' : id);
     return s.length > 8 ? s.slice(0, 8) : s;
+  }
+  // Fecha tipo date (AAAA-MM-DD) sin pasar por Date(): evita el corrimiento
+  // de un día por zona horaria al interpretar la cadena como UTC.
+  var MESES_CORTOS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  function fmtDateOnly(s) {
+    if (!s) return '—';
+    var m = String(s).match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!m) return fmtDate(s);
+    var mi = parseInt(m[2], 10) - 1;
+    return m[3] + ' ' + (MESES_CORTOS[mi] || m[2]) + ' ' + m[1].slice(2);
+  }
+  function todayLocalISO() {
+    var d = new Date();
+    var mm = String(d.getMonth() + 1); if (mm.length < 2) mm = '0' + mm;
+    var dd = String(d.getDate()); if (dd.length < 2) dd = '0' + dd;
+    return d.getFullYear() + '-' + mm + '-' + dd;
   }
   function toast(msg, isErr) {
     var t = $('toast');
@@ -379,7 +516,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       var name = t.getAttribute('data-tab');
       S.tab = name;
       document.querySelectorAll('.tab').forEach(function (x) { x.classList.toggle('active', x === t); });
-      ['pedidos', 'inventario', 'leads'].forEach(function (n) { $('tab-' + n).hidden = (n !== name); });
+      TABS.forEach(function (n) { $('tab-' + n).hidden = (n !== name); });
       if (!S.loaded[name]) loadTab(name, true);
     });
   });
@@ -388,6 +525,8 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     banner('');
     if (name === 'pedidos') loadOrders(force);
     else if (name === 'inventario') { loadInventory(force); loadMovements(force); }
+    else if (name === 'gastos') loadExpenses(force);
+    else if (name === 'consumo') { loadConsumo(force); ensureProducts(); }
     else if (name === 'leads') loadLeads(force);
   }
 
@@ -559,6 +698,36 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       });
       return;
     }
+
+    if (t.hasAttribute('data-expdelete')) {
+      var gid = t.getAttribute('data-expdelete');
+      var gdesc = t.getAttribute('data-expdesc') || ('#' + gid);
+      if (!window.confirm('¿Borrar el gasto "' + gdesc + '"? Esta acción no se puede deshacer.')) return;
+      t.disabled = true;
+      api('expenses.delete', { id: gid }).then(function () {
+        toast('Gasto borrado.');
+        loadExpenses();
+      }).catch(function (err) {
+        t.disabled = false;
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
+
+    if (t.hasAttribute('data-consumopaid')) {
+      var cid = t.getAttribute('data-consumopaid');
+      var cdesc = t.getAttribute('data-consumodesc') || ('#' + cid);
+      if (!window.confirm('¿Marcar como pagado el consumo de ' + cdesc + '?')) return;
+      t.disabled = true;
+      api('consumo.markPaid', { id: cid }).then(function () {
+        toast('Consumo marcado como pagado.');
+        loadConsumo();
+      }).catch(function (err) {
+        t.disabled = false;
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
   });
 
   // ── INVENTARIO ──────────────────────────────────────────
@@ -700,7 +869,254 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     $('leadsBody').innerHTML = html;
   }
 
+  // ── GASTOS ──────────────────────────────────────────────
+  function loadExpenses() {
+    $('gastosSetup').classList.remove('show');
+    $('gastosStats').hidden = true;
+    $('gastosMeta').textContent = '';
+    stateRow('gastosBody', 6, 'Cargando gastos...');
+    stateRow('gastosCatBody', 3, 'Cargando...');
+    api('expenses.list').then(function (d) {
+      S.expenses = d.expenses || [];
+      S.expTotals = d.mes_totales || null;
+      S.loaded.gastos = true;
+      renderExpenses();
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') return;
+      if (err.code === 'missing_table') {
+        $('gastosSetup').classList.add('show');
+        stateRow('gastosBody', 6, 'Sin datos: faltan las tablas de la Fase 3.');
+        stateRow('gastosCatBody', 3, 'Sin datos.');
+        return;
+      }
+      stateRow('gastosBody', 6, 'No se pudieron cargar los gastos.');
+      stateRow('gastosCatBody', 3, 'Sin datos.');
+      banner(err.message);
+    });
+  }
+
+  function renderExpenses() {
+    $('countGastos').textContent = '(' + S.expenses.length + ')';
+    $('gastosMeta').textContent = S.expenses.length + ' gasto' + (S.expenses.length === 1 ? '' : 's');
+
+    if (S.expTotals) {
+      $('gastosStats').hidden = false;
+      $('statGastoUsd').textContent = money(S.expTotals.usd, 'USD');
+      $('statGastoMxn').textContent = money(S.expTotals.mxn, 'MXN');
+      var cats = S.expTotals.por_categoria || [];
+      var top = null;
+      for (var i = 0; i < cats.length; i++) {
+        if (cats[i].usd > 0 || cats[i].mxn > 0) { top = cats[i]; break; }
+      }
+      $('statGastoTop').textContent = top ? (CATEGORIAS[top.categoria] || top.categoria) : '—';
+
+      var chtml = '';
+      cats.forEach(function (c) {
+        if (c.usd <= 0 && c.mxn <= 0) return;
+        chtml += '<tr>' +
+          '<td><span class="chip st-cat">' + esc(CATEGORIAS[c.categoria] || c.categoria) + '</span></td>' +
+          '<td class="right num">' + (c.usd > 0 ? esc(money(c.usd, 'USD')) : '—') + '</td>' +
+          '<td class="right num">' + (c.mxn > 0 ? esc(money(c.mxn, 'MXN')) : '—') + '</td>' +
+          '</tr>';
+      });
+      if (chtml) $('gastosCatBody').innerHTML = chtml;
+      else stateRow('gastosCatBody', 3, 'Sin gastos este mes.');
+    } else {
+      stateRow('gastosCatBody', 3, 'Sin datos.');
+    }
+
+    if (S.expenses.length === 0) {
+      stateRow('gastosBody', 6, 'Sin gastos todavía. Registra el primero con el formulario de arriba.');
+      return;
+    }
+    var html = '';
+    S.expenses.forEach(function (g) {
+      html += '<tr>' +
+        '<td class="num">' + esc(fmtDateOnly(g.fecha)) + '</td>' +
+        '<td><span class="chip st-cat">' + esc(CATEGORIAS[g.categoria] || g.categoria) + '</span></td>' +
+        '<td>' + esc(g.concepto || '—') + (g.nota ? '<div class="cell-sub">' + esc(g.nota) + '</div>' : '') + '</td>' +
+        '<td>' + esc(g.persona || '—') + '</td>' +
+        '<td class="right num">' + esc(money(g.monto, g.moneda)) + '</td>' +
+        '<td class="right"><button class="btn btn-ghost btn-sm" type="button" data-expdelete="' + esc(g.id) + '" data-expdesc="' + esc(g.concepto || '') + '">Borrar</button></td>' +
+        '</tr>';
+    });
+    $('gastosBody').innerHTML = html;
+  }
+
+  $('gastoForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var concepto = $('gConcepto').value.trim();
+    var monto = parseFloat($('gMonto').value);
+    if (!concepto) { toast('Escribe el concepto del gasto.', true); return; }
+    if (!Number.isFinite(monto) || monto <= 0) { toast('El monto debe ser mayor que cero.', true); return; }
+    var payload = {
+      fecha: $('gFecha').value || undefined,
+      categoria: $('gCategoria').value,
+      concepto: concepto,
+      monto: monto,
+      moneda: $('gMoneda').value,
+      persona: $('gPersona').value,
+      nota: $('gNota').value.trim() || undefined
+    };
+    var btn = $('gBtn');
+    btn.disabled = true; btn.textContent = 'Guardando...';
+    api('expenses.add', payload).then(function () {
+      toast('Gasto registrado.');
+      $('gConcepto').value = ''; $('gMonto').value = ''; $('gNota').value = '';
+      loadExpenses();
+    }).catch(function (err) {
+      if (err.code === 'missing_table') $('gastosSetup').classList.add('show');
+      if (err.code !== 'unauthorized') toast(err.message, true);
+    }).finally(function () {
+      btn.disabled = false; btn.textContent = 'Registrar gasto';
+    });
+  });
+
+  // ── CONSUMO ─────────────────────────────────────────────
+  function ensureProducts() {
+    if (S.products.length > 0) { fillSkuSelect(); return; }
+    api('inventory.list').then(function (d) {
+      S.products = d.products || [];
+      fillSkuSelect();
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') return;
+      $('cSku').innerHTML = '<option value="">No se pudieron cargar los productos</option>';
+    });
+  }
+
+  function fillSkuSelect() {
+    var sel = $('cSku');
+    var prev = sel.value;
+    if (S.products.length === 0) {
+      sel.innerHTML = '<option value="">Sin productos (corre el seed de la Fase 1)</option>';
+      return;
+    }
+    var html = '';
+    S.products.forEach(function (p) {
+      html += '<option value="' + esc(p.sku) + '" data-cost="' + (p.cost == null ? '' : esc(p.cost)) + '">' +
+        esc(p.sku) + ' — ' + esc(p.name || '') + ' (' + fmtInt(p.stock) + ' en stock)' +
+        '</option>';
+    });
+    sel.innerHTML = html;
+    if (prev) sel.value = prev;
+    if (!sel.value && sel.options.length) sel.selectedIndex = 0;
+    updateCostoPlaceholder();
+  }
+
+  function updateCostoPlaceholder() {
+    var sel = $('cSku');
+    var opt = sel.options[sel.selectedIndex];
+    var cost = opt ? opt.getAttribute('data-cost') : '';
+    $('cCosto').placeholder = cost ? cost + ' (costo del producto)' : 'costo por confirmar';
+  }
+  $('cSku').addEventListener('change', updateCostoPlaceholder);
+
+  function loadConsumo() {
+    $('consumoSetup').classList.remove('show');
+    $('consumoPend').hidden = true;
+    $('consumoMeta').textContent = '';
+    stateRow('consumoBody', 8, 'Cargando consumos...');
+    api('consumo.list').then(function (d) {
+      S.consumos = d.consumos || [];
+      S.pendientes = d.pendientes || [];
+      S.loaded.consumo = true;
+      renderConsumo();
+    }).catch(function (err) {
+      if (err.code === 'unauthorized') return;
+      if (err.code === 'missing_table') {
+        $('consumoSetup').classList.add('show');
+        stateRow('consumoBody', 8, 'Sin datos: faltan las tablas de la Fase 3.');
+        return;
+      }
+      stateRow('consumoBody', 8, 'No se pudieron cargar los consumos.');
+      banner(err.message);
+    });
+  }
+
+  function renderConsumo() {
+    $('countConsumo').textContent = '(' + S.consumos.length + ')';
+    $('consumoMeta').textContent = S.consumos.length + ' consumo' + (S.consumos.length === 1 ? '' : 's');
+
+    // Saldo pendiente por persona: siempre muestra a los dos socios.
+    var saldo = { Alejandro: { total: 0, sin_costo: 0 }, Beto: { total: 0, sin_costo: 0 } };
+    S.pendientes.forEach(function (p) {
+      saldo[p.persona] = { total: Number(p.total || 0), sin_costo: Number(p.sin_costo || 0) };
+    });
+    var phtml = '';
+    Object.keys(saldo).forEach(function (persona) {
+      var x = saldo[persona];
+      phtml += '<span><span class="who">' + esc(persona) + ' debe</span><span class="amt num">' + esc(money(x.total, 'USD')) + '</span>' +
+        (x.sin_costo > 0 ? '<span class="meta"> + ' + x.sin_costo + ' por confirmar</span>' : '') +
+        '</span>';
+    });
+    $('consumoPend').innerHTML = phtml;
+    $('consumoPend').hidden = false;
+
+    if (S.consumos.length === 0) {
+      stateRow('consumoBody', 8, 'Sin consumos todavía.');
+      return;
+    }
+    var html = '';
+    S.consumos.forEach(function (c) {
+      var cid = esc(c.id);
+      var estado = c.pagado
+        ? '<span class="chip st-paid">Pagado</span>' + (c.pagado_at ? '<div class="cell-sub num">' + esc(fmtDate(c.pagado_at)) + '</div>' : '')
+        : '<span class="chip st-preparing">Pendiente</span>';
+      var accion = c.pagado ? '' :
+        '<button class="btn btn-ghost btn-sm" type="button" data-consumopaid="' + cid + '" data-consumodesc="' + esc((c.persona || '') + ' (' + c.packs + ' x ' + c.sku + ')') + '">Marcar pagado</button>';
+      html += '<tr>' +
+        '<td class="num">' + esc(fmtDate(c.created_at)) + '</td>' +
+        '<td>' + esc(c.persona || '—') + '</td>' +
+        '<td class="num">' + esc(c.sku) + (c.nota ? '<div class="cell-sub">' + esc(c.nota) + '</div>' : '') + '</td>' +
+        '<td class="right num">' + fmtInt(c.packs) + '</td>' +
+        '<td class="right num">' + (c.costo_unitario == null ? '<span style="color:var(--ink-faint);">Por confirmar</span>' : esc(money(c.costo_unitario, 'USD'))) + '</td>' +
+        '<td class="right num">' + (c.total == null ? '—' : esc(money(c.total, 'USD'))) + '</td>' +
+        '<td>' + estado + '</td>' +
+        '<td class="right">' + accion + '</td>' +
+        '</tr>';
+    });
+    $('consumoBody').innerHTML = html;
+  }
+
+  $('consumoForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var sku = $('cSku').value;
+    var packs = parseInt($('cPacks').value, 10);
+    var costoRaw = $('cCosto').value.trim();
+    if (!sku) { toast('Elige un SKU.', true); return; }
+    if (!Number.isFinite(packs) || packs < 1) { toast('Los packs deben ser un entero mayor que cero.', true); return; }
+    var payload = {
+      persona: $('cPersona').value,
+      sku: sku,
+      packs: packs,
+      nota: $('cNota').value.trim() || undefined
+    };
+    if (costoRaw !== '') {
+      var costo = parseFloat(costoRaw);
+      if (!Number.isFinite(costo) || costo < 0) { toast('El costo unitario debe ser un número mayor o igual a cero.', true); return; }
+      payload.costo_unitario = costo;
+    }
+    var btn = $('cBtn');
+    btn.disabled = true; btn.textContent = 'Registrando...';
+    api('consumo.add', payload).then(function (d) {
+      if (d.warning) toast(d.warning, true);
+      else toast('Consumo registrado. Stock de ' + sku + ' descontado (-' + packs + ').');
+      $('cPacks').value = ''; $('cCosto').value = ''; $('cNota').value = '';
+      S.products = [];            // el stock cambió: recargar el select de SKUs
+      S.loaded.inventario = false; // y el tab de inventario en su próxima visita
+      loadConsumo();
+      ensureProducts();
+    }).catch(function (err) {
+      if (err.code === 'missing_table') $('consumoSetup').classList.add('show');
+      if (err.code !== 'unauthorized') toast(err.message, true);
+    }).finally(function () {
+      btn.disabled = false; btn.textContent = 'Registrar consumo';
+    });
+  });
+
   // ── ARRANQUE ────────────────────────────────────────────
+  $('gFecha').value = todayLocalISO();
+
   if (S.key) {
     api('auth.check').then(function () {
       showApp();
