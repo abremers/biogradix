@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Biogradix — Concept 1: Swiss Medical Brutalism</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#0A0A0A;
+  --white:#FFFFFF;
+  --acid:#00C27C;
+  --acid-dim:#00994F;
+  --gray:#888;
+  --light:#F2F2F2;
+  --rule:1px solid #0A0A0A;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Barlow',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+
+/* GRID OVERLAY */
+.grid-bg{
+  position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(10,10,10,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(10,10,10,.04) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  border-bottom:2px solid var(--black);
+  background:var(--white);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:stretch;
+  height:56px;
+}
+.nav-logo{
+  display:flex;align-items:center;
+  padding:0 32px;
+  border-right:2px solid var(--black);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:20px;letter-spacing:2px;text-transform:uppercase;
+  gap:6px;
+}
+.nav-logo .dot{width:8px;height:8px;background:var(--acid);flex-shrink:0;}
+.nav-links{
+  display:flex;align-items:center;
+  padding:0 32px;gap:0;
+}
+.nav-links a{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--black);text-decoration:none;
+  padding:0 20px;height:100%;display:flex;align-items:center;
+  border-right:1px solid rgba(10,10,10,.12);
+  transition:background .15s,color .15s;
+}
+.nav-links a:hover{background:var(--black);color:var(--white);}
+.nav-cta{
+  display:flex;align-items:center;
+  padding:0 24px;
+  border-left:2px solid var(--black);
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  background:var(--acid);color:var(--white);cursor:pointer;
+  text-decoration:none;
+  transition:background .15s;
+}
+.nav-cta:hover{background:var(--acid-dim);}
+
+/* HERO */
+.hero{
+  margin-top:56px;
+  min-height:calc(100vh - 56px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:2px solid var(--black);
+  position:relative;z-index:1;
+}
+.hero-left{
+  padding:80px 64px;
+  border-right:2px solid var(--black);
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.hero-tag{
+  display:flex;align-items:center;gap:12px;
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:4px;text-transform:uppercase;color:var(--gray);
+  margin-bottom:48px;
+}
+.hero-tag::before{content:'';width:32px;height:2px;background:var(--acid);}
+.hero-h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:clamp(72px,8vw,120px);
+  line-height:.9;letter-spacing:-2px;text-transform:uppercase;
+  color:var(--black);
+  margin-bottom:40px;
+}
+.hero-h1 em{color:var(--acid);font-style:normal;}
+.hero-body{
+  font-size:16px;font-weight:300;line-height:1.8;
+  color:#333;max-width:400px;
+  border-left:3px solid var(--acid);padding-left:20px;
+  margin-bottom:48px;
+}
+.hero-ctas{display:flex;gap:0;}
+.btn-hard{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  padding:16px 32px;border:2px solid var(--black);
+  cursor:pointer;text-decoration:none;
+  transition:background .15s,color .15s;
+  display:inline-flex;align-items:center;gap:12px;
+}
+.btn-hard.primary{background:var(--black);color:var(--white);}
+.btn-hard.primary:hover{background:var(--acid);border-color:var(--acid);}
+.btn-hard.outline{background:transparent;color:var(--black);border-left:none;}
+.btn-hard.outline:hover{background:var(--light);}
+.hero-meta{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-top:2px solid var(--black);padding-top:24px;
+  margin-top:auto;
+}
+.hero-meta-item{padding:0 0 0 0;}
+.hero-meta-item:last-child{border-left:1px solid rgba(10,10,10,.2);padding-left:24px;}
+.meta-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:48px;font-weight:900;
+  line-height:1;color:var(--black);
+}
+.meta-num span{color:var(--acid);}
+.meta-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:4px;}
+
+/* HERO RIGHT */
+.hero-right{
+  display:flex;flex-direction:column;
+  background:var(--black);
+  position:relative;overflow:hidden;
+}
+.hero-right-img{
+  flex:1;
+  background:linear-gradient(160deg,#111 0%,#0a1a10 100%);
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.molecular-grid{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(0,194,124,.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(0,194,124,.08) 0%, transparent 40%);
+}
+.molecule{
+  position:relative;width:200px;height:200px;
+}
+.mol-ring{
+  position:absolute;border-radius:50%;border:1px solid rgba(0,194,124,.3);
+}
+.mol-ring:nth-child(1){width:200px;height:200px;top:0;left:0;animation:spin 20s linear infinite;}
+.mol-ring:nth-child(2){width:140px;height:140px;top:30px;left:30px;animation:spin 15s linear infinite reverse;border-color:rgba(0,194,124,.5);}
+.mol-ring:nth-child(3){width:80px;height:80px;top:60px;left:60px;border-color:var(--acid);animation:spin 8s linear infinite;}
+.mol-center{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--acid);top:90px;left:90px;box-shadow:0 0 40px var(--acid);}
+.mol-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:rgba(0,194,124,.7);}
+.mol-dot:nth-child(5){top:-4px;left:96px;}
+.mol-dot:nth-child(6){bottom:-4px;left:96px;}
+.mol-dot:nth-child(7){left:-4px;top:96px;}
+.mol-dot:nth-child(8){right:-4px;top:96px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.hero-right-data{
+  border-top:2px solid rgba(255,255,255,.12);
+  padding:24px 32px;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;
+}
+.data-col{padding:0 24px 0 0;}
+.data-col:not(:first-child){border-left:1px solid rgba(255,255,255,.1);padding-left:24px;}
+.data-label{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px;}
+.data-val{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--acid);}
+.data-sub{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px;}
+
+/* STATS BAND */
+.stats-band{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:2px solid var(--black);
+  position:relative;z-index:1;
+}
+.stat-item{
+  padding:40px 32px;
+  border-right:2px solid var(--black);
+  position:relative;
+}
+.stat-item:last-child{border-right:none;}
+.stat-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:56px;font-weight:900;line-height:1;
+  color:var(--black);letter-spacing:-1px;
+}
+.stat-num .accent{color:var(--acid);}
+.stat-desc{font-size:13px;font-weight:400;color:var(--gray);margin-top:8px;max-width:180px;line-height:1.5;}
+.stat-index{
+  position:absolute;top:16px;right:16px;
+  font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:2px;color:rgba(10,10,10,.2);
+}
+
+/* PRODUCTS */
+.products{padding:0;position:relative;z-index:1;}
+.products-header{
+  display:grid;grid-template-columns:1fr auto;align-items:end;
+  padding:64px 64px 40px;
+  border-bottom:2px solid var(--black);
+}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--acid);margin-bottom:12px;}
+.section-h2{font-family:'Barlow Condensed',sans-serif;font-size:56px;font-weight:900;line-height:.9;text-transform:uppercase;letter-spacing:-1px;}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.p-card{
+  border-right:2px solid var(--black);
+  border-top:2px solid var(--black);
+  padding:32px;cursor:pointer;
+  transition:background .15s;
+  text-decoration:none;color:var(--black);
+  display:block;
+}
+.p-card:last-child{border-right:none;}
+.p-card:hover{background:var(--black);}
+.p-card:hover .p-name,.p-card:hover .p-body,.p-card:hover .p-index{color:var(--white);}
+.p-card:hover .p-tag{color:var(--acid);}
+.p-card:hover .p-arrow{background:var(--acid);color:var(--black);}
+.p-index{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;color:rgba(10,10,10,.3);margin-bottom:48px;display:block;transition:color .15s;}
+.p-name{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;text-transform:uppercase;margin-bottom:6px;transition:color .15s;}
+.p-tag{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--acid);margin-bottom:16px;transition:color .15s;}
+.p-body{font-size:13px;font-weight:300;color:var(--gray);line-height:1.6;margin-bottom:32px;transition:color .15s;}
+.p-arrow{
+  width:36px;height:36px;border:2px solid var(--black);display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:background .15s,color .15s;
+}
+
+/* FOOTER STRIP */
+.footer-strip{
+  background:var(--black);padding:24px 64px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;z-index:1;
+}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:var(--white);}
+.footer-note{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:1px;}
+.footer-acid{color:var(--acid);}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-logo">
+    <div class="dot"></div>
+    BIOGRADIX
+  </div>
+  <div class="nav-links">
+    <a href="#">Productos</a>
+    <a href="#">Tecnología</a>
+    <a href="#">Educación</a>
+    <a href="#">Blog</a>
+  </div>
+  <a href="#" class="nav-cta">Iniciar Quiz →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-tag">Biotecnología de Péptidos — Absorción 98%</div>
+      <h1 class="hero-h1">BIO<br/><em>CIENCIA</em><br/>REAL.</h1>
+      <p class="hero-body">No suplementos. Péptidos bioactivos con tecnología de absorción mucosa que entrega resultados medibles desde la primera semana.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-hard primary">Encontrar mi protocolo →</a>
+        <a href="#" class="btn-hard outline">Ver productos</a>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="meta-num">98<span>%</span></div>
+        <div class="meta-label">Absorción mucosa</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-num">7<span>+</span></div>
+        <div class="meta-label">Formulaciones activas</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-img">
+      <div class="molecular-grid"></div>
+      <div class="molecule">
+        <div class="mol-ring"></div>
+        <div class="mol-ring"></div>
+        <div class="mol-ring"></div>
+        <div class="mol-center"></div>
+        <div class="mol-dot"></div>
+        <div class="mol-dot"></div>
+        <div class="mol-dot"></div>
+        <div class="mol-dot"></div>
+      </div>
+    </div>
+    <div class="hero-right-data">
+      <div class="data-col">
+        <div class="data-label">Compuesto activo</div>
+        <div class="data-val">BPC-157</div>
+        <div class="data-sub">Pentadecapéptido</div>
+      </div>
+      <div class="data-col">
+        <div class="data-label">Biodisponibilidad</div>
+        <div class="data-val">98.4%</div>
+        <div class="data-sub">Absorción sublingual</div>
+      </div>
+      <div class="data-col">
+        <div class="data-label">Tiempo de acción</div>
+        <div class="data-val">&lt;15min</div>
+        <div class="data-sub">Entrada al torrente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="stat-item">
+    <div class="stat-index">01</div>
+    <div class="stat-num">98<span class="accent">%</span></div>
+    <div class="stat-desc">Biodisponibilidad sublingual vs 12% oral tradicional</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-index">02</div>
+    <div class="stat-num">7<span class="accent">×</span></div>
+    <div class="stat-desc">Más eficiente que cápsulas o polvo convencional</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-index">03</div>
+    <div class="stat-num">&lt;15<span class="accent">m</span></div>
+    <div class="stat-desc">Tiempo de absorción en torrente sanguíneo</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-index">04</div>
+    <div class="stat-num">7<span class="accent">+</span></div>
+    <div class="stat-desc">Formulaciones peptídicas especializadas</div>
+  </div>
+</section>
+
+<section class="products">
+  <div class="products-header">
+    <div>
+      <div class="section-label">Formulaciones activas</div>
+      <h2 class="section-h2">PRODUCTOS<br/>CLÍNICOS.</h2>
+    </div>
+    <a href="#" class="btn-hard primary">Ver todos →</a>
+  </div>
+  <div class="products-grid">
+    <a href="#" class="p-card">
+      <span class="p-index">01 / 07</span>
+      <div class="p-name">CellDew</div>
+      <div class="p-tag">GHK-Cu · Anti-edad</div>
+      <div class="p-body">Regeneración celular profunda y síntesis de colágeno optimizada por absorción mucosa.</div>
+      <div class="p-arrow">→</div>
+    </a>
+    <a href="#" class="p-card">
+      <span class="p-index">02 / 07</span>
+      <div class="p-name">VitaCharge</div>
+      <div class="p-tag">NAD+ · Energía</div>
+      <div class="p-body">Restauración mitocondrial y optimización metabólica sistémica.</div>
+      <div class="p-arrow">→</div>
+    </a>
+    <a href="#" class="p-card">
+      <span class="p-index">03 / 07</span>
+      <div class="p-name">RecoveryPro</div>
+      <div class="p-tag">BPC-157 · Reparación</div>
+      <div class="p-body">Aceleración de recuperación muscular y reducción de inflamación.</div>
+      <div class="p-arrow">→</div>
+    </a>
+    <a href="#" class="p-card">
+      <span class="p-index">04 / 07</span>
+      <div class="p-name">ImmuneFort</div>
+      <div class="p-tag">Thymosin · Inmunidad</div>
+      <div class="p-body">Modulación del sistema inmune con péptidos tímicos bioactivos.</div>
+      <div class="p-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<div class="footer-strip">
+  <div class="footer-logo">BIOGRADIX<span class="footer-acid">.</span></div>
+  <div class="footer-note">© 2025 — CONCEPTO 1: Swiss Medical Brutalism</div>
+</div>
+</body>
+</html>

@@ -29,7 +29,7 @@ create table if not exists public.biogradix_products (
   created_at          timestamptz not null default now()
 );
 
-comment on table public.biogradix_products is 'Biogradix D2C catalog. One unit = one pack of 20 patches. price 340.00 USD seeded below is PLACEHOLDER-CONFIRMED launch pricing; currency drives checkout currency and payment methods.';
+comment on table public.biogradix_products is 'Biogradix D2C catalog. One unit = one pack of 20 patches. price 299.00 USD seeded below is PLACEHOLDER-CONFIRMED launch pricing; currency drives checkout currency and payment methods.';
 
 -- ── 2. ORDERS ───────────────────────────────────────────────────────────────
 -- Money columns are currency-neutral; the currency column (copied from the
@@ -85,15 +85,15 @@ alter table public.biogradix_orders              enable row level security;
 alter table public.biogradix_inventory_movements enable row level security;
 
 -- ── 5. SEED PRODUCTS ────────────────────────────────────────────────────────
--- Real inventory: 5 peptide SKUs, 120 packs each, 340.00 USD per pack
+-- Real inventory: 5 peptide SKUs, 120 packs each, 299.00 USD per pack
 -- (PLACEHOLDER until final pricing is signed off - update with:
 --   update public.biogradix_products set price = <real price> where sku = '<sku>';)
 -- product_url is the page that sells the sku. mots-c and tb-500 page mapping
 -- is pending owner confirmation, so their product_url stays null for now.
 insert into public.biogradix_products (sku, name, peptide, unit_label, price, currency, stock, active, product_url) values
-  ('bpc-157',  'BPC-157', 'BPC-157', 'Pack de 20 parches', 340.00, 'USD', 120, true, '/producto/recoverypro'),
-  ('mots-c',   'MOTS-C',  'MOTS-C',  'Pack de 20 parches', 340.00, 'USD', 120, true, null),
-  ('tb-500',   'TB-500',  'TB-500',  'Pack de 20 parches', 340.00, 'USD', 120, true, null),
-  ('ghk-cu',   'GHK-Cu',  'GHK-Cu',  'Pack de 20 parches', 340.00, 'USD', 120, true, '/producto/radiancemax'),
-  ('nad-plus', 'NAD+',    'NAD+',    'Pack de 20 parches', 340.00, 'USD', 120, true, '/producto/vitacharge')
+  ('bpc-157',  'BPC-157', 'BPC-157', 'Pack de 20 parches', 299.00, 'USD', 120, true, '/producto/recoverypro'),
+  ('mots-c',   'MOTS-C',  'MOTS-C',  'Pack de 20 parches', 299.00, 'USD', 120, true, null),
+  ('tb-500',   'TB-500',  'TB-500',  'Pack de 20 parches', 299.00, 'USD', 120, true, null),
+  ('ghk-cu',   'GHK-Cu',  'GHK-Cu',  'Pack de 20 parches', 299.00, 'USD', 120, true, '/producto/radiancemax'),
+  ('nad-plus', 'NAD+',    'NAD+',    'Pack de 20 parches', 299.00, 'USD', 120, true, '/producto/vitacharge')
 on conflict (sku) do nothing;

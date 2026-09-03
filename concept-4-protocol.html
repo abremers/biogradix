@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Biogradix — Concept 4: Protocol Interface</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0D1117;
+  --surface:#161B22;
+  --surface-2:#21262D;
+  --border:rgba(48,54,61,1);
+  --border-hover:rgba(139,148,158,.4);
+  --indigo:#6E76FF;
+  --indigo-dim:rgba(110,118,255,.12);
+  --indigo-glow:rgba(110,118,255,.3);
+  --green:#39D353;
+  --green-dim:rgba(57,211,83,.1);
+  --silver:#C9D1D9;
+  --muted:#8B949E;
+  --faint:#30363D;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);color:var(--silver);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* SCAN LINES */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 2px,rgba(255,255,255,.008) 2px,rgba(255,255,255,.008) 4px
+  );
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(13,17,23,.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;height:52px;
+  padding:0 24px;gap:24px;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;
+  color:var(--silver);text-decoration:none;margin-right:8px;
+}
+.nav-logo-icon{
+  width:24px;height:24px;border:1px solid var(--indigo);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+}
+.nav-logo-icon svg{width:12px;height:12px;}
+.nav-slash{color:var(--faint);font-family:'JetBrains Mono',monospace;}
+.nav-section{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;}
+.nav-links a{
+  font-size:12px;font-weight:500;
+  color:var(--muted);text-decoration:none;
+  padding:6px 12px;border-radius:6px;
+  transition:all .15s;
+}
+.nav-links a:hover{background:var(--surface);color:var(--silver);}
+.nav-divider{width:1px;height:20px;background:var(--border);margin:0 8px;}
+.nav-btn{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+  padding:7px 16px;border-radius:6px;
+  background:var(--indigo);color:#fff;
+  border:none;cursor:pointer;text-decoration:none;
+  transition:all .15s;
+  display:flex;align-items:center;gap:6px;
+}
+.nav-btn:hover{filter:brightness(1.15);}
+
+/* LAYOUT */
+.layout{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  margin-top:52px;
+  min-height:calc(100vh - 52px);
+  position:relative;z-index:1;
+}
+
+/* SIDEBAR */
+.sidebar{
+  border-right:1px solid var(--border);
+  background:var(--surface);
+  padding:20px 0;
+  position:sticky;top:52px;height:calc(100vh - 52px);
+  overflow-y:auto;
+}
+.sidebar-section{padding:0 12px 20px;margin-bottom:4px;}
+.sidebar-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;color:var(--muted);
+  padding:0 8px;margin-bottom:6px;display:block;
+}
+.sidebar-item{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 10px;border-radius:6px;
+  font-size:13px;font-weight:400;color:var(--muted);
+  text-decoration:none;cursor:pointer;
+  transition:all .15s;
+  margin-bottom:2px;
+}
+.sidebar-item:hover{background:var(--surface-2);color:var(--silver);}
+.sidebar-item.active{background:var(--indigo-dim);color:var(--indigo);font-weight:500;}
+.sidebar-item svg{width:14px;height:14px;flex-shrink:0;opacity:.6;}
+.sidebar-item.active svg{opacity:1;}
+.sidebar-badge{
+  margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;
+  background:var(--indigo-dim);color:var(--indigo);
+  padding:2px 7px;border-radius:10px;
+}
+.sidebar-divider{height:1px;background:var(--border);margin:8px 16px 16px;}
+
+/* MAIN */
+.main{overflow:auto;}
+
+/* HEADER PANEL */
+.main-header{
+  border-bottom:1px solid var(--border);
+  padding:24px 32px;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:24px;
+}
+.main-breadcrumb{
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);
+  margin-bottom:8px;display:flex;align-items:center;gap:6px;
+}
+.main-breadcrumb span{color:var(--faint);}
+.main-h1{font-size:22px;font-weight:600;color:var(--silver);letter-spacing:-.3px;}
+.main-sub{font-size:13px;color:var(--muted);margin-top:4px;}
+.main-header-actions{display:flex;gap:8px;flex-shrink:0;}
+.btn-sm{
+  font-size:12px;font-weight:500;
+  padding:7px 14px;border-radius:6px;border:1px solid var(--border);
+  background:var(--surface);color:var(--silver);
+  cursor:pointer;text-decoration:none;
+  transition:all .15s;display:flex;align-items:center;gap:6px;
+}
+.btn-sm:hover{background:var(--surface-2);border-color:var(--border-hover);}
+.btn-sm.primary{background:var(--indigo);color:#fff;border-color:var(--indigo);}
+.btn-sm.primary:hover{filter:brightness(1.1);}
+
+/* STATUS ROW */
+.status-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--border);
+}
+.status-tile{
+  padding:20px 24px;
+  border-right:1px solid var(--border);
+}
+.status-tile:last-child{border-right:none;}
+.tile-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.tile-val{font-size:24px;font-weight:600;color:var(--silver);letter-spacing:-.5px;font-family:'JetBrains Mono',monospace;}
+.tile-val.green{color:var(--green);}
+.tile-val.indigo{color:var(--indigo);}
+.tile-delta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);margin-top:4px;display:flex;align-items:center;gap:4px;}
+.dot-green{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 8px var(--green);}
+.dot-indigo{width:6px;height:6px;border-radius:50%;background:var(--indigo);display:inline-block;}
+
+/* GRID PANELS */
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border);}
+.panel{border-right:1px solid var(--border);padding:24px;}
+.panel:last-child{border-right:none;}
+.panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;
+}
+.panel-title{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.panel-link{font-size:11px;color:var(--indigo);text-decoration:none;}
+.panel-link:hover{text-decoration:underline;}
+
+/* PROTOCOL CARD */
+.protocol-card{
+  background:var(--surface-2);border:1px solid var(--border);border-radius:8px;
+  padding:16px;margin-bottom:8px;cursor:pointer;
+  transition:border-color .15s;
+  text-decoration:none;color:var(--silver);display:block;
+}
+.protocol-card:hover{border-color:var(--indigo);}
+.protocol-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.pc-name{font-size:14px;font-weight:600;color:var(--silver);}
+.pc-badge{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;
+  padding:3px 8px;border-radius:4px;
+  background:var(--green-dim);color:var(--green);
+}
+.pc-badge.indigo{background:var(--indigo-dim);color:var(--indigo);}
+.pc-peptide{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:8px;}
+.pc-bar-wrap{background:var(--faint);border-radius:2px;height:4px;overflow:hidden;}
+.pc-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--indigo),var(--green));}
+.pc-meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--muted);}
+
+/* LOG */
+.log-entry{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:10px 0;border-bottom:1px solid rgba(48,54,61,.5);
+  font-size:13px;
+}
+.log-entry:last-child{border-bottom:none;}
+.log-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);flex-shrink:0;width:60px;padding-top:1px;}
+.log-icon{flex-shrink:0;margin-top:1px;}
+.log-text{color:var(--silver);}
+.log-text .mono{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--surface-2);padding:1px 6px;border-radius:4px;color:var(--indigo);}
+
+/* CHART */
+.chart{padding:8px 0;position:relative;height:80px;}
+.chart-bars{display:flex;align-items:flex-end;gap:3px;height:100%;}
+.cbar{
+  flex:1;border-radius:2px 2px 0 0;
+  background:var(--indigo-dim);border:1px solid rgba(110,118,255,.2);
+  transition:all .2s;cursor:pointer;
+}
+.cbar:hover{background:var(--indigo);border-color:var(--indigo);}
+.cbar.active{background:var(--indigo);border-color:var(--indigo);}
+
+/* FULL PANEL */
+.panel-full{
+  border-top:1px solid var(--border);
+  padding:24px 32px;
+}
+.products-table{width:100%;border-collapse:collapse;}
+.products-table th{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);
+  padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);
+}
+.products-table td{
+  padding:12px;font-size:13px;border-bottom:1px solid rgba(48,54,61,.4);
+}
+.products-table tr:last-child td{border-bottom:none;}
+.products-table tr:hover td{background:rgba(255,255,255,.02);}
+.td-name{font-weight:500;color:var(--silver);}
+.td-peptide{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+.td-status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:4px;display:inline-block;}
+.td-status.active{background:var(--green-dim);color:var(--green);}
+.td-absorb{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green);}
+.td-action{font-size:12px;color:var(--indigo);cursor:pointer;}
+.td-action:hover{text-decoration:underline;}
+
+/* FOOTER */
+.main-footer{
+  border-top:1px solid var(--border);
+  padding:16px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-text{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);}
+.footer-text span{color:var(--indigo);}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 12 12" fill="none" stroke="#6E76FF" stroke-width="1.5">
+        <circle cx="6" cy="6" r="4"/>
+        <circle cx="6" cy="6" r="1.5" fill="#6E76FF" stroke="none"/>
+      </svg>
+    </div>
+    BIOGRADIX
+  </a>
+  <span class="nav-slash">/</span>
+  <span class="nav-section">Dashboard</span>
+  <div class="nav-links">
+    <a href="#">Formulaciones</a>
+    <a href="#">Tecnología</a>
+    <a href="#">Protocolos</a>
+    <a href="#">Docs</a>
+  </div>
+  <div class="nav-divider"></div>
+  <a href="#" class="nav-btn">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+    </svg>
+    Iniciar Quiz
+  </a>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Principal</span>
+      <a class="sidebar-item active" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Overview
+        <span class="sidebar-badge">7</span>
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+        Formulaciones
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Protocolos
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Tecnología
+      </a>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Catálogo</span>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#39D353" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        CellDew · GHK-Cu
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6E76FF" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        VitaCharge · NAD+
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6E76FF" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        RecoveryPro · BPC-157
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6E76FF" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        ImmuneFort · Thymosin
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6E76FF" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        RadianceMax · GSH
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6E76FF" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        PassionBoost · PT-141
+      </a>
+      <a class="sidebar-item" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6E76FF" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg>
+        MuscleMaxx · IGF-1
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="main-header">
+      <div>
+        <div class="main-breadcrumb">biogradix <span>/</span> formulaciones <span>/</span> overview</div>
+        <h1 class="main-h1">Formulaciones Activas</h1>
+        <p class="main-sub">Péptidos bioactivos con absorción sublingual de precisión — 7 protocolos disponibles</p>
+      </div>
+      <div class="main-header-actions">
+        <a href="#" class="btn-sm">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Buscar
+        </a>
+        <a href="#" class="btn-sm primary">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          Iniciar diagnóstico
+        </a>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <div class="status-tile">
+        <div class="tile-label"><span class="dot-green"></span> Biodisponibilidad</div>
+        <div class="tile-val green">98.4%</div>
+        <div class="tile-delta">↑ 7× vs cápsula oral</div>
+      </div>
+      <div class="status-tile">
+        <div class="tile-label"><span class="dot-indigo"></span> Formulaciones</div>
+        <div class="tile-val indigo">7</div>
+        <div class="tile-delta" style="color:var(--muted);">Protocolos activos</div>
+      </div>
+      <div class="status-tile">
+        <div class="tile-label">Tiempo de acción</div>
+        <div class="tile-val">&lt;15<span style="font-size:14px;">min</span></div>
+        <div class="tile-delta" style="color:var(--muted);">Absorción sublingual</div>
+      </div>
+      <div class="status-tile">
+        <div class="tile-label">Comparativa oral</div>
+        <div class="tile-val">12%</div>
+        <div class="tile-delta" style="color:#F85149;">↓ Cápsula convencional</div>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Protocolos recomendados</span>
+          <a href="#" class="panel-link">Ver todos →</a>
+        </div>
+        <a href="#" class="protocol-card">
+          <div class="protocol-card-top">
+            <span class="pc-name">CellDew — Anti-edad</span>
+            <span class="pc-badge">98% match</span>
+          </div>
+          <div class="pc-peptide">GHK-Cu · Absorción: 98.4%</div>
+          <div class="pc-bar-wrap"><div class="pc-bar" style="width:98%"></div></div>
+          <div class="pc-meta"><span>2 spray · AM sublingual</span><span>8 semanas</span></div>
+        </a>
+        <a href="#" class="protocol-card">
+          <div class="protocol-card-top">
+            <span class="pc-name">VitaCharge — Energía</span>
+            <span class="pc-badge indigo">85% match</span>
+          </div>
+          <div class="pc-peptide">NAD+ · Absorción: 97.1%</div>
+          <div class="pc-bar-wrap"><div class="pc-bar" style="width:85%"></div></div>
+          <div class="pc-meta"><span>1 spray · AM en ayunas</span><span>6 semanas</span></div>
+        </a>
+        <a href="#" class="protocol-card">
+          <div class="protocol-card-top">
+            <span class="pc-name">RecoveryPro — Reparación</span>
+            <span class="pc-badge indigo">72% match</span>
+          </div>
+          <div class="pc-peptide">BPC-157 · Absorción: 96.8%</div>
+          <div class="pc-bar-wrap"><div class="pc-bar" style="width:72%"></div></div>
+          <div class="pc-meta"><span>2 spray · PM post-entreno</span><span>6 semanas</span></div>
+        </a>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Actividad de absorción</span>
+          <a href="#" class="panel-link">Metodología →</a>
+        </div>
+        <div class="chart">
+          <div class="chart-bars">
+            <div class="cbar" style="height:15%"></div>
+            <div class="cbar" style="height:20%"></div>
+            <div class="cbar" style="height:18%"></div>
+            <div class="cbar" style="height:25%"></div>
+            <div class="cbar" style="height:35%"></div>
+            <div class="cbar" style="height:60%"></div>
+            <div class="cbar" style="height:75%"></div>
+            <div class="cbar active" style="height:98%"></div>
+            <div class="cbar" style="height:95%"></div>
+            <div class="cbar" style="height:97%"></div>
+            <div class="cbar" style="height:98%"></div>
+            <div class="cbar" style="height:96%"></div>
+          </div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:12px;display:flex;justify-content:space-between;">
+          <span>T+0min</span><span>T+5min</span><span>T+10min</span><span>T+15min</span>
+        </div>
+
+        <div style="margin-top:20px;border-top:1px solid var(--border);padding-top:16px;">
+          <div class="panel-header" style="margin-bottom:10px;">
+            <span class="panel-title">Sistema log</span>
+          </div>
+          <div class="log-entry">
+            <span class="log-time">09:00</span>
+            <div class="log-icon"><span class="dot-green"></span></div>
+            <span class="log-text">Protocolo <span class="mono">CellDew</span> — dosis AM completada</span>
+          </div>
+          <div class="log-entry">
+            <span class="log-time">09:00</span>
+            <div class="log-icon"><span class="dot-green"></span></div>
+            <span class="log-text">Absorción confirmada <span class="mono">98.4%</span> biodisponibilidad</span>
+          </div>
+          <div class="log-entry">
+            <span class="log-time">09:15</span>
+            <div class="log-icon"><span class="dot-indigo"></span></div>
+            <span class="log-text">Acción sistémica de <span class="mono">GHK-Cu</span> iniciada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-full">
+      <div class="panel-header" style="margin-bottom:16px;">
+        <span class="panel-title">Catálogo de formulaciones</span>
+        <a href="#" class="panel-link">Ver detalles →</a>
+      </div>
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Péptido activo</th>
+            <th>Objetivo</th>
+            <th>Absorción</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-name">CellDew</td>
+            <td class="td-peptide">GHK-Cu</td>
+            <td style="font-size:13px;color:var(--muted);">Anti-envejecimiento · Colágeno</td>
+            <td class="td-absorb">98.4%</td>
+            <td><span class="td-status active">● Disponible</span></td>
+            <td class="td-action">Ver protocolo →</td>
+          </tr>
+          <tr>
+            <td class="td-name">VitaCharge</td>
+            <td class="td-peptide">NAD+</td>
+            <td style="font-size:13px;color:var(--muted);">Energía · Función mitocondrial</td>
+            <td class="td-absorb">97.1%</td>
+            <td><span class="td-status active">● Disponible</span></td>
+            <td class="td-action">Ver protocolo →</td>
+          </tr>
+          <tr>
+            <td class="td-name">RecoveryPro</td>
+            <td class="td-peptide">BPC-157</td>
+            <td style="font-size:13px;color:var(--muted);">Recuperación · Reparación tisular</td>
+            <td class="td-absorb">96.8%</td>
+            <td><span class="td-status active">● Disponible</span></td>
+            <td class="td-action">Ver protocolo →</td>
+          </tr>
+          <tr>
+            <td class="td-name">ImmuneFort</td>
+            <td class="td-peptide">Thymosin β4</td>
+            <td style="font-size:13px;color:var(--muted);">Inmunidad · Modulación</td>
+            <td class="td-absorb">97.5%</td>
+            <td><span class="td-status active">● Disponible</span></td>
+            <td class="td-action">Ver protocolo →</td>
+          </tr>
+          <tr>
+            <td class="td-name">RadianceMax</td>
+            <td class="td-peptide">Glutatión</td>
+            <td style="font-size:13px;color:var(--muted);">Luminosidad · Antioxidante</td>
+            <td class="td-absorb">98.1%</td>
+            <td><span class="td-status active">● Disponible</span></td>
+            <td class="td-action">Ver protocolo →</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="main-footer">
+      <div class="footer-text">BIOGRADIX · <span>Formulaciones de Precisión</span> · Sistema v2.0</div>
+      <div class="footer-text">Concepto 4: Protocol Interface — © 2025</div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

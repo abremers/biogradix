@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Biogradix</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bone:     #F5F1EB;
+  --stone:    #EDE8E0;
+  --ink:      #18140F;
+  --ink-soft: #4A443C;
+  --ink-faint:#9A9189;
+  --forest:   #2E4A3A;
+  --rule:     rgba(24,20,15,.1);
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'Inter', sans-serif;
+  background: var(--bone);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display: flex; align-items:center; justify-content:space-between;
+  padding: 0 48px; height: 64px;
+  background: rgba(245,241,235,.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.nav-logo {
+  font-family:'Cormorant Display', serif;
+  font-size: 17px; font-weight:400; letter-spacing:.5px;
+  color: var(--ink); text-decoration:none;
+}
+.nav-logo em { font-style:italic; color: var(--forest); }
+.nav-center {
+  display:flex; gap:40px;
+  position:absolute; left:50%; transform:translateX(-50%);
+}
+.nav-center a {
+  font-size:11px; font-weight:400; letter-spacing:2px;
+  text-transform:uppercase; color:var(--ink-faint);
+  text-decoration:none; transition:color .2s;
+}
+.nav-center a:hover { color:var(--ink); }
+.nav-right {
+  display:flex; align-items:center; gap:24px;
+}
+.nav-right a {
+  font-size:11px; font-weight:400; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--ink-soft);
+  text-decoration:none; transition:color .2s;
+}
+.nav-right a:hover { color:var(--ink); }
+.nav-cta {
+  font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--bone) !important;
+  background:var(--ink); padding:10px 22px; border-radius:2px;
+  transition:background .2s !important;
+}
+.nav-cta:hover { background:var(--forest) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 64px;
+}
+.hero-left {
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding: 80px 64px 80px 80px;
+  border-right: 1px solid var(--rule);
+}
+.hero-overline {
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:48px;
+}
+.hero-h1 {
+  font-family:'Cormorant Display', serif;
+  font-size: clamp(52px, 5.5vw, 84px);
+  font-weight:300; line-height:1.05;
+  letter-spacing:-.5px;
+  color:var(--ink);
+  margin-bottom: 40px;
+}
+.hero-h1 em {
+  font-style:italic;
+  color:var(--forest);
+}
+.hero-p {
+  font-size:14px; font-weight:300; line-height:1.9;
+  color:var(--ink-soft); max-width:360px;
+  margin-bottom:52px;
+}
+.hero-actions {
+  display:flex; align-items:center; gap:32px;
+}
+.btn-text {
+  font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--ink); text-decoration:none;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:2px;
+  transition:color .2s, border-color .2s;
+}
+.btn-text:hover { color:var(--forest); border-color:var(--forest); }
+.btn-ghost-sm {
+  font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--ink-faint); text-decoration:none;
+  transition:color .2s;
+}
+.btn-ghost-sm:hover { color:var(--ink); }
+
+/* HERO RIGHT — product object stage */
+.hero-right {
+  background: var(--stone);
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  position:relative; overflow:hidden;
+  min-height: calc(100vh - 64px);
+}
+.hero-product-stage {
+  position:relative;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  width:100%; height:100%;
+  padding:80px 48px;
+}
+/* Simulated product object (placeholder for real photography) */
+.product-object {
+  position:relative;
+  width:110px;
+  margin-bottom:56px;
+}
+.product-bottle {
+  width:110px; height:260px;
+  background: linear-gradient(160deg, #E8E2D8 0%, #D4CCBE 40%, #C8BFB0 100%);
+  border-radius:6px 6px 12px 12px;
+  position:relative;
+  box-shadow:
+    inset 1px 0 0 rgba(255,255,255,.5),
+    inset -1px 0 0 rgba(0,0,0,.06),
+    0 40px 80px rgba(24,20,15,.15),
+    0 8px 24px rgba(24,20,15,.08);
+}
+.product-bottle::before {
+  content:'';
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:44px; height:28px;
+  background:linear-gradient(180deg, #D0C9BC 0%, #C2BAA8 100%);
+  border-radius:3px 3px 0 0;
+  box-shadow:0 -4px 12px rgba(24,20,15,.06);
+}
+.product-bottle::after {
+  content:'BIOGRADIX';
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Inter',sans-serif;
+  font-size:7px; font-weight:500; letter-spacing:3px;
+  color:rgba(24,20,15,.35);
+  writing-mode:vertical-rl; text-orientation:mixed;
+}
+.product-label {
+  position:absolute;
+  top:40%; left:0; right:0;
+  height:80px;
+  background:rgba(245,241,235,.6);
+  border-top:1px solid rgba(24,20,15,.08);
+  border-bottom:1px solid rgba(24,20,15,.08);
+}
+.product-shadow {
+  width:80px; height:12px;
+  background:radial-gradient(ellipse, rgba(24,20,15,.15) 0%, transparent 70%);
+  margin:0 auto;
+  margin-top:4px;
+}
+.product-name-tag {
+  font-family:'Cormorant Display', serif;
+  font-size:22px; font-weight:300; font-style:italic;
+  color:var(--ink-soft); text-align:center;
+  margin-bottom:8px;
+}
+.product-peptide-tag {
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--ink-faint); text-align:center;
+}
+.hero-product-nav {
+  position:absolute; bottom:40px; left:0; right:0;
+  display:flex; justify-content:center; gap:6px;
+}
+.pnav-dot {
+  width:5px; height:5px; border-radius:50%;
+  background:var(--ink-faint); cursor:pointer;
+  transition:background .2s;
+}
+.pnav-dot.active { background:var(--ink); }
+
+/* ── STAT INTERLUDE ── */
+.stat-interlude {
+  padding:140px 80px;
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:80px;
+  border-bottom:1px solid var(--rule);
+}
+.stat-main {
+  flex-shrink:0;
+}
+.stat-number {
+  font-family:'Cormorant Display', serif;
+  font-size:clamp(120px, 15vw, 200px);
+  font-weight:300; line-height:.85;
+  color:var(--ink); letter-spacing:-4px;
+}
+.stat-number sup {
+  font-size:.3em; vertical-align:top; margin-top:.3em;
+  letter-spacing:0; color:var(--forest);
+}
+.stat-label {
+  font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--ink-faint); margin-top:20px;
+  max-width:200px; line-height:1.7;
+}
+.stat-context {
+  max-width:400px; padding-top:24px;
+}
+.stat-context-head {
+  font-family:'Cormorant Display', serif;
+  font-size:26px; font-weight:300; line-height:1.3;
+  color:var(--ink); margin-bottom:20px;
+}
+.stat-context-head em { font-style:italic; color:var(--forest); }
+.stat-context-body {
+  font-size:14px; font-weight:300; line-height:1.9;
+  color:var(--ink-soft);
+}
+
+/* ── PRODUCTS ── */
+.products {
+  border-bottom:1px solid var(--rule);
+}
+.products-header {
+  padding:72px 80px 48px;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  border-bottom:1px solid var(--rule);
+}
+.section-label {
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:16px;
+}
+.section-h {
+  font-family:'Cormorant Display', serif;
+  font-size:36px; font-weight:300;
+  color:var(--ink); line-height:1.1;
+}
+.section-h em { font-style:italic; }
+
+.products-row {
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.product-cell {
+  padding:48px 36px;
+  border-right:1px solid var(--rule);
+  display:flex; flex-direction:column;
+  text-decoration:none; color:var(--ink);
+  cursor:pointer;
+  transition:background .3s;
+  position:relative;
+}
+.product-cell:last-child { border-right:none; }
+.product-cell:hover { background:var(--stone); }
+
+/* mini product visual */
+.cell-bottle {
+  width:48px; height:110px;
+  background:linear-gradient(160deg, #E8E2D8 0%, #D0C8B8 100%);
+  border-radius:3px 3px 6px 6px;
+  margin-bottom:32px;
+  position:relative;
+  box-shadow:0 12px 32px rgba(24,20,15,.1),0 4px 8px rgba(24,20,15,.06);
+  flex-shrink:0;
+}
+.cell-bottle::before {
+  content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:20px; height:12px;
+  background:linear-gradient(180deg, #D8D0C0, #CAC0AE);
+  border-radius:2px 2px 0 0;
+}
+.cell-num {
+  font-size:9px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:12px;
+}
+.cell-name {
+  font-family:'Cormorant Display', serif;
+  font-size:22px; font-weight:400;
+  margin-bottom:4px;
+}
+.cell-peptide {
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--forest); margin-bottom:16px;
+}
+.cell-desc {
+  font-size:13px; font-weight:300; line-height:1.7;
+  color:var(--ink-soft); flex:1;
+  margin-bottom:28px;
+}
+.cell-cta {
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--ink-faint);
+  display:flex; align-items:center; gap:8px;
+  transition:color .2s, gap .3s;
+}
+.product-cell:hover .cell-cta { color:var(--ink); gap:14px; }
+
+/* ── PHILOSOPHY ── */
+.philosophy {
+  padding:140px 80px;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:120px; align-items:center;
+  border-bottom:1px solid var(--rule);
+}
+.phil-quote {
+  font-family:'Cormorant', serif;
+  font-size:clamp(28px, 3.5vw, 46px);
+  font-weight:300; font-style:italic;
+  line-height:1.4; color:var(--ink);
+}
+.phil-quote em { color:var(--forest); font-style:normal; }
+.phil-right { }
+.phil-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--ink-faint); margin-bottom:24px; }
+.phil-body { font-size:14px; font-weight:300; line-height:1.9; color:var(--ink-soft); margin-bottom:32px; }
+.phil-facts { display:flex; flex-direction:column; gap:16px; border-top:1px solid var(--rule); padding-top:32px; }
+.phil-fact { display:flex; align-items:baseline; gap:16px; }
+.fact-num {
+  font-family:'Cormorant Display', serif;
+  font-size:32px; font-weight:300;
+  color:var(--ink); letter-spacing:-.5px; flex-shrink:0; width:72px;
+}
+.fact-text { font-size:13px; font-weight:300; line-height:1.6; color:var(--ink-soft); }
+
+/* ── QUIZ CTA ── */
+.quiz-section {
+  padding:140px 80px;
+  display:flex; flex-direction:column;
+  align-items:center; text-align:center;
+}
+.quiz-overline {
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--ink-faint); margin-bottom:40px;
+}
+.quiz-h {
+  font-family:'Cormorant Display', serif;
+  font-size:clamp(48px,6vw,80px); font-weight:300;
+  line-height:1.05; color:var(--ink);
+  max-width:700px; margin-bottom:24px;
+}
+.quiz-h em { font-style:italic; color:var(--forest); }
+.quiz-sub {
+  font-size:15px; font-weight:300; line-height:1.8;
+  color:var(--ink-soft); max-width:440px; margin-bottom:56px;
+}
+.btn-primary-quiet {
+  display:inline-flex; align-items:center; gap:12px;
+  font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  background:var(--ink); color:var(--bone);
+  padding:16px 36px; border-radius:2px;
+  text-decoration:none; transition:background .2s;
+}
+.btn-primary-quiet:hover { background:var(--forest); }
+
+/* ── TICKER ── */
+.ticker {
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:14px 0; overflow:hidden;
+  background:var(--stone);
+}
+.ticker-track {
+  display:flex; gap:0;
+  animation:ticker 25s linear infinite;
+  white-space:nowrap;
+}
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.ticker-item {
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--ink-faint);
+  padding:0 32px;
+  display:inline-flex; align-items:center; gap:32px;
+}
+.ticker-item::after { content:'·'; }
+
+/* ── FOOTER ── */
+footer {
+  padding:48px 80px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-top:1px solid var(--rule);
+}
+.footer-brand {
+  font-family:'Cormorant Display', serif;
+  font-size:16px; font-weight:400; color:var(--ink);
+}
+.footer-brand em { font-style:italic; color:var(--forest); }
+.footer-links {
+  display:flex; gap:32px;
+}
+.footer-links a {
+  font-size:10px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--ink-faint); text-decoration:none; transition:color .2s;
+}
+.footer-links a:hover { color:var(--ink); }
+.footer-note {
+  font-size:11px; color:var(--ink-faint);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">bio<em>gradix</em></a>
+  <div class="nav-center">
+    <a href="#">Productos</a>
+    <a href="#">Tecnología</a>
+    <a href="#">Educación</a>
+    <a href="#">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a href="#">ES / EN</a>
+    <a href="quiz.html" class="nav-cta">Iniciar quiz</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-overline">Péptidos bioactivos — absorción mucosa</div>
+    <h1 class="hero-h1">
+      Lo que el cuerpo<br/>
+      siempre supo<br/>
+      <em>absorber.</em>
+    </h1>
+    <p class="hero-p">
+      No suplementos. Péptidos. La diferencia está en lo que llega — no en lo que promete la etiqueta.
+    </p>
+    <div class="hero-actions">
+      <a href="quiz.html" class="btn-text">Descubrir mi protocolo</a>
+      <a href="#productos" class="btn-ghost-sm">Ver formulaciones →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-product-stage">
+      <div class="product-object">
+        <div class="product-bottle">
+          <div class="product-label"></div>
+        </div>
+        <div class="product-shadow"></div>
+      </div>
+      <div class="product-name-tag">CellDew</div>
+      <div class="product-peptide-tag">GHK-Cu · Regeneración celular</div>
+    </div>
+    <div class="hero-product-nav">
+      <div class="pnav-dot active"></div>
+      <div class="pnav-dot"></div>
+      <div class="pnav-dot"></div>
+      <div class="pnav-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">GHK-Cu</span>
+    <span class="ticker-item">NAD+</span>
+    <span class="ticker-item">BPC-157</span>
+    <span class="ticker-item">Thymosin β4</span>
+    <span class="ticker-item">PT-141</span>
+    <span class="ticker-item">Glutatión</span>
+    <span class="ticker-item">IGF-1 LR3</span>
+    <span class="ticker-item">GHK-Cu</span>
+    <span class="ticker-item">NAD+</span>
+    <span class="ticker-item">BPC-157</span>
+    <span class="ticker-item">Thymosin β4</span>
+    <span class="ticker-item">PT-141</span>
+    <span class="ticker-item">Glutatión</span>
+    <span class="ticker-item">IGF-1 LR3</span>
+  </div>
+</div>
+
+<!-- STAT INTERLUDE -->
+<section class="stat-interlude">
+  <div class="stat-main">
+    <div class="stat-number">98<sup>%</sup></div>
+    <div class="stat-label">Biodisponibilidad sublingual medida</div>
+  </div>
+  <div class="stat-context">
+    <h2 class="stat-context-head">
+      La cápsula oral absorbe<br/><em>doce por ciento.</em><br/>El resto se pierde.
+    </h2>
+    <p class="stat-context-body">
+      La ruta sublingual entrega el compuesto directamente al torrente sanguíneo en menos de 15 minutos. Sin degradación gástrica. Sin pérdida por metabolismo de primer paso. Solo el péptido, donde debe estar.
+    </p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="productos">
+  <div class="products-header">
+    <div>
+      <div class="section-label">Formulaciones</div>
+      <h2 class="section-h">Siete protocolos.<br/><em>Un estándar.</em></h2>
+    </div>
+    <a href="#" class="btn-ghost-sm">Ver todos →</a>
+  </div>
+  <div class="products-row">
+    <a href="producto-celldew.html" class="product-cell">
+      <div class="cell-bottle"></div>
+      <div class="cell-num">01</div>
+      <div class="cell-name">CellDew</div>
+      <div class="cell-peptide">GHK-Cu</div>
+      <div class="cell-desc">Regeneración celular profunda. Activa la síntesis de colágeno y la reparación del ADN.</div>
+      <div class="cell-cta">Explorar <span>→</span></div>
+    </a>
+    <a href="producto-vitacharge.html" class="product-cell">
+      <div class="cell-bottle"></div>
+      <div class="cell-num">02</div>
+      <div class="cell-name">VitaCharge</div>
+      <div class="cell-peptide">NAD+</div>
+      <div class="cell-desc">Restauración mitocondrial. Energía sostenida sin picos, sin caídas.</div>
+      <div class="cell-cta">Explorar <span>→</span></div>
+    </a>
+    <a href="producto-recoverypro.html" class="product-cell">
+      <div class="cell-bottle"></div>
+      <div class="cell-num">03</div>
+      <div class="cell-name">RecoveryPro</div>
+      <div class="cell-peptide">BPC-157</div>
+      <div class="cell-desc">Reparación acelerada. Menos inflamación. Más tiempo para lo que importa.</div>
+      <div class="cell-cta">Explorar <span>→</span></div>
+    </a>
+    <a href="producto-immunefort.html" class="product-cell">
+      <div class="cell-bottle"></div>
+      <div class="cell-num">04</div>
+      <div class="cell-name">ImmuneFort</div>
+      <div class="cell-peptide">Thymosin β4</div>
+      <div class="cell-desc">Modulación inmune de precisión. El sistema de defensa, calibrado.</div>
+      <div class="cell-cta">Explorar <span>→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="phil-quote">
+    "Un péptido que no llega no sirve. Nosotros garantizamos <em>la llegada.</em>"
+  </div>
+  <div class="phil-right">
+    <div class="phil-label">Por qué importa la ruta</div>
+    <p class="phil-body">
+      El mercado de suplementos opera sobre una premisa rota: que ingerir un compuesto equivale a absorberlo. La biología no funciona así. La eficacia comienza después de la barrera gastrointestinal.
+    </p>
+    <div class="phil-facts">
+      <div class="phil-fact">
+        <div class="fact-num">7×</div>
+        <div class="fact-text">Más biodisponibilidad que la vía oral con cápsula convencional.</div>
+      </div>
+      <div class="phil-fact">
+        <div class="fact-num">&lt;15m</div>
+        <div class="fact-text">Tiempo hasta entrada en el torrente sanguíneo vía mucosa sublingual.</div>
+      </div>
+      <div class="phil-fact">
+        <div class="fact-num">0</div>
+        <div class="fact-text">Degradación gástrica. El compuesto llega íntegro.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ CTA -->
+<section class="quiz-section" style="background:var(--stone); border-top:1px solid var(--rule);">
+  <div class="quiz-overline">Protocolo personalizado</div>
+  <h2 class="quiz-h">
+    Cinco preguntas.<br/>
+    <em>Un protocolo exacto.</em>
+  </h2>
+  <p class="quiz-sub">
+    Responde como lo haría un médico de precisión. Recibirás la formulación correcta, la dosis exacta y el timing ideal para tu perfil.
+  </p>
+  <a href="quiz.html" class="btn-primary-quiet">
+    Iniciar diagnóstico
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">bio<em>gradix</em></div>
+  <div class="footer-links">
+    <a href="#">Privacidad</a>
+    <a href="#">Términos</a>
+    <a href="#">Contacto</a>
+    <a href="#">WhatsApp</a>
+  </div>
+  <div class="footer-note">© 2025 Biogradix</div>
+</footer>
+
+</body>
+</html>

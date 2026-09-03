@@ -55,10 +55,10 @@ Optional:
 
 Everything lives in the `biogradix_products` table (Supabase). Seeded catalog:
 5 SKUs (`bpc-157`, `mots-c`, `tb-500`, `ghk-cu`, `nad-plus`), each one pack of
-20 patches, `340.00 USD`, stock `120`. To change price or restock:
+20 patches, `299.00 USD`, stock `120`. To change price or restock:
 
 ```sql
-update public.biogradix_products set price = 340.00 where sku = 'bpc-157';
+update public.biogradix_products set price = 299.00 where sku = 'bpc-157';
 update public.biogradix_products set stock = stock + 100 where sku = 'bpc-157';
 -- switch a product to MXN later (checkout follows the row, OXXO turns on):
 update public.biogradix_products set currency = 'MXN', price = 5800.00 where sku = 'bpc-157';

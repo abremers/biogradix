@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Biogradix — Concept 2: Bioluminescence Dark</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --void:#060C0F;
+  --deep:#0A1520;
+  --glow:#00FFB2;
+  --glow-dim:rgba(0,255,178,.12);
+  --glow-mid:rgba(0,255,178,.4);
+  --amber:#F5A623;
+  --amber-dim:rgba(245,166,35,.15);
+  --white:#F0FFF8;
+  --muted:rgba(240,255,248,.35);
+  --faint:rgba(240,255,248,.08);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--void);
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+/* NOISE TEXTURE */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* AMBIENT GLOW */
+.ambient{
+  position:fixed;pointer-events:none;border-radius:50%;filter:blur(120px);
+  animation:drift 8s ease-in-out infinite alternate;
+}
+.ambient-1{width:600px;height:600px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(0,255,178,.08) 0%,transparent 70%);}
+.ambient-2{width:400px;height:400px;bottom:-100px;left:-100px;background:radial-gradient(circle,rgba(245,166,35,.06) 0%,transparent 70%);animation-delay:-4s;}
+@keyframes drift{from{transform:translate(0,0);}to{transform:translate(30px,-20px);}}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;height:60px;
+  padding:0 48px;
+  background:linear-gradient(180deg,rgba(6,12,15,.95) 0%,rgba(6,12,15,.0) 100%);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'DM Mono',monospace;font-size:13px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--white);text-decoration:none;
+  margin-right:auto;
+}
+.logo-mark{
+  width:28px;height:28px;border-radius:6px;
+  border:1px solid var(--glow-mid);
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-mark-inner{width:10px;height:10px;border-radius:50%;background:var(--glow);box-shadow:0 0 12px var(--glow);}
+.nav-links{display:flex;align-items:center;gap:32px;margin-right:32px;}
+.nav-links a{
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:400;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--glow);}
+.nav-btn{
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:10px 20px;border-radius:6px;
+  border:1px solid var(--glow-mid);
+  color:var(--glow);background:var(--glow-dim);
+  cursor:pointer;text-decoration:none;
+  transition:all .2s;
+}
+.nav-btn:hover{background:rgba(0,255,178,.2);box-shadow:0 0 20px rgba(0,255,178,.15);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:100px 48px 80px;
+  position:relative;z-index:1;
+  max-width:1200px;margin:0 auto;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:12px;
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:400;
+  letter-spacing:3px;text-transform:uppercase;color:var(--glow);
+  margin-bottom:32px;
+}
+.eyebrow-pulse{width:6px;height:6px;border-radius:50%;background:var(--glow);box-shadow:0 0 12px var(--glow);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.7);}}
+
+.hero-h1{
+  font-size:clamp(56px,7vw,96px);
+  font-weight:800;line-height:1;
+  letter-spacing:-2px;
+  color:var(--white);
+  margin-bottom:8px;
+}
+.hero-h1 .line-2{
+  -webkit-text-stroke:1px rgba(0,255,178,.5);
+  color:transparent;
+}
+.hero-h1 .line-3{color:var(--glow);text-shadow:0 0 60px rgba(0,255,178,.4);}
+
+.hero-sub{
+  font-size:18px;font-weight:300;
+  color:var(--muted);line-height:1.7;
+  max-width:520px;margin:32px 0 48px;
+}
+.hero-sub strong{color:var(--white);font-weight:500;}
+
+.hero-actions{display:flex;align-items:center;gap:16px;margin-bottom:80px;flex-wrap:wrap;}
+.btn-glow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:14px 28px;border-radius:8px;
+  background:var(--glow);color:var(--void);
+  border:none;cursor:pointer;text-decoration:none;
+  transition:all .2s;
+  box-shadow:0 0 40px rgba(0,255,178,.25);
+}
+.btn-glow:hover{box-shadow:0 0 60px rgba(0,255,178,.4);transform:translateY(-1px);}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:400;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:13px 28px;border-radius:8px;
+  border:1px solid rgba(240,255,248,.15);
+  color:var(--muted);
+  cursor:pointer;text-decoration:none;
+  transition:all .2s;
+}
+.btn-ghost:hover{border-color:rgba(240,255,248,.3);color:var(--white);}
+
+/* STAT PILLS */
+.hero-stats{display:flex;gap:16px;flex-wrap:wrap;}
+.stat-pill{
+  display:flex;align-items:center;gap:12px;
+  background:var(--faint);
+  border:1px solid rgba(240,255,248,.08);
+  border-radius:40px;padding:10px 20px;
+  backdrop-filter:blur(8px);
+}
+.stat-pill-num{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--glow);}
+.stat-pill-label{font-size:11px;color:var(--muted);}
+
+/* DATA TICKER */
+.ticker{
+  position:relative;z-index:1;
+  border-top:1px solid var(--faint);
+  border-bottom:1px solid var(--faint);
+  padding:12px 0;margin:0;overflow:hidden;
+  background:rgba(0,255,178,.02);
+}
+.ticker-track{
+  display:flex;gap:64px;
+  animation:ticker 20s linear infinite;
+  white-space:nowrap;
+}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.ticker-item{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:rgba(0,255,178,.4);
+  display:flex;align-items:center;gap:16px;
+}
+.ticker-item::before{content:'●';font-size:6px;color:var(--glow);}
+
+/* PRODUCTS DARK */
+.products{
+  max-width:1200px;margin:0 auto;
+  padding:80px 48px;
+  position:relative;z-index:1;
+}
+.prod-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:40px;
+}
+.prod-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--glow);margin-bottom:12px;}
+.prod-h2{font-size:40px;font-weight:700;letter-spacing:-1px;line-height:1.1;}
+.prod-h2 em{font-style:normal;color:var(--glow);}
+
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.prod-card{
+  background:var(--faint);
+  border:1px solid rgba(240,255,248,.07);
+  border-radius:16px;padding:28px 24px;
+  cursor:pointer;text-decoration:none;color:var(--white);
+  display:block;
+  transition:all .25s;
+  position:relative;overflow:hidden;
+}
+.prod-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(0,255,178,.08) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.prod-card:hover{border-color:rgba(0,255,178,.25);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3),0 0 40px rgba(0,255,178,.06);}
+.prod-card:hover::before{opacity:1;}
+.prod-peptide{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--glow);margin-bottom:16px;opacity:.7;}
+.prod-name{font-size:22px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px;}
+.prod-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:24px;}
+.prod-arrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(0,255,178,.5);
+  transition:color .2s,gap .2s;
+}
+.prod-card:hover .prod-arrow{color:var(--glow);gap:12px;}
+
+/* GLOW BAR */
+.glow-bar{
+  position:relative;z-index:1;
+  background:linear-gradient(135deg,rgba(0,255,178,.08) 0%,rgba(245,166,35,.05) 100%);
+  border-top:1px solid rgba(0,255,178,.1);
+  border-bottom:1px solid rgba(0,255,178,.05);
+  padding:48px;
+}
+.glow-bar-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:40px;
+}
+.glow-bar-text{max-width:600px;}
+.glow-bar-h{font-size:28px;font-weight:600;letter-spacing:-.5px;margin-bottom:8px;}
+.glow-bar-h em{font-style:normal;color:var(--glow);}
+.glow-bar-sub{font-size:14px;color:var(--muted);}
+
+/* FOOTER */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--faint);
+  padding:24px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:100%;
+}
+.footer-brand{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.footer-brand span{color:var(--glow);}
+.footer-note{font-size:11px;color:rgba(240,255,248,.2);}
+</style>
+</head>
+<body>
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark"><div class="logo-mark-inner"></div></div>
+    BIOGRADIX
+  </a>
+  <div class="nav-links">
+    <a href="#">Productos</a>
+    <a href="#">Tecnología</a>
+    <a href="#">Educación</a>
+    <a href="#">Blog</a>
+  </div>
+  <a href="#" class="nav-btn">Iniciar Quiz →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="eyebrow-pulse"></span>
+    Biotecnología de péptidos — Absorción mucosa avanzada
+  </div>
+  <h1 class="hero-h1">
+    <div>BIOCIENCIA</div>
+    <div class="line-2">PROFUNDA,</div>
+    <div class="line-3">RESULTADOS REALES.</div>
+  </h1>
+  <p class="hero-sub">
+    No suplementos genéricos. Péptidos bioactivos con <strong>98% de absorción sublingual</strong> que trabajan donde los capsulas no llegan.
+  </p>
+  <div class="hero-actions">
+    <a href="#" class="btn-glow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      Encontrar mi protocolo
+    </a>
+    <a href="#" class="btn-ghost">Ver formulaciones →</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-pill">
+      <span class="stat-pill-num">98%</span>
+      <span class="stat-pill-label">Absorción mucosa</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-num">&lt;15min</span>
+      <span class="stat-pill-label">Tiempo de acción</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-num">7×</span>
+      <span class="stat-pill-label">vs cápsula oral</span>
+    </div>
+    <div class="stat-pill">
+      <span class="stat-pill-num">7+</span>
+      <span class="stat-pill-label">Formulaciones</span>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">GHK-Cu · Regeneración celular</span>
+    <span class="ticker-item">NAD+ · Función mitocondrial</span>
+    <span class="ticker-item">BPC-157 · Reparación tisular</span>
+    <span class="ticker-item">Thymosin β4 · Modulación inmune</span>
+    <span class="ticker-item">PT-141 · Vitalidad y libido</span>
+    <span class="ticker-item">Glutatión · Defensa oxidativa</span>
+    <span class="ticker-item">GHK-Cu · Regeneración celular</span>
+    <span class="ticker-item">NAD+ · Función mitocondrial</span>
+    <span class="ticker-item">BPC-157 · Reparación tisular</span>
+    <span class="ticker-item">Thymosin β4 · Modulación inmune</span>
+    <span class="ticker-item">PT-141 · Vitalidad y libido</span>
+    <span class="ticker-item">Glutatión · Defensa oxidativa</span>
+  </div>
+</div>
+
+<section class="products">
+  <div class="prod-header">
+    <div>
+      <div class="prod-eyebrow">Formulaciones activas</div>
+      <h2 class="prod-h2">Péptidos <em>específicos</em><br/>para cada objetivo.</h2>
+    </div>
+    <a href="#" class="btn-ghost">Ver todos →</a>
+  </div>
+  <div class="products-grid">
+    <a href="#" class="prod-card">
+      <div class="prod-peptide">GHK-Cu</div>
+      <div class="prod-name">CellDew</div>
+      <div class="prod-desc">Regeneración celular profunda y síntesis de colágeno. Anti-envejecimiento de precisión.</div>
+      <div class="prod-arrow">Explorar →</div>
+    </a>
+    <a href="#" class="prod-card">
+      <div class="prod-peptide">NAD+</div>
+      <div class="prod-name">VitaCharge</div>
+      <div class="prod-desc">Restauración mitocondrial. Energía sostenida sin picos ni caídas.</div>
+      <div class="prod-arrow">Explorar →</div>
+    </a>
+    <a href="#" class="prod-card">
+      <div class="prod-peptide">BPC-157</div>
+      <div class="prod-name">RecoveryPro</div>
+      <div class="prod-desc">Reparación acelerada. Menos inflamación. Más tiempo activo.</div>
+      <div class="prod-arrow">Explorar →</div>
+    </a>
+    <a href="#" class="prod-card">
+      <div class="prod-peptide">Thymosin β4</div>
+      <div class="prod-name">ImmuneFort</div>
+      <div class="prod-desc">Escudo inmune. Modulación adaptada a tu sistema de defensa.</div>
+      <div class="prod-arrow">Explorar →</div>
+    </a>
+  </div>
+</section>
+
+<div class="glow-bar">
+  <div class="glow-bar-inner">
+    <div class="glow-bar-text">
+      <h3 class="glow-bar-h">¿No sabes cuál <em>péptido es para ti?</em></h3>
+      <p class="glow-bar-sub">Responde 5 preguntas. Nuestro algoritmo analiza tu perfil y genera un protocolo personalizado con dosis, timing y cuidados.</p>
+    </div>
+    <a href="#" class="btn-glow">Iniciar diagnóstico →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">BIOGRADIX<span>.</span></div>
+  <div class="footer-note">Concepto 2: Bioluminescence Dark — © 2025</div>
+</footer>
+</body>
+</html>

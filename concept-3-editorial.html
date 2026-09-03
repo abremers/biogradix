@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Biogradix — Concept 3: Warm Editorial Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700;1,900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --parchment:#F4EFE4;
+  --paper:#FDFAF5;
+  --ink:#1A1209;
+  --forest:#1C4A3B;
+  --forest-light:#2A6B57;
+  --amber:#B87333;
+  --amber-warm:#C8862A;
+  --rust:#8B4513;
+  --muted:#6B5D4F;
+  --rule:rgba(26,18,9,.15);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Jost',sans-serif;
+  background:var(--paper);color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* RULED PAPER TEXTURE */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:repeating-linear-gradient(
+    transparent,transparent 31px,rgba(26,18,9,.035) 32px
+  );
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(253,250,245,.96);
+  border-bottom:1px solid var(--rule);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;height:60px;
+  padding:0 48px;
+  gap:40px;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;font-size:20px;font-weight:700;
+  color:var(--ink);text-decoration:none;
+  letter-spacing:.5px;
+  display:flex;align-items:baseline;gap:2px;
+}
+.nav-logo .accent{color:var(--forest);font-style:italic;}
+.nav-links{display:flex;align-items:center;gap:32px;margin-left:auto;}
+.nav-links a{
+  font-family:'Jost',sans-serif;font-size:12px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--forest);}
+.nav-cta{
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:10px 22px;
+  background:var(--forest);color:var(--paper);
+  border:none;border-radius:2px;cursor:pointer;text-decoration:none;
+  transition:background .2s;
+}
+.nav-cta:hover{background:var(--forest-light);}
+
+/* HERO */
+.hero{
+  margin-top:60px;
+  padding:0 48px;
+  max-width:1200px;margin-top:60px;margin-left:auto;margin-right:auto;
+}
+.hero-inner{
+  border-left:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+  display:grid;
+  grid-template-columns:1fr 48px 1fr;
+  min-height:calc(100vh - 60px);
+}
+.hero-left{
+  padding:80px 48px 80px 48px;
+  border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  position:relative;z-index:1;
+}
+.hero-issue{
+  font-family:'Jost',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--amber);margin-bottom:48px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-issue::before{content:'—';}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(56px,6vw,88px);font-weight:900;
+  line-height:.95;letter-spacing:-1px;
+  color:var(--ink);
+  margin-bottom:32px;
+}
+.hero-h1 em{color:var(--forest);font-style:italic;}
+.hero-rule{height:2px;background:var(--forest);width:60px;margin-bottom:32px;}
+.hero-body{
+  font-family:'Source Serif 4',serif;
+  font-size:17px;font-weight:300;font-style:italic;
+  line-height:1.8;color:var(--muted);
+  max-width:400px;margin-bottom:48px;
+}
+.hero-ctas{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.btn-editorial{
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:14px 28px;cursor:pointer;text-decoration:none;
+  transition:all .2s;display:inline-flex;align-items:center;gap:10px;
+  border-radius:2px;
+}
+.btn-editorial.primary{background:var(--forest);color:var(--paper);}
+.btn-editorial.primary:hover{background:var(--forest-light);}
+.btn-editorial.text{color:var(--amber);background:none;padding:14px 0;border-bottom:1px solid var(--amber);}
+.btn-editorial.text:hover{color:var(--rust);}
+
+.hero-footnote{
+  font-family:'Jost',sans-serif;font-size:10px;font-weight:400;
+  letter-spacing:1px;color:rgba(26,18,9,.3);
+  border-top:1px solid var(--rule);padding-top:20px;
+  display:flex;gap:32px;
+}
+
+/* SPINE (CENTER) */
+.hero-spine{
+  writing-mode:vertical-rl;text-orientation:mixed;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:10px;color:rgba(26,18,9,.2);letter-spacing:3px;
+  border-right:1px solid var(--rule);
+  border-left:1px solid var(--rule);
+}
+
+/* HERO RIGHT */
+.hero-right{
+  padding:80px 48px;
+  display:flex;flex-direction:column;
+  position:relative;z-index:1;
+}
+.feature-card{
+  background:var(--forest);
+  border-radius:4px;padding:40px;
+  flex:1;display:flex;flex-direction:column;
+  justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.feature-card::before{
+  content:'';position:absolute;
+  top:-40px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(255,255,255,.04);
+}
+.feature-label{
+  font-family:'Jost',sans-serif;font-size:9px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:rgba(253,250,245,.4);margin-bottom:32px;
+}
+.feature-number{
+  font-family:'Playfair Display',serif;font-size:88px;font-weight:900;
+  line-height:1;color:rgba(253,250,245,.08);
+  position:absolute;bottom:24px;right:32px;
+}
+.feature-peptide{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:14px;color:rgba(253,250,245,.6);margin-bottom:8px;
+}
+.feature-name{
+  font-family:'Playfair Display',serif;font-size:32px;font-weight:700;
+  color:var(--paper);margin-bottom:16px;
+}
+.feature-desc{
+  font-family:'Source Serif 4',serif;font-size:14px;font-style:italic;
+  color:rgba(253,250,245,.6);line-height:1.7;
+  margin-bottom:32px;
+}
+.feature-stat{
+  display:inline-flex;align-items:center;gap:12px;
+  background:rgba(253,250,245,.08);
+  border:1px solid rgba(253,250,245,.12);
+  border-radius:40px;padding:8px 20px;
+  font-family:'Jost',sans-serif;font-size:11px;
+  color:rgba(253,250,245,.6);
+}
+.feature-stat strong{color:var(--paper);font-weight:600;}
+
+.products-aside{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.mini-card{
+  background:var(--parchment);border:1px solid var(--rule);border-radius:4px;
+  padding:20px;text-decoration:none;color:var(--ink);
+  transition:border-color .2s,transform .2s;
+}
+.mini-card:hover{border-color:var(--forest);transform:translateY(-2px);}
+.mini-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:4px;}
+.mini-peptide{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--amber);}
+
+/* PULL QUOTE */
+.pull-quote{
+  max-width:1200px;margin:0 auto;padding:0 48px;
+  position:relative;z-index:1;
+}
+.pull-quote-inner{
+  border-left:1px solid var(--rule);border-right:1px solid var(--rule);
+  border-top:1px solid var(--rule);
+  padding:80px 48px;
+  display:grid;grid-template-columns:1fr 2fr;gap:80px;
+  align-items:center;
+}
+.pull-quote-label{
+  font-family:'Jost',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;color:var(--amber);
+}
+.pull-quote-text{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:32px;font-weight:400;line-height:1.4;
+  color:var(--ink);
+}
+.pull-quote-text em{color:var(--forest);}
+.pull-quote-cite{
+  font-family:'Jost',sans-serif;font-size:12px;
+  color:var(--muted);margin-top:20px;
+  padding-left:24px;border-left:2px solid var(--amber);
+}
+
+/* TECH BLOCK */
+.tech-block{
+  max-width:1200px;margin:0 auto;padding:0 48px;
+  position:relative;z-index:1;
+}
+.tech-block-inner{
+  border:1px solid var(--rule);
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.tech-col{padding:48px;}
+.tech-col:first-child{border-right:1px solid var(--rule);}
+.tech-col-label{
+  font-family:'Jost',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;color:var(--amber);
+  margin-bottom:24px;display:flex;align-items:center;gap:12px;
+}
+.tech-col-label::before{content:'§';}
+.tech-col-h{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:16px;}
+.tech-col-body{font-family:'Source Serif 4',serif;font-size:15px;font-style:italic;line-height:1.8;color:var(--muted);}
+.absorption-bars{margin-top:32px;}
+.abar{display:flex;align-items:center;gap:16px;margin-bottom:12px;}
+.abar-label{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--muted);width:100px;flex-shrink:0;}
+.abar-track{flex:1;height:6px;background:rgba(26,18,9,.08);border-radius:0;overflow:hidden;}
+.abar-fill{height:100%;border-radius:0;}
+.abar-fill.high{background:var(--forest);width:98%;}
+.abar-fill.low{background:rgba(26,18,9,.2);width:12%;}
+.abar-val{font-family:'Jost',sans-serif;font-size:11px;font-weight:700;color:var(--ink);width:36px;text-align:right;}
+
+/* FOOTER */
+footer{
+  max-width:1200px;margin:40px auto 0;padding:0 48px;
+  position:relative;z-index:1;
+}
+.footer-inner{
+  border:1px solid var(--rule);border-bottom:none;
+  padding:24px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-brand{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;}
+.footer-brand .accent{color:var(--forest);font-style:italic;}
+.footer-note{font-size:11px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">bio<span class="accent">gradix</span></a>
+    <div class="nav-links">
+      <a href="#">Productos</a>
+      <a href="#">Tecnología</a>
+      <a href="#">Educación</a>
+      <a href="#">Blog</a>
+    </div>
+    <a href="#" class="nav-cta">Iniciar Quiz</a>
+  </div>
+</nav>
+
+<section class="hero" style="margin-top:60px;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 48px;">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div>
+        <div class="hero-issue">Biotecnología de Péptidos, Vol. I</div>
+        <h1 class="hero-h1">La ciencia<br/>que su<br/><em>cuerpo</em><br/>entiende.</h1>
+        <div class="hero-rule"></div>
+        <p class="hero-body">Los péptidos no son suplementos. Son señales biológicas que su cuerpo reconoce y utiliza para regenerar, reparar y optimizar. Con absorción del 98%.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn-editorial primary">Descubrir mi protocolo</a>
+          <a href="#" class="btn-editorial text">Ver formulaciones →</a>
+        </div>
+      </div>
+      <div class="hero-footnote">
+        <span>98% absorción sublingual</span>
+        <span>7 formulaciones activas</span>
+        <span>&lt;15min de acción</span>
+      </div>
+    </div>
+    <div class="hero-spine">Biogradix · Formulaciones de Precisión · 2025</div>
+    <div class="hero-right">
+      <div class="feature-card">
+        <div>
+          <div class="feature-label">Formulación destacada</div>
+          <div class="feature-peptide">GHK-Cu · Pentadecapéptido</div>
+          <div class="feature-name">CellDew</div>
+          <div class="feature-desc">Regeneración celular profunda. Activa la síntesis de colágeno y la reparación del ADN desde la primera aplicación.</div>
+          <div class="feature-stat"><strong>98%</strong> biodisponibilidad · sublingual</div>
+        </div>
+        <div class="feature-number">01</div>
+      </div>
+      <div class="products-aside">
+        <a href="#" class="mini-card">
+          <div class="mini-name">VitaCharge</div>
+          <div class="mini-peptide">NAD+ · Energía</div>
+        </a>
+        <a href="#" class="mini-card">
+          <div class="mini-name">RecoveryPro</div>
+          <div class="mini-peptide">BPC-157 · Reparación</div>
+        </a>
+        <a href="#" class="mini-card">
+          <div class="mini-name">ImmuneFort</div>
+          <div class="mini-peptide">Thymosin · Inmunidad</div>
+        </a>
+        <a href="#" class="mini-card">
+          <div class="mini-name">MuscleMaxx</div>
+          <div class="mini-peptide">IGF-1 · Fuerza</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pull-quote">
+  <div class="pull-quote-inner">
+    <div class="pull-quote-label">Principio activo</div>
+    <div>
+      <p class="pull-quote-text">"Los péptidos son el <em>lenguaje nativo</em> del cuerpo humano. No hay nada más preciso, más seguro, ni más efectivo."</p>
+      <div class="pull-quote-cite">Absorción mucosa — 7× más eficaz que vía oral convencional</div>
+    </div>
+  </div>
+</div>
+
+<div class="tech-block" style="margin-top:0;">
+  <div class="tech-block-inner">
+    <div class="tech-col">
+      <div class="tech-col-label">Tecnología</div>
+      <h3 class="tech-col-h">¿Por qué la absorción importa más que el ingrediente?</h3>
+      <p class="tech-col-body">Un péptido de calidad farmacéutica que no llega al torrente sanguíneo es dinero y tiempo perdido. Nuestra tecnología sublingual garantiza biodisponibilidad real, no promesas en etiqueta.</p>
+    </div>
+    <div class="tech-col">
+      <div class="tech-col-label">Comparativa clínica</div>
+      <div class="absorption-bars">
+        <div class="abar">
+          <div class="abar-label">Biogradix</div>
+          <div class="abar-track"><div class="abar-fill high"></div></div>
+          <div class="abar-val">98%</div>
+        </div>
+        <div class="abar">
+          <div class="abar-label">Oral cápsula</div>
+          <div class="abar-track"><div class="abar-fill low"></div></div>
+          <div class="abar-val">12%</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:24px;font-family:'Source Serif 4',serif;font-style:italic;line-height:1.6;">La diferencia entre un resultado y una desilusión es la ruta de administración. Sublingual es la vía más directa disponible sin prescripción.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">bio<span class="accent">gradix</span></div>
+    <div class="footer-note">Concepto 3: Warm Editorial Science — © 2025</div>
+  </div>
+</footer>
+</body>
+</html>
