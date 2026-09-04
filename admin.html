@@ -577,6 +577,9 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       } else if (st.advanceTo) {
         action = '<button class="btn btn-ghost btn-sm" type="button" data-advance="' + oid + '" data-to="' + st.advanceTo + '">' + st.advanceLabel + ' →</button>';
       }
+      if (o.status === 'paid' || o.status === 'preparing') {
+        action += ' <button class="btn btn-ghost btn-sm" type="button" data-cancel="' + oid + '" style="color:var(--alert);">Cancelar</button>';
+      }
       var tracking = o.tracking_number
         ? esc(o.tracking_carrier || '—') + '<div class="cell-sub num">' + esc(o.tracking_number) + '</div>'
         : '—';
@@ -618,6 +621,20 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       t.disabled = true;
       api('orders.updateStatus', { order_id: oid, status: to }).then(function () {
         toast('Pedido ' + shortId(oid) + ' marcado como ' + label + '.');
+        loadOrders();
+      }).catch(function (err) {
+        t.disabled = false;
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
+
+    if (t.hasAttribute('data-cancel')) {
+      oid = t.getAttribute('data-cancel');
+      if (!window.confirm('¿Cancelar el pedido ' + shortId(oid) + '?\n\nEl inventario NO se repone automáticamente. Si el producto nunca salió, registra la reposición en Inventario como ajuste con nota.')) return;
+      t.disabled = true;
+      api('orders.updateStatus', { order_id: oid, status: 'cancelled' }).then(function () {
+        toast('Pedido ' + shortId(oid) + ' cancelado. Stock sin cambios.');
         loadOrders();
       }).catch(function (err) {
         t.disabled = false;
