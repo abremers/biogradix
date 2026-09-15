@@ -41,7 +41,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   #hamburger{display:flex!important;}
   nav{padding:0 20px!important;}
   .nav-quiz-btn{display:none!important;}
-  .product-image-col{display:none!important;}
+  .product-image-col{display:block!important;order:-1;width:100%!important;min-height:0!important;aspect-ratio:auto!important;height:min(125vw,64vh)!important;}.product-image-col>div[style*="top:16px"]{top:auto!important;right:auto!important;bottom:12px!important;left:12px!important;padding:8px 12px!important;}
 }
 
 /* ═══════════ BGX-MOBILE-V2 — corrección responsive global ═══════════ */
@@ -181,17 +181,12 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
     </div>
   </div>
-  <div class="product-image-col" style="background:var(--stone);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;min-height:calc(100vh - 64px);">
-    <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
-      <div style="position:relative;">
-        <div class="pd-bottle"><div class="pd-label"></div></div>
-        <div class="pd-shadow"></div>
-      </div>
-      <div style="position:absolute;top:24px;right:-20px;background:var(--bone);border:1px solid var(--rule);padding:12px 18px;border-radius:2px;z-index:2;">
+  <div class="product-image-col" style="background:var(--stone);position:relative;overflow:hidden;min-height:calc(100vh - 64px);">
+    <img src="img/producto/caja-marmol-1100.webp" srcset="img/producto/caja-marmol-600.webp 600w, img/producto/caja-marmol-1100.webp 1100w" sizes="(max-width:768px) 100vw, 50vw" alt="Caja de parches de mucosa oral sobre mármol cálido" width="1100" height="1375" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;"/>
+    <div style="position:absolute;top:16px;right:16px;background:var(--bone);border:1px solid var(--rule);padding:12px 18px;border-radius:2px;z-index:2;">
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;" data-i18n="badge-purity">Pureza</div>
         <div style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;">98<span style="font-size:14px;">%</span></div>
       </div>
-    </div>
   </div>
 </section>
 
