@@ -15,6 +15,8 @@ module.exports = async function handler(req, res) {
     productName, peptide, productUrl, matchPct, why,
     dose, timing, duration, tips, cautions,
     secondaryName, secondaryUrl,
+    // Best match that is out of stock (optional)
+    soldOutName: rawSoldOutName, primarySoldOut: rawPrimarySoldOut,
     // Quiz profile data
     age, sex, goals, activity, conditions, symptoms,
   } = req.body || {};
@@ -24,6 +26,9 @@ module.exports = async function handler(req, res) {
   }
 
   const isEs = lang !== 'en';
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const soldOutName = rawSoldOutName ? esc(String(rawSoldOutName).slice(0, 80)) : null;
+  const primarySoldOut = rawPrimarySoldOut === true;
 
   // ── 1. SAVE LEAD TO SUPABASE ─────────────────────────────────────────────────
   try {
@@ -84,6 +89,21 @@ module.exports = async function handler(req, res) {
       <td align="right" style="font-family:monospace;color:#fff;font-size:22px;font-weight:500;">${matchPct}% <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:0.7;">MATCH</span></td>
     </tr></table>
   </td></tr>
+
+  ${soldOutName ? `
+  <!-- SOLD OUT NOTICE -->
+  <tr><td style="padding:24px 40px 0;">
+    <div style="background:#EDE8E0;border:1px solid rgba(24,20,15,0.10);border-radius:2px;padding:16px 20px;">
+      <p style="font-family:monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#18140F;margin:0 0 6px;">${isEs ? 'Temporalmente agotado' : 'Temporarily out of stock'}</p>
+      <p style="font-size:13px;color:#4A443C;line-height:1.6;margin:0;">${primarySoldOut
+        ? (isEs
+          ? `${soldOutName} está temporalmente agotado. Escríbenos por WhatsApp y te avisamos en cuanto vuelva a estar disponible.`
+          : `${soldOutName} is temporarily out of stock. Message us on WhatsApp and we will let you know as soon as it is available again.`)
+        : (isEs
+          ? `El producto que mejor coincide con tu perfil, ${soldOutName}, está temporalmente agotado. Mientras vuelve, este es el protocolo disponible que mejor se ajusta a ti.`
+          : `The product that best matches your profile, ${soldOutName}, is temporarily out of stock. Until it is back, this is the available protocol that best fits you.`)}</p>
+    </div>
+  </td></tr>` : ''}
 
   <!-- WHY -->
   <tr><td style="padding:32px 40px 0;">
@@ -197,6 +217,12 @@ module.exports = async function handler(req, res) {
     </tr></table>
   </td></tr>
 
+  ${soldOutName ? `
+  <!-- SOLD OUT -->
+  <tr><td style="background:#EDE8E0;padding:12px 32px;border-bottom:1px solid #E0D8CC;">
+    <p style="font-family:monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#18140F;margin:0;">Mejor coincidencia agotada: ${soldOutName}${primarySoldOut ? ' · se mostró con aviso' : ' · se recomendó alternativa disponible'}</p>
+  </td></tr>` : ''}
+
   <!-- PROFILE TABLE -->
   <tr><td style="padding:28px 32px 0;">
     <p style="font-family:monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9A9189;margin:0 0 14px;">Perfil del cliente</p>
@@ -295,7 +321,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         from: 'Biogradix Leads <protocolos@biogradix.com>',
         to: [ADMIN_EMAIL],
-        subject: `Nuevo lead: ${name} — ${productName} (${matchPct}%)`,
+        subject: `Nuevo lead: ${name} — ${productName} (${matchPct}%)${soldOutName ? ` · agotado: ${soldOutName}` : ''}`,
         html: adminHtml,
       }),
     });

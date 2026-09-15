@@ -222,6 +222,14 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bone);line
 .non-catalog-desc{font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.65;margin-bottom:16px;}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--forest);border:1px solid var(--forest);padding:10px 20px;font-family:'Inter',sans-serif;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .15s;}
 .btn-ghost:hover{background:var(--forest-light);}
+.soldout-card{border:1px solid var(--rule-strong);border-top:none;padding:24px 32px;margin-bottom:1px;background:var(--stone);}
+.soldout-label{display:flex;align-items:center;gap:8px;font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:8px;}
+.soldout-dot{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);flex-shrink:0;}
+.soldout-title{font-family:'Cormorant Display',serif;font-size:22px;font-weight:400;color:var(--ink);margin-bottom:6px;}
+.soldout-desc{font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.65;margin-bottom:16px;}
+.soldout-badge{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--ink);border:1px solid var(--rule-strong);background:var(--stone);padding:6px 12px;border-radius:2px;margin-bottom:10px;}
+.soldout-inline{font-size:13px;font-weight:300;color:var(--ink-soft);line-height:1.65;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);}
+.result-product-img.is-soldout{filter:grayscale(1);opacity:.55;}
 
 .result-disclaimer{border:1px solid var(--rule);border-top:none;padding:18px 32px;margin-bottom:24px;}
 .result-disclaimer p{font-size:11px;font-weight:300;color:var(--ink-faint);line-height:1.7;}
@@ -693,6 +701,12 @@ const T = {
     'email-sent-sub': 'Revisa tu bandeja de entrada (y spam por las dudas).',
     'see-product': 'Ver producto →', 'whatsapp-cta': 'Consulta gratis por WhatsApp',
     'non-catalog-label': 'También podría interesarte',
+    'soldout-label': 'Temporalmente agotado', 'soldout-badge': 'Temporalmente agotado',
+    'soldout-title': 'Tu mejor coincidencia es {name}',
+    'soldout-desc-alt': '{name} está temporalmente agotado. Mientras vuelve, {alt} es la opción disponible que mejor se ajusta a tu perfil. Te avisamos por WhatsApp en cuanto haya existencias.',
+    'soldout-desc-only': 'Este protocolo está temporalmente agotado. Pulsa «Avisarme cuando llegue» y te escribimos por WhatsApp en cuanto vuelva a estar disponible.',
+    'soldout-notify': 'Avisarme cuando llegue',
+    'soldout-wa': 'Hola, quiero que me avisen cuando {name} vuelva a estar disponible.',
     'disclaimer-result-text': 'AVISO LEGAL: Esta recomendación es orientativa y no reemplaza la consulta médica profesional. Los péptidos mencionados son compuestos de bienestar, no medicamentos aprobados por organismos regulatorios para los usos indicados. Consulta siempre con un médico antes de iniciar cualquier protocolo.',
   },
   en: {
@@ -776,6 +790,12 @@ const T = {
     'email-sent-sub': 'Check your inbox (and spam just in case).',
     'see-product': 'See product →', 'whatsapp-cta': 'Free WhatsApp consultation',
     'non-catalog-label': 'You may also be interested in',
+    'soldout-label': 'Temporarily out of stock', 'soldout-badge': 'Temporarily out of stock',
+    'soldout-title': 'Your best match is {name}',
+    'soldout-desc-alt': '{name} is temporarily out of stock. Until it is back, {alt} is the available option that best fits your profile. We will let you know on WhatsApp as soon as it is restocked.',
+    'soldout-desc-only': 'This protocol is temporarily out of stock. Tap “Notify me when available” and we will message you on WhatsApp as soon as it is back.',
+    'soldout-notify': 'Notify me when available',
+    'soldout-wa': 'Hi, I would like to be notified when {name} is available again.',
     'disclaimer-result-text': 'LEGAL DISCLAIMER: This recommendation is informational and does not replace professional medical advice. The peptides mentioned are wellness compounds, not medications approved by regulatory agencies for the indicated uses. Always consult a doctor before starting any protocol.',
   }
 };
@@ -998,6 +1018,10 @@ const NON_CATALOG = {
 };
 
 // ─── RECOMMENDATION ENGINE ────────────────────────────────────────────────────
+// Productos sin inventario: pueden salir como mejor coincidencia, pero con aviso
+const SOLD_OUT = ['musclemaxx', 'passionboost', 'immunefort', 'celldew'];
+const isSoldOut = k => SOLD_OUT.includes(k);
+
 function computeRecommendation() {
   const d = S.data;
   const sc = { musclemaxx:0, recoverypro:0, radiancemax:0, vitacharge:0, passionboost:0, immunefort:0, celldew:0, tb500:0, motsc:0, _glp1:0, _cognitive:0 };
@@ -1031,16 +1055,23 @@ function computeRecommendation() {
   };
   for (const s of d.symptoms) { if (symMap[s]) for (const [k,v] of Object.entries(symMap[s])) sc[k] += v; }
   if (d.conditions.includes('cardiovascular')) sc.passionboost = 0;
-  // Solo productos con inventario disponible — los agotados no se recomiendan
-  const catalog = ['recoverypro','radiancemax','tb500','vitacharge','motsc'];
+  const catalog = ['recoverypro','radiancemax','tb500','vitacharge','motsc','musclemaxx','passionboost','immunefort','celldew'];
   catalog.sort((a,b) => sc[b]-sc[a]);
-  const primary = catalog[0];
-  const secondary = sc[catalog[1]] > 4 ? catalog[1] : null;
+  const best = catalog[0];
+  const available = catalog.filter(k => !isSoldOut(k));
+  // Mejor coincidencia agotada: se recomienda la mejor disponible si es relevante;
+  // si ninguna lo es, se muestra la agotada con aviso para no ofrecer algo ajeno.
+  let primary = best, soldOut = null;
+  if (isSoldOut(best)) {
+    soldOut = best;
+    if (sc[available[0]] > 4) primary = available[0];
+  }
+  const secondary = available.find(k => k !== primary && sc[k] > 4) || null;
   const nonCatalogTop = ['_glp1','_cognitive'].sort((a,b) => sc[b]-sc[a])[0];
   const showNonCatalog = sc[nonCatalogTop] > 10 && sc[nonCatalogTop] > sc[primary] * 0.55;
   const maxScore = Math.max(...catalog.map(k=>sc[k]));
   const matchPct = Math.min(98, Math.round(60 + (sc[primary] / Math.max(maxScore,1)) * 38));
-  return { primary, secondary, nonCatalog: showNonCatalog ? nonCatalogTop : null, matchPct, scores: sc };
+  return { primary, secondary, soldOut, nonCatalog: showNonCatalog ? nonCatalogTop : null, matchPct, scores: sc };
 }
 
 // ─── NAVIGATION ───────────────────────────────────────────────────────────────
@@ -1157,6 +1188,9 @@ async function submitQuiz() {
         tips: prod.tips[S.lang], cautions: prod.cautions[S.lang],
         secondaryName: rec.secondary ? PRODUCTS[rec.secondary].name : null,
         secondaryUrl: rec.secondary ? PRODUCTS[rec.secondary].url : null,
+        soldOutName: rec.soldOut ? PRODUCTS[rec.soldOut].name : null,
+        soldOutUrl: rec.soldOut ? PRODUCTS[rec.soldOut].url : null,
+        primarySoldOut: rec.soldOut !== null && rec.soldOut === rec.primary,
         // Full quiz profile for lead capture
         age: S.data.age, sex: S.data.sex, goals: S.data.goals,
         activity: S.data.activity, conditions: S.data.conditions, symptoms: S.data.symptoms,
@@ -1166,6 +1200,7 @@ async function submitQuiz() {
   renderResults(rec);
   goTo('result');
   if (typeof gtag !== 'undefined') gtag('event','quiz_complete',{event_category:'quiz',event_label:rec.primary});
+  if (rec.soldOut && typeof gtag !== 'undefined') gtag('event','quiz_soldout_match',{event_category:'quiz',event_label:rec.soldOut});
 }
 
 // ─── RENDER RESULTS ───────────────────────────────────────────────────────────
@@ -1175,6 +1210,17 @@ function renderResults(rec) {
   const nc   = rec.nonCatalog ? NON_CATALOG[rec.nonCatalog] : null;
   const l    = S.lang;
   const name = S.data.name.split(' ')[0];
+  const so   = rec.soldOut ? PRODUCTS[rec.soldOut] : null;
+  const primarySoldOut = !!so && rec.soldOut === rec.primary;
+  const notifyUrl = p => 'https://wa.me/15553471798?text=' + encodeURIComponent(t('soldout-wa').replace('{name}', p.name));
+
+  const soldOutHtml = (so && !primarySoldOut) ? `
+    <div class="soldout-card">
+      <div class="soldout-label"><span class="soldout-dot"></span>${t('soldout-label')}</div>
+      <div class="soldout-title">${t('soldout-title').replace('{name}', so.name)}</div>
+      <div class="soldout-desc">${t('soldout-desc-alt').replace('{name}', so.name).replace('{alt}', prod.name)}</div>
+      <a href="${notifyUrl(so)}" class="btn-outline" target="_blank" rel="noopener">${t('soldout-notify')}</a>
+    </div>` : '';
 
   const tipsHtml = prod.tips[l].map(tip => `<li><span class="dot"></span>${tip}</li>`).join('');
   const cautsHtml = prod.cautions[l].map(c => `<li><span class="dot"></span>${c}</li>`).join('');
@@ -1218,14 +1264,18 @@ function renderResults(rec) {
       </div>
     </div>
 
+    ${soldOutHtml}
+
     <div class="result-card">
       <div class="result-card-header">
-        <img src="${prod.img}" alt="${prod.name}" class="result-product-img"/>
+        <img src="${prod.img}" alt="${prod.name}" class="result-product-img${primarySoldOut ? ' is-soldout' : ''}"/>
         <div>
+          ${primarySoldOut ? `<div class="soldout-badge"><span class="soldout-dot"></span>${t('soldout-badge')}</div>` : ''}
           <div class="result-product-eyebrow">${t('primary-eyebrow')}</div>
           <div class="result-product-name">${prod.name}</div>
           <div class="result-product-peptide">${prod.peptide}</div>
           <div class="result-product-why">${prod.why[l]}</div>
+          ${primarySoldOut ? `<div class="soldout-inline">${t('soldout-desc-only')}</div>` : ''}
         </div>
       </div>
       <div class="protocol-grid">
@@ -1251,8 +1301,11 @@ function renderResults(rec) {
         <ul class="protocol-list warn">${cautsHtml}</ul>
       </div>
       <div class="result-ctas">
-        <a href="${prod.url}" class="btn-primary">${t('see-product')}</a>
-        <a href="https://wa.me/15553471798" class="btn-outline" target="_blank">${t('whatsapp-cta')}</a>
+        ${primarySoldOut
+          ? `<a href="${notifyUrl(prod)}" class="btn-primary" target="_blank" rel="noopener">${t('soldout-notify')}</a>
+        <a href="${prod.url}" class="btn-outline">${t('see-product')}</a>`
+          : `<a href="${prod.url}" class="btn-primary">${t('see-product')}</a>
+        <a href="https://wa.me/15553471798" class="btn-outline" target="_blank">${t('whatsapp-cta')}</a>`}
       </div>
     </div>
 
