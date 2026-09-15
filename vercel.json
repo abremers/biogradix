@@ -31,6 +31,16 @@
   ],
   "redirects": [
     {
+      "source": "/journey",
+      "destination": "https://biogradix-journey.vercel.app",
+      "permanent": false
+    },
+    {
+      "source": "/journey/:path*",
+      "destination": "https://biogradix-journey.vercel.app/:path*",
+      "permanent": false
+    },
+    {
       "source": "/producto-recoverypro.html",
       "destination": "/producto-bpc-157",
       "statusCode": 301
