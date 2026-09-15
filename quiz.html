@@ -1018,9 +1018,27 @@ const NON_CATALOG = {
 };
 
 // ─── RECOMMENDATION ENGINE ────────────────────────────────────────────────────
-// Productos sin inventario: pueden salir como mejor coincidencia, pero con aviso
+// Inventario. SOLD_OUT es el estado conocido al publicar; /api/stock lo corrige
+// en vivo. Los productos sin SKU no se venden todavia: siempre cuentan agotados.
 const SOLD_OUT = ['musclemaxx', 'passionboost', 'immunefort', 'celldew'];
-const isSoldOut = k => SOLD_OUT.includes(k);
+const SKU_BY_PRODUCT = {
+  recoverypro: 'bpc-157', radiancemax: 'ghk-cu', tb500: 'tb-500',
+  vitacharge: 'nad-plus', motsc: 'mots-c',
+  musclemaxx: null, passionboost: null, immunefort: null, celldew: null,
+};
+let LIVE_STOCK = null;
+
+function isSoldOut(k) {
+  const sku = SKU_BY_PRODUCT[k];
+  if (sku === null) return true;                       // sin producto que vender
+  if (LIVE_STOCK && sku in LIVE_STOCK) return LIVE_STOCK[sku] === false;
+  return SOLD_OUT.includes(k);                          // sin datos: estado estatico
+}
+
+fetch('/api/stock', { headers: { 'Accept': 'application/json' } })
+  .then(r => (r.ok ? r.json() : null))
+  .then(data => { if (data && data.skus) LIVE_STOCK = data.skus; })
+  .catch(() => { /* sin red: queda el estado estatico */ });
 
 function computeRecommendation() {
   const d = S.data;
