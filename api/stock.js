@@ -12,11 +12,13 @@ const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://biogradix.com');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') return res.status(200).end();
-  if (req.method !== 'GET') {
+  // HEAD se trata como GET: lo usan los monitores de disponibilidad.
+  // El runtime descarta el cuerpo y deja solo las cabeceras.
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
     res.setHeader('Cache-Control', 'no-store');
     return res.status(405).json({ error: 'method_not_allowed' });
   }
