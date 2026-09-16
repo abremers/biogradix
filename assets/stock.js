@@ -53,11 +53,34 @@
   }
 
   // ── Pagina de producto ────────────────────────────────────────────────
+  // Hay dos tipos de pagina:
+  //   1. Con ambos estados en el marcado (data-stock-view): solo se alterna
+  //      cual se muestra. Es el caso de los productos que nacieron agotados.
+  //   2. Solo con el bloque de venta: si el SKU esta agotado hay que ocultar
+  //      el precio, cambiar el boton y anadir el aviso.
   function aplicarProducto(skus) {
     var boton = document.querySelector('button[data-sku]');
     if (!boton) return;                       // pagina sin venta: nada que hacer
     var sku = boton.getAttribute('data-sku');
-    if (!(sku in skus) || skus[sku] !== false) return;   // disponible o desconocido
+    if (!(sku in skus)) return;               // sin dato: se respeta el HTML
+
+    var hayStock = skus[sku] === true;
+    var vistasAgotado = document.querySelectorAll('[data-stock-view="soldout"]');
+    var vistasVenta = document.querySelectorAll('[data-stock-view="instock"]');
+    if (vistasAgotado.length || vistasVenta.length) {
+      for (var a = 0; a < vistasAgotado.length; a++) vistasAgotado[a].hidden = hayStock;
+      for (var v = 0; v < vistasVenta.length; v++) {
+        vistasVenta[v].hidden = !hayStock;
+        // Estos bloques llevan la clase .reveal, que arranca en opacity 0 y
+        // solo se anima cuando el IntersectionObserver los ve. Estaban
+        // ocultos cuando el observador arranco, asi que se marcan a mano
+        // al mostrarlos: si no, quedarian presentes pero invisibles.
+        if (hayStock) vistasVenta[v].classList.add('up');
+      }
+      return;
+    }
+
+    if (hayStock) return;                     // disponible: no hay nada que cambiar
 
     var fila = boton.parentNode;
 

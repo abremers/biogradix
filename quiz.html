@@ -1024,13 +1024,13 @@ const SOLD_OUT = ['musclemaxx', 'passionboost', 'immunefort', 'celldew'];
 const SKU_BY_PRODUCT = {
   recoverypro: 'bpc-157', radiancemax: 'ghk-cu', tb500: 'tb-500',
   vitacharge: 'nad-plus', motsc: 'mots-c',
-  musclemaxx: null, passionboost: null, immunefort: null, celldew: null,
+  musclemaxx: 'cjc-1295-ipamorelin', passionboost: 'pt-141',
+  immunefort: 'timosina-alfa-1', celldew: 'glutation',
 };
 let LIVE_STOCK = null;
 
 function isSoldOut(k) {
   const sku = SKU_BY_PRODUCT[k];
-  if (sku === null) return true;                       // sin producto que vender
   if (LIVE_STOCK && sku in LIVE_STOCK) return LIVE_STOCK[sku] === false;
   return SOLD_OUT.includes(k);                          // sin datos: estado estatico
 }

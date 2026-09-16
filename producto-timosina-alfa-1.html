@@ -140,7 +140,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 <!-- PRODUCT HERO -->
 <section style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr;margin-top:64px;">
   <div style="padding:100px 64px 80px 80px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;">
-    <div class="reveal" style="display:inline-flex;align-items:center;gap:10px;border:1px solid var(--rule);background:var(--stone);padding:10px 18px;border-radius:2px;margin-bottom:28px;align-self:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ink-faint);"></span><span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);font-weight:500;" data-i18n="soldout-badge">Temporalmente agotado</span></div>
+    <div class="reveal" data-stock-view="soldout" style="display:inline-flex;align-items:center;gap:10px;border:1px solid var(--rule);background:var(--stone);padding:10px 18px;border-radius:2px;margin-bottom:28px;align-self:flex-start;"><span style="width:6px;height:6px;border-radius:50%;background:var(--ink-faint);"></span><span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);font-weight:500;" data-i18n="soldout-badge">Temporalmente agotado</span></div>
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:24px;" data-i18n="if-cat">Inmunidad · Adaptógenos</div>
     <h1 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(56px,6vw,96px);font-weight:300;line-height:1;letter-spacing:-.5px;color:var(--ink);margin-bottom:12px;">Timosina Alfa-1</h1>
     <div class="reveal reveal-delay-1" style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px;" data-i18n="if-subtitle">Péptido tímico · 28 aminoácidos</div>
@@ -168,8 +168,11 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="if-duration">1–2 semanas</span>
       <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--rule);padding:8px 16px;border-radius:2px;" data-i18n="if-aud">Viajeros · Inmunocompromiso · Estrés</span>
     </div>
+    <div class="reveal reveal-delay-3" data-stock-view="instock" hidden style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:16px;" data-i18n="buy-price">USD $299 · Pack de 20 parches</div>
     <div class="reveal reveal-delay-3" style="display:flex;align-items:center;gap:24px;">
-      <a href="https://wa.me/15553471798?text=Quiero%20que%20me%20avisen%20cuando%20haya%20existencias" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--rule);padding:13px 27px;border-radius:2px;text-decoration:none;" data-i18n="soldout-notify">Avisarme cuando llegue</a>
+      <button type="button" onclick="startCheckout(this)" data-sku="timosina-alfa-1" data-stock-view="instock" hidden data-i18n="buy-cta" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--forest);padding:14px 28px;border-radius:2px;border:none;cursor:pointer;font-family:'Inter',sans-serif;">Comprar</button>
+      <a href="https://wa.me/15553471798" data-stock-view="instock" hidden style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 28px;border-radius:2px;text-decoration:none;" data-i18n="hero-wa">Consultar vía WhatsApp</a>
+      <a href="https://wa.me/15553471798?text=Quiero%20que%20me%20avisen%20cuando%20haya%20existencias" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--rule);padding:13px 27px;border-radius:2px;text-decoration:none;" data-stock-view="soldout" data-i18n="soldout-notify">Avisarme cuando llegue</a>
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;" data-i18n="hero-quiz">Hacer el quiz →</a>
     </div>
   </div>
@@ -332,6 +335,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 <script>
 const TRANSLATIONS = {
   es:{
+    "buy-price":"USD $299 · Pack de 20 parches","buy-cta":"Comprar",
     "if-subtitle":"Péptido tímico · 28 aminoácidos",
     "soldout-badge":"Temporalmente agotado","soldout-notify":"Avisarme cuando llegue",
     "nav-productos":"Productos","nav-tecnologia":"Tecnología","nav-educacion":"Educación","nav-blog":"Blog","nav-quiz":"Quiz",
@@ -360,6 +364,7 @@ const TRANSLATIONS = {
     'nav-contacto':'Contacto',
   },
   en:{
+    "buy-price":"USD $299 · Pack of 20 patches","buy-cta":"Buy now",
     "if-subtitle":"Thymic peptide · 28 amino acids",
     "soldout-badge":"Temporarily out of stock","soldout-notify":"Notify me when available",
     "nav-productos":"Products","nav-tecnologia":"Technology","nav-educacion":"Education","nav-blog":"Blog","nav-quiz":"Quiz",
@@ -406,5 +411,7 @@ setLang(currentLang);
 <a href="https://wa.me/15553471798" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;bottom:28px;right:28px;z-index:500;width:52px;height:52px;background:#2E4A3A;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(46,74,58,.35);" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(46,74,58,.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(46,74,58,.35)'">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.122 1.522 5.855L.057 23.75l6.094-1.597A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.912 0-3.712-.513-5.264-1.411l-.39-.228-3.618.948.969-3.529-.245-.4A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
+<script src="assets/checkout.js" defer></script>
+<script src="assets/stock.js" defer></script>
 </body>
 </html>

@@ -10,7 +10,8 @@
 const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
 const SITE_URL = 'https://biogradix.com';
 
-const VALID_SKUS = ['bpc-157', 'mots-c', 'tb-500', 'ghk-cu', 'nad-plus'];
+const VALID_SKUS = ['bpc-157', 'mots-c', 'tb-500', 'ghk-cu', 'nad-plus',
+  'glutation', 'timosina-alfa-1', 'pt-141', 'cjc-1295-ipamorelin'];
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://biogradix.com');
