@@ -91,6 +91,83 @@ function missingFechaColumn(result) {
   return (d.code === '42703' || d.code === 'PGRST204') && /fecha/.test(texto);
 }
 
+// Suma delta al stock de un SKU con la guardia optimista de inventory.adjust
+// (la escritura solo aplica si el stock sigue siendo el leido). Reintenta si
+// otro proceso movio el stock entre lectura y escritura.
+async function ajustarStock(sku, delta, intentos) {
+  for (let i = 0; i < (intentos || 3); i++) {
+    const cur = await sb(`biogradix_products?select=sku,stock,cost&sku=eq.${encodeURIComponent(sku)}&limit=1`);
+    if (!cur.ok) return { ok: false, motivo: 'db', result: cur };
+    if (!Array.isArray(cur.data) || cur.data.length === 0) return { ok: false, motivo: 'sin_producto' };
+    const viejo = Number(cur.data[0].stock || 0);
+    const nuevo = viejo + delta;
+    if (nuevo < 0) return { ok: false, motivo: 'stock_insuficiente', stock: viejo };
+    const upd = await sb(
+      `biogradix_products?sku=eq.${encodeURIComponent(sku)}&stock=eq.${viejo}`,
+      { method: 'PATCH', headers: { 'Prefer': 'return=representation' }, body: { stock: nuevo } }
+    );
+    if (!upd.ok) return { ok: false, motivo: 'db', result: upd };
+    if (Array.isArray(upd.data) && upd.data.length > 0) return { ok: true, product: upd.data[0] };
+  }
+  return { ok: false, motivo: 'stock_cambio' };
+}
+
+// Los pedidos que se cancelan antes de enviarse devuelven sus packs al
+// inventario (el webhook de Stripe los desconto al cobrar).
+const RESTOCK_NOTE = 'Cancelación del pedido';
+
+function itemsReponibles(order) {
+  const items = Array.isArray(order && order.items) ? order.items : [];
+  const porSku = {};
+  items.forEach((it) => {
+    const sku = it && typeof it.sku === 'string' ? it.sku.trim() : '';
+    const qty = Math.abs(parseInt(it && (it.quantity != null ? it.quantity : it.qty), 10));
+    if (!sku || sku === 'unknown' || !Number.isFinite(qty) || qty < 1) return;
+    porSku[sku] = (porSku[sku] || 0) + qty;
+  });
+  return Object.keys(porSku).map((sku) => ({ sku, qty: porSku[sku] }));
+}
+
+// Idempotente por SKU: el movimiento de reposicion se escribe ANTES de tocar
+// el stock y funciona como marca. Si el ajuste falla se borra la marca; asi un
+// reintento nunca suma dos veces ni deja un SKU sin reponer.
+async function reponerPedido(order) {
+  const items = itemsReponibles(order);
+  const out = { repuestos: [], ya_repuestos: [], fallidos: [] };
+  if (items.length === 0) return out;
+
+  const prev = await sb(
+    `biogradix_inventory_movements?select=sku,note&order_id=eq.${encodeURIComponent(order.id)}&reason=eq.adjustment`
+  );
+  const hechos = new Set(
+    (prev.ok && Array.isArray(prev.data) ? prev.data : [])
+      .filter((m) => typeof m.note === 'string' && m.note.startsWith(RESTOCK_NOTE))
+      .map((m) => m.sku)
+  );
+
+  for (const it of items) {
+    if (hechos.has(it.sku)) { out.ya_repuestos.push(it); continue; }
+    const marca = await sb('biogradix_inventory_movements', {
+      method: 'POST',
+      headers: { 'Prefer': 'return=representation' },
+      body: { sku: it.sku, delta: it.qty, reason: 'adjustment', order_id: order.id, note: `${RESTOCK_NOTE} ${order.id}` },
+    });
+    if (!marca.ok) { out.fallidos.push(Object.assign({ error: 'historial' }, it)); continue; }
+    const aj = await ajustarStock(it.sku, it.qty);
+    if (!aj.ok) {
+      const movId = Array.isArray(marca.data) && marca.data[0] ? marca.data[0].id : null;
+      if (movId != null) {
+        const undo = await sb(`biogradix_inventory_movements?id=eq.${movId}`, { method: 'DELETE' });
+        if (!undo.ok) console.error('No se pudo borrar la marca de reposición:', undo.status, undo.data);
+      }
+      out.fallidos.push(Object.assign({ error: aj.motivo }, it));
+      continue;
+    }
+    out.repuestos.push(Object.assign({ stock: aj.product.stock }, it));
+  }
+  return out;
+}
+
 function round2(n) {
   return Math.round(Number(n || 0) * 100) / 100;
 }
@@ -297,7 +374,25 @@ async function ordersList(req, res) {
   const r = await sb(path);
   if (r.missingTable) return tableError(res, 'biogradix_orders');
   if (!r.ok) return dbError(res, r);
-  return res.status(200).json({ orders: r.data || [] });
+  const orders = r.data || [];
+
+  // Pedidos cancelados: marcar los que ya devolvieron sus packs, para que el
+  // panel solo ofrezca "Reponer inventario" donde falta.
+  const cancelados = orders.filter((o) => o.status === 'cancelled').map((o) => o.id);
+  if (cancelados.length > 0) {
+    const m = await sb(
+      `biogradix_inventory_movements?select=order_id,note&reason=eq.adjustment&order_id=in.(${cancelados.map(encodeURIComponent).join(',')})`
+    );
+    const repuestos = new Set(
+      (m.ok && Array.isArray(m.data) ? m.data : [])
+        .filter((x) => typeof x.note === 'string' && x.note.startsWith(RESTOCK_NOTE))
+        .map((x) => String(x.order_id))
+    );
+    orders.forEach((o) => {
+      if (o.status === 'cancelled') o.restock_done = repuestos.has(String(o.id));
+    });
+  }
+  return res.status(200).json({ orders });
 }
 
 async function ordersUpdateStatus(req, res) {
@@ -308,17 +403,54 @@ async function ordersUpdateStatus(req, res) {
   if (!ORDER_STATUSES.includes(status)) {
     return sendError(res, 400, 'bad_request', `Estado inválido: ${status}`);
   }
-  const r = await sb(`biogradix_orders?id=eq.${encodeURIComponent(order_id)}`, {
-    method: 'PATCH',
-    headers: { 'Prefer': 'return=representation' },
-    body: { status },
-  });
-  if (r.missingTable) return tableError(res, 'biogradix_orders');
-  if (!r.ok) return dbError(res, r);
-  if (!Array.isArray(r.data) || r.data.length === 0) {
+  const cur = await sb(`biogradix_orders?select=id,status,items,shipped_at&id=eq.${encodeURIComponent(order_id)}&limit=1`);
+  if (cur.missingTable) return tableError(res, 'biogradix_orders');
+  if (!cur.ok) return dbError(res, cur);
+  if (!Array.isArray(cur.data) || cur.data.length === 0) {
     return sendError(res, 404, 'not_found', `No existe el pedido ${order_id}`);
   }
-  return res.status(200).json({ order: r.data[0] });
+  const antes = cur.data[0];
+
+  // Solo aplica si el estado sigue siendo el leido: dos clics en "Cancelar"
+  // no pueden reponer dos veces.
+  const r = await sb(
+    `biogradix_orders?id=eq.${encodeURIComponent(order_id)}&status=eq.${encodeURIComponent(antes.status)}`,
+    { method: 'PATCH', headers: { 'Prefer': 'return=representation' }, body: { status } }
+  );
+  if (!r.ok) return dbError(res, r);
+  if (!Array.isArray(r.data) || r.data.length === 0) {
+    return sendError(res, 409, 'status_changed', 'El pedido cambió de estado mientras se actualizaba. Recarga e intenta de nuevo.');
+  }
+
+  const out = { order: r.data[0] };
+  const antesDeEnviar = (antes.status === 'paid' || antes.status === 'preparing') && !antes.shipped_at;
+  if (status === 'cancelled' && antes.status !== 'cancelled' && antesDeEnviar) {
+    out.restock = await reponerPedido(antes);
+  }
+  return res.status(200).json(out);
+}
+
+// Reposicion manual e idempotente para pedidos ya cancelados que no
+// devolvieron sus packs (p. ej. cancelados antes de existir la reposicion).
+async function ordersRestock(req, res) {
+  const { order_id } = req.body || {};
+  if (!order_id) return sendError(res, 400, 'bad_request', 'Falta order_id');
+  const cur = await sb(`biogradix_orders?select=id,status,items,shipped_at&id=eq.${encodeURIComponent(order_id)}&limit=1`);
+  if (cur.missingTable) return tableError(res, 'biogradix_orders');
+  if (!cur.ok) return dbError(res, cur);
+  if (!Array.isArray(cur.data) || cur.data.length === 0) {
+    return sendError(res, 404, 'not_found', `No existe el pedido ${order_id}`);
+  }
+  const order = cur.data[0];
+  if (order.status !== 'cancelled') {
+    return sendError(res, 409, 'not_cancelled', 'Solo se repone el inventario de pedidos cancelados.');
+  }
+  if (order.shipped_at) {
+    return sendError(res, 409, 'already_shipped',
+      'Este pedido llegó a enviarse: los packs salieron del almacén. Si regresaron, regístralo en Inventario como Restock.');
+  }
+  const restock = await reponerPedido(order);
+  return res.status(200).json({ order, restock });
 }
 
 async function ordersMarkShipped(req, res) {
@@ -685,6 +817,160 @@ async function consumoAdd(req, res) {
   return res.status(200).json(ok);
 }
 
+// Editar un consumo. Si cambian los packs o el SKU, el inventario se ajusta
+// por la diferencia y queda en el historial. Un consumo ya pagado solo admite
+// cambios de fecha, persona y nota: su monto ya se cobro.
+async function consumoUpdate(req, res) {
+  const b = req.body || {};
+  const id = parseInt(b.id, 10);
+  if (!Number.isFinite(id) || id < 1) return sendError(res, 400, 'bad_request', 'Falta un id válido');
+
+  const cur = await sb(`biogradix_consumo?select=*&id=eq.${id}&limit=1`);
+  if (cur.missingTable) return tableError(res, 'biogradix_consumo', PHASE3_SQL);
+  if (!cur.ok) return dbError(res, cur);
+  if (!Array.isArray(cur.data) || cur.data.length === 0) {
+    return sendError(res, 404, 'not_found', `No existe el consumo ${id}`);
+  }
+  const old = cur.data[0];
+  const oldPacks = Number(old.packs);
+  const oldCosto = old.costo_unitario == null ? null : Number(old.costo_unitario);
+
+  // Valores nuevos; lo que no llega se conserva.
+  const persona = b.persona !== undefined ? String(b.persona || '').trim().slice(0, 120) : old.persona;
+  const sku = b.sku !== undefined ? String(b.sku || '').trim() : old.sku;
+  const packs = b.packs !== undefined ? parseInt(b.packs, 10) : oldPacks;
+  const nota = b.nota !== undefined ? (String(b.nota || '').trim().slice(0, 500) || null) : old.nota;
+  const fecha = b.fecha ? String(b.fecha).trim() : null;
+  let costo = oldCosto;
+  if (b.costo_unitario !== undefined) {
+    if (b.costo_unitario === null || b.costo_unitario === '') costo = null;
+    else {
+      costo = Number(b.costo_unitario);
+      if (!Number.isFinite(costo) || costo < 0) {
+        return sendError(res, 400, 'bad_request', 'costo_unitario debe ser un número mayor o igual a cero');
+      }
+    }
+  }
+  if (!persona) return sendError(res, 400, 'bad_request', 'Falta la persona');
+  if (!sku) return sendError(res, 400, 'bad_request', 'Falta el SKU');
+  if (!Number.isFinite(packs) || packs < 1 || packs > 1000) {
+    return sendError(res, 400, 'bad_request', 'packs debe ser un entero entre 1 y 1000');
+  }
+  if (fecha && !isValidIsoDate(fecha)) {
+    return sendError(res, 400, 'bad_request', 'Fecha inválida, usa el formato AAAA-MM-DD');
+  }
+
+  const cambiaInventario = sku !== old.sku || packs !== oldPacks;
+  // Costo del producto como respaldo, igual que en el alta, pero solo si cambia
+  // el SKU o se borra un costo que existia: editar la fecha de un consumo "por
+  // confirmar" no debe ponerle precio en silencio.
+  const usarCostoProducto = !old.pagado && costo == null &&
+    (sku !== old.sku || (b.costo_unitario !== undefined && oldCosto != null));
+
+  // Producto nuevo (existencia y costo de respaldo).
+  let producto = null;
+  if (cambiaInventario || usarCostoProducto) {
+    const p = await sb(`biogradix_products?select=sku,stock,cost&sku=eq.${encodeURIComponent(sku)}&limit=1`);
+    if (!p.ok) return dbError(res, p);
+    if (!Array.isArray(p.data) || p.data.length === 0) return sendError(res, 404, 'not_found', `No existe el SKU ${sku}`);
+    producto = p.data[0];
+  }
+  // Mismo criterio que el alta: sin costo capturado, el del producto.
+  if (usarCostoProducto && producto && producto.cost != null) {
+    costo = Number(producto.cost);
+  }
+  const cambiaCosto = (costo == null ? null : round2(costo)) !== (oldCosto == null ? null : round2(oldCosto));
+
+  if (old.pagado && (cambiaInventario || cambiaCosto)) {
+    return sendError(res, 409, 'consumo_pagado',
+      'Este consumo ya está pagado: solo puedes cambiar la fecha, la persona y la nota.');
+  }
+
+  const fila = {};
+  if (persona !== old.persona) fila.persona = persona;
+  if (sku !== old.sku) fila.sku = sku;
+  if (packs !== oldPacks) fila.packs = packs;
+  if (nota !== old.nota) fila.nota = nota;
+  if (cambiaCosto || cambiaInventario) {
+    fila.costo_unitario = costo;
+    fila.total = costo == null ? null : round2(packs * costo);
+  }
+  if (fecha && fecha !== old.fecha) fila.fecha = fecha;
+  if (Object.keys(fila).length === 0) return res.status(200).json({ consumo: old, unchanged: true });
+
+  // Plan de inventario: devolver lo anterior y tomar lo nuevo.
+  const plan = [];
+  if (sku === old.sku) {
+    if (oldPacks !== packs) plan.push({ sku, delta: oldPacks - packs });
+  } else {
+    plan.push({ sku: old.sku, delta: oldPacks });
+    plan.push({ sku, delta: -packs });
+  }
+  for (const p of plan) {
+    if (p.delta < 0 && producto && p.sku === producto.sku && Number(producto.stock || 0) + p.delta < 0) {
+      return sendError(res, 409, 'insufficient_stock',
+        `Stock insuficiente: ${producto.stock} packs de ${p.sku} y el cambio necesita ${-p.delta}`);
+    }
+  }
+
+  // 1. Actualizar la fila, solo si nadie la cambio desde que se leyo.
+  const guardia = `id=eq.${id}&sku=eq.${encodeURIComponent(old.sku)}&packs=eq.${oldPacks}`;
+  let upd = await sb(`biogradix_consumo?${guardia}`, { method: 'PATCH', headers: { 'Prefer': 'return=representation' }, body: fila });
+  let warning = null;
+  if (!upd.ok && fila.fecha && missingFechaColumn(upd)) {
+    delete fila.fecha;
+    warning = `La fecha no se guardó: falta ejecutar ${CONSUMO_FECHA_SQL} en Supabase.`;
+    if (Object.keys(fila).length === 0) return res.status(200).json({ consumo: old, unchanged: true, warning });
+    upd = await sb(`biogradix_consumo?${guardia}`, { method: 'PATCH', headers: { 'Prefer': 'return=representation' }, body: fila });
+  }
+  if (!upd.ok) return dbError(res, upd);
+  if (!Array.isArray(upd.data) || upd.data.length === 0) {
+    return sendError(res, 409, 'consumo_changed', 'El consumo cambió mientras se editaba. Recarga e intenta de nuevo.');
+  }
+
+  // 2. Ajustar inventario; si algo falla, deshacer lo aplicado y la fila.
+  const aplicados = [];
+  for (const p of plan) {
+    const aj = await ajustarStock(p.sku, p.delta);
+    if (!aj.ok) {
+      for (const a of aplicados) {
+        const back = await ajustarStock(a.sku, -a.delta);
+        if (!back.ok) console.error('No se pudo revertir el stock de', a.sku, back);
+      }
+      const revertir = {};
+      Object.keys(fila).forEach((k) => { revertir[k] = old[k] === undefined ? null : old[k]; });
+      const rb = await sb(`biogradix_consumo?id=eq.${id}`, { method: 'PATCH', body: revertir });
+      if (!rb.ok) console.error('No se pudo revertir el consumo', id, rb.status, rb.data);
+      if (aj.motivo === 'stock_insuficiente') {
+        return sendError(res, 409, 'insufficient_stock',
+          `Stock insuficiente: ${aj.stock} packs de ${p.sku} y el cambio necesita ${-p.delta}`);
+      }
+      if (aj.motivo === 'db') return dbError(res, aj.result);
+      return sendError(res, 409, 'stock_changed', 'El stock cambió mientras se editaba. Recarga e intenta de nuevo.');
+    }
+    aplicados.push(p);
+  }
+
+  // 3. Historial.
+  let movWarning = null;
+  for (const p of aplicados) {
+    const mov = await sb('biogradix_inventory_movements', {
+      method: 'POST',
+      headers: { 'Prefer': 'return=minimal' },
+      body: { sku: p.sku, delta: p.delta, reason: 'consumo', order_id: null, note: `Edición del consumo ${id} (${persona})` },
+    });
+    if (!mov.ok) {
+      console.error('Movimiento de edición no registrado:', mov.status, mov.data);
+      movWarning = 'El consumo y el stock se actualizaron, pero un movimiento no entró al historial.';
+    }
+  }
+
+  const out = { consumo: upd.data[0], ajustes: aplicados };
+  const avisos = [warning, movWarning].filter(Boolean);
+  if (avisos.length) out.warning = avisos.join(' ');
+  return res.status(200).json(out);
+}
+
 async function consumoMarkPaid(req, res) {
   const id = parseInt(req.body && req.body.id, 10);
   if (!Number.isFinite(id) || id < 1) {
@@ -734,6 +1020,7 @@ module.exports = async function handler(req, res) {
   const mutations = [
     'orders.updateStatus', 'orders.markShipped', 'inventory.adjust',
     'expenses.add', 'expenses.delete', 'consumo.add', 'consumo.markPaid',
+    'consumo.update', 'orders.restock',
   ];
   if (mutations.includes(action) && req.method !== 'POST') {
     return sendError(res, 405, 'method_not_allowed', `${action} requiere POST`);
@@ -745,6 +1032,7 @@ module.exports = async function handler(req, res) {
       case 'orders.list':      return await ordersList(req, res);
       case 'orders.updateStatus': return await ordersUpdateStatus(req, res);
       case 'orders.markShipped':  return await ordersMarkShipped(req, res);
+      case 'orders.restock':      return await ordersRestock(req, res);
       case 'inventory.list':   return await inventoryList(req, res);
       case 'inventory.adjust': return await inventoryAdjust(req, res);
       case 'movements.list':   return await movementsList(req, res);
@@ -755,6 +1043,7 @@ module.exports = async function handler(req, res) {
       case 'consumo.list':     return await consumoList(req, res);
       case 'consumo.add':      return await consumoAdd(req, res);
       case 'consumo.markPaid': return await consumoMarkPaid(req, res);
+      case 'consumo.update':   return await consumoUpdate(req, res);
       default:
         return sendError(res, 400, 'unknown_action', `Acción desconocida: ${action || '(vacia)'}`);
     }

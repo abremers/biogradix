@@ -295,6 +295,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       <div class="pendstrip" id="consumoPend" hidden></div>
 
       <form class="formpanel" id="consumoForm">
+        <p class="form-note" id="cEditNote" hidden style="margin:0 0 12px;"></p>
         <div class="detail-form">
           <div class="field"><span>Fecha</span><input type="date" id="cFecha"/></div>
           <div class="field"><span>Persona</span><select id="cPersona">
@@ -306,6 +307,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
           <div class="field"><span>Costo unitario</span><input type="number" id="cCosto" step="0.01" min="0" placeholder="costo por confirmar"/></div>
           <div class="field" style="flex:1;min-width:180px;"><span>Nota</span><input type="text" id="cNota" placeholder="Opcional" style="width:100%;"/></div>
           <button class="btn btn-sm" type="submit" id="cBtn">Registrar consumo</button>
+          <button class="btn btn-ghost btn-sm" type="button" id="cCancelEdit" hidden>Cancelar edición</button>
         </div>
         <p class="form-note">Descuenta stock automáticamente; el movimiento queda en el historial de Inventario con motivo Consumo propio. Sin costo capturado se usa el costo del producto; si tampoco existe, la fila entra como costo por confirmar.</p>
       </form>
@@ -560,6 +562,19 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     }).join('<br/>');
   }
 
+  // Resumen legible de lo que devolvió una cancelación / reposición.
+  function restockTexto(r) {
+    if (!r) return 'Stock sin cambios.';
+    var partes = [];
+    (r.repuestos || []).forEach(function (x) { partes.push('+' + x.qty + ' ' + x.sku); });
+    var txt = partes.length ? 'Inventario repuesto: ' + partes.join(', ') + '.' : '';
+    if ((r.ya_repuestos || []).length) txt += (txt ? ' ' : '') + 'Ya se había repuesto antes.';
+    if ((r.fallidos || []).length) {
+      txt += (txt ? ' ' : '') + 'No se pudo reponer: ' + r.fallidos.map(function (x) { return x.sku; }).join(', ') + '. Ajusta en Inventario.';
+    }
+    return txt || 'El pedido no tenía productos que reponer.';
+  }
+
   function renderOrders() {
     var tb = $('ordersBody');
     $('countPedidos').textContent = '(' + S.orders.length + ')';
@@ -580,6 +595,11 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       }
       if (o.status === 'paid' || o.status === 'preparing') {
         action += ' <button class="btn btn-ghost btn-sm" type="button" data-cancel="' + oid + '" style="color:var(--alert);">Cancelar</button>';
+      }
+      if (o.status === 'cancelled' && !o.shipped_at) {
+        action += o.restock_done
+          ? '<span class="cell-sub">Inventario repuesto</span>'
+          : '<button class="btn btn-ghost btn-sm" type="button" data-restock="' + oid + '">Reponer inventario</button>';
       }
       var tracking = o.tracking_number
         ? esc(o.tracking_carrier || '—') + '<div class="cell-sub num">' + esc(o.tracking_number) + '</div>'
@@ -632,10 +652,28 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
 
     if (t.hasAttribute('data-cancel')) {
       oid = t.getAttribute('data-cancel');
-      if (!window.confirm('¿Cancelar el pedido ' + shortId(oid) + '?\n\nEl inventario NO se repone automáticamente. Si el producto nunca salió, registra la reposición en Inventario como ajuste con nota.')) return;
+      if (!window.confirm('¿Cancelar el pedido ' + shortId(oid) + '?\n\nComo aún no se envió, sus packs regresan al inventario. como ajuste con nota.')) return;
       t.disabled = true;
-      api('orders.updateStatus', { order_id: oid, status: 'cancelled' }).then(function () {
-        toast('Pedido ' + shortId(oid) + ' cancelado. Stock sin cambios.');
+      api('orders.updateStatus', { order_id: oid, status: 'cancelled' }).then(function (d) {
+        var fallo = d && d.restock && (d.restock.fallidos || []).length;
+        toast('Pedido ' + shortId(oid) + ' cancelado. ' + restockTexto(d && d.restock), !!fallo);
+        S.products = []; S.loaded.inventario = false;
+        loadOrders();
+      }).catch(function (err) {
+        t.disabled = false;
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
+
+    if (t.hasAttribute('data-restock')) {
+      oid = t.getAttribute('data-restock');
+      if (!window.confirm('¿Devolver al inventario los packs del pedido cancelado ' + shortId(oid) + '?')) return;
+      t.disabled = true;
+      api('orders.restock', { order_id: oid }).then(function (d) {
+        var fallo = d && d.restock && (d.restock.fallidos || []).length;
+        toast(restockTexto(d && d.restock), !!fallo);
+        S.products = []; S.loaded.inventario = false;
         loadOrders();
       }).catch(function (err) {
         t.disabled = false;
@@ -1096,8 +1134,9 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       var estado = c.pagado
         ? '<span class="chip st-paid">Pagado</span>' + (c.pagado_at ? '<div class="cell-sub num">' + esc(fmtDate(c.pagado_at)) + '</div>' : '')
         : '<span class="chip st-preparing">Pendiente</span>';
-      var accion = c.pagado ? '' :
-        '<button class="btn btn-ghost btn-sm" type="button" data-consumopaid="' + cid + '" data-consumodesc="' + esc((c.persona || '') + ' (' + c.packs + ' x ' + c.sku + ')') + '">Marcar pagado</button>';
+      var editar = '<button class="btn btn-ghost btn-sm" type="button" data-consumoedit="' + cid + '">Editar</button> ';
+      var accion = editar + (c.pagado ? '' :
+        '<button class="btn btn-ghost btn-sm" type="button" data-consumopaid="' + cid + '" data-consumodesc="' + esc((c.persona || '') + ' (' + c.packs + ' x ' + c.sku + ')') + '">Marcar pagado</button>');
       html += '<tr>' +
         '<td class="num">' + fechaConsumo(c) + '</td>' +
         '<td>' + esc(c.persona || '—') + '</td>' +
@@ -1111,6 +1150,61 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     });
     $('consumoBody').innerHTML = html;
   }
+
+  function fechaLocal(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    var mm = String(d.getMonth() + 1); if (mm.length < 2) mm = '0' + mm;
+    var dd = String(d.getDate()); if (dd.length < 2) dd = '0' + dd;
+    return d.getFullYear() + '-' + mm + '-' + dd;
+  }
+
+  function editarConsumo(c) {
+    S.editConsumo = c;
+    $('cFecha').value = c.fecha ? String(c.fecha).slice(0, 10) : fechaLocal(c.created_at);
+    var sel = $('cPersona');
+    if (c.persona && !Array.prototype.some.call(sel.options, function (o) { return o.value === c.persona; })) {
+      var op = document.createElement('option'); op.value = c.persona; op.textContent = c.persona; sel.appendChild(op);
+    }
+    sel.value = c.persona || sel.value;
+    var skuSel = $('cSku');
+    if (!Array.prototype.some.call(skuSel.options, function (o) { return o.value === c.sku; })) {
+      var os = document.createElement('option'); os.value = c.sku; os.textContent = c.sku; skuSel.appendChild(os);
+    }
+    skuSel.value = c.sku;
+    $('cPacks').value = c.packs;
+    $('cCosto').value = c.costo_unitario == null ? '' : c.costo_unitario;
+    $('cNota').value = c.nota || '';
+    var bloqueado = !!c.pagado;
+    ['cSku', 'cPacks', 'cCosto'].forEach(function (k) { $(k).disabled = bloqueado; });
+    $('cEditNote').textContent = 'Editando el consumo #' + c.id + ' (' + (c.persona || '') + ', ' + c.packs + ' x ' + c.sku + ').' +
+      (bloqueado ? ' Ya está pagado: solo puedes cambiar la fecha, la persona y la nota.'
+                 : ' Si cambias packs o SKU, el inventario se ajusta por la diferencia.');
+    $('cEditNote').hidden = false;
+    $('cBtn').textContent = 'Guardar cambios';
+    $('cCancelEdit').hidden = false;
+    $('consumoForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function salirEdicion() {
+    S.editConsumo = null;
+    ['cSku', 'cPacks', 'cCosto'].forEach(function (k) { $(k).disabled = false; });
+    $('cPacks').value = ''; $('cCosto').value = ''; $('cNota').value = '';
+    $('cFecha').value = todayLocalISO();
+    $('cEditNote').hidden = true;
+    $('cBtn').textContent = 'Registrar consumo';
+    $('cCancelEdit').hidden = true;
+    updateCostoPlaceholder();
+  }
+  $('cCancelEdit').addEventListener('click', salirEdicion);
+
+  $('consumoBody').addEventListener('click', function (ev) {
+    var b = ev.target.closest ? ev.target.closest('[data-consumoedit]') : null;
+    if (!b) return;
+    var id = String(b.getAttribute('data-consumoedit'));
+    var c = S.consumos.filter(function (x) { return String(x.id) === id; })[0];
+    if (c) editarConsumo(c);
+  });
 
   $('consumoForm').addEventListener('submit', function (ev) {
     ev.preventDefault();
@@ -1132,6 +1226,31 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       payload.costo_unitario = costo;
     }
     var btn = $('cBtn');
+    if (S.editConsumo) {
+      var ed = S.editConsumo;
+      payload.id = ed.id;
+      payload.nota = $('cNota').value.trim();                 // vacía = borrar la nota
+      payload.costo_unitario = costoRaw === '' ? null : payload.costo_unitario;
+      btn.disabled = true; btn.textContent = 'Guardando...';
+      api('consumo.update', payload).then(function (d) {
+        if (d.unchanged) toast('Sin cambios que guardar.' + (d.warning ? ' ' + d.warning : ''), !!d.warning);
+        else if (d.warning) toast(d.warning, true);
+        else {
+          var aj = (d.ajustes || []).map(function (a) { return (a.delta > 0 ? '+' : '') + a.delta + ' ' + a.sku; });
+          toast('Consumo #' + ed.id + ' actualizado.' + (aj.length ? ' Inventario: ' + aj.join(', ') + '.' : ''));
+        }
+        salirEdicion();
+        S.products = []; S.loaded.inventario = false;
+        loadConsumo();
+        ensureProducts();
+      }).catch(function (err) {
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      }).finally(function () {
+        btn.disabled = false;
+        btn.textContent = S.editConsumo ? 'Guardar cambios' : 'Registrar consumo';
+      });
+      return;
+    }
     btn.disabled = true; btn.textContent = 'Registrando...';
     api('consumo.add', payload).then(function (d) {
       if (d.warning) toast(d.warning, true);
