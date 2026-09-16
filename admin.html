@@ -296,6 +296,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
 
       <form class="formpanel" id="consumoForm">
         <div class="detail-form">
+          <div class="field"><span>Fecha</span><input type="date" id="cFecha"/></div>
           <div class="field"><span>Persona</span><select id="cPersona">
             <option value="Alejandro">Alejandro</option>
             <option value="Beto">Beto</option>
@@ -1050,6 +1051,22 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     });
   }
 
+  // Día del consumo. Sin columna fecha (SQL pendiente) se usa el momento de
+  // captura. Si se anotó otro día, se muestra cuándo se registró.
+  function fechaConsumo(c) {
+    if (!c.fecha) return esc(fmtDate(c.created_at));
+    var html = esc(fmtDateOnly(c.fecha));
+    var cap = c.created_at ? new Date(c.created_at) : null;
+    if (cap && !isNaN(cap.getTime())) {
+      var mm = String(cap.getMonth() + 1); if (mm.length < 2) mm = '0' + mm;
+      var dd = String(cap.getDate()); if (dd.length < 2) dd = '0' + dd;
+      if (cap.getFullYear() + '-' + mm + '-' + dd !== String(c.fecha).slice(0, 10)) {
+        html += '<div class="cell-sub">registrado ' + esc(fmtDate(c.created_at)) + '</div>';
+      }
+    }
+    return html;
+  }
+
   function renderConsumo() {
     $('countConsumo').textContent = '(' + S.consumos.length + ')';
     $('consumoMeta').textContent = S.consumos.length + ' consumo' + (S.consumos.length === 1 ? '' : 's');
@@ -1082,7 +1099,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       var accion = c.pagado ? '' :
         '<button class="btn btn-ghost btn-sm" type="button" data-consumopaid="' + cid + '" data-consumodesc="' + esc((c.persona || '') + ' (' + c.packs + ' x ' + c.sku + ')') + '">Marcar pagado</button>';
       html += '<tr>' +
-        '<td class="num">' + esc(fmtDate(c.created_at)) + '</td>' +
+        '<td class="num">' + fechaConsumo(c) + '</td>' +
         '<td>' + esc(c.persona || '—') + '</td>' +
         '<td class="num">' + esc(c.sku) + (c.nota ? '<div class="cell-sub">' + esc(c.nota) + '</div>' : '') + '</td>' +
         '<td class="right num">' + fmtInt(c.packs) + '</td>' +
@@ -1103,6 +1120,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     if (!sku) { toast('Elige un SKU.', true); return; }
     if (!Number.isFinite(packs) || packs < 1) { toast('Los packs deben ser un entero mayor que cero.', true); return; }
     var payload = {
+      fecha: $('cFecha').value || undefined,
       persona: $('cPersona').value,
       sku: sku,
       packs: packs,
@@ -1133,6 +1151,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
 
   // ── ARRANQUE ────────────────────────────────────────────
   $('gFecha').value = todayLocalISO();
+  $('cFecha').value = todayLocalISO();
 
   if (S.key) {
     api('auth.check').then(function () {

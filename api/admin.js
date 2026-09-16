@@ -13,6 +13,7 @@ const ADJUST_REASONS = ['restock', 'sample', 'damage', 'adjustment'];
 const EXPENSE_CATEGORIES = ['publicidad', 'muestras', 'envios', 'comisiones', 'herramientas', 'inventario', 'otros'];
 const EXPENSE_CURRENCIES = ['USD', 'MXN'];
 const PHASE3_SQL = 'sql/phase3-gastos-consumo.sql';
+const CONSUMO_FECHA_SQL = 'sql/phase5-consumo-fecha.sql';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -70,6 +71,24 @@ async function sb(path, options) {
 function tableError(res, table, sqlFile) {
   return sendError(res, 424, 'missing_table',
     `La tabla ${table} no existe todavía en Supabase. Ejecuta primero ${sqlFile || 'el SQL de la Fase 1'}.`);
+}
+
+// Fecha tipo date (AAAA-MM-DD) que ademas exista en el calendario:
+// el formato solo no rechaza cosas como 2026-02-31.
+function isValidIsoDate(s) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return false;
+  const d = new Date(`${s}T00:00:00Z`);
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === s;
+}
+
+// La columna "fecha" de biogradix_consumo llega con sql/phase5. Mientras no se
+// ejecute, PostgREST responde 42703 (orden por columna inexistente) o PGRST204
+// (insert con columna que no esta en su cache).
+function missingFechaColumn(result) {
+  const d = result && result.data;
+  if (!d) return false;
+  const texto = `${d.message || ''} ${d.details || ''} ${d.hint || ''}`;
+  return (d.code === '42703' || d.code === 'PGRST204') && /fecha/.test(texto);
 }
 
 function round2(n) {
@@ -528,7 +547,11 @@ async function expensesDelete(req, res) {
 // ── Consumo propio ───────────────────────────────────────────────────────────
 
 async function consumoList(req, res) {
-  const r = await sb('biogradix_consumo?select=*&order=created_at.desc&limit=200');
+  let r = await sb('biogradix_consumo?select=*&order=fecha.desc,created_at.desc&limit=200');
+  // Sin la columna fecha todavia: mismo listado de antes, por momento de captura.
+  if (!r.ok && missingFechaColumn(r)) {
+    r = await sb('biogradix_consumo?select=*&order=created_at.desc&limit=200');
+  }
   if (r.missingTable) return tableError(res, 'biogradix_consumo', PHASE3_SQL);
   if (!r.ok) return dbError(res, r);
 
@@ -557,6 +580,7 @@ async function consumoAdd(req, res) {
   const sku = b.sku ? String(b.sku).trim() : '';
   const packs = parseInt(b.packs, 10);
   const nota = b.nota ? String(b.nota).trim().slice(0, 500) : null;
+  const fecha = b.fecha ? String(b.fecha).trim() : null;
 
   let costoUnitario = null;
   if (b.costo_unitario !== undefined && b.costo_unitario !== null && b.costo_unitario !== '') {
@@ -569,6 +593,9 @@ async function consumoAdd(req, res) {
   if (!sku) return sendError(res, 400, 'bad_request', 'Falta el SKU');
   if (!Number.isFinite(packs) || packs < 1 || packs > 1000) {
     return sendError(res, 400, 'bad_request', 'packs debe ser un entero entre 1 y 1000');
+  }
+  if (fecha && !isValidIsoDate(fecha)) {
+    return sendError(res, 400, 'bad_request', 'Fecha inválida, usa el formato AAAA-MM-DD');
   }
 
   // 1. El producto debe existir y tener stock suficiente.
@@ -593,11 +620,25 @@ async function consumoAdd(req, res) {
 
   // 3. Insertar el consumo primero: si la tabla de la Fase 3 falta, se
   //    responde 424 sin haber tocado el stock.
-  const ins = await sb('biogradix_consumo', {
+  const fila = { persona, sku, packs, costo_unitario: costoUnitario, total, nota };
+  if (fecha) fila.fecha = fecha; // sin fecha, la tabla aplica el dia de hoy
+  let ins = await sb('biogradix_consumo', {
     method: 'POST',
     headers: { 'Prefer': 'return=representation' },
-    body: { persona, sku, packs, costo_unitario: costoUnitario, total, nota },
+    body: fila,
   });
+  // Sin la columna fecha todavia: se guarda igual y se avisa. Tomar el pack
+  // no debe quedar sin registro por una migracion pendiente.
+  let fechaWarning = null;
+  if (!ins.ok && fecha && missingFechaColumn(ins)) {
+    delete fila.fecha;
+    ins = await sb('biogradix_consumo', {
+      method: 'POST',
+      headers: { 'Prefer': 'return=representation' },
+      body: fila,
+    });
+    fechaWarning = `El consumo se guardó sin la fecha elegida (${fecha}): falta ejecutar ${CONSUMO_FECHA_SQL} en Supabase.`;
+  }
   if (ins.missingTable) return tableError(res, 'biogradix_consumo', PHASE3_SQL);
   if (!ins.ok) return dbError(res, ins);
   const consumo = Array.isArray(ins.data) ? ins.data[0] : null;
@@ -632,14 +673,16 @@ async function consumoAdd(req, res) {
       consumo,
       product: upd.data[0],
       movement: null,
-      warning: 'El consumo quedó registrado y el stock se descontó, pero el movimiento no entró al historial. Verifica que corriste completo sql/phase3-gastos-consumo.sql (habilita el motivo consumo).',
+      warning: (fechaWarning ? fechaWarning + ' ' : '') + 'El consumo quedó registrado y el stock se descontó, pero el movimiento no entró al historial. Verifica que corriste completo sql/phase3-gastos-consumo.sql (habilita el motivo consumo).',
     });
   }
-  return res.status(200).json({
+  const ok = {
     consumo,
     product: upd.data[0],
     movement: Array.isArray(mov.data) ? mov.data[0] : null,
-  });
+  };
+  if (fechaWarning) ok.warning = fechaWarning;
+  return res.status(200).json(ok);
 }
 
 async function consumoMarkPaid(req, res) {
