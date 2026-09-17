@@ -211,7 +211,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
     </div>
   </div>
   <div class="hero-right-panel" style="background:var(--stone);position:relative;overflow:hidden;min-height:calc(100vh - 64px);">
-    <div class="hero-media" id="heroMedia"><img class="hero-shot activa" data-nombre="BPC-157" src="img/producto/bpc-157-caja-940.webp" srcset="img/producto/bpc-157-caja-600.webp 600w, img/producto/bpc-157-caja-940.webp 752w" width="752" height="940" sizes="(max-width:768px) 100vw, 50vw" alt="Caja de parches BPC-157 de biogradix sobre travertino" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;"/><video class="hero-video" id="heroVideo" muted loop playsinline preload="none" aria-hidden="true" poster="img/producto/bpc-157-caja-940.webp" width="864" height="1080"></video></div>
+    <div class="hero-media" id="heroMedia"><img class="hero-shot activa" data-nombre="BPC-157" src="img/producto/bpc-157-hero-940.webp" srcset="img/producto/bpc-157-hero-620.webp 620w, img/producto/bpc-157-hero-940.webp 940w" width="940" height="940" sizes="(max-width:768px) 100vw, 50vw" alt="Caja de parches BPC-157 de biogradix sobre travertino" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;"/><video class="hero-video" id="heroVideo" muted loop playsinline preload="none" aria-hidden="true" poster="img/producto/bpc-157-hero-940.webp" width="1080" height="1080"></video></div>
     <div class="hero-grano" aria-hidden="true"></div>
     <div class="hero-etiqueta" id="heroEtiqueta" aria-hidden="true">BPC-157</div>
   </div>
@@ -762,7 +762,7 @@ function heroTitulo(){
         video.play().then(()=>{video.classList.add('activa');media.classList.add('con-video');}).catch(()=>rotacionDeFotos());
       },{once:true});
       video.addEventListener('error',()=>rotacionDeFotos(),{once:true});
-      video.src='video/hero-bpc-157.mp4';
+      video.src='video/hero-bpc-157-v2.mp4';
       video.load();
       // la pestaña oculta no gasta batería reproduciendo
       document.addEventListener('visibilitychange',()=>{
