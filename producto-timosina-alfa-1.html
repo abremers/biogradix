@@ -93,6 +93,11 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
   h1{font-size:clamp(38px,10vw,56px)!important;line-height:1.1!important;}
   h2{font-size:clamp(26px,7vw,40px)!important;line-height:1.18!important;}
 }
+
+/* Foto del parche en «Cómo funciona» */
+.patch-figure{margin:72px 0 0;aspect-ratio:2/1;overflow:hidden;border-radius:2px;background:var(--stone);}
+.patch-figure img{width:100%;height:100%;object-fit:cover;object-position:72% 50%;display:block;}
+@media (max-width:768px){.patch-figure{aspect-ratio:4/3;margin-top:40px;}}
 </style>
 </head>
 <body>
@@ -178,7 +183,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
     </div>
   </div>
   <div class="product-image-col" style="background:var(--stone);position:relative;overflow:hidden;min-height:calc(100vh - 64px);">
-    <img src="img/producto/caja-marmol-1100.webp" srcset="img/producto/caja-marmol-600.webp 600w, img/producto/caja-marmol-1100.webp 1100w" sizes="(max-width:768px) 100vw, 50vw" alt="Caja de parches de mucosa oral sobre mármol cálido" width="1100" height="1375" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;filter:grayscale(1);opacity:.9;"/>
+    <img src="img/producto/timosina-alfa-1-caja-940.webp" srcset="img/producto/timosina-alfa-1-caja-600.webp 600w, img/producto/timosina-alfa-1-caja-940.webp 752w" sizes="(max-width:768px) 100vw, 50vw" alt="Caja de parches Timosina Alfa-1 de biogradix" width="752" height="940" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;filter:grayscale(1);opacity:.9;"/>
     <div style="position:absolute;top:16px;right:16px;background:var(--bone);border:1px solid var(--rule);padding:12px 18px;border-radius:2px;z-index:2;">
         <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;" data-i18n="badge-purity">Pureza</div>
         <div style="font-family:'Cormorant Display',serif;font-size:26px;font-weight:300;color:var(--ink);line-height:1;">≥99<span style="font-size:14px;">%</span></div>
@@ -199,6 +204,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
       <div class="step-cell"><div class="step-num">04</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step4-label">Circulación</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step4-desc">El compuesto activo entra al torrente sanguíneo sistémico en minutos, alcanzando tejidos diana con rapidez.</div></div>
       <div class="step-cell"><div class="step-num">05</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px;" data-i18n="step5-label">Acción celular</div><div style="font-size:13px;font-weight:300;line-height:1.7;color:var(--ink-soft);" data-i18n="step5-desc">El péptido interactúa con receptores específicos a nivel celular, activando las cascadas biológicas deseadas.</div></div>
     </div>
+    <figure class="patch-figure reveal"><img src="img/producto/timosina-alfa-1-parche-ancho-1600.webp" srcset="img/producto/timosina-alfa-1-parche-ancho-900.webp 900w, img/producto/timosina-alfa-1-parche-ancho-1600.webp 1600w" sizes="(max-width:768px) 100vw, 1160px" alt="Parche de mucosa oral Timosina Alfa-1" width="1600" height="900" loading="lazy"/></figure>
   </div>
 </section>
 
