@@ -135,6 +135,23 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 .soldout-grid .product-cell:nth-child(4n){border-right:none;}
 .soldout-grid .product-cell:nth-child(n+5){border-top:1px solid var(--rule);}
 @media (max-width:768px){.cell-photo{aspect-ratio:1/1;margin-bottom:20px;}[style*="padding:56px 36px 24px"]{padding:40px 20px 12px!important;}}
+
+/* ═══════════ HERO CON MOVIMIENTO ═══════════ */
+.hero-media{position:absolute;inset:-16px;will-change:transform;transition:transform 1.2s cubic-bezier(.16,1,.3,1);}
+.hero-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;opacity:0;transition:opacity 1.8s cubic-bezier(.16,1,.3,1);animation:heroZoom 28s ease-in-out infinite alternate;}
+.hero-shot.activa{opacity:1;}
+@keyframes heroZoom{from{transform:scale(1.02);}to{transform:scale(1.09);}}
+.hero-grano{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-size:140px 140px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.hero-etiqueta{position:absolute;left:24px;bottom:24px;z-index:2;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);background:var(--bone);border:1px solid var(--rule);padding:9px 15px;border-radius:2px;transition:opacity .5s ease;}
+.hero-titulo .h-linea{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em;}
+.hero-titulo .h-linea-in{display:block;transform:translateY(110%);transition:transform 1.15s cubic-bezier(.16,1,.3,1);}
+.hero-titulo.entra .h-linea-in{transform:none;}
+@media (max-width:768px){.hero-etiqueta{left:12px;bottom:12px;padding:7px 11px;font-size:9px;}.hero-media{inset:-8px;}}
+@media (prefers-reduced-motion:reduce){
+  .hero-shot{animation:none;}
+  .hero-media{transition:none;}
+  .hero-titulo .h-linea-in{transform:none;transition:none;}
+}
 </style>
 </head>
 <body>
@@ -183,7 +200,7 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
 <section style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr;margin-top:64px;">
   <div style="padding:100px 64px 80px 80px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center;">
     <div class="reveal" style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-faint);margin-bottom:48px;" data-i18n="hero-overline">Péptidos bioactivos — absorción mucosa</div>
-    <h1 class="reveal reveal-delay-1" style="font-family:'Cormorant Display',serif;font-size:clamp(52px,5.5vw,84px);font-weight:300;line-height:1.05;letter-spacing:-.5px;color:var(--ink);margin-bottom:40px;" data-i18n-html="hero-h1">Lo que el cuerpo<br/>siempre supo<br/><em style="font-style:italic;color:var(--forest);">absorber.</em></h1>
+    <h1 class="hero-titulo" style="font-family:'Cormorant Display',serif;font-size:clamp(52px,5.5vw,84px);font-weight:300;line-height:1.05;letter-spacing:-.5px;color:var(--ink);margin-bottom:40px;" data-i18n-html="hero-h1">Lo que el cuerpo<br/>siempre supo<br/><em style="font-style:italic;color:var(--forest);">absorber.</em></h1>
     <p class="reveal reveal-delay-2" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--ink-soft);max-width:360px;margin-bottom:52px;" data-i18n="hero-body">No suplementos. Péptidos. La diferencia está en lo que llega — no en lo que promete la etiqueta.</p>
     <div class="reveal reveal-delay-2" style="display:flex;align-items:center;gap:32px;">
       <a href="quiz.html" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--bone);background:var(--ink);padding:14px 28px;border-radius:2px;text-decoration:none;" data-i18n="hero-cta1">Descubrir mi protocolo</a>
@@ -191,7 +208,9 @@ body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--ink);over
     </div>
   </div>
   <div class="hero-right-panel" style="background:var(--stone);position:relative;overflow:hidden;min-height:calc(100vh - 64px);">
-    <img src="img/producto/bpc-157-caja-940.webp" srcset="img/producto/bpc-157-caja-600.webp 600w, img/producto/bpc-157-caja-940.webp 752w" width="752" height="940" sizes="(max-width:768px) 100vw, 50vw" alt="Caja de parches BPC-157 de biogradix sobre travertino" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;"/>
+    <div class="hero-media" id="heroMedia"><img class="hero-shot activa" data-nombre="BPC-157" src="img/producto/bpc-157-caja-940.webp" srcset="img/producto/bpc-157-caja-600.webp 600w, img/producto/bpc-157-caja-940.webp 752w" width="752" height="940" sizes="(max-width:768px) 100vw, 50vw" alt="Caja de parches BPC-157 de biogradix sobre travertino" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;"/></div>
+    <div class="hero-grano" aria-hidden="true"></div>
+    <div class="hero-etiqueta" id="heroEtiqueta" aria-hidden="true">BPC-157</div>
   </div>
 </section>
 
@@ -641,6 +660,7 @@ function setLang(lang){
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.textContent=TRANSLATIONS[k][lang];});
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(TRANSLATIONS[k]&&TRANSLATIONS[k][lang])el.innerHTML=TRANSLATIONS[k][lang];});
   document.querySelectorAll('.lang-btn').forEach(btn=>{btn.style.color=btn.textContent.trim().toLowerCase()===lang?'var(--ink)':'var(--ink-faint)';});
+  heroTitulo();
 }
 (function(){const s=localStorage.getItem('bgLang')||'es';setLang(s);})();
 
@@ -669,6 +689,80 @@ document.querySelectorAll('.faq-q').forEach(q=>{
     if(!isOpen)item.classList.add('open');
   });
 });
+
+// ═══════════ HERO CON MOVIMIENTO ═══════════
+// El titular entra por líneas, la foto respira, sigue al cursor y va rotando
+// entre los cinco productos disponibles. Todo se apaga si el sistema pide
+// menos movimiento.
+const HERO_FOTOS=[
+  {sku:'bpc-157',nombre:'BPC-157'},
+  {sku:'ghk-cu',nombre:'GHK-Cu'},
+  {sku:'tb-500',nombre:'TB-500'},
+  {sku:'nad-plus',nombre:'NAD+'},
+  {sku:'mots-c',nombre:'MOTS-c'}
+];
+
+function heroTitulo(){
+  const h1=document.querySelector('.hero-titulo');
+  if(!h1)return;
+  const lineas=h1.innerHTML.split(/<br\s*\/?>/i);
+  if(lineas.length<2){h1.classList.add('entra');return;}
+  h1.innerHTML=lineas.map((l,n)=>'<span class="h-linea"><span class="h-linea-in" style="transition-delay:'+(140+n*110)+'ms">'+l+'</span></span>').join('');
+  h1.classList.remove('entra');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>h1.classList.add('entra')));
+}
+
+(function heroMovimiento(){
+  const media=document.getElementById('heroMedia');
+  const panel=document.querySelector('.hero-right-panel');
+  const etiqueta=document.getElementById('heroEtiqueta');
+  if(!media||!panel)return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+
+  let i=0,reloj=null;
+  function rotar(){
+    const fotos=media.querySelectorAll('.hero-shot');
+    if(fotos.length<2)return;
+    fotos[i].classList.remove('activa');
+    i=(i+1)%fotos.length;
+    fotos[i].classList.add('activa');
+    if(etiqueta){
+      etiqueta.style.opacity='0';
+      setTimeout(()=>{etiqueta.textContent=fotos[i].getAttribute('data-nombre')||'';etiqueta.style.opacity='1';},500);
+    }
+  }
+  // las otras cuatro fotos se cargan cuando la página ya terminó de cargar,
+  // y solo en pantallas grandes: en celular no vale el consumo de datos
+  window.addEventListener('load',()=>setTimeout(()=>{
+    if(window.innerWidth<900)return;
+    HERO_FOTOS.slice(1).forEach(f=>{
+      const img=new Image();
+      img.className='hero-shot';
+      img.src='img/producto/'+f.sku+'-caja-940.webp';
+      img.srcset='img/producto/'+f.sku+'-caja-600.webp 600w, img/producto/'+f.sku+'-caja-940.webp 752w';
+      img.sizes='(max-width:768px) 100vw, 50vw';
+      img.width=752;img.height=940;img.alt='';img.decoding='async';
+      img.setAttribute('data-nombre',f.nombre);
+      media.appendChild(img);
+    });
+    reloj=setInterval(()=>{if(!document.hidden)rotar();},7000);
+  },1500),{once:true});
+
+  // paralaje: solo con ratón, nunca en pantallas táctiles
+  if(window.matchMedia('(hover:hover)').matches){
+    let pendiente=false,x=0,y=0;
+    panel.addEventListener('mousemove',e=>{
+      const r=panel.getBoundingClientRect();
+      x=((e.clientX-r.left)/r.width-0.5)*-14;
+      y=((e.clientY-r.top)/r.height-0.5)*-11;
+      if(!pendiente){
+        pendiente=true;
+        requestAnimationFrame(()=>{media.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';pendiente=false;});
+      }
+    },{passive:true});
+    panel.addEventListener('mouseleave',()=>{media.style.transform='translate3d(0,0,0)';});
+  }
+})();
 </script>
 <!-- WA FLOAT -->
 <a href="https://wa.me/15553471798" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;bottom:28px;right:28px;z-index:500;width:52px;height:52px;background:#2E4A3A;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(46,74,58,.35);" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(46,74,58,.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(46,74,58,.35)'">
