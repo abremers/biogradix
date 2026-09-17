@@ -440,8 +440,8 @@ section { padding: clamp(60px,10vw,120px) clamp(1.25rem,6vw,4rem); }
     <div class="product-grid">
       <div class="product-card reveal">
         <div class="product-tag">Antioxidante</div>
-        <div class="product-name">Glutatión</div>
-        <div class="product-active">Tripéptido antioxidante · GSH</div>
+        <div class="product-name">Glutatión Liposomal</div>
+        <div class="product-active">Tripéptido antioxidante liposomal · 100 mg</div>
         <div class="product-desc" data-i18n="prod1_desc">Antioxidante maestro. Detox hepático, protección celular, claridad cutánea. El escudo molecular más importante del organismo.</div>
       </div>
       <div class="product-card reveal">
@@ -471,7 +471,7 @@ section { padding: clamp(60px,10vw,120px) clamp(1.25rem,6vw,4rem); }
       <div class="product-card reveal">
         <div class="product-tag">Vitalidad</div>
         <div class="product-name">PT-141</div>
-        <div class="product-active">Bremelanotida + Oxitocina</div>
+        <div class="product-active">Bremelanotida · 2.5 mg</div>
         <div class="product-desc" data-i18n="prod6_desc">Activación del receptor de melanocortina MC4R y vínculo social. Vitalidad, deseo y conexión emocional desde el sistema nervioso central.</div>
       </div>
       <div class="product-card reveal">
@@ -491,6 +491,24 @@ section { padding: clamp(60px,10vw,120px) clamp(1.25rem,6vw,4rem); }
         <div class="product-name">MOTS-c</div>
         <div class="product-active">Péptido mitocondrial · 16 aminoácidos</div>
         <div class="product-desc" data-i18n="prod9_desc">Péptido codificado en el ADN mitocondrial. Activa AMPK y apoya la sensibilidad a la insulina y el metabolismo energético.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Reparación Total</div>
+        <div class="product-name">Wolverine Stack</div>
+        <div class="product-active">BPC-157 500 mcg + TB-500 300 mcg</div>
+        <div class="product-desc" data-i18n="prod10_desc">Los dos péptidos de reparación en un parche. BPC-157 repara el tejido; TB-500 devuelve el movimiento.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Cognición</div>
+        <div class="product-name">Semax</div>
+        <div class="product-active">Heptapéptido nootrópico · ACTH(4-10)</div>
+        <div class="product-desc" data-i18n="prod11_desc">Aumenta BDNF y NGF. Atención sostenida y memoria de trabajo, sin estimulantes.</div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-tag">Sueño</div>
+        <div class="product-name">DSIP + Melatonina</div>
+        <div class="product-active">DSIP 100 mcg + melatonina 1 mg</div>
+        <div class="product-desc" data-i18n="prod12_desc">Péptido inductor del sueño delta con 1 mg de melatonina. Sueño profundo y reparador.</div>
       </div>
     </div>
   </div>
@@ -523,10 +541,13 @@ section { padding: clamp(60px,10vw,120px) clamp(1.25rem,6vw,4rem); }
       <a href="producto-tb-500.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">TB-500</a>
       <a href="producto-nad.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">NAD+</a>
       <a href="producto-mots-c.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;">MOTS-c</a>
-      <a href="producto-glutation.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">Glutatión</a>
+      <a href="producto-glutation.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">Glutatión Liposomal</a>
       <a href="producto-timosina-alfa-1.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">Timosina Alfa-1</a>
       <a href="producto-pt-141.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">PT-141</a>
       <a href="producto-cjc-1295-ipamorelin.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">CJC-1295 / Ipamorelin</a>
+      <a href="producto-wolverine-stack.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">Wolverine Stack</a>
+      <a href="producto-semax.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">Semax</a>
+      <a href="producto-dsip-melatonina.html" style="font-size:13px;font-weight:300;color:var(--bone);text-decoration:none;opacity:.7;opacity:.55;">DSIP + Melatonina</a>
     </div>
   </div>
   <div style="padding:0 40px;border-right:1px solid rgba(245,241,235,.08);">
@@ -595,10 +616,13 @@ const T = {
     prod3_desc:'Péptido de cobre que regula 4,000+ genes. Estimula colágeno tipos I, III y IV.',
     prod4_desc:'Péptido gástrico de 15 aminoácidos. Regenera músculo, tendón y ligamento.',
     prod5_desc:'Péptido tímico que modula la inmunidad adaptativa. Activa células T y NK.',
-    prod6_desc:'Activación del receptor MC4R y vínculo social. Vitalidad y conexión emocional.',
+    prod6_desc:'Activación del receptor MC4R en el sistema nervioso central. El efecto empieza en el deseo.',
     prod7_desc:'Estimulación fisiológica de la hormona de crecimiento. Anabolismo y recuperación.',
     prod8_desc:'Fragmento activo de la Timosina β4. Apoya la reparación de tejido blando y la movilidad.',
     prod9_desc:'Péptido mitocondrial que activa AMPK. Apoya el metabolismo energético y la sensibilidad a la insulina.',
+    prod10_desc:'Los dos péptidos de reparación en un parche. BPC-157 repara el tejido; TB-500 devuelve el movimiento.',
+    prod11_desc:'Aumenta BDNF y NGF. Atención sostenida y memoria de trabajo, sin estimulantes.',
+    prod12_desc:'Péptido inductor del sueño delta con 1 mg de melatonina. Sueño profundo y reparador.',
     cta_h2:'¿Qué Protocolo es Correcto para Ti?',
     cta_p:'Nuestro quiz identifica en 3 minutos el protocolo más apropiado según tu perfil, objetivos y situación de salud actual.',
     cta_btn1:'Hacer el Quiz',cta_btn2:'Consultar con Especialista',
@@ -651,10 +675,13 @@ const T = {
     prod3_desc:'Copper peptide regulating 4,000+ genes. Stimulates collagen types I, III, and IV.',
     prod4_desc:'15-amino acid gastric peptide. Regenerates muscle, tendon and ligament.',
     prod5_desc:'Thymic peptide modulating adaptive immunity. Activates T cells and NK cells.',
-    prod6_desc:'MC4R receptor activation and social bonding. Vitality and emotional connection.',
+    prod6_desc:'Central MC4R receptor activation. The effect starts with desire.',
     prod7_desc:'Physiological growth hormone stimulation. Anabolism and recovery.',
     prod8_desc:'Active fragment of Thymosin β4. Supports soft-tissue repair and mobility.',
     prod9_desc:'Mitochondrial peptide that activates AMPK. Supports energy metabolism and insulin sensitivity.',
+    prod10_desc:'The two repair peptides in one patch. BPC-157 repairs the tissue; TB-500 gives the movement back.',
+    prod11_desc:'Raises BDNF and NGF. Sustained attention and working memory, without stimulants.',
+    prod12_desc:'Delta sleep-inducing peptide with 1 mg of melatonin. Deep, restorative sleep.',
     cta_h2:'What Protocol is Right for You?',
     cta_p:'Our quiz identifies in 3 minutes the most appropriate protocol based on your profile, goals, and current health situation.',
     cta_btn1:'Take the Quiz',cta_btn2:'Consult a Specialist',

@@ -469,6 +469,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bone);line
           <div class="goal-card" data-val="weight" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-weight">Composición Corporal</div><div class="goal-card-sub" data-i18n="goal-weight-sub">Pérdida de grasa, metabolismo, forma física</div></div>
           <div class="goal-card" data-val="cognitive" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-cognitive">Enfoque Mental</div><div class="goal-card-sub" data-i18n="goal-cognitive-sub">Concentración, memoria, neuroprotección</div></div>
           <div class="goal-card" data-val="longevity" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-longevity">Longevidad & Anti-Aging</div><div class="goal-card-sub" data-i18n="goal-longevity-sub">NAD+, sirtuínas, envejecimiento celular</div></div>
+          <div class="goal-card" data-val="sleep" onclick="toggleGoal(this)"><div class="goal-card-check"></div><div class="goal-card-title" data-i18n="goal-sleep">Dormir Mejor</div><div class="goal-card-sub" data-i18n="goal-sleep-sub">Conciliación, sueño profundo, descanso</div></div>
         </div>
         <div class="quiz-nav">
           <button class="btn-back" onclick="goTo(2)">← <span data-i18n="btn-back">Atrás</span></button>
@@ -656,6 +657,7 @@ const T = {
     'goal-weight': 'Composición Corporal', 'goal-weight-sub': 'Pérdida de grasa, metabolismo, forma física',
     'goal-cognitive': 'Enfoque Mental', 'goal-cognitive-sub': 'Concentración, memoria, neuroprotección',
     'goal-longevity': 'Longevidad & Anti-Aging', 'goal-longevity-sub': 'NAD+, sirtuínas, envejecimiento celular',
+    'goal-sleep': 'Dormir Mejor', 'goal-sleep-sub': 'Conciliación, sueño profundo, descanso',
     's4-eyebrow': 'Perfil físico', 's4-title': 'Nivel de actividad y <em>síntomas</em>',
     's4-desc': 'Esto nos permite afinar el protocolo con mayor precisión.',
     's4-activity-label': 'Nivel de actividad física', 's4-sym-label': 'Síntomas actuales (opcional)',
@@ -745,6 +747,7 @@ const T = {
     'goal-weight': 'Body Composition', 'goal-weight-sub': 'Fat loss, metabolism, body shape',
     'goal-cognitive': 'Mental Focus', 'goal-cognitive-sub': 'Concentration, memory, neuroprotection',
     'goal-longevity': 'Longevity & Anti-Aging', 'goal-longevity-sub': 'NAD+, sirtuins, cellular aging',
+    'goal-sleep': 'Better Sleep', 'goal-sleep-sub': 'Sleep onset, deep sleep, recovery',
     's4-eyebrow': 'Physical profile', 's4-title': 'Activity level and <em>symptoms</em>',
     's4-desc': 'This allows us to fine-tune your protocol with greater precision.',
     's4-activity-label': 'Physical activity level', 's4-sym-label': 'Current symptoms (optional)',
@@ -937,15 +940,15 @@ const PRODUCTS = {
     }
   },
   passionboost: {
-    name: 'PT-141', peptide: 'Bremelanotida + Oxitocina',
+    name: 'PT-141', peptide: 'Bremelanotida · 2.5 mg',
     img: 'img/producto/sobre-estudio-160.webp', url: '/producto-pt-141',
     tagline: { es: 'Vitalidad Íntima & Conexión', en: 'Intimate Vitality & Connection' },
     why: {
-      es: 'Tu perfil apunta claramente a PT-141, que actúa directamente en receptores de melanocortina del sistema nervioso central — estimulando el deseo de forma genuina sin mecanismos vasculares. La Oxitocina profundiza la conexión emocional y la satisfacción.',
-      en: 'Your profile clearly points to PT-141, which acts directly on melanocortin receptors in the central nervous system — stimulating desire genuinely without vascular mechanisms. Oxytocin deepens emotional connection and satisfaction.'
+      es: 'Tu perfil apunta claramente a PT-141, que actúa directamente en receptores de melanocortina del sistema nervioso central — estimulando el deseo de forma genuina, sin mecanismos vasculares. El efecto empieza en el cerebro, no en la circulación.',
+      en: 'Your profile clearly points to PT-141, which acts directly on melanocortin receptors in the central nervous system — stimulating desire genuinely, without vascular mechanisms. The effect starts in the brain, not in circulation.'
     },
     protocol: {
-      dose: { es: '1 parche de mucosa oral según necesidad', en: '1 oral mucosa patch as needed' },
+      dose: { es: '1 parche de mucosa oral según necesidad (2.5 mg)', en: '1 oral mucosa patch as needed (2.5 mg)' },
       timing: { es: '1–2 horas antes de la actividad íntima', en: '1–2 hours before intimate activity' },
       duration: { es: 'Uso según demanda, no diario', en: 'On-demand use, not daily' },
     },
@@ -981,7 +984,7 @@ const PRODUCTS = {
     }
   },
   celldew: {
-    name: 'Glutatión', peptide: 'Tripéptido antioxidante',
+    name: 'Glutatión Liposomal', peptide: 'Tripéptido antioxidante liposomal · 100 mg',
     img: 'img/producto/caja-estudio-160.webp', url: '/producto-glutation',
     tagline: { es: 'Soporte Antioxidante Maestro', en: 'Master Antioxidant Support' },
     why: {
@@ -989,7 +992,7 @@ const PRODUCTS = {
       en: 'Your profile points to Glutathione — the master antioxidant of the body — present in every cell where it neutralizes free radicals, detoxifies the liver, and regulates the immune system. Its levels drop with stress, alcohol, and aging.'
     },
     protocol: {
-      dose: { es: '1 parche de mucosa oral diario', en: '1 oral mucosa patch daily' },
+      dose: { es: '1 parche de mucosa oral diario (100 mg)', en: '1 oral mucosa patch daily (100 mg)' },
       timing: { es: 'Mañana, en ayunas preferiblemente', en: 'Morning, preferably fasting' },
       duration: { es: 'Uso continuo o ciclos de 12 semanas', en: 'Continuous use or 12-week cycles' },
     },
@@ -1001,6 +1004,72 @@ const PRODUCTS = {
       es: ['No hay contraindicaciones mayores conocidas para glutatión oral', 'En dosis muy altas puede interferir con algunos quimioterapéuticos — consultar oncólogo', 'Alérgicos al azufre: consultar médico antes del uso'],
       en: ['No major known contraindications for oral glutathione', 'In very high doses may interfere with some chemotherapeutics — consult oncologist', 'Sulfur-sensitive individuals: consult doctor before use']
     }
+  },
+  wolverine: {
+    name: 'Wolverine Stack', peptide: 'BPC-157 500 mcg + TB-500 300 mcg',
+    img: 'img/producto/caja-estudio-160.webp', url: '/producto-wolverine-stack',
+    tagline: { es: 'Reparación Total', en: 'Total Repair' },
+    why: {
+      es: 'Tu perfil combina daño de tejido y pérdida de movilidad, que es justo lo que cubre el Wolverine Stack: BPC-157 trabaja sobre la reparación — angiogénesis, fibroblastos, inflamación — y TB-500 sobre el movimiento, regulando la actina para que las células migren hacia la zona lesionada.',
+      en: 'Your profile combines tissue damage and loss of mobility, which is exactly what the Wolverine Stack covers: BPC-157 works on repair — angiogenesis, fibroblasts, inflammation — and TB-500 on movement, regulating actin so cells migrate toward the injured area.'
+    },
+    protocol: {
+      dose: { es: '1 parche de mucosa oral diario (500 mcg + 300 mcg)', en: '1 oral mucosa patch daily (500 mcg + 300 mcg)' },
+      timing: { es: 'Después de entrenar o por la noche', en: 'Post-workout or in the evening' },
+      duration: { es: 'Ciclos de 6–8 semanas según la lesión', en: '6–8 week cycles depending on the injury' },
+    },
+    tips: {
+      es: ['Mantener el parche contra la mejilla 5 minutos, sin comer ni beber durante ese tiempo', 'Combinar con carga progresiva: el péptido repara, el estímulo mecánico organiza el tejido', 'Proteína suficiente: 1.6–2.2 g por kilo de peso al día', 'Registrar el rango de movimiento cada semana, no solo el dolor', 'Sueño de 7–9 horas: la reparación ocurre en sueño profundo'],
+      en: ['Hold the patch against your cheek for 5 minutes, without eating or drinking', 'Pair it with progressive loading: the peptide repairs, mechanical stimulus organizes the tissue', 'Get enough protein: 1.6–2.2 g per kilo of body weight daily', 'Track range of motion weekly, not just pain', 'Sleep 7–9 hours: repair happens in deep sleep']
+    },
+    cautions: {
+      es: ['No usar sobre una lesión sin diagnosticar: primero confirma qué tienes', 'Antecedente de cáncer activo: consultar con tu médico antes de empezar', 'Suspender si aparece irritación persistente en la mucosa'],
+      en: ['Do not use over an undiagnosed injury: confirm the diagnosis first', 'Active cancer history: consult your doctor before starting', 'Stop if persistent mucosal irritation appears']
+    }
+  },
+  semax: {
+    name: 'Semax', peptide: 'Heptapéptido nootrópico · ACTH(4-10)',
+    img: 'img/producto/sobre-estudio-160.webp', url: '/producto-semax',
+    tagline: { es: 'Claridad Sostenida', en: 'Sustained Clarity' },
+    why: {
+      es: 'Tu perfil apunta a carga mental alta y niebla cognitiva. Semax aumenta la expresión de BDNF y NGF — los factores que sostienen la plasticidad neuronal — y modula los sistemas dopaminérgico y serotoninérgico sin el pico ni la caída de los estimulantes.',
+      en: 'Your profile points to high mental load and brain fog. Semax increases BDNF and NGF expression — the factors that sustain neuronal plasticity — and modulates the dopaminergic and serotonergic systems without the spike and crash of stimulants.'
+    },
+    protocol: {
+      dose: { es: '1 parche de mucosa oral diario (200 mcg)', en: '1 oral mucosa patch daily (200 mcg)' },
+      timing: { es: 'Por la mañana, antes del bloque de trabajo profundo', en: 'In the morning, before your deep work block' },
+      duration: { es: 'Ciclos de 4–6 semanas con descanso de 2', en: '4–6 week cycles with a 2-week break' },
+    },
+    tips: {
+      es: ['Usarlo antes de la tarea difícil, no después: el efecto acompaña al trabajo', 'Evitar la cafeína en exceso el mismo día: el efecto no se suma, se enturbia', 'Dormir bien: el BDNF sube con sueño profundo y ejercicio', 'Medir con algo objetivo: páginas escritas, problemas resueltos, no sensaciones', 'Descansar 2 semanas entre ciclos'],
+      en: ['Use it before the hard task, not after: the effect accompanies the work', 'Avoid excess caffeine the same day: effects do not stack, they blur', 'Sleep well: BDNF rises with deep sleep and exercise', 'Measure something objective: pages written, problems solved, not feelings', 'Take a 2-week break between cycles']
+    },
+    cautions: {
+      es: ['Trastornos de ansiedad: empezar por debajo de la dosis habitual y observar', 'Medicación psiquiátrica: consultar antes, sobre todo con ISRS o IMAO', 'No usar por la noche: puede retrasar la conciliación del sueño'],
+      en: ['Anxiety disorders: start below the usual dose and observe', 'Psychiatric medication: consult first, especially with SSRIs or MAOIs', 'Do not use at night: it may delay sleep onset']
+    }
+  },
+  dsip: {
+    name: 'DSIP + Melatonina', peptide: 'DSIP 100 mcg + melatonina 1 mg',
+    img: 'img/producto/caja-marmol-160.webp', url: '/producto-dsip-melatonina',
+    tagline: { es: 'Sueño Profundo', en: 'Deep Sleep' },
+    why: {
+      es: 'Tu perfil muestra estrés y fatiga acumulada, que casi siempre empiezan en el sueño. El DSIP favorece las fases de ondas lentas — donde ocurre la reparación y el pulso nocturno de hormona de crecimiento — y 1 mg de melatonina sincroniza el reloj interno sin el aturdimiento de las dosis altas.',
+      en: 'Your profile shows stress and accumulated fatigue, which almost always start with sleep. DSIP favors slow-wave stages — where repair and the nocturnal growth hormone pulse happen — and 1 mg of melatonin syncs the internal clock without the grogginess of high doses.'
+    },
+    protocol: {
+      dose: { es: '1 parche de mucosa oral por la noche (100 mcg + 1 mg)', en: '1 oral mucosa patch at night (100 mcg + 1 mg)' },
+      timing: { es: '30–60 minutos antes de dormir', en: '30–60 minutes before bed' },
+      duration: { es: 'Uso nocturno según necesidad; ciclos de 4 semanas si es continuo', en: 'Nightly as needed; 4-week cycles if continuous' },
+    },
+    tips: {
+      es: ['Luz baja la hora previa: la melatonina funciona con el ambiente, no contra él', 'Misma hora de despertar todos los días, incluido el fin de semana', 'Nada de alcohol antes de dormir: rompe justamente las ondas lentas', 'En viajes, usarlo a la hora de dormir del destino desde la primera noche', 'Habitación fresca, entre 17 y 19 grados'],
+      en: ['Dim the lights the hour before: melatonin works with your environment, not against it', 'Same wake time every day, weekends included', 'No alcohol before bed: it breaks the very slow-wave sleep you want', 'When traveling, take it at the destination bedtime from the first night', 'Keep the room cool, between 17 and 19 degrees']
+    },
+    cautions: {
+      es: ['No conducir después de tomarlo', 'Apnea del sueño sin tratar: consultar antes de usar cualquier inductor del sueño', 'Embarazo, lactancia o medicación sedante: consultar con tu médico'],
+      en: ['Do not drive after taking it', 'Untreated sleep apnea: consult before using any sleep aid', 'Pregnancy, breastfeeding or sedative medication: consult your doctor']
+    }
   }
 };
 
@@ -1009,23 +1078,19 @@ const NON_CATALOG = {
     title: { es: 'Péptidos GLP-1 (Semaglutide / Tirzepatide)', en: 'GLP-1 Peptides (Semaglutide / Tirzepatide)' },
     desc: { es: 'Basado en tu objetivo de composición corporal extrema, existen péptidos GLP-1 agonistas ampliamente investigados que podrían ser de interés en tu caso específico.', en: 'Based on your body composition goal, there are widely researched GLP-1 agonist peptides that may be of interest in your specific case.' },
     cta: { es: 'Escríbenos para explorar opciones →', en: 'Contact us to explore options →' }
-  },
-  _cognitive: {
-    title: { es: 'Péptidos Nootrópicos (Semax / Selank)', en: 'Nootropic Peptides (Semax / Selank)' },
-    desc: { es: 'Tu perfil indica un interés marcado en optimización cognitiva. Existen péptidos nootrópicos investigados específicamente para esta función que podrían complementar tu protocolo.', en: 'Your profile indicates a strong interest in cognitive optimization. There are peptides researched specifically for this function that could complement your protocol.' },
-    cta: { es: 'Escríbenos para explorar opciones →', en: 'Contact us to explore options →' }
   }
 };
 
 // ─── RECOMMENDATION ENGINE ────────────────────────────────────────────────────
 // Inventario. SOLD_OUT es el estado conocido al publicar; /api/stock lo corrige
 // en vivo. Los productos sin SKU no se venden todavia: siempre cuentan agotados.
-const SOLD_OUT = ['musclemaxx', 'passionboost', 'immunefort', 'celldew'];
+const SOLD_OUT = ['musclemaxx', 'passionboost', 'immunefort', 'celldew', 'wolverine', 'semax', 'dsip'];
 const SKU_BY_PRODUCT = {
   recoverypro: 'bpc-157', radiancemax: 'ghk-cu', tb500: 'tb-500',
   vitacharge: 'nad-plus', motsc: 'mots-c',
   musclemaxx: 'cjc-1295-ipamorelin', passionboost: 'pt-141',
   immunefort: 'timosina-alfa-1', celldew: 'glutation',
+  wolverine: 'wolverine-stack', semax: 'semax', dsip: 'dsip-melatonina',
 };
 let LIVE_STOCK = null;
 
@@ -1042,18 +1107,19 @@ fetch('/api/stock', { headers: { 'Accept': 'application/json' } })
 
 function computeRecommendation() {
   const d = S.data;
-  const sc = { musclemaxx:0, recoverypro:0, radiancemax:0, vitacharge:0, passionboost:0, immunefort:0, celldew:0, tb500:0, motsc:0, _glp1:0, _cognitive:0 };
+  const sc = { musclemaxx:0, recoverypro:0, radiancemax:0, vitacharge:0, passionboost:0, immunefort:0, celldew:0, tb500:0, motsc:0, wolverine:0, semax:0, dsip:0, _glp1:0 };
   const goalMap = {
-    muscle:     { musclemaxx:15, recoverypro:3, tb500:2 },
+    muscle:     { musclemaxx:15, recoverypro:3, tb500:2, wolverine:5 },
     energy:     { vitacharge:15, celldew:4, motsc:5 },
-    recovery:   { recoverypro:15, musclemaxx:3, tb500:11 },
+    recovery:   { recoverypro:15, musclemaxx:3, tb500:11, wolverine:14 },
     skin:       { radiancemax:15, celldew:4 },
     immune:     { immunefort:15, celldew:5 },
     libido:     { passionboost:15 },
     antioxidant:{ celldew:15, vitacharge:3 },
     weight:     { musclemaxx:6, vitacharge:5, motsc:10, _glp1:12 },
-    cognitive:  { vitacharge:10, _cognitive:10 },
-    longevity:  { vitacharge:10, celldew:7, radiancemax:4, motsc:9 }
+    cognitive:  { semax:15, vitacharge:8 },
+    longevity:  { vitacharge:10, celldew:7, radiancemax:4, motsc:9 },
+    sleep:      { dsip:15, vitacharge:3, recoverypro:2 }
   };
   for (const g of d.goals) { if (goalMap[g]) for (const [k,v] of Object.entries(goalMap[g])) sc[k] += v; }
   const age = parseInt((d.age||'30').split('-')[0]);
@@ -1066,26 +1132,28 @@ function computeRecommendation() {
   const actMap = { athlete:{musclemaxx:6,recoverypro:5,tb500:4}, very_active:{musclemaxx:4,recoverypro:3,tb500:3}, moderate:{recoverypro:2,tb500:2}, light:{vitacharge:2}, sedentary:{vitacharge:4,celldew:3,motsc:4} };
   if (d.activity && actMap[d.activity]) for (const [k,v] of Object.entries(actMap[d.activity])) sc[k] += v;
   const symMap = {
-    fatigue:{vitacharge:8,celldew:4,motsc:4}, joint_pain:{recoverypro:10,tb500:9}, gut_issues:{recoverypro:8},
-    frequent_illness:{immunefort:10}, skin_aging:{radiancemax:10}, brain_fog:{vitacharge:8,_cognitive:5},
-    low_libido:{passionboost:10}, muscle_soreness:{recoverypro:6,musclemaxx:3,tb500:4},
-    stress:{celldew:5,vitacharge:3}, hair_thinning:{radiancemax:6}
+    fatigue:{vitacharge:8,celldew:4,motsc:4,dsip:5}, joint_pain:{recoverypro:10,tb500:9,wolverine:9}, gut_issues:{recoverypro:8},
+    frequent_illness:{immunefort:10}, skin_aging:{radiancemax:10}, brain_fog:{vitacharge:8,semax:10},
+    low_libido:{passionboost:10}, muscle_soreness:{recoverypro:6,musclemaxx:3,tb500:4,wolverine:5},
+    stress:{celldew:5,vitacharge:3,dsip:6,semax:3}, hair_thinning:{radiancemax:6}
   };
   for (const s of d.symptoms) { if (symMap[s]) for (const [k,v] of Object.entries(symMap[s])) sc[k] += v; }
   if (d.conditions.includes('cardiovascular')) sc.passionboost = 0;
-  const catalog = ['recoverypro','radiancemax','tb500','vitacharge','motsc','musclemaxx','passionboost','immunefort','celldew'];
+  const catalog = ['recoverypro','radiancemax','tb500','vitacharge','motsc','musclemaxx','passionboost','immunefort','celldew','wolverine','semax','dsip'];
   catalog.sort((a,b) => sc[b]-sc[a]);
   const best = catalog[0];
   const available = catalog.filter(k => !isSoldOut(k));
-  // Mejor coincidencia agotada: se recomienda la mejor disponible si es relevante;
-  // si ninguna lo es, se muestra la agotada con aviso para no ofrecer algo ajeno.
+  // Nunca recomendamos comprar algo sin inventario: si la mejor coincidencia esta
+  // agotada, se recomienda la mejor disponible que de verdad encaje. Si ninguna
+  // encaja, se muestra la agotada con el aviso de "avisarme" — nunca con boton
+  // de compra — en vez de empujar un producto que no tiene que ver con el perfil.
   let primary = best, soldOut = null;
   if (isSoldOut(best)) {
     soldOut = best;
-    if (sc[available[0]] > 4) primary = available[0];
+    if (available.length && sc[available[0]] > 4) primary = available[0];
   }
   const secondary = available.find(k => k !== primary && sc[k] > 4) || null;
-  const nonCatalogTop = ['_glp1','_cognitive'].sort((a,b) => sc[b]-sc[a])[0];
+  const nonCatalogTop = '_glp1';
   const showNonCatalog = sc[nonCatalogTop] > 10 && sc[nonCatalogTop] > sc[primary] * 0.55;
   const maxScore = Math.max(...catalog.map(k=>sc[k]));
   const matchPct = Math.min(98, Math.round(60 + (sc[primary] / Math.max(maxScore,1)) * 38));
