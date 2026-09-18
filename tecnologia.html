@@ -353,6 +353,22 @@ section { padding: clamp(60px, 10vw, 120px) clamp(1.25rem, 6vw, 4rem); }
   h1{font-size:clamp(38px,10vw,56px)!important;line-height:1.1!important;}
   h2{font-size:clamp(26px,7vw,40px)!important;line-height:1.18!important;}
 }
+
+/* ── Video de la tecnología ── */
+.video-section { background: var(--stone); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.video-frame { position: relative; margin-top: 2.5rem; aspect-ratio: 16/9; background: var(--ink); border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
+.video-frame video, .video-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-frame video { opacity: 0; transition: opacity .5s cubic-bezier(.16,1,.3,1); }
+.video-frame.reproduciendo video { opacity: 1; }
+.video-frame.reproduciendo img, .video-frame.reproduciendo .video-play { opacity: 0; pointer-events: none; }
+.video-play { position: absolute; inset: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: rgba(24,20,15,.34); border: 0; cursor: pointer; transition: opacity .4s ease, background .4s ease; font-family: 'Inter', sans-serif; }
+.video-play:hover { background: rgba(24,20,15,.38); }
+.video-play-disc { width: 76px; height: 76px; border-radius: 50%; background: var(--bone); display: flex; align-items: center; justify-content: center; transition: transform .5s cubic-bezier(.16,1,.3,1); }
+.video-play:hover .video-play-disc { transform: scale(1.06); }
+.video-play-disc svg { margin-left: 4px; }
+.video-play-text { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--bone); text-shadow: 0 1px 12px rgba(24,20,15,.6); }
+.video-meta { margin-top: 1rem; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-faint); }
+@media (max-width: 768px) { .video-play-disc { width: 60px; height: 60px; } }
 </style>
 </head>
 <body>
@@ -506,6 +522,24 @@ section { padding: clamp(60px, 10vw, 120px) clamp(1.25rem, 6vw, 4rem); }
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── VIDEO ── -->
+<section class="video-section">
+  <div class="section-inner">
+    <p class="section-label reveal" data-i18n="video_label">En video</p>
+    <h2 class="section-title reveal" data-i18n="video_title">De la mejilla a la sangre, en noventa segundos</h2>
+    <p class="section-lead reveal" data-i18n="video_sub">El recorrido completo del péptido: cómo se adhiere el parche a la mucosa, qué hace el hidrogel TD-IntelGel™ para mantener la molécula intacta y en qué se diferencia de una inyección.</p>
+    <div class="video-frame reveal" id="videoTec">
+      <img src="img/video/cheekz-tecnologia-1280.webp" srcset="img/video/cheekz-tecnologia-800.webp 800w, img/video/cheekz-tecnologia-1280.webp 1280w" sizes="(max-width:768px) 100vw, 1000px" alt="Interior de la mejilla con el parche de mucosa oral colocado" width="1280" height="720" loading="lazy"/>
+      <video id="videoTecPlayer" preload="none" playsinline poster="img/video/cheekz-tecnologia-1280.webp"></video>
+      <button type="button" class="video-play" id="videoTecPlay" aria-label="Reproducir el video" data-i18n-aria="video_cta">
+        <span class="video-play-disc"><svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true"><path d="M0 0 L20 12 L0 24 Z" fill="#18140F"/></svg></span>
+        <span class="video-play-text" data-i18n="video_cta">Reproducir el video</span>
+      </button>
+    </div>
+    <p class="video-meta reveal" data-i18n="video_meta">1:37 · Con sonido · Narración en inglés</p>
   </div>
 </section>
 
@@ -789,6 +823,9 @@ const TRANSLATIONS = {
     'foot-col-productos':'Productos','foot-col-empresa':'Empresa','foot-col-legal':'Legal',
     'foot-terms':'Términos','foot-privacy':'Privacidad','foot-copy':'© 2026 Biogradix. Todos los derechos reservados.',
     nav_productos: 'Productos', nav_tecnologia: 'Tecnología', nav_educacion: 'Educación',
+    video_label: 'En video', video_title: 'De la mejilla a la sangre, en noventa segundos',
+    video_sub: 'El recorrido completo del péptido: cómo se adhiere el parche a la mucosa, qué hace el hidrogel TD-IntelGel™ para mantener la molécula intacta y en qué se diferencia de una inyección.',
+    video_cta: 'Reproducir el video', video_meta: '1:37 · Con sonido · Narración en inglés',
     nav_blog: 'Blog', nav_faq: 'FAQ', nav_whatsapp: 'WhatsApp',
     hero_eyebrow: 'Tecnología Propietaria',
     hero_h1: 'BiogradixRelease®<br><em>Absorción por Mucosa Oral</em>',
@@ -864,6 +901,9 @@ const TRANSLATIONS = {
     'foot-col-productos':'Products','foot-col-empresa':'Company','foot-col-legal':'Legal',
     'foot-terms':'Terms','foot-privacy':'Privacy','foot-copy':'© 2026 Biogradix. All rights reserved.',
     nav_productos: 'Products', nav_tecnologia: 'Technology', nav_educacion: 'Education',
+    video_label: 'On video', video_title: 'From cheek to bloodstream, in ninety seconds',
+    video_sub: 'The peptide\'s full route: how the patch adheres to the mucosa, what the TD-IntelGel™ hydrogel does to keep the molecule intact, and how it differs from an injection.',
+    video_cta: 'Play the video', video_meta: '1:37 · With sound',
     nav_blog: 'Blog', nav_faq: 'FAQ', nav_whatsapp: 'WhatsApp',
     hero_eyebrow: 'Proprietary Technology',
     hero_h1: 'BiogradixRelease®<br><em>Oral Mucosal Absorption</em>',
@@ -948,6 +988,10 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (t && t[key] !== undefined) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria');
+    if (t && t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+  });
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     if (t && t[key] !== undefined) el.innerHTML = t[key];
@@ -988,6 +1032,21 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-es').addEventListener('click', function(){ setLang('es'); });
   document.getElementById('btn-en').addEventListener('click', function(){ setLang('en'); });
 });
+
+// ── Video de la tecnología: se descarga solo cuando lo piden ──
+(function(){
+  var marco = document.getElementById('videoTec');
+  var player = document.getElementById('videoTecPlayer');
+  var boton = document.getElementById('videoTecPlay');
+  if (!marco || !player || !boton) return;
+  boton.addEventListener('click', function(){
+    if (!player.src) player.src = 'video/cheekz-tecnologia.mp4';
+    player.controls = true;
+    marco.classList.add('reproduciendo');
+    var p = player.play();
+    if (p && p.catch) p.catch(function(){ player.controls = true; });
+  });
+})();
 </script>
 <!-- WA FLOAT -->
 <a href="https://wa.me/15553471798" target="_blank" rel="noopener" aria-label="WhatsApp" style="position:fixed;bottom:28px;right:28px;z-index:500;width:52px;height:52px;background:#2E4A3A;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(46,74,58,.35);" onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(46,74,58,.5)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(46,74,58,.35)'">
