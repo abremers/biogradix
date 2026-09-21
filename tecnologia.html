@@ -552,7 +552,7 @@ section { padding: clamp(60px, 10vw, 120px) clamp(1.25rem, 6vw, 4rem); }
     <h2 class="section-title reveal" data-i18n="explorer_title">Dentro de CHEEKZ™</h2>
     <p class="section-lead reveal" data-i18n="explorer_lead">Tres capas, cada una con un trabajo: contener los péptidos, protegerlos y sellar el sistema contra la saliva. Sepáralas, aísla cada componente y gira el parche en 3D.</p>
     <div class="reveal" style="margin-top:2.5rem;border:1px solid var(--rule);">
-      <iframe id="cheekzExplorer" class="cheekz-explorer" src="/cheekz/embed.html?lang=es" title="Explorador 3D del parche CHEEKZ" loading="lazy"></iframe>
+      <iframe id="cheekzExplorer" class="cheekz-explorer" src="/cheekz/embed?lang=es" title="Explorador 3D del parche CHEEKZ" loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -1011,7 +1011,7 @@ function setLang(lang) {
     if (t && t[key] !== undefined) el.innerHTML = t[key];
   });
   const fr = document.getElementById('cheekzExplorer');
-  if (fr) { const want = '/cheekz/embed.html?lang=' + lang; if (fr.getAttribute('src') !== want) fr.setAttribute('src', want); }
+  if (fr) { const want = '/cheekz/embed?lang=' + lang; if (fr.getAttribute('src') !== want) fr.setAttribute('src', want); }
 }
 
 function openMenu() {
