@@ -5,13 +5,13 @@
 //
 // Pedido por transferencia bancaria (SPEI). Valida los datos, verifica
 // disponibilidad (stock - reserved), inserta el pedido con status
-// 'pending_payment', le asigna una referencia unica (BGX-<1000+id>) y un
+// 'pending_payment', le asigna una referencia unica e impredecible (BGX-XXXXXXXX) y un
 // monto exacto en MXN cuyos centavos son unicos (id % 100), y aparta el
 // inventario sumando la cantidad a products.reserved. El stock NO se toca
 // aqui: se descuenta cuando el panel confirma el deposito (orders.confirmPayment).
 // No se inserta movimiento de inventario en esta etapa.
 //
-// GET /api/create-order?ref=BGX-1001
+// GET /api/create-order?ref=BGX-XXXXXXXX
 // Datos seguros para que pago.html pinte las instrucciones: referencia,
 // estado, resumen de items, montos, tipo de cambio y los datos SPEI de las
 // variables de entorno. Sin PII del cliente mas alla del primer nombre.
@@ -20,6 +20,7 @@
 // Si falta alguna (o SUPABASE_SERVICE_KEY) responde 503 "Checkout not yet
 // enabled" y el front cae a WhatsApp.
 
+const crypto = require('crypto');
 const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
 const ADMIN_EMAIL = 'hello@biogradix.com';
 const WHATSAPP_URL = 'https://wa.me/15553471798';
@@ -360,10 +361,10 @@ module.exports = async function handler(req, res) {
   return handlePost(req, res, SUPABASE_SERVICE_KEY, spei);
 };
 
-// ── GET ?ref=BGX-1001 ────────────────────────────────────────────────────────
+// ── GET ?ref=BGX-XXXXXXXX ────────────────────────────────────────────────────────
 async function handleGet(req, res, serviceKey, spei) {
   const ref = String((req.query && req.query.ref) || '').trim().toUpperCase();
-  if (!/^BGX-\d{4,12}$/.test(ref)) {
+  if (!/^BGX-[A-HJ-NP-Z2-9]{8}$/.test(ref)) {
     return res.status(400).json({ error: 'Invalid reference' });
   }
 
@@ -527,20 +528,40 @@ async function handlePost(req, res, serviceKey, spei) {
   // Referencia legible y monto con centavos unicos (id % 100) para casar el
   // deposito en el banco con el pedido.
   const idNum = Number(orderId);
-  const reference = `BGX-${1000 + idNum}`;
   const totalMxn = round2(Math.floor(totalUsd * spei.rate) + (idNum % 100) / 100);
 
-  try {
-    const updRes = await fetch(`${SUPABASE_URL}/rest/v1/biogradix_orders?id=eq.${encodeURIComponent(orderId)}`, {
-      method: 'PATCH',
-      headers: sbHeaders(serviceKey, { 'Prefer': 'return=representation' }),
-      body: JSON.stringify({ payment_reference: reference, total_mxn: totalMxn }),
-    });
-    if (!updRes.ok) throw new Error(`Supabase ${updRes.status}`);
-    const updated = await updRes.json();
-    if (!Array.isArray(updated) || updated.length === 0) throw new Error('reference update matched no rows');
-  } catch (err) {
-    console.error('create-order: reference update failed:', err);
+  // Referencia impredecible: es a la vez el concepto bancario y la llave de
+  // consulta de pago.html, asi que no puede ser secuencial (enumerable).
+  // Alfabeto sin caracteres ambiguos (sin 0/O/1/I/L), 8 chars = ~39 bits.
+  const REF_ALPHABET = 'ABCDEFGHJKMNPQRSTVWXYZ23456789';
+  const makeReference = () => {
+    const bytes = crypto.randomBytes(8);
+    let out = '';
+    for (let i = 0; i < 8; i++) out += REF_ALPHABET[bytes[i] % REF_ALPHABET.length];
+    return 'BGX-' + out;
+  };
+
+  let reference = null;
+  for (let attempt = 0; attempt < 3 && !reference; attempt++) {
+    const candidate = makeReference();
+    try {
+      const updRes = await fetch(`${SUPABASE_URL}/rest/v1/biogradix_orders?id=eq.${encodeURIComponent(orderId)}`, {
+        method: 'PATCH',
+        headers: sbHeaders(serviceKey, { 'Prefer': 'return=representation' }),
+        body: JSON.stringify({ payment_reference: candidate, total_mxn: totalMxn }),
+      });
+      if (updRes.status === 409) continue; // colision UNIQUE: reintentar con otra
+      if (!updRes.ok) throw new Error(`Supabase ${updRes.status}`);
+      const updated = await updRes.json();
+      if (!Array.isArray(updated) || updated.length === 0) throw new Error('reference update matched no rows');
+      reference = candidate;
+    } catch (err) {
+      console.error('create-order: reference update failed:', err);
+      await discardOrder();
+      return res.status(502).json({ error: 'Could not create order' });
+    }
+  }
+  if (!reference) {
     await discardOrder();
     return res.status(502).json({ error: 'Could not create order' });
   }

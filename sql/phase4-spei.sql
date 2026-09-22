@@ -5,7 +5,7 @@
 -- script prepara biogradix_orders para el flujo manual de transferencia:
 --
 --   payment_reference   referencia unica que el cliente escribe en el
---                       concepto de su transferencia (BGX-1001, BGX-1002...)
+--                       concepto de su transferencia (BGX-XXXXXXXX, aleatoria)
 --   total_mxn           monto exacto a transferir en MXN; los centavos son
 --                       unicos por pedido (id % 100) para casar depositos
 --   mxn_rate            tipo de cambio USD -> MXN aplicado al crear el pedido
@@ -53,7 +53,7 @@ alter table public.biogradix_orders
   add column if not exists expires_note text;
 
 comment on column public.biogradix_orders.payment_reference is
-  'Referencia SPEI unica (BGX-<1000+id>). El cliente la escribe en el concepto de la transferencia.';
+  'Referencia SPEI unica e impredecible (BGX- + 8 chars aleatorios). Es el concepto de la transferencia y la llave de consulta de pago.html.';
 comment on column public.biogradix_orders.total_mxn is
   'Monto exacto en MXN a transferir. Centavos = id % 100 para identificar el deposito en el banco.';
 comment on column public.biogradix_orders.mxn_rate is

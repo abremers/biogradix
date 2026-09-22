@@ -13,9 +13,9 @@ helper fall back to WhatsApp, so deploying is safe at any time.
 | File | Purpose |
 |---|---|
 | `sql/phase4-spei.sql` | DB migration: adds the `pending_payment` status plus `payment_reference`, `total_mxn`, `mxn_rate`, `expires_note` columns to `biogradix_orders`. Paste it in Supabase > SQL Editor BEFORE setting the env vars. Idempotent. |
-| `api/create-order.js` | POST: validates the form, checks availability (stock - reserved), inserts the order as `pending_payment`, assigns `BGX-<1000+id>` and the exact MXN amount, reserves inventory, emails customer + admin. GET `?ref=BGX-xxxx`: safe data for `pago.html` (no PII beyond the first name). |
+| `api/create-order.js` | POST: validates the form, checks availability (stock - reserved), inserts the order as `pending_payment`, assigns an unguessable `BGX-XXXXXXXX` reference (random, non-enumerable) and the exact MXN amount, reserves inventory, emails customer + admin. GET `?ref=BGX-XXXXXXXX` (the random reference is the lookup capability): safe data for `pago.html` (no PII beyond the first name). |
 | `checkout.html` | Order form (`/checkout?sku=...&qty=...`). Client-side validation, bilingual ES/EN, server revalidates everything. |
-| `pago.html` | Payment instructions (`/pago?ref=BGX-xxxx`): reference, exact MXN amount, CLABE with copy buttons, steps, 72-hour note. |
+| `pago.html` | Payment instructions (`/pago?ref=BGX-XXXXXXXX`): reference, exact MXN amount, CLABE with copy buttons, steps, 72-hour note. |
 | `api/admin.js` | New action `orders.confirmPayment`; cancelling a `pending_payment` order now releases the reservation; restock is blocked for never-paid SPEI orders. |
 | `admin.html` | "Por pagar" status chip (amber), "Confirmar pago" button with confirm dialog, reference and MXN subtexts in the orders table. |
 | `assets/checkout.js` | Buy buttons now navigate to `/checkout?sku=<sku>` (WhatsApp only if a button has no sku). Product pages need no edits. |
@@ -49,7 +49,7 @@ Already configured and reused: `SUPABASE_SERVICE_KEY`, `RESEND_API_KEY`,
 ## Money flow (reserva -> deposito -> confirmar pago)
 
 1. **Reserva.** Customer submits `/checkout`. The order is inserted as
-   `pending_payment` with reference `BGX-<1000+id>` and
+   `pending_payment` with random reference `BGX-XXXXXXXX` (not sequential, so order data cannot be enumerated) and
    `total_mxn = floor(total_usd * MXN_RATE) + (id % 100) / 100` — whole pesos
    plus unique centavos, so each deposit identifies its order even if the
    customer forgets the reference. The quantity is added to
