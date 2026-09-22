@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const SUPABASE_URL = 'https://nimcmvtyamdgesmmmtyh.supabase.co';
 const ADMIN_EMAIL = 'hello@biogradix.com';
 
-const ORDER_STATUSES = ['paid', 'preparing', 'shipped', 'delivered', 'refunded', 'cancelled'];
+const ORDER_STATUSES = ['pending_payment', 'paid', 'preparing', 'shipped', 'delivered', 'refunded', 'cancelled'];
 const ADJUST_REASONS = ['restock', 'sample', 'damage', 'adjustment'];
 const EXPENSE_CATEGORIES = ['publicidad', 'muestras', 'envios', 'comisiones', 'herramientas', 'inventario', 'otros'];
 const EXPENSE_CURRENCIES = ['USD', 'MXN'];
@@ -166,6 +166,99 @@ async function reponerPedido(order) {
     out.repuestos.push(Object.assign({ stock: aj.product.stock }, it));
   }
   return out;
+}
+
+// ── Flujo SPEI (Fase 4) ──────────────────────────────────────────────────────
+// Un pedido por transferencia nace en 'pending_payment' con la cantidad
+// apartada en products.reserved (el stock no se toca al crear). Confirmar el
+// pago descuenta stock Y reserved y registra el movimiento 'sale'; cancelar
+// sin pagar solo libera la reserva, sin movimiento.
+
+// Cancelacion de un pedido por pagar: la reserva regresa al disponible.
+// Guardia optimista sobre reserved con reintentos; no idempotente por marca
+// porque solo corre dentro de la transicion de estado (guardada a su vez por
+// status=eq.pending_payment, que no puede ejecutarse dos veces).
+async function liberarReserva(order) {
+  const items = itemsReponibles(order);
+  const out = { liberados: [], fallidos: [] };
+  for (const it of items) {
+    let done = false;
+    for (let i = 0; i < 3 && !done; i++) {
+      const cur = await sb(`biogradix_products?select=sku,reserved&sku=eq.${encodeURIComponent(it.sku)}&limit=1`);
+      if (!cur.ok || !Array.isArray(cur.data) || cur.data.length === 0) break;
+      const reserved = Number(cur.data[0].reserved || 0);
+      const upd = await sb(
+        `biogradix_products?sku=eq.${encodeURIComponent(it.sku)}&reserved=eq.${reserved}`,
+        { method: 'PATCH', headers: { 'Prefer': 'return=representation' }, body: { reserved: Math.max(0, reserved - it.qty) } }
+      );
+      if (!upd.ok) break;
+      if (Array.isArray(upd.data) && upd.data.length > 0) done = true;
+    }
+    if (done) out.liberados.push(it);
+    else out.fallidos.push(it);
+  }
+  return out;
+}
+
+// Confirmacion de pago: stock -= qty y reserved -= qty en UNA escritura
+// guardada por ambos valores leidos. Devuelve los ajustes aplicados con el
+// delta real de reserved para poder revertirlos exactamente si algo falla.
+async function descontarInventarioSpei(items) {
+  const aplicados = [];
+  for (const it of items) {
+    let done = false;
+    for (let i = 0; i < 3 && !done; i++) {
+      const cur = await sb(`biogradix_products?select=sku,stock,reserved&sku=eq.${encodeURIComponent(it.sku)}&limit=1`);
+      if (!cur.ok) return { ok: false, motivo: 'db', result: cur, aplicados };
+      if (!Array.isArray(cur.data) || cur.data.length === 0) {
+        return { ok: false, motivo: 'sin_producto', sku: it.sku, aplicados };
+      }
+      const stock = Number(cur.data[0].stock || 0);
+      const reserved = Number(cur.data[0].reserved || 0);
+      if (stock < it.qty) return { ok: false, motivo: 'stock_insuficiente', sku: it.sku, stock, aplicados };
+      const reservedDelta = Math.min(reserved, it.qty);
+      const upd = await sb(
+        `biogradix_products?sku=eq.${encodeURIComponent(it.sku)}&stock=eq.${stock}&reserved=eq.${reserved}`,
+        {
+          method: 'PATCH',
+          headers: { 'Prefer': 'return=representation' },
+          body: { stock: stock - it.qty, reserved: reserved - reservedDelta },
+        }
+      );
+      if (!upd.ok) return { ok: false, motivo: 'db', result: upd, aplicados };
+      if (Array.isArray(upd.data) && upd.data.length > 0) {
+        aplicados.push({ sku: it.sku, qty: it.qty, reservedDelta });
+        done = true;
+      }
+      // Escritura sin filas: otro proceso movio el producto; releer y reintentar.
+    }
+    if (!done) return { ok: false, motivo: 'stock_cambio', sku: it.sku, aplicados };
+  }
+  return { ok: true, aplicados };
+}
+
+// Deshace los descuentos de descontarInventarioSpei (best effort, con log).
+async function revertirDescuentoSpei(aplicados) {
+  for (const a of aplicados || []) {
+    let done = false;
+    for (let i = 0; i < 3 && !done; i++) {
+      const cur = await sb(`biogradix_products?select=sku,stock,reserved&sku=eq.${encodeURIComponent(a.sku)}&limit=1`);
+      if (!cur.ok || !Array.isArray(cur.data) || cur.data.length === 0) break;
+      const stock = Number(cur.data[0].stock || 0);
+      const reserved = Number(cur.data[0].reserved || 0);
+      const upd = await sb(
+        `biogradix_products?sku=eq.${encodeURIComponent(a.sku)}&stock=eq.${stock}&reserved=eq.${reserved}`,
+        {
+          method: 'PATCH',
+          headers: { 'Prefer': 'return=representation' },
+          body: { stock: stock + a.qty, reserved: reserved + a.reservedDelta },
+        }
+      );
+      if (!upd.ok) break;
+      if (Array.isArray(upd.data) && upd.data.length > 0) done = true;
+    }
+    if (!done) console.error('No se pudo revertir el descuento SPEI de', a.sku, a);
+  }
 }
 
 function round2(n) {
@@ -357,6 +450,157 @@ async function sendShippedEmail(order) {
   return { sent: true };
 }
 
+// ── Email de confirmacion de pago SPEI (cliente) ─────────────────────────────
+// Adaptacion del correo de confirmacion del webhook de Stripe: mismo estilo
+// de tabla, con el pago por transferencia (referencia + monto MXN) marcado
+// como recibido.
+
+function speiPaidEmailHtml(order, isEs) {
+  const cur = order.currency || 'USD';
+  const items = Array.isArray(order.items) ? order.items : [];
+  const rows = items.map((it) => `
+      <tr>
+        <td style="padding:12px 14px;font-size:13px;color:#18140F;border-bottom:1px solid #EDE8E0;">${esc(it.name || it.sku || 'Producto')}</td>
+        <td align="center" style="padding:12px 14px;font-size:13px;color:#4A443C;border-bottom:1px solid #EDE8E0;">${Number(it.quantity || it.qty || 1)}</td>
+        <td align="right" style="padding:12px 14px;font-size:13px;color:#18140F;border-bottom:1px solid #EDE8E0;">${esc(fmtMoney(it.total, cur))}</td>
+      </tr>`).join('');
+
+  const addr = order.shipping_address && typeof order.shipping_address === 'object' ? order.shipping_address : {};
+  const addrParts = [addr.line1, addr.line2, addr.city, addr.state, addr.postal_code || addr.zip, addr.country]
+    .filter(Boolean).map(esc).join(', ');
+
+  const t = isEs ? {
+    title: 'Pago recibido, pedido confirmado',
+    hello: `Gracias, ${esc(order.customer_name || '')}. Recibimos tu transferencia y tu pedido ya está en preparación.`,
+    order: 'Pedido',
+    payTitle: 'Pago',
+    payLine: `Transferencia SPEI recibida: ${esc(fmtMoney(order.total_mxn, 'MXN'))}${order.payment_reference ? ` · Referencia ${esc(order.payment_reference)}` : ''}`,
+    summary: 'Resumen',
+    product: 'Producto', qty: 'Cant.', amount: 'Importe',
+    subtotal: 'Subtotal', shipping: 'Envío',
+    addrTitle: 'Dirección de envío',
+    next: 'Te avisaremos por este medio cuando tu pedido sea enviado, junto con tu número de guía. Si tienes cualquier duda, responde a este correo o escríbenos por WhatsApp.',
+  } : {
+    title: 'Payment received, order confirmed',
+    hello: `Thank you, ${esc(order.customer_name || '')}. We received your transfer and your order is now being prepared.`,
+    order: 'Order',
+    payTitle: 'Payment',
+    payLine: `SPEI transfer received: ${esc(fmtMoney(order.total_mxn, 'MXN'))}${order.payment_reference ? ` · Reference ${esc(order.payment_reference)}` : ''}`,
+    summary: 'Summary',
+    product: 'Product', qty: 'Qty', amount: 'Amount',
+    subtotal: 'Subtotal', shipping: 'Shipping',
+    addrTitle: 'Shipping address',
+    next: 'We will email you again when your order ships, along with your tracking number. If you have any questions, reply to this email or reach us on WhatsApp.',
+  };
+
+  return `<!DOCTYPE html>
+<html lang="${isEs ? 'es' : 'en'}">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
+<body style="margin:0;padding:0;background:#F5F1EB;font-family:'Helvetica Neue',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F1EB;padding:32px 16px;">
+<tr><td>
+<table width="600" align="center" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;margin:0 auto;background:#ffffff;overflow:hidden;">
+
+  <tr><td style="background:#18140F;padding:28px 32px;">
+    <p style="font-family:monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9A9189;margin:0 0 6px;">BIOGRADIX</p>
+    <h1 style="color:#F5F1EB;font-size:20px;margin:0;font-weight:400;">${t.title}</h1>
+    <p style="color:#9A9189;font-size:13px;margin:6px 0 0;">${t.hello}</p>
+  </td></tr>
+
+  <tr><td style="background:#2E4A3A;padding:12px 32px;">
+    <table width="100%" cellpadding="0" cellspacing="0"><tr>
+      <td style="color:#F5F1EB;font-size:12px;letter-spacing:1px;text-transform:uppercase;">${t.order} #${esc(order.id)}</td>
+      <td align="right" style="color:#F5F1EB;font-size:16px;font-family:monospace;">${esc(fmtMoney(order.total, cur))}</td>
+    </tr></table>
+  </td></tr>
+
+  <tr><td style="padding:24px 32px 0;">
+    <p style="font-family:monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9A9189;margin:0 0 8px;">${t.payTitle}</p>
+    <p style="font-size:13px;color:#18140F;line-height:1.7;margin:0;">${t.payLine}</p>
+  </td></tr>
+
+  <tr><td style="padding:24px 32px 0;">
+    <p style="font-family:monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9A9189;margin:0 0 12px;">${t.summary}</p>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #EDE8E0;">
+      <tr>
+        <td style="padding:10px 14px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#9A9189;background:#F5F1EB;">${t.product}</td>
+        <td align="center" style="padding:10px 14px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#9A9189;background:#F5F1EB;">${t.qty}</td>
+        <td align="right" style="padding:10px 14px;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#9A9189;background:#F5F1EB;">${t.amount}</td>
+      </tr>${rows}
+      <tr>
+        <td colspan="2" style="padding:10px 14px;font-size:12px;color:#9A9189;">${t.subtotal}</td>
+        <td align="right" style="padding:10px 14px;font-size:12px;color:#4A443C;">${esc(fmtMoney(order.subtotal, cur))}</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding:0 14px 10px;font-size:12px;color:#9A9189;">${t.shipping}</td>
+        <td align="right" style="padding:0 14px 10px;font-size:12px;color:#4A443C;">${esc(fmtMoney(order.shipping, cur))}</td>
+      </tr>
+      <tr>
+        <td colspan="2" style="padding:12px 14px;font-size:13px;color:#18140F;font-weight:600;border-top:1px solid #EDE8E0;">Total</td>
+        <td align="right" style="padding:12px 14px;font-size:13px;color:#18140F;font-weight:600;border-top:1px solid #EDE8E0;">${esc(fmtMoney(order.total, cur))}</td>
+      </tr>
+    </table>
+  </td></tr>
+
+  ${addrParts ? `
+  <tr><td style="padding:24px 32px 0;">
+    <p style="font-family:monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#9A9189;margin:0 0 8px;">${t.addrTitle}</p>
+    <p style="font-size:13px;color:#4A443C;line-height:1.7;margin:0;">${addrParts}</p>
+  </td></tr>` : ''}
+
+  <tr><td style="padding:24px 32px 0;">
+    <p style="font-size:13px;color:#4A443C;line-height:1.8;margin:0;">${t.next}</p>
+  </td></tr>
+
+  <tr><td style="padding:24px 32px 32px;">
+    <a href="https://wa.me/15553471798" style="display:inline-block;background:#2E4A3A;color:#F5F1EB;text-decoration:none;padding:12px 24px;font-family:monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;">WhatsApp</a>
+  </td></tr>
+
+  <tr><td style="background:#F5F1EB;padding:14px 32px;border-top:1px solid #EDE8E0;">
+    <p style="font-family:monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#9A9189;margin:0;">BIOGRADIX - biogradix.com</p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
+}
+
+async function sendSpeiPaidEmail(order) {
+  if (!process.env.RESEND_API_KEY) {
+    return { sent: false, detail: 'RESEND_API_KEY no configurada' };
+  }
+  if (!order.customer_email) {
+    return { sent: false, detail: 'El pedido no tiene customer_email' };
+  }
+  const isEs = orderIsSpanish(order);
+  const subject = isEs
+    ? `Pago recibido — Pedido confirmado #${order.id} — Biogradix`
+    : `Payment received — Order confirmed #${order.id} — Biogradix`;
+
+  const r = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: 'Biogradix <protocolos@biogradix.com>',
+      to: [order.customer_email],
+      bcc: [ADMIN_EMAIL],
+      subject,
+      html: speiPaidEmailHtml(order, isEs),
+    }),
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    console.error('Resend SPEI paid email error:', err);
+    return { sent: false, detail: `Resend respondió ${r.status}` };
+  }
+  return { sent: true };
+}
+
 // ── Acciones ─────────────────────────────────────────────────────────────────
 
 async function ordersList(req, res) {
@@ -403,6 +647,9 @@ async function ordersUpdateStatus(req, res) {
   if (!ORDER_STATUSES.includes(status)) {
     return sendError(res, 400, 'bad_request', `Estado inválido: ${status}`);
   }
+  if (status === 'pending_payment') {
+    return sendError(res, 400, 'bad_request', 'Un pedido no puede regresar a Por pagar.');
+  }
   const cur = await sb(`biogradix_orders?select=id,status,items,shipped_at&id=eq.${encodeURIComponent(order_id)}&limit=1`);
   if (cur.missingTable) return tableError(res, 'biogradix_orders');
   if (!cur.ok) return dbError(res, cur);
@@ -423,10 +670,102 @@ async function ordersUpdateStatus(req, res) {
   }
 
   const out = { order: r.data[0] };
+  if (status === 'cancelled' && antes.status === 'pending_payment') {
+    // Pedido SPEI sin pagar: el stock nunca salio, solo se libera la reserva
+    // (sin movimiento de inventario).
+    out.release = await liberarReserva(antes);
+    return res.status(200).json(out);
+  }
   const antesDeEnviar = (antes.status === 'paid' || antes.status === 'preparing') && !antes.shipped_at;
   if (status === 'cancelled' && antes.status !== 'cancelled' && antesDeEnviar) {
     out.restock = await reponerPedido(antes);
   }
+  return res.status(200).json(out);
+}
+
+// Confirmar el deposito de un pedido SPEI: primero el inventario (stock y
+// reserved bajan juntos), despues el estado. Asi una carrera nunca deja un
+// pedido pagado sin stock descontado; si el inventario falla, se responde
+// 409 sin tocar el estado.
+async function ordersConfirmPayment(req, res) {
+  const { order_id } = req.body || {};
+  if (!order_id) return sendError(res, 400, 'bad_request', 'Falta order_id');
+
+  const cur = await sb(`biogradix_orders?select=*&id=eq.${encodeURIComponent(order_id)}&limit=1`);
+  if (cur.missingTable) return tableError(res, 'biogradix_orders');
+  if (!cur.ok) return dbError(res, cur);
+  if (!Array.isArray(cur.data) || cur.data.length === 0) {
+    return sendError(res, 404, 'not_found', `No existe el pedido ${order_id}`);
+  }
+  const order = cur.data[0];
+  if (order.status !== 'pending_payment') {
+    return sendError(res, 409, 'not_pending', 'Solo se confirma el pago de pedidos Por pagar.');
+  }
+
+  const items = itemsReponibles(order);
+  if (items.length === 0) {
+    return sendError(res, 409, 'no_items', 'El pedido no tiene productos identificables para descontar.');
+  }
+
+  // 1. Inventario: stock -= qty y reserved -= qty, con guardias optimistas.
+  const desc = await descontarInventarioSpei(items);
+  if (!desc.ok) {
+    await revertirDescuentoSpei(desc.aplicados);
+    if (desc.motivo === 'db') return dbError(res, desc.result);
+    if (desc.motivo === 'sin_producto') {
+      return sendError(res, 409, 'not_found', `No existe el SKU ${desc.sku} del pedido.`);
+    }
+    if (desc.motivo === 'stock_insuficiente') {
+      return sendError(res, 409, 'insufficient_stock',
+        `Stock insuficiente de ${desc.sku} (${desc.stock} en stock). Ajusta el inventario antes de confirmar.`);
+    }
+    return sendError(res, 409, 'stock_changed',
+      'El inventario cambió mientras se confirmaba el pago. Recarga e intenta de nuevo.');
+  }
+
+  // 2. Estado al final, solo si el pedido sigue Por pagar (dos clics en
+  //    "Confirmar pago" no pueden descontar dos veces).
+  const upd = await sb(
+    `biogradix_orders?id=eq.${encodeURIComponent(order_id)}&status=eq.pending_payment`,
+    {
+      method: 'PATCH',
+      headers: { 'Prefer': 'return=representation' },
+      body: { status: 'paid', payment_id: 'spei-manual' },
+    }
+  );
+  if (!upd.ok || !Array.isArray(upd.data) || upd.data.length === 0) {
+    await revertirDescuentoSpei(desc.aplicados);
+    if (!upd.ok) return dbError(res, upd);
+    return sendError(res, 409, 'status_changed',
+      'El pedido cambió de estado mientras se confirmaba el pago. Recarga e intenta de nuevo.');
+  }
+  const updated = upd.data[0];
+
+  // 3. Movimientos de inventario (best effort: el stock ya esta descontado).
+  let movWarning = null;
+  for (const it of items) {
+    const mov = await sb('biogradix_inventory_movements', {
+      method: 'POST',
+      headers: { 'Prefer': 'return=minimal' },
+      body: { sku: it.sku, delta: -it.qty, reason: 'sale', order_id: order.id, note: 'SPEI confirmado' },
+    });
+    if (!mov.ok) {
+      console.error('Movimiento SPEI no registrado:', mov.status, mov.data);
+      movWarning = 'El pago se confirmó y el stock se descontó, pero un movimiento no entró al historial.';
+    }
+  }
+
+  // 4. Correo de confirmacion al cliente (best effort).
+  let email = { sent: false, detail: 'sin intento' };
+  try {
+    email = await sendSpeiPaidEmail(updated);
+  } catch (err) {
+    console.error('SPEI paid email error:', err);
+    email = { sent: false, detail: 'Excepción al enviar el correo' };
+  }
+
+  const out = { order: updated, email_sent: email.sent, email_detail: email.detail || null };
+  if (movWarning) out.warning = movWarning;
   return res.status(200).json(out);
 }
 
@@ -435,7 +774,7 @@ async function ordersUpdateStatus(req, res) {
 async function ordersRestock(req, res) {
   const { order_id } = req.body || {};
   if (!order_id) return sendError(res, 400, 'bad_request', 'Falta order_id');
-  const cur = await sb(`biogradix_orders?select=id,status,items,shipped_at&id=eq.${encodeURIComponent(order_id)}&limit=1`);
+  const cur = await sb(`biogradix_orders?select=id,status,items,shipped_at,payment_provider,payment_id&id=eq.${encodeURIComponent(order_id)}&limit=1`);
   if (cur.missingTable) return tableError(res, 'biogradix_orders');
   if (!cur.ok) return dbError(res, cur);
   if (!Array.isArray(cur.data) || cur.data.length === 0) {
@@ -444,6 +783,12 @@ async function ordersRestock(req, res) {
   const order = cur.data[0];
   if (order.status !== 'cancelled') {
     return sendError(res, 409, 'not_cancelled', 'Solo se repone el inventario de pedidos cancelados.');
+  }
+  if (order.payment_provider === 'spei' && !order.payment_id) {
+    // Pedido SPEI cancelado sin pagar: sus packs nunca salieron del stock,
+    // la cancelacion solo libero la reserva. Reponer aqui inflaria el stock.
+    return sendError(res, 409, 'never_paid',
+      'Este pedido se canceló sin pagarse: sus packs nunca salieron del stock, solo se liberó la reserva.');
   }
   if (order.shipped_at) {
     return sendError(res, 409, 'already_shipped',
@@ -1020,7 +1365,7 @@ module.exports = async function handler(req, res) {
   const mutations = [
     'orders.updateStatus', 'orders.markShipped', 'inventory.adjust',
     'expenses.add', 'expenses.delete', 'consumo.add', 'consumo.markPaid',
-    'consumo.update', 'orders.restock',
+    'consumo.update', 'orders.restock', 'orders.confirmPayment',
   ];
   if (mutations.includes(action) && req.method !== 'POST') {
     return sendError(res, 405, 'method_not_allowed', `${action} requiere POST`);
@@ -1033,6 +1378,7 @@ module.exports = async function handler(req, res) {
       case 'orders.updateStatus': return await ordersUpdateStatus(req, res);
       case 'orders.markShipped':  return await ordersMarkShipped(req, res);
       case 'orders.restock':      return await ordersRestock(req, res);
+      case 'orders.confirmPayment': return await ordersConfirmPayment(req, res);
       case 'inventory.list':   return await inventoryList(req, res);
       case 'inventory.adjust': return await inventoryAdjust(req, res);
       case 'movements.list':   return await movementsList(req, res);

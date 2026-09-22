@@ -77,6 +77,7 @@ td.right{text-align:right;}
 /* ── CHIPS DE ESTADO ──────────────────────────────────── */
 .chip{display:inline-block;padding:4px 10px;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;border:1px solid;white-space:nowrap;}
 .st-paid{color:var(--forest);border-color:rgba(46,74,58,.4);background:rgba(46,74,58,.08);}
+.st-pending{color:#8A6D1A;border-color:rgba(138,109,26,.4);background:rgba(138,109,26,.08);}
 .st-preparing{color:var(--amber);border-color:rgba(138,106,31,.4);background:rgba(138,106,31,.08);}
 .st-shipped{color:var(--blue);border-color:rgba(47,74,109,.4);background:rgba(47,74,109,.08);}
 .st-delivered{color:var(--bone);border-color:var(--forest);background:var(--forest);}
@@ -168,6 +169,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
         <label for="statusFilter">Estado</label>
         <select id="statusFilter">
           <option value="">Todos</option>
+          <option value="pending_payment">Por pagar</option>
           <option value="paid">Pagado</option>
           <option value="preparing">Preparando</option>
           <option value="shipped">Enviado</option>
@@ -373,6 +375,7 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
   try { S.key = sessionStorage.getItem(KEY_STORE) || ''; } catch (e) { S.key = ''; }
 
   var STATUS = {
+    pending_payment: { label: 'Por pagar', cls: 'st-pending' },
     paid:      { label: 'Pagado',      cls: 'st-paid',      advanceTo: 'preparing', advanceLabel: 'Preparar' },
     preparing: { label: 'Preparando',  cls: 'st-preparing', ship: true,             advanceLabel: 'Enviar' },
     shipped:   { label: 'Enviado',     cls: 'st-shipped',   advanceTo: 'delivered', advanceLabel: 'Entregado' },
@@ -562,6 +565,25 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
     }).join('<br/>');
   }
 
+  // Busca un pedido cargado por id (los ids llegan como number o string).
+  function findOrder(oid) {
+    for (var i = 0; i < S.orders.length; i++) {
+      if (String(S.orders[i].id) === String(oid)) return S.orders[i];
+    }
+    return null;
+  }
+
+  // Resumen legible de la liberación de reserva de un pedido Por pagar.
+  function releaseTexto(r) {
+    if (!r) return 'Reserva sin cambios.';
+    var partes = (r.liberados || []).map(function (x) { return x.qty + ' ' + x.sku; });
+    var txt = partes.length ? 'Reserva liberada: ' + partes.join(', ') + '.' : '';
+    if ((r.fallidos || []).length) {
+      txt += (txt ? ' ' : '') + 'No se pudo liberar: ' + r.fallidos.map(function (x) { return x.sku; }).join(', ') + '.';
+    }
+    return txt || 'El pedido no tenía reserva que liberar.';
+  }
+
   // Resumen legible de lo que devolvió una cancelación / reposición.
   function restockTexto(r) {
     if (!r) return 'Stock sin cambios.';
@@ -588,28 +610,38 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       var st = STATUS[o.status] || { label: o.status || '—', cls: 'st-refunded' };
       var oid = esc(o.id);
       var action = '';
-      if (st.ship) {
+      if (o.status === 'pending_payment') {
+        action = '<button class="btn btn-ghost btn-sm" type="button" data-confirmpay="' + oid + '">Confirmar pago</button>';
+      } else if (st.ship) {
         action = '<button class="btn btn-ghost btn-sm" type="button" data-shiptoggle="' + oid + '">' + st.advanceLabel + ' →</button>';
       } else if (st.advanceTo) {
         action = '<button class="btn btn-ghost btn-sm" type="button" data-advance="' + oid + '" data-to="' + st.advanceTo + '">' + st.advanceLabel + ' →</button>';
       }
-      if (o.status === 'paid' || o.status === 'preparing') {
+      if (o.status === 'paid' || o.status === 'preparing' || o.status === 'pending_payment') {
         action += ' <button class="btn btn-ghost btn-sm" type="button" data-cancel="' + oid + '" style="color:var(--alert);">Cancelar</button>';
       }
       if (o.status === 'cancelled' && !o.shipped_at) {
-        action += o.restock_done
-          ? '<span class="cell-sub">Inventario repuesto</span>'
-          : '<button class="btn btn-ghost btn-sm" type="button" data-restock="' + oid + '">Reponer inventario</button>';
+        // Pedido SPEI cancelado sin pagar: el stock nunca salió, solo se
+        // liberó la reserva; no hay nada que reponer.
+        if (o.payment_provider === 'spei' && !o.payment_id) {
+          action += '<span class="cell-sub">Reserva liberada</span>';
+        } else {
+          action += o.restock_done
+            ? '<span class="cell-sub">Inventario repuesto</span>'
+            : '<button class="btn btn-ghost btn-sm" type="button" data-restock="' + oid + '">Reponer inventario</button>';
+        }
       }
       var tracking = o.tracking_number
         ? esc(o.tracking_carrier || '—') + '<div class="cell-sub num">' + esc(o.tracking_number) + '</div>'
         : '—';
       html += '<tr>' +
-        '<td><span class="cell-id" title="' + oid + '">' + esc(shortId(o.id)) + '</span></td>' +
+        '<td><span class="cell-id" title="' + oid + '">' + esc(shortId(o.id)) + '</span>' +
+          (o.payment_reference ? '<div class="cell-sub num">' + esc(o.payment_reference) + '</div>' : '') + '</td>' +
         '<td class="num">' + esc(fmtDate(o.created_at)) + '</td>' +
         '<td>' + esc(o.customer_name || '—') + '<div class="cell-sub">' + esc(o.customer_email || '') + '</div></td>' +
         '<td>' + itemsSummary(o.items) + '</td>' +
-        '<td class="right num">' + esc(money(o.total, o.currency)) + '</td>' +
+        '<td class="right num">' + esc(money(o.total, o.currency)) +
+          (o.total_mxn != null ? '<div class="cell-sub num">' + esc(money(o.total_mxn, 'MXN')) + '</div>' : '') + '</td>' +
         '<td><span class="chip ' + st.cls + '">' + esc(st.label) + '</span></td>' +
         '<td>' + tracking + '</td>' +
         '<td class="right">' + action + '</td>' +
@@ -650,13 +682,43 @@ footer{padding:18px 32px;border-top:1px solid var(--rule);font-size:9px;letter-s
       return;
     }
 
+    if (t.hasAttribute('data-confirmpay')) {
+      oid = t.getAttribute('data-confirmpay');
+      var ordP = findOrder(oid);
+      var refP = (ordP && ordP.payment_reference) || ('#' + shortId(oid));
+      var mxnP = ordP && ordP.total_mxn != null
+        ? money(ordP.total_mxn, 'MXN')
+        : money(ordP && ordP.total, (ordP && ordP.currency) || 'USD');
+      if (!window.confirm('¿Confirmar el pago del pedido ' + refP + '?\n\nConfirma solo cuando el depósito esté visible en el banco.\nReferencia: ' + refP + '\nMonto: ' + mxnP)) return;
+      t.disabled = true; t.textContent = 'Confirmando...';
+      api('orders.confirmPayment', { order_id: oid }).then(function (d) {
+        var msg = 'Pago de ' + refP + ' confirmado: el pedido pasó a Pagado y el stock se descontó.';
+        if (d && d.email_sent) msg += ' Correo de confirmación enviado.';
+        else if (d && d.email_detail) msg += ' Correo no enviado: ' + d.email_detail;
+        if (d && d.warning) msg += ' ' + d.warning;
+        toast(msg, !!(d && d.warning));
+        S.products = []; S.loaded.inventario = false;
+        loadOrders();
+      }).catch(function (err) {
+        t.disabled = false; t.textContent = 'Confirmar pago';
+        if (err.code !== 'unauthorized') toast(err.message, true);
+      });
+      return;
+    }
+
     if (t.hasAttribute('data-cancel')) {
       oid = t.getAttribute('data-cancel');
-      if (!window.confirm('¿Cancelar el pedido ' + shortId(oid) + '?\n\nComo aún no se envió, sus packs regresan al inventario. como ajuste con nota.')) return;
+      var ordC = findOrder(oid);
+      var pendiente = !!(ordC && ordC.status === 'pending_payment');
+      var msgC = pendiente
+        ? '¿Cancelar el pedido ' + ((ordC && ordC.payment_reference) || shortId(oid)) + '?\n\nAún no está pagado: solo se libera la reserva de inventario.'
+        : '¿Cancelar el pedido ' + shortId(oid) + '?\n\nComo aún no se envió, sus packs regresan al inventario. como ajuste con nota.';
+      if (!window.confirm(msgC)) return;
       t.disabled = true;
       api('orders.updateStatus', { order_id: oid, status: 'cancelled' }).then(function (d) {
-        var fallo = d && d.restock && (d.restock.fallidos || []).length;
-        toast('Pedido ' + shortId(oid) + ' cancelado. ' + restockTexto(d && d.restock), !!fallo);
+        var detalle = d && d.release ? releaseTexto(d.release) : restockTexto(d && d.restock);
+        var fallo = !!(d && ((d.restock && (d.restock.fallidos || []).length) || (d.release && (d.release.fallidos || []).length)));
+        toast('Pedido ' + shortId(oid) + ' cancelado. ' + detalle, fallo);
         S.products = []; S.loaded.inventario = false;
         loadOrders();
       }).catch(function (err) {
