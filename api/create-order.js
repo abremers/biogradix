@@ -46,7 +46,15 @@ function speiEnv() {
   const banco = (process.env.SPEI_BANCO || '').trim();
   const beneficiario = (process.env.SPEI_BENEFICIARIO || '').trim();
   const rate = parseFloat(process.env.MXN_RATE || '');
-  if (!clabe || !banco || !beneficiario || !Number.isFinite(rate) || rate <= 0) return null;
+  if (!clabe || !banco || !beneficiario || !Number.isFinite(rate) || rate <= 0) {
+    console.error('speiEnv incompleto:', JSON.stringify({
+      SPEI_CLABE: clabe ? 'ok' : 'FALTA',
+      SPEI_BANCO: banco ? 'ok' : 'FALTA',
+      SPEI_BENEFICIARIO: beneficiario ? 'ok' : 'FALTA',
+      MXN_RATE: Number.isFinite(rate) && rate > 0 ? 'ok' : 'FALTA_O_NO_NUMERICA',
+    }));
+    return null;
+  }
   return { clabe, banco, beneficiario, rate };
 }
 
